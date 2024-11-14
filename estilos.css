@@ -1,0 +1,131 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #404040;
+    color: white;
+}
+
+/* Contenedor del menú lateral */
+.menu-lateral {
+    color: white;
+    width: 300px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100vh;
+    position: fixed;
+    background-color: #404040;
+    overflow-y: auto; /* Barra de scroll vertical */
+}
+
+/* Estilo de botón "Back" */
+.butback {
+    background-image: linear-gradient(to right, #6c757d, #adb5bd);
+    color: white;
+}
+
+/* Estilos de encabezado en el menú */
+.menu-lateral h2 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 10px;
+}
+
+/* Estilos de los inputs */
+.menu-lateral input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Estilos de los botones generales */
+.menu-lateral button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.menu-lateral .nav-buttons button {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    background-image: linear-gradient(to right, #6c757d, #adb5bd);
+    text-align: center;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .menu-lateral .nav-buttons button:hover {
+        background-color: #848b92;
+    }
+
+    .menu-lateral .nav-buttons button:active {
+        transform: scale(0.80);
+    }
+
+/* Estilo para alertas */
+.alerta {
+    color: yellow;
+    font-weight: bold;
+    display: none;
+}
+
+.input-group label {
+    display: inline-block;
+    margin-right: 20px; /* Espacio entre los elementos */
+}
+
+/* Estilo para los botones de música circulares */
+.music-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    border: none;
+    margin: 10px;
+    outline: none;
+    transition: box-shadow 0.3s; /* Transición para el relieve */
+}
+
+/* Iconos de música */
+.music-button1 {
+    background-image: url('./img/camino.png'); /* Imagen de camino de tierra */
+}
+
+.music-button2 {
+    background-image: url('./img/espadas.png'); /* Imagen de espadas */
+}
+
+.music-button3 {
+    background-image: url('./img/mazmorra.png'); /* Imagen de puerta de mazmorra */
+}
+
+/* Estilo para el botón de silenciar */
+.music-button4 {
+    background-color: red; /* Rojo por defecto */
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s; /* Transición para el cambio de color */
+}
+
+    .music-button4.active {
+        background-color: green; /* Verde cuando está activo */
+    }
+
+/* Estilo de relieve para los botones cuando están pulsados */
+.pressed {
+    box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.7);
+}
