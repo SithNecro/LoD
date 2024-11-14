@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trampas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+}
+        /* Estilos para el menú lateral */
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300px;
+        }
+        .menu-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Estilos para el contenido principal */
+        .main-content {
+            margin-left: 310px;
+            padding: 20px;
+           /* height: 100vh;*/
+            display: flex;
+            justify-content: flex-start;
+        }
+        /* Columna izquierda con ancho fijo de 300px y centrado arriba */
+        .column-left {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrado horizontal */
+            justify-content: flex-start; /* Alineado arriba */
+            margin-right: 10px; /* Margen de 10px a la derecha */
+        }
+        .column-left img {
+            width: 300px; /* Ancho de la imagen FAQ igual a la columna */
+            border-radius: 5%;
+            margin-bottom: 20px;
+        }
+        /* Columna derecha que toma el resto del espacio y se alinea arriba a la izquierda */
+        .column-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Alineado arriba */
+            text-align: left; /* Texto y elementos alineados a la izquierda */
+            padding-top: 0px; /* Eliminar cualquier espaciado superior */
+        }
+        .buttons {
+            margin-top: 10px; /* Reducir el espacio entre la imagen y los botones */
+        }
+        button, select {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px 0; /* Reducir el margen vertical */
+        }
+        /* Selector y botones debajo de la imagen de trampas */
+        .trampas-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alineado a la izquierda */
+        }
+        .treasure-image {
+            width: 280px; /* Tamaño ajustado para la imagen de trampas */
+            border-radius: 5%;
+            margin-bottom: 10px; /* Reducir el margen inferior de la imagen */
+        }
+    </style>
+</head>
+<body style="background-image: url('fondo.png'); background-size: cover;">
+
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe id="iframeMenu" src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+
+    <!-- Zona de contenido principal -->
+    <div class="main-content">
+        <!-- Columna izquierda (FAQ) con ancho fijo de 300px y centrado arriba -->
+        <div class="column-left">
+            <div class="buttons">
+                <button onclick="cargarTesoroLegendario()" id="tesoro-btn">Sacar Trampa</button>
+                <button onclick="barajarTesoros()">Barajar Trampas</button>
+            </div>
+            <img src="img/FAQ/FAQ_Puertas.png" alt="FAQ" class="faq-image">
+        <p>Tira 1d6, con 6 hay trampa.</p>
+        <button onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del Grupo)</button>
+
+        </div>
+
+
+        <!-- Columna derecha (Trampas) que toma el resto del espacio, alineado arriba a la izquierda -->
+        <div class="column-right trampas-container">
+            <!-- Botones encima de la imagen de trampas -->
+            <select id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()"></select>
+            <img src="img/traseras/Trasera trampas.png" id="imagen-tesoro" alt="Trampas" class="treasure-image">
+                <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
+            </select>
+        </div>
+    </div>
+   <script src="Trampa.js"></script>
+</body>
+</html>

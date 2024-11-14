@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolsa de Fichas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .result {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    #imagenFicha {
+      margin-top: 10px;
+      width: 100px; /* Ajusta el tamaño según tus necesidades */
+      height: auto;
+    }
+    .control-buttons {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Bolsa de Fichas</h2>
+
+    <!-- Entrada de fichas iniciales -->
+    <label>
+      Iniciativas Aliadas (1-25):
+      <input type="number" id="aliadas" min="1" max="25" value="1">
+    </label>
+    <label>
+      Iniciativas Enemigas (1-25):
+      <input type="number" id="enemigas" min="1" max="25" value="1">
+    </label>
+
+    <!-- Botón para reiniciar la bolsa -->
+    <button onclick="iniciarBolsa()">Reiniciar Bolsa</button>
+
+    <!-- Información de las fichas en la bolsa -->
+    <p class="result" id="aliadasRestantes">Fichas Aliadas Restantes: 0</p>
+    <div class="control-buttons">
+      <button onclick="ajustarFichas('aliadas', 1)">+ Aliada</button>
+      <button onclick="ajustarFichas('aliadas', -1)">- Aliada</button>
+    </div>
+
+    <p class="result" id="enemigasRestantes">Fichas Enemigas Restantes: 0</p>
+    <div class="control-buttons">
+      <button onclick="ajustarFichas('enemigas', 1)">+ Enemiga</button>
+      <button onclick="ajustarFichas('enemigas', -1)">- Enemiga</button>
+    </div>
+
+    <p class="result" id="totalFichas">Total de Fichas en la Bolsa: 0</p>
+
+    <!-- Botón para sacar una ficha -->
+    <button onclick="sacarFicha()">Sacar Ficha de la Bolsa</button>
+
+    <!-- Resultado de la ficha sacada -->
+    <p id="resultadoFicha"></p>
+    <img id="imagenFicha" src="" alt="Imagen de la ficha" style="display:none;">
+  </div>
+
+  <script>
+    let fichasAliadas = 0;
+    let fichasEnemigas = 0;
+    let totalFichas = 0;
+
+    // Función para inicializar la bolsa con las cantidades especificadas
+    function iniciarBolsa() {
+      const aliadasInput = parseInt(document.getElementById("aliadas").value);
+      const enemigasInput = parseInt(document.getElementById("enemigas").value);
+
+      if (isNaN(aliadasInput) || isNaN(enemigasInput) || aliadasInput < 1 || aliadasInput > 25 || enemigasInput < 1 || enemigasInput > 25) {
+        alert("Por favor, introduce valores entre 1 y 25 para ambos campos.");
+        return;
+      }
+
+      fichasAliadas = aliadasInput;
+      fichasEnemigas = enemigasInput;
+      totalFichas = fichasAliadas + fichasEnemigas;
+
+      actualizarDisplay();
+      document.getElementById("resultadoFicha").textContent = "";
+      document.getElementById("imagenFicha").style.display = "none"; // Oculta la imagen al reiniciar
+    }
+
+    // Función para actualizar los contadores en pantalla
+    function actualizarDisplay() {
+      document.getElementById("aliadasRestantes").textContent = `Fichas Aliadas Restantes: ${fichasAliadas}`;
+      document.getElementById("enemigasRestantes").textContent = `Fichas Enemigas Restantes: ${fichasEnemigas}`;
+      document.getElementById("totalFichas").textContent = `Total de Fichas en la Bolsa: ${totalFichas}`;
+    }
+
+    // Función para ajustar manualmente la cantidad de fichas
+    function ajustarFichas(tipo, cantidad) {
+      if (tipo === "aliadas") {
+        fichasAliadas = Math.max(0, fichasAliadas + cantidad); // Evita que sea negativo
+      } else if (tipo === "enemigas") {
+        fichasEnemigas = Math.max(0, fichasEnemigas + cantidad); // Evita que sea negativo
+      }
+      totalFichas = fichasAliadas + fichasEnemigas;
+      actualizarDisplay();
+    }
+
+    // Función para crear un efecto de ruleta al sacar una ficha
+    function sacarFicha() {
+      if (totalFichas === 0) {
+        alert("La bolsa está vacía. Reinicia la bolsa para volver a jugar.");
+        return;
+      }
+
+      // Comienza el efecto de ruleta alternando imágenes rápidamente
+      let alternar = true;
+      const imagenFicha = document.getElementById("imagenFicha");
+      const resultadoFicha = document.getElementById("resultadoFicha");
+
+      resultadoFicha.textContent = "Sacando ficha...";
+      resultadoFicha.style.color = "black";
+      imagenFicha.style.display = "block";
+      imagenFicha.src = "FIniAliadas.png";
+
+      const intervalo = setInterval(() => {
+        imagenFicha.src = alternar ? "FIniAliadas.png" : "FIniEnemigas.png";
+        alternar = !alternar;
+      }, 100);
+
+      // Detenemos el efecto de ruleta después de un tiempo
+      setTimeout(() => {
+        clearInterval(intervalo);
+
+        // Elegir aleatoriamente una ficha y mostrar el resultado final
+        const fichaElegida = Math.random() < (fichasAliadas / totalFichas) ? "aliada" : "enemiga";
+        
+        if (fichaElegida === "aliada" && fichasAliadas > 0) {
+          fichasAliadas--;
+          resultadoFicha.textContent = "¡Sacaste una ficha aliada!";
+          resultadoFicha.style.color = "blue";
+          imagenFicha.src = "FIniAliadas.png";
+          reproducirSonido("aliada");
+        } else if (fichaElegida === "enemiga" && fichasEnemigas > 0) {
+          fichasEnemigas--;
+          resultadoFicha.textContent = "¡Sacaste una ficha enemiga!";
+          resultadoFicha.style.color = "red";
+          imagenFicha.src = "FIniEnemigas.png";
+          reproducirSonido("enemiga");
+        }
+
+        totalFichas = fichasAliadas + fichasEnemigas;
+        actualizarDisplay();
+      }, 2000); // Duración del efecto de ruleta en milisegundos
+    }
+
+    // Función para reproducir un sonido aleatorio según el tipo de ficha
+    function reproducirSonido(tipo) {
+      const numeroAleatorio = Math.floor(Math.random() * 10) + 1; // Número aleatorio entre 1 y 10
+      let rutaSonido = "";
+
+      if (tipo === "aliada") {
+        rutaSonido = `SonidosIniciativa/Aliado${numeroAleatorio}.mp3`;
+      } else if (tipo === "enemiga") {
+        rutaSonido = `SonidosIniciativa/Enemigo${numeroAleatorio}.mp3`;
+      }
+
+      const audio = new Audio(rutaSonido);
+      audio.play();
+    }
+
+    // Inicializar la bolsa al cargar la página
+    iniciarBolsa();
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirada de Dados</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Estilos del menú lateral */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            text-align: left;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Estilos del contenido principal */
+        .content {
+            margin-left: 250px; /* Deja espacio para el menú lateral */
+            padding: 20px;
+            width: 100%;
+            height: 100vh;
+            background-image: url('Fondo.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilo del contenedor de dados */
+        .dice-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Aquí cargaremos el menú lateral con JavaScript -->
+    <div id="menu-lateral"></div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <div class="dice-container">
+            <div class="result" id="result">Tira el dado</div>
+            <button onclick="rollDice(6)">Tirar Dado de 6 Caras</button>
+            <button onclick="rollDice(10)">Tirar Dado de 10 Caras</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para cargar el menú lateral desde un archivo externo
+        function loadMenu() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-lateral").innerHTML = data;
+                });
+        }
+
+        // Llamamos a la función para cargar el menú
+        loadMenu();
+
+        // Función para tirar los dados
+        function rollDice(sides) {
+            const result = Math.floor(Math.random() * sides) + 1;
+            document.getElementById('result').innerText = `Resultado: ${result}`;
+        }
+    </script>
+
+</body>
+</html>

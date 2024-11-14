@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesoros Corriente</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el menú lateral */
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300px;
+        }
+
+        .menu-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilos para el contenido principal */
+        .main-content {
+            margin-left: 310px;
+            
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .top-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .content-right {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .treasure-image {
+            width: 290px;
+            border-radius: 5%;
+        }
+
+        button, select {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .treasure-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .two-treasures-container {
+            display: none;
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body style="background-image: url('fondo.png'); background-size: cover;">
+
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+
+    <!-- Zona de contenido principal -->
+    <div class="main-content">
+
+        <!-- Botones en la parte superior izquierda -->
+        <div class="top-buttons">
+            <button onclick="cargarTesoroCorriente()" id="tesoro-btn">Sacar Tesoro Corriente</button>
+            <button onclick="barajarTesoros()">Barajar Tesoros</button>
+            <button onclick="habilidadBuscatesoros()">Habilidad de Buscatesoros</button>
+        </div>
+
+        <!-- Zona derecha con la imagen y el selector debajo -->
+        <div class="content-right">
+            <!-- Imagen y selector del tesoro normal -->
+            <div class="treasure-container" id="single-treasure-container">
+                <img src="img/traseras/Trasera tesoro corriente.png" id="imagen-tesoro" alt="Tesoro Corriente" class="treasure-image">
+                <!-- 
+                <label for="selector-tesoro-0">Seleccionar Tesoro Corriente:</label>
+               --> <select id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
+                    <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
+                </select>
+            </div>
+
+            <!-- Contenedor de los dos tesoros para habilidad de buscatesoros -->
+            <div class="two-treasures-container" id="two-treasures-container">
+                <!-- Primer tesoro -->
+                <div class="treasure-container">
+                    <img src="img/traseras/Trasera tesoro corriente.png" id="imagen-tesoro-1" alt="Tesoro Corriente" class="treasure-image">
+                   <!-- <label for="selector-tesoro-1">Seleccionar Tesoro 1:</label>-->
+                    <select id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
+                        <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
+                    </select>
+                </div>
+
+                <!-- Segundo tesoro -->
+                <div class="treasure-container">
+                    <img src="img/traseras/Trasera tesoro corriente.png" id="imagen-tesoro-2" alt="Tesoro Corriente" class="treasure-image">
+                   <!-- <label for="selector-tesoro-2">Seleccionar Tesoro 2:</label>-->
+                    <select id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
+                        <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="Tesoros_Corrientes.js"></script>
+
+   
+
+</body>
+</html>
+

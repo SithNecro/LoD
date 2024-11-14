@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acciones de Mapa</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el menú lateral */
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300px;
+        }
+
+        .menu-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilos para el contenido principal */
+        .main-content {
+            margin-left: 310px;
+          
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 5px;
+           /* margin-top: 20px;*/
+        }
+
+        .button-row button {
+            width: 190px;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border: none;
+            cursor: pointer;
+        }
+        /* Imágenes de fondo para cada botón */
+        #btn1 {
+            background-image: url('img/traseras/VentasReparaciones.png');
+        }
+
+        #btn2 {
+            background-image: url('img/traseras/Asentamientos.png');
+        }
+
+        #btn3 {
+            background-image: url('img/traseras/.png');
+        }
+
+        #btn4 {
+            background-image: url('img/traseras/.png');
+        }
+    /* Imágenes de fondo para cada botón */
+    #btn5 {
+            background-image: url('img/traseras/.png');
+        }
+
+        #btn6 {
+            background-image: url('img/traseras/Trasera Carretera.png');
+        }
+
+        #btn7 {
+            background-image: url('img/traseras/Trasera Espesura.png');
+        }
+        #btn8 {
+            background-image: url('img/traseras/Trasera Desierto.png');
+        }
+        button, select {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .treasure-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           /* margin-right: 20px;*/
+        }
+
+        .two-treasures-container {
+            display: none;
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body style="background-image: url('fondo.png'); background-size: cover;">
+
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+
+    <!-- Zona de contenido principal -->
+    <div class="main-content">
+
+       
+
+        <!-- Grupo de botones con imagen de fondo en dos columnas -->
+        <div class="button-row"> 
+            <button id="btn1" onclick="saveAndNavigate('Ventas_y_reparaciones.html')"></button>
+            <button id="btn2" onclick="saveAndNavigate('Asentamiento.html')"></button>
+            <button id="btn3" onclick="saveAndNavigate('Tesoros_Maravillosos.html')"></button>
+            <button id="btn4" onclick="saveAndNavigate('Objetos_Legendario.html')"></button>
+        </div>
+        <div class="button-row">
+            <button id="btn5" onclick="saveAndNavigate('Ventas_y_reparaciones.html')"></button>
+            <button id="btn6" onclick="saveAndNavigate('Evento_Carretera.html')"></button>
+            <button id="btn7" onclick="saveAndNavigate('Evento_Espesura.html')"></button>
+            <button id="btn8" onclick="saveAndNavigate('Evento_Desierto.html')"></button>
+        </div>
+
+    </div>
+    
+    <script>
+        // Navegar a una página guardando los valores antes
+        function saveAndNavigate(url) {
+            window.top.location.href = url; // Navegar a la nueva página en el marco principal
+        }
+    </script>
+
+</body>
+</html>

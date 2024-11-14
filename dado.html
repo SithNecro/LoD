@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Dados</title>
+    <link rel="stylesheet" href="dado.css">
+</head>
+<body>
+    <h1>Simulador de Dados</h1>
+
+    <div class="dice-container">
+        <img id="dice-image" src="img/dados/D6-1.png" alt="Dado" width="200">
+    </div>
+
+    <div class="buttons">
+        <button onclick="rollDice(6)">Lanzar D6</button>
+        <button onclick="rollDice(10)">Lanzar D10</button>
+        <button onclick="rollDice(20)">Lanzar D20</button>
+    </div>
+<!-- Div para mostrar el resultado -->
+<div id="result" class="result"></div>
+
+    <script src="dado.js"></script>
+</body>
+</html>

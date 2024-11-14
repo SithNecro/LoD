@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos Legendarios</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+            /* Estilos para el menú lateral */
+            .menu {
+          position: fixed;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 300px;
+      }
+
+      .menu-frame {
+          width: 100%;
+          height: 100%;
+          border: none;
+      }
+
+      /* Estilos para el contenido principal */
+      .main-content {
+          margin-left: 310px;
+          padding: 20px;
+          /*height: 100vh;*/
+          display: grid;
+          grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+          gap: 20px; /* Espacio entre columnas */
+      }
+
+      /* Contenedor de la imagen (lado izquierdo) */
+      .treasure-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center; /* Alinear al centro verticalmente */
+      }
+
+      .treasure-image {
+          width: 350px;
+          border-radius: 5%;
+      }
+
+      /* Estilos para el lado derecho (botones y selector) */
+      .right-controls {
+          display: flex;
+          flex-direction: column; /* Apilar elementos uno debajo de otro */
+          justify-content: flex-start;
+          align-items: flex-start;
+      }
+
+      button, select {
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          margin-bottom: 10px; /* Espacio entre botones y select */
+      }
+
+    </style>
+</head>
+<body style="background-image: url('fondo.png'); background-size: cover;">
+
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+
+    <!-- Zona de contenido principal -->
+    <div class="main-content">
+
+        <!-- Botones en la parte Legendario izquierda -->
+        
+            <div class="treasure-container">
+                <img src="img/traseras/Trasera legendarios.png" id="imagen-tesoro" alt="Tesoro Legendario" class="treasure-image">
+            
+        </div>
+
+        <!-- Zona derecha con la imagen y el selector debajo -->
+        <div class="right-controls">
+            <button onclick="cargarTesoroLegendario()" id="tesoro-btn">Sacar Objeto Legendario</button>
+            <button onclick="barajarTesoros()">Barajar Legendarios</button>
+            <!-- Imagen y selector del tesoro normal -->
+           
+               <select id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
+                    <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
+                </select>
+            </div>
+
+           
+        </div>
+
+   
+
+    <script src="Objetos_Legendarios.js"></script>
+
+   
+
+</body>
+</html>
+

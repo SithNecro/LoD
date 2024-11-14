@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesoros Corriente</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el menú lateral */
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300px;
+        }
+
+        .menu-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilos para el contenido principal */
+        .main-content {
+            margin-left: 310px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrar el contenido */
+        }
+
+        /* Botones en la parte superior */
+        .top-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center; /* Centrar los botones */
+            margin-bottom: 20px;
+        }
+
+        /* Estilo de las imágenes y los selectores */
+        .treasure-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .treasure-image {
+            width: 290px;
+            border-radius: 5%;
+        }
+
+        button, select {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        /* Contenedor de las dos imágenes en grid */
+        .two-treasures-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dividir en dos columnas */
+            gap: 20px;
+            
+            justify-items: center; /* Centrar contenido en cada celda */
+        }
+    </style>
+</head>
+<body style="background-image: url('fondo.png'); background-size: cover;">
+
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+
+    <!-- Zona de contenido principal -->
+    <div class="main-content">
+        <!-- Botones en la parte superior centrados -->
+        <div class="top-buttons">
+            <button onclick="cargarTesoroCorriente('Asentamiento')" id="tesoro-btn">Sacar Asentamiento</button>
+            <button onclick="barajarTesoros()">Subir Palancas</button>
+            <button onclick="cargarTesoroCorriente('Evento')">Sacar Evento Asentamiento</button>
+        </div>
+
+        <!-- Contenedor de los dos tesoros en un grid -->
+        <div class="two-treasures-container" id="two-treasures-container">
+            <!-- Primer tesoro -->
+            <div class="treasure-container">
+                <img src="img/traseras/Asentamientos.png" id="imagen-tesoro-1" alt="Tesoro Corriente" class="treasure-image" onclick="cargarTesoroCorriente('Negras')">
+                <select id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
+                    <!-- Opciones agregadas dinámicamente por JavaScript -->
+                </select>
+            </div>
+            <audio id="palancasAudio" src="sonidos/palancas.MP3" preload="auto"></audio>
+            <!-- Segundo tesoro -->
+            <div class="treasure-container">
+                <img src="img/traseras/Asentamientos.png" id="imagen-tesoro-2" alt="Tesoro Corriente" class="treasure-image" onclick="cargarTesoroCorriente('Rojas')">
+                <select id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
+                    <!-- Opciones agregadas dinámicamente por JavaScript -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="Asentamiento.js"></script>
+</body>
+</html>
