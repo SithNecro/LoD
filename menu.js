@@ -272,4 +272,51 @@
             if (activeButton) activeButton.classList.remove('pressed');
             activeButton = null;
         }
-   
+function initMenuEvents() {
+    // Selección de elementos y asignación de eventos después de cargar el menú
+    document.getElementById('moralIncrement').addEventListener('click', () => {
+        if (parseInt(moralActual.value) < parseInt(maxMoral.value)) {
+            moralActual.value = parseInt(moralActual.value) + 1;
+            checkMoral();
+            saveValues();
+        }
+    });
+
+    document.getElementById('moralDecrement').addEventListener('click', () => {
+        if (parseInt(moralActual.value) > 0) {
+            moralActual.value = parseInt(moralActual.value) - 1;
+            checkMoral();
+            saveValues();
+        }
+    });
+
+    document.getElementById('amenazaIncrement').addEventListener('click', () => {
+        if (parseInt(amenazaActual.value) < parseInt(maxAmenaza.value)) {
+            amenazaActual.value = parseInt(amenazaActual.value) + 1;
+            checkAmenaza();
+            saveValues();
+        }
+    });
+
+    document.getElementById('amenazaDecrement').addEventListener('click', () => {
+        if (parseInt(amenazaActual.value) > parseInt(minAmenaza.value)) {
+            amenazaActual.value = parseInt(amenazaActual.value) - 1;
+            checkAmenaza();
+            saveValues();
+        }
+    });
+
+    // Eventos de música
+    document.querySelector('.music-button1').addEventListener('click', () => playMusic('camino'));
+    document.querySelector('.music-button2').addEventListener('click', () => playMusic('guerra'));
+    document.querySelector('.music-button3').addEventListener('click', () => playMusic('mazmorra'));
+    document.querySelector('.music-button4').addEventListener('click', stopMusic);
+
+    // Asignar navegación en botones del menú
+    document.querySelector('[onclick="saveAndNavigate(\'Tirada_amenaza.html\')"]').addEventListener('click', () => navigateTo('Tirada_amenaza.html'));
+    document.querySelector('[onclick="saveAndNavigate(\'Acciones_de_mazmorra.html\')"]').addEventListener('click', () => navigateTo('Acciones_de_mazmorra.html'));
+    document.querySelector('[onclick="saveAndNavigate(\'Acciones_de_travesia.html\')"]').addEventListener('click', () => navigateTo('Acciones_de_travesia.html'));
+    document.querySelector('[onclick="saveAndNavigate(\'CreacionPersonajes.html\')"]').addEventListener('click', () => navigateTo('CreacionPersonajes.html'));
+
+    loadValues(); // Cargar valores iniciales
+}

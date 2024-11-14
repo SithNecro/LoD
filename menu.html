@@ -1,60 +1,48 @@
+<div class="menu-lateral">
+    <div class="section">
+        <button class="butback" onclick="window.history.back()">Back</button>
 
-    <!-- Archivos de audio (ocultos) -->
+        <!-- Botones circulares de música -->
+        <button class="music-button music-button1"></button>
+        <button class="music-button music-button2"></button>
+        <button class="music-button music-button3"></button>
+        <button class="music-button music-button4" id="muteButton">🔇</button>
 
-    <div class="menu-lateral">
-        <div class="section">
-            <button class="butback" onclick="window.history.back()">Back</button>
-            <!-- Botones circulares de música -->
-            <!-- Botones circulares de música -->
-            <button class="music-button music-button1" onclick="playMusic('camino')"></button>
-            <button class="music-button music-button2" onclick="playMusic('guerra')"></button>
-            <button class="music-button music-button3" onclick="playMusic('mazmorra')"></button>
-            <button class="music-button music-button4" id="muteButton" onclick="stopMusic()">🔇</button>
+        <h2>Moral del Grupo</h2>
 
-
-
-            
-
-
-            <h2>Moral del Grupo</h2>
-
-
-            <div class="input-group">
-                <label>Max. <input id="maxMoral" type="number" value="18" min="1" max="20"></label>
-                <label>Med. <input id="medMoral" type="number" value="9" readonly></label>
-            </div>
-            <p id="alerta" class="alerta">       Todos Sufren -20 DET</p>
-            <label>Moral Actual <input id="moralActual" type="number" value="14" min="1" max="20"></label>
-            <button id="moralIncrement" style="background-color: green; color: white;">+</button>
-            <button id="moralDecrement" style="background-color: red; color: white;">-</button>
+        <div class="input-group">
+            <label>Max. <input id="maxMoral" type="number" value="18" min="1" max="20"></label>
+            <label>Med. <input id="medMoral" type="number" value="9" readonly></label>
         </div>
-
-        <div class="section">
-            <h2>Nivel de Amenaza</h2>
-            <div class="input-group">
-                <label>Min. <input id="minAmenaza" type="number" value="2" min="1" max="20"></label>
-                <label>Max. <input id="maxAmenaza" type="number" value="20" min="1" max="20"></label>
-            </div>
-            <br>
-            <p id="alerta2" class="alerta">       Aparece un Monstruo errante</p>
-            <label>Evento de Amenaza<input id="eventoAmenaza" type="number" value="12" min="1" max="20"></label><br><br>
-            <label>NA. Actual <input id="amenazaActual" type="number" value="7" min="1" max="20"></label>
-            <button id="amenazaIncrement" style="background-color: green; color: white;">+</button>
-
-            <button id="amenazaDecrement" style="background-color: red; color: white;">-</button>
-        </div>
-
-        <div class="nav-buttons">
-            <!-- Añadimos target="_top" en cada botón para asegurar que las páginas se abran en el marco principal -->
-            <button onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tirada de Amenaza</button>
-            <button onclick="saveAndNavigate('Acciones_de_mazmorra.html')" target="_top">Acciones Mazmorras</button>
-            <button onclick="saveAndNavigate('Acciones_de_travesia.html')" target="_top">Acciones Travesía</button>
-            <button onclick="saveAndNavigate('CreacionPersonajes.html')" target="_top">Creación de Héroes</button>
-
-        </div>
+        <p id="alerta" class="alerta">Todos Sufren -20 DET</p>
+        <label>Moral Actual <input id="moralActual" type="number" value="14" min="1" max="20"></label>
+        <button id="moralIncrement" style="background-color: green; color: white;">+</button>
+        <button id="moralDecrement" style="background-color: red; color: white;">-</button>
     </div>
 
-    <audio id="moralBajaAudio" src="sonidos/moral_baja.mp3" preload="auto"></audio>
-    <audio id="eventoAmenazaAudio" src="sonidos/evento_amenaza.mp3" preload="auto"></audio>
-    <audio id="moral0Audio" src="sonidos/moral_0.mp3" preload="auto"></audio>
-   
+    <div class="section">
+        <h2>Nivel de Amenaza</h2>
+        <div class="input-group">
+            <label>Min. <input id="minAmenaza" type="number" value="2" min="1" max="20"></label>
+            <label>Max. <input id="maxAmenaza" type="number" value="20" min="1" max="20"></label>
+        </div>
+        <p id="alerta2" class="alerta">Aparece un Monstruo errante</p>
+        <label>Evento de Amenaza <input id="eventoAmenaza" type="number" value="12" min="1" max="20"></label>
+        <label>NA. Actual <input id="amenazaActual" type="number" value="7" min="1" max="20"></label>
+        <button id="amenazaIncrement" style="background-color: green; color: white;">+</button>
+        <button id="amenazaDecrement" style="background-color: red; color: white;">-</button>
+    </div>
+
+    <div class="nav-buttons">
+        <!-- Botones de navegación; eventos de clic se asignarán desde menu.js -->
+        <button id="btnTiradaAmenaza">Tirada de Amenaza</button>
+        <button id="btnAccionesMazmorra">Acciones Mazmorras</button>
+        <button id="btnAccionesTravesia">Acciones Travesía</button>
+        <button id="btnCreacionPersonajes">Creación de Héroes</button>
+    </div>
+</div>
+
+<!-- Archivos de audio (ocultos) -->
+<audio id="moralBajaAudio" src="sonidos/moral_baja.mp3" preload="auto"></audio>
+<audio id="eventoAmenazaAudio" src="sonidos/evento_amenaza.mp3" preload="auto"></audio>
+<audio id="moral0Audio" src="sonidos/moral_0.mp3" preload="auto"></audio>
