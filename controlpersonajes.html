@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Personajes</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            text-align: center;
+        }
+
+        .action-btn {
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .btn-plus {
+            background-color: green;
+        }
+
+        .btn-minus {
+            background-color: red;
+        }
+
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Personajes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Personaje</th>
+                <th>Vida Actual</th>
+                <th>Vida Máxima</th>
+                <th>Maná</th>
+                <th>Cordura</th>
+                <th>Energía</th>
+                <th>Suerte</th>
+            </tr>
+        </thead>
+        <tbody id="character-table">
+            <!-- Filas generadas dinámicamente por JavaScript -->
+        </tbody>
+    </table>
+    <script src="controlpersonajes.js"></script>
+</body>
+</html>

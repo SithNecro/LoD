@@ -3,76 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagen Centrada</title>
+    <title>Reproductor de Audio</title>
     <style>
-        /* Centrar imagen en la página */
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #404040;
+            color: white;
         }
-        /* Evitar que la imagen cambie de tamaño */
-        img {
-            max-width: 100%;
+
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedor de botones en fila */
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Contenedores para los botones y los textos */
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Botones de mÃºsica circulares */
+        .music-button {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+
+        /* Establece la imagen de fondo en cada botÃ³n */
+        .music-button1 {
+            background-image: url('./img/camino.png');
+        }
+
+        .music-button2 {
+            background-image: url('./img/espadas.png');
+        }
+
+        .music-button3 {
+            background-image: url('./img/mazmorra.png');
+        }
+
+        /* BotÃ³n de silenciar */
+        /* BotÃ³n de silenciar */
+        .music-button4 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            font-size: 36px; /* TamaÃ±o aumentado del icono */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+            .music-button4.active {
+                background-color: green;
+            }
+
+        /* Imagen principal */
+        .background-image {
+            max-width: 60%;
             height: auto;
         }
     </style>
 </head>
 <body>
-    <img src="./img/playersound.png" alt="Descripción de la imagen">
-    <audio id="audioPlayer" loop></audio> <!-- Elemento de audio que reproduce en bucle -->
+    <div class="container">
+        <!-- Fila de botones en la parte superior -->
+        <div class="button-row">
+            <!-- BotÃ³n 1 con texto encima -->
+            <div class="button-wrapper">
+                <span>CAMINO</span>
+                <button title="MÃºsica de camino" class="music-button music-button1" onclick="playRandomTrack('camino')"></button>
+            </div>
+            <!-- BotÃ³n 2 con texto debajo -->
+            <div class="button-wrapper">
+                <button title="MÃºsica de combate" class="music-button music-button2" onclick="playRandomTrack('guerra')"></button>
+                <span>GUERRA</span>
+            </div>
+            <!-- BotÃ³n 3 con texto encima -->
+            <div class="button-wrapper">
+                <span>MAZMORRA</span>
+                <button title="MÃºsica de mazmorra" class="music-button music-button3" onclick="playRandomTrack('mazmorra')"></button>
+            </div>
+            <!-- BotÃ³n 4 con texto debajo -->
+            <div class="button-wrapper">
+                <button title="Parar la mÃºsica" class="music-button music-button4" id="muteButton" onclick="stopTrack()">ðŸ”‡</button>
+                <span>SILENCIAR</span>
+            </div>
+        </div>
+        <!-- Imagen principal debajo de los botones -->
+        <img src="./img/playersound.png" alt="Player Sound" class="background-image">
+    </div>
+    <audio id="audioPlayer" loop></audio>
 
     <script>
         const tracks = {
-            camino: ['sonidosambientes/guerra1.mp3', 'sonidosambientes/guerra1.mp3', 'sonidosambientes/guerra1.mp3'],
-            guerra: ['sonidosambientes/guerra1.mp3', 'sonidosambientes/guerra2.mp3', 'sonidosambientes/guerra3.mp3'
-                , 'sonidosambientes/guerra4.mp3', 'sonidosambientes/guerra5.mp3', 'sonidosambientes/guerra6.mp3'
-                , 'sonidosambientes/guerra7.mp3'],
-            mazmorra: ['sonidosambientes/guerra2.mp3', 'sonidosambientes/guerra2.mp3', 'sonidosambientes/guerra2.mp3']
+            camino: ['sonidosambientes/camino1.mp3', 'sonidosambientes/camino2.mp3', 'sonidosambientes/camino3.mp3'],
+            guerra: ['sonidosambientes/guerra1.mp3', 'sonidosambientes/guerra2.mp3', 'sonidosambientes/guerra3.mp3',
+                'sonidosambientes/guerra4.mp3', 'sonidosambientes/guerra5.mp3', 'sonidosambientes/guerra6.mp3',
+                'sonidosambientes/guerra7.mp3'],
+            mazmorra: ['sonidosambientes/mazmorra1.mp3', 'sonidosambientes/mazmorra2.mp3']
         };
-
         const audioPlayer = document.getElementById('audioPlayer');
 
-        // Escuchar mensajes de la página principal
-        window.addEventListener('message', (event) => {
-            const { action, trackType } = event.data;
-            if (action === 'play' && trackType) {
-                playRandomTrack(trackType);
-            } else if (action === 'stop') {
-                stopTrack();
-            }
-        });
-
         function playRandomTrack(type) {
+            if (!tracks[type]) return;
+
+            stopTrack();
             const trackList = tracks[type];
             const randomTrack = trackList[Math.floor(Math.random() * trackList.length)];
             audioPlayer.src = randomTrack;
 
-            setTimeout(() => {
-                audioPlayer.play().catch(error => {
-                    console.log("Reproducción bloqueada por el navegador:", error);
-                });
-                focusMainPage(); // Devuelve el foco a la página principal
-            }, 100);
+            audioPlayer.load();
+            audioPlayer.play().catch(error => {
+                console.log("Error en la reproducciÃ³n:", error);
+            });
         }
-
         function stopTrack() {
             audioPlayer.pause();
             audioPlayer.currentTime = 0;
-        }
-
-        // Función para devolver el foco a la página principal
-        function focusMainPage() {
-            if (window.opener && !window.opener.closed) {
-                // Devuelve el foco a la ventana que abrió player.html
-                window.opener.focus();
-            } else {
-                console.log("La ventana de origen no está disponible.");
-            }
+            audioPlayer.src = "";
         }
     </script>
-
 </body>
 </html>

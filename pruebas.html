@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar y Leer Texto</title>
+</head>
+<body>
+    <input type="text" id="codigo" placeholder="Introduce el código">
+    <button onclick="buscarTexto()">Buscar</button>
+    <div id="texto"></div>
+
+    <script>
+        const textos = {
+            "001": "Un enemigo parece crecer en presencia. Volviendose mas temible por momentos. Gana la habilidad de 'Miedo'.No hay limite de nivel para este Miedo, Los talentos que hacen ignorarlo, funcionan.",
+            "002": "Texto asociado al código 002",
+            "003": "Texto asociado al c\u00F3digo 003",
+            "004": "Texto asociado al c\u00F3digo 004"
+            // Agrega más textos aquí
+        };
+
+        function buscarTexto() {
+            const codigo = document.getElementById("codigo").value;
+            const texto = textos[codigo] || "Código no encontrado";
+            document.getElementById("texto").innerText = texto;
+            leerTexto(texto);
+        }
+
+        function leerTexto(texto) {
+            const synth = window.speechSynthesis;
+            const utterThis = new SpeechSynthesisUtterance(texto);
+            synth.speak(utterThis);
+        }
+    </script>
+</body>
+</html>
