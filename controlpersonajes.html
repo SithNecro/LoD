@@ -1,68 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gesti�n de Personajes</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid black;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .input-field {
-            width: 100%;
-            text-align: center;
-        }
-
-        .action-btn {
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-        }
-
-        .btn-plus {
-            background-color: green;
-        }
-
-        .btn-minus {
-            background-color: red;
-        }
-
-        .alert {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
-</head>
 <body>
-    <h1>Gesti�n de Personajes</h1>
+    <h1>Gestión de Personajes</h1>
+    <div id="controls">
+        <label for="estado-select">Asignar estado:</label>
+        <select id="estado-select" onchange="toggleRoundsInput()">
+            <option value="Aturdido">Aturdido</option>
+            <option value="Enfermo">Enfermo</option>
+            <option value="Miedo">Miedo</option>
+            <option value="Terror">Terror</option>
+            <option value="Veneno">Veneno</option>
+        </select>
+        <label for="hero-select">al héroe:</label>
+        <select id="hero-select"></select>
+        <span id="rounds-container" style="display:none;">
+            <label for="rounds-input">Nº rondas:</label>
+            <input type="number" id="rounds-input" min="0" max="20">
+        </span>
+        <button onclick="addState()">Añadir estado</button>
+    </div>
     <table>
         <thead>
             <tr>
                 <th>Personaje</th>
-                <th>Vida Actual</th>
-                <th>Vida M�xima</th>
-                <th>Man�</th>
+                <th>Vida Act.</th>
+                <th>Vida Máx.</th>
+                <th>Maná</th>
                 <th>Cordura</th>
-                <th>Energ�a</th>
+                <th>Energía</th>
                 <th>Suerte</th>
+                <th colspan="3">Estado</th>
             </tr>
         </thead>
         <tbody id="character-table">
-            <!-- Filas generadas din�micamente por JavaScript -->
+            <!-- Filas generadas dinámicamente -->
         </tbody>
     </table>
+    <button id="pasar-turno" onclick="pasarTurno()">Pasar Turno</button>
+
     <script src="controlpersonajes.js"></script>
 </body>
-</html>

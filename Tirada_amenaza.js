@@ -1,6 +1,4 @@
-
- 
-        // Función para lanzar un dado de cualquier tipo
+        // FunciÃ³n para lanzar un dado de cualquier tipo
         function lanzarDado(lados) {
             return Math.floor(Math.random() * lados) + 1;
         }
@@ -40,12 +38,14 @@
 
         function manejarEventoAmenaza() {
             const iframe = document.getElementById('iframeMenu');
+            document.getElementById("resultadoFicha").textContent = "";
             // Enviar mensaje al iframe para solicitar el valor de amenazaActual
             iframe.contentWindow.postMessage({ tipo: 'solicitarAmenazaActual' }, '*');
+            pasarTurno();
         }
 
         async function manejarAmenaza() {
-            document.getElementById("resultadoFicha").textContent = "";
+
             const diceImage2 = document.getElementById('dice-image2');
             diceImage2.style.display = 'none';
             const diceImage3 = document.getElementById('dice-image3');
@@ -67,21 +67,21 @@
             opcionesAdicionales.innerHTML = '';
             //tiradaD20Container.innerHTML = '';
 
-            document.getElementById('imagenAmenazaContainer').innerHTML = ''; // Asegúrate de ocultar la imagen
+            document.getElementById('imagenAmenazaContainer').innerHTML = ''; // AsegÃºrate de ocultar la imagen
 
             // Mostramos el resultado de Amenaza Actual
             mensajeAmenazaActual.innerHTML = `<span class="rojo">Amenaza Actual: ${amenazaActual}</span>`;
             // Mostramos el resultado del dado de amenaza
             mensajeAmenaza.innerHTML = `<span class="rojo">Tirada de Amenaza: ${amenazaValor}</span>`;
 
-            // Lógica según el valor de amenaza
+            // LÃ³gica segÃºn el valor de amenaza
             if (amenazaValor === 1 || amenazaValor === 2 || amenazaValor === 3) {
 
                 // Crear un elemento de imagen
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
-                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
+                imagenAmenaza.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
                 imagenAmenaza.src = 'img/Evento_Habitacion.png';
 
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
@@ -103,8 +103,8 @@
                             const imagen = document.createElement('img');
                             imagen.src = `img/Eventos_habitacion/${tesoroAleatorio}`;
                             imagen.alt = 'Amenaza';
-                            imagen.style.width = '300px'; // Puedes ajustar el tamaño
-                            imagen.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                            imagen.style.width = '300px'; // Puedes ajustar el tamaÃ±o
+                            imagen.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
                             document.getElementById('imagenAmenazaContainer').appendChild(imagen);
 
                         });
@@ -114,8 +114,8 @@
                 // Crear un elemento de imagen
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
-                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
+                imagenAmenaza.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
                 imagenAmenaza.src = 'img/Tranquilidad.png';
 
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
@@ -124,8 +124,8 @@
             } else if (amenazaValor === 10) {
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
-                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
+                imagenAmenaza.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
                 imagenAmenaza.src = 'img/se_apagan_antorchas.png';
 
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
@@ -146,12 +146,12 @@
                 if (tiradaD20 === 20) {
                     let valorAModificar = -5;
                     modificarAmenaza(valorAModificar);
-                    mensajeCombate = "Parece que todo está tranquilo... por ahora...";
+                    mensajeCombate = "Parece que todo estÃ¡ tranquilo... por ahora...";
                     // Crear un elemento de imagen
                     const imagenAmenaza = document.createElement('img');
                     imagenAmenaza.alt = 'Amenaza';
-                    imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                    imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                    imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
+                    imagenAmenaza.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
                     imagenAmenaza.src = 'img/Tranquilidad.png';
 
                     document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
@@ -178,8 +178,8 @@
                         const imagenAmenaza = document.createElement('img');
 
                         imagenAmenaza.alt = 'Amenaza';
-                        imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                        imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                        imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
+                        imagenAmenaza.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
 
 
                         //dado D10 para decidir evento
@@ -195,48 +195,48 @@
                         let mensajeCombate;
                         let valorAModificar = 0;
                         if (tiradaCombate === 1) {
-                            mensajeCombate = "Una perturbación en el Vacío. Hay un cambio repentino en el Vacío que deja todos los Magos en estado de shock. Los Magos no pueden hacer nada durante el próximo turno ni parar o esquivar.";
+                            mensajeCombate = "Una perturbaciÃ³n en el VacÃ­o. Hay un cambio repentino en el VacÃ­o que deja todos los Magos en estado de shock. Los Magos no pueden hacer nada durante el prÃ³ximo turno ni parar o esquivar.";
                             valorAModificar -= 2;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Perturbacion  en el Vacio.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 2) {
-                            mensajeCombate = "Tinte Verdoso. Los héroes se dan cuenta de que el tinte verdoso del filo o garra de los enemigos es algún tipo de veneno. El enemigo adquiere la regla especial 'Venenoso'.";
+                            mensajeCombate = "Tinte Verdoso. Los hÃ©roes se dan cuenta de que el tinte verdoso del filo o garra de los enemigos es algÃºn tipo de veneno. El enemigo adquiere la regla especial 'Venenoso'.";
                             valorAModificar -= 2;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Tinte Verdoso.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 3) {
-                            mensajeCombate = "Forjado bajo presión. Bajo presión unos se alzan y otros caen. Un enemigo gana +15HC hasta que muera.";
+                            mensajeCombate = "Forjado bajo presiÃ³n. Bajo presiÃ³n unos se alzan y otros caen. Un enemigo gana +15HC hasta que muera.";
                             valorAModificar -= 3;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Forjado bajo presion.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 4 || tiradaCombate === 5) {
-                            mensajeCombate = "Curación. Un enemigo que esté actualmente herido en el tablero (El que de más experiencia o aleatorio) Se curará 1d10VIT. Esto es debido a una poción de curación o intervención divina de los dioses, O quizás pura voluntad.";
+                            mensajeCombate = "CuraciÃ³n. Un enemigo que estÃ© actualmente herido en el tablero (El que de mÃ¡s experiencia o aleatorio) Se curarÃ¡ 1d10VIT. Esto es debido a una pociÃ³n de curaciÃ³n o intervenciÃ³n divina de los dioses, O quizÃ¡s pura voluntad.";
                             valorAModificar -= 3;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Curacion.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 6) {
-                            mensajeCombate = "Frenesí. Un enemigo comienza a rugir con rabia y ataca con una fuerza desatada. El enemigo gana el trato de 'Frenesí' hasta que muera.";
+                            mensajeCombate = "FrenesÃ­. Un enemigo comienza a rugir con rabia y ataca con una fuerza desatada. El enemigo gana el trato de 'FrenesÃ­' hasta que muera.";
                             valorAModificar -= 3;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Frenesi.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 7) {
-                            mensajeCombate = "¡Desarmado! Ya sea por un intento de desarme del enemigo por propia torpeza, Un héroe al azar deja caer su arma. Este debe hacer un test de DES Para recuperarla, Gastando 1PA. Si falla, No tendrá armas y no podrá luchar. Puede continuar intentándolo gastando 1PA por intento.";
+                            mensajeCombate = "Â¡Desarmado! Ya sea por un intento de desarme del enemigo por propia torpeza, Un hÃ©roe al azar deja caer su arma. Este debe hacer un test de DES Para recuperarla, Gastando 1PA. Si falla, No tendrÃ¡ armas y no podrÃ¡ luchar. Puede continuar intentÃ¡ndolo gastando 1PA por intento.";
                             valorAModificar -= 3;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Desarmado.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 8) {
-                            mensajeCombate = "¡Temible! Un enemigo parece crecer en presencia. Volviéndose más temible por momentos. Gana la habilidad de 'Miedo'. No hay límite de nivel para este Miedo, Los talentos que hacen ignorarlo, funcionan.";
+                            mensajeCombate = "Â¡Temible! Un enemigo parece crecer en presencia. VolviÃ©ndose mÃ¡s temible por momentos. Gana la habilidad de 'Miedo'. No hay lÃ­mite de nivel para este Miedo, Los talentos que hacen ignorarlo, funcionan.";
                             valorAModificar -= 4;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Temible.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         } else if (tiradaCombate === 9) {
-                            mensajeCombate = "Refuerzos. Tiran la tabla de encuentros y colocan su resultado justo fuera de una puerta aleatoria, abierta o no, Listos para entrar a una loseta donde haya héroes. Actuarán en el último lugar de este turno. Si la puerta no está abierta, Se considerará desde ahora como abierta y sin trampas.";
+                            mensajeCombate = "Refuerzos. Tiran la tabla de encuentros y colocan su resultado justo fuera de una puerta aleatoria, abierta o no, Listos para entrar a una loseta donde haya hÃ©roes. ActuarÃ¡n en el Ãºltimo lugar de este turno. Si la puerta no estÃ¡ abierta, Se considerarÃ¡ desde ahora como abierta y sin trampas.";
                             valorAModificar -= 4;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Refuerzos.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                         }
                         else {
-                            mensajeCombate = "Adelante. Un enemigo estalla con un rugido feroz que impulsa sus compañeros, Haciéndolos luchar con energías renovadas. Todos los enemigos ganan +10HC hasta el final de la batalla.";
+                            mensajeCombate = "Adelante. Un enemigo estalla con un rugido feroz que impulsa sus compaÃ±eros, HaciÃ©ndolos luchar con energÃ­as renovadas. Todos los enemigos ganan +10HC hasta el final de la batalla.";
                             valorAModificar -= 6;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d10Adelante.png';
                             imagenAmenaza.style.borderRadius = "5%";
@@ -265,7 +265,7 @@
                         const imagenAmenaza = document.createElement('img');
                         imagenAmenaza.style.width = '250px';
                         imagenAmenaza.alt = 'Amenaza';
-                        imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                        imagenAmenaza.style.display = 'block'; // AsegÃºrate de que se muestre en bloque
                         imagenAmenaza.style.display = "flex";
                         if (tiradaSinCombate >= 1 && tiradaSinCombate <= 12) {
                             mensajeSinCombate = "Aparece un montruo errante";
@@ -274,26 +274,26 @@
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                         } else if (tiradaSinCombate >= 13 && tiradaSinCombate <= 15) {
-                            mensajeSinCombate = "Añade una carta extra a la parte superior del mazo de exploración";
+                            mensajeSinCombate = "AÃ±ade una carta extra a la parte superior del mazo de exploraciÃ³n";
                             valorAModificar = -5;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d20Sin fin.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                         } else if (tiradaSinCombate === 16 || tiradaSinCombate === 17) {
-                            mensajeSinCombate = "El riesgo de encuentro aumenta en 10 para habitaciones y pastillos hasta el final de la misión. (Acumulativo máximo el 70%)";
+                            mensajeSinCombate = "El riesgo de encuentro aumenta en 10 para habitaciones y pastillos hasta el final de la misiÃ³n. (Acumulativo mÃ¡ximo el 70%)";
                             valorAModificar = -6;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d20Nos acechan.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                         } else if (tiradaSinCombate === 18 || tiradaSinCombate === 19) {
-                            mensajeSinCombate = "¡Un héroe activo una trampa! La casilla en la que se encuentra el héroe es donde se ubica la trampa.";
+                            mensajeSinCombate = "Â¡Un hÃ©roe activo una trampa! La casilla en la que se encuentra el hÃ©roe es donde se ubica la trampa.";
                             valorAModificar = -7;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d20Trampa.png';
                             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                         }
                         else {
-                            mensajeSinCombate = "Añade 1 a todas las tiradas de escenario hasta el final de esta mazmorra. Solo puede suceder una vez por misión.";
+                            mensajeSinCombate = "AÃ±ade 1 a todas las tiradas de escenario hasta el final de esta mazmorra. Solo puede suceder una vez por misiÃ³n.";
                             valorAModificar = -10;
                             imagenAmenaza.src = 'img/Eventos_Amenaza/d20Amenaza.png';
                             imagenAmenaza.style.borderRadius = "5%";
@@ -312,7 +312,7 @@
             }
         }
 
-        // Función para modificar la amenaza
+        // FunciÃ³n para modificar la amenaza
         async function modificarAmenaza(valorAModificar) {
             const iframe = document.getElementById('iframeMenu');
             iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor: valorAModificar }, '*');
@@ -321,7 +321,7 @@
             await new Promise(resolve => setTimeout(resolve, 1000));
             // Asegurarse de que el iframe ha cargado
             if (iframe.contentWindow && iframe.contentWindow.checkAmenaza) {
-                // Llamar a la función checkAmenaza() que está en el iframe
+                // Llamar a la funciÃ³n checkAmenaza() que estÃ¡ en el iframe
                 iframe.contentWindow.checkAmenaza();
             }
         }
@@ -331,7 +331,7 @@
             audio.play();
         }
 
-  
+
         let fichasAliadas = 0;
         let fichasEnemigas = 0;
         let totalFichas = 0;
@@ -359,11 +359,11 @@
             localStorage.setItem("aliadasInput", document.getElementById("aliadas").value);
             localStorage.setItem("enemigasInput", document.getElementById("enemigas").value);
         }
-        // Función para inicializar la bolsa con las cantidades especificadas
+        // FunciÃ³n para inicializar la bolsa con las cantidades especificadas
         function iniciarBolsa() {
-            // Si el total de fichas es distinto de 0, pedir confirmación antes de reiniciar
+            // Si el total de fichas es distinto de 0, pedir confirmaciÃ³n antes de reiniciar
             if (totalFichas !== 0) {
-                const confirmarReinicio = window.confirm("¿Realmente deseas reiniciar la bolsa?");
+                const confirmarReinicio = window.confirm("Â¿Realmente deseas reiniciar la bolsa?");
                 if (!confirmarReinicio) {
                     return; // Si el usuario elige "Cancelar", no hace nada
                 }
@@ -387,14 +387,14 @@
             document.getElementById("imagenFicha").style.display = "none"; // Oculta la imagen al reiniciar
         }
 
-        // Función para actualizar los contadores en pantalla
+        // FunciÃ³n para actualizar los contadores en pantalla
         function actualizarDisplay() {
             document.getElementById("aliadasRestantes").textContent = `Fichas Aliadas Restantes: ${fichasAliadas}`;
             document.getElementById("enemigasRestantes").textContent = `Fichas Enemigas Restantes: ${fichasEnemigas}`;
             document.getElementById("totalFichas").textContent = `Total de Fichas en la Bolsa: ${totalFichas}`;
         }
 
-        // Función para ajustar manualmente la cantidad de fichas
+        // FunciÃ³n para ajustar manualmente la cantidad de fichas
         function ajustarFichas(tipo, cantidad) {
             if (tipo === "aliadas") {
                 fichasAliadas = Math.max(0, fichasAliadas + cantidad); // Evita que sea negativo
@@ -406,10 +406,10 @@
             guardarEnLocalStorage();
         }
 
-        // Función para sacar una ficha aleatoria
+        // FunciÃ³n para sacar una ficha aleatoria
         function sacarFicha() {
             if (totalFichas === 0) {
-                alert("La bolsa está vacía. Reinicia la bolsa para volver a jugar.");
+                alert("La bolsa estÃ¡ vacÃ­a. Reinicia la bolsa para volver a jugar.");
                 return;
             }
             let alternar = true;
@@ -418,7 +418,7 @@
             const imagenFicha = document.getElementById("imagenAmenazaContainer");
             const imagenAmenaza = document.createElement('img');
             imagenAmenaza.style.display = "block";
-            imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
+            imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
             document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
             reproducirSonido("bolsa");
@@ -427,27 +427,27 @@
 
                 alternar = !alternar;
             }, 100);
-            // Detenemos el efecto de ruleta después de un tiempo
+            // Detenemos el efecto de ruleta despuÃ©s de un tiempo
             setTimeout(() => {
                 clearInterval(intervalo);
 
 
                 if (fichaElegida === "aliada" && fichasAliadas > 0) {
                     fichasAliadas--;
-                    document.getElementById("resultadoFicha").textContent = "¡Sacaste una ficha aliada!";
+                    document.getElementById("resultadoFicha").textContent = "TURNO ALIADO";
                     document.getElementById("resultadoFicha").style.color = "blue";
                     imagenAmenaza.src = "FIniAliadas.png"; // Ruta de la imagen de ficha aliada
                     imagenAmenaza.style.display = "block";
-                    imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
+                    imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
                     document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                     reproducirSonido("aliada"); // Reproduce sonido de ficha aliada
                 } else if (fichaElegida === "enemiga" && fichasEnemigas > 0) {
                     fichasEnemigas--;
-                    document.getElementById("resultadoFicha").textContent = "¡Sacaste una ficha enemiga!";
+                    document.getElementById("resultadoFicha").textContent = "TURNO ENEMIGO";
                     document.getElementById("resultadoFicha").style.color = "red";
                     imagenAmenaza.src = "FIniEnemigas.png"; // Ruta de la imagen de ficha enemiga
                     imagenAmenaza.style.display = "block";
-                    imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
+                    imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaÃ±o
                     document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                     reproducirSonido("enemiga"); // Reproduce sonido de ficha enemiga
                 } else {
@@ -458,12 +458,12 @@
                 totalFichas = fichasAliadas + fichasEnemigas;
                 actualizarDisplay();
                 guardarEnLocalStorage();
-            }, 2000); // Duración del efecto de ruleta en milisegundos
+            }, 2000); // DuraciÃ³n del efecto de ruleta en milisegundos
         }
 
-        // Función para reproducir un sonido aleatorio según el tipo de ficha
+        // FunciÃ³n para reproducir un sonido aleatorio segÃºn el tipo de ficha
         function reproducirSonido(tipo) {
-            const numeroAleatorio = Math.floor(Math.random() * 10) + 1; // Número aleatorio entre 1 y 10
+            const numeroAleatorio = Math.floor(Math.random() * 10) + 1; // NÃºmero aleatorio entre 1 y 10
             let rutaSonido = "";
 
             if (tipo === "aliada") {
@@ -481,7 +481,6 @@
         document.getElementById("aliadas").addEventListener("input", guardarEnLocalStorage);
         document.getElementById("enemigas").addEventListener("input", guardarEnLocalStorage);
 
-        // Inicializar la bolsa al cargar la página
+        // Inicializar la bolsa al cargar la pÃ¡gina
         //iniciarBolsa();
         cargarDesdeLocalStorage();
-  
