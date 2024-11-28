@@ -115,8 +115,20 @@
 
                 <div class="menu-lateral">
                     <div class="section">
-                        <button onclick="window.history.back()">Back</button>
-                        <button class="music-note-button" onclick="window.open('player.html', '_blank')">&#9835;</button>
+                        <table width="100%" align="center" border="1">
+                            <tr>
+                                <td align="left">
+                                    <button onclick="window.history.back()">Back</button>
+                                </td>
+                                <td align="left">
+                                    <button class="music-note-button" onclick="window.open('player.html', '_blank')">&#9835;</button>
+                                </td>
+                                <td align="left" >
+                                    <label  style="text-align:right"><b>Oro.</b><input style="width: 100px" id="Dinero" type="number" value="0" min="0"></label>
+                                </td>
+                            </tr>
+                        </table>
+                        
                         <h2>Moral del Grupo</h2>
 
 
@@ -168,7 +180,7 @@
                     const alerta = document.getElementById('alerta');
                     const alerta2 = document.getElementById('alerta2');
                     const moralBajaAudio = document.getElementById('moralBajaAudio');
-
+                    const dinero = document.getElementById('Dinero');
                     const minAmenaza = document.getElementById('minAmenaza');
                     const maxAmenaza = document.getElementById('maxAmenaza');
                     const eventoAmenaza = document.getElementById('eventoAmenaza');
@@ -184,7 +196,7 @@
                         localStorage.setItem('maxMoral', maxMoral.value);
                         localStorage.setItem('medMoral', medMoral.value);
                         localStorage.setItem('moralActual', moralActual.value);
-
+                        localStorage.setItem('dinero', dinero.value);
                         // Guardar todos los valores de Amenaza
                         localStorage.setItem('minAmenaza', minAmenaza.value);
                         localStorage.setItem('maxAmenaza', maxAmenaza.value);
@@ -206,7 +218,9 @@
                         if (localStorage.getItem('moralActual')) {
                             moralActual.value = localStorage.getItem('moralActual');
                         }
-
+                        if (localStorage.getItem('dinero')) {
+                            dinero.value = localStorage.getItem('dinero'); // Usa el ID en minúscula
+                        }
                         // Cargar todos los valores de Amenaza
                         if (localStorage.getItem('minAmenaza')) {
                             minAmenaza.value = localStorage.getItem('minAmenaza');
@@ -231,7 +245,10 @@
                         saveValues(); // Guardar valores en localStorage
                         window.top.location.href = url; // Navegar a la nueva página en el marco principal
                     }
-
+                    // Asegúrate de que se guarde el dinero cuando se modifique
+                    dinero.addEventListener('input', function () {
+                        localStorage.setItem('dinero', dinero.value); // Guarda automáticamente al cambiar
+                    });
                     // Función para verificar si la moral es menor a la media
                     function checkMoral() {
                         const currentMoral = parseInt(moralActual.value);

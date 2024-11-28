@@ -5,7 +5,7 @@ const defaultCharacters = [
     { id: 'pj4', name: 'Personaje 4', vidaActual: 20, vidaMaxima: 20, mana: 0, cordura: 8, energia: 1, suerte: 0, corduraMensaje: '', estados: [] }
 ];
 
-const disadvantages = [
+const disadvantages = [ 
     "Odio",
     "Estrés agudo",
     "Estrés agudo",
@@ -26,7 +26,11 @@ function loadCharacters() {
 function saveCharacters(characters) {
     localStorage.setItem('characters', JSON.stringify(characters));
 }
-
+function updateExp(index, newName) {
+    const characters = loadCharacters();
+    characters[index].exp = newName;
+    saveCharacters(characters);
+}
 function renderTable() {
     const characters = loadCharacters();
     const tableBody = document.getElementById('character-table');
@@ -44,12 +48,12 @@ function renderTable() {
 
     characters.forEach((character, index) => {
         const row = document.createElement('tr');
-
+        
         // Nombre del personaje
         const nameCell = document.createElement('td');
         nameCell.innerHTML = `
-<input type="text" class="input-field" value="${character.name}" onchange="updateName(${index}, this.value)">
-        `;
+        <input style="width: 40%; "type="text" class="input-field" value="${character.name}" onchange="updateName(${index}, this.value)"><br><b>Experiencia:</b></br>
+        <input style="width: 40%; "type="text" class="input-field" value="${character.exp}"  onchange="updateExp(${index}, this.value)">`;
         row.appendChild(nameCell);
 
         // Atributos
