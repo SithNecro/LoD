@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquimia</title>
+    <script defer src="Alquimista.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el menú lateral */
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300px;
+        }
+
+        .menu-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilos para el contenido principal */
+        .main-content {
+            margin-left: 310px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .top-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+     
+
+        .treasure-image {
+            width: 290px;
+            border-radius: 5%;
+        }
+
+        button, select {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .treasure-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .two-treasures-container {
+            display: none;
+            gap: 20px;
+        }
+      
+
+       
+
+      
+    </style>
+</head>
+<body style="background-image: url('fondo.png'); background-size: cover;">
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe id="iframeMenu" src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+    
+    <div class="main-content">
+        <h2>Inventario</h2>
+        <section id="bottle-section">
+            <div>
+                <label for="empty-bottles">Botellas Vacías:</label>
+                <input type="number" id="empty-bottles" value="0" readonly>
+                <button id="add-bottle" style="background-color: green; border-radius: 50%;">+</button>
+                <button id="remove-bottle" style="background-color: red; border-radius: 50%;">-</button>
+            </div>
+        </section>
+        <!-- Zona de contenido principal -->
+
+        <button id="reset-button">Comenzar de 0</button>
+        <section id="inventory-section">
+
+            <div>
+                <label for="material-select">Material:</label>
+                <select id="material-select"></select>
+                <label for="material-units">Unidades:</label>
+                <input type="number" id="material-units" min="1" value="1">
+                <label>
+                    <input type="checkbox" id="material-exquisite">
+                    Exquisito
+                </label>
+                <button id="add-material">Agregar al Inventario</button>
+            </div>
+            <table id="inventory-table" border="1">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th>Unidades</th>
+                        <th>Exquisito</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="potion-section">
+            <h2>Crear Poción</h2>
+            <div>
+                <label for="potion-type">Tipo de Poción:</label>
+                <select id="potion-type">
+                    <option value="" selected>Tipo</option>
+                    <option value="Basica">Básica</option>
+                    <option value="Debil">Débil</option>
+                    <option value="Suprema">Suprema</option>
+                </select>
+            </div>
+            <div id="potion-ingredients" style="margin-top: 15px;"></div>
+
+            <div>
+                <label for="alchemy-skill">Hab. ALQ.:</label>
+                <input type="number" id="alchemy-skill" min="0" max="100" value="50">
+                <button id="add-alchemy" style="background-color: green; border-radius: 50%;">+</button>
+                <button id="remove-alchemy" style="background-color: red; border-radius: 50%;">-</button>
+                <button id="create-potion">Generar Poción</button>
+            </div>
+        </section>
+
+        <section id="recipe-book-section">
+            <h2>Recetario</h2>
+
+            <table border="1" id="recipe-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Ingredientes/Partes</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </section>
+
+
+        <section id="manual-potion-section">
+            <button id="add-manual-potion-button" style="margin-top: 20px;">Añadir poción a mano</button>
+            <div id="manual-potion-adder" style="display: none; margin-top: 10px;"></div>
+        </section>
+    </div>
+</body>
+</html>
+
