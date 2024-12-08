@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Valor de Venta y Reparación</title>
@@ -9,6 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -17,25 +20,29 @@
             border-radius: 10px;
             background-color: #f9f9f9;
         }
+
         label {
             font-weight: bold;
         }
+
         input, button {
             padding: 10px;
             margin: 10px 0;
             width: 100%;
         }
+
         button {
             background-color: #28a745;
             color: white;
             border: none;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #218838;
-        }
-          /* Estilos para el menú lateral */
-          .menu {
+
+            button:hover {
+                background-color: #218838;
+            }
+        /* Estilos para el menú lateral */
+        .menu {
             position: fixed;
             left: 0;
             top: 0;
@@ -93,90 +100,98 @@
             display: none;
             gap: 20px;
         }
-
     </style>
 </head>
-<body>
-    <body style="background-image: url('fondo.png'); background-size: cover;">
+<body style="background-image: url('fondo.png'); background-size: cover;">
 
-        <!-- Carga del menú lateral -->
-        <div class="menu">
-            <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    </div>
+
+    <!-- Zona de contenido principal -->
+    <div class="main-content container mt-6" style="background-color:transparent; border-radius: 10px; padding: 20px;">
+        <h2 class="mb-6">Calculadora de Valor de Venta y Reparación</h2>
+
+        <!-- Campo: Valor de compra -->
+        <div class="mb-5">
+            <label for="valorCompra" class="form-label">Valor de compra:</label>
+            <input type="number" id="valorCompra" class="form-control" value="10" min="10" max="50000" step="10" placeholder="Ingresa el valor de compra">
         </div>
-    
-        <!-- Zona de contenido principal -->
-        <div class="main-content">
-    
 
-    <h2>Calculadora de Valor de Venta y Reparación</h2>
-    <label for="valorCompra">Valor de compra:</label>
-    <input type="number" id="valorCompra" value="10" min="10" max="50000" step="10" placeholder="Ingresa el valor de compra">
-    
-    <label for="puntosDurabilidad">Puntos perdidos de durabilidad (0-12):</label>
-    <input type="number" id="puntosDurabilidad" value="0" min="0" max="12" placeholder="Ingresa los puntos perdidos de durabilidad">
+        <!-- Campo: Puntos de durabilidad -->
+        <div class="mb-5">
+            <label for="puntosDurabilidad" class="form-label">Puntos perdidos de durabilidad (0-12):</label>
+            <input type="number" id="puntosDurabilidad" class="form-control" value="0" min="0" max="12" placeholder="Ingresa los puntos perdidos de durabilidad">
+        </div>
 
-    <button onclick="calcularValores()">Calcular Valores</button>
-    
-    <h3>Resultado:</h3>
-    <p id="resultadoVenta">Valor de venta: </p>
-    <p id="resultadoReparacion">Valor de reparación por punto: </p>
-</div>
+        <!-- Botón calcular -->
+        <button onclick="calcularValores()" class="btn btn-primary">Calcular Valores</button>
 
-<script>
-// La tabla de valores
-const tablaValores = [
-    [7, 6, 5, 4, 3, 2], [14, 12, 10, 8, 6, 4], [21, 18, 15, 12, 9, 6],
-    [28, 24, 20, 16, 12, 8], [35, 30, 25, 20, 15, 10], [42, 36, 30, 24, 18, 12],
-    [49, 42, 35, 28, 21, 14], [56, 48, 40, 32, 24, 16], [63, 54, 45, 36, 27, 18],
-    [70, 60, 50, 40, 30, 20], [77, 66, 55, 44, 33, 22], [84, 72, 60, 48, 36, 24],
-    [91, 78, 65, 52, 39, 26], [98, 84, 70, 56, 42, 28], [105, 90, 75, 60, 45, 30],
-    [112, 96, 80, 64, 48, 32], [119, 102, 85, 68, 51, 34], [126, 108, 90, 72, 54, 36],
-    [133, 114, 95, 76, 57, 38], [140, 120, 100, 80, 60, 40], [147, 126, 105, 84, 63, 42],
-    [154, 132, 110, 88, 66, 44], [161, 138, 115, 92, 69, 46], [168, 144, 120, 96, 72, 48],
-    [175, 150, 125, 100, 75, 50], [182, 156, 130, 104, 78, 52], [189, 162, 135, 108, 81, 54],
-    [196, 168, 140, 112, 84, 56], [203, 174, 145, 116, 87, 58], [210, 180, 150, 120, 90, 60],
-    [217, 186, 155, 124, 93, 62], [224, 192, 160, 128, 96, 64], [231, 198, 165, 132, 99, 66],
-    [238, 204, 170, 136, 102, 68], [245, 210, 175, 140, 105, 70], [252, 216, 180, 144, 108, 72],
-    [259, 222, 185, 148, 111, 74], [266, 228, 190, 152, 114, 76], [273, 234, 195, 156, 117, 78],
-    [280, 240, 200, 160, 120, 80], [287, 246, 205, 164, 123, 82], [294, 252, 210, 168, 126, 84],
-    [301, 258, 215, 172, 129, 86], [308, 264, 220, 176, 132, 88], [315, 270, 225, 180, 135, 90],
-    [322, 276, 230, 184, 138, 92], [329, 282, 235, 188, 141, 94], [336, 288, 240, 192, 144, 96],
-    [343, 294, 245, 196, 147, 98], [350, 300, 250, 200, 150, 100]
-];
+        <!-- Resultados -->
+        <div class="mt-6">
+            <h3>Resultado:</h3>
+            <p id="resultadoVenta" class="mb-1">Valor de venta: </p>
+            <p id="resultadoReparacion">Valor de reparación por punto: </p>
+        </div>
+    </div>
 
-// Función para calcular el valor de venta y reparación
-function calcularValores() {
-    const valorCompra = parseInt(document.getElementById("valorCompra").value);
-    let puntosDurabilidad = parseInt(document.getElementById("puntosDurabilidad").value);
-    if (puntosDurabilidad > 5)
-    {
-        puntosDurabilidad = 5;
-    }
-    
-    if (isNaN(valorCompra) || isNaN(puntosDurabilidad) || puntosDurabilidad < 0 || puntosDurabilidad > 12) {
-        document.getElementById("resultadoVenta").textContent = "Por favor, ingrese valores válidos.";
-        document.getElementById("resultadoReparacion").textContent = "";
-        return;
-    }
 
-    let valorVenta = 0;
-    let valorReparacion = 0;
-    let restante = valorCompra;
-    
-    // Lógica para calcular el valor de venta basado en la tabla
-    while (restante > 0) {
-        const tope = Math.min(500, restante); // Máximo de 500 por iteración
-        const fila = Math.floor((tope - 10) / 10); // Filas de la tabla empiezan en 10
-        valorVenta += tablaValores[fila][puntosDurabilidad];
-        valorReparacion += tablaValores[fila][5]; // Tomamos el valor de la última columna para reparación
-        restante -= tope;
-    }
-    
-    document.getElementById("resultadoVenta").textContent = "Valor de venta: " + valorVenta;
-    document.getElementById("resultadoReparacion").textContent = "Valor de reparación por punto: " + valorReparacion;
-}
+    <script>
+        // La tabla de valores
+        const tablaValores = [
+            [7, 6, 5, 4, 3, 2], [14, 12, 10, 8, 6, 4], [21, 18, 15, 12, 9, 6],
+            [28, 24, 20, 16, 12, 8], [35, 30, 25, 20, 15, 10], [42, 36, 30, 24, 18, 12],
+            [49, 42, 35, 28, 21, 14], [56, 48, 40, 32, 24, 16], [63, 54, 45, 36, 27, 18],
+            [70, 60, 50, 40, 30, 20], [77, 66, 55, 44, 33, 22], [84, 72, 60, 48, 36, 24],
+            [91, 78, 65, 52, 39, 26], [98, 84, 70, 56, 42, 28], [105, 90, 75, 60, 45, 30],
+            [112, 96, 80, 64, 48, 32], [119, 102, 85, 68, 51, 34], [126, 108, 90, 72, 54, 36],
+            [133, 114, 95, 76, 57, 38], [140, 120, 100, 80, 60, 40], [147, 126, 105, 84, 63, 42],
+            [154, 132, 110, 88, 66, 44], [161, 138, 115, 92, 69, 46], [168, 144, 120, 96, 72, 48],
+            [175, 150, 125, 100, 75, 50], [182, 156, 130, 104, 78, 52], [189, 162, 135, 108, 81, 54],
+            [196, 168, 140, 112, 84, 56], [203, 174, 145, 116, 87, 58], [210, 180, 150, 120, 90, 60],
+            [217, 186, 155, 124, 93, 62], [224, 192, 160, 128, 96, 64], [231, 198, 165, 132, 99, 66],
+            [238, 204, 170, 136, 102, 68], [245, 210, 175, 140, 105, 70], [252, 216, 180, 144, 108, 72],
+            [259, 222, 185, 148, 111, 74], [266, 228, 190, 152, 114, 76], [273, 234, 195, 156, 117, 78],
+            [280, 240, 200, 160, 120, 80], [287, 246, 205, 164, 123, 82], [294, 252, 210, 168, 126, 84],
+            [301, 258, 215, 172, 129, 86], [308, 264, 220, 176, 132, 88], [315, 270, 225, 180, 135, 90],
+            [322, 276, 230, 184, 138, 92], [329, 282, 235, 188, 141, 94], [336, 288, 240, 192, 144, 96],
+            [343, 294, 245, 196, 147, 98], [350, 300, 250, 200, 150, 100]
+        ];
 
-</script>
+        // Función para calcular el valor de venta y reparación
+        function calcularValores() {
+            const valorCompra = parseInt(document.getElementById("valorCompra").value);
+            let puntosDurabilidad = parseInt(document.getElementById("puntosDurabilidad").value);
+            if (puntosDurabilidad > 5) {
+                puntosDurabilidad = 5;
+            }
+
+            if (isNaN(valorCompra) || isNaN(puntosDurabilidad) || puntosDurabilidad < 0 || puntosDurabilidad > 12) {
+                document.getElementById("resultadoVenta").textContent = "Por favor, ingrese valores válidos.";
+                document.getElementById("resultadoReparacion").textContent = "";
+                return;
+            }
+
+            let valorVenta = 0;
+            let valorReparacion = 0;
+            let restante = valorCompra;
+
+            // Lógica para calcular el valor de venta basado en la tabla
+            while (restante > 0) {
+                const tope = Math.min(500, restante); // Máximo de 500 por iteración
+                const fila = Math.floor((tope - 10) / 10); // Filas de la tabla empiezan en 10
+                valorVenta += tablaValores[fila][puntosDurabilidad];
+                valorReparacion += tablaValores[fila][5]; // Tomamos el valor de la última columna para reparación
+                restante -= tope;
+            }
+
+            document.getElementById("resultadoVenta").textContent = "Valor de venta: " + valorVenta;
+            document.getElementById("resultadoReparacion").textContent = "Valor de reparación por punto: " + valorReparacion;
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
 </body>
 </html>

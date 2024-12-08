@@ -741,7 +741,7 @@
 
             document.getElementById("preview-FC").textContent = dexterity + (modifiers.FC || 0) + (bonusApplied["FC"] || 0)  ;
 
-            document.getElementById("preview-AA").textContent =  modifiers.AA !== "N/A" ? wisdom : "N/A";
+            document.getElementById("preview-AA").textContent = modifiers.AA !== "N/A" ? modifiers.AA + wisdom : "N/A";
             document.getElementById("preview-TRU").textContent = wisdom + (modifiers.TRU || 0) + (bonusApplied["TRU"] || 0);;
             document.getElementById("preview-CU").textContent = wisdom + (modifiers.CU || 0) + (bonusApplied["CU"] || 0);
             document.getElementById("preview-ALQ").textContent = wisdom + (modifiers.ALQ || 0) + (bonusApplied["ALQ"] || 0);

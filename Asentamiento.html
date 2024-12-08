@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesoros Corriente</title>
@@ -44,8 +46,8 @@
             align-items: center;
         }
 
-        .treasure-image {
-            width: 290px;
+        .img-thumbnail {
+            width: 400px;
             border-radius: 5%;
         }
 
@@ -61,7 +63,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr; /* Dividir en dos columnas */
             gap: 20px;
-            
             justify-items: center; /* Centrar contenido en cada celda */
         }
     </style>
@@ -76,26 +77,27 @@
     <!-- Zona de contenido principal -->
     <div class="main-content">
         <!-- Botones en la parte superior centrados
-            <div class="top-buttons">
-                <button onclick="cargarTesoroCorriente('Asentamiento')" id="tesoro-btn">Sacar Asentamiento</button>
-                <button onclick="barajarTesoros()">Subir Palancas</button>
-                <button onclick="cargarTesoroCorriente('Evento')">Sacar Evento Asentamiento</button>
-            </div>
-    --><br />
+                <div class="top-buttons">
+                    <button onclick="cargarTesoroCorriente('Asentamiento')" id="tesoro-btn">Sacar Asentamiento</button>
+                    <button onclick="barajarTesoros()">Subir Palancas</button>
+                    <button onclick="cargarTesoroCorriente('Evento')">Sacar Evento Asentamiento</button>
+                </div>
+        -->
+        <br />
         <!-- Contenedor de los dos tesoros en un grid -->
         <div class="two-treasures-container" id="two-treasures-container">
             <!-- Primer tesoro -->
             <div class="treasure-container">
-                <img src="img/traseras/Asentamientos.png" id="imagen-tesoro-1" alt="Tesoro Corriente" class="treasure-image" onclick="cargarTesoroCorriente('Negras')">
-                <select id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
+                <img class="img-thumbnail" src="img/traseras/Asentamientos.png" id="imagen-tesoro-1" alt="Tesoro Corriente"  onclick="cargarTesoroCorriente('Negras')">
+                <select class="form-select" id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
                     <!-- Opciones agregadas dinámicamente por JavaScript -->
                 </select>
             </div>
             <audio id="palancasAudio" src="sonidos/palancas.MP3" preload="auto"></audio>
             <!-- Segundo tesoro -->
             <div class="treasure-container">
-                <img src="img/traseras/Asentamientos.png" id="imagen-tesoro-2" alt="Tesoro Corriente" class="treasure-image" onclick="cargarTesoroCorriente('Rojas')">
-                <select id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
+                <img class="img-thumbnail" src="img/traseras/Asentamientos.png" id="imagen-tesoro-2" alt="Tesoro Corriente" class="treasure-image" onclick="cargarTesoroCorriente('Rojas')">
+                <select class="form-select" id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
                     <!-- Opciones agregadas dinámicamente por JavaScript -->
                 </select>
             </div>
@@ -103,5 +105,7 @@
     </div>
 
     <script src="Asentamiento.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
