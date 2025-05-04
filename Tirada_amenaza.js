@@ -137,7 +137,7 @@
                 //const tiradaD20 = lanzarDado(20);
                 const tiradaD20 = parseInt(valordadoTiradad20.textContent);
                 
-            
+             
            
           
                 if (tiradaD20 === 20) {
