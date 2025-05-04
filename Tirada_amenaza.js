@@ -147,16 +147,7 @@
 
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
             }
-            if (tiradaD20 < amenazaActual) {
-                const imagenAmenaza = document.createElement('img');
-                imagenAmenaza.alt = 'Amenaza';
-                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
-                imagenAmenaza.src = 'img/se_apagan_antorchas.png';
-
-                document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
-
-            }
+          
                 if (tiradaD20 === 20) {
                     let valorAModificar = -5;
                     modificarAmenaza(valorAModificar);
@@ -170,12 +161,32 @@
 
                     document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
                     opcionesAdicionales.innerHTML = `<p>${mensajeCombate}</p>`;
+                    if (tiradaD20 < amenazaActual) {
+                        const imagenAmenaza = document.createElement('img');
+                        imagenAmenaza.alt = 'Amenaza';
+                        imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
+                        imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                        imagenAmenaza.src = 'img/se_apagan_antorchas.png';
+
+                        document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
+
+                    }
                 }
                 else if (tiradaD20 > amenazaActual) {
                     let valorAModificar = 1;
                     modificarAmenaza(valorAModificar);
                 }
                 else {
+                    if (tiradaD20 < amenazaActual) {
+                        const imagenAmenaza = document.createElement('img');
+                        imagenAmenaza.alt = 'Amenaza';
+                        imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
+                        imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                        imagenAmenaza.src = 'img/se_apagan_antorchas.png';
+
+                        document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
+
+                    }
                     mensajeAmenaza.innerHTML += `<p class="rojo"><strong>Se activa Amenaza</strong></p>`;
 
                     const btnAmenazaCombate = document.createElement('button');
