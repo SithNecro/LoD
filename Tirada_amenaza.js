@@ -137,16 +137,8 @@
                 //const tiradaD20 = lanzarDado(20);
                 const tiradaD20 = parseInt(valordadoTiradad20.textContent);
                 
-            }
-            if (amenazaValor <= amenazaActual) {
-                const imagenAmenaza = document.createElement('img');
-                imagenAmenaza.alt = 'Amenaza';
-                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
-                imagenAmenaza.src = 'img/se_apagan_antorchas.png';
-
-                document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
-            }
+            
+           
           
                 if (tiradaD20 === 20) {
                     let valorAModificar = -5;
@@ -335,7 +327,7 @@
                     });
                 }
             }
-        
+        }
 
         // Función para modificar la amenaza
         async function modificarAmenaza(valorAModificar) {
