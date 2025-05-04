@@ -121,7 +121,7 @@
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                 mensajeAmenaza.innerHTML += `<p><strong>No ocurre nada.</strong></p>`;
-            } else if (amenazaValor === 10) {
+            } else if (amenazaValor <= amenazaActual) {
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
                 imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
