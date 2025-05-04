@@ -121,15 +121,7 @@
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                 mensajeAmenaza.innerHTML += `<p><strong>No ocurre nada.</strong></p>`;
-            } else if (amenazaValor <= amenazaActual) {
-                const imagenAmenaza = document.createElement('img');
-                imagenAmenaza.alt = 'Amenaza';
-                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
-                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
-                imagenAmenaza.src = 'img/se_apagan_antorchas.png';
-
-                document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
-            }
+           
 
             // Tirada d20 si amenazaValor es 9 o 10
             if (amenazaValor >= rangoTirada) {
@@ -143,6 +135,15 @@
                 //const tiradaD20 = lanzarDado(20);
                 const tiradaD20 = parseInt(valordadoTiradad20.textContent);
 
+                } if (tiradaD20 < amenazaActual) {
+                const imagenAmenaza = document.createElement('img');
+                imagenAmenaza.alt = 'Amenaza';
+                imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
+                imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
+                imagenAmenaza.src = 'img/se_apagan_antorchas.png';
+
+                document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
+            }
                 if (tiradaD20 === 20) {
                     let valorAModificar = -5;
                     modificarAmenaza(valorAModificar);
