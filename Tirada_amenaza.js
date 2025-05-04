@@ -110,7 +110,7 @@
                         });
 
                 });
-            } if (amenazaValor >= 4 && amenazaValor < rangoTirada) {
+            } else if (amenazaValor >= 4 && amenazaValor < rangoTirada) {
                 // Crear un elemento de imagen
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
@@ -121,7 +121,7 @@
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
                 mensajeAmenaza.innerHTML += `<p><strong>No ocurre nada.</strong></p>`;
-           
+            }
 
             // Tirada d20 si amenazaValor es 9 o 10
             if (amenazaValor >= rangoTirada) {
@@ -134,8 +134,8 @@
                 valordadoTiradad20.style.display = 'none';
                 //const tiradaD20 = lanzarDado(20);
                 const tiradaD20 = parseInt(valordadoTiradad20.textContent);
-
-                } if (tiradaD20 < amenazaActual) {
+            }
+            if (amenazaValor <= amenazaActual) {
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
                 imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
