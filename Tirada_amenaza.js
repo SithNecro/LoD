@@ -110,7 +110,7 @@
                         });
 
                 });
-            } else if (amenazaValor >= 4 && amenazaValor < rangoTirada) {
+            } if (amenazaValor >= 4 && amenazaValor < rangoTirada) {
                 // Crear un elemento de imagen
                 const imagenAmenaza = document.createElement('img');
                 imagenAmenaza.alt = 'Amenaza';
