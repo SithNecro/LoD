@@ -105,7 +105,7 @@
       ]
     },
      {
-      "nombre": "Armadura de malla.png",
+      "nombre": "Armadura de Malla.png",
       "rotura": "1d4",
       "seleccion": "1d6",
       "tabla": [
@@ -120,7 +120,7 @@
       ]
     },
       {
-      "nombre": "Armadura de malla (2).png",
+      "nombre": "Armadura de Malla (2).png",
       "rotura": "1d4",
       "seleccion": "1d6",
       "tabla": [
@@ -130,8 +130,6 @@
         {"tirada": 4,"Tipo": "Cota de Malla","Daño":null,"Cobertura / Defensa": "Torso, Piernas / 4","Peso / Rango":"8 / 3","Recarga":null,"Valor": 750,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
         {"tirada": 5,"Tipo": "Cota con Mangas de Malla","Daño":null,"Cobertura / Defensa": "Brazos, Torso, Piernas / 4","Peso / Rango":"10 / 3","Recarga":null,"Valor": 1300,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
         {"tirada": 6,"Tipo": "Pantalones de Malla","Daño":null,"Cobertura / Defensa": "Piernas / 4","Peso / Rango":"5 / 3","Recarga":null,"Valor": 200,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
-          
-      
       ]
     },
     {
@@ -211,6 +209,171 @@
         {"tirada": 3,"Tipo": "3 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."}
 
       ]
+    },
+     {
+      "nombre": "Equipo de pesca.png",
+      "rotura": "0",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 3,"Recarga": null,"Defensa": null,"Valor": 40,"Efecto": "1 Set de pesca que te dará +5 a la supervivencia."}
+       ]
+    },
+     {
+      "nombre": "Escudo heraldo.png",
+      "rotura": "1d4",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": "6","Peso / Clase":"10 / 3","Recarga":null,"Valor": 100,"Efecto": null,"Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Espada.png",
+      "rotura": "1d4-1",
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Espada Corta","Daño":"1d6+2","Peso / Clase":"7 / 2","Recarga":null,"Defensa": null,"Valor": 70,"Efecto": "Doble Empuñado +2","Leyenda":"<b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>"},
+        {"tirada": 2,"Tipo": "Espada Ancha","Daño":"1d8+2","Peso / Clase":"8 / 3","Recarga":null,"Defensa": null,"Valor": 90,"Efecto": null,"Leyenda":null},
+        {"tirada": 3,"Tipo": "Espada Larga","Daño":"1d12","Peso / Clase":"10 / 4","Recarga":null,"Defensa": null,"Valor": 100,"Efecto": null,"Leyenda":null},
+        {"tirada": 4,"Tipo": "Espadón","Daño":"2d6","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 200,"Efecto": "Lento","Leyenda":"<b style='color: gold;'>Lento: </b>El arma es pesada y es difícil bloquear con ella. -5 al bloqueo.  </br>"}
+        ]
+    },
+      {
+      "nombre": "Espejo espía.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":"0","Recarga":null,"Valor": 300,"Efecto": "Gastando un turno antes de abrir una puerta, puedes deslizar el espejo por debajo y ver la habitación al otro lado. Puedes mirar la carta de exploración y tirar en la tabla de encuentros antes de abrir. El Grupo puede añadir dos fichas de iniciativa si hay encuentro.","Leyenda":null}
+       ]
+    },
+      {
+      "nombre": "Espejo.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": 65,"Efecto": " Un personaje equipado con un espejo en la mano es inmune al efecto aturdir de una cocatriz o a la regla especial Seducir con 1-5 en 1d6. Si el resultado es 6, el espejo se rompe y el héroe es aturdido/Seducido","Leyenda":null}
+       ]
+    },
+     {
+      "nombre": "Flechas de plata.png",
+      "rotura": null,
+      "seleccion": "1d10",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Flecha de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 7,"Tipo": "7 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 8,"Tipo": "8 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 9,"Tipo": "9 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null},
+        {"tirada": 10,"Tipo": "10 Flechas de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.","Leyenda":null}
+       
+      ]
+    },
+       {
+      "nombre": "Ganzúas enanas.png",
+      "rotura": null,
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Ganzúa enana","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras.","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 Ganzúas enanas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 Ganzúas enanas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras.","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 Ganzúas enanas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras.","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 Ganzúas enanas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras.","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 Ganzúas enanas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras.","Leyenda":null}
+      
+      ]
+    },
+    {
+      "nombre": "Gran arma de plata.png",
+      "rotura": "1d3-1",
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Espadón","Daño":"2d6","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 300,"Efecto": "Arma de Plata, Lento","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br>"},
+        {"tirada": 2,"Tipo": "Gran Hacha Corta","Daño":"1d12+2","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 300,"Efecto": "Arma de Plata, Lento, HPA, PArm (2)","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Parm (X): </b> Penetración de armadura, ignora X puntos de armadura. "},
+        {"tirada": 3,"Tipo": "Mayal","Daño":"1d10+4","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 225,"Efecto": "Arma de Plata, Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Inmanejable: </b> Empuñar este tipo de armas es agotador y el DAÑ +X sólo se aplica en el primer golpe de cada batalla. </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  "},
+        {"tirada": 4,"Tipo": "Alabarda","Daño":"1d12","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 225,"Efecto": "Arma de Plata, Alcance, PArm (1)","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Alcance: </b> Puede atacar a una distancia de 2 casillas, incluso si hay un personaje amigo en la casilla entre medias.  </br><b style='color: gold;'>PArm (X): </b>Penetración de armadura, ignora X puntos de armadura. </br>"}
+        ]
+    },
+     {
+      "nombre": "Hacha.png",
+      "rotura": "1d4-1",
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Hacha de Batalla","Daño":"1d10+1","Peso / Clase":"10 / 4","Recarga":null,"Defensa": null,"Valor": 100,"Efecto": "HPA, PArm (1)","Leyenda":"<b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Parm (X): </b> Penetración de armadura, ignora X puntos de armadura. "},
+        {"tirada": 2,"Tipo": "Gran Hacha","Daño":"1d12+2","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 200,"Efecto": "Lento, HPA, PArm (2)","Leyenda":"<b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Parm (X): </b> Penetración de armadura, ignora X puntos de armadura. "},
+        {"tirada": 3,"Tipo": "Alabarda","Daño":"1d12","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 150,"Efecto": "Alcance, PArm (1)","Leyenda":"<b style='color: gold;'>Alcance: </b> Puede atacar a una distancia de 2 casillas, incluso si hay un personaje amigo en la casilla entre medias.  </br><b style='color: gold;'>PArm (X): </b>Penetración de armadura, ignora X puntos de armadura. </br>"}
+        ]
+    },
+     {
+      "nombre": "Ingrediente exquisito.png",
+      "rotura": null,
+      "seleccion": "1d20",
+      "tabla": [
+        {"tirada": 1,"Tipo": "BAya Lunar","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 2,"Tipo": "Raíz Arqueada","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 3,"Tipo": "Jengibre Ceniciento","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 4,"Tipo": "Agenjo Espinado","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 5,"Tipo": "Ambrosía","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 6,"Tipo": "Equinace Azul","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 7,"Tipo": "Callicarpa Brillante","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 8,"Tipo": "Polen del Amaru","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 9,"Tipo": "Corteza de Arce Rojo","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 10,"Tipo": "Frambuesa Gigante","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 11,"Tipo": "Laurel del Monje","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 12,"Tipo": "Agracejo","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 13,"Tipo": "Belladona","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 14,"Tipo": "Artemisa Salada","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 15,"Tipo": "Dulcamara","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 16,"Tipo": "Asclepia Picante","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 17,"Tipo": "Hiedra Dulce","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 18,"Tipo": "Perejil Tóxico","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 19,"Tipo": "Trébol Llorón","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null},
+        {"tirada": 20,"Tipo": "Barbarea","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Exquisito.","Leyenda":null}
+       
+      ]
+    },
+    {
+      "nombre": "Kit de reparación de armaduras.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":"5","Recarga":null,"Valor": 200,"Efecto": "Con este kit podrás reparar todas las piezas de armadura de un Héroe durante un descanso. Cada pieza recupera 1d3 de durabilidad. Sólo tiene un uso.","Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Kit desactivación de trampas.png",
+      "rotura": "1d4",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":"5","Recarga":null,"Valor": 200,"Efecto": "Este kit da +10 a la desactivación de trampas cuando lo usas.","Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Laúd.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":"5","Recarga":null,"Valor": 100,"Efecto": "Un héroe puede tocar el laúd durante un descanso si supera un test de SAB. Todos recuperan 1 de cordura.","Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Mapa parcial.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Este mapa le permite al jugador mirar 2 cartas de exploración sin usar aún. Luego se colocan donde estaban.","Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Martillo.png",
+      "rotura": "1d4-1",
+      "seleccion": "1d2",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Martillo de Batalla","Daño":"1d10","Peso / Clase":"10 / 3","Recarga":null,"Defensa": null,"Valor": 100,"Efecto": "Aturdir, HPA","Leyenda":"<b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>"},
+        {"tirada": 2,"Tipo": "Martillo de Guerra","Daño":"2d6","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 200,"Efecto": "Lento, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>"},
+       ]
     }
   ]
 }
