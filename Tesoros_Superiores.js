@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
     fetch('img/Listado_Cartas.json')
         .then(response => response.json())
@@ -7,7 +7,7 @@ window.onload = function() {
             const selector = document.getElementById('selector-tesoro-0');
             const selector2 = document.getElementById('selector-tesoro-1');
             const selector3 = document.getElementById('selector-tesoro-2');
-            
+
             // Añadir opciones al selector
             tesoros.forEach(tesoro => {
                 // Crear una opción para el primer selector
@@ -42,11 +42,11 @@ function cambiarImagenSeleccionada() {
     const detalle2 = document.getElementById('enemigos-lista');
     detalle2.innerHTML = ``; // limpiar
     cargarStatsObjeto(tesoroSeleccionado);
-     const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
-                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
-                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-  const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
-            btn_coger_tesoro.style.visibility = "visible"; 
+    const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
+    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
+    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+    btn_coger_tesoro.style.visibility = "visible";
 }
 
 // Función para cargar una imagen aleatoria
@@ -55,9 +55,9 @@ function tirarDado(expresion) {
     // admite formato XdY-Z (Z opcional)
     const match = expresion.match(/(\d+)d(\d+)(?:\s*-\s*(\d+))?/i);
     if (!match) return null;
-    const veces = parseInt(match[1],10);
-    const caras = parseInt(match[2],10);
-    const restar = match[3] ? parseInt(match[3],10) : 0;
+    const veces = parseInt(match[1], 10);
+    const caras = parseInt(match[2], 10);
+    const restar = match[3] ? parseInt(match[3], 10) : 0;
     let total = 0;
     for (let i = 0; i < veces; i++) {
         total += Math.floor(Math.random() * caras) + 1;
@@ -86,26 +86,26 @@ function cargarTesoroSuperior() {
             document.getElementById('two-treasures-container').style.display = 'none';
             document.getElementById('single-treasure-container').style.display = 'flex';
 
-               //Limpiamos el Botín Encontrado
-                const detalle2 = document.getElementById('enemigos-lista');
-                detalle2.innerHTML = ``; // limpiar
-                cargarStatsObjeto(tesoroAleatorio);
-                //Reproduccion audio
-                    const nombreAudio = tesoroAleatorio.replace(/\.png$/i, '.mp3');
-                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
-                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-                 const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
-                btn_coger_tesoro.style.visibility = "visible";     
+            //Limpiamos el Botín Encontrado
+            const detalle2 = document.getElementById('enemigos-lista');
+            detalle2.innerHTML = ``; // limpiar
+            cargarStatsObjeto(tesoroAleatorio);
+            //Reproduccion audio
+            const nombreAudio = tesoroAleatorio.replace(/\.png$/i, '.mp3');
+            const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
+            audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+            btn_coger_tesoro.style.visibility = "visible";
         });
 }
 
-  // Función para cargar la habilidad de buscatesoros, mostrando dos tesoros
+// Función para cargar la habilidad de buscatesoros, mostrando dos tesoros
 function habilidadBuscatesoros() {
     fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Tesoros_Superiores; // Cargar la lista de tesoros desde el JSON
-            
+
             // Seleccionar dos tesoros aleatorios
             let tesoro1 = tesoros[Math.floor(Math.random() * tesoros.length)];
             let tesoro2;
@@ -128,20 +128,20 @@ function habilidadBuscatesoros() {
             // Muestra los dos tesoros y sus selectores
             document.getElementById('two-treasures-container').style.display = 'flex';
             document.getElementById('single-treasure-container').style.display = 'none';
-             
+
             //Limpiamos el Botín Encontrado
-                const detalle2 = document.getElementById('enemigos-lista');
-                detalle2.innerHTML = ``; // limpiar
-                cargarStatsObjeto(tesoro1);
-                cargarStatsObjeto(tesoro2);
-                reproducirAudiosSecuencial([
-                 tesoro1.replace(/\.png$/i, '.mp3'),
-                 "y_tambien.mp3",
-                 tesoro2.replace(/\.png$/i, '.mp3')
-                 
-]);
- const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
-            btn_coger_tesoro.style.visibility = "visible"; 
+            const detalle2 = document.getElementById('enemigos-lista');
+            detalle2.innerHTML = ``; // limpiar
+            cargarStatsObjeto(tesoro1);
+            cargarStatsObjeto(tesoro2);
+            reproducirAudiosSecuencial([
+                tesoro1.replace(/\.png$/i, '.mp3'),
+                "y_tambien.mp3",
+                tesoro2.replace(/\.png$/i, '.mp3')
+
+            ]);
+            const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+            btn_coger_tesoro.style.visibility = "visible";
         })
         .catch(error => console.error('Error al cargar los tesoros:', error));
 }
@@ -166,10 +166,10 @@ function cambiarImagenSeleccionadaTesoro1() {
     const imagen = document.getElementById('imagen-tesoro-1');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`; // Ajusta la ruta
-                
-                
-                cargarStatsObjeto(tesoroSeleccionado);
-                cargarStatsObjeto(tesoro2);
+
+
+    cargarStatsObjeto(tesoroSeleccionado);
+    cargarStatsObjeto(tesoro2);
 }
 
 function cambiarImagenSeleccionadaTesoro2() {
@@ -177,27 +177,27 @@ function cambiarImagenSeleccionadaTesoro2() {
     const imagen = document.getElementById('imagen-tesoro-2');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`; // Ajusta la ruta
-      cargarStatsObjeto(tesoroSeleccionado);
-                cargarStatsObjeto(tesoro2);
+    cargarStatsObjeto(tesoroSeleccionado);
+    cargarStatsObjeto(tesoro2);
 }
 
 
 
- // Función para barajar y poner la imagen de trasera del tesoro
-        function barajarTesoros() {
-          	document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera_tesoro_superior.png';
-		    document.getElementById('imagen-tesoro-1').src = 'img/traseras/Trasera_tesoro_superior.png';
-		    document.getElementById('imagen-tesoro-2').src = 'img/traseras/Trasera_tesoro_superior.png';
-            document.getElementById('selector-tesoro-0').value = 0;
-            document.getElementById('selector-tesoro-1').value = 0;
-            document.getElementById('selector-tesoro-2').value = 0;
-            const detalle2 = document.getElementById('enemigos-lista');
-                    detalle2.innerHTML = ``; // limpiar
-                     const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
-            btn_coger_tesoro.style.visibility = "hidden"; 
-        }
+// Función para barajar y poner la imagen de trasera del tesoro
+function barajarTesoros() {
+    document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera_tesoro_superior.png';
+    document.getElementById('imagen-tesoro-1').src = 'img/traseras/Trasera_tesoro_superior.png';
+    document.getElementById('imagen-tesoro-2').src = 'img/traseras/Trasera_tesoro_superior.png';
+    document.getElementById('selector-tesoro-0').value = 0;
+    document.getElementById('selector-tesoro-1').value = 0;
+    document.getElementById('selector-tesoro-2').value = 0;
+    const detalle2 = document.getElementById('enemigos-lista');
+    detalle2.innerHTML = ``; // limpiar
+    const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+    btn_coger_tesoro.style.visibility = "hidden";
+}
 // Función para bajar la moral
-     function BajarMoral(valor) {
+function BajarMoral(valor) {
     const iframe = document.getElementById('iframeMenu');
     iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
 
@@ -208,64 +208,92 @@ function cambiarImagenSeleccionadaTesoro2() {
 
 }
 
- // Cargar stats y pintar detalles
- function cargarStatsObjeto(tesoroSeleccionado){
-            fetch('img/Tesoros_Superiores/stats_tesoros_superiores.json')
-                .then(r2 => r2.json())
-                .then(stats => {
-                    const detalle2 = document.getElementById('enemigos-lista');
-                    //detalle2.innerHTML = ``; // limpiar
-                    const item = document.createElement('div');
-                    item.className = 'enemigo-item';
-                    //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
-                    
-                    const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroSeleccionado);
-                    if (!tesoro) {
-                        let html = '<div>No se encontró información de este tesoro.</div>';
-                        item.innerHTML = html;
-                    detalle2.appendChild(item);
-                        return;
+// Cargar stats y pintar detalles
+function cargarStatsObjeto(tesoroSeleccionado) {
+    fetch('img/Tesoros_Superiores/stats_tesoros_superiores.json')
+        .then(r2 => r2.json())
+        .then(stats => {
+            const detalle2 = document.getElementById('enemigos-lista');
+            //detalle2.innerHTML = ``; // limpiar
+            const item = document.createElement('div');
+            item.className = 'enemigo-item';
+            //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
+
+            const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroSeleccionado);
+            if (!tesoro) {
+                let html = '<div>No se encontró información de este tesoro.</div>';
+                item.innerHTML = html;
+                detalle2.appendChild(item);
+                return;
+            }
+
+            // Nombre (sin .png)
+            let html = `<div><p><strong>Botín:</strong> ${tesoro.nombre.replace(/\.png$/i, '')}</p></div>`;
+            // Rotura
+            if (tesoro.rotura) {
+                const roturaRand = tirarDado(tesoro.rotura);
+                //html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
+                html += `<div><p><strong>Rotura del objeto:</strong> ${roturaRand}</p></div>`;
+
+            }
+
+            // Valor
+            if (tesoro.valor) {
+                let valorTexto = tesoro.valor;
+
+                // ¿es una tirada de dados tipo "3d100" o "3d100+40"?
+                const regex = /^(\d+)d(\d+)([+-]\d+)?$/i;
+                const match = regex.exec(tesoro.valor);
+
+                if (match) {
+                    const num = parseInt(match[1], 10);    // número de dados
+                    const caras = parseInt(match[2], 10);  // caras
+                    const mod = match[3] ? parseInt(match[3], 10) : 0; // modificador opcional
+
+                    let total = 0;
+                    let tiradas = [];
+                    for (let i = 0; i < num; i++) {
+                        const t = Math.floor(Math.random() * caras) + 1;
+                        total += t;
+                        tiradas.push(t);
                     }
 
-                    // Nombre (sin .png)
-                    let html = `<div><p><strong>Botín:</strong> ${tesoro.nombre.replace(/\.png$/i,'')}</p></div>`;
-                    // Rotura
-                    if (tesoro.rotura) {
-                        const roturaRand = tirarDado(tesoro.rotura);
-                        //html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
-                          html += `<div><p><strong>Rotura del objeto:</strong> ${roturaRand}</p></div>`;
-                    
-                    }
+                    const resultadoFinal = total + mod;
 
-                    // Valor
-                   if (tesoro.valor) {
-    let valorTexto = tesoro.valor;
-
-    // ¿es una tirada de dados tipo "3d100"?
-    if (/^\d+d\d+$/i.test(tesoro.valor)) {
-        const [num, caras] = tesoro.valor.toLowerCase().split("d").map(Number);
-        let total = 0;
-        let tiradas = [];
-        for (let i = 0; i < num; i++) {
-            const t = Math.floor(Math.random() * caras) + 1;
-            total += t;
-            tiradas.push(t);
-        }
-        valorTexto = `${tesoro.valor} → [${tiradas.join(", ")}] = ${total}`;
-    }
-
-    html += `<div><p><strong>Valor del objeto:</strong> ${valorTexto}</p></div>`;
-}
-
-                     // Selección y tabla
-            if (tesoro.seleccion) {
-                const selRand = tirarDado(tesoro.seleccion);
-                if (tesoro.seleccion != "1d1") {
-                    html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p></div>`;
+                    valorTexto = `${tesoro.valor} → [${tiradas.join(", ")}] ${mod !== 0 ? (mod > 0 ? `+ ${mod}` : `- ${Math.abs(mod)}`) : ""} = <b style="color: yellow;"> ${resultadoFinal}</b>`;
                 }
 
-                const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
-                if (itemTabla) {
+                html += `<div><p><strong>Cantidad:</strong> ${valorTexto}</p></div>`;
+            }
+
+            // Selección y tabla
+            if (tesoro.seleccion) {
+                let dadoExpr = tesoro.seleccion;
+                let repeticiones = 1;
+
+                // detectar multiplicador, ej: 1d10*3
+                const match = tesoro.seleccion.match(/^(.+?)\*(\d+)$/);
+                if (match) {
+                    dadoExpr = match[1];                // "1d10"
+                    repeticiones = parseInt(match[2]);  // 3
+                }
+
+                const resultados = [];
+
+                for (let i = 0; i < repeticiones; i++) {
+                    resultados.push(tirarDado(dadoExpr));
+                }
+
+                // Mostrar resultados de la selección
+                if (dadoExpr !== "1d1") {
+                    html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${resultados.join(", ")})</p></div>`;
+                }
+
+                // Procesar cada resultado
+                for (const selRand of resultados) {
+                    const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
+                    if (!itemTabla) continue;
+
                     html += '<div style="margin-left:1em">';
                     const leyendaTexto = itemTabla.Leyenda || null;
 
@@ -274,14 +302,13 @@ function cambiarImagenSeleccionadaTesoro2() {
                             if (k === "tirada" || k === "Leyenda") continue;
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
-                                        <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
-                                    </p></div>`;
+                            <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
+                        </p></div>`;
                             } else {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }
                     }
-
                     html += '</div>';
                 }
             }
