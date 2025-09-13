@@ -6,7 +6,7 @@
       "rotura": null,
       "seleccion": "1d1",
       "tabla": [
-        {"tirada": 1,"Tipo": null,"Daño": null,"P/C": null,"Clase": null,"Recarga": null,"Defensa": null,"Peso": null,"Valor": 150,"Efecto": "Puede ser encantado."}
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase": null,"Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Puede ser encantado."}
        ]
     },
     {
@@ -14,7 +14,7 @@
       "rotura": "1d2",
       "seleccion": "1d1",
       "tabla": [
-        {"tirada": 1,"Tipo": "","Daño": "1d10+2","P/C": null,"Clase": 4,"Recarga": 1,"Defensa": null,"Peso": 7,"Valor": 500,"Efecto": "PArm (1)","Leyenda":"Penetración de Armadura, ignora X puntos de armadura."}
+        {"tirada": 1,"Tipo": "","Daño": "1d10+2","Peso / Clase":"7 / 6","Recarga": 1,"Defensa": null,"Valor": 700,"Efecto": "PArm (1)","Leyenda":"<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura."}
         ]
     },
     {
@@ -22,10 +22,10 @@
       "rotura": "1d4-1",
       "seleccion": "1d4",
       "tabla": [
-        {"tirada": 1,"Tipo": "Ballesta","Daño":"1d10+3","P/C":"15/6","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 250,"Efecto": null},
-        {"tirada": 2,"Tipo": "Arco Largo","Daño":"1d10","P/C":"10/6","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 100,"Efecto": null},
-        {"tirada": 3,"Tipo": "Pistola Ballesta","Daño":"1d8+1","P/C":"5/2","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 350,"Efecto": null},
-        {"tirada": 4,"Tipo": "Arbalesta","Daño":"3d6","P/C":"20/6","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": null}
+        {"tirada": 1,"Tipo": "Ballesta","Daño":"1d10+3","Peso / Clase":"15 / 6","Recarga":2,"Defensa": null,"Valor": 250,"Efecto": "PArm (1)","Leyenda":"<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura."},
+        {"tirada": 2,"Tipo": "Arco Largo","Daño":"1d10","Peso / Clase":"10 / 4","Recarga":1,"Defensa": null,"Valor": 100,"Efecto": "PArm (1)","Leyenda":"<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura."},
+        {"tirada": 3,"Tipo": "Pistola Ballesta","Daño":"1d8+1","Peso / Clase":"5 / 2","Recarga":2,"Defensa": null,"Valor": 350,"Efecto": "Arma secundaria","Leyenda":"<b style='color: gold;'>Arma secundaria: </b>Se puede usar en la mano secundaria mientras en la otra lleva una principal. Disparar esta arma se puede hacer en la misma acción que moverse (-10HD) o a un objetivo adyacente al que se dispara. No se puede recargar mientras se empuña como arma secundaria. "},
+        {"tirada": 4,"Tipo": "Arbalesta","Daño":"3d6","Peso / Clase":"20 / 6","Recarga":3,"Defensa": null,"Valor": 400,"Efecto": "Requiere FUE 55, PArm (2)","Leyenda":"<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura."}
         ]
     },
     {
@@ -33,29 +33,140 @@
       "rotura": "1d4-1",
       "seleccion": "1d2",
       "tabla": [
-        {"tirada": 1,"Tipo": "Lucero del alba","Daño": "1d8+4","P/C": null,"Clase": 4,"Recarga": null,"Defensa": null,"Peso": 10,"Valor": 150,"Efecto": "Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento."},
-        {"tirada": 2,"Tipo": "Mayal","Daño": "1d10+4","P/C": null,"Clase": 5,"Recarga": null,"Defensa": null,"Peso": 20,"Valor": 150,"Efecto": "Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento."}
+        {"tirada": 1,"Tipo": "Lucero del alba","Daño": "1d8+4","Peso / Clase": "10 / 4","Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento."},
+        {"tirada": 2,"Tipo": "Mayal","Daño": "1d10+4","Peso / Clase": "20 / 5","Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento."}
         ]
+    },
+    {
+      "nombre": "Arma de mano de plata.png",
+      "rotura": "1d3-1",
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Daga","Daño":"1d6","Peso / Clase":"5 / 1","Recarga":null,"Defensa": null,"Valor": 75,"Efecto": "Arma de Plata, Doble Empuñado+1","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>"},
+        {"tirada": 2,"Tipo": "Espada Corta","Daño":"1d6+2","Peso / Clase":"7 / 2","Recarga":null,"Defensa": null,"Valor": 105,"Efecto": "Arma de Plata, Doble Empuñado +2","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>"},
+        {"tirada": 3,"Tipo": "Espada Larga","Daño":"1d12","Peso / Clase":"10 / 3","Recarga":null,"Defensa": null,"Valor": 150,"Efecto": "Arma de Plata ","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br>"},
+        {"tirada": 4,"Tipo": "Estoque","Daño":"1d6+1","Peso / Clase":"5 / 1","Recarga":null,"Defensa": null,"Valor": 270,"Efecto": "Arma de Plata, Rápido, Doble Empuñado +2","Leyenda":"<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br><b style='color: gold;'>Rápido: </b>Esta arma se puede usar para bloquear una vez por turno, aunque el Héroe no se haya puesto en Posición Defensiva, pero el arma sufrirá daño con una tirada de 90-00. </br>"}
+        ]
+    },
+    {
+      "nombre": "Armadura de cuero (2).png",
+      "rotura": "1d4",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Gorro de Cuero","Daño":null,"Cobertura / Defensa": "Cabeza / 3","Peso / Rango":"1 / 2","Recarga":null,"Valor": 50,"Efecto": null,"Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Cuero","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 80,"Efecto": null,"Leyenda":null},
+        {"tirada": 3,"Tipo": "Chaleco de Cuero","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 80,"Efecto": null,"Leyenda":null},
+        {"tirada": 4,"Tipo": "Casaca","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 140,"Efecto": null,"Leyenda":null},
+        {"tirada": 5,"Tipo": "Pantalones","Daño":null,"Cobertura / Defensa": "Piernas / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 120,"Efecto": null,"Leyenda":null},
+        {"tirada": 6,"Tipo": "Brazales","Daño":null,"Cobertura / Defensa": "Brazos / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 120,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+          
+      
+      ]
+    },
+    {
+      "nombre": "Armadura de cuero.png",
+      "rotura": "1d4",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Gorro de Cuero","Daño":null,"Cobertura / Defensa": "Cabeza / 3","Peso / Rango":"1 / 2","Recarga":null,"Valor": 50,"Efecto": null,"Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Cuero","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 80,"Efecto": null,"Leyenda":null},
+        {"tirada": 3,"Tipo": "Chaleco de Cuero","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 80,"Efecto": null,"Leyenda":null},
+        {"tirada": 4,"Tipo": "Casaca","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 140,"Efecto": null,"Leyenda":null},
+        {"tirada": 5,"Tipo": "Pantalones","Daño":null,"Cobertura / Defensa": "Piernas / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 120,"Efecto": null,"Leyenda":null},
+        {"tirada": 6,"Tipo": "Brazales","Daño":null,"Cobertura / Defensa": "Brazos / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 120,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+          
+      
+      ]
+    },
+    {
+      "nombre": "Armadura de cuero tachonado.png",
+      "rotura": "1d2+1",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Chaleco de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 300,"Efecto": "Tachonado: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 300,"Efecto": "Tachonado: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 3,"Tipo": "Casaca de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"5 / 2","Recarga":null,"Valor": 500,"Efecto": "Tachonado: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 4,"Tipo": "Casaca de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"5 / 2","Recarga":null,"Valor": 500,"Efecto": "Tachonado: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 5,"Tipo": "Brazales de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Brazos / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 150,"Efecto": "Tachonado: DURABILIDAD 8, Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 6,"Tipo": "Cota de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso, Piernas / 3","Peso / Rango":"8 / 2","Recarga":null,"Valor": 800,"Efecto": "Tachonado: DURABILIDAD 8, Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+          
+      
+      ]
+    },
+    {
+      "nombre": "Armadura de escamas.png",
+      "rotura": "1d2+1",
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Chaleco de Escamas","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"7 / 3","Recarga":null,"Valor": 700,"Efecto": "Escamas: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Escamas","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"7 / 3","Recarga":null,"Valor": 700,"Efecto": "Escamas: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 3,"Tipo": "Casaca de Escamas","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 4","Peso / Rango":"8 / 3","Recarga":null,"Valor": 1050,"Efecto": "Escamas: DURABILIDAD 8","Leyenda":null},
+        {"tirada": 4,"Tipo": "Abrigo de Escamas","Daño":null,"Cobertura / Defensa": "Brazos, Torso, Piernas / 4","Peso / Rango":"12 / 3","Recarga":null,"Valor": 1700,"Efecto": "Escamas: DURABILIDAD 8","Leyenda":null}
+      ]
+    },
+     {
+      "nombre": "Armadura de malla.png",
+      "rotura": "1d4",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Cofia de Malla","Daño":null,"Cobertura / Defensa": "Cabeza / 4","Peso / Rango":"4 / 3","Recarga":null,"Valor": 200,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 2,"Tipo": "Camisa de Malla","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"6 / 3","Recarga":null,"Valor": 600,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 3,"Tipo": "Camisa de Malla","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"6 / 3","Recarga":null,"Valor": 600,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 4,"Tipo": "Cota de Malla","Daño":null,"Cobertura / Defensa": "Torso, Piernas / 4","Peso / Rango":"8 / 3","Recarga":null,"Valor": 750,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 5,"Tipo": "Camisa con Mangas de Malla","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 4","Peso / Rango":"7 / 3","Recarga":null,"Valor": 950,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 6,"Tipo": "Pantalones de Malla","Daño":null,"Cobertura / Defensa": "Piernas / 4","Peso / Rango":"5 / 3","Recarga":null,"Valor": 200,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+          
+      
+      ]
+    },
+      {
+      "nombre": "Armadura de malla (2).png",
+      "rotura": "1d4",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Cofia de Malla","Daño":null,"Cobertura / Defensa": "Cabeza / 4","Peso / Rango":"4 / 3","Recarga":null,"Valor": 200,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 2,"Tipo": "Camisa de Malla","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"6 / 3","Recarga":null,"Valor": 600,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 3,"Tipo": "Camisa con Mangas de Malla","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 4","Peso / Rango":"7 / 3","Recarga":null,"Valor": 950,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 4,"Tipo": "Cota de Malla","Daño":null,"Cobertura / Defensa": "Torso, Piernas / 4","Peso / Rango":"8 / 3","Recarga":null,"Valor": 750,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 5,"Tipo": "Cota con Mangas de Malla","Daño":null,"Cobertura / Defensa": "Brazos, Torso, Piernas / 4","Peso / Rango":"10 / 3","Recarga":null,"Valor": 1300,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 6,"Tipo": "Pantalones de Malla","Daño":null,"Cobertura / Defensa": "Piernas / 4","Peso / Rango":"5 / 3","Recarga":null,"Valor": 200,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+          
+      
+      ]
     },
     {
       "nombre": "Bastón de mago.png",
       "rotura": "1d4-1",
       "seleccion": "1d10",
       "tabla": [
-        {"tirada": 1,"Tipo": "Elige bastón pag. 150","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": null,"Efecto": null},
-        {"tirada": 2,"Tipo": "Bastón Arcano","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": "Este bastón dará parte de su poder al Mago. Otorga +5 AA. Al salir de una mazmorra, tira 1d10. Con un resultado de 9-10, la magia se ha disipado y debe recargarse. Hasta que se recargue, se considera un bastón normal."},
-        {"tirada": 3,"Tipo": "Bastón de Fuego","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": "Este Bastón contiene el hechizo Llamarada."},
-        {"tirada": 4,"Tipo": "Bastón de Iluminación","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 300,"Efecto": "Este Bastón funciona como un farol. Si el mago comete una perturbación, la llama se apaga. No se apagará por ningún otro motivo. Para reavivar la llama, el mago simplemente debe gastar 1PA."},
-        {"tirada": 5,"Tipo": "Bastón de Lentitud","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": "Este Bastón contiene el hechizo Lentitud."},
-        {"tirada": 6,"Tipo": "Bastón de Maná","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 500,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 20 puntos de Maná."},
-        {"tirada": 7,"Tipo": "Bastón de Maná Menor","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 300,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 10 puntos de Maná."},
-        {"tirada": 8,"Tipo": "Bastón del Rayo","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 500,"Efecto": "Este Bastón contiene el hechizo Rayo mágico."},
-        {"tirada": 9,"Tipo": "Bastón de Vitalidad","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 350,"Efecto": "Este bastón imbuye de vitalidad el cuerpo del mago portador, otorgando +3VIT mientras se lleve en la mano. Entre cada misión, tira 1d10. Con un resultado de 10, la magia se ha disipado y necesita recargarse. Hasta que se recarga se considera un bastón normal."},
-        {"tirada": 10,"Tipo": "Gran Bastón de Maná","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 800,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 30 puntos de Maná."}
+        {"tirada": 1,"Tipo": "Elige bastón pag. 150","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": null,"Efecto": null},
+        {"tirada": 2,"Tipo": "Bastón Arcano","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 400,"Efecto": "Defensivo, Este bastón dará parte de su poder al Mago. Otorga +5 AA. Al salir de una mazmorra, tira 1d10. Con un resultado de 9-10, la magia se ha disipado y debe recargarse. Hasta que se recargue, se considera un bastón normal.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 3,"Tipo": "Bastón de Fuego","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 400,"Efecto": "Defensivo, Este Bastón contiene el hechizo Llamarada.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 4,"Tipo": "Bastón de Iluminación","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 300,"Efecto": "Defensivo, Este Bastón funciona como un farol. Si el mago comete una perturbación, la llama se apaga. No se apagará por ningún otro motivo. Para reavivar la llama, el mago simplemente debe gastar 1PA.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 5,"Tipo": "Bastón de Lentitud","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 400,"Efecto": "Defensivo, Este Bastón contiene el hechizo Lentitud.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 6,"Tipo": "Bastón de Maná","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 500,"Efecto": "Defensivo, Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 20 puntos de Maná.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 7,"Tipo": "Bastón de Maná Menor","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 300,"Efecto": "Defensivo, Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 10 puntos de Maná.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 8,"Tipo": "Bastón del Rayo","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 500,"Efecto": "Defensivo, Este Bastón contiene el hechizo Rayo mágico.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 9,"Tipo": "Bastón de Vitalidad","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 350,"Efecto": "Defensivo, Este bastón imbuye de vitalidad el cuerpo del mago portador, otorgando +3VIT mientras se lleve en la mano. Entre cada misión, tira 1d10. Con un resultado de 10, la magia se ha disipado y necesita recargarse. Hasta que se recarga se considera un bastón normal.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "},
+        {"tirada": 10,"Tipo": "Gran Bastón de Maná","Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 800,"Efecto": "Defensivo, Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 30 puntos de Maná.","Leyenda":"<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "}
       ]
     },
-    
-     
+     {
+      "nombre": "Broche de plata.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase": null,"Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Un héroe equipado con capa puede ponerle el broche y obtener +10 Trueque. Acumulativo con otros extras similares."}
+       ]
+    },
+      {
+      "nombre": "Cerveza enana.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Barril Pequeño de Cerveza Enana","Daño": null,"Peso": 2,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": "Suficiente para una toma (1-4 héroes) . DET +20, pero todas las demás habilidad -10 hasta el final de la mazmorra/pelea exterior."}
+       ]
+    },
      {
       "nombre": "Collar.png",
       "rotura": null,
