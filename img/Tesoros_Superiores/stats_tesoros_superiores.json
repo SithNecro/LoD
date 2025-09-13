@@ -372,7 +372,15 @@
       "seleccion": "1d2",
       "tabla": [
         {"tirada": 1,"Tipo": "Martillo de Batalla","Daño":"1d10","Peso / Clase":"10 / 3","Recarga":null,"Defensa": null,"Valor": 100,"Efecto": "Aturdir, HPA","Leyenda":"<b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>"},
-        {"tirada": 2,"Tipo": "Martillo de Guerra","Daño":"2d6","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 200,"Efecto": "Lento, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>"},
+        {"tirada": 2,"Tipo": "Martillo de Guerra","Daño":"2d6","Peso / Clase":"20 / 5","Recarga":null,"Defensa": null,"Valor": 200,"Efecto": "Lento, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>"}
+       ]
+    },
+     {
+      "nombre": "Mochila grande.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 600,"Efecto": "Incrementa tu capacidad de carga en 25PES pero reduce tu DES en -15.","Leyenda":null}
        ]
     }
   ]
