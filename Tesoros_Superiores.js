@@ -7,7 +7,7 @@ window.onload = function() {
             const selector = document.getElementById('selector-tesoro-0');
             const selector2 = document.getElementById('selector-tesoro-1');
             const selector3 = document.getElementById('selector-tesoro-2');
-
+            
             // Añadir opciones al selector
             tesoros.forEach(tesoro => {
                 // Crear una opción para el primer selector
@@ -38,12 +38,106 @@ function cambiarImagenSeleccionada() {
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`;
+    // Cargar stats y pintar detalles
+            fetch('img/stats_tesoros_superiores.json')
+                .then(r2 => r2.json())
+                .then(stats => {
+                   
+                    
+                    
+                    
+                    const detalle2 = document.getElementById('enemigos-lista');
+                    detalle2.innerHTML = ``; // limpiar
+                    const item = document.createElement('div');
+                    item.className = 'enemigo-item';
+                    //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
+                    
+                    const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroSeleccionado);
+                    if (!tesoro) {
+                        let html = '<div>No se encontró información de este tesoro.</div>';
+                        item.innerHTML = html;
+                    detalle2.appendChild(item);
+                        return;
+                    }
+
+                    // Nombre (sin .png)
+                    let html = `<div><p><strong>Botín:</strong> ${tesoro.nombre.replace(/\.png$/i,'')}</p></div>`;
+                     const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
+                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
+                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+                    // Rotura
+                    if (tesoro.rotura) {
+                        const roturaRand = tirarDado(tesoro.rotura);
+                        html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
+                    }
+
+                    // Valor
+                   if (tesoro.valor) {
+    let valorTexto = tesoro.valor;
+
+    // ¿es una tirada de dados tipo "3d100"?
+    if (/^\d+d\d+$/i.test(tesoro.valor)) {
+        const [num, caras] = tesoro.valor.toLowerCase().split("d").map(Number);
+        let total = 0;
+        let tiradas = [];
+        for (let i = 0; i < num; i++) {
+            const t = Math.floor(Math.random() * caras) + 1;
+            total += t;
+            tiradas.push(t);
+        }
+        valorTexto = `${tesoro.valor} → [${tiradas.join(", ")}] = ${total}`;
+    }
+
+    html += `<div><p><strong>Valor del objeto:</strong> ${valorTexto}</p></div>`;
+}
+
+                    // Selección
+                    if (tesoro.seleccion) {
+                        const selRand = tirarDado(tesoro.seleccion);
+                        html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p></div>`;
+
+                        // Buscar en tabla
+                        const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
+                        if (itemTabla) {
+                            html += '<div style="margin-left:1em">';
+                            for (const [k,v] of Object.entries(itemTabla)) {
+                                if (v !== null) {
+                                    if (k == "tirada"){}
+                                    else{
+                                    html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;}
+                                }
+                            }
+                            html += '</div>';
+                        }
+                    }
+
+                    //detalle.innerHTML = html;
+                    item.innerHTML = html;
+                    detalle2.appendChild(item);
+                   
+                });
 }
 
 // Función para cargar una imagen aleatoria
+// Función auxiliar para tirar dados tipo "1d10", "2d6-1", etc.
+function tirarDado(expresion) {
+    // admite formato XdY-Z (Z opcional)
+    const match = expresion.match(/(\d+)d(\d+)(?:\s*-\s*(\d+))?/i);
+    if (!match) return null;
+    const veces = parseInt(match[1],10);
+    const caras = parseInt(match[2],10);
+    const restar = match[3] ? parseInt(match[3],10) : 0;
+    let total = 0;
+    for (let i = 0; i < veces; i++) {
+        total += Math.floor(Math.random() * caras) + 1;
+    }
+    return total - restar;
+}
+
+// Función para cargar una imagen aleatoria y mostrar sus datos
 function cargarTesoroSuperior() {
     fetch('img/Listado_Cartas.json')
-        .then(response => response.json())
+        .then(r => r.json())
         .then(data => {
             const tesoros = data.Tesoros_Superiores;
             const randomIndex = Math.floor(Math.random() * tesoros.length);
@@ -56,10 +150,58 @@ function cargarTesoroSuperior() {
             // Seleccionar el tesoro en el desplegable
             const selector = document.getElementById('selector-tesoro-0');
             selector.value = tesoroAleatorio;
-// Muestra los dos tesoros y sus selectores
+
+            // Mostrar contenedor adecuado
             document.getElementById('two-treasures-container').style.display = 'none';
             document.getElementById('single-treasure-container').style.display = 'flex';
 
+            // Cargar stats y pintar detalles
+            fetch('img/stats_tesoros_superiores.json')
+                .then(r2 => r2.json())
+                .then(stats => {
+                    const detalle = document.getElementById('tirada-detalle');
+                    detalle.innerHTML = ''; // limpiar
+
+                    const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroAleatorio);
+                    if (!tesoro) {
+                        detalle.textContent = 'No se encontró información de este tesoro.';
+                        return;
+                    }
+
+                    // Nombre (sin .png)
+                    let html = `<p><strong>Nombre del objeto:</strong> ${tesoro.nombre.replace(/\.png$/i,'')}</p>`;
+
+                    // Rotura
+                    if (tesoro.rotura) {
+                        const roturaRand = tirarDado(tesoro.rotura);
+                        html += `<p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (resultado: ${roturaRand})</p>`;
+                    }
+
+                    // Valor
+                    if (tesoro.valor) {
+                        html += `<p><strong>Valor del objeto:</strong> ${tesoro.valor}</p>`;
+                    }
+
+                    // Selección
+                    if (tesoro.seleccion) {
+                        const selRand = tirarDado(tesoro.seleccion);
+                        html += `<p><strong>Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p>`;
+
+                        // Buscar en tabla
+                        const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
+                        if (itemTabla) {
+                            html += '<div style="margin-left:1em">';
+                            for (const [k,v] of Object.entries(itemTabla)) {
+                                if (v !== null) {
+                                    html += `<p><strong>${k}:</strong> ${v}</p>`;
+                                }
+                            }
+                            html += '</div>';
+                        }
+                    }
+
+                    detalle.innerHTML = html;
+                });
         });
 }
 
@@ -82,10 +224,10 @@ function habilidadBuscatesoros() {
             // Cambia la imagen de ambos tesoros
             document.getElementById('imagen-tesoro-1').src = `img/Tesoros_Superiores/${tesoro1}`;
             document.getElementById('imagen-tesoro-2').src = `img/Tesoros_Superiores/${tesoro2}`;
-//Selecciona en los desplegables los objetos
-const selector1 = document.getElementById('selector-tesoro-1');
+            //Selecciona en los desplegables los objetos
+            const selector1 = document.getElementById('selector-tesoro-1');
             selector1.value = tesoro1;
-const selector2 = document.getElementById('selector-tesoro-2');
+            const selector2 = document.getElementById('selector-tesoro-2');
             selector2.value = tesoro2;
 
 

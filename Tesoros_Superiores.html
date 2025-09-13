@@ -25,6 +25,12 @@
         .main-content {
             margin-left: 310px;
            
+            background: rgba(35, 35, 35, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -59,16 +65,146 @@
             flex-direction: column;
             align-items: center;
             margin-right: 20px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
         }
 
         .two-treasures-container {
             display: none;
             gap: 20px;
         }
+        .Desplegable
+        {
+             width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;  
+        }
+        /* Nuevo contenedor para alinear imagen + panel en fila */
+.single-treasure-wrapper {
+    display: flex;           /* activa flexbox */
+    align-items: flex-start; /* alinea arriba */
+    gap: 1rem;               /* espacio entre imagen y panel */
+}
+.btn_abrir_tesoro {
+            width: 120px;
+            height: 120px;
+            background: url('img/interface/revelar_tesoro_superior.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+.btn_barajar_tesoro {
+    
+     width: 120px;
+            height: 120px;
+            background: url('img/interface/barajar_tesoros.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+}
+.btn_habilidad_buscatesoros
+{
+    
+     width: 120px;
+            height: 120px;
+            background: url('img/interface/habilidad_buscatesoros.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+}
+.btn_coger_tesoro
+{
+    
+      width: 120px;
+            height: 120px;
+            background: url('img/interface/coger_tesoro.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 20px;
+            margin-left: 20px;
+          
+}
+.info-panel {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(60, 60, 60, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #5D4037;
+}
+.info-panel h3 {
+    color: #d4af37;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #8B4513;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+}
+.objeto-info{
+    
+    background: rgba(52, 152, 219, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #3498db;
+    color: #fff;
 
+}
+#enemigos-lista {
+            margin-top: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .enemigo-item {
+            padding: 12px;
+            margin-bottom: 12px;
+            background: rgba(40, 40, 40, 0.8);
+            border-left: 5px solid #e74c3c;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            color: #fff;
+        }
+        .enemigo-item:hover {
+            transform: translateX(5px);
+        }
+
+        .enemigo-item strong {
+            color: #d4af37;
+            display: inline;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
-<body style="background-image: url('fondo.png'); background-size: cover;">
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
 
     <!-- Carga del menú lateral -->
     <div class="menu">
@@ -80,29 +216,39 @@
 
         <!-- Botones en la parte superior izquierda -->
         <div class="top-buttons">
-            <button onclick="cargarTesoroSuperior()" id="tesoro-btn">Sacar Tesoro Superior</button>
-            <button onclick="barajarTesoros()">Barajar Tesoros</button>
-            <button onclick="habilidadBuscatesoros()">Habilidad de Buscatesoros</button>
+            <button class="btn_abrir_tesoro" onclick="cargarTesoroSuperior()" id="tesoro-btn"></button>
+            <button class="btn_barajar_tesoro"onclick="barajarTesoros()"></button>
+            <button class="btn_habilidad_buscatesoros" onclick="habilidadBuscatesoros()"></button>
+            <button class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
         </div>
         
-        <button onclick="BajarMoral(1)">Coger Tesoro<BR>(+1 de Moral del Grupo)</button>
         
         <!-- Zona derecha con la imagen y el selector debajo -->
         <div class="content-right">
-            <!-- Imagen y selector del tesoro normal -->
-            <div class="treasure-container" id="single-treasure-container">
-                <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro" alt="Tesoro Superior" class="treasure-image">
-                <select id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
-                    <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
-                </select>
-            </div>
+              <!-- Contenedor que agrupa la imagen+selector y la info -->
+    <div class="single-treasure-wrapper">
+        <div class="treasure-container" id="single-treasure-container">
+            <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro" alt="Tesoro Superior" class="treasure-image">
+            <select class="Desplegable" id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
+                <!-- opciones -->
+            </select>
+        </div>
 
+        <div class="info-panel">
+            <h3>Botín Encontrado</h3>
+            <div id="tirada-info" class="tirada-info" style="display:none;">
+                    <span id="tirada-detalle" class="objeto-info"></span>
+            </div>
+            <div id="enemigos-lista"></div>
+        </div>
+    </div>
+            
             <!-- Contenedor de los dos tesoros para habilidad de buscatesoros -->
             <div class="two-treasures-container" id="two-treasures-container">
                 <!-- Primer tesoro -->
                 <div class="treasure-container">
                     <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro-1" alt="Tesoro Superior" class="treasure-image">
-                    <select id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
+                    <select class="Desplegable" id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
                         <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
                     </select>
                 </div>
@@ -110,7 +256,7 @@
                 <!-- Segundo tesoro -->
                 <div class="treasure-container">
                     <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro-2" alt="Tesoro Superior" class="treasure-image">
-                    <select id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
+                    <select class="Desplegable" id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
                         <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
                     </select>
                 </div>

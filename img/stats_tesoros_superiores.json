@@ -1,0 +1,41 @@
+{
+  "Tesoros_Superiores": [
+    {
+      "nombre": "Bastón de mago.png",
+      "rotura": "1d4-1",
+      "seleccion": "1d10",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Elige bastón pag. 150","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": null,"Efecto": null},
+        {"tirada": 2,"Tipo": "Bastón Arcano","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": "Este bastón dará parte de su poder al Mago. Otorga +5 AA. Al salir de una mazmorra, tira 1d10. Con un resultado de 9-10, la magia se ha disipado y debe recargarse. Hasta que se recargue, se considera un bastón normal."},
+        {"tirada": 3,"Tipo": "Bastón de Fuego","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": "Este Bastón contiene el hechizo Llamarada."},
+        {"tirada": 4,"Tipo": "Bastón de Iluminación","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 300,"Efecto": "Este Bastón funciona como un farol. Si el mago comete una perturbación, la llama se apaga. No se apagará por ningún otro motivo. Para reavivar la llama, el mago simplemente debe gastar 1PA."},
+        {"tirada": 5,"Tipo": "Bastón de Lentitud","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": "Este Bastón contiene el hechizo Lentitud."},
+        {"tirada": 6,"Tipo": "Bastón de Maná","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 500,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 20 puntos de Maná."},
+        {"tirada": 7,"Tipo": "Bastón de Maná Menor","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 300,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 10 puntos de Maná."},
+        {"tirada": 8,"Tipo": "Bastón del Rayo","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 500,"Efecto": "Este Bastón contiene el hechizo Rayo mágico."},
+        {"tirada": 9,"Tipo": "Bastón de Vitalidad","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 350,"Efecto": "Este bastón imbuye de vitalidad el cuerpo del mago portador, otorgando +3VIT mientras se lleve en la mano. Entre cada misión, tira 1d10. Con un resultado de 10, la magia se ha disipado y necesita recargarse. Hasta que se recarga se considera un bastón normal."},
+        {"tirada": 10,"Tipo": "Gran Bastón de Maná","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 800,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 30 puntos de Maná."}
+      ]
+    },
+    {
+      "nombre": "Anillo.png",
+      "rotura": null,
+      "valor": "150 Oros",
+      "Peso": 0
+    },
+     {
+      "nombre": "Arco élfico.png",
+      "rotura": "1d2",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Daño":"1d10+2","Clase":6,"Recarga":1,"Peso": 7,"Valor": "500 Oros"}
+        ]
+    },
+     {
+      "nombre": "Collar.png",
+      "rotura": null,
+      "valor": "3d100",
+      "Peso": 0
+    }
+  ]
+}
