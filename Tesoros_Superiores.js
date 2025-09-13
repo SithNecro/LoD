@@ -109,6 +109,7 @@ function habilidadBuscatesoros() {
             // Seleccionar dos tesoros aleatorios
             let tesoro1 = tesoros[Math.floor(Math.random() * tesoros.length)];
             let tesoro2;
+ 
 
             // Asegurar que los dos tesoros no sean iguales
             do {

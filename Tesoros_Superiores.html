@@ -246,9 +246,18 @@
 
         </div>
 
-
+<div class="content-right">
         <!-- Zona derecha con la imagen y el selector debajo -->
         <div class="content-right">
+            <div class="info-panel">
+                    <h3>Botín Encontrado</h3>
+                    <div id="tirada-info" class="tirada-info" style="display:none;">
+                        <span id="tirada-detalle" class="objeto-info"></span>
+                    </div>
+                    <div style="text-align: center;" id="enemigos-lista"></div>
+                    <div style="text-align: center;"></div>
+                    <button id="btn_coger_tesoro" class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
+                </div>
             <!-- Contenedor que agrupa la imagen+selector y la info -->
             <div class="single-treasure-wrapper">
                 <div class="treasure-container" id="single-treasure-container">
@@ -259,15 +268,7 @@
                     </select>
                 </div>
 
-                <div class="info-panel">
-                    <h3>Botín Encontrado</h3>
-                    <div id="tirada-info" class="tirada-info" style="display:none;">
-                        <span id="tirada-detalle" class="objeto-info"></span>
-                    </div>
-                    <div style="text-align: center;" id="enemigos-lista"></div>
-                    <div style="text-align: center;"></div>
-                    <button id="btn_coger_tesoro" class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
-                </div>
+                
             </div>
         </div>
 
@@ -290,6 +291,7 @@
                     <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
                 </select>
             </div>
+</div>
         </div>
     </div>
 
