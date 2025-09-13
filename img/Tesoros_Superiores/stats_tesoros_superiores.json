@@ -168,10 +168,49 @@
        ]
     },
      {
+      "nombre": "Cinturón de alquimista.png",
+      "rotura": "1d4",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 0,"Recarga": null,"Defensa": null,"Valor": 300,"Efecto": "Tiene 6 ranuras de atajo, que sólo se pueden usar para pociones. Pueden ser golpeadas con normalidad. No se puede usar junto a otro cinto o arnés de combate."}
+       ]
+    },
+    {
+      "nombre": "Cinturón de batalla extendido.png",
+      "rotura": "1d4",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 0,"Recarga": null,"Defensa": null,"Valor": 300,"Efecto": "Este cinturón aumenta tus atajos de 3 a 4."}
+       ]
+    },
+     {
       "nombre": "Collar.png",
       "rotura": null,
       "valor": "3d100",
-      "Peso": 0
+      "Peso": 0,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 0,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": "Puede ser encantado."}
+       ]
+    },
+     {
+      "nombre": "Cuchillo desollador élfico.png",
+      "rotura": "0",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 1,"Recarga": null,"Defensa": null,"Valor": 250,"Efecto": "Otorga +10 a la supervivencia en una tirada de desollar. Puede llevarse en la mochila todo el tiempo."}
+       ]
+    },
+     {
+      "nombre": "Cuñas de hierro.png",
+      "rotura": "0",
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Cuña de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."},
+        {"tirada": 2,"Tipo": "2 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."},
+        {"tirada": 3,"Tipo": "3 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."}
+
+      ]
     }
   ]
 }
