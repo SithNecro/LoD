@@ -45,7 +45,8 @@ function cambiarImagenSeleccionada() {
      const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
                     const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
                     audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-   
+  const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+            btn_coger_tesoro.style.visibility = "visible"; 
 }
 
 // Función para cargar una imagen aleatoria
@@ -93,7 +94,8 @@ function cargarTesoroSuperior() {
                     const nombreAudio = tesoroAleatorio.replace(/\.png$/i, '.mp3');
                     const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
                     audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-                    
+                 const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+                btn_coger_tesoro.style.visibility = "visible";     
         });
 }
 
@@ -136,7 +138,10 @@ function habilidadBuscatesoros() {
                  tesoro1.replace(/\.png$/i, '.mp3'),
                  "y_tambien.mp3",
                  tesoro2.replace(/\.png$/i, '.mp3')
+                 
 ]);
+ const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+            btn_coger_tesoro.style.visibility = "visible"; 
         })
         .catch(error => console.error('Error al cargar los tesoros:', error));
 }
@@ -188,12 +193,20 @@ function cambiarImagenSeleccionadaTesoro2() {
             document.getElementById('selector-tesoro-2').value = 0;
             const detalle2 = document.getElementById('enemigos-lista');
                     detalle2.innerHTML = ``; // limpiar
+                     const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
+            btn_coger_tesoro.style.visibility = "hidden"; 
         }
 // Función para bajar la moral
-        function BajarMoral(valor){
-            const iframe = document.getElementById('iframeMenu');
-                        iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
-            }
+     function BajarMoral(valor) {
+    const iframe = document.getElementById('iframeMenu');
+    iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
+
+    // --- AUDIO ---
+    const nombreAudio = "pa_la_saca.mp3";
+    const audio = new Audio(`img/Tesoros_Superiores/${nombreAudio}`);
+    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+
+}
 
  // Cargar stats y pintar detalles
  function cargarStatsObjeto(tesoroSeleccionado){

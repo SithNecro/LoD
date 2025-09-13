@@ -187,10 +187,10 @@
             transition: transform 0.2s;
             color: #fff;
         }
-        .enemigo-item:hover {
+      /*  .enemigo-item:hover {
             transform: translateX(5px);
         }
-
+*/
         .enemigo-item strong {
             color: #d4af37;
             display: inline;
@@ -219,7 +219,7 @@
             <button class="btn_abrir_tesoro" onclick="cargarTesoroSuperior()" id="tesoro-btn"></button>
             <button class="btn_barajar_tesoro"onclick="barajarTesoros()"></button>
             <button class="btn_habilidad_buscatesoros" onclick="habilidadBuscatesoros()"></button>
-            <button class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
+            
         </div>
         
         
@@ -240,6 +240,7 @@
                     <span id="tirada-detalle" class="objeto-info"></span>
             </div>
             <div id="enemigos-lista"></div>
+            <button id="btn_coger_tesoro" style="visibility: hidden;" class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
         </div>
     </div>
             
