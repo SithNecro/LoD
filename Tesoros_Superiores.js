@@ -38,84 +38,9 @@ function cambiarImagenSeleccionada() {
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`;
-    // Cargar stats y pintar detalles
-            fetch('img/stats_tesoros_superiores.json')
-                .then(r2 => r2.json())
-                .then(stats => {
-                   
-                    
-                    
-                    
-                    const detalle2 = document.getElementById('enemigos-lista');
-                    detalle2.innerHTML = ``; // limpiar
-                    const item = document.createElement('div');
-                    item.className = 'enemigo-item';
-                    //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
-                    
-                    const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroSeleccionado);
-                    if (!tesoro) {
-                        let html = '<div>No se encontró información de este tesoro.</div>';
-                        item.innerHTML = html;
-                    detalle2.appendChild(item);
-                        return;
-                    }
-
-                    // Nombre (sin .png)
-                    let html = `<div><p><strong>Botín:</strong> ${tesoro.nombre.replace(/\.png$/i,'')}</p></div>`;
-                     const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
-                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
-                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-                    // Rotura
-                    if (tesoro.rotura) {
-                        const roturaRand = tirarDado(tesoro.rotura);
-                        html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
-                    }
-
-                    // Valor
-                   if (tesoro.valor) {
-    let valorTexto = tesoro.valor;
-
-    // ¿es una tirada de dados tipo "3d100"?
-    if (/^\d+d\d+$/i.test(tesoro.valor)) {
-        const [num, caras] = tesoro.valor.toLowerCase().split("d").map(Number);
-        let total = 0;
-        let tiradas = [];
-        for (let i = 0; i < num; i++) {
-            const t = Math.floor(Math.random() * caras) + 1;
-            total += t;
-            tiradas.push(t);
-        }
-        valorTexto = `${tesoro.valor} → [${tiradas.join(", ")}] = ${total}`;
-    }
-
-    html += `<div><p><strong>Valor del objeto:</strong> ${valorTexto}</p></div>`;
-}
-
-                    // Selección
-                    if (tesoro.seleccion) {
-                        const selRand = tirarDado(tesoro.seleccion);
-                        html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p></div>`;
-
-                        // Buscar en tabla
-                        const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
-                        if (itemTabla) {
-                            html += '<div style="margin-left:1em">';
-                            for (const [k,v] of Object.entries(itemTabla)) {
-                                if (v !== null) {
-                                    if (k == "tirada"){}
-                                    else{
-                                    html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;}
-                                }
-                            }
-                            html += '</div>';
-                        }
-                    }
-
-                    //detalle.innerHTML = html;
-                    item.innerHTML = html;
-                    detalle2.appendChild(item);
-                   
-                });
+    cargarStatsObjeto(tesoroSeleccionado);
+    
+   
 }
 
 // Función para cargar una imagen aleatoria
@@ -155,53 +80,7 @@ function cargarTesoroSuperior() {
             document.getElementById('two-treasures-container').style.display = 'none';
             document.getElementById('single-treasure-container').style.display = 'flex';
 
-            // Cargar stats y pintar detalles
-            fetch('img/stats_tesoros_superiores.json')
-                .then(r2 => r2.json())
-                .then(stats => {
-                    const detalle = document.getElementById('tirada-detalle');
-                    detalle.innerHTML = ''; // limpiar
-
-                    const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroAleatorio);
-                    if (!tesoro) {
-                        detalle.textContent = 'No se encontró información de este tesoro.';
-                        return;
-                    }
-
-                    // Nombre (sin .png)
-                    let html = `<p><strong>Nombre del objeto:</strong> ${tesoro.nombre.replace(/\.png$/i,'')}</p>`;
-
-                    // Rotura
-                    if (tesoro.rotura) {
-                        const roturaRand = tirarDado(tesoro.rotura);
-                        html += `<p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (resultado: ${roturaRand})</p>`;
-                    }
-
-                    // Valor
-                    if (tesoro.valor) {
-                        html += `<p><strong>Valor del objeto:</strong> ${tesoro.valor}</p>`;
-                    }
-
-                    // Selección
-                    if (tesoro.seleccion) {
-                        const selRand = tirarDado(tesoro.seleccion);
-                        html += `<p><strong>Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p>`;
-
-                        // Buscar en tabla
-                        const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
-                        if (itemTabla) {
-                            html += '<div style="margin-left:1em">';
-                            for (const [k,v] of Object.entries(itemTabla)) {
-                                if (v !== null) {
-                                    html += `<p><strong>${k}:</strong> ${v}</p>`;
-                                }
-                            }
-                            html += '</div>';
-                        }
-                    }
-
-                    detalle.innerHTML = html;
-                });
+               cargarStatsObjeto(tesoroAleatorio);
         });
 }
 
@@ -260,8 +139,99 @@ function cambiarImagenSeleccionadaTesoro2() {
           	document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera_tesoro_superior.png';
 		    document.getElementById('imagen-tesoro-1').src = 'img/traseras/Trasera_tesoro_superior.png';
 		    document.getElementById('imagen-tesoro-2').src = 'img/traseras/Trasera_tesoro_superior.png';
+            const detalle2 = document.getElementById('enemigos-lista');
+                    detalle2.innerHTML = ``; // limpiar
         }
+// Función para bajar la moral
         function BajarMoral(valor){
             const iframe = document.getElementById('iframeMenu');
                         iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
             }
+
+ // Cargar stats y pintar detalles
+ function cargarStatsObjeto(tesoroSeleccionado){
+            fetch('img/stats_tesoros_superiores.json')
+                .then(r2 => r2.json())
+                .then(stats => {
+                   
+                    
+                    
+                    
+                    const detalle2 = document.getElementById('enemigos-lista');
+                    detalle2.innerHTML = ``; // limpiar
+                    const item = document.createElement('div');
+                    item.className = 'enemigo-item';
+                    //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
+                    
+                    const tesoro = stats.Tesoros_Superiores.find(t => t.nombre === tesoroSeleccionado);
+                    if (!tesoro) {
+                        let html = '<div>No se encontró información de este tesoro.</div>';
+                        item.innerHTML = html;
+                    detalle2.appendChild(item);
+                        return;
+                    }
+
+                    // Nombre (sin .png)
+                    let html = `<div><p><strong>Botín:</strong> ${tesoro.nombre.replace(/\.png$/i,'')}</p></div>`;
+                    // Rotura
+                    if (tesoro.rotura) {
+                        const roturaRand = tirarDado(tesoro.rotura);
+                        //html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
+                          html += `<div><p><strong>Rotura del objeto:</strong> ${roturaRand}</p></div>`;
+                    
+                    }
+
+                    // Valor
+                   if (tesoro.valor) {
+    let valorTexto = tesoro.valor;
+
+    // ¿es una tirada de dados tipo "3d100"?
+    if (/^\d+d\d+$/i.test(tesoro.valor)) {
+        const [num, caras] = tesoro.valor.toLowerCase().split("d").map(Number);
+        let total = 0;
+        let tiradas = [];
+        for (let i = 0; i < num; i++) {
+            const t = Math.floor(Math.random() * caras) + 1;
+            total += t;
+            tiradas.push(t);
+        }
+        valorTexto = `${tesoro.valor} → [${tiradas.join(", ")}] = ${total}`;
+    }
+
+    html += `<div><p><strong>Valor del objeto:</strong> ${valorTexto}</p></div>`;
+}
+
+                    // Selección
+                    if (tesoro.seleccion) {
+                        
+                        const selRand = tirarDado(tesoro.seleccion);
+                        if (tesoro.seleccion != "1d1"){
+                        html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p></div>`;
+                    }
+                        // Buscar en tabla
+                        const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
+                        if (itemTabla) {
+                            html += '<div style="margin-left:1em">';
+                            for (const [k,v] of Object.entries(itemTabla)) {
+                                if (v !== null) {
+                                    if (k == "tirada"){}
+                                    else{
+                                    html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;}
+                                }
+                            }
+                            html += '</div>';
+                        }
+                    }
+
+                    //detalle.innerHTML = html;
+                    item.innerHTML = html;
+                    detalle2.appendChild(item);
+
+                    //Reproduccion audio
+                    const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
+                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
+                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+                    
+                   
+                });
+                }
