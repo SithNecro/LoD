@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    
+<!-- Popper.js requerido por Tippy -->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<!-- Tippy.js -->
+<script src="https://unpkg.com/tippy.js@6"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesoros Superior</title>
@@ -142,6 +150,9 @@
             transition: all 0.3s;
             margin-right: 20px;
             margin-left: 20px;
+            display: block;
+            margin: 0 auto;
+            visibility: hidden;
           
 }
 .info-panel {
@@ -213,7 +224,6 @@
 
     <!-- Zona de contenido principal -->
     <div class="main-content">
-
         <!-- Botones en la parte superior izquierda -->
         <div class="top-buttons">
             <button class="btn_abrir_tesoro" onclick="cargarTesoroSuperior()" id="tesoro-btn"></button>
@@ -239,8 +249,10 @@
             <div id="tirada-info" class="tirada-info" style="display:none;">
                     <span id="tirada-detalle" class="objeto-info"></span>
             </div>
-            <div id="enemigos-lista"></div>
-            <button id="btn_coger_tesoro" style="visibility: hidden;" class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
+            <div style="text-align: center;" id="enemigos-lista"></div>
+            <div style="text-align: center;"></div>
+                <button  id="btn_coger_tesoro"  class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
+            </div>        
         </div>
     </div>
             

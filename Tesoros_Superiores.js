@@ -210,13 +210,9 @@ function cambiarImagenSeleccionadaTesoro2() {
 
  // Cargar stats y pintar detalles
  function cargarStatsObjeto(tesoroSeleccionado){
-            fetch('img/stats_tesoros_superiores.json')
+            fetch('img/Tesoros_Superiores/stats_tesoros_superiores.json')
                 .then(r2 => r2.json())
                 .then(stats => {
-                   
-                    
-                    
-                    
                     const detalle2 = document.getElementById('enemigos-lista');
                     //detalle2.innerHTML = ``; // limpiar
                     const item = document.createElement('div');
@@ -261,33 +257,44 @@ function cambiarImagenSeleccionadaTesoro2() {
     html += `<div><p><strong>Valor del objeto:</strong> ${valorTexto}</p></div>`;
 }
 
-                    // Selección
-                    if (tesoro.seleccion) {
-                        
-                        const selRand = tirarDado(tesoro.seleccion);
-                        if (tesoro.seleccion != "1d1"){
-                        html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p></div>`;
-                    }
-                        // Buscar en tabla
-                        const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
-                        if (itemTabla) {
-                            html += '<div style="margin-left:1em">';
-                            for (const [k,v] of Object.entries(itemTabla)) {
-                                if (v !== null) {
-                                    if (k == "tirada"){}
-                                    else{
-                                    html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;}
-                                }
+                     // Selección y tabla
+            if (tesoro.seleccion) {
+                const selRand = tirarDado(tesoro.seleccion);
+                if (tesoro.seleccion != "1d1") {
+                    html += `<div><p><strong style="color: green;">Selección:</strong> ${tesoro.seleccion} (resultado: ${selRand})</p></div>`;
+                }
+
+                const itemTabla = tesoro.tabla.find(e => e.tirada === selRand);
+                if (itemTabla) {
+                    html += '<div style="margin-left:1em">';
+                    const leyendaTexto = itemTabla.Leyenda || null;
+
+                    for (const [k, v] of Object.entries(itemTabla)) {
+                        if (v !== null) {
+                            if (k === "tirada" || k === "Leyenda") continue;
+                            if (k === "Efecto" && leyendaTexto) {
+                                html += `<div><p><strong style="color: green;">${k}:</strong> 
+                                        <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
+                                    </p></div>`;
+                            } else {
+                                html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
-                            html += '</div>';
                         }
                     }
 
-                    //detalle.innerHTML = html;
-                    item.innerHTML = html;
-                    detalle2.appendChild(item);
-
-                    
-                   
-                });
+                    html += '</div>';
                 }
+            }
+
+            item.innerHTML = html;
+            detalle2.appendChild(item);
+
+            // Inicializar Tippy para todos los tooltips creados
+            tippy('.efecto', {
+                allowHTML: true,
+                maxWidth: 400,
+                theme: 'light-border',
+                animation: 'scale'
+            });
+        });
+}

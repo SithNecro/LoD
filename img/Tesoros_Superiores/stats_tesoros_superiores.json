@@ -1,5 +1,42 @@
+
 {
   "Tesoros_Superiores": [
+    {
+      "nombre": "Anillo.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"P/C": null,"Clase": null,"Recarga": null,"Defensa": null,"Peso": null,"Valor": 150,"Efecto": "Puede ser encantado."}
+       ]
+    },
+    {
+      "nombre": "Arco élfico.png",
+      "rotura": "1d2",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "","Daño": "1d10+2","P/C": null,"Clase": 4,"Recarga": 1,"Defensa": null,"Peso": 7,"Valor": 500,"Efecto": "PArm (1)","Leyenda":"Penetración de Armadura, ignora X puntos de armadura."}
+        ]
+    },
+    {
+      "nombre": "Arma a distancia.png",
+      "rotura": "1d4-1",
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Ballesta","Daño":"1d10+3","P/C":"15/6","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 250,"Efecto": null},
+        {"tirada": 2,"Tipo": "Arco Largo","Daño":"1d10","P/C":"10/6","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 100,"Efecto": null},
+        {"tirada": 3,"Tipo": "Pistola Ballesta","Daño":"1d8+1","P/C":"5/2","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 350,"Efecto": null},
+        {"tirada": 4,"Tipo": "Arbalesta","Daño":"3d6","P/C":"20/6","Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 400,"Efecto": null}
+        ]
+    },
+    {
+      "nombre": "Arma contundente.png",
+      "rotura": "1d4-1",
+      "seleccion": "1d2",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Lucero del alba","Daño": "1d8+4","P/C": null,"Clase": 4,"Recarga": null,"Defensa": null,"Peso": 10,"Valor": 150,"Efecto": "Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento."},
+        {"tirada": 2,"Tipo": "Mayal","Daño": "1d10+4","P/C": null,"Clase": 5,"Recarga": null,"Defensa": null,"Peso": 20,"Valor": 150,"Efecto": "Inmanejable, HPA, Aturdir","Leyenda":"<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento."}
+        ]
+    },
     {
       "nombre": "Bastón de mago.png",
       "rotura": "1d4-1",
@@ -17,20 +54,8 @@
         {"tirada": 10,"Tipo": "Gran Bastón de Maná","Daño":null,"Clase":null,"Recarga":null,"Defensa": null,"Peso": null,"Valor": 800,"Efecto": "Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 30 puntos de Maná."}
       ]
     },
-    {
-      "nombre": "Anillo.png",
-      "rotura": null,
-      "valor": "150 Oros",
-      "Peso": 0
-    },
-     {
-      "nombre": "Arco élfico.png",
-      "rotura": "1d2",
-      "seleccion": "1d1",
-      "tabla": [
-        {"tirada": 1,"Daño":"1d10+2","Clase":6,"Recarga":1,"Peso": 7,"Valor": "500 Oros"}
-        ]
-    },
+    
+     
      {
       "nombre": "Collar.png",
       "rotura": null,
