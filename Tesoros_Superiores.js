@@ -38,8 +38,13 @@ function cambiarImagenSeleccionada() {
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`;
+    //Limpiamos el Botín Encontrado
+    const detalle2 = document.getElementById('enemigos-lista');
+    detalle2.innerHTML = ``; // limpiar
     cargarStatsObjeto(tesoroSeleccionado);
-    
+     const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
+                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
+                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
    
 }
 
@@ -80,7 +85,15 @@ function cargarTesoroSuperior() {
             document.getElementById('two-treasures-container').style.display = 'none';
             document.getElementById('single-treasure-container').style.display = 'flex';
 
-               cargarStatsObjeto(tesoroAleatorio);
+               //Limpiamos el Botín Encontrado
+                const detalle2 = document.getElementById('enemigos-lista');
+                detalle2.innerHTML = ``; // limpiar
+                cargarStatsObjeto(tesoroAleatorio);
+                //Reproduccion audio
+                    const nombreAudio = tesoroAleatorio.replace(/\.png$/i, '.mp3');
+                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
+                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+                    
         });
 }
 
@@ -113,8 +126,33 @@ function habilidadBuscatesoros() {
             // Muestra los dos tesoros y sus selectores
             document.getElementById('two-treasures-container').style.display = 'flex';
             document.getElementById('single-treasure-container').style.display = 'none';
+             
+            //Limpiamos el Botín Encontrado
+                const detalle2 = document.getElementById('enemigos-lista');
+                detalle2.innerHTML = ``; // limpiar
+                cargarStatsObjeto(tesoro1);
+                cargarStatsObjeto(tesoro2);
+                reproducirAudiosSecuencial([
+                 tesoro1.replace(/\.png$/i, '.mp3'),
+                 "y_tambien.mp3",
+                 tesoro2.replace(/\.png$/i, '.mp3')
+]);
         })
         .catch(error => console.error('Error al cargar los tesoros:', error));
+}
+function reproducirAudiosSecuencial(audios) {
+    let i = 0;
+    const basePath = "img/Tesoros_Superiores/";
+
+    function playNext() {
+        if (i >= audios.length) return;
+        const audio = new Audio(basePath + audios[i]);
+        i++;
+        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+        audio.addEventListener("ended", playNext);
+    }
+
+    playNext();
 }
 
 // Funciones para cambiar la imagen seleccionada en los selectores individuales
@@ -123,6 +161,10 @@ function cambiarImagenSeleccionadaTesoro1() {
     const imagen = document.getElementById('imagen-tesoro-1');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`; // Ajusta la ruta
+                
+                
+                cargarStatsObjeto(tesoroSeleccionado);
+                cargarStatsObjeto(tesoro2);
 }
 
 function cambiarImagenSeleccionadaTesoro2() {
@@ -130,6 +172,8 @@ function cambiarImagenSeleccionadaTesoro2() {
     const imagen = document.getElementById('imagen-tesoro-2');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Tesoros_Superiores/${tesoroSeleccionado}`; // Ajusta la ruta
+      cargarStatsObjeto(tesoroSeleccionado);
+                cargarStatsObjeto(tesoro2);
 }
 
 
@@ -139,6 +183,9 @@ function cambiarImagenSeleccionadaTesoro2() {
           	document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera_tesoro_superior.png';
 		    document.getElementById('imagen-tesoro-1').src = 'img/traseras/Trasera_tesoro_superior.png';
 		    document.getElementById('imagen-tesoro-2').src = 'img/traseras/Trasera_tesoro_superior.png';
+            document.getElementById('selector-tesoro-0').value = 0;
+            document.getElementById('selector-tesoro-1').value = 0;
+            document.getElementById('selector-tesoro-2').value = 0;
             const detalle2 = document.getElementById('enemigos-lista');
                     detalle2.innerHTML = ``; // limpiar
         }
@@ -158,7 +205,7 @@ function cambiarImagenSeleccionadaTesoro2() {
                     
                     
                     const detalle2 = document.getElementById('enemigos-lista');
-                    detalle2.innerHTML = ``; // limpiar
+                    //detalle2.innerHTML = ``; // limpiar
                     const item = document.createElement('div');
                     item.className = 'enemigo-item';
                     //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
@@ -227,10 +274,6 @@ function cambiarImagenSeleccionadaTesoro2() {
                     item.innerHTML = html;
                     detalle2.appendChild(item);
 
-                    //Reproduccion audio
-                    const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
-                    const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
-                    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
                     
                    
                 });
