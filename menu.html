@@ -147,7 +147,8 @@
             text-shadow: 1px 1px 2px #000;
 
         }
-  .btn_up {
+
+        .btn_up {
             width: 50px;
             height: 50px;
             background: url('img/interface/more.png') no-repeat center center;
@@ -156,7 +157,8 @@
             transition: all 0.3s;
 
         }
-         .btn_less {
+
+        .btn_less {
             width: 50px;
             height: 50px;
             background: url('img/interface/less.png') no-repeat center center;
@@ -164,6 +166,14 @@
             cursor: pointer;
             transition: all 0.3s;
 
+        }
+
+        .img_oro{
+            width: 50px;
+            height: 50px;
+            background: url('img/interface/oro_heroes.png') no-repeat center center;
+            background-size: contain;
+            
         }
     </style>
 </head>
@@ -191,7 +201,8 @@
         </div>
         <div class="section">
             <label>
-                <b>Oro <input id="Dinero" type="number" class="cuadros_texto" value="0" min="0"></b>
+                <img class="img_oro"  width="100%"></img>
+                <b class="fuente">Oro</b> <input id="Dinero" type="number" class="cuadros_texto" value="0" min="0">
 
             </label>
         </div>
@@ -207,11 +218,11 @@
 
             <p id="alerta" class="alerta">Todos Sufren -20 DET</p>
             <div class="fila" style="padding-top: 10px;">
-                <label class="fuente ">Actual.
+                <button id="moralIncrement" class="btn_up"></button>
+                <label class="fuente " style="padding-left: 10px;">Actual.
                     <input id="moralActual" type="number" class="cuadros_texto" value="14" min="1" max="20">
                 </label>
-                <button id="moralIncrement" class="btn_up">+</button>
-                <button id="moralDecrement" class="btn_less">-</button>
+                <button id="moralDecrement" class="btn_less"></button>
             </div>
         </div>
 
@@ -228,25 +239,29 @@
                 <label class="fuente "> Evento Amenaza. </label>
                 <input id="eventoAmenaza" type="number" class="cuadros_texto" value="12" min="1" max="20">
             </div>
-            <div class="fila">
-                <label class="fuente ">
-                    NA. Actual.
-                    <input id="amenazaActual" type="number" class="cuadros_texto" value="7" min="1" max="20">
-                </label>
+            <div class="fila" style="padding-top: 5px;">
+                <button id="amenazaIncrement" class="btn_up"></button>
 
-                <button id="amenazaIncrement" class="btn btn-success btn-sm mt-2">+</button>
-                <button id="amenazaDecrement" class="btn btn-danger btn-sm mt-2">-</button>
+                <label class="fuente " style="padding-left: 5px;">
+                    NA. Actual.
+                </label>
+                <input id="amenazaActual" type="number" class="cuadros_texto" value="7" min="1" max="20">
+
+
+                <button id="amenazaDecrement" class="btn_less"></button>
             </div>
         </div>
-        <div class="nav-buttons">
-            <button class="btn-img" onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tiradas de Amenaza</button>
+        <div class="fila">
+            <button class="fuente" onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tiradas de
+                Amenaza</button>
+                 </div>
             <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_mazmorra.html')"
                 target="_top">Acciones Mazmorras</button>
             <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_travesia.html')"
                 target="_top">Acciones Travesía</button>
             <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('CreacionPersonajes.html')"
                 target="_top">Creación de Héroes</button>
-        </div>
+       
     </div>
 
     <audio id="moralBajaAudio" src="sonidos/moral_baja.mp3" preload="auto"></audio>
