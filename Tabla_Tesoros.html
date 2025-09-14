@@ -191,6 +191,7 @@
 
         <div class="top-buttons">
             <button class="btn_abrir_tesoro" onclick="cargarTesoroLegendario()" id="tesoro-btn"></button>
+            
             <button class="btn_barajar_tesoro" onclick="barajarTesoros()"></button>
             <div class="right-controls">
                 <!-- Imagen y selector del tesoro normal -->
@@ -199,13 +200,22 @@
                 </select>
             </div>
         </div>
+         <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75">
+                <!--//imagen del dado D20-->
+                <div id="result" class="result"></div>
         <!-- Botones en la parte Legendario izquierda -->
         <div class="img_barajar_tesoro treasure-container" id="single-treasure-container">
             <img src="img/traseras/Tabla_Tesoros.png" id="imagen-tesoro" alt="Tesoro Legendario" class="treasure-image">
+            
+              
+            
         </div>
-       
+        <!--<div id="hueco"></div>-->
+
     </div>
     <script src="Tabla_Tesoros.js"></script>
+    <script src="dado.js"></script>
+    <audio id="diceSound" src="sonidos/dados.mp3"></audio>
 </body>
 
 </html>

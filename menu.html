@@ -61,6 +61,18 @@
             /* Reduce el tamaño del texto */
         }
 
+        .btn-sonido {
+            width: 80px;
+            height: 80px;
+            border: 0;
+            cursor: pointer;
+            background: center/contain no-repeat url("img/interface/btn_con_musica.png");
+        }
+
+        .btn-sonido.off {
+            background-image: url("img/interface/btn_sin_musica.png");
+        }
+
         .btn-sm {
             font-size: 14px;
             /* Tamaño más pequeño de texto */
@@ -336,6 +348,8 @@
 
         <div class="section" style="text-align: center;">
             <button class="btn_musica" onclick="window.open('player.html', '_blank')"></button>
+            <button id="btnSonido" class="btn-sonido" onclick="toggleSonido()" aria-pressed="true"
+                aria-label="Sonido activado"></button>
         </div>
 
     </div>
@@ -361,6 +375,38 @@
         const amenazaIncrement = document.getElementById('amenazaIncrement');
         const amenazaDecrement = document.getElementById('amenazaDecrement');
         const eventoAmenazaAudio = document.getElementById('eventoAmenazaAudio');
+
+        let sonidoActivo = true;
+
+        //Esta función es para desactivar los sonidos de tiradas de dado etc o activarlos
+        function aplicarEstado() {
+            const btn = document.getElementById('btnSonido');
+            const sfx = document.getElementById('sfx');
+            btn.classList.toggle('off', !sonidoActivo);
+            btn.setAttribute('aria-pressed', String(sonidoActivo));
+            btn.setAttribute('aria-label', sonidoActivo ? 'Sonido activado' : 'Sonido desactivado');
+            if (sfx) sfx.muted = !sonidoActivo;
+        }
+        // guarda el estado del botón de desactivar sonidos
+        function guardarEstado() { localStorage.setItem('sonido', sonidoActivo ? 'on' : 'off'); }
+        // Carga el estado del botón de desactivar sonidos
+        function cargarEstado() {
+            const pref = localStorage.getItem('sonido');
+            if (pref) sonidoActivo = pref === 'on';
+            aplicarEstado();
+        }
+
+        function toggleSonido() { sonidoActivo = !sonidoActivo; aplicarEstado(); guardarEstado(); }
+
+        function playSfx() { if (!sonidoActivo) return; const sfx = document.getElementById('sfx'); if (sfx) { sfx.currentTime = 0; sfx.play(); } }
+
+
+
+
+
+        function actualizarIcono() { icono.src = sonidoActivo ? 'img/interface/btn_con_musica.png' : 'img/interface/btn_sin_musica.png'; icono.alt = sonidoActivo ? 'Sonido activado' : 'Sonido desactivado'; }
+
+
         // Guardar en localStorage al cambiar los valores
         function saveValues() {
 
@@ -408,7 +454,11 @@
             if (localStorage.getItem('amenazaActual')) {
                 amenazaActual.value = localStorage.getItem('amenazaActual');
             }
-
+            if (localStorage.getItem('sonido')) {
+                const pref = localStorage.getItem('sonido');
+                if (pref) sonidoActivo = pref === 'on';
+                aplicarEstado();
+            }
             checkMoral(); // Verificar la moral cargada
         }
 
@@ -432,7 +482,10 @@
 
                 alerta.style.display = 'block';
                 if (currentMoral == currentMed - 1) {
-                    moralBajaAudio.play();
+                    let ComprobarMute = localStorage.getItem('sonido')
+                    if (ComprobarMute == "on") {
+                        moralBajaAudio.play();
+                    }
                 }
                 // Cambia el fondo a amarillo
                 moralActual.style.backgroundColor = 'orange';
@@ -445,7 +498,10 @@
                 medMoral.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto
             }
             if (currentMoral == 0) {
-                moral0Audio.play();
+                let ComprobarMute = localStorage.getItem('sonido')
+                if (ComprobarMute == "on") {
+                    moral0Audio.play();
+                }
                 alerta.textContent = "Los Héroes deben HUIR de la mazmorra en cuanto estén fuera de combate.";
                 moralActual.style.backgroundColor = 'red';
             }
@@ -460,7 +516,10 @@
                 alerta2.style.display = 'block';
                 amenazaActual.style.backgroundColor = 'orange';
                 eventoAmenaza.style.backgroundColor = 'orange';
-                eventoAmenazaAudio.play();
+                let ComprobarMute = localStorage.getItem('sonido')
+                if (ComprobarMute == "on") {
+                    eventoAmenazaAudio.play();
+                }
             } else {
                 amenazaActual.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto; // correcto
                 eventoAmenaza.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto; // correcto

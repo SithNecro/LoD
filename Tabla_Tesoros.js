@@ -1,11 +1,11 @@
-window.onload = function() {
+window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
     fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Buscar_Objetos;
             const selector = document.getElementById('selector-tesoro-0');
-            
+
 
             // Añadir opciones al selector
             tesoros.forEach(tesoro => {
@@ -26,6 +26,8 @@ function cambiarImagenSeleccionada() {
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Buscar_Objetos/${tesoroSeleccionado}`;
+    tirarDado(10);
+
 }
 
 // Función para cargar una imagen aleatoria
@@ -44,17 +46,32 @@ function cargarTesoroLegendario() {
             // Seleccionar el tesoro en el desplegable
             const selector = document.getElementById('selector-tesoro-0');
             selector.value = tesoroAleatorio;
-// Muestra los dos tesoros y sus selectores
+            // Muestra los dos tesoros y sus selectores
             document.getElementById('single-treasure-container').style.display = 'flex';
+            const hueco = document.getElementById('hueco');
+            //hueco.innerHTML = '<iframe src="Tesoros_Superiores.html" width="700" height="700" loading="lazy" style="border:0;"></iframe>';
 
         });
 }
+function playSound() {
+    var audio = document.getElementById("diceSound");
+    audio.play();
+}
 
- 
+async function tirarDado(caras) {
+    let ComprobarMute = localStorage.getItem('sonido')
+    if (ComprobarMute == "on") {
+        playSound();
+    }
+    rollDice(10, 'dice-image', 'result');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    const valordadoTiradad10 = document.getElementById('result');
+    valordadoTiradad10.style.display = 'none';
+
+}
 
 
-
- // Función para barajar y poner la imagen de trasera del tesoro
-        function barajarTesoros() {
-          	document.getElementById('imagen-tesoro').src = 'img/traseras/Tabla_Tesoros.png';
-        }
+// Función para barajar y poner la imagen de trasera del tesoro
+function barajarTesoros() {
+    document.getElementById('imagen-tesoro').src = 'img/traseras/Tabla_Tesoros.png';
+}
