@@ -147,13 +147,16 @@
             text-shadow: 1px 1px 2px #000;
 
         }
+
+       
     </style>
 </head>
 
 <body>
 
     <div class="menu-lateral">
-        <img src="img/interface/Titulo.png" alt="Guerrero frente a una forja" width="100%" style="padding-top: 10px; padding-bottom: 10px; ">
+        <img src="img/interface/Titulo.png" alt="Guerrero frente a una forja" width="100%"
+            style="padding-top: 10px; padding-bottom: 10px; ">
         <div class="section">
             <table width="100%" align="center" border="1">
                 <tr>
@@ -188,7 +191,7 @@
 
             <p id="alerta" class="alerta">Todos Sufren -20 DET</p>
             <div class="fila">
-                <label class="fuente ">Actual
+                <label class="fuente ">Actual.
                     <input id="moralActual" type="number" class="cuadros_texto" value="14" min="1" max="20">
                 </label>
                 <button id="moralIncrement" class="btn btn-success btn-sm mt-2">+</button>
@@ -205,23 +208,22 @@
                 <input id="maxAmenaza" type="number" class="cuadros_texto" value="20" min="1" max="20">
             </div>
             <p id="alerta2" class="alerta">Aparece un Monstruo errante</p>
-            <div class="fila">
-                <label class="fuente "> Evento Amenaza </label>
+            <div class="fila" style="padding-top: 5px;">
+                <label class="fuente "> Evento Amenaza. </label>
                 <input id="eventoAmenaza" type="number" class="cuadros_texto" value="12" min="1" max="20">
-
             </div>
-            <label class="fuente ">
-                NA. Actual
-                <input id="amenazaActual" type="number" class="cuadros_texto" value="7" min="1" max="20">
-            </label>
+            <div class="fila">
+                <label class="fuente ">
+                    NA. Actual.
+                    <input id="amenazaActual" type="number" class="cuadros_texto" value="7" min="1" max="20">
+                </label>
 
-            <button id="amenazaIncrement" class="btn btn-success btn-sm mt-2">+</button>
-            <button id="amenazaDecrement" class="btn btn-danger btn-sm mt-2">-</button>
+                <button id="amenazaIncrement" class="btn btn-success btn-sm mt-2">+</button>
+                <button id="amenazaDecrement" class="btn btn-danger btn-sm mt-2">-</button>
+            </div>
         </div>
-
         <div class="nav-buttons">
-            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tirada
-                de Amenaza</button>
+            <button class="btn-img" onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tiradas de Amenaza</button>
             <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_mazmorra.html')"
                 target="_top">Acciones Mazmorras</button>
             <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_travesia.html')"
