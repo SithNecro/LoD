@@ -50,7 +50,7 @@ function cargarTesoroLegendario() {
             document.getElementById('single-treasure-container').style.display = 'flex';
             const hueco = document.getElementById('hueco');
             //hueco.innerHTML = '<iframe src="Tesoros_Superiores.html" width="700" height="700" loading="lazy" style="border:0;"></iframe>';
-
+tirarDado(10);
         });
 }
 function playSound() {

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesoros Corriente</title>
+    <title>Asentamientos</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilos para el menú lateral */
@@ -26,16 +28,24 @@
         /* Estilos para el contenido principal */
         .main-content {
             margin-left: 310px;
+            width: 700px;
+            background: rgba(35, 35, 35, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centrar el contenido */
+            justify-content: flex-start;
         }
+
 
         /* Botones en la parte superior */
         .top-buttons {
             display: flex;
             gap: 10px;
-            justify-content: center; /* Centrar los botones */
+            justify-content: center;
+            /* Centrar los botones */
             margin-bottom: 20px;
         }
 
@@ -46,12 +56,13 @@
             align-items: center;
         }
 
-        .img-thumbnail {
-            width: 400px;
+        .treasure-image {
+            width: 290px;
             border-radius: 5%;
         }
 
-        button, select {
+        button,
+        select {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -61,51 +72,102 @@
         /* Contenedor de las dos imágenes en grid */
         .two-treasures-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Dividir en dos columnas */
+            grid-template-columns: 1fr 1fr;
+            /* Dividir en dos columnas */
             gap: 20px;
-            justify-items: center; /* Centrar contenido en cada celda */
+
+            justify-items: center;
+            /* Centrar contenido en cada celda */
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 18px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            appearance: none;
+            color: #d4af37;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
         }
     </style>
 </head>
-<body style="background-image: url('fondo.png'); background-size: cover;">
 
+<body style=" background-image: url('img/interface/fondo_aldea.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
     <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
     </div>
 
+
     <!-- Zona de contenido principal -->
-    <div class="main-content">
-        <!-- Botones en la parte superior centrados
-                <div class="top-buttons">
-                    <button onclick="cargarTesoroCorriente('Asentamiento')" id="tesoro-btn">Sacar Asentamiento</button>
-                    <button onclick="barajarTesoros()">Subir Palancas</button>
-                    <button onclick="cargarTesoroCorriente('Evento')">Sacar Evento Asentamiento</button>
-                </div>
-        -->
-        <br />
+    <div class="main-content" >
+        <!-- Botones en la parte superior centrados -->
+       
+
         <!-- Contenedor de los dos tesoros en un grid -->
         <div class="two-treasures-container" id="two-treasures-container">
             <!-- Primer tesoro -->
-            <div class="treasure-container">
-                <img class="img-thumbnail" src="img/traseras/Asentamientos.png" id="imagen-tesoro-1" alt="Tesoro Corriente"  onclick="cargarTesoroCorriente('Negras')">
-                <select class="form-select" id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
+            <div  class="treasure-container">
+                <img src="img/traseras/Asentamientos.png" id="imagen-tesoro-1" alt="Asentamientos"
+                    class="treasure-image" onclick="cargarTesoroCorriente('Negras')">
+                <select id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
                     <!-- Opciones agregadas dinámicamente por JavaScript -->
                 </select>
             </div>
-            <audio id="palancasAudio" src="sonidos/palancas.MP3" preload="auto"></audio>
             <!-- Segundo tesoro -->
             <div class="treasure-container">
-                <img class="img-thumbnail" src="img/traseras/Asentamientos.png" id="imagen-tesoro-2" alt="Tesoro Corriente" class="treasure-image" onclick="cargarTesoroCorriente('Rojas')">
-                <select class="form-select" id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
+                <img src="img/traseras/Asentamientos.png" id="imagen-tesoro-2" alt="Eventos de Asentamiento"
+                    class="treasure-image" onclick="cargarTesoroCorriente('Rojas')">
+                <select id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
                     <!-- Opciones agregadas dinámicamente por JavaScript -->
                 </select>
             </div>
         </div>
     </div>
 
+
+
     <script src="Asentamiento.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>
