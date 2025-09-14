@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Lateral</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #404040;
             color: white;
+
         }
 
         .menu-lateral {
@@ -20,41 +23,43 @@
             height: 100vh;
             position: fixed;
             background-color: #404040;
-            overflow-y: auto; /* Habilitar barra de scroll vertical */
+            overflow-y: auto;
+            /* Habilitar barra de scroll vertical */
         }
 
-            .menu-lateral h2 {
-                font-family: 'Georgia', serif;
-                margin-bottom: 10px;
-            }
+        .menu-lateral h2 {
+            font-family: 'Georgia', serif;
+            margin-bottom: 10px;
+        }
 
-            .menu-lateral .section {
-                margin-bottom: 20px;
-            }
+        .menu-lateral .section {
+            margin-bottom: 20px;
+        }
 
-            .menu-lateral .nav-buttons button {
-                width: 100%;
-                padding: 10px 20px; /* Reducido padding */
-                margin-top: 10px;
-                border: none;
-                color: white;
-                background-image: linear-gradient(to right, #6c757d, #adb5bd);
-                text-align: center;
-                line-height: normal;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 5px;
-                transition: transform 0.3s ease-in-out;
-            }
+        .menu-lateral .nav-buttons button {
+            width: 100%;
+            padding: 10px 20px;
+            /* Reducido padding */
+            margin-top: 10px;
+            border: none;
+            color: white;
+            background-image: linear-gradient(to right, #6c757d, #adb5bd);
+            text-align: center;
+            line-height: normal;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
 
-                .menu-lateral .nav-buttons button:hover {
-                    background-color: #848b92;
-                }
+        .menu-lateral .nav-buttons button:hover {
+            background-color: #848b92;
+        }
 
-                .menu-lateral .nav-buttons button:active {
-                    transform: scale(0.80);
-                }
+        .menu-lateral .nav-buttons button:active {
+            transform: scale(0.80);
+        }
 
         .alerta {
             color: yellow;
@@ -62,17 +67,27 @@
             display: none;
         }
 
+        .fuente {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
         .form-control-sm {
             width: auto;
             display: inline-block;
             margin-right: 10px;
-            padding: 4px 6px; /* Ajuste el tamaño */
-            font-size: 14px; /* Reduce el tamaño del texto */
+            padding: 4px 6px;
+            /* Ajuste el tamaño */
+            font-size: 14px;
+            /* Reduce el tamaño del texto */
         }
 
         .btn-sm {
-            font-size: 14px; /* Tamaño más pequeño de texto */
-            padding: 4px 10px; /* Reduce el tamaño del botón */
+            font-size: 14px;
+            /* Tamaño más pequeño de texto */
+            padding: 4px 10px;
+            /* Reduce el tamaño del botón */
         }
 
         .music-note-button {
@@ -87,11 +102,54 @@
             cursor: pointer;
         }
 
-            .music-note-button:hover {
-                background-color: #28a745;
-            }
+        .music-note-button:hover {
+            background-color: #28a745;
+        }
+
+        .section {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+        }
+
+        .cuadros_texto {
+            width: 40%;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+            font-weight: bold;
+        }
+
+        .fila {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+
+
+        .texto {
+            color: #d4af37;
+            margin-bottom: 1px;
+            padding-bottom: 1px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+
+        }
     </style>
 </head>
+
 <body>
 
     <div class="menu-lateral">
@@ -102,60 +160,73 @@
                         <button class="btn btn-primary btn-sm" onclick="window.history.back()">Back &#x21A9;</button>
                     </td>
                     <td align="left">
-                        <button class="btn btn-success btn-sm" onclick="window.open('player.html', '_blank')">Música &#9835;</button>
+                        <button class="btn btn-success btn-sm" onclick="window.open('player.html', '_blank')">Música
+                            &#9835;</button>
                     </td>
                     <td align="left">
-                        <label>
-                            <b>Oro.<input id="Dinero" type="number" class="form-control form-control-sm" value="0" min="0"></b>
-                            
-                        </label>
+
                     </td>
                 </tr>
             </table>
-
-            <h2>Moral del Grupo</h2>
-
-            <div class="input-group mb-3">
-                <label for="maxMoral" class="form-label">Max.</label>
-                <input id="maxMoral" type="number" class="form-control form-control-sm" value="18" min="1" max="20">
-                <label for="medMoral" class="form-label">Med.</label>
-                <input id="medMoral" type="number" class="form-control form-control-sm" value="9" readonly>
-            </div>
-            <p id="alerta" class="alerta">Todos Sufren -20 DET</p>
+        </div>
+        <div class="section">
             <label>
-                Moral Actual
-                <input id="moralActual" type="number" class="form-control form-control-sm" value="14" min="1" max="20">
+                <b>Oro <input id="Dinero" type="number" class="cuadros_texto" value="0" min="0"></b>
+
             </label>
-            <button id="moralIncrement" class="btn btn-success btn-sm mt-2">+</button>
-            <button id="moralDecrement" class="btn btn-danger btn-sm mt-2">-</button>
+        </div>
+        <div class="section">
+            <h2 class="texto">Moral del Grupo</h2>
+            <div class="fila">
+                <label for="maxMoral" class="fuente ">Max.</label>
+                <input id="maxMoral" type="number" class="cuadros_texto" value="18" min="1" max="20">
+
+                <label for="medMoral" class="fuente " style="padding-left: 5px;">Med.</label>
+                <input id="medMoral" type="number" class="cuadros_texto" value="9" readonly>
+            </div>
+
+            <p id="alerta" class="alerta">Todos Sufren -20 DET</p>
+            <div class="fila">
+                <label class="fuente ">Actual
+                    <input id="moralActual" type="number" class="cuadros_texto" value="14" min="1" max="20">
+                </label>
+                <button id="moralIncrement" class="btn btn-success btn-sm mt-2">+</button>
+                <button id="moralDecrement" class="btn btn-danger btn-sm mt-2">-</button>
+            </div>
         </div>
 
         <div class="section">
-            <h2>Nivel de Amenaza</h2>
-            <div class="input-group mb-3">
-                <label for="minAmenaza" class="form-label">Min.</label>
-                <input id="minAmenaza" type="number" class="form-control form-control-sm" value="2" min="1" max="20">
-                <label for="maxAmenaza" class="form-label">Max.</label>
-                <input id="maxAmenaza" type="number" class="form-control form-control-sm" value="20" min="1" max="20">
+            <h2 class="texto">Nivel de Amenaza</h2>
+            <div class="fila">
+                <label for="minAmenaza" class="fuente">Min.</label>
+                <input id="minAmenaza" type="number" class="cuadros_texto" value="2" min="1" max="20">
+                <label for="maxAmenaza" style="padding-left: 5px;" class="fuente">Max.</label>
+                <input id="maxAmenaza" type="number" class="cuadros_texto" value="20" min="1" max="20">
             </div>
             <p id="alerta2" class="alerta">Aparece un Monstruo errante</p>
-            <label>
-                Evento de Amenaza
-                <input id="eventoAmenaza" type="number" class="form-control form-control-sm" value="12" min="1" max="20">
-            </label><br><br>
-            <label>
+            <div class="fila">
+                <label class="fuente "> Evento Amenaza </label>
+                <input id="eventoAmenaza" type="number" class="cuadros_texto" value="12" min="1" max="20">
+
+            </div>
+            <label class="fuente ">
                 NA. Actual
-                <input id="amenazaActual" type="number" class="form-control form-control-sm" value="7" min="1" max="20">
+                <input id="amenazaActual" type="number" class="cuadros_texto" value="7" min="1" max="20">
             </label>
+
             <button id="amenazaIncrement" class="btn btn-success btn-sm mt-2">+</button>
             <button id="amenazaDecrement" class="btn btn-danger btn-sm mt-2">-</button>
         </div>
 
         <div class="nav-buttons">
-            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tirada de Amenaza</button>
-            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_mazmorra.html')" target="_top">Acciones Mazmorras</button>
-            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_travesia.html')" target="_top">Acciones Travesía</button>
-            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('CreacionPersonajes.html')" target="_top">Creación de Héroes</button>
+            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Tirada_amenaza.html')" target="_top">Tirada
+                de Amenaza</button>
+            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_mazmorra.html')"
+                target="_top">Acciones Mazmorras</button>
+            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('Acciones_de_travesia.html')"
+                target="_top">Acciones Travesía</button>
+            <button class="btn btn-primary btn-sm" onclick="saveAndNavigate('CreacionPersonajes.html')"
+                target="_top">Creación de Héroes</button>
         </div>
     </div>
 
@@ -254,18 +325,18 @@
                     moralBajaAudio.play();
                 }
                 // Cambia el fondo a amarillo
-                moralActual.style.backgroundColor = 'yellow';
-                medMoral.style.backgroundColor = 'yellow';
+                moralActual.style.backgroundColor = 'orange';
+                medMoral.style.backgroundColor = 'orange';
             } else {
                 alerta.style.display = 'none';
                 moralBajaAudio.pause();
                 moralBajaAudio.currentTime = 0;
-                moralActual.style.backgroundColor = 'white';
-                medMoral.style.backgroundColor = 'white';
+                moralActual.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto
+                medMoral.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto
             }
             if (currentMoral == 0) {
                 moral0Audio.play();
-                alerta.textContent = "Los Héroes deben HUIR de la mazmorra en cuanto estén fuera de combates.";
+                alerta.textContent = "Los Héroes deben HUIR de la mazmorra en cuanto estén fuera de combate.";
                 moralActual.style.backgroundColor = 'red';
             }
         }
@@ -281,8 +352,8 @@
                 eventoAmenaza.style.backgroundColor = 'orange';
                 eventoAmenazaAudio.play();
             } else {
-                amenazaActual.style.backgroundColor = 'white';
-                eventoAmenaza.style.backgroundColor = 'white';
+                amenazaActual.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto; // correcto
+                eventoAmenaza.style.backgroundColor = 'rgba(40, 40, 40, 0.9)'; // correcto; // correcto
                 alerta2.style.display = 'none';
                 eventoAmenazaAudio.pause();
                 eventoAmenazaAudio.currentTime = 0;
@@ -399,4 +470,5 @@
     </script>
 
 </body>
+
 </html>
