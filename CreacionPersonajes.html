@@ -75,11 +75,8 @@
         .rigth-content {
 
             width: 700px;
-            background: rgba(35, 35, 35, 0.7);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid #8B4513;
             align-items: center;
             display: flex;
             flex-direction: column;
@@ -186,6 +183,12 @@
             appearance: none;
 
         }
+
+        
+.menu.open~.main-div {
+    margin-left: 0px;
+    /* se desplaza cuando menú está abierto */
+}
     </style>
 </head>
 
@@ -201,7 +204,6 @@
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
-    <div style="display: flex;">
         <!-- Zona de contenido principal -->
         <div class="main-content">
             <!-- Columna izquierda (FAQ) con ancho fijo de 300px y centrado arriba -->
@@ -360,7 +362,7 @@
                 </select>
 
 
-        </div>
+        
 
 
         <!-- Columna derecha (Trampas) que toma el resto del espacio, alineado arriba a la izquierda -->
@@ -468,7 +470,7 @@
 
             </div>
         </div>
-    </div>
+        </div>
     <script>
         const raceStats = {
             "Enano": { strength: 40, constitution: 30, dexterity: 25, wisdom: 25, determination: 30, vitality: "1d6+8" },
