@@ -23,18 +23,19 @@
 
 /* ===== BOTÓN DEL MENÚ ===== */
 #toggleMenu {
+    border: 2px solid #a0522d;
     position: absolute;
     top: 0;
-    right: -100px;
+    right: -65px;
     /* sobresale fuera del menú */
-    width: 100px;
-    height: 100px;
-    border: none;
-    background: #8B4513;
+    width: 75px;
+    height: 75px;
+    
+    background: rgba(35, 35, 35, 0.7);
     color: white;
     font-size: 2rem;
     cursor: pointer;
-    border-radius: 0 8px 8px 0;
+    border-radius: 8px 8px 8px 8px;
     z-index: 1100;
     transition: background 0.3s;
 }

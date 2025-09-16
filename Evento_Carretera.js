@@ -1,11 +1,11 @@
-window.onload = function() {
+window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
     fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Evento_Carretera;
             const selector = document.getElementById('selector-tesoro-0');
-            
+
 
             // Añadir opciones al selector
             tesoros.forEach(tesoro => {
@@ -26,7 +26,12 @@ function cambiarImagenSeleccionada() {
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Evento_Carretera/${tesoroSeleccionado}`;
+    urlaudio = `${tesoroSeleccionado}`
+    urlaudio = urlaudio.replace(".png", ".mp3");
+    const audio = new Audio(`img/Evento_Carretera/${urlaudio}`);
+    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
 }
+
 
 // Función para cargar una imagen aleatoria
 function cargarTesoroLegendario() {
@@ -44,17 +49,33 @@ function cargarTesoroLegendario() {
             // Seleccionar el tesoro en el desplegable
             const selector = document.getElementById('selector-tesoro-0');
             selector.value = tesoroAleatorio;
-// Muestra los dos tesoros y sus selectores
+            // Muestra los dos tesoros y sus selectores
             document.getElementById('single-treasure-container').style.display = 'flex';
-
+            urlaudio = `${tesoroAleatorio}`
+            urlaudio = urlaudio.replace(".png", ".mp3");
+            const audio = new Audio(`img/Evento_Carretera/${urlaudio}`);
+            audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
         });
 }
 
- 
+function reproducirAudiosSecuencial(audios) {
+    let i = 0;
+    const basePath = "img/Tesoros_Superiores/";
+
+    function playNext() {
+        if (i >= audios.length) return;
+        const audio = new Audio(basePath + audios[i]);
+        i++;
+        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+        audio.addEventListener("ended", playNext);
+    }
+
+    playNext();
+}
 
 
 
- // Función para barajar y poner la imagen de trasera del tesoro
-        function barajarTesoros() {
-          	document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera Carretera.png';
-        }
+// Función para barajar y poner la imagen de trasera del tesoro
+function barajarTesoros() {
+    document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera Carretera.png';
+}
