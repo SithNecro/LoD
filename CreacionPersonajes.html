@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,22 @@
     <style>
         /* Diseño básico */
         #generarPDF {
-            width: 150px; /* Ajusta el ancho según sea necesario */
-            height: 150px; /* Ajusta la altura según sea necesario */
+            width: 150px;
+            /* Ajusta el ancho según sea necesario */
+            height: 150px;
+            /* Ajusta la altura según sea necesario */
             background-image: url('./img/traseras/downloadPDF.png');
-            background-size: cover; /* Escala la imagen para cubrir todo el botón */
+            background-size: cover;
+            /* Escala la imagen para cubrir todo el botón */
             background-repeat: no-repeat;
             background-position: center;
-            border: none; /* Elimina el borde del botón */
-            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            border: none;
+            /* Elimina el borde del botón */
+            cursor: pointer;
+            /* Cambia el cursor al pasar sobre el botón */
         }
 
-       
+
 
         .reroll-button {
             background-color: green;
@@ -28,36 +34,21 @@
             cursor: pointer;
         }
 
-        .container {
-            display: flex;
-            width: 100%;
-        }
-
-      
-
-       
-
-        h2 {
-            margin-top: 0;
-        }
-
         .stat {
             margin-bottom: 5px;
         }
 
-        .character-preview {
-            padding: 5px;
-            border: 1px solid #ccc;
-            /*background-color: #f9f9f9;*/
-            width: 100%;
-        }
+
 
         .roll-select option.available {
-            color: green;
+            color: #148e14;
+            font-weight: bold;
         }
 
         .roll-select option.unavailable {
             color: red;
+            font-weight: bold;
+
         }
 
         table.stats-table {
@@ -65,16 +56,18 @@
             border-collapse: collapse;
         }
 
-            table.stats-table th, table.stats-table td {
-                border: 1px solid #ccc;
-                padding: 2px;
-                text-align: center;
-            }
-        body {
-            font-size: 12px;
-            margin: 0;
-            padding: 0;
+        table.stats-table th,
+        table.stats-table td {
+            border: 2px solid #9d5c48;
+            padding: 2px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
         }
+
+
+
         /* Estilos para el menú lateral */
         .menu {
             position: fixed;
@@ -83,289 +76,419 @@
             height: 100%;
             width: 300px;
         }
+
         .menu-frame {
             width: 100%;
             height: 100%;
             border: none;
         }
+.rigth-content{
+      
+            width: 700px;
+            background: rgba(35, 35, 35, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+}
         /* Estilos para el contenido principal */
         .main-content {
             margin-left: 310px;
-            padding: 10px;
-            /* height: 100vh;*/
-            flex-direction: column;
+            width: 700px;
+            background: rgba(35, 35, 35, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+
             display: flex;
-            width: 40%;
+            flex-direction: column;
             justify-content: flex-start;
         }
-        /* Columna izquierda con ancho fijo de 300px y centrado arriba */
-        .column-left {
-            width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centrado horizontal */
-            justify-content: flex-start; /* Alineado arriba */
-            margin-right: 10px; /* Margen de 10px a la derecha */
-        }
-        .column-left img {
-            width: 300px; /* Ancho de la imagen FAQ igual a la columna */
-            border-radius: 5%;
-            margin-bottom: 20px;
-        }
-        /* Columna derecha que toma el resto del espacio y se alinea arriba a la izquierda */
-        .column-right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* Alineado arriba */
-            text-align: left; /* Texto y elementos alineados a la izquierda */
-            padding-top: 0px; /* Eliminar cualquier espaciado superior */
-        }
+
         .buttons {
-            margin-top: 10px; /* Reducir el espacio entre la imagen y los botones */
+            margin-top: 10px;
+            /* Reducir el espacio entre la imagen y los botones */
         }
-        button, select {
+
+        button {
             padding: 5px 5px;
             font-size: 12px;
             cursor: pointer;
-            margin: 5px 0; /* Reducir el margen vertical */
+            margin: 5px 0;
+            /* Reducir el margen vertical */
+
         }
-        /* Selector y botones debajo de la imagen de trampas */
-        .trampas-container {
-            display: flex;
-            flex-direction: column;
-            /*align-items: flex-start;*/ /* Alineado a la izquierda */
+
+        .cuadros_texto {
+            width: 100%;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+            font-weight: bold;
+            height: 30px;
         }
-        
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            appearance: none;
+            font-weight: bold;
+        }
+
+
+
+        h1 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .character-preview {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            width: 100%;
+        }
+
+        label {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            font-weight: bold;
+        }
+
+        p {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            font-weight: bold;
+        }
+
+        .btn_tirada {
+
+            width: 120px;
+            height: 120px;
+            background: url(img/interface/btn_lanzar_dados.png) no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+
+        }
     </style>
 </head>
-<body style="background-image: url('fondo.png'); background-size: cover;">
 
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
     <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe id="iframeMenu" src="menu.html" frameborder="0" class="menu-frame"></iframe>
     </div>
+    <div style="display: flex;">
+        <!-- Zona de contenido principal -->
+        <div class="main-content">
+            <!-- Columna izquierda (FAQ) con ancho fijo de 300px y centrado arriba -->
 
-    <!-- Zona de contenido principal -->
-    <div class="main-content">
-        <!-- Columna izquierda (FAQ) con ancho fijo de 300px y centrado arriba -->
+            <h1>Creación del Personaje</h1>
+            <div class="stat">
+                <label for="Name">Nombre:</label>
+                <input class="cuadros_texto" id="Name" />
+                <label for="race">Raza:</label>
+                <select id="race" onchange="loadBaseStats()">
+                    <option value="Enano">Enano</option>
+                    <option value="Elfo">Elfo</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Humano">Humano</option>
+                    <option value="Semiogro">Semiogro</option>
+                    <option value="Pato">Pato</option>
+                </select>
 
-        <h2>Creación del Personaje</h2>
-        <div class="stat">
-            <label for="Name">Nombre:</label>
-            <input id="Name" />
-            <label for="race">Raza:</label>
-            <select id="race" onchange="loadBaseStats()">
-                <option value="Enano">Enano</option>
-                <option value="Elfo">Elfo</option>
-                <option value="Mediano">Mediano</option>
-                <option value="Humano">Humano</option>
-                <option value="Semiogro">Semiogro</option>
-                <option value="Pato">Pato</option>
-            </select>
-
-        </div>
-        <div class="stat">
-            <label><input type="checkbox" id="advantageOption" onchange="toggleAdvantage()"> Opción ventajosa</label>
-            <button onclick="generateRolls()">Generar Tiradas</button>
-        </div>
-        <!-- Atributos Base en Tabla -->
-        <h3 id="estadisticasbaseh3" style="display: none;">Estadísticas Base</h3>
-        <div id="statics" class="stat" style="display: none;">
-            <label for="class">Clase:</label>
-            <select id="classSelect" onchange="updateClassStats()">
-                <option value="SeleccionaClase">Selecciona la Clase</option>
-                <option value="Alquimista">Alquimista</option>
-                <option value="Bárbaro">Bárbaro</option>
-                <option value="Guerrero">Guerrero</option>
-                <option value="Ladrón">Ladrón</option>
-                <option value="Mago">Mago</option>
-                <option value="Montaraz">Montaraz</option>
-                <option value="Pícaro">Pícaro</option>
-                <option value="Sacerdote Guerrero">Sacerdote Guerrero</option>
-                <option value="Druida">Druida</option>
-                <option value="Caballero">Caballero</option>
-            </select>
-        </div>
-        <table id="stats-table" class="stats-table" style="display: none;">
-            <thead>
-                <tr>
-                    <th>FUE</th>
-                    <th>CON</th>
-                    <th>DES</th>
-                    <th>SAB</th>
-                    <th>DET</th>
-                    <th>VIT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="base-values">
-                    <td id="base-strength">-</td>
-                    <td id="base-constitution">-</td>
-                    <td id="base-dexterity">-</td>
-                    <td id="base-wisdom">-</td>
-                    <td id="base-determination">-</td>
-                    <td id="base-vitality">-</td>
-                </tr>
-                <tr id="roll-selectors" style="display: none;">
-                    <td><select id="select-strength" class="roll-select" onchange="updateAdjustedStats()"></select></td>
-                    <td><select id="select-constitution" class="roll-select" onchange="updateAdjustedStats()"></select></td>
-                    <td><select id="select-dexterity" class="roll-select" onchange="updateAdjustedStats()"></select></td>
-                    <td><select id="select-wisdom" class="roll-select" onchange="updateAdjustedStats()"></select></td>
-                    <td><select id="select-determination" class="roll-select" onchange="updateAdjustedStats()"></select></td>
-                    <td id="roll-vitality">-</td>
-                </tr>
-                <tr id="roll-values" style="display: none;">
-                    <td id="roll-strength">-</td>
-                    <td id="roll-constitution">-</td>
-                    <td id="roll-dexterity">-</td>
-                    <td id="roll-wisdom">-</td>
-                    <td id="roll-determination">-</td>
-                    <td id="roll-vitality-2">-</td>
-                </tr>
-                <tr>
-                    <td colspan="6" id="reroll-points" style="text-align: center;"><strong>Puedes relanzar hasta 2 dados (Se mantendrá el valor más alto)</strong></td>
-                </tr>
-                <tr id="reroll-values">
-                    <td id="roll-strength"><button id="reroll-btn-strength" class="reroll-button" style="background-color: green;" onclick="rerollStat('strength', 'strength')">↻</button></td>
-                    <td id="roll-constitution"><button id="reroll-btn-constitution" class="reroll-button" style="background-color: green;" onclick="rerollStat('constitution', 'constitution')">↻</button></td>
-                    <td id="roll-dexterity"><button id="reroll-btn-dexterity" class="reroll-button" style="background-color: green;" onclick="rerollStat('dexterity', 'dexterity')">↻</button></td>
-                    <td id="roll-wisdom"><button id="reroll-btn-wisdom" class="reroll-button" style="background-color: green;" onclick="rerollStat('wisdom', 'wisdom')">↻</button></td>
-                    <td id="roll-determination"><button id="reroll-btn-determination" class="reroll-button" style="background-color: green;" onclick="rerollStat('determination', 'determination')">↻</button></td>
-                    <td id="roll-vitality-2"><button id="reroll-btn-vitality-2" class="reroll-button" style="background-color: green;" onclick="rerollStat('vitality-2', 'vitality-2')">↻</button></td>
-                </tr>
-
-                <tr>
-                    <td colspan="6" id="remaining-points" style="text-align: center;"><strong>Distribuye 15 puntos adicionales</strong></td>
-                </tr>
-                <tr>
-                    <td>  <input type="number" id="extra-strength" value="0" min="0" max="10" onchange="updateExtraPoints()"> </td>
-                    <td>  <input type="number" id="extra-constitution" value="0" min="0" max="10" onchange="updateExtraPoints()"> </td>
-                    <td>  <input type="number" id="extra-dexterity" value="0" min="0" max="10" onchange="updateExtraPoints()"> </td>
-                    <td>  <input type="number" id="extra-wisdom" value="0" min="0" max="10" onchange="updateExtraPoints()"> </td>
-                    <td>  <input type="number" id="extra-determination" value="0" min="0" max="10" onchange="updateExtraPoints()"> </td>
-                    <td id="extra-vitality">-</td>
-                </tr>
-                <tr>
-                    <td colspan="6" id="totallabel-points" style="text-align: center;"><strong>ESTADÍSTICAS TOTALES</strong></td>
-                </tr>
-                <tr>
-                    <td><span id="final-strength">-</span></td>
-                    <td><span id="final-constitution">-</span></td>
-                    <td><span id="final-dexterity">-</span></td>
-                    <td><span id="final-wisdom">-</span></td>
-                    <td><span id="final-determination">-</span></td>
-                    <td><span id="final-vitality">-</span></td>
-                </tr>
-            </tbody>
-        </table>
-        <br />
-        <!-- Select para seleccionar valores negativos de la clase -->
-        <label for="class">Selecciona un atributo en desventaja para sumarle +10</label>
-        <select style="display: none;" onchange="applyNegativeBonus()" id="classNegative">
-            <option value="">Selecciona un atributo...</option>
-        </select>
-
-
-    </div>
-
-
-    <!-- Columna derecha (Trampas) que toma el resto del espacio, alineado arriba a la izquierda -->
-    <div class="column-right trampas-container">
-        <!-- Botones encima de la imagen de trampas -->
-        <!-- Imagen con fondo transparente -->
-        <img src="./img/goblin_dibujante.png" alt="Goblin Dibujante" id="goblinImage" style="align-items: center ;width: 100%; height: auto; align-content: center">
-
-        <h2>Vista Previa del Personaje</h2>
-        <div id="character-preview" style="display: none;" class="character-preview">
-            <p><strong>Raza:</strong> <span id="preview-race">-</span></p>
-            <table class="stats-table">
-                <thead>
-
-                    <tr>
-                        <th>FUE</th>
-                        <th>CON</th>
-                        <th>DES</th>
-                        <th>SAB</th>
-                        <th>DET</th>
-                        <th>VIT</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="base-values">
-                        <td id="preview-strength">-</td>
-                        <td id="preview-constitution">-</td>
-                        <td id="preview-dexterity">-</td>
-                        <td id="preview-wisdom">-</td>
-                        <td id="preview-determination">-</td>
-                        <td id="preview-vitality">-</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong>Clase:</strong> <span id="preview-class">-</span></p>
-            <h3>Estadísticas de Combate</h3>
-            <table class="stats-table">
-                <thead>
-                    <tr>
-                        <th>HC</th>
-                        <th>HD</th>
-                        <th>ESQ</th>
-                        <th>FC</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="preview-HC">-</td>
-                        <td id="preview-HD">-</td>
-                        <td id="preview-ESQ">-</td>
-                        <td id="preview-FC">-</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="stats-table">
-                <thead>
-                    <tr><th>AA</th><th>TRU</th><th>CU</th><th>ALQ</th><th>PER</th><th>MANA</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="preview-AA">-</td>
-                        <td id="preview-TRU">-</td>
-                        <td id="preview-CU">-</td>
-                        <td id="preview-ALQ">-</td>
-                        <td id="preview-PER">-</td>
-                        <td id="preview-MANA">-</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="stats-table">
-                <thead>
-                    <tr>
-                        <th>SUP</th>
-                        <th>BD</th>
-                        <th>AN</th>
-                        <th>ENR</th>
-                        <th>MOV</th>
-                        <th>COR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="preview-SUP">-</td>
-                        <td id="preview-BD">-</td>
-                        <td id="preview-AN">-</td>
-                        <td id="preview-ENR">1</td>
-                        <td id="preview-MOV">4</td>
-                        <td id="preview-COR">8</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="display: flex; justify-content: center; align-items: center; height: 200px; border: 1px solid #ccc;">
-
-                <button id="generarPDF" onclick="exportPdf()"></button>
             </div>
+            <div>
+                <label><input type="checkbox" id="advantageOption" onchange="toggleAdvantage()"> Opción
+                    ventajosa</label>
+            </div>
+            <div class="stat">
+                <button class="btn_tirada" onclick="generateRolls()"></button>
+            </div>
+            <!-- Atributos Base en Tabla -->
+            <h1 id="estadisticasbaseh3" style="display: none;">Estadísticas Base</h3>
+                <div id="statics" class="stat" style="display: none;">
+                    <label for="class">Clase:</label>
+                    <select id="classSelect" onchange="updateClassStats()">
+                        <option value="SeleccionaClase">Selecciona la Clase</option>
+                        <option value="Alquimista">Alquimista</option>
+                        <option value="Bárbaro">Bárbaro</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Ladrón">Ladrón</option>
+                        <option value="Mago">Mago</option>
+                        <option value="Montaraz">Montaraz</option>
+                        <option value="Pícaro">Pícaro</option>
+                        <option value="Sacerdote Guerrero">Sacerdote Guerrero</option>
+                        <option value="Druida">Druida</option>
+                        <option value="Caballero">Caballero</option>
+                    </select>
+                </div>
+                <table id="stats-table" class="stats-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>FUE</th>
+                            <th>CON</th>
+                            <th>DES</th>
+                            <th>SAB</th>
+                            <th>DET</th>
+                            <th>VIT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="base-values">
+                            <td id="base-strength">-</td>
+                            <td id="base-constitution">-</td>
+                            <td id="base-dexterity">-</td>
+                            <td id="base-wisdom">-</td>
+                            <td id="base-determination">-</td>
+                            <td id="base-vitality">-</td>
+                        </tr>
+                        <tr id="roll-selectors" style="display: none;">
+                            <td><select id="select-strength" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select></td>
+                            <td><select id="select-constitution" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select>
+                            </td>
+                            <td><select id="select-dexterity" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select>
+                            </td>
+                            <td><select id="select-wisdom" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select></td>
+                            <td><select id="select-determination" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select>
+                            </td>
+                            <td id="roll-vitality">-</td>
+                        </tr>
+                        <tr id="roll-values" style="display: none;">
+                            <td id="roll-strength">-</td>
+                            <td id="roll-constitution">-</td>
+                            <td id="roll-dexterity">-</td>
+                            <td id="roll-wisdom">-</td>
+                            <td id="roll-determination">-</td>
+                            <td id="roll-vitality-2">-</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" id="reroll-points" style="text-align: center;"><strong>Puedes relanzar hasta
+                                    2 dados
+                                    (Se mantendrá el valor más alto)</strong></td>
+                        </tr>
+                        <tr id="reroll-values">
+                            <td id="roll-strength"><button id="reroll-btn-strength" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('strength', 'strength')">↻</button>
+                            </td>
+                            <td id="roll-constitution"><button id="reroll-btn-constitution" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('constitution', 'constitution')">↻</button></td>
+                            <td id="roll-dexterity"><button id="reroll-btn-dexterity" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('dexterity', 'dexterity')">↻</button>
+                            </td>
+                            <td id="roll-wisdom"><button id="reroll-btn-wisdom" class="reroll-button"
+                                    style="background-color: green;" onclick="rerollStat('wisdom', 'wisdom')">↻</button>
+                            </td>
+                            <td id="roll-determination"><button id="reroll-btn-determination" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('determination', 'determination')">↻</button></td>
+                            <td id="roll-vitality-2"><button id="reroll-btn-vitality-2" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('vitality-2', 'vitality-2')">↻</button>
+                            </td>
+                        </tr>
 
+                        <tr>
+                            <td colspan="6" id="remaining-points" style="text-align: center;"><strong>Distribuye 15
+                                    puntos
+                                    adicionales</strong></td>
+                        </tr>
+                        <tr>
+                            <td> <input class="cuadros_texto" type="number" id="extra-strength" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-constitution" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-dexterity" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-wisdom" value="0" min="0" max="10"
+                                    onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-determination" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td id="extra-vitality">-</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" id="totallabel-points" style="text-align: center;"><strong>ESTADÍSTICAS
+                                    TOTALES</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span id="final-strength">-</span></td>
+                            <td><span id="final-constitution">-</span></td>
+                            <td><span id="final-dexterity">-</span></td>
+                            <td><span id="final-wisdom">-</span></td>
+                            <td><span id="final-determination">-</span></td>
+                            <td><span id="final-vitality">-</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <!-- Select para seleccionar valores negativos de la clase -->
+                <label for="class">Selecciona un atributo en desventaja para sumarle +10</label>
+                <select style="display: none;" onchange="applyNegativeBonus()" id="classNegative">
+                    <option value="">Selecciona un atributo...</option>
+                </select>
+
+
+        </div>
+
+
+        <!-- Columna derecha (Trampas) que toma el resto del espacio, alineado arriba a la izquierda -->
+        <div class="rigth-content ">
+            <!-- Botones encima de la imagen de trampas -->
+            <!-- Imagen con fondo transparente -->
+            <img src="./img/goblin_dibujante.png" alt="Goblin Dibujante" id="goblinImage"
+                style="align-items: center ;width: 50%; height: auto; align-content: center">
+
+            <h1>Vista Previa del Personaje</h1>
+            <div id="character-preview" style="display: none;" class="character-preview">
+                <p style="etiquetas"><strong style="etiquetas">Raza:</strong> <span id="preview-race">-</span></p>
+                <table class="stats-table">
+                    <thead>
+
+                        <tr>
+                            <th>FUE</th>
+                            <th>CON</th>
+                            <th>DES</th>
+                            <th>SAB</th>
+                            <th>DET</th>
+                            <th>VIT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="base-values">
+                            <td id="preview-strength">-</td>
+                            <td id="preview-constitution">-</td>
+                            <td id="preview-dexterity">-</td>
+                            <td id="preview-wisdom">-</td>
+                            <td id="preview-determination">-</td>
+                            <td id="preview-vitality">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Clase:</strong> <span id="preview-class">-</span></p>
+                <h3>Estadísticas de Combate</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>HC</th>
+                            <th>HD</th>
+                            <th>ESQ</th>
+                            <th>FC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="preview-HC">-</td>
+                            <td id="preview-HD">-</td>
+                            <td id="preview-ESQ">-</td>
+                            <td id="preview-FC">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>AA</th>
+                            <th>TRU</th>
+                            <th>CU</th>
+                            <th>ALQ</th>
+                            <th>PER</th>
+                            <th>MANA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="preview-AA">-</td>
+                            <td id="preview-TRU">-</td>
+                            <td id="preview-CU">-</td>
+                            <td id="preview-ALQ">-</td>
+                            <td id="preview-PER">-</td>
+                            <td id="preview-MANA">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>SUP</th>
+                            <th>BD</th>
+                            <th>AN</th>
+                            <th>ENR</th>
+                            <th>MOV</th>
+                            <th>COR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="preview-SUP">-</td>
+                            <td id="preview-BD">-</td>
+                            <td id="preview-AN">-</td>
+                            <td id="preview-ENR">1</td>
+                            <td id="preview-MOV">4</td>
+                            <td id="preview-COR">8</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div
+                    style="display: flex; justify-content: center; align-items: center; height: 200px; border: 1px solid #ccc;">
+
+                    <button id="generarPDF" onclick="exportPdf()"></button>
+                </div>
+
+            </div>
         </div>
     </div>
     <script>
@@ -458,7 +581,7 @@
             document.getElementById('character-preview').style.display = 'table';
             document.getElementById('statics').style.display = 'table';
             document.getElementById('goblinImage').style.display = 'none';
-            
+
 
 
             rolls = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10) + 1);
@@ -496,6 +619,8 @@
                 button.style.display = 'inline-block'; // Muestra los botones
                 button.style.backgroundColor = 'green'; // Fondo verde
                 button.disabled = false; // Asegura que los botones estén habilitados
+                document.getElementById("reroll-points").textContent = 'Puedes relanzar hasta 2 dados (Se mantendrá el valor más alto)';
+
             });
             remainingRerolls = 2; // Reinicia el contador de rerolls permitidos
         }
@@ -574,6 +699,9 @@
                     // Oculta todos los botones restantes
                     const rerollButtons = document.querySelectorAll('.reroll-button');
                     rerollButtons.forEach(button => button.style.display = 'none');
+                    document.getElementById("reroll-points").textContent = 'Ya usastes los 2 intentos de relanzar atributo.';
+
+
                 }
             }
         }
@@ -739,7 +867,7 @@
             document.getElementById("preview-HD").textContent = dexterity + (modifiers.HD || 0) + (bonusApplied["HD"] || 0);
             document.getElementById("preview-ESQ").textContent = dexterity + (modifiers.ESQ || 0) + (bonusApplied["ESQ"] || 0);
 
-            document.getElementById("preview-FC").textContent = dexterity + (modifiers.FC || 0) + (bonusApplied["FC"] || 0)  ;
+            document.getElementById("preview-FC").textContent = dexterity + (modifiers.FC || 0) + (bonusApplied["FC"] || 0);
 
             document.getElementById("preview-AA").textContent = modifiers.AA !== "N/A" ? modifiers.AA + wisdom : "N/A";
             document.getElementById("preview-TRU").textContent = wisdom + (modifiers.TRU || 0) + (bonusApplied["TRU"] || 0);;
@@ -769,7 +897,7 @@
             bonusApplied = {}; // Restablecer cualquier bonificación aplicada
             updateCombatPreview();
 
-            
+
 
 
             if (selectedClass === "SeleccionaClase") return;
@@ -956,4 +1084,5 @@
         }
     </script>
 </body>
+
 </html>
