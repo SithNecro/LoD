@@ -2,36 +2,39 @@
 <html lang="es">
 
 <head>
+
+    <!-- Popper.js requerido por Tippy -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Tippy.js -->
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Objetos Legendarios</title>
+    <title>Tesoros Superior</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="menu-acordeon.css">
     <link rel="stylesheet" href="menu-acordeon.css">
 
     <style>
-       
-        /* Contenedor de la imagen (lado izquierdo) */
-        .treasure-container {
+        /* Estilos para el menú lateral */
+
+
+        .top-buttons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* Alinear al centro verticalmente */
+
+            gap: 10px;
+        }
+
+        .content-right {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
         }
 
         .treasure-image {
-            width: 350px;
+            width: 290px;
             border-radius: 5%;
-        }
-
-        /* Estilos para el lado derecho (botones y selector) */
-        .right-controls {
-            display: flex;
-            flex-direction: column;
-            /* Apilar elementos uno debajo de otro */
-            justify-content: flex-start;
-            align-items: flex-start;
         }
 
         button,
@@ -39,46 +42,217 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            margin-bottom: 10px;
-            /* Espacio entre botones y select */
+            margin: 10px 0;
+        }
+
+        .treasure-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+        }
+
+        .two-treasures-container {
+            display: none;
+            gap: 20px;
+        }
+
+        .Desplegable {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+        }
+
+        /* Nuevo contenedor para alinear imagen + panel en fila */
+        .single-treasure-wrapper {
+            display: flex;
+            /* activa flexbox */
+            align-items: flex-start;
+            /* alinea arriba */
+            gap: 1rem;
+            /* espacio entre imagen y panel */
+        }
+
+        .btn_abrir_tesoro {
+            width: 120px;
+            height: 120px;
+            background: url('img/interface/revelar_tesoro_superior.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn_barajar_tesoro {
+
+            width: 120px;
+            height: 120px;
+            background: url('img/interface/barajar_tesoros.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn_habilidad_buscatesoros {
+
+            width: 120px;
+            height: 120px;
+            background: url('img/interface/habilidad_buscatesoros.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn_coger_tesoro {
+
+            width: 120px;
+            height: 120px;
+            background: url('img/interface/coger_tesoro.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 20px;
+            margin-left: 20px;
+            display: block;
+            margin: 0 auto;
+            visibility: hidden;
+
+        }
+
+        .info-panel {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(60, 60, 60, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #5D4037;
+        }
+
+
+
+        .info-panel h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .objeto-info {
+
+            background: rgba(52, 152, 219, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            color: #fff;
+
+        }
+
+        #enemigos-lista {
+            margin-top: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .enemigo-item {
+            padding: 12px;
+            margin-bottom: 12px;
+            background: rgba(40, 40, 40, 0.8);
+            border-left: 5px solid #e74c3c;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            color: #fff;
+        }
+
+        /*  .enemigo-item:hover {
+            transform: translateX(5px);
+        }
+*/
+        .enemigo-item strong {
+            color: #d4af37;
+            display: inline;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 
-<body style="background-image: url('fondo.png'); background-size: cover;">
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
 
     <!-- Carga del menú lateral -->
-      <div class="menu">
-        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
 
     <!-- Zona de contenido principal -->
     <div class="main-content">
-
-        <!-- Botones en la parte Legendario izquierda -->
-
-        <div class="treasure-container">
-            <img src="img/traseras/Trasera legendarios.png" id="imagen-tesoro" alt="Tesoro Legendario"
-                class="treasure-image">
-
+        <!-- Botones en la parte superior izquierda -->
+        <div class="top-buttons">
+            <button class="btn_abrir_tesoro" onclick="cargarTesoroLegendario()" id="tesoro-btn"></button>
+            <button class="btn_barajar_tesoro" onclick="barajarTesoros()"></button>
         </div>
 
-        <!-- Zona derecha con la imagen y el selector debajo -->
-        <div class="right-controls">
-            <button onclick="cargarTesoroLegendario()" id="tesoro-btn">Sacar Objeto Legendario</button>
-            <button onclick="barajarTesoros()">Barajar Legendarios</button>
-            <!-- Imagen y selector del tesoro normal -->
+        <div class="content-right">
+            <!-- Zona derecha con la imagen y el selector debajo -->
+            <div class="content-right">
+                <div class="info-panel">
+                    <h3>Botín Encontrado</h3>
+                    <div id="tirada-info" class="tirada-info" style="display:none;">
+                        <span id="tirada-detalle" class="objeto-info"></span>
+                    </div>
+                    <div style="text-align: center;" id="enemigos-lista"></div>
+                    <div style="text-align: center;"></div>
+                    <button id="btn_coger_tesoro" class="btn_coger_tesoro" onclick="BajarMoral(1)"></button>
+                </div>
+                <!-- Contenedor que agrupa la imagen+selector y la info -->
+                <div class="single-treasure-wrapper">
+                    <div class="treasure-container" id="single-treasure-container">
+                        <img src="img/traseras/Trasera legendarios.png" id="imagen-tesoro" alt="Tesoro Superior"
+                            class="treasure-image">
+                        <select class="Desplegable" id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
+                            <!-- opciones -->
+                        </select>
+                    </div>
 
-            <select id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
-                <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
-            </select>
+
+                </div>
+            </div>
+
+
         </div>
-
-
     </div>
 
-
+    </div>
 
     <script src="Objetos_Legendarios.js"></script>
 

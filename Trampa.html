@@ -75,8 +75,13 @@
     </style>
 </head>
 
-<body style="background-image: url('fondo.png'); background-size: cover;">
-
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
     <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
