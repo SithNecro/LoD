@@ -82,19 +82,21 @@
             height: 100%;
             border: none;
         }
-.rigth-content{
-      
+
+        .rigth-content {
+
             width: 700px;
             background: rgba(35, 35, 35, 0.7);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 2px solid #8B4513;
-
+            align-items: center;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-}
+        }
+
         /* Estilos para el contenido principal */
         .main-content {
             margin-left: 310px;
@@ -375,7 +377,8 @@
                 </table>
                 <br />
                 <!-- Select para seleccionar valores negativos de la clase -->
-                <label for="class">Selecciona un atributo en desventaja para sumarle +10</label>
+                <label for="class" id="txt_atributos_deventaja" style="display:none">Selecciona un atributo en
+                    desventaja para sumarle +10</label>
                 <select style="display: none;" onchange="applyNegativeBonus()" id="classNegative">
                     <option value="">Selecciona un atributo...</option>
                 </select>
@@ -391,7 +394,7 @@
             <img src="./img/goblin_dibujante.png" alt="Goblin Dibujante" id="goblinImage"
                 style="align-items: center ;width: 50%; height: auto; align-content: center">
 
-            <h1>Vista Previa del Personaje</h1>
+            <h1 id="txt_vista_previa" style="display:none">Vista Previa del Personaje</h1>
             <div id="character-preview" style="display: none;" class="character-preview">
                 <p style="etiquetas"><strong style="etiquetas">Raza:</strong> <span id="preview-race">-</span></p>
                 <table class="stats-table">
@@ -482,8 +485,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div
-                    style="display: flex; justify-content: center; align-items: center; height: 200px; border: 1px solid #ccc;">
+                <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
 
                     <button id="generarPDF" onclick="exportPdf()"></button>
                 </div>
@@ -576,6 +578,7 @@
         }
 
         function generateRolls() {
+            document.getElementById('txt_vista_previa').style.display = 'inline';
             document.getElementById('estadisticasbaseh3').style.display = 'table';
             document.getElementById('stats-table').style.display = 'table';
             document.getElementById('character-preview').style.display = 'table';
@@ -866,7 +869,6 @@
             document.getElementById("preview-HC").textContent = dexterity + (modifiers.HC || 0) + (bonusApplied["HC"] || 0);
             document.getElementById("preview-HD").textContent = dexterity + (modifiers.HD || 0) + (bonusApplied["HD"] || 0);
             document.getElementById("preview-ESQ").textContent = dexterity + (modifiers.ESQ || 0) + (bonusApplied["ESQ"] || 0);
-
             document.getElementById("preview-FC").textContent = dexterity + (modifiers.FC || 0) + (bonusApplied["FC"] || 0);
 
             document.getElementById("preview-AA").textContent = modifiers.AA !== "N/A" ? modifiers.AA + wisdom : "N/A";
@@ -895,10 +897,9 @@
             // Limpiamos el select de opciones previas
             classNegativeSelect.innerHTML = '<option value="">Selecciona una opción negativa</option>';
             bonusApplied = {}; // Restablecer cualquier bonificación aplicada
+            document.getElementById("txt_atributos_deventaja").style.display = 'inline';
+
             updateCombatPreview();
-
-
-
 
             if (selectedClass === "SeleccionaClase") return;
 
