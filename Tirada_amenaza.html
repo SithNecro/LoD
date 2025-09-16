@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amenaza</title>
+        <link rel="stylesheet" href="menu-acordeon.css">
+
     <style>
-         .contenedorbotones {
+        .contenedorbotones {
             display: flex;
-            align-items: center; /* Alinea verticalmente los elementos en el centro */
+            align-items: center;
+            /* Alinea verticalmente los elementos en el centro */
             text-align: center;
-              gap: 10px; /* Espacio entre los elementos */
-          }
+            gap: 10px;
+            /* Espacio entre los elementos */
+        }
 
         .result {
-            margin: 0; /* Quita los márgenes del párrafo si no los necesitas */
+            margin: 0;
+            /* Quita los márgenes del párrafo si no los necesitas */
         }
 
         img {
             border-radius: 5%;
         }
+
         /*
             * {
             box-sizing: border-box;
@@ -52,8 +59,10 @@
         }
 
         body {
-            display: flex; /* Usamos flexbox para la disposición general */
-            height: 100vh; /* Altura total de la ventana */
+            display: flex;
+            /* Usamos flexbox para la disposición general */
+            height: 100vh;
+            /* Altura total de la ventana */
         }
 
         button {
@@ -82,48 +91,63 @@
             margin: 2px 0;
         }
 
-        #menuContainer {
-            position: fixed; /* Fijo a la izquierda */
-            left: 0;
-            top: 0;
-            height: 100%; /* Ocupa toda la altura */
-            width: 310px; /* Ancho fijo del menú */
-            background-color: #ccc; /* Color de fondo del menú */
-        }
+    
 
         #contentContainer {
             /* Deja espacio para el menú */
-            width: 30%; /* Ancho del contenedor central */
-            height: 50%; /* Ocupa toda la altura */
+            width: 30%;
+            /* Ancho del contenedor central */
+            height: 50%;
+            /* Ocupa toda la altura */
             /*background-color: #404040; /* Color de fondo para distinguir */
-            display: flex; /* Usamos flexbox para centrar contenido */
-            align-items: stretch; /* Centra verticalmente el contenido */
-            justify-content: flex-start; /* Centra horizontalmente el contenido */
-            flex-direction: column; /* Opcional, si tienes más elementos aquí */
-            padding: 10px; /* Espaciado interno opcional */
+            display: flex;
+            /* Usamos flexbox para centrar contenido */
+            align-items: stretch;
+            /* Centra verticalmente el contenido */
+            justify-content: flex-start;
+            /* Centra horizontalmente el contenido */
+            flex-direction: column;
+            /* Opcional, si tienes más elementos aquí */
+            padding: 10px;
+            /* Espaciado interno opcional */
         }
 
         #contentContainer0 {
-            height: 100%; /* Ocupa toda la altura */
-            margin-left: 310px; /* Deja espacio para el menú */
-            width: 100%; /* Ancho del contenedor central */
+            height: 100%;
+            /* Ocupa toda la altura */
+            margin-left: 310px;
+            /* Deja espacio para el menú */
+            width: 100%;
+            /* Ancho del contenedor central */
             /*background-color: #404040; /* Color de fondo para distinguir */
-            display: flex; /* Usamos flexbox para centrar contenido */
-            align-items: stretch; /* Centra verticalmente el contenido */
-            justify-content: flex-start; /* Centra horizontalmente el contenido */
-            flex-direction: column; /* Opcional, si tienes más elementos aquí */
-            padding: 10px; /* Espaciado interno opcional */
+            display: flex;
+            /* Usamos flexbox para centrar contenido */
+            align-items: stretch;
+            /* Centra verticalmente el contenido */
+            justify-content: flex-start;
+            /* Centra horizontalmente el contenido */
+            flex-direction: column;
+            /* Opcional, si tienes más elementos aquí */
+            padding: 10px;
+            /* Espaciado interno opcional */
         }
 
         #imageContainer {
-            height: 50%; /* Ocupa toda la altura */
-            flex: 1; /* Ocupa el espacio restante */
-            padding: 10px; /* Espaciado interno */
+            height: 50%;
+            /* Ocupa toda la altura */
+            flex: 1;
+            /* Ocupa el espacio restante */
+            padding: 10px;
+            /* Espaciado interno */
             /*background-color: #404040; /* Color de fondo para distinguir */
-            display: flex; /* Hacemos que el contenedor de la imagen también sea un flexbox */
-            flex-direction: column; /* Estructura en columna */
-            justify-content: flex-start; /* Alinea los elementos al inicio */
-            align-items: stretch; /* Alinea el contenido en la parte superior */
+            display: flex;
+            /* Hacemos que el contenedor de la imagen también sea un flexbox */
+            flex-direction: column;
+            /* Estructura en columna */
+            justify-content: flex-start;
+            /* Alinea los elementos al inicio */
+            align-items: stretch;
+            /* Alinea el contenido en la parte superior */
         }
 
         iframe {
@@ -146,7 +170,8 @@
     <style>
         /* Encapsular estilos dentro de una clase contenedora única */
         #characterTableContainer {
-            /* margin-left: 310px;*/ /* Deja espacio para el menú */
+            /* margin-left: 310px;*/
+            /* Deja espacio para el menú */
             /* width: calc(100% - 310px);  Ancho completo menos el menú */
             padding: 10px;
         }
@@ -202,11 +227,13 @@
     </style>
     <link rel="stylesheet" href="dado.css">
 </head>
+
 <body style="background-image: url('fondo.png'); background-size: cover;">
-    <div id="menuContainer">
-        <iframe src="menu.html" id="iframeMenu"></iframe>
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
     </div>
-    <div id="contentContainer0">
+    <div id="contentContainer0" class="main-content">
         <table border="1" style="width: 100%; border-collapse: collapse;">
             <tr>
                 <td align="center">
@@ -227,14 +254,18 @@
                     <!-- Información de las fichas en la bolsa -->
 
                     <p class="result" id="aliadasRestantes">Fichas Aliadas: 0</p>
-                    <button class="button2" onclick="ajustarFichas('aliadas', 1)" style="background-color: green; color: white;">+</button>
-                    <button class="button2" onclick="ajustarFichas('aliadas', -1)" style="background-color: red; color: white;">-</button>
+                    <button class="button2" onclick="ajustarFichas('aliadas', 1)"
+                        style="background-color: green; color: white;">+</button>
+                    <button class="button2" onclick="ajustarFichas('aliadas', -1)"
+                        style="background-color: red; color: white;">-</button>
 
 
 
                     <p class="result" id="enemigasRestantes">Fichas Enemigas: 0</p>
-                    <button class="button2" onclick="ajustarFichas('enemigas', 1)" style="background-color: green; color: white;">+</button>
-                    <button class="button2" onclick="ajustarFichas('enemigas', -1)" style="background-color: red; color: white;">-</button>
+                    <button class="button2" onclick="ajustarFichas('enemigas', 1)"
+                        style="background-color: green; color: white;">+</button>
+                    <button class="button2" onclick="ajustarFichas('enemigas', -1)"
+                        style="background-color: red; color: white;">-</button>
 
                     <p class="result" id="totalFichas">Fichas en la Bolsa: 0</p>
 
@@ -246,7 +277,7 @@
 
 
                 </td>
-                <td  align="center">
+                <td align="center">
 
                     <h3>AMENAZA</h3>
                     <div>
@@ -265,14 +296,16 @@
                     <div id="amenazaContainer">
                         <!--//imagen del dado D10-->
                         <div class="dice-container">
-                            <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75" style="display: none;">
+                            <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75"
+                                style="display: none;">
                             <!--//imagen del dado D20-->
                         </div>
                         <div class="dice-container">
                             <img id="dice-image2" src="" alt="Dado" width="75" style="display: none;">
                         </div>
                         <div class="dice-container">
-                            <img id="dice-image3" src="img/dados/D10-01.png" alt="Dado" width="75" style="display: none;">
+                            <img id="dice-image3" src="img/dados/D10-01.png" alt="Dado" width="75"
+                                style="display: none;">
 
                         </div>
                         <!-- Div para mostrar el resultado -->
@@ -295,7 +328,9 @@
 
                         <div>
                             <p style="display: none;">Nivel de Amenaza Actual: <span id="amenazaActual">...</span></p>
-                            <div><p id="mensajeAmenazaActual" style="display: none;"></p></div>
+                            <div>
+                                <p id="mensajeAmenazaActual" style="display: none;"></p>
+                            </div>
                             <p id="mensajeAmenaza" style="display:none;"></p>
                             <!-- Resultado de la ficha sacada -->
                             <p id="resultadoFicha"></p>
@@ -352,5 +387,8 @@
     <script src="dado.js"></script>
     <script src="controlpersonajes.js"></script>
     <audio id="diceSound" src="sonidos/dados.mp3"></audio>
+    <script src="menu-acordeon.js"></script>
+
 </body>
+
 </html>

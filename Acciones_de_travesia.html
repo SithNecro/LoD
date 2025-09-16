@@ -9,30 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acciones de Mapa</title>
     <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="menu-acordeon.css">
+
     <style>
         /* Estilos para el menú lateral */
-        .menu {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 300px;
-        }
-
-        .menu-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Estilos para el contenido principal */
-        .main-content {
-            margin-left: 310px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
+      
 
         .button-row {
             display: flex;
@@ -138,10 +119,11 @@
     <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
     </div>
 
     <!-- Zona de contenido principal -->
-    <div class="main-content">
+    <div class="main-content"style="width: 850px;">
 
         <!-- Grupo de botones con imagen de fondo en dos columnas -->
         <div class="button-row">
@@ -166,6 +148,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+    <script src="menu-acordeon.js"></script>
 
 </body>
 

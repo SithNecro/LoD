@@ -1,41 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos de Viaje: Desierto</title>
+    <title>Tabla de Tesoros</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="menu-acordeon.css">
+
     <style>
-        /* Estilos para el menú lateral */
-        .menu {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 300px;
-        }
-
-        .menu-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Estilos para el contenido principal */
-        .main-content {
-            margin-left: 310px;
-            width: 700px;
-            background: rgba(35, 35, 35, 0.1);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid #8B4513;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
         /* Contenedor de la imagen (lado izquierdo) */
         .treasure-container {
             display: flex;
@@ -83,8 +56,7 @@
             text-shadow: 1px 1px 2px #000;
 
         }
-
-        .section {
+.section {
             width: 100%;
             padding: 12px;
             border: 2px solid #9d5c48;
@@ -96,6 +68,7 @@
             appearance: none;
         }
 
+        
         .Desplegable {
             width: 100%;
             padding: 12px;
@@ -169,6 +142,7 @@
     </style>
 
 </head>
+
 <body style=" background-image: url('img/interface/fondo_loteo.png');
     background-size: cover;        /* la imagen cubre todo el viewport */
     background-repeat: no-repeat;  /* no se repite */
@@ -180,6 +154,7 @@
     <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
     </div>
 
     <!-- Zona de contenido principal -->
@@ -187,7 +162,7 @@
 
         <div class="top-buttons">
             <button class="btn_abrir_tesoro" onclick="cargarTesoroLegendario()" id="tesoro-btn"></button>
-            
+
             <button class="btn_barajar_tesoro" onclick="barajarTesoros()"></button>
             <div class="right-controls">
                 <!-- Imagen y selector del tesoro normal -->
@@ -196,15 +171,16 @@
                 </select>
             </div>
         </div>
-         <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75">
-                <!--//imagen del dado D20-->
-                <div id="result" class="result"></div>
+        <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75">
+        <!--//imagen del dado D20-->
+        <div id="result" class="result"></div>
         <!-- Botones en la parte Legendario izquierda -->
         <div class="img_barajar_tesoro treasure-container" id="single-treasure-container">
-            <img onclick="cargarTesoroLegendario()" src="img/traseras/Tabla_Tesoros.png" id="imagen-tesoro" alt="Tesoro Legendario" class="treasure-image">
-            
-              
-            
+            <img onclick="cargarTesoroLegendario()" src="img/traseras/Tabla_Tesoros.png" id="imagen-tesoro"
+                alt="Tesoro Legendario" class="treasure-image">
+
+
+
         </div>
         <!--<div id="hueco"></div>-->
 
@@ -212,6 +188,8 @@
     <script src="Tabla_Tesoros.js"></script>
     <script src="dado.js"></script>
     <audio id="diceSound" src="sonidos/dados.mp3"></audio>
+    <script src="menu-acordeon.js"></script>
+
 </body>
 
 </html>

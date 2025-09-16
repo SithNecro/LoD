@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creación de Personajes</title>
     <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="menu-acordeon.css">
+
     <style>
         /* Diseño básico */
         #generarPDF {
@@ -68,20 +70,7 @@
 
 
 
-        /* Estilos para el menú lateral */
-        .menu {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 300px;
-        }
-
-        .menu-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+       
 
         .rigth-content {
 
@@ -97,21 +86,7 @@
             justify-content: flex-start;
         }
 
-        /* Estilos para el contenido principal */
-        .main-content {
-            margin-left: 310px;
-            width: 700px;
-            background: rgba(35, 35, 35, 0.7);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid #8B4513;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
+       
         .buttons {
             margin-top: 10px;
             /* Reducir el espacio entre la imagen y los botones */
@@ -223,7 +198,8 @@
 ">
     <!-- Carga del menú lateral -->
     <div class="menu">
-        <iframe id="iframeMenu" src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
     </div>
     <div style="display: flex;">
         <!-- Zona de contenido principal -->
@@ -1084,6 +1060,8 @@
             updateCombatPreview();
         }
     </script>
+        <script src="menu-acordeon.js"></script>
+
 </body>
 
 </html>
