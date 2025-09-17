@@ -56,7 +56,7 @@ function renderTable() {
            value="${character.name}"
            onchange="updateName(${index}, this.value)">
     <b class="formato-cabeceras exper-exp-label">Exp.</b>
-    <input type="text"
+    <input type="number"
            class="input-field cuadros_texto input-exp"
            value="${character.exp}"
            onchange="updateExp(${index}, this.value)">

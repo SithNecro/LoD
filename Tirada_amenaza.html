@@ -199,7 +199,9 @@
             flex-direction: column;
             justify-content: flex-start;
         }
-
+.menu.open ~ #contentContainer0 {
+  margin-left: 0px;
+}
         #imageContainer {
             height: 50%;
             /* Ocupa toda la altura */
@@ -522,6 +524,7 @@
 .nombre-exp-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px; /* separación entre elementos */
 }
 
@@ -530,7 +533,7 @@
 }
 
 .input-exp {
-  width: 60px; /* más pequeño que el nombre */
+  width: 80px; /* más pequeño que el nombre */
 }
 
 .nombre-exp-item {
