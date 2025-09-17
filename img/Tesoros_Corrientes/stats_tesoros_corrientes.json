@@ -1,0 +1,647 @@
+{
+  "Tesoros_Corrientes": [
+    {
+      "nombre": "Aceite de farol.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase": null,"Recarga": null,"Defensa": null,"Valor": 15,"Efecto": "Rellenar y encender un farol cuesta 1PA desde un atajo o 2PA desde la mochila."}
+     ]
+    },
+    {
+      "nombre": "Amuleto.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":null,"Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Este amuleto puede ser vendido o encantado usando el hechizo Encantar objeto."}
+     ]
+    },
+    {
+      "nombre": "Anillo.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":null,"Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Este anillo puede ser vendido o encantado usando el hechizo encantar objeto."}
+     ]
+    },
+    {
+      "nombre": "Anillo (2).png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":null,"Recarga": null,"Defensa": null,"Valor": 150,"Efecto": "Este anillo puede ser vendido o encantado usando el hechizo encantar objeto."}
+     ]
+    },
+    {
+      "nombre": "Antorcha(3).png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":"1","Recarga": null,"Defensa": null,"Valor": 15,"Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."}
+     ]
+    },
+    {
+      
+      "nombre": "Antorcha (2).png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":"1","Recarga": null,"Defensa": null,"Valor": 15,"Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."}
+      ]
+    },
+    {
+      
+      "nombre": "Antorcha (3).png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":"1","Recarga": null,"Defensa": null,"Valor": 15,"Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."}
+      ]
+    },
+    {
+      
+      "nombre": "Antorcha.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño": null,"Peso / Clase":"1","Recarga": null,"Defensa": null,"Valor": 15,"Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."}
+      ]
+    },
+    {
+      "nombre": "Arco corto.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "","Daño": "1d8","Peso / Clase":"5 / 6","Recarga": 1,"Defensa": null,"Valor": 100,"Efecto": null}      
+      ]
+    },
+    {
+      "nombre": "Armadura acolchada.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Gorro acolchado","Daño":null,"Cobertura / Defensa": "Cabeza / 2","Peso / Rango":"1 / 1","Recarga":null,"Valor": 30,"Efecto": null,"Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco acolchado","Daño":null,"Cobertura / Defensa": "Torso / 2","Peso / Rango":"3 / 1","Recarga":null,"Valor": 60,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 3,"Tipo": "Chaleco acolchado","Daño":null,"Cobertura / Defensa": "Torso / 2","Peso / Rango":"3 / 1","Recarga":null,"Valor": 60,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 4,"Tipo": "Casaca acolchada","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 2","Peso / Rango":"5 / 1","Recarga":null,"Valor": 120,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 5,"Tipo": "Pantalones acolchados","Daño":null,"Cobertura / Defensa": "Piernas / 2","Peso / Rango":"2 / 1","Recarga":null,"Valor": 100,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 6,"Tipo": "Abrigo acolchado","Daño":null,"Cobertura / Defensa": "Torso, Brazos, Piernas / 2","Peso / Rango":"6 / 1","Recarga":null,"Valor": 200,"Efecto": null,"Leyenda":null}     
+      ]
+    },
+    {
+      "nombre": "Armadura de cuero tachonado.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Chaleco de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 300,"Efecto": "Cuero Tachonado tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 300,"Efecto": "Cuero Tachonado tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 3,"Tipo": "Casaca de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"5 / 2","Recarga":null,"Valor": 500,"Efecto": "Cuero Tachonado tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 4,"Tipo": "Casaca de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"5 / 2","Recarga":null,"Valor": 500,"Efecto": "Cuero Tachonado tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 5,"Tipo": "Brazales de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Brazos / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 150,"Efecto": "Apilable, Cuero Tachonado tiene una Durabilidad de 8","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"},
+        {"tirada": 6,"Tipo": "Cota de Cuero Tachonado","Daño":null,"Cobertura / Defensa": "Torso, Brazos, Piernas / 3","Peso / Rango":"8 / 2","Recarga":null,"Valor": 800,"Efecto": "Cuero Tachonado tiene una Durabilidad de 8","Leyenda":null}      
+      ]
+    },
+    {
+      "nombre": "Armadura de escamas.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Chaleco de Escamas","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"7 / 3","Recarga":null,"Valor": 700,"Efecto": "Armadura de Escamas tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Escamas","Daño":null,"Cobertura / Defensa": "Torso / 4","Peso / Rango":"7 / 3","Recarga":null,"Valor": 700,"Efecto": "Armadura de Escamas tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 3,"Tipo": "Casaca de Escamas","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 4","Peso / Rango":"8 / 3","Recarga":null,"Valor": 1050,"Efecto": "Armadura de Escamas tiene una Durabilidad de 8","Leyenda":null},
+        {"tirada": 4,"Tipo": "Abrigo de Escamas","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 4","Peso / Rango":"12 / 3","Recarga":null,"Valor": 1700,"Efecto": "Armadura de Escamas tiene una Durabilidad de 8","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Bastón.png",
+      "rotura": "1d2+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":"1d8","Peso / Clase":"5 / 2","Recarga":null,"Defensa": null,"Valor": 5,"Efecto": "Defensivo","Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. "}
+      ]
+   },
+   {
+      "nombre": "Botellas vacías.png",
+      "rotura": null,
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Botella vacía","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": 10,"Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Capa.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+       {"tirada": 1,"Tipo": null,"Daño":null,"Cobertura / Defensa": "Espalda / 1","Peso / Rango":"1 / 1","Recarga":null,"Valor": 50,"Efecto": "Apilable, Da 1 DEF contra ataques por la espalda, acumulable con otras armaduras.","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+       ]
+    },
+    {
+      "nombre": "Carne seca.png",
+      "rotura": null,
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 pieza de carne seca","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Comer una pieza recupera 1 VIT.","Leyenda":null},
+        {"tirada": 1,"Tipo": "2 piezas de carne seca","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Comer una pieza recupera 1 VIT.","Leyenda":null},
+        {"tirada": 1,"Tipo": "3 piezas de carne seca","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Comer una pieza recupera 1 VIT.","Leyenda":null},
+        {"tirada": 1,"Tipo": "4 piezas de carne seca","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Comer una pieza recupera 1 VIT.","Leyenda":null}
+        ]
+    },
+    {
+      "nombre": "Cuchillo desollador.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 0,"Recarga": null,"Defensa": null,"Valor": 100,"Efecto": "Permitirá al Héroe despellejar animales. Se puede llevar en la mochila todo el tiempo."}
+       ]
+    },
+    {
+      "nombre": "Cuerda vieja.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 2,"Recarga": null,"Defensa": null,"Valor": 20,"Efecto": "Te ayudará a salir de fosos y otras situaciones difíciles. Al usarla, tira 1d6. Con 5-6 se rompe y el usuario recibe 1d6 DAÑ por la caída."}
+       ]
+    },
+     {
+      "nombre": "Cuerda.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": 2,"Recarga": null,"Defensa": null,"Valor": 50,"Efecto": "Te servirá para salir de fosos y otras situaciones complicadas."}
+       ]
+    },
+     {
+      "nombre": "Daga.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": "1d6","Peso / Clase":"5 / 1","Recarga": null,"Defensa": null,"Valor": 10,"Efecto": "Doble Empuñado +1","Leyenda":"<b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>"}
+        ]
+    },
+     {
+      "nombre": "Dagas arrojadizas.png",
+      "rotura": null,
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Daga Arrojadiza","Daño": "1d6", "Peso / Clase":"2 / 1","Recarga":null,"Defensa": null,"Valor": 10,"Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 2,"Tipo": "2 Dagas Arrojadizas","Daño": "1d6", "Peso / Clase":"2u / 1","Recarga":null,"Defensa": null,"Valor": "10/u","Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 3,"Tipo": "3 Dagas Arrojadizas","Daño": "1d6", "Peso / Clase":"2u / 1","Recarga":null,"Defensa": null,"Valor": "10/u","Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
+        ]
+    },
+     {
+      "nombre": "Escudo.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": "4","Peso / Clase":"4 / 1","Recarga":null,"Valor": 20,"Efecto": null,"Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Espada corta.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Espada Corta","Daño":"1d6+2","Peso / Clase":"7 / 2","Recarga":null,"Defensa": null,"Valor": 70,"Efecto": "Doble Empuñado +2","Leyenda":"<b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>"}
+        ]
+    },
+      {
+      "nombre": "Estoque.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": "1d6+1", "Peso / Clase":"5 / 1","Recarga":null,"Defensa": null,"Valor": 130,"Efecto": "Rápido, Doble empuñado +2","Leyenda":"<b style='color: gold;'>Rápido: </b> Esta arma se puede usar para bloquear una vez por turno, aunque el Héroe no se haya puesto en Posición Defensiva, pero el arma sufrirá daño con una tirada de 90-00.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>"}
+       ]
+    },
+      {
+      "nombre": "Farol.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": 100,"Efecto": "Prender un farol toma 1PA desde un atajo y 2PA desde la mochila. Un farol dará al grupo +5DET y añade al portador +10PER. Pon la ficha de farol por su lado 2. Si el resultado de la tirada de amenza es más bajo que el NA, da la vuelta a la ficha y pon su lado 1. Si ya estaba en su lado 1, la llama se apaga por falta de aceite.","Leyenda":null}
+       ]
+    },
+     {
+      "nombre": "Flechas (3).png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "5 Flechas." ,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": null,"Leyenda":null}
+              ]
+    },
+    {
+      "nombre": "Flechas (2).png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "5 Flechas." ,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": null,"Leyenda":null}
+      ]
+    },
+       {
+      "nombre": "Flechas.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "10 Flechas." ,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": null,"Leyenda":null}      
+      ]
+    },
+    {
+      "nombre": "Ganzúas.png",
+      "rotura": null,
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.","Leyenda":null},
+        {"tirada": 2,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.","Leyenda":null},
+        {"tirada": 3,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.","Leyenda":null},
+        {"tirada": 4,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.","Leyenda":null}
+        ]
+    },
+     {
+      "nombre": "Hachas arrojadizas.png",
+      "rotura": null,
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Hacha Arrojadiza","Daño":"1d8","Peso / Clase":"3 / 1","Recarga":null,"Defensa": null,"Valor": 25,"Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 2,"Tipo": "2 Hachas Arrojadizas","Daño":"1d8","Peso / Clase":"3u / 1","Recarga":null,"Defensa": null,"Valor": "25/u","Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 3,"Tipo": "3 Hachas Arrojadizas","Daño":"1d8","Peso / Clase":"3u / 1","Recarga":null,"Defensa": null,"Valor": "25/u","Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
+      ]
+      },
+     {
+      "nombre": "Honda.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":"1d8","Defensa": null,"Peso / Clase": "1 / 6","Recarga": 1,"Valor": 40,"Efecto": null,"Leyenda":null}
+      ]
+    },
+    
+    {
+      "nombre": "Ingredientes.png",
+      "rotura": null,
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Tira en la tabla de ingredientes para ver cuáles has encontrado.","Leyenda":null},
+        {"tirada": 2,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Tira en la tabla de ingredientes para ver cuáles has encontrado.","Leyenda":null},
+        {"tirada": 3,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Tira en la tabla de ingredientes para ver cuáles has encontrado.","Leyenda":null}
+       ]
+    },
+    {
+      "nombre": "Jabalina.png",
+      "rotura": "1d4",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":"1d10","Defensa": null,"Peso / Clase": "10 / 2","Recarga": null,"Valor": 100,"Efecto": "Alcance, HPA, PArm (1)","Leyenda":"<b style='color: gold;'>Alcance: </b> Puede atacar a una distancia de 2 casillas, incluso si hay un personaje amigo en la casilla entre medias. </br><b style='color: gold;'>HPA: </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento. </br><b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br>"}
+       ]
+    },
+    {
+      "nombre": "Jabalinas.png",
+      "rotura": null,
+      "seleccion": "1d2",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Jabalina","Daño":"1d10","Defensa": null,"Peso / Clase": "6 / 2","Recarga":null,"Valor": 50,"Efecto": "PArm (1), Arrojable.","Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 2,"Tipo": "2 Jabalinas","Daño":"1d10","Defensa": null,"Peso / Clase": "12 / 2","Recarga":null,"Valor": "50/u","Efecto": "PArm (1), Arrojable.","Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
+      ]
+    },
+    {
+      "nombre": "Mochila mediana.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": 350,"Efecto": "Esta mochila aumenta la capacidad de carga en 10 de Peso. Te reduce DES en -5.","Leyenda":null}
+       ]
+    },
+     {
+      "nombre": "Monedas (7).png",
+      "rotura": null,
+      "valor": "3d20",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+       ]
+    },
+     {
+      "nombre": "Monedas (6).png",
+      "rotura": null,
+      "valor": "2d20",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+       ]
+    },
+    {
+      "nombre": "Monedas (5).png",
+      "rotura": null,
+      "valor": "1d100",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+       ]
+    },
+    {
+      "nombre": "Monedas (4).png",
+      "rotura": null,
+      "valor": "1d20",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+       ]
+    },
+    {
+      "nombre": "Monedas (3).png",
+      "rotura": null,
+      "valor": "4d20",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+       ]
+    },
+    {
+     "nombre": "Monedas (2).png",
+      "rotura": null,
+      "valor": "3d20",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+       ]
+    },
+    {
+      "nombre": "Monedas.png",
+      "rotura": null,
+      "valor": "1d20",
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño": null,"Peso": null,"Recarga": null,"Defensa": null,"Valor": null,"Efecto": null}
+      ]
+    },
+    {
+      "nombre": "Palanca.png",
+      "rotura": "1d4+1",
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo":null,"Daño": "8+BD","Defensa": null,"Peso": 10,"Recarga":null,"Valor": 55,"Efecto": "Hace 8+BD de daño cuando intentas derribar una puerta y sólo incrementa el NA en +1.","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Parte para pociones.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d30",
+      "tabla": [
+        {"tirada": 1,"Tipo": " Piel Anfidia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 2,"Tipo": " Alas de Murciélago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 3,"Tipo": " Corazón bestial","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 4,"Tipo": " Harina de huesos","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 5,"Tipo": " Tejido cerebral","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 6,"Tipo": " Quitina","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 7,"Tipo": " Ojo de cíclope","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 8,"Tipo": " Sangre de dragón","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 9,"Tipo": " Ectoplasma","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 10,"Tipo": " Pelo de Elfo","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 11,"Tipo": " Plumas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 12,"Tipo": " Piel","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 13,"Tipo": " Sangre de necrófago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 14,"Tipo": " Ojo de Google","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 15,"Tipo": " Sangre humana","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 16,"Tipo": " Ojo de Medusa","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 17,"Tipo": " Polvo de momia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 18,"Tipo": " Uñas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 19,"Tipo": " Diente de ogro","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Enormal.","Leyenda":null},
+        {"tirada": 20,"Tipo": " Cola de rata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 21,"Tipo": " Escamas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 22,"Tipo": " Sangre de cambiaformas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 23,"Tipo": " Viscosidad","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 24,"Tipo": " Colmillo de araña","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 25,"Tipo": " Madera del espíritu","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 26,"Tipo": " Esporas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 27,"Tipo": " Lengua","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 28,"Tipo": " Sangre de troll","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 29,"Tipo": " Sangre de vampiros","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 30,"Tipo": " Piel de zombie","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null}
+            ]
+    },
+    {
+      "nombre": "Partes para pociones.png",
+      "rotura": null,
+      "valor": "1d3",
+      "Peso": null,
+      "seleccion": "1d30",
+      "tabla": [
+        {"tirada": 1,"Tipo": " Piel Anfidia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 2,"Tipo": " Alas de Murciélago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 3,"Tipo": " Corazón bestial","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 4,"Tipo": " Harina de huesos","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 5,"Tipo": " Tejido cerebral","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 6,"Tipo": " Quitina","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 7,"Tipo": " Ojo de cíclope","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 8,"Tipo": " Sangre de dragón","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 9,"Tipo": " Ectoplasma","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 10,"Tipo": " Pelo de Elfo","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 11,"Tipo": " Plumas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 12,"Tipo": " Piel","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 13,"Tipo": " Sangre de necrófago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 14,"Tipo": " Ojo de Google","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 15,"Tipo": " Sangre humana","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 16,"Tipo": " Ojo de Medusa","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 17,"Tipo": " Polvo de momia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 18,"Tipo": " Uñas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 19,"Tipo": " Diente de ogro","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Enormal.","Leyenda":null},
+        {"tirada": 20,"Tipo": " Cola de rata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 21,"Tipo": " Escamas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 22,"Tipo": " Sangre de cambiaformas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 23,"Tipo": " Viscosidad","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 24,"Tipo": " Colmillo de araña","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 25,"Tipo": " Madera del espíritu","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 26,"Tipo": " Esporas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 27,"Tipo": " Lengua","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 28,"Tipo": " Sangre de troll","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 29,"Tipo": " Sangre de vampiros","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null},
+        {"tirada": 30,"Tipo": " Piel de zombie","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad normal.","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Piedra de afilar.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Piedra de afilar","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 100,"Efecto": "La piedra de afilar te permite recuperar 1d3 durabilidad en armas de combate a melé. Se puede usar 3 veces durante un descanso.","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "pieles de lobo.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Piel de lobo","Daño":null,"Defensa": null,"Peso":2,"Recarga":null,"Valor": 40,"Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null},
+        {"tirada": 2,"Tipo": "Pieles de lobo","Daño":null,"Defensa": null,"Peso":"2/u","Recarga":null,"Valor": "40/u","Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null},
+        {"tirada": 3,"Tipo": "Pieles de lobo","Daño":null,"Defensa": null,"Peso":"2/u","Recarga":null,"Valor": "40/u","Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null}
+      ]
+    },
+     {
+      "nombre": "Raciones (2).png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d4",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Ración","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Raciones.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 Ración","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 Raciones","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Receta.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d12",
+      "tabla": [
+        {"tirada": 1,"Tipo": " Receta Poción de Constitución débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 2,"Tipo": " Receta Poción de valentía débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 3,"Tipo": " Receta Poción de destreza débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 4,"Tipo": " Receta Poción de energía débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 5,"Tipo": " Receta Poción de vitalidad débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 6,"Tipo": " Receta Poción de maná débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 7,"Tipo": " Receta Poción de fuerza débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 8,"Tipo": " Receta Poción de sabiduría débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 9,"Tipo": " Receta Bomba de ácido débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 10,"Tipo": " Receta Bomba flamígera débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 12,"Tipo": " Receta Antídoto débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null},
+        {"tirada": 11,"Tipo": " Receta Poción contra enfermedades débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": 200,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta..","Leyenda":null},
+        {"tirada": 12,"Tipo": " Receta Antídoto débil","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.","Leyenda":null}
+          ]
+       },
+       {
+      "nombre": "Saco de dormir (2).png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":5,"Recarga":null,"Valor": 200,"Efecto": "Usar esto mientras descansas hará que recuperes toda la energía automáticamente.","Leyenda":null}
+          ]
+    },
+    {
+      "nombre": "Saco de dormir.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":5,"Recarga":null,"Valor": 200,"Efecto": "Usar esto mientras descansas hará que recuperes toda la energía automáticamente.","Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Tesoro maravilloso.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Roba un Tesoro maravilloso.","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": null,"Efecto": null,"Leyenda":null}
+      ]
+    },
+    {
+      "nombre": "Tesoro superior.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Roba un Tesoro superior.","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": null,"Efecto": null,"Leyenda":null}
+      
+      ]
+    },
+    {
+      "nombre": "Trampa para osos.png",
+      "rotura": "1d2-1",
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":5,"Recarga":null,"Valor": 200,"Efecto": "Ver anotaciones en el capítulo de la Tríada Oscura (pag. 146)","Leyenda":null}
+      ]
+    },
+    {"nombre": "Trampas de cacería.png",
+      "rotura": null,
+      "valor": null,
+      "Peso": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":3,"Recarga":null,"Valor": 150,"Efecto": "Harán que atrapar animales sea más sencillo, otorgando un +10 a la tirada de Supervivencia cuando lo intentes. Puede ir en la mochila todo el tiempol.","Leyenda":null}
+      ]
+        },
+     {
+      "nombre": "Vendas (2).png",
+      "rotura": null,
+      "seleccion": "1d2",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 venda de lino","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 25,"Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 vendas de lino","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "25/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.","Leyenda":null}
+      ]
+    },
+     {
+      "nombre": "Vendas (3).png",
+      "rotura": null,
+      "seleccion": "1d3",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 venda de harapos","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 15,"Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null}
+      ]
+      },
+     {
+      "nombre": "Vendas.png",
+      "rotura": null,
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "1 venda de harapos","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 15,"Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 2,"Tipo": "2 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null}
+      ]
+      },
+     {
+      "nombre": "Virotes.png",
+      "rotura": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {"tirada": 1,"Tipo": "5 Virotes","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor":null,"Efecto": null,"Leyenda":null}
+      ]
+    }
+  ]
+}

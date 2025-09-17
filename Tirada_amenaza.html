@@ -14,46 +14,53 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Tippy.js -->
     <script src="https://unpkg.com/tippy.js@6"></script>
-     <!--Estilos para la ventana de aviso de veneno -->
-<style>
-/* Estilos para la alerta de veneno */
-.mi-popup-veneno {
-  background-color: #222;
-  color: #e0ff00; 
-}
+    <!--Estilos para la ventana de aviso de veneno -->
+    <style>
+        /* Estilos para la alerta de veneno */
+        .mi-popup-veneno {
+            background-color: #222;
+            color: #e0ff00;
+        }
 
-.mi-titulo-veneno {
-  color: #aaff00;
-  font-size: 1.5em;
-}
+        .mi-titulo-veneno {
+            color: #aaff00;
+            font-size: 1.5em;
+        }
 
-.mi-texto-veneno {
-  /* Este estilo se aplica al contenido que envuelves en html */ 
-  color: #ccff66;
-}
+        .mi-texto-veneno {
+            /* Este estilo se aplica al contenido que envuelves en html */
+            color: #ccff66;
+        }
 
-/* Estilo especial para los nombres de héroes */
-.swal-heroes-nombres {
-  display: block; /* para que haga salto de línea */
-  margin-top: 8px;
-  font-weight: bold;
-  color: #ff6666; /* color distinto, por ejemplo rojo suave, cámbialo si prefieres otro */
-  font-size: 1.2em;
-}
-.swal-heroes-list {
-  margin: 0;
-  padding-left: 20px;  /* para sangrar un poco los ítems */
-  text-align: left;     /* que la lista quede alineada a la izquierda */
-}
+        /* Estilo especial para los nombres de héroes */
+        .swal-heroes-nombres {
+            display: block;
+            /* para que haga salto de línea */
+            margin-top: 8px;
+            font-weight: bold;
+            color: #ff6666;
+            /* color distinto, por ejemplo rojo suave, cámbialo si prefieres otro */
+            font-size: 1.2em;
+        }
 
-.swal-heroes-list li {
-  color: #ff6666;     /* color destacado para los nombres */
-  font-weight: bold;
-  margin: 4px 0;       /* un poco de espacio entre héroes */
-  font-size: 1.2em;    /* ajustar tamaño si hace falta */
-}
+        .swal-heroes-list {
+            margin: 0;
+            padding-left: 20px;
+            /* para sangrar un poco los ítems */
+            text-align: left;
+            /* que la lista quede alineada a la izquierda */
+        }
 
-</style>
+        .swal-heroes-list li {
+            color: #ff6666;
+            /* color destacado para los nombres */
+            font-weight: bold;
+            margin: 4px 0;
+            /* un poco de espacio entre héroes */
+            font-size: 1.2em;
+            /* ajustar tamaño si hace falta */
+        }
+    </style>
     <style>
         .contenedorbotones {
             display: flex;
@@ -166,7 +173,6 @@
         }
 
         #contentContainer0 {
-            height: 100%;
             /* Ocupa toda la altura */
             margin-left: 310px;
             /* Deja espacio para el menú */
@@ -445,9 +451,10 @@
             font-weight: bold;
             text-align: center;
         }
-          p {
+
+        p {
             padding: 5px 5px 5px 5px;
-            width:fit-content;
+            width: fit-content;
             border: 2px solid #9d5c48;
             border-radius: 6px;
             font-size: 20px;
@@ -456,6 +463,54 @@
             color: #fff;
             font-weight: bold;
             text-align: center;
+        }
+
+        /* Para que los contenedores usen flexbox y alineen horizontalmente */
+        .fila-fichas {
+            display: flex;
+            align-items: center;
+            /* alinea verticalmente los elementos al centro */
+            justify-content: center;
+            /* centra horizontalmente si sobra espacio */
+            gap: 8px;
+            /* espacio entre elementos */
+            margin: 8px 0;
+            /* un poco de separación vertical */
+        }
+
+        .botones-ajuste {
+            display: flex;
+            gap: 4px;
+        }
+
+        .btn_up,
+        .btn_less {
+            /* opcional: ajustar tamaño de botón, padding, etc. */
+            padding: 4px 8px;
+            font-size: 1em;
+        }
+
+        .entradas-iniciales {
+            /* poner las entradas iniciales también centradas y con un gap */
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        .contenedor-reiniciar {
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Asegúrate de que los p y botones no tengan márgenes inesperados */
+        .p {
+            margin: 0;
+            padding: 0;
         }
     </style>
     <link rel="stylesheet" href="dado.css">
@@ -466,7 +521,7 @@
     background-repeat: no-repeat;  /* no se repite */
     background-position: center;   /* centrada */
     margin: 0;
-    min-height: 100vh;             /* asegura que cubra el alto completo */
+    min-height: 100%;             /* asegura que cubra el alto completo */
 ">
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
@@ -476,142 +531,166 @@
         <table border="2" style="border:2px;width: 100%; border-collapse: collapse;">
             <tr>
                 <td align="center">
-                    <h1><br/>BOLSA DE FICHAS DE TURNO<br/></h1>
-                    <BR>
+                    <h1>BOLSA DE FICHAS DE TURNO</h1>
+                    <br />
+                    <!-- Botón “Reiniciar Bolsa” encima -->
+                    <div class="contenedor-reiniciar">
+                        <button class="fuente btn_opciones" onclick="iniciarBolsa()">Reiniciar Bolsa</button>
+                    </div>
+
+
                     <!-- Entrada de fichas iniciales -->
-                    <label>
-                        Ini. Aliados:
-                        <input class="cuadros_texto" type="number" id="aliadas" min="1" max="25" value="4">
-                    </label>
-                    <label>
-                        Ini. Enems:
-                        <input class="cuadros_texto" type="number" id="enemigas" min="1" max="25" value="3">
-                    </label>
+                    <div class="entradas-iniciales">
+                        <label>
+                            Ini. Aliados:
+                            <input class="cuadros_texto" type="number" id="aliadas" min="1" max="25" value="4">
+                        </label>
+                        <label>
+                            Ini. Enems:
+                            <input class="cuadros_texto" type="number" id="enemigas" min="1" max="25" value="3">
+                        </label>
+                    </div>
 
-                    <!-- Botón para reiniciar la bolsa -->
-                    <button class="fuente btn_opciones" onclick="iniciarBolsa()">Reiniciar Bolsa</button>
                     <!-- Información de las fichas en la bolsa -->
+                    <div class="fichas-info">
+                        <div class="fila-fichas">
+                            <div class="botones-ajuste">
+                                <button class="btn_up" onclick="ajustarFichas('aliadas', 1)"></button>
+                            </div>
 
-                    <p class="p" id="aliadasRestantes">Fichas Aliadas: 0</p>
-                    <button class="btn_up" onclick="ajustarFichas('aliadas', 1)"></button>
-                    <button class="btn_less" onclick="ajustarFichas('aliadas', -1)"></button>
+                            <p class="p">Fichas Aliadas:</p>
+                            <p class="p" id="aliadasRestantes">Fichas Aliadas: 0</p>
+                            <div class="botones-ajuste"></div>
+                            <button class="btn_less" onclick="ajustarFichas('aliadas', -1)"></button>
+                        </div>
+                    </div>
 
-                     <p class="p" id="enemigasRestantes">Fichas Enemigas: 0</p>
-                    <button class="btn_up" onclick="ajustarFichas('enemigas', 1)"></button>
-                    <button class="btn_less" onclick="ajustarFichas('enemigas', -1)"></button>
+                    <div class="fila-fichas">
+                        <div class="botones-ajuste">
+                            <button class="btn_up" onclick="ajustarFichas('enemigas', 1)"></button>
 
-                    <p class="p" id="totalFichas">Fichas en la Bolsa: 0</p>
+                        </div>
+                        <p class="p">Fichas Enemigas:</p>
+                        <p class="p" id="enemigasRestantes">Fichas Enemigas: 0</p>
+                        <div class="botones-ajuste">
+                            <button class="btn_less" onclick="ajustarFichas('enemigas', -1)"></button>
+                        </div>
+                    </div>
+                    <div class="fila-fichas">
+                        <div class="botones-ajuste">
 
+                            <p class="p">Fichas en la Bolsa:</p>
+                            <p class="p" id="totalFichas">Fichas en la Bolsa: 0</p>
+                            <br />
+                        </div>
+                    </div>
                     <!-- Botón para sacar una ficha -->
                     <button class="fuente btn_opciones" onclick="sacarFicha()">Sacar Ficha de la Bolsa</button>
 
-
                     <img id="imagenFicha" src="" alt="Imagen de la ficha" style="display:none;">
+    </div>
+    </td>
+    <td align="center">
+        <br />
+        <h1>AMENAZA</h1>
+        <div>
+            <br /><label for="modificadorTirada">Mod. Tirada: </label>
+            <input class="cuadros_texto" type="number" id="modificadorTirada" value="0">
+        </div>
+        <div>
+            <label for="rangoTirada">Rng. Amenaza: </label>
+            <input class="cuadros_texto" type="number" id="rangoTirada" value="9">
+        </div>
+        <div>
+            <br>
+            <button class="fuente btn_opciones" id="btnAmenaza" onclick="manejarEventoAmenaza()">Tirar
+                Amenaza</button>
+            <div id="opcionesAdicionales"></div>
+        </div>
+        <div id="amenazaContainer">
+            <!--//imagen del dado D10-->
+            <div class="dice-container">
+                <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75" style="display: none;">
+                <!--//imagen del dado D20-->
+            </div>
+            <div class="dice-container">
+                <img id="dice-image2" src="" alt="Dado" width="75" style="display: none;">
+            </div>
+            <div class="dice-container">
+                <img id="dice-image3" src="img/dados/D10-01.png" alt="Dado" width="75" style="display: none;">
+
+            </div>
+            <!-- Div para mostrar el resultado -->
+            <div id="result" class="result"></div>
+            <!-- Div para mostrar el resultado -->
+            <div id="result2" class="result"></div>
+            <!-- Div para mostrar el resultado -->
+            <div id="result3" class="result"></div>
 
 
-                </td>
-                <td align="center">
-                    <br/><h1>AMENAZA</h1>
-                    <div>
-                        <br/><label for="modificadorTirada">Mod. Tirada: </label>
-                        <input class="cuadros_texto" type="number" id="modificadorTirada" value="0">
-                    </div>
-                    <div>
-                        <label for="rangoTirada">Rng. Amenaza: </label>
-                        <input class="cuadros_texto" type="number" id="rangoTirada" value="9">
-                    </div>
-                    <div>
-                        <br>
-                        <button class="fuente btn_opciones" id="btnAmenaza" onclick="manejarEventoAmenaza()">Tirar
-                            Amenaza</button>
-                        <div id="opcionesAdicionales"></div>
-                    </div>
-                    <div id="amenazaContainer">
-                        <!--//imagen del dado D10-->
-                        <div class="dice-container">
-                            <img id="dice-image" src="img/dados/D10-01.png" alt="Dado" width="75"
-                                style="display: none;">
-                            <!--//imagen del dado D20-->
-                        </div>
-                        <div class="dice-container">
-                            <img id="dice-image2" src="" alt="Dado" width="75" style="display: none;">
-                        </div>
-                        <div class="dice-container">
-                            <img id="dice-image3" src="img/dados/D10-01.png" alt="Dado" width="75"
-                                style="display: none;">
+        </div>
+    </td>
+    <td align="center">
 
-                        </div>
-                        <!-- Div para mostrar el resultado -->
-                        <div id="result" class="result"></div>
-                        <!-- Div para mostrar el resultado -->
-                        <div id="result2" class="result"></div>
-                        <!-- Div para mostrar el resultado -->
-                        <div id="result3" class="result"></div>
+        <div id="imageContainer">
+            <div id="imagenAmenazaContainer"></div>
 
+            <!-- Contenedor para la imagen -->
+            <!--<div id="tiradaD20Container"></div>-->
 
-                    </div>
-                </td>
-                <td align="center">
-
-                    <div id="imageContainer">
-                        <div id="imagenAmenazaContainer"></div>
-
-                        <!-- Contenedor para la imagen -->
-                        <!--<div id="tiradaD20Container"></div>-->
-
-                        <div>
-                            <p style="display: none;">Nivel de Amenaza Actual: <span id="amenazaActual">...</span></p>
-                            <div>
-                                <p id="mensajeAmenazaActual" style="display: none;"></p>
-                            </div>
-                            <p id="mensajeAmenaza" style="display:none;"></p>
-                            <!-- Resultado de la ficha sacada -->
-                            <p id="resultadoFicha"></p>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div id="characterTableContainer" class="character-table-container">
-                        <div id="controls">
-                            <label for="estado-select">Asignar estado:</label>
-                            <select id="estado-select" onchange="toggleRoundsInput()">
-                                <option value="Aturdido">Aturdido</option>
-                                <option value="Enfermo">Enfermo</option>
-                                <option value="Miedo">Miedo</option>
-                                <option value="Terror">Terror</option>
-                                <option value="Veneno">Veneno</option>
-                            </select>
-                            <label for="hero-select">al héroe:</label>
-                            <select id="hero-select"></select>
-                            <span id="rounds-container" style="display:none;">
-                                <label for="rounds-input">Nº rondas:</label>
-                                <input class="cuadros_texto" type="number" id="rounds-input" min="0" max="20">
-                            </span>
-                            <button class="fuente btn_opciones" onclick="addState()">Añadir estado</button>
-                        </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Personaje</th>
-                                    <th>Vida Act.</th>
-                                    <th>Vida Máx.</th>
-                                    <th>Maná</th>
-                                    <th>Cordura</th>
-                                    <th>Energía</th>
-                                    <th>Suerte</th>
-                                    <th colspan="3">Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody id="character-table">
-                                <!-- Filas generadas dinámicamente -->
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
+            <div>
+                <p style="display: none;">Nivel de Amenaza Actual: <span id="amenazaActual">...</span></p>
+                <div>
+                    <p id="mensajeAmenazaActual" style="display: none;"></p>
+                </div>
+                <p id="mensajeAmenaza" style="display:none;"></p>
+                <!-- Resultado de la ficha sacada -->
+                <p id="resultadoFicha"></p>
+            </div>
+        </div>
+    </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div id="characterTableContainer" class="character-table-container">
+                <div id="controls">
+                    <label for="estado-select">Asignar estado:</label>
+                    <select id="estado-select" onchange="toggleRoundsInput()">
+                        <option value="Aturdido">Aturdido</option>
+                        <option value="Enfermo">Enfermo</option>
+                        <option value="Miedo">Miedo</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Veneno">Veneno</option>
+                    </select>
+                    <label for="hero-select">al héroe:</label>
+                    <select id="hero-select"></select>
+                    <span id="rounds-container" style="display:none;">
+                        <label for="rounds-input">Nº rondas:</label>
+                        <input class="cuadros_texto" type="number" id="rounds-input" min="0" max="20">
+                    </span>
+                    <button class="fuente btn_opciones" onclick="addState()">Añadir estado</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Personaje</th>
+                            <th>Vida Act.</th>
+                            <th>Vida Máx.</th>
+                            <th>Maná</th>
+                            <th>Cordura</th>
+                            <th>Energía</th>
+                            <th>Suerte</th>
+                            <th colspan="3">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="character-table">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    </table>
     </div>
 
 

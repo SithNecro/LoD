@@ -414,9 +414,9 @@ function iniciarBolsa() {
 
 // Función para actualizar los contadores en pantalla
 function actualizarDisplay() {
-    document.getElementById("aliadasRestantes").textContent = `Fichas Aliadas Restantes: ${fichasAliadas}`;
-    document.getElementById("enemigasRestantes").textContent = `Fichas Enemigas Restantes: ${fichasEnemigas}`;
-    document.getElementById("totalFichas").textContent = `Total de Fichas en la Bolsa: ${totalFichas}`;
+    document.getElementById("aliadasRestantes").textContent = `. ${fichasAliadas} .`;
+    document.getElementById("enemigasRestantes").textContent = ` . ${fichasEnemigas} .`;
+    document.getElementById("totalFichas").textContent = `. ${totalFichas} .`;
 }
 
 // Función para ajustar manualmente la cantidad de fichas
