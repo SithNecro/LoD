@@ -527,7 +527,10 @@
     background-repeat: no-repeat;  /* no se repite */
     background-position: center;   /* centrada */
     margin: 0;
-    min-height: 100%;             /* asegura que cubra el alto completo */
+    padding: 0;
+    height: 100%;
+
+    min-height: 100vh;             /* asegura que cubra el alto completo */
 ">
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
