@@ -518,6 +518,41 @@
             margin: 0;
             padding: 0;
         }
+
+.nombre-exp-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* separación entre elementos */
+}
+
+.input-nombre {
+  width: 150px; /* o lo que quieras */
+}
+
+.input-exp {
+  width: 60px; /* más pequeño que el nombre */
+}
+
+.nombre-exp-item {
+  flex: 1; /* hace que ambos inputs crezcan en proporción */
+}
+
+
+.nombre-exp-item:first-child {
+  flex: 3; /* nombre ocupa más espacio */
+}
+
+.nombre-exp-item:last-child {
+  flex: 1; /* exp ocupa menos */
+}
+
+/* Estilo para la etiqueta "Experiencia:" */
+.exper-exp-label {
+  color: #9d5c48;        /* o el color que quieras */
+  font-weight: bold;
+  margin-right: 4px;     /* separación entre etiqueta y input */
+}
+
     </style>
     <link rel="stylesheet" href="dado.css">
 </head>

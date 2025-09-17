@@ -32,70 +32,78 @@ function updateExp(index, newName) {
     saveCharacters(characters);
 }
 function renderTable() {
-    const characters = loadCharacters();
-    const tableBody = document.getElementById('character-table');
-    tableBody.innerHTML = '';
+  const characters = loadCharacters();
+  const tableBody = document.getElementById('character-table');
+  tableBody.innerHTML = '';
 
-    // Tooltip descriptions for each state
-    const tooltips = {
-        Herido: "-1 PA",
-        Miedo: "-10 HC/HD y -10 AA",
-        Terror: "-10 HC/HD, -10 AA y -1 PA",
-        Enfermedad: "CON/2 y FUE/2",
-        Aturdido: "-1 PA",
-        Veneno: "Pérdida gradual de salud"
-    };
+  const tooltips = {
+    Herido: "-1 PA",
+    Miedo: "-10 HC/HD y -10 AA",
+    Terror: "-10 HC/HD, -10 AA y -1 PA",
+    Enfermedad: "CON/2 y FUE/2",
+    Aturdido: "-1 PA",
+    Veneno: "Pérdida gradual de salud"
+  };
 
-    characters.forEach((character, index) => {
-        const row = document.createElement('tr');
+  characters.forEach((character, index) => {
+    const row = document.createElement('tr');
 
-        // Nombre del personaje
-        const nameCell = document.createElement('td');
-        nameCell.innerHTML = `
-        <input style="width: 40%; "type="text" class="input-field cuadros_texto" value="${character.name}" onchange="updateName(${index}, this.value)"><br><b class="formato-cabeceras">Experiencia:</b></br>
-        <input style="width: 40%; "type="text" class="input-field cuadros_texto" value="${character.exp}"  onchange="updateExp(${index}, this.value)">`;
-        row.appendChild(nameCell);
+    const nameCell = document.createElement('td');
+    nameCell.innerHTML = `
+  <div class="nombre-exp-container">
+    <input type="text"
+           class="input-field cuadros_texto input-nombre"
+           value="${character.name}"
+           onchange="updateName(${index}, this.value)">
+    <b class="formato-cabeceras exper-exp-label">Exp.</b>
+    <input type="text"
+           class="input-field cuadros_texto input-exp"
+           value="${character.exp}"
+           onchange="updateExp(${index}, this.value)">
+  </div>
+`;
+    row.appendChild(nameCell);
 
-        // Atributos
-        ['vidaActual', 'vidaMaxima', 'mana', 'cordura', 'energia', 'suerte'].forEach(attr => {
-            const cell = document.createElement('td');
-            cell.innerHTML = `
-<div style="display: flex; align-items: center; justify-content: center;">
-    <button class="btn_less" onclick="modifyAttribute(${index}, '${attr}', -1)"></button>
-    <span class="cuadros_texto" id="${character.id}-${attr}" style="margin: 0 10px;">${character[attr]}</span>
-    <button class="btn_up" onclick="modifyAttribute(${index}, '${attr}', 1)"></button>
-</div>
-            `;
-            row.appendChild(cell);
-        });
-
-        // Estados con tooltip
-        const estadoCell = document.createElement('td');
-        estadoCell.innerHTML = character.estados.map(estado => {
-            const estadoBase = estado.text.split(' ')[0]; // Ej: "Veneno (3 rondas)" → "Veneno"
-            const tooltipText = tooltips[estadoBase] || "Estado sin descripción";
-
-            return `
-<a id="${estado.id}"
-   href="#"
-   onclick="removeState('${estado.id}', ${index})"
-   style="color: ${estado.color || '#d4af37'};"
-   data-tippy-content="<strong>${estado.text}:</strong> ${tooltipText}">
-   ${estado.text}
-</a>`;
-        }).join(' ');
-        row.appendChild(estadoCell);
-
-        tableBody.appendChild(row);
+    // resto de atributos igual que antes…
+    ['vidaActual', 'vidaMaxima', 'mana', 'cordura', 'energia', 'suerte'].forEach(attr => {
+      const cell = document.createElement('td');
+      cell.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <button class="btn_less" onclick="modifyAttribute(${index}, '${attr}', -1)"></button>
+          <span class="cuadros_texto" id="${character.id}-${attr}" style="margin: 0 10px;">${character[attr]}</span>
+          <button class="btn_up" onclick="modifyAttribute(${index}, '${attr}', 1)"></button>
+        </div>
+      `;
+      row.appendChild(cell);
     });
 
-    saveCharacters(characters);
-    tippy('[data-tippy-content]', {
-  allowHTML: true,
-  placement: 'top',
-  theme: 'light',
-});
+    const estadoCell = document.createElement('td');
+    estadoCell.innerHTML = character.estados.map(estado => {
+      const estadoBase = estado.text.split(' ')[0];
+      const tooltipText = tooltips[estadoBase] || "Estado sin descripción";
+      return `
+        <a id="${estado.id}"
+           href="#"
+           onclick="removeState('${estado.id}', ${index})"
+           style="color: ${estado.color || '#d4af37'};"
+           data-tippy-content="<strong>${estado.text}:</strong> ${tooltipText}">
+           ${estado.text}
+        </a>
+      `;
+    }).join(' ');
+    row.appendChild(estadoCell);
+
+    tableBody.appendChild(row);
+  });
+
+  saveCharacters(characters);
+  tippy('[data-tippy-content]', {
+    allowHTML: true,
+    placement: 'top',
+    theme: 'light',
+  });
 }
+
 
 function addState() {
     const estadoSelect = document.getElementById('estado-select').value;
