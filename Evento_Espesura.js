@@ -1,11 +1,11 @@
-window.onload = function() {
+window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
     fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Evento_Espesura;
             const selector = document.getElementById('selector-tesoro-0');
-            
+
 
             // Añadir opciones al selector
             tesoros.forEach(tesoro => {
@@ -26,6 +26,12 @@ function cambiarImagenSeleccionada() {
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Evento_Espesura/${tesoroSeleccionado}`;
+    urlaudio = `${tesoroSeleccionado}`
+    urlaudio = urlaudio.replace(".png", ".mp3");
+    const audio = new Audio(`img/Evento_Espesura/${urlaudio}`);
+    if (ComprobarMute == "on") {
+        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    }
 }
 
 // Función para cargar una imagen aleatoria
@@ -44,17 +50,22 @@ function cargarTesoroLegendario() {
             // Seleccionar el tesoro en el desplegable
             const selector = document.getElementById('selector-tesoro-0');
             selector.value = tesoroAleatorio;
-// Muestra los dos tesoros y sus selectores
+            // Muestra los dos tesoros y sus selectores
             document.getElementById('single-treasure-container').style.display = 'flex';
-
+            urlaudio = `${tesoroAleatorio}`
+            urlaudio = urlaudio.replace(".png", ".mp3");
+            const audio = new Audio(`img/Evento_Espesura/${urlaudio}`);
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
         });
 }
 
- 
 
 
 
- // Función para barajar y poner la imagen de trasera del tesoro
-        function barajarTesoros() {
-          	document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera Espesura.png';
-        }
+
+// Función para barajar y poner la imagen de trasera del tesoro
+function barajarTesoros() {
+    document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera Espesura.png';
+}

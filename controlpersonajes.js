@@ -5,7 +5,7 @@ const defaultCharacters = [
     { id: 'pj4', name: 'Personaje 4', vidaActual: 20, vidaMaxima: 20, mana: 0, cordura: 8, energia: 1, suerte: 0, corduraMensaje: '', estados: [] }
 ];
 
-const disadvantages = [ 
+const disadvantages = [
     "Odio",
     "Estrés agudo",
     "Estrés agudo",
@@ -48,12 +48,12 @@ function renderTable() {
 
     characters.forEach((character, index) => {
         const row = document.createElement('tr');
-        
+
         // Nombre del personaje
         const nameCell = document.createElement('td');
         nameCell.innerHTML = `
-        <input style="width: 40%; "type="text" class="input-field" value="${character.name}" onchange="updateName(${index}, this.value)"><br><b>Experiencia:</b></br>
-        <input style="width: 40%; "type="text" class="input-field" value="${character.exp}"  onchange="updateExp(${index}, this.value)">`;
+        <input style="width: 40%; "type="text" class="input-field cuadros_texto" value="${character.name}" onchange="updateName(${index}, this.value)"><br><b>Experiencia:</b></br>
+        <input style="width: 40%; "type="text" class="input-field cuadros_texto" value="${character.exp}"  onchange="updateExp(${index}, this.value)">`;
         row.appendChild(nameCell);
 
         // Atributos
@@ -61,9 +61,9 @@ function renderTable() {
             const cell = document.createElement('td');
             cell.innerHTML = `
 <div style="display: flex; align-items: center; justify-content: center;">
-    <button class="action-btn btn-minus" onclick="modifyAttribute(${index}, '${attr}', -1)">-</button>
-    <span id="${character.id}-${attr}" style="margin: 0 10px;">${character[attr]}</span>
-    <button class="action-btn btn-plus" onclick="modifyAttribute(${index}, '${attr}', 1)">+</button>
+    <button class="btn_less" onclick="modifyAttribute(${index}, '${attr}', -1)"></button>
+    <span class="cuadros_texto" id="${character.id}-${attr}" style="margin: 0 10px;">${character[attr]}</span>
+    <button class="btn_up" onclick="modifyAttribute(${index}, '${attr}', 1)"></button>
 </div>
             `;
             row.appendChild(cell);
@@ -71,19 +71,30 @@ function renderTable() {
 
         // Estados con tooltip
         const estadoCell = document.createElement('td');
-        estadoCell.innerHTML = character.estados.map(estado => `
+        estadoCell.innerHTML = character.estados.map(estado => {
+            const estadoBase = estado.text.split(' ')[0]; // Ej: "Veneno (3 rondas)" → "Veneno"
+            const tooltipText = tooltips[estadoBase] || "Estado sin descripción";
+
+            return `
 <a id="${estado.id}"
    href="#"
    onclick="removeState('${estado.id}', ${index})"
-   style="color: ${estado.color || 'black'};"
-   title="${tooltips[estado.text.split(' ')[0]] || 'Estado sin descripción'}">${estado.text}</a>
-        `).join(' ');
+   style="color: ${estado.color || '#d4af37'};"
+   data-tippy-content="<strong>${estado.text}:</strong> ${tooltipText}">
+   ${estado.text}
+</a>`;
+        }).join(' ');
         row.appendChild(estadoCell);
 
         tableBody.appendChild(row);
     });
 
     saveCharacters(characters);
+    tippy('[data-tippy-content]', {
+  allowHTML: true,
+  placement: 'top',
+  theme: 'light',
+});
 }
 
 function addState() {
@@ -98,7 +109,7 @@ function addState() {
     const stateId = `${heroSelect}-${estadoSelect}`;
     const existingState = character.estados.find(estado => estado.id === stateId);
     if (existingState) {
-       // alert(`El estado "${estadoSelect}" ya está asignado a este personaje.`);
+        // alert(`El estado "${estadoSelect}" ya está asignado a este personaje.`);
         return; // No añadir duplicados
     }
 
@@ -228,9 +239,43 @@ function pasarTurno() {
     saveCharacters(characters);
     renderTable();
 
-    if (venenoActualizado && heroesConVeneno.length > 0) {
-        alert(`Atención nuevo turno, recuerda aplicar el veneno a los héroes: ${heroesConVeneno.join(', ')}`);
-    }
+      if (venenoActualizado && heroesConVeneno.length > 0) {
+    // PASAMOS EL ARRAY (no la cadena)
+    console.log(heroesConVeneno, typeof heroesConVeneno)
+    alertaConVeneno(Array.from(heroesConVeneno));
+  }
+}
+function alertaConVeneno(heroes) {
+  const heroesArray = Array.isArray(heroes) ? heroes : [String(heroes)];
+
+  // Construimos la lista HTML
+  const listaHeroes = heroesArray.map(nombre => `<li>${nombre}</li>`).join('');
+
+  const contenidoHtml = `
+    <div>
+      Atención nuevo turno, recuerda aplicar el veneno a los héroes:
+      <ul class="swal-heroes-list">
+        ${listaHeroes}
+      </ul>
+    </div>
+  `;
+
+  if (typeof Swal !== 'undefined' && Swal.fire) {
+    Swal.fire({
+      title: '☠️ ¡Veneno activo!',
+      html: contenidoHtml,
+      icon: 'warning',
+      confirmButtonText: 'Entendido',
+      customClass: {
+        popup: 'mi-popup-veneno',
+        title: 'mi-titulo-veneno',
+        content: 'mi-texto-veneno'
+      }
+    });
+  } else {
+    // fallback simple si no hay Swal
+    alert("Atención nuevo turno, recuerda aplicar el veneno a los héroes:\n" + heroesArray.join("\n"));
+  }
 }
 
 // Al cargar la página

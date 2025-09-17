@@ -5,8 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amenaza</title>
-        <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <!-- En el <head> o antes que uses la alerta -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+    <!-- Popper.js requerido por Tippy -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Tippy.js -->
+    <script src="https://unpkg.com/tippy.js@6"></script>
+     <!--Estilos para la ventana de aviso de veneno -->
+<style>
+/* Estilos para la alerta de veneno */
+.mi-popup-veneno {
+  background-color: #222;
+  color: #e0ff00; 
+}
+
+.mi-titulo-veneno {
+  color: #aaff00;
+  font-size: 1.5em;
+}
+
+.mi-texto-veneno {
+  /* Este estilo se aplica al contenido que envuelves en html */ 
+  color: #ccff66;
+}
+
+/* Estilo especial para los nombres de héroes */
+.swal-heroes-nombres {
+  display: block; /* para que haga salto de línea */
+  margin-top: 8px;
+  font-weight: bold;
+  color: #ff6666; /* color distinto, por ejemplo rojo suave, cámbialo si prefieres otro */
+  font-size: 1.2em;
+}
+.swal-heroes-list {
+  margin: 0;
+  padding-left: 20px;  /* para sangrar un poco los ítems */
+  text-align: left;     /* que la lista quede alineada a la izquierda */
+}
+
+.swal-heroes-list li {
+  color: #ff6666;     /* color destacado para los nombres */
+  font-weight: bold;
+  margin: 4px 0;       /* un poco de espacio entre héroes */
+  font-size: 1.2em;    /* ajustar tamaño si hace falta */
+}
+
+</style>
     <style>
         .contenedorbotones {
             display: flex;
@@ -15,6 +62,12 @@
             text-align: center;
             gap: 10px;
             /* Espacio entre los elementos */
+        }
+
+        .fuente {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 16px;
         }
 
         .result {
@@ -91,7 +144,7 @@
             margin: 2px 0;
         }
 
-    
+
 
         #contentContainer {
             /* Deja espacio para el menú */
@@ -130,6 +183,15 @@
             /* Opcional, si tienes más elementos aquí */
             padding: 10px;
             /* Espaciado interno opcional */
+            transition: margin-left 0.3s ease;
+            padding: 20px;
+            background: rgba(35, 35, 35, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         #imageContainer {
@@ -148,6 +210,9 @@
             /* Alinea los elementos al inicio */
             align-items: stretch;
             /* Alinea el contenido en la parte superior */
+
+
+
         }
 
         iframe {
@@ -166,8 +231,7 @@
             color: red;
             font-weight: bold;
         }
-    </style>
-    <style>
+
         /* Encapsular estilos dentro de una clase contenedora única */
         #characterTableContainer {
             /* margin-left: 310px;*/
@@ -224,53 +288,207 @@
             color: darkviolet;
             font-weight: bold;
         }
+
+        Select {
+            width: 25%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 18px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+            font-weight: bold;
+        }
+
+        a {
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 20px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px 5px 5px 5px;
+
+        }
+
+        label {
+            color: #d4af37;
+            display: inline;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        h1 {
+            color: #d4af37;
+            display: inline;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .btn_up {
+            width: 40px;
+            height: 40px;
+            background: url('img/interface/more.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50px;
+
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_less {
+            width: 40px;
+            height: 40px;
+            background: url('img/interface/less.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50px;
+
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_less:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_less:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn_up:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_up:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn_opciones {
+            color: #d4af37;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+            border: 1px solid #6f3f2e;
+            border-radius: 6px;
+
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_opciones:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_opciones:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .cuadros_texto {
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 20px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
     <link rel="stylesheet" href="dado.css">
 </head>
 
 <body style="background-image: url('fondo.png'); background-size: cover;">
     <div class="menu">
-        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
     <div id="contentContainer0" class="main-content">
         <table border="1" style="width: 100%; border-collapse: collapse;">
             <tr>
                 <td align="center">
-                    <h2>Bolsa de Fichas</h2>
-
+                    <h1>BOLSA DE FICHAS DE TURNO</h1>
+                    <BR>
                     <!-- Entrada de fichas iniciales -->
                     <label>
                         Ini. Aliados:
-                        <input type="number" id="aliadas" min="1" max="25" value="4">
+                        <input class="cuadros_texto" type="number" id="aliadas" min="1" max="25" value="4">
                     </label>
                     <label>
                         Ini. Enems:
-                        <input type="number" id="enemigas" min="1" max="25" value="3">
+                        <input class="cuadros_texto" type="number" id="enemigas" min="1" max="25" value="3">
                     </label>
 
                     <!-- Botón para reiniciar la bolsa -->
-                    <button onclick="iniciarBolsa()">Reiniciar Bolsa</button>
+                    <button class="fuente btn_opciones" onclick="iniciarBolsa()">Reiniciar Bolsa</button>
                     <!-- Información de las fichas en la bolsa -->
 
                     <p class="result" id="aliadasRestantes">Fichas Aliadas: 0</p>
-                    <button class="button2" onclick="ajustarFichas('aliadas', 1)"
-                        style="background-color: green; color: white;">+</button>
-                    <button class="button2" onclick="ajustarFichas('aliadas', -1)"
-                        style="background-color: red; color: white;">-</button>
+                    <button class="btn_up" onclick="ajustarFichas('aliadas', 1)"></button>
+                    <button class="btn_less" onclick="ajustarFichas('aliadas', -1)"></button>
 
 
 
                     <p class="result" id="enemigasRestantes">Fichas Enemigas: 0</p>
-                    <button class="button2" onclick="ajustarFichas('enemigas', 1)"
-                        style="background-color: green; color: white;">+</button>
-                    <button class="button2" onclick="ajustarFichas('enemigas', -1)"
-                        style="background-color: red; color: white;">-</button>
+                    <button class="btn_up" onclick="ajustarFichas('enemigas', 1)"></button>
+                    <button class="btn_less" onclick="ajustarFichas('enemigas', -1)"></button>
 
                     <p class="result" id="totalFichas">Fichas en la Bolsa: 0</p>
 
                     <!-- Botón para sacar una ficha -->
-                    <button onclick="sacarFicha()">Sacar Ficha de la Bolsa</button>
+                    <button class="fuente btn_opciones" onclick="sacarFicha()">Sacar Ficha de la Bolsa</button>
 
 
                     <img id="imagenFicha" src="" alt="Imagen de la ficha" style="display:none;">
@@ -282,15 +500,16 @@
                     <h3>AMENAZA</h3>
                     <div>
                         <label for="modificadorTirada">Mod. Tirada: </label>
-                        <input type="number" id="modificadorTirada" value="0">
+                        <input class="cuadros_texto" type="number" id="modificadorTirada" value="0">
                     </div>
                     <div>
                         <label for="rangoTirada">Rng. Amenaza: </label>
-                        <input type="number" id="rangoTirada" value="9">
+                        <input class="cuadros_texto" type="number" id="rangoTirada" value="9">
                     </div>
                     <div>
                         <br>
-                        <button id="btnAmenaza" onclick="manejarEventoAmenaza()">Tirar Amenaza</button>
+                        <button class="fuente btn_opciones" id="btnAmenaza" onclick="manejarEventoAmenaza()">Tirar
+                            Amenaza</button>
                         <div id="opcionesAdicionales"></div>
                     </div>
                     <div id="amenazaContainer">
@@ -354,9 +573,9 @@
                             <select id="hero-select"></select>
                             <span id="rounds-container" style="display:none;">
                                 <label for="rounds-input">Nº rondas:</label>
-                                <input type="number" id="rounds-input" min="0" max="20">
+                                <input class="cuadros_texto" type="number" id="rounds-input" min="0" max="20">
                             </span>
-                            <button onclick="addState()">Añadir estado</button>
+                            <button class="fuente btn_opciones" onclick="addState()">Añadir estado</button>
                         </div>
                         <table>
                             <thead>

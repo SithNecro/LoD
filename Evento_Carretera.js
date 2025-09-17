@@ -29,7 +29,10 @@ function cambiarImagenSeleccionada() {
     urlaudio = `${tesoroSeleccionado}`
     urlaudio = urlaudio.replace(".png", ".mp3");
     const audio = new Audio(`img/Evento_Carretera/${urlaudio}`);
-    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    if (ComprobarMute == "on") {
+        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    }
+
 }
 
 
@@ -54,7 +57,9 @@ function cargarTesoroLegendario() {
             urlaudio = `${tesoroAleatorio}`
             urlaudio = urlaudio.replace(".png", ".mp3");
             const audio = new Audio(`img/Evento_Carretera/${urlaudio}`);
-            audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
         });
 }
 

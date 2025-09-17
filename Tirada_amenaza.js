@@ -88,6 +88,7 @@ async function manejarAmenaza() {
 
         const btnEvento = document.createElement('button');
         btnEvento.textContent = "Evento en nueva sala";
+        btnEvento.className = "fuente btn_opciones";
         opcionesAdicionales.appendChild(btnEvento);
 
         btnEvento.addEventListener('click', function () {
@@ -183,10 +184,13 @@ async function manejarAmenaza() {
 
             const btnAmenazaCombate = document.createElement('button');
             btnAmenazaCombate.textContent = "Amenaza en Combate";
+            btnAmenazaCombate.className = "fuente btn_opciones";
             opcionesAdicionales.appendChild(btnAmenazaCombate);
 
             const btnAmenazaSinCombate = document.createElement('button');
             btnAmenazaSinCombate.textContent = "Amenaza sin Combate";
+            btnAmenazaSinCombate.className = "fuente btn_opciones";
+
             opcionesAdicionales.appendChild(btnAmenazaSinCombate);
 
             btnAmenazaCombate.addEventListener('click', async function () {
@@ -502,6 +506,14 @@ function reproducirSonido(tipo) {
     }
 
 }
+
+ // Inicializar Tippy para todos los tooltips creados
+            tippy('.efecto', {
+                allowHTML: true,
+                maxWidth: 400,
+                theme: 'light-border',
+                animation: 'scale'
+            });
 // Escucha el cambio en los cuadros de texto para actualizar el localStorage en tiempo real
 document.getElementById("aliadas").addEventListener("input", guardarEnLocalStorage);
 document.getElementById("enemigas").addEventListener("input", guardarEnLocalStorage);

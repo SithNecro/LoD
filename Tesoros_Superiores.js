@@ -44,7 +44,11 @@ function cambiarImagenSeleccionada() {
     cargarStatsObjeto(tesoroSeleccionado);
     const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
     const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
-    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+
+    let ComprobarMute = localStorage.getItem('sonido')
+    if (ComprobarMute == "on") {
+        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    }
     const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
     btn_coger_tesoro.style.visibility = "visible";
 }
@@ -93,7 +97,10 @@ function cargarTesoroSuperior() {
             //Reproduccion audio
             const nombreAudio = tesoroAleatorio.replace(/\.png$/i, '.mp3');
             const audio = new Audio(`img/Tesoros_Superiores//${nombreAudio}`);
-            audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            let ComprobarMute = localStorage.getItem('sonido')
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
             const btn_coger_tesoro = document.getElementById('btn_coger_tesoro');
             btn_coger_tesoro.style.visibility = "visible";
         });
@@ -109,7 +116,7 @@ function habilidadBuscatesoros() {
             // Seleccionar dos tesoros aleatorios
             let tesoro1 = tesoros[Math.floor(Math.random() * tesoros.length)];
             let tesoro2;
- 
+
 
             // Asegurar que los dos tesoros no sean iguales
             do {
@@ -154,7 +161,10 @@ function reproducirAudiosSecuencial(audios) {
         if (i >= audios.length) return;
         const audio = new Audio(basePath + audios[i]);
         i++;
-        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+        let ComprobarMute = localStorage.getItem('sonido')
+        if (ComprobarMute == "on") {
+            audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+        }
         audio.addEventListener("ended", playNext);
     }
 
@@ -205,7 +215,10 @@ function BajarMoral(valor) {
     // --- AUDIO ---
     const nombreAudio = "pa_la_saca.mp3";
     const audio = new Audio(`img/Tesoros_Superiores/${nombreAudio}`);
-    audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    let ComprobarMute = localStorage.getItem('sonido')
+    if (ComprobarMute == "on") {
+        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+    }
 
 }
 
