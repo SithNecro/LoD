@@ -102,6 +102,21 @@
       ]
     },
     {
+      "nombre": "Armadura de cuero.png",
+      "rotura": "1d4",
+      "seleccion": "1d6",
+      "tabla": [
+        {"tirada": 1,"Tipo": "Gorro de Cuero","Daño":null,"Cobertura / Defensa": "Cabeza / 3","Peso / Rango":"1 / 2","Recarga":null,"Valor": 50,"Efecto": null,"Leyenda":null},
+        {"tirada": 2,"Tipo": "Chaleco de Cuero","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 80,"Efecto": null,"Leyenda":null},
+        {"tirada": 3,"Tipo": "Chaleco de Cuero","Daño":null,"Cobertura / Defensa": "Torso / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 80,"Efecto": null,"Leyenda":null},
+        {"tirada": 4,"Tipo": "Casaca","Daño":null,"Cobertura / Defensa": "Torso, Brazos / 3","Peso / Rango":"4 / 2","Recarga":null,"Valor": 140,"Efecto": null,"Leyenda":null},
+        {"tirada": 5,"Tipo": "Pantalones","Daño":null,"Cobertura / Defensa": "Piernas / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 120,"Efecto": null,"Leyenda":null},
+        {"tirada": 6,"Tipo": "Brazales","Daño":null,"Cobertura / Defensa": "Brazos / 3","Peso / Rango":"3 / 2","Recarga":null,"Valor": 120,"Efecto": "Apilable","Leyenda":"<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>"}
+          
+      
+      ]
+    },
+    {
       "nombre": "Armadura de escamas.png",
       "rotura": "1d4+1",
       "seleccion": "1d4",
@@ -280,15 +295,85 @@
       ]
     },
     
-    {
+  {
       "nombre": "Ingredientes.png",
       "rotura": null,
-      "seleccion": "1d3",
+      "valor": "1d3",
+      "Peso": null,
+      "seleccion": "1d30*3",
       "tabla": [
-        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Tira en la tabla de ingredientes para ver cuáles has encontrado.","Leyenda":null},
-        {"tirada": 2,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Tira en la tabla de ingredientes para ver cuáles has encontrado.","Leyenda":null},
-        {"tirada": 3,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Tira en la tabla de ingredientes para ver cuáles has encontrado.","Leyenda":null}
-       ]
+        {"tirada": 1,"Tipo": " Piel Anfidia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 2,"Tipo": " Alas de Murciélago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 3,"Tipo": " Corazón bestial","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 4,"Tipo": " Harina de huesos","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 5,"Tipo": " Tejido cerebral","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 6,"Tipo": " Quitina","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 7,"Tipo": " Ojo de cíclope","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 8,"Tipo": " Sangre de dragón","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 9,"Tipo": " Ectoplasma","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 10,"Tipo": " Pelo de Elfo","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 11,"Tipo": " Plumas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 12,"Tipo": " Piel","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 13,"Tipo": " Sangre de necrófago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 14,"Tipo": " Ojo de Google","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 15,"Tipo": " Sangre humana","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 16,"Tipo": " Ojo de Medusa","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 17,"Tipo": " Polvo de momia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 18,"Tipo": " Uñas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 19,"Tipo": " Diente de ogro","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 20,"Tipo": " Cola de rata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 21,"Tipo": " Escamas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 22,"Tipo": " Sangre de cambiaformas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 23,"Tipo": " Viscosidad","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 24,"Tipo": " Colmillo de araña","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 25,"Tipo": " Madera del espíritu","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 26,"Tipo": " Esporas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 27,"Tipo": " Lengua","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 28,"Tipo": " Sangre de troll","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 29,"Tipo": " Sangre de vampiros","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 30,"Tipo": " Piel de zombie","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null}
+       
+      ]
+    },
+    {
+      "nombre": "Ingredientes (2).png",
+      "rotura": null,
+      "valor": "1d3",
+      "Peso": null,
+      "seleccion": "1d30*3",
+      "tabla": [
+        {"tirada": 1,"Tipo": " Piel Anfidia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 2,"Tipo": " Alas de Murciélago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 3,"Tipo": " Corazón bestial","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 4,"Tipo": " Harina de huesos","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 5,"Tipo": " Tejido cerebral","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 6,"Tipo": " Quitina","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 7,"Tipo": " Ojo de cíclope","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 8,"Tipo": " Sangre de dragón","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 9,"Tipo": " Ectoplasma","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 10,"Tipo": " Pelo de Elfo","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 11,"Tipo": " Plumas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 12,"Tipo": " Piel","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 13,"Tipo": " Sangre de necrófago","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 14,"Tipo": " Ojo de Google","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 15,"Tipo": " Sangre humana","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 16,"Tipo": " Ojo de Medusa","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 17,"Tipo": " Polvo de momia","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 18,"Tipo": " Uñas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 19,"Tipo": " Diente de ogro","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 20,"Tipo": " Cola de rata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 21,"Tipo": " Escamas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 22,"Tipo": " Sangre de cambiaformas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 23,"Tipo": " Viscosidad","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 24,"Tipo": " Colmillo de araña","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 25,"Tipo": " Madera del espíritu","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 26,"Tipo": " Esporas","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 27,"Tipo": " Lengua","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 28,"Tipo": " Sangre de troll","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 29,"Tipo": " Sangre de vampiros","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null},
+        {"tirada": 30,"Tipo": " Piel de zombie","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": null,"Efecto": "Ingrediente de Calidad Normal.","Leyenda":null}
+       
+      ]
     },
     {
       "nombre": "Jabalina.png",
