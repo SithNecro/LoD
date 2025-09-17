@@ -332,7 +332,6 @@
         h1 {
             color: #d4af37;
             display: inline;
-            margin-bottom: 5px;
             font-weight: bold;
             font-size: 20px;
         }
@@ -446,20 +445,38 @@
             font-weight: bold;
             text-align: center;
         }
+          p {
+            padding: 5px 5px 5px 5px;
+            width:fit-content;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 20px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
     <link rel="stylesheet" href="dado.css">
 </head>
 
-<body style="background-image: url('fondo.png'); background-size: cover;">
+<body style=" background-image: url('img/interface/fondo_palancas.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
     <div id="contentContainer0" class="main-content">
-        <table border="1" style="width: 100%; border-collapse: collapse;">
+        <table border="2" style="border:2px;width: 100%; border-collapse: collapse;">
             <tr>
                 <td align="center">
-                    <h1>BOLSA DE FICHAS DE TURNO</h1>
+                    <h1><br/>BOLSA DE FICHAS DE TURNO<br/></h1>
                     <BR>
                     <!-- Entrada de fichas iniciales -->
                     <label>
@@ -475,17 +492,15 @@
                     <button class="fuente btn_opciones" onclick="iniciarBolsa()">Reiniciar Bolsa</button>
                     <!-- Información de las fichas en la bolsa -->
 
-                    <p class="result" id="aliadasRestantes">Fichas Aliadas: 0</p>
+                    <p class="p" id="aliadasRestantes">Fichas Aliadas: 0</p>
                     <button class="btn_up" onclick="ajustarFichas('aliadas', 1)"></button>
                     <button class="btn_less" onclick="ajustarFichas('aliadas', -1)"></button>
 
-
-
-                    <p class="result" id="enemigasRestantes">Fichas Enemigas: 0</p>
+                     <p class="p" id="enemigasRestantes">Fichas Enemigas: 0</p>
                     <button class="btn_up" onclick="ajustarFichas('enemigas', 1)"></button>
                     <button class="btn_less" onclick="ajustarFichas('enemigas', -1)"></button>
 
-                    <p class="result" id="totalFichas">Fichas en la Bolsa: 0</p>
+                    <p class="p" id="totalFichas">Fichas en la Bolsa: 0</p>
 
                     <!-- Botón para sacar una ficha -->
                     <button class="fuente btn_opciones" onclick="sacarFicha()">Sacar Ficha de la Bolsa</button>
@@ -496,10 +511,9 @@
 
                 </td>
                 <td align="center">
-
-                    <h3>AMENAZA</h3>
+                    <br/><h1>AMENAZA</h1>
                     <div>
-                        <label for="modificadorTirada">Mod. Tirada: </label>
+                        <br/><label for="modificadorTirada">Mod. Tirada: </label>
                         <input class="cuadros_texto" type="number" id="modificadorTirada" value="0">
                     </div>
                     <div>

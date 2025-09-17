@@ -54,6 +54,7 @@ function cargarTesoroLegendario() {
             selector.value = tesoroAleatorio;
             // Muestra los dos tesoros y sus selectores
             document.getElementById('single-treasure-container').style.display = 'flex';
+            let ComprobarMute = localStorage.getItem('sonido')
             urlaudio = `${tesoroAleatorio}`
             urlaudio = urlaudio.replace(".png", ".mp3");
             const audio = new Audio(`img/Evento_Carretera/${urlaudio}`);
