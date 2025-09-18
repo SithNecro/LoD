@@ -764,6 +764,12 @@ document.getElementById("create-potion").addEventListener("click", () => {
                 "crea_pocion"
             );
         } else {
+            const audio = new Audio(`img/interface/Eureka.mp3`);
+            let ComprobarMute = localStorage.getItem('sonido')
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
+
             potionName = getPotionName(type);
             customAlert(
                 `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
@@ -869,7 +875,7 @@ function generatePotionTypeSelector(container) {
 
     ["", "Débil", "Básica", "Suprema"].forEach(type => {
         const option = document.createElement("option");
-      //  option.value = type.toLowerCase();
+        //  option.value = type.toLowerCase();
         option.textContent = type || "Seleccionar tipo";
         typeSelect.appendChild(option);
     });
@@ -1005,42 +1011,42 @@ function generatePotionMaterialsForm(container, type) {
     // --------- FUNCIONES AUXILIARES ---------
 
     function createSelect(container, labelText, optionsArray) {
-    const rowDiv = document.createElement("div");
-    rowDiv.style.display = "flex";
-    rowDiv.style.alignItems = "center";
-    rowDiv.style.marginBottom = "8px"; // espacio entre filas
+        const rowDiv = document.createElement("div");
+        rowDiv.style.display = "flex";
+        rowDiv.style.alignItems = "center";
+        rowDiv.style.marginBottom = "8px"; // espacio entre filas
 
-    const label = document.createElement("label");
-    label.textContent = labelText + ": ";
-    label.style.width = "150px"; // ancho fijo para alinear todos los selects
-    label.style.marginRight = "10px";
+        const label = document.createElement("label");
+        label.textContent = labelText + ": ";
+        label.style.width = "150px"; // ancho fijo para alinear todos los selects
+        label.style.marginRight = "10px";
 
-    const select = document.createElement("select");
-    select.style.flex = "1"; // ocupa todo el espacio restante
+        const select = document.createElement("select");
+        select.style.flex = "1"; // ocupa todo el espacio restante
 
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.textContent = "Seleccionar";
-    defaultOption.disabled = true;
-    defaultOption.selected = true;
-    select.appendChild(defaultOption);
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Seleccionar";
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        select.appendChild(defaultOption);
 
-    optionsArray.sort().forEach(opt => {
-        const option = document.createElement("option");
-        option.value = opt;
-        option.textContent = opt;
-        select.appendChild(option);
-    });
+        optionsArray.sort().forEach(opt => {
+            const option = document.createElement("option");
+            option.value = opt;
+            option.textContent = opt;
+            select.appendChild(option);
+        });
 
-    // Evento para evitar duplicados
-    select.addEventListener("change", () => {
-        enforceUniqueSelections(container);
-    });
+        // Evento para evitar duplicados
+        select.addEventListener("change", () => {
+            enforceUniqueSelections(container);
+        });
 
-    rowDiv.appendChild(label);
-    rowDiv.appendChild(select);
-    container.appendChild(rowDiv);
-}
+        rowDiv.appendChild(label);
+        rowDiv.appendChild(select);
+        container.appendChild(rowDiv);
+    }
 
 
     function enforceUniqueSelections(container) {
@@ -1098,4 +1104,21 @@ function loadAlchemySkill() {
         skillInput.value = 0; // Valor por defecto si no existe en localStorage
         console.log("No se encontró habilidad de alquimia en localStorage. Usando valor predeterminado.");
     }
+}
+function reproducirAudiosSecuencial(audios) {
+    let i = 0;
+    const basePath = "img/interface/";
+
+    function playNext() {
+        if (i >= audios.length) return;
+        const audio = new Audio(basePath + audios[i]);
+        i++;
+        let ComprobarMute = localStorage.getItem('sonido')
+        if (ComprobarMute == "on") {
+            audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+        }
+        audio.addEventListener("ended", playNext);
+    }
+
+    playNext();
 }
