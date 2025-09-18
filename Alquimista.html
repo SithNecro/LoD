@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alquimia</title>
     <script defer src="Alquimista.js"></script>
     <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="menu-acordeon.css">
-
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <style>
-       
-
         .top-buttons {
             display: flex;
             gap: 10px;
         }
 
-     
+
 
         .treasure-image {
             width: 290px;
             border-radius: 5%;
         }
 
-        button, select {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px 0;
-        }
+
 
         .treasure-container {
             display: flex;
@@ -41,46 +36,446 @@
             display: none;
             gap: 20px;
         }
-      
 
-       
 
-      
+
+
+        .btn_up {
+            width: 40px;
+            height: 40px;
+            background: url('img/interface/more.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50px;
+
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_less {
+            width: 40px;
+            height: 40px;
+            background: url('img/interface/less.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50px;
+
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_less:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_less:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn_up:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_up:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn_opciones {
+            color: #d4af37;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+            border: 1px solid #6f3f2e;
+            border-radius: 6px;
+
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_opciones:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_opciones:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .cuadros_texto {
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 20px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        Select {
+            width: 50%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+            font-weight: bold;
+        }
+
+        label {
+            color: #d4af37;
+            display: inline;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        h1 {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            /* <- esto centra el texto */
+        }
+
+        .contenedores {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(35, 35, 35, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+            transition: margin-left 0.3s ease;
+        }
+
+
+
+        .main-content-zonas {
+            margin-left: 310px;
+            /* por defecto, cuando el menú está oculto */
+            transition: margin-left 0.3s ease;
+            padding: 20px;
+            width: 1000px;
+            background: rgba(35, 35, 35, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        #inventory-section {
+            display: flex;
+            flex-direction: column;
+            /* todo en columna */
+            gap: 8px;
+            /* separación entre controles y la tabla */
+        }
+
+        /* Fila 1: Material, select, unidades, input, exquisito */
+        #inventory-section .fila1 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* separación entre items */
+        }
+
+        #material-select {
+            width: 350px;
+            /* ancho fijo */
+        }
+
+        #material-units {
+            width: 80px;
+            /* ancho fijo */
+        }
+
+        /* Fila 2: botón */
+        #inventory-section .fila2 {
+            margin-top: 0px;
+        }
+
+        /* SOLO para el inventario */
+        #inventory-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        table {
+            border: 2px solid #8B4513;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        th {
+            color: #d4af37;
+            padding: 10px;
+        }
+
+        td {
+            color: white;
+            padding-right: 10px;
+            padding-left: 10px;
+
+        }
+
+        .btn_delete {
+            width: 20px;
+            height: 20px;
+            background: url('img/interface/less.png') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50px;
+
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_delete:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_delete:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .cr_pocion_contenedor {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            /* espacio entre filas */
+            width: 400px;
+            /* ancho total del contenedor */
+            margin: auto;
+            /* centrar sección horizontalmente */
+        }
+
+        .cr_pocion_fila {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* espacio entre elementos de la fila */
+        }
+
+        /* Fila 1: ALQ + botones */
+        .cr_pocion_fila1 .cr_pocion_input {
+            width: 60px;
+        }
+
+        .cr_pocion_btn_up,
+        .cr_pocion_btn_less {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Fila 2: Tipo de Poción */
+        .cr_pocion_fila2 select {
+            width: 350px;
+        }
+
+        /* Fila 4: botón Generar centrado */
+        .cr_pocion_fila4 {
+            justify-content: center;
+        }
+
+        .cr_pocion_fila label {
+            font-weight: bold;
+        }
+
+        /* El contenedor de Crear Poción debe apilar sus filas en columna */
+        #potion-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            /* separación entre filas */
+        }
+
+        /* Cada fila interna mantiene alineación horizontal de sus elementos */
+        #potion-section .fila1,
+        #potion-section .fila3,
+        #potion-section .fila4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #potion-section .fila2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            /* centra verticalmente */
+            justify-content: center;
+            /* centra horizontalmente */
+            gap: 10px;
+            /* separación entre label y select */
+            width: 50%;
+        }
+
+        /* Fila 4: centrar botón Generar */
+        #potion-section .fila4 {
+            justify-content: center;
+        }
+
+        /* Contenedor principal de la fila3 */
+        /* Contenedor principal fila3: radios arriba, selects abajo */
+        #potion-section .fila3 {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Radios en fila */
+        #potion-section .fila3a {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Contenedor de selects en fila */
+        #potion-section .fila3b {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Los selectores dentro de fila3 no deben ocupar todo el ancho */
+        #potion-section .fila3b select,
+        #potion-section #potion-ingredients select {
+            width: 240px;
+            /* ajusta el ancho a tu gusto */
+            flex: 0 0 auto;
+            /* evita que se estiren o se apilen */
+        }
+           /* Estilos para la alerta de veneno */
+        .mi-popup-veneno {
+            background-color: #222;
+            color: #e0ff00;
+             border: 5px solid #e0ff00; /* <-- aquí el estilo */
+  border-radius: 15px;       /* opcional, para esquinas redondeadas */
+  padding: 10px;             /* opcional, espacio interno */
+        }
+
+        .mi-titulo-veneno {
+            color: #aaff00;
+            font-size: 1.5em;
+        }
+
+        .mi-texto-veneno {
+            /* Este estilo se aplica al contenido que envuelves en html */
+            color: #ccff66;
+        }
+
     </style>
 </head>
+
 <body style="background-image: url('fondo.png'); background-size: cover;">
     <!-- Carga del menú lateral -->
-     <div class="menu">
+    <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
-    
-    <div class="main-content">
-        <h2>Inventario</h2>
+
+    <div class="main-content-zonas">
+        <button class="btn_opciones" id="reset-button">Reiniciar Libro de Alquimia</button>
+
         <section id="bottle-section">
             <div>
-                <label for="empty-bottles">Botellas Vacías:</label>
-                <input type="number" id="empty-bottles" value="0" readonly>
-                <button id="add-bottle" style="background-color: green; border-radius: 50%;">+</button>
-                <button id="remove-bottle" style="background-color: red; border-radius: 50%;">-</button>
+                <h1>Inventario</h1>
             </div>
+            <div class="contenedores">
+                <label for="empty-bottles">Botellas Vacías:</label><br />
+                <button id="add-bottle" class="btn_up"></button>
+
+                <input class="cuadros_texto" type="number" id="empty-bottles" value="0" readonly>
+                <button id="remove-bottle" class="btn_less"></button>
+            </div>
+
+
         </section>
         <!-- Zona de contenido principal -->
-
-        <button id="reset-button">Comenzar de 0</button>
-        <section id="inventory-section">
-
-            <div>
+        <section class="contenedores" id="inventory-section">
+            <div class="fila1">
                 <label for="material-select">Material:</label>
                 <select id="material-select"></select>
+
                 <label for="material-units">Unidades:</label>
-                <input type="number" id="material-units" min="1" value="1">
+                <input class="cuadros_texto" type="number" id="material-units" min="1" value="1">
+
                 <label>
-                    <input type="checkbox" id="material-exquisite">
-                    Exquisito
+                    <input type="checkbox" id="material-exquisite"> Exquisito
                 </label>
-                <button id="add-material">Agregar al Inventario</button>
             </div>
+
+            <div class="fila2">
+                <button class="btn_opciones" id="add-material">Agregar al Inventario</button>
+            </div>
+
             <table id="inventory-table" border="1">
                 <thead>
                     <tr>
@@ -88,16 +483,25 @@
                         <th>Nombre</th>
                         <th>Unidades</th>
                         <th>Exquisito</th>
-                        <th>Acciones</th>
+                        <th>¿Eliminar?</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </section>
+        <h1>Crear Poción</h1>
+        <section class="contenedores" id="potion-section">
 
-        <section id="potion-section">
-            <h2>Crear Poción</h2>
-            <div>
+            <!-- Fila 1 -->
+            <div class="fila1">
+                <label for="alchemy-skill">Hab. ALQ.:</label>
+                <button id="add-alchemy" class="btn_up"></button>
+                <input class="cuadros_texto" type="number" id="alchemy-skill" min="0" max="100" value="50">
+                <button id="remove-alchemy" class="btn_less"></button>
+            </div>
+
+            <!-- Fila 2 -->
+            <div class="fila2">
                 <label for="potion-type">Tipo de Poción:</label>
                 <select id="potion-type">
                     <option value="" selected>Tipo</option>
@@ -106,19 +510,18 @@
                     <option value="Suprema">Suprema</option>
                 </select>
             </div>
-            <div id="potion-ingredients" style="margin-top: 15px;"></div>
 
-            <div>
-                <label for="alchemy-skill">Hab. ALQ.:</label>
-                <input type="number" id="alchemy-skill" min="0" max="100" value="50">
-                <button id="add-alchemy" style="background-color: green; border-radius: 50%;">+</button>
-                <button id="remove-alchemy" style="background-color: red; border-radius: 50%;">-</button>
-                <button id="create-potion">Generar Poción</button>
+            <!-- Fila 3 (se rellena con los selects que genera el JS) -->
+            <div class="fila3" id="potion-ingredients"></div>
+
+            <!-- Fila 4 -->
+            <div class="fila4">
+                <button class="btn_opciones" id="create-potion">Generar Poción</button>
             </div>
         </section>
 
         <section id="recipe-book-section">
-            <h2>Recetario</h2>
+            <h1>Libro de Alquimia</h1>
 
             <table border="1" id="recipe-table">
                 <thead>
@@ -136,12 +539,13 @@
 
 
         <section id="manual-potion-section">
-            <button id="add-manual-potion-button" style="margin-top: 20px;">Añadir poción a mano</button>
+            <button class="btn_opciones" id="add-manual-potion-button" style="margin-top: 20px;">Añadir poción a
+                mano</button>
             <div id="manual-potion-adder" style="display: none; margin-top: 10px;"></div>
         </section>
     </div>
-        <script src="menu-acordeon.js"></script>
+    <script src="menu-acordeon.js"></script>
 
 </body>
-</html>
 
+</html>

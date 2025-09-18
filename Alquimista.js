@@ -86,15 +86,72 @@ const recipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
 // Función para borrar las claves específicas de localStorage
 // Función para borrar las claves específicas de localStorage con confirmación
 function resetAlchemyData() {
-    const confirmation = confirm("¿Estás seguro de que quieres eliminar el inventario y el recetario de pociones conocidas? Esta acción no se puede deshacer.");
-    if (confirmation) {
-        localStorage.removeItem("alchemy_inventory"); // Elimina el inventario
-        localStorage.removeItem("alchemy_recipes"); // Elimina las recetas
-        alert("¡Se han eliminado los datos de Alquimia! Comenzamos de 0.");
-        location.reload(); // Recarga la página para aplicar cambios
-    } else {
-        alert("La acción ha sido cancelada. Los datos no se han eliminado.");
+  customConfirm(
+    "reiniciar_alquimia","Inventario y recetas serán borrados.<br>El destino no permite deshacerlo.<br><br><strong>¿Estás seguro?</strong>",
+    () => {
+      localStorage.removeItem("alchemy_inventory");
+      localStorage.removeItem("alchemy_recipes");
+      customAlert("¡Se han eliminado los datos de Alquimia! Comenzamos de 0.","reiniciar_alquimia");
+      location.reload();
+    },
+    () => {
+     // customAlert("La acción ha sido cancelada. Los datos no se han eliminado.");
     }
+  );
+}
+// Reemplazo de alert con SweetAlert2 e icono personalizado
+function customAlert(message,imagen_icono) {
+  if (typeof Swal !== 'undefined' && Swal.fire) {
+    Swal.fire({
+      title: '⚗️ Alquimia',
+      text: message,
+      imageUrl: `img/interface/${imagen_icono}.png`,   // tu icono personalizado
+      imageWidth: 150,
+      imageHeight: 150,
+      confirmButtonText: 'Entendido',
+      customClass: {
+        popup: 'mi-popup-veneno',
+        title: 'mi-titulo-veneno',
+        content: 'mi-texto-veneno'
+      }
+    });
+  } else {
+    alert(message); // fallback si no carga Swal
+  }
+}
+
+// Reemplazo de confirm con SweetAlert2 e icono personalizado
+function customConfirm(imagen_icono,message, onConfirm, onCancel) {
+  if (typeof Swal !== 'undefined' && Swal.fire) {
+    Swal.fire({
+        
+      //title: '¿Estás seguro?',
+      html: message,
+      
+      imageUrl: `img/interface/${imagen_icono}.png`,
+      imageWidth: 150,
+      imageHeight: 150,
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar todo conocimiento',
+      cancelButtonText: 'Mejor en otro momento',
+      customClass: {
+        popup: 'mi-popup-veneno',
+        title: 'mi-titulo-veneno',
+        content: 'mi-texto-veneno'
+      }
+      
+    }).then(result => {
+      if (result.isConfirmed && typeof onConfirm === 'function') onConfirm();
+      else if (result.dismiss === Swal.DismissReason.cancel && typeof onCancel === 'function') onCancel();
+    });
+  } else {
+    // fallback nativo
+    if (confirm(message)) {
+      if (typeof onConfirm === 'function') onConfirm();
+    } else {
+      if (typeof onCancel === 'function') onCancel();
+    }
+  }
 }
 
 // Asociar la función al botón "Comenzar de 0"
@@ -153,12 +210,12 @@ function renderInventoryTable() {
             <td>${item.units}</td>
             <td>${item.exquisite ? "Sí" : "No"}</td>
             <td>
-                <button class="remove-item" data-index="${index}" style="background-color: red; color: white; border-radius: 5px;">Eliminar</button>
+                <button class="btn_delete" data-index="${index}" style="background-color: red; color: white; border-radius: 5px;"></button>
             </td>
         `;
         tbody.appendChild(row);
 
-        const removeButton = row.querySelector(".remove-item");
+        const removeButton = row.querySelector(".btn_delete");
         removeButton.addEventListener("click", () => {
             removeInventoryItem(index);
         });
@@ -352,16 +409,17 @@ function populatePotionSelectors() {
     });
 }
 // Generar los desplegables para seleccionar materiales
+// Reemplaza la función generatePotionSelectors existente por esta
 function generatePotionSelectors(type) {
     const container = document.getElementById("potion-ingredients");
     container.innerHTML = ""; // Limpiar cualquier contenido previo
 
-    if (!type) {
-        return; // No hacer nada si no se ha seleccionado un tipo
-    }
+    if (!type) return;
+
+    // Asegurarnos de que container actúe como fila3 (column)
+    container.classList.add("fila3");
 
     if (type === "Basica") {
-        // Configuración para las combinaciones posibles
         const combinations = [
             {
                 label: "2 Ingredientes + 1 Parte",
@@ -381,9 +439,13 @@ function generatePotionSelectors(type) {
             }
         ];
 
-        // Crear botones de radio para elegir la combinación
-        const switcher = document.createElement("div");
-        switcher.style.marginBottom = "10px"; // Separar botones de los selectores
+        // Subcontenedor para los radios (fila3a)
+        const radioContainer = document.createElement("div");
+        radioContainer.classList.add("fila3a");
+
+        // Subcontenedor para los selects (fila3b)
+        const selectsContainer = document.createElement("div");
+        selectsContainer.classList.add("fila3b");
 
         combinations.forEach((combination, index) => {
             const label = document.createElement("label");
@@ -393,27 +455,25 @@ function generatePotionSelectors(type) {
             radio.type = "radio";
             radio.name = "selectorCombination";
             radio.value = combination.value;
-            if (index === 0) {
-                radio.checked = true; // Selección predeterminada
-            }
+            if (index === 0) radio.checked = true;
 
-            // Al cambiar el radio, generar los selectores correspondientes
+            // IMPORTANTE: al cambiar, generamos los selects DENTRO de selectsContainer
             radio.addEventListener("change", () => {
-                createSelectors(combination.selectors);
+                createSelectors(combination.selectors, selectsContainer);
             });
 
             label.appendChild(radio);
             label.appendChild(document.createTextNode(" " + combination.label));
-            switcher.appendChild(label);
+            radioContainer.appendChild(label);
         });
 
-        container.appendChild(switcher);
+        container.appendChild(radioContainer);
+        container.appendChild(selectsContainer);
 
-        // Crear los selectores iniciales
-        createSelectors(combinations[0].selectors);
+        // Crear los selectores iniciales dentro de selectsContainer
+        createSelectors(combinations[0].selectors, selectsContainer);
     } else {
         let selectorsNeeded;
-
         if (type === "Debil") {
             selectorsNeeded = [
                 { type: "ingredient", count: 1 },
@@ -426,16 +486,21 @@ function generatePotionSelectors(type) {
             ];
         }
 
-        createSelectors(selectorsNeeded);
+        const selectsContainer = document.createElement("div");
+        selectsContainer.classList.add("fila3b");
+        container.appendChild(selectsContainer);
+
+        createSelectors(selectorsNeeded, selectsContainer);
     }
 }
 
-function createSelectors(selectorsNeeded) {
-    const container = document.getElementById("potion-ingredients");
+// Reemplaza la función createSelectors existente por esta
+function createSelectors(selectorsNeeded, container = document.getElementById("potion-ingredients")) {
+    if (!container) return;
 
-    // Eliminar selectores existentes
+    // Eliminar únicamente los selects existentes dentro de este contenedor
     const existingSelectors = container.querySelectorAll(".potion-selector");
-    existingSelectors.forEach(selector => selector.remove());
+    existingSelectors.forEach(s => s.remove());
 
     selectorsNeeded.forEach(({ type, count }) => {
         for (let i = 0; i < count; i++) {
@@ -450,14 +515,15 @@ function createSelectors(selectorsNeeded) {
             defaultOption.selected = true;
             select.appendChild(defaultOption);
 
+            // rellenado posterior por populatePotionSelectors
             select.addEventListener("change", () => populatePotionSelectors());
             container.appendChild(select);
         }
     });
 
-    populatePotionSelectors(); // Llenar selectores con opciones
+    // Rellenar opciones (busca todos los .potion-selector en el documento)
+    populatePotionSelectors();
 }
-
 // Detectar cambio en el tipo de poción y generar los desplegables
 document.getElementById("potion-type").addEventListener("change", (e) => {
     generatePotionSelectors(e.target.value);

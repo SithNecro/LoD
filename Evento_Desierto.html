@@ -13,7 +13,7 @@
 
     <style>
         /* Estilos para el menú lateral */
-      
+
 
         /* Contenedor de la imagen (lado izquierdo) */
         .treasure-container {
@@ -145,6 +145,13 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.1),
                 0 1px 2px rgba(0, 0, 0, 0.4);
         }
+
+        h1 {
+            color: #d4af37;
+            display: inline;
+            font-weight: bold;
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -156,13 +163,14 @@
     min-height: 100vh;             /* asegura que cubra el alto completo */
 ">
     <!-- Carga del menú lateral -->
-   <div class="menu">
+    <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
 
     <!-- Zona de contenido principal -->
     <div class="main-content">
+        <h1>EVENTOS DE DESIERTO</h1>
         <div class="top-buttons">
             <button class="btn_abrir_tesoro" onclick="cargarTesoroLegendario()" id="tesoro-btn"></button>
 
