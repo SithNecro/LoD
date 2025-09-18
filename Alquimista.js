@@ -27,7 +27,7 @@ const potionNames = {
     Básica: {
         d3_1_2: [
             "Experiencia", "Constitución", "Valentía", "Destreza", "Energía", "Vitalidad",
-            "Mana", "Fuerza", "Sabiduría", "Ácido", "Nauseabunda", "Flamígera",
+            "Maná", "Fuerza", "Sabiduría", "Ácido", "Nauseabunda", "Flamígera",
             "Invisibilidad", "Corrosión", "Contra Enfermedades", "Antídoto",
             "Veneno", "Fuego Líquido", "Frasco del Vacío", "Aceite para Armas"
         ],
@@ -39,7 +39,7 @@ const potionNames = {
     },
     Débil_and_Suprema: [
         "Flamígera", "Constitución", "Valentía", "Destreza", "Energía", "Vitalidad",
-        "Mana", "Fuerza", "Sabiduría", "Ácido", "Contra Enfermedades", "Antídoto"
+        "Maná", "Fuerza", "Sabiduría", "Ácido", "Contra Enfermedades", "Antídoto"
     ]
 };
 // Agregar descripciones de las pociones
@@ -50,7 +50,7 @@ const potionDescriptions = {
     "Destreza": "Débil: +5 DES; Básica: +10 DES; Supremaa: +15 DES.",
     "Energía": "Débil: +1 ENERGÍA; Básica: +2 ENERGÍA; Supremaa: +3 ENERGÍA.",
     "Vitalidad": "Débil: 1d4 VIT; Básica: 1d6 VIT; Supremaa: 1d10 VIT.",
-    "Mana": "Débil: 1d20 Maná; Básica: 2d20 Maná; Supremaa: 3d20 Maná.",
+    "Maná": "Débil: 1d20 Maná; Básica: 2d20 Maná; Supremaa: 3d20 Maná.",
     "Fuerza": "Débil: +10 FUE; Básica: +15 FUE; Supremaa: +20 FUE.",
     "Sabiduría": "Débil: +10 SAB; Básica: +15 SAB; Supremaa: +20 SAB.",
     "Ácido": "Débil: 1d6 DAÑ; Básica: 1d10 DAÑ; Supremaa: 1d12 DAÑ.",
@@ -588,7 +588,7 @@ function getPotionName(type) {
         if (roll === 1 || roll === 2) {
             const BásicaNames = [
                 "Experiencia", "Constitución", "Valentía", "Destreza", "Energía",
-                "Vitalidad", "Mana", "Fuerza", "Sabiduría", "Ácido",
+                "Vitalidad", "Maná", "Fuerza", "Sabiduría", "Ácido",
                 "Nauseabunda", "Flamígera", "Invisibilidad", "Corrosión",
                 "Contra Enfermedades", "Antídoto", "Veneno", "Fuego Líquido",
                 "Frasco del Vacío", "Aceite para Armas"
@@ -605,7 +605,7 @@ function getPotionName(type) {
     } else if (type === "Débil" || type === "Suprema") {
         const advancedNames = [
             "Flamígera", "Constitución", "Valentía", "Destreza", "Energía",
-            "Vitalidad", "Mana", "Fuerza", "Sabiduría", "Ácido",
+            "Vitalidad", "Maná", "Fuerza", "Sabiduría", "Ácido",
             "Contra Enfermedades", "Antídoto"
         ];
         return advancedNames[Math.floor(Math.random() * advancedNames.length)];
@@ -869,7 +869,7 @@ function generatePotionTypeSelector(container) {
 
     ["", "Débil", "Básica", "Suprema"].forEach(type => {
         const option = document.createElement("option");
-        option.value = type.toLowerCase();
+      //  option.value = type.toLowerCase();
         option.textContent = type || "Seleccionar tipo";
         typeSelect.appendChild(option);
     });
@@ -909,9 +909,9 @@ function generatePotionMaterialsForm(container, type) {
 
     // Obtener los nombres de las pociones según el tipo
     let availablePotions = [];
-    if (type === "débil" || type === "suprema") {
+    if (type === "Débil" || type === "Suprema") {
         availablePotions = potionNames.Débil_and_Suprema;
-    } else if (type === "básica") {
+    } else if (type === "Básica") {
         availablePotions = [
             ...potionNames.Básica.d3_1_2,
             ...potionNames.Básica.d3_3
@@ -930,16 +930,16 @@ function generatePotionMaterialsForm(container, type) {
     form.appendChild(document.createElement("br"));
 
     // Generar los selects según el tipo de poción
-    if (type === "débil") {
+    if (type === "Débil") {
         createSelect(form, "Ingrediente", ingredients);
         createSelect(form, "Parte de Monstruo", monsterParts);
     }
-    else if (type === "básica") {
+    else if (type === "Básica") {
         createSelect(form, "Ingrediente", ingredients);
         createSelect(form, "Parte de Monstruo", monsterParts);
         createSelect(form, "Ingrediente o Parte", [...ingredients, ...monsterParts]);
     }
-    else if (type === "suprema") {
+    else if (type === "Suprema") {
         createSelect(form, "Ingrediente", ingredients);
         createSelect(form, "Ingrediente", ingredients);
         createSelect(form, "Parte de Monstruo", monsterParts);
