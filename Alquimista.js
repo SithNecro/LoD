@@ -86,7 +86,7 @@ const recipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
 // Función para borrar las claves específicas de localStorage
 // Función para borrar las claves específicas de localStorage con confirmación
 function resetAlchemyData() {
-  customConfirm(
+  customConfirm("Eliminar Todo Conocimiento",
     "reiniciar_alquimia","Inventario y recetas serán borrados.<br>El destino no permite deshacerlo.<br><br><strong>¿Estás seguro?</strong>",
     () => {
       localStorage.removeItem("alchemy_inventory");
@@ -103,8 +103,8 @@ function resetAlchemyData() {
 function customAlert(message,imagen_icono) {
   if (typeof Swal !== 'undefined' && Swal.fire) {
     Swal.fire({
-      title: '⚗️ Alquimia',
-      text: message,
+     // title: '⚗️ Alquimia',
+      html: message,
       imageUrl: `img/interface/${imagen_icono}.png`,   // tu icono personalizado
       imageWidth: 150,
       imageHeight: 150,
@@ -121,7 +121,7 @@ function customAlert(message,imagen_icono) {
 }
 
 // Reemplazo de confirm con SweetAlert2 e icono personalizado
-function customConfirm(imagen_icono,message, onConfirm, onCancel) {
+function customConfirm(mensaje_confirmacion,imagen_icono,message, onConfirm, onCancel) {
   if (typeof Swal !== 'undefined' && Swal.fire) {
     Swal.fire({
         
@@ -132,7 +132,7 @@ function customConfirm(imagen_icono,message, onConfirm, onCancel) {
       imageWidth: 150,
       imageHeight: 150,
       showCancelButton: true,
-      confirmButtonText: 'Eliminar todo conocimiento',
+      confirmButtonText: mensaje_confirmacion,
       cancelButtonText: 'Mejor en otro momento',
       customClass: {
         popup: 'mi-popup-veneno',
@@ -224,15 +224,27 @@ function renderInventoryTable() {
 // Eliminar elementos del inventario
 
 function removeInventoryItem(index) {
-    if (index < 0 || index >= inventory.length) {
-        console.error("Índice de inventario inválido:", index);
-        return;
-    }
+  if (index < 0 || index >= inventory.length) {
+    console.error("Índice de inventario inválido:", index);
+    return;
+  }
 
-    const removedItem = inventory.splice(index, 1); // Eliminar del inventario
-    saveInventory(); // Guardar cambios en LocalStorage
-    renderInventoryTable(); // Actualizar la tabla
-    alert(`Elemento "${removedItem[0].name}" eliminado con éxito.`);
+  const itemName = inventory[index].name;
+
+  customConfirm("Eliminar el Ingrediente",
+    "eliminar_ingrediente",`¿Deseas desterrar </strong>"${itemName}"</strong> de tu inventario?<br>Una vez hecho, su esencia se perderá para siempre.`,
+    () => {
+      // Acción al confirmar
+      const removedItem = inventory.splice(index, 1);
+      saveInventory(); 
+      renderInventoryTable(); 
+      customAlert(`Ingrediente <strong>"${removedItem[0].name}"</strong> Destruido.`, "eliminar_ingrediente");
+    },
+    () => {
+      // Acción al cancelar (opcional)
+      //customAlert(`La eliminación de "${itemName}" fue cancelada.`, "pocima");
+    }
+  );
 }
 // Renderizar recetario como tabla
 // Renderizar la tabla de recetas
@@ -290,17 +302,34 @@ function sortRecipes() {
 function forgetRecipe(index) {
     const recipeToForget = recipes[index];
     if (recipeToForget.default) {
-        alert(`La receta "${recipeToForget.name}" es predeterminada y no se puede olvidar.`);
+         customAlert(
+        `La receta <strong>"${recipeToForget.name}"</strong> es predeterminada y no se puede olvidar.`,
+        "eliminar_receta"
+    );
         return;
     }
 
-    const confirmation = confirm(`¿Estás seguro de que quieres olvidar la receta "${recipeToForget.name}"?`);
-    if (!confirmation) return;
+    customConfirm(
+    "Olvidar Receta",
+    "eliminar_receta",
+    `¿Deseas olvidar la Receta <strong>"${recipeToForget.name}"</strong>?<br>Una vez hecho, su conocimiento se desvanecerá para siempre.`,
+    () => {
+      // Acción al confirmar
+      recipes.splice(index, 1);
+      saveRecipes();
+      renderRecipeTable();
+      customAlert(
+        `Receta <strong>"${recipeToForget.name}"</strong> olvidada con éxito.`,
+        "eliminar_receta"
+      );
+    },
+    () => {
+      // Acción al cancelar (opcional)
+      // customAlert(`Has decidido conservar la receta "${recipeToForget.name}".`, "receta");
+    }
+  );
 
-    recipes.splice(index, 1);
-    saveRecipes();
-    renderRecipeTable();
-    alert(`Receta "${recipeToForget.name}" olvidada con éxito.`);
+  
 }
 
 
@@ -634,7 +663,11 @@ document.getElementById("create-potion").addEventListener("click", () => {
     const selectors = document.querySelectorAll(".potion-selector");
 
     if (!type) {
-        alert("Selecciona un tipo de poción.");
+       
+          customAlert(
+      `Primero Selecciona la Calidad de la Poción`,
+      "selecciona_pocion"
+    );
         return;
     }
 
