@@ -756,7 +756,11 @@ document.getElementById("create-potion").addEventListener("click", () => {
         let potionName;
         if (knownRecipe) {
             potionName = knownRecipe.name;
-
+            const audio = new Audio(`img/interface/pocion_burbujeante.mp3`);
+            let ComprobarMute = localStorage.getItem('sonido')
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
             customAlert(
                 `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
                 <br>¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>
