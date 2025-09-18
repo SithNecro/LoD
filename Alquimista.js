@@ -15,16 +15,16 @@ const monsterParts = Array.from(new Set([
     "Sangre de troll", "Sangre Vampiro", "Piel de zombi"
 ]));
 const defaultRecipes = [
-    { type: "Basica", name: "Poción de Curación", ingredients: ["Sangre humana", "Cola de rata", "Jengibre ceniciento"], default: true, title: "Sana Sanita" },
-    { type: "Basica", name: "Contra Enfermedades", ingredients: ["Piel de zombi", "Ala de murciélago", "Laurel del monje"], default: true, title: "Sana enferme" },
-    { type: "Basica", name: "Flamígera", ingredients: ["Corazón de bestia", "Cola de rata", "Baya lunar"], default: true, title: "pum" },
-    { type: "Basica", name: "Antídoto", ingredients: ["Colmillo de araña", "Barbárea", "Agracejo"], default: true, title: "cura eneno" },
-    { type: "Basica", name: "Experiencia", ingredients: ["Sangre de dragón", "Hiedra dulce", "Belladona"], default: true, title: "Exp up" },
-    { type: "Basica", name: "Restauración", ingredients: ["Sangre de vampiro", "Sangre de troll", "Corteza de arce rojo"], default: true, title: "restaura tripita" }
+    { type: "Básica", name: "Poción de Curación", ingredients: ["Sangre humana", "Cola de rata", "Jengibre ceniciento"], default: true, title: "Sana Sanita" },
+    { type: "Básica", name: "Contra Enfermedades", ingredients: ["Piel de zombi", "Ala de murciélago", "Laurel del monje"], default: true, title: "Sana enferme" },
+    { type: "Básica", name: "Flamígera", ingredients: ["Corazón de bestia", "Cola de rata", "Baya lunar"], default: true, title: "pum" },
+    { type: "Básica", name: "Antídoto", ingredients: ["Colmillo de araña", "Barbárea", "Agracejo"], default: true, title: "cura eneno" },
+    { type: "Básica", name: "Experiencia", ingredients: ["Sangre de dragón", "Hiedra dulce", "Belladona"], default: true, title: "Exp up" },
+    { type: "Básica", name: "Restauración", ingredients: ["Sangre de vampiro", "Sangre de troll", "Corteza de arce rojo"], default: true, title: "restaura tripita" }
 ];
 // Nombres de pociones
 const potionNames = {
-    Basica: {
+    Básica: {
         d3_1_2: [
             "Experiencia", "Constitución", "Valentía", "Destreza", "Energía", "Vitalidad",
             "Mana", "Fuerza", "Sabiduría", "Ácido", "Nauseabunda", "Flamígera",
@@ -37,7 +37,7 @@ const potionNames = {
             "Escupefuego", "Humo"
         ]
     },
-    Debil_and_Suprema: [
+    Débil_and_Suprema: [
         "Flamígera", "Constitución", "Valentía", "Destreza", "Energía", "Vitalidad",
         "Mana", "Fuerza", "Sabiduría", "Ácido", "Contra Enfermedades", "Antídoto"
     ]
@@ -45,21 +45,21 @@ const potionNames = {
 // Agregar descripciones de las pociones
 const potionDescriptions = {
     "Experiencia": "Otorga 300 EXP. Un héroe sólo puede beber una entre mazmorras.",
-    "Constitución": "Debil: +10 CON; Basica: +15 CON; Supremaa: +20 CON.",
-    "Valentía": "Debil: +10 DET; Basica: +15 DET; Supremaa: +20 DET.",
-    "Destreza": "Debil: +5 DES; Basica: +10 DES; Supremaa: +15 DES.",
-    "Energía": "Debil: +1 ENERGÍA; Basica: +2 ENERGÍA; Supremaa: +3 ENERGÍA.",
-    "Vitalidad": "Debil: 1d4 VIT; Basica: 1d6 VIT; Supremaa: 1d10 VIT.",
-    "Mana": "Debil: 1d20 Maná; Basica: 2d20 Maná; Supremaa: 3d20 Maná.",
-    "Fuerza": "Debil: +10 FUE; Basica: +15 FUE; Supremaa: +20 FUE.",
-    "Sabiduría": "Debil: +10 SAB; Basica: +15 SAB; Supremaa: +20 SAB.",
-    "Ácido": "Debil: 1d6 DAÑ; Basica: 1d10 DAÑ; Supremaa: 1d12 DAÑ.",
+    "Constitución": "Débil: +10 CON; Básica: +15 CON; Supremaa: +20 CON.",
+    "Valentía": "Débil: +10 DET; Básica: +15 DET; Supremaa: +20 DET.",
+    "Destreza": "Débil: +5 DES; Básica: +10 DES; Supremaa: +15 DES.",
+    "Energía": "Débil: +1 ENERGÍA; Básica: +2 ENERGÍA; Supremaa: +3 ENERGÍA.",
+    "Vitalidad": "Débil: 1d4 VIT; Básica: 1d6 VIT; Supremaa: 1d10 VIT.",
+    "Mana": "Débil: 1d20 Maná; Básica: 2d20 Maná; Supremaa: 3d20 Maná.",
+    "Fuerza": "Débil: +10 FUE; Básica: +15 FUE; Supremaa: +20 FUE.",
+    "Sabiduría": "Débil: +10 SAB; Básica: +15 SAB; Supremaa: +20 SAB.",
+    "Ácido": "Débil: 1d6 DAÑ; Básica: 1d10 DAÑ; Supremaa: 1d12 DAÑ.",
     "Nauseabunda": "Cualquier miniatura en esa casilla realizará una tirada de DET o perderá su siguiente turno. Cualquier miniatura en una casilla adyacente realizará una tirada de DET +20. No tiene efecto en No muertos.",
-    "Flamígera": "Debil: 1d6 DAÑ; Basica: 1d10 DAÑ; Supremaa: 1d12 DAÑ.",
+    "Flamígera": "Débil: 1d6 DAÑ; Básica: 1d10 DAÑ; Supremaa: 1d12 DAÑ.",
     "Invisibilidad": "Quita al héroe del tablero hasta que la batalla termine. Cuando finalice, vuelve a cualquier casilla de la loseta.",
     "Corrosión": "Para abrir una puerta. El héroe debe gastar 1 PA adyacente a una puerta para usar esta poción y abrirla automáticamente.",
-    "Contra Enfermedades": "Debil tiene un 75% de éxito, la Basica y la Supremaa tendrán un 100%. Además, la Supremaa curará un 1d3 VIT.",
-    "Antídoto": "Debil tiene un 75% de éxito, la Basica y la Supremaa tendrán un 100%. Además, la Supremaa curará un 1d3 VIT.",
+    "Contra Enfermedades": "Débil tiene un 75% de éxito, la Básica y la Supremaa tendrán un 100%. Además, la Supremaa curará un 1d3 VIT.",
+    "Antídoto": "Débil tiene un 75% de éxito, la Básica y la Supremaa tendrán un 100%. Además, la Supremaa curará un 1d3 VIT.",
     "Veneno": "Puede aplicarse a un arma en cualquier momento, también se puede usar para envenenar 5 proyectiles. Dura hasta el final de la próxima batalla. Los enemigos dañados con un arma envenenada perderán 1 VIT cada turno.",
     "Fuego Líquido": "Esta poción puede aplicarse en un arma a melé, prendiéndola. El arma causará daño de fuego hasta el final de la batalla.",
     "Frasco del Vacío": "Cuando se abre este frasco, absorbe toda la magia. Cualquier hechizo lanzado en la batalla sufre una penalización de -20 además de su modificación de VH.",
@@ -86,72 +86,72 @@ const recipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
 // Función para borrar las claves específicas de localStorage
 // Función para borrar las claves específicas de localStorage con confirmación
 function resetAlchemyData() {
-  customConfirm("Eliminar Todo Conocimiento",
-    "reiniciar_alquimia","Inventario y recetas serán borrados.<br>El destino no permite deshacerlo.<br><br><strong>¿Estás seguro?</strong>",
-    () => {
-      localStorage.removeItem("alchemy_inventory");
-      localStorage.removeItem("alchemy_recipes");
-      customAlert("¡Se han eliminado los datos de Alquimia! Comenzamos de 0.","reiniciar_alquimia");
-      location.reload();
-    },
-    () => {
-     // customAlert("La acción ha sido cancelada. Los datos no se han eliminado.");
-    }
-  );
+    customConfirm("Eliminar Todo Conocimiento",
+        "reiniciar_alquimia", "Inventario y recetas serán borrados.<br>El destino no permite deshacerlo.<br><br><strong>¿Estás seguro?</strong>",
+        () => {
+            localStorage.removeItem("alchemy_inventory");
+            localStorage.removeItem("alchemy_recipes");
+            customAlert("¡Se han eliminado los datos de Alquimia! Comenzamos de 0.", "reiniciar_alquimia");
+            location.reload();
+        },
+        () => {
+            // customAlert("La acción ha sido cancelada. Los datos no se han eliminado.");
+        }
+    );
 }
 // Reemplazo de alert con SweetAlert2 e icono personalizado
-function customAlert(message,imagen_icono) {
-  if (typeof Swal !== 'undefined' && Swal.fire) {
-    Swal.fire({
-     // title: '⚗️ Alquimia',
-      html: message,
-      imageUrl: `img/interface/${imagen_icono}.png`,   // tu icono personalizado
-      imageWidth: 150,
-      imageHeight: 150,
-      confirmButtonText: 'Entendido',
-      customClass: {
-        popup: 'mi-popup-veneno',
-        title: 'mi-titulo-veneno',
-        content: 'mi-texto-veneno'
-      }
-    });
-  } else {
-    alert(message); // fallback si no carga Swal
-  }
+function customAlert(message, imagen_icono) {
+    if (typeof Swal !== 'undefined' && Swal.fire) {
+        Swal.fire({
+            // title: '⚗️ Alquimia',
+            html: message,
+            imageUrl: `img/interface/${imagen_icono}.png`,   // tu icono personalizado
+            imageWidth: 150,
+            imageHeight: 150,
+            confirmButtonText: 'Entendido',
+            customClass: {
+                popup: 'mi-popup-veneno',
+                title: 'mi-titulo-veneno',
+                content: 'mi-texto-veneno'
+            }
+        });
+    } else {
+        alert(message); // fallback si no carga Swal
+    }
 }
 
 // Reemplazo de confirm con SweetAlert2 e icono personalizado
-function customConfirm(mensaje_confirmacion,imagen_icono,message, onConfirm, onCancel) {
-  if (typeof Swal !== 'undefined' && Swal.fire) {
-    Swal.fire({
-        
-      //title: '¿Estás seguro?',
-      html: message,
-      
-      imageUrl: `img/interface/${imagen_icono}.png`,
-      imageWidth: 150,
-      imageHeight: 150,
-      showCancelButton: true,
-      confirmButtonText: mensaje_confirmacion,
-      cancelButtonText: 'Mejor en otro momento',
-      customClass: {
-        popup: 'mi-popup-veneno',
-        title: 'mi-titulo-veneno',
-        content: 'mi-texto-veneno'
-      }
-      
-    }).then(result => {
-      if (result.isConfirmed && typeof onConfirm === 'function') onConfirm();
-      else if (result.dismiss === Swal.DismissReason.cancel && typeof onCancel === 'function') onCancel();
-    });
-  } else {
-    // fallback nativo
-    if (confirm(message)) {
-      if (typeof onConfirm === 'function') onConfirm();
+function customConfirm(mensaje_confirmacion, imagen_icono, message, onConfirm, onCancel) {
+    if (typeof Swal !== 'undefined' && Swal.fire) {
+        Swal.fire({
+
+            //title: '¿Estás seguro?',
+            html: message,
+
+            imageUrl: `img/interface/${imagen_icono}.png`,
+            imageWidth: 150,
+            imageHeight: 150,
+            showCancelButton: true,
+            confirmButtonText: mensaje_confirmacion,
+            cancelButtonText: 'Mejor en otro momento',
+            customClass: {
+                popup: 'mi-popup-veneno',
+                title: 'mi-titulo-veneno',
+                content: 'mi-texto-veneno'
+            }
+
+        }).then(result => {
+            if (result.isConfirmed && typeof onConfirm === 'function') onConfirm();
+            else if (result.dismiss === Swal.DismissReason.cancel && typeof onCancel === 'function') onCancel();
+        });
     } else {
-      if (typeof onCancel === 'function') onCancel();
+        // fallback nativo
+        if (confirm(message)) {
+            if (typeof onConfirm === 'function') onConfirm();
+        } else {
+            if (typeof onCancel === 'function') onCancel();
+        }
     }
-  }
 }
 
 // Asociar la función al botón "Comenzar de 0"
@@ -224,27 +224,27 @@ function renderInventoryTable() {
 // Eliminar elementos del inventario
 
 function removeInventoryItem(index) {
-  if (index < 0 || index >= inventory.length) {
-    console.error("Índice de inventario inválido:", index);
-    return;
-  }
-
-  const itemName = inventory[index].name;
-
-  customConfirm("Eliminar el Ingrediente",
-    "eliminar_ingrediente",`¿Deseas desterrar </strong>"${itemName}"</strong> de tu inventario?<br>Una vez hecho, su esencia se perderá para siempre.`,
-    () => {
-      // Acción al confirmar
-      const removedItem = inventory.splice(index, 1);
-      saveInventory(); 
-      renderInventoryTable(); 
-      customAlert(`Ingrediente <strong>"${removedItem[0].name}"</strong> Destruido.`, "eliminar_ingrediente");
-    },
-    () => {
-      // Acción al cancelar (opcional)
-      //customAlert(`La eliminación de "${itemName}" fue cancelada.`, "pocima");
+    if (index < 0 || index >= inventory.length) {
+        console.error("Índice de inventario inválido:", index);
+        return;
     }
-  );
+
+    const itemName = inventory[index].name;
+
+    customConfirm("Eliminar el Ingrediente",
+        "eliminar_ingrediente", `¿Deseas desterrar </strong>"${itemName}"</strong> de tu inventario?<br>Una vez hecho, su esencia se perderá para siempre.`,
+        () => {
+            // Acción al confirmar
+            const removedItem = inventory.splice(index, 1);
+            saveInventory();
+            renderInventoryTable();
+            customAlert(`Ingrediente <strong>"${removedItem[0].name}"</strong> Destruido.`, "eliminar_ingrediente");
+        },
+        () => {
+            // Acción al cancelar (opcional)
+            //customAlert(`La eliminación de "${itemName}" fue cancelada.`, "pocima");
+        }
+    );
 }
 // Renderizar recetario como tabla
 // Renderizar la tabla de recetas
@@ -273,10 +273,10 @@ function renderRecipeTable() {
         const description = potionDescriptions[recipe.name] || "Descripción no disponible";
 
         // Crear el enlace con tooltip
-        const potionLink = `<a href="#" title="${description}">${recipe.name}</a>`;
+        const potionLink = `<span style="color: white;"><p href="#" title="${description}">${recipe.name}</a></span>`;
 
         row.innerHTML = `
-            <td>${potionLink}</td>
+            <td >${potionLink}</td>
             <td>${recipe.type}</td>
             <td>${recipe.ingredients.join(", ")}</td>
             <td>${recipe.default ? "" : `
@@ -302,34 +302,34 @@ function sortRecipes() {
 function forgetRecipe(index) {
     const recipeToForget = recipes[index];
     if (recipeToForget.default) {
-         customAlert(
-        `La receta <strong>"${recipeToForget.name}"</strong> es predeterminada y no se puede olvidar.`,
-        "eliminar_receta"
-    );
+        customAlert(
+            `La receta <strong>"${recipeToForget.name}"</strong> es predeterminada y no se puede olvidar.`,
+            "eliminar_receta"
+        );
         return;
     }
 
     customConfirm(
-    "Olvidar Receta",
-    "eliminar_receta",
-    `¿Deseas olvidar la Receta <strong>"${recipeToForget.name}"</strong>?<br>Una vez hecho, su conocimiento se desvanecerá para siempre.`,
-    () => {
-      // Acción al confirmar
-      recipes.splice(index, 1);
-      saveRecipes();
-      renderRecipeTable();
-      customAlert(
-        `Receta <strong>"${recipeToForget.name}"</strong> olvidada con éxito.`,
-        "eliminar_receta"
-      );
-    },
-    () => {
-      // Acción al cancelar (opcional)
-      // customAlert(`Has decidido conservar la receta "${recipeToForget.name}".`, "receta");
-    }
-  );
+        "Olvidar Receta",
+        "eliminar_receta",
+        `¿Deseas olvidar la Receta <strong>"${recipeToForget.name}"</strong>?<br>Una vez hecho, su conocimiento se desvanecerá para siempre.`,
+        () => {
+            // Acción al confirmar
+            recipes.splice(index, 1);
+            saveRecipes();
+            renderRecipeTable();
+            customAlert(
+                `Receta <strong>"${recipeToForget.name}"</strong> olvidada con éxito.`,
+                "eliminar_receta"
+            );
+        },
+        () => {
+            // Acción al cancelar (opcional)
+            // customAlert(`Has decidido conservar la receta "${recipeToForget.name}".`, "receta");
+        }
+    );
 
-  
+
 }
 
 
@@ -448,7 +448,7 @@ function generatePotionSelectors(type) {
     // Asegurarnos de que container actúe como fila3 (column)
     container.classList.add("fila3");
 
-    if (type === "Basica") {
+    if (type === "Básica") {
         const combinations = [
             {
                 label: "2 Ingredientes + 1 Parte",
@@ -503,7 +503,7 @@ function generatePotionSelectors(type) {
         createSelectors(combinations[0].selectors, selectsContainer);
     } else {
         let selectorsNeeded;
-        if (type === "Debil") {
+        if (type === "Débil") {
             selectorsNeeded = [
                 { type: "ingredient", count: 1 },
                 { type: "monsterPart", count: 1 }
@@ -583,17 +583,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Función para generar un nombre de poción basado en el tipo
 function getPotionName(type) {
-    if (type === "Basica") {
+    if (type === "Básica") {
         const roll = Math.floor(Math.random() * 3) + 1; // Tirada de 1d3
         if (roll === 1 || roll === 2) {
-            const BasicaNames = [
+            const BásicaNames = [
                 "Experiencia", "Constitución", "Valentía", "Destreza", "Energía",
                 "Vitalidad", "Mana", "Fuerza", "Sabiduría", "Ácido",
                 "Nauseabunda", "Flamígera", "Invisibilidad", "Corrosión",
                 "Contra Enfermedades", "Antídoto", "Veneno", "Fuego Líquido",
                 "Frasco del Vacío", "Aceite para Armas"
             ];
-            return BasicaNames[Math.floor(Math.random() * BasicaNames.length)];
+            return BásicaNames[Math.floor(Math.random() * BásicaNames.length)];
         } else {
             const rareNames = [
                 "Velocidad", "Polvo Químico", "Elixir de Arquero", "Poción de Furia",
@@ -602,7 +602,7 @@ function getPotionName(type) {
             ];
             return rareNames[Math.floor(Math.random() * rareNames.length)];
         }
-    } else if (type === "Debil" || type === "Suprema") {
+    } else if (type === "Débil" || type === "Suprema") {
         const advancedNames = [
             "Flamígera", "Constitución", "Valentía", "Destreza", "Energía",
             "Vitalidad", "Mana", "Fuerza", "Sabiduría", "Ácido",
@@ -655,7 +655,11 @@ document.querySelectorAll(".potion-selector").forEach(select => {
 
 document.getElementById("create-potion").addEventListener("click", () => {
     if (emptyBottles <= 0) {
-        alert("No se puede crear la poción sin botellas vacías.");
+
+        customAlert(
+            `No se puede crear una poción sin <strong>Botellas Vacías</strong>.`,
+            "sin_botellas"
+        );
         return;
     }
 
@@ -663,11 +667,11 @@ document.getElementById("create-potion").addEventListener("click", () => {
     const selectors = document.querySelectorAll(".potion-selector");
 
     if (!type) {
-       
-          customAlert(
-      `Primero Selecciona la Calidad de la Poción`,
-      "selecciona_pocion"
-    );
+
+        customAlert(
+            `Primero Selecciona la Calidad de la Poción`,
+            "selecciona_pocion"
+        );
         return;
     }
 
@@ -677,7 +681,10 @@ document.getElementById("create-potion").addEventListener("click", () => {
     });
 
     if (selectedItems.some(item => !item.name)) {
-        alert("Selecciona todos los ingredientes a usar.");
+        customAlert(
+            `Debes seleccionar todos los <strong>Ingredientes</strong> que vas a usar.`,
+            "ingredientes_alquimia"
+        );
         return;
     }
 
@@ -688,7 +695,10 @@ document.getElementById("create-potion").addEventListener("click", () => {
     });
 
     if (missingItems.length > 0) {
-        alert(`Faltan los siguientes ingredientes o partes en el inventario: ${missingItems.map(item => item.name).join(", ")}`);
+        customAlert(
+            `Te faltan ingredientes:<br><strong>${missingItems.map(item => item.name).join("<br>")}</strong>`,
+            "ingredientes_alquimia"
+        );
         return;
     }
 
@@ -718,7 +728,11 @@ document.getElementById("create-potion").addEventListener("click", () => {
         const isCritical = roll <= 5;
 
         if (isCritical) {
-            alert("Has sacado:" + roll + "  ¡Éxito crítico! Mejora Hab. ALQ. en 1 o recupera energía.");
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+                <strong>¡ÉXITO CRÍTICO!"</strong><br><br>** Mejora Hab. ALQ. en 1 ó<br>Recupera Toda la Energía **`,
+                "pocion_critico"
+            ); return;
         }
 
         // Restar ingredientes y partes
@@ -736,16 +750,28 @@ document.getElementById("create-potion").addEventListener("click", () => {
 
         // Restar botella
         emptyBottles--;
-        alert("Has sacado:" + roll + "  ¡Poción creada con éxito! Una botella ha sido utilizada.");
+
 
         // Crear poción
         let potionName;
         if (knownRecipe) {
             potionName = knownRecipe.name;
-            alert("Has sacado:" + roll + `    ¡La poción "${potionName}" ha sido creada exitosamente!`);
+
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+                <br>¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>
+                ** Recuerda añadirla a tu Inventario. **`,
+                "crea_pocion"
+            );
         } else {
             potionName = getPotionName(type);
-            alert("Has sacado:" + roll + `    ¡Nueva poción creada: "${potionName}"!`);
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+                <br>¡Has Descubierto una nueva Poción:<strong>"${potionName}"!</strong><br>
+                <br>¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>
+                ** Recuerda añadirla a tu Inventario. **`,
+                "crea_pocion"
+            );
 
             // Agregar la poción al recetario
             const newRecipe = {
@@ -765,7 +791,12 @@ document.getElementById("create-potion").addEventListener("click", () => {
         renderRecipeTable();
     } else {
         // Fallo en la creación
-        alert("Has sacado:" + roll + `    Fallaste en la creación de la poción. Ingredientes usados: ${selectedItems.map(item => item.name).join(", ")}`);
+        customAlert(
+            `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+            ¡Los ingredientes se han estropeado!<br><br>
+            <strong>Has Perdido los Siguientes Ingredientes:</strong><br>${selectedItems.map(item => item.name).join("<br>")}`,
+            "fracaso_pocion"
+        );
         selectedItems.forEach(({ name, exquisite }) => {
             const inventoryItem = inventory.find(item => item.name === name && item.exquisite === exquisite);
             if (inventoryItem) {
@@ -779,7 +810,12 @@ document.getElementById("create-potion").addEventListener("click", () => {
         });
         if (roll >= 95) {
             emptyBottles--;
-            alert("Has sacado:" + roll + "  ¡La botella también se rompió!");
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+            ¡Los ingredientes se han estropeado!<br><br>
+            <strong>Has Perdido los Siguientes Ingredientes:</strong><br>${selectedItems.map(item => item.name).join("<br>")}`,
+                "fracaso_pocion"
+            );
         }
         saveInventory();
         renderInventoryTable();
@@ -806,8 +842,8 @@ function createManualPotionAdder() {
     toggleButton.addEventListener("click", () => {
         container.style.display = container.style.display === "none" ? "block" : "none";
         toggleButton.textContent = container.style.display === "block"
-            ? "Ocultar añadir poción a mano"
-            : "Añadir poción a mano";
+            ? "Ocultar Añadir Poción a Mano"
+            : "Añadir Poción a Mano";
 
         // Resetear contenido del contenedor
         container.innerHTML = "";
@@ -818,21 +854,30 @@ function createManualPotionAdder() {
 }
 
 function generatePotionTypeSelector(container) {
+    const rowDiv = document.createElement("div");
+    rowDiv.style.display = "flex";
+    rowDiv.style.alignItems = "center";
+    rowDiv.style.marginBottom = "10px"; // opcional: espacio con el siguiente elemento
+
     const typeLabel = document.createElement("label");
-    typeLabel.textContent = "Tipo de poción: ";
+    typeLabel.textContent = "Calidad de la Poción: ";
+    typeLabel.style.marginRight = "10px"; // separa label del select
+
     const typeSelect = document.createElement("select");
     typeSelect.id = "manual-potion-type";
+    typeSelect.style.flex = "1"; // ocupa el resto del espacio
 
-    ["", "Debil", "Basica", "Suprema"].forEach(type => {
+    ["", "Débil", "Básica", "Suprema"].forEach(type => {
         const option = document.createElement("option");
         option.value = type.toLowerCase();
         option.textContent = type || "Seleccionar tipo";
         typeSelect.appendChild(option);
     });
 
-    container.appendChild(typeLabel);
-    container.appendChild(typeSelect);
-    container.appendChild(document.createElement("br"));
+    // Añadir label y select al contenedor
+    rowDiv.appendChild(typeLabel);
+    rowDiv.appendChild(typeSelect);
+    container.appendChild(rowDiv);
 
     typeSelect.addEventListener("change", () => {
         generatePotionMaterialsForm(container, typeSelect.value);
@@ -851,7 +896,7 @@ function generatePotionMaterialsForm(container, type) {
     const form = document.createElement("div");
     form.id = "manual-potion-materials-form";
 
-    // Generar el desplegable de nombre de la poción según el tipo
+    // Desplegable de nombre de poción
     const potionNameLabel = document.createElement("label");
     potionNameLabel.textContent = "Nombre de la poción: ";
     const potionNameSelect = document.createElement("select");
@@ -864,12 +909,12 @@ function generatePotionMaterialsForm(container, type) {
 
     // Obtener los nombres de las pociones según el tipo
     let availablePotions = [];
-    if (type === "debil" || type === "suprema") {
-        availablePotions = potionNames.Debil_and_Suprema;
-    } else if (type === "basica") {
+    if (type === "débil" || type === "suprema") {
+        availablePotions = potionNames.Débil_and_Suprema;
+    } else if (type === "básica") {
         availablePotions = [
-            ...potionNames.Basica.d3_1_2,
-            ...potionNames.Basica.d3_3
+            ...potionNames.Básica.d3_1_2,
+            ...potionNames.Básica.d3_3
         ];
     }
 
@@ -884,74 +929,61 @@ function generatePotionMaterialsForm(container, type) {
     form.appendChild(potionNameSelect);
     form.appendChild(document.createElement("br"));
 
-    // Determinar el número de materiales necesarios según el tipo de poción
-    let selectorsNeeded;
-    if (type === "debil") {
-        selectorsNeeded = [
-            { type: "ingredient", count: 1 },
-            { type: "monsterPart", count: 1 }
-        ];
-    } else if (type === "basica") {
-        selectorsNeeded = [
-            { type: "ingredient", count: 2 },
-            { type: "monsterPart", count: 1 }
-        ];
-    } else if (type === "suprema") {
-        selectorsNeeded = [
-            { type: "ingredient", count: 2 },
-            { type: "monsterPart", count: 2 }
-        ];
+    // Generar los selects según el tipo de poción
+    if (type === "débil") {
+        createSelect(form, "Ingrediente", ingredients);
+        createSelect(form, "Parte de Monstruo", monsterParts);
     }
-
-    const allMaterials = [...ingredients, ...monsterParts].sort();
-
-    // Generar los desplegables para seleccionar materiales
-    selectorsNeeded.forEach(({ type, count }) => {
-        for (let i = 0; i < count; i++) {
-            const materialLabel = document.createElement("label");
-            materialLabel.textContent = `Material (${type}): `;
-            const materialSelect = document.createElement("select");
-
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.textContent = "Seleccionar material";
-            defaultOption.disabled = true;
-            defaultOption.selected = true;
-            materialSelect.appendChild(defaultOption);
-
-            allMaterials.forEach(material => {
-                const option = document.createElement("option");
-                option.value = material;
-                option.textContent = material;
-                materialSelect.appendChild(option);
-            });
-
-            form.appendChild(materialLabel);
-            form.appendChild(materialSelect);
-            form.appendChild(document.createElement("br"));
-        }
-    });
+    else if (type === "básica") {
+        createSelect(form, "Ingrediente", ingredients);
+        createSelect(form, "Parte de Monstruo", monsterParts);
+        createSelect(form, "Ingrediente o Parte", [...ingredients, ...monsterParts]);
+    }
+    else if (type === "suprema") {
+        createSelect(form, "Ingrediente", ingredients);
+        createSelect(form, "Ingrediente", ingredients);
+        createSelect(form, "Parte de Monstruo", monsterParts);
+        createSelect(form, "Parte de Monstruo", monsterParts);
+    }
 
     // Botón para añadir al recetario
     const addButton = document.createElement("button");
-    addButton.textContent = "Añadir al recetario";
+    addButton.textContent = "Añadir al Libro de Alquimia";
+    addButton.className = "btn_opciones";
+    const buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex";
+    buttonContainer.style.justifyContent = "center";
+    buttonContainer.style.marginTop = "10px"; // opcional, para separar del resto
+
+    buttonContainer.appendChild(addButton);
     addButton.addEventListener("click", () => {
         const selectedPotionName = potionNameSelect.value;
-        const selectedMaterials = Array.from(form.querySelectorAll("select"))
-            .map(select => select.value)
-            .filter(value => value); // Filtrar los no seleccionados
+        const materialSelects = Array.from(form.querySelectorAll("select")).slice(1); // ignorar select de poción
+        const selectedMaterials = materialSelects.map(s => s.value).filter(v => v);
 
         if (!selectedPotionName) {
-            alert("Debes seleccionar un nombre de poción.");
+            customAlert("Debes seleccionar el Nombre de la Poción.", "nueva_receta");
             return;
         }
 
-        if (selectedMaterials.length === 0) {
-            alert("Debes seleccionar al menos un material.");
+        if (selectedMaterials.length < materialSelects.length) {
+            customAlert("Debes seleccionar todos los materiales sin repetir.", "nueva_receta");
             return;
         }
 
-        // Crear una nueva receta
+        // Comprobar si la receta ya existe (sin importar el orden de los materiales)
+        const recipeExists = recipes.some(recipe =>
+            recipe.name === selectedPotionName &&
+            recipe.type === type &&
+            arraysEqualUnordered(recipe.ingredients, selectedMaterials)
+        );
+
+        if (recipeExists) {
+            customAlert("¡Ya conoces esta receta!", "nueva_receta");
+            return;
+        }
+
+        // Crear la nueva receta
         const newRecipe = {
             name: selectedPotionName,
             type,
@@ -961,12 +993,80 @@ function generatePotionMaterialsForm(container, type) {
         recipes.push(newRecipe);
         saveRecipes();
         renderRecipeTable();
-        alert(`Poción "${selectedPotionName}" añadida al recetario.`);
+        customAlert(
+            `<strong>* HAS DESBLOQUEADO UNA NUEVA RECETA *</strong><br><br>Poción de <strong>"${selectedPotionName}"</strong> añadida a tu Libro de Alquimia.`,
+            "nueva_receta"
+        );
     });
 
-    form.appendChild(addButton);
+    form.appendChild(buttonContainer);
     container.appendChild(form);
+
+    // --------- FUNCIONES AUXILIARES ---------
+
+    function createSelect(container, labelText, optionsArray) {
+    const rowDiv = document.createElement("div");
+    rowDiv.style.display = "flex";
+    rowDiv.style.alignItems = "center";
+    rowDiv.style.marginBottom = "8px"; // espacio entre filas
+
+    const label = document.createElement("label");
+    label.textContent = labelText + ": ";
+    label.style.width = "150px"; // ancho fijo para alinear todos los selects
+    label.style.marginRight = "10px";
+
+    const select = document.createElement("select");
+    select.style.flex = "1"; // ocupa todo el espacio restante
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Seleccionar";
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    select.appendChild(defaultOption);
+
+    optionsArray.sort().forEach(opt => {
+        const option = document.createElement("option");
+        option.value = opt;
+        option.textContent = opt;
+        select.appendChild(option);
+    });
+
+    // Evento para evitar duplicados
+    select.addEventListener("change", () => {
+        enforceUniqueSelections(container);
+    });
+
+    rowDiv.appendChild(label);
+    rowDiv.appendChild(select);
+    container.appendChild(rowDiv);
 }
+
+
+    function enforceUniqueSelections(container) {
+        const selects = Array.from(container.querySelectorAll("select")).slice(1); // el 1º es poción
+        const selectedValues = selects.map(s => s.value).filter(v => v);
+
+        selects.forEach(select => {
+            Array.from(select.options).forEach(opt => {
+                if (opt.value && selectedValues.includes(opt.value) && opt.value !== select.value) {
+                    opt.disabled = true;
+                } else {
+                    opt.disabled = false;
+                }
+            });
+        });
+    }
+
+    function arraysEqualUnordered(a, b) {
+        if (a.length !== b.length) return false;
+        const sortedA = [...a].sort();
+        const sortedB = [...b].sort();
+        return sortedA.every((val, index) => val === sortedB[index]);
+    }
+}
+
+
 
 // Inicialización
 document.addEventListener("DOMContentLoaded", () => {
