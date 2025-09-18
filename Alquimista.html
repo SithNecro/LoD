@@ -449,6 +449,10 @@
             gap: 10px;
             /* opcional, espacio entre botón y formulario */
         }
+
+       .menu.open ~ .main-content-zonas {
+    margin-left: 0px;
+}
     </style>
 </head>
 
@@ -475,13 +479,13 @@
         background-repeat: no-repeat;
     ">
             <h1>Inventario</h1>
-             <div class="contenedores">
-                    <label for="empty-bottles">Botellas Vacías:</label><br />
-                    <button id="add-bottle" class="btn_up"></button>
+            <div class="contenedores">
+                <label for="empty-bottles">Botellas Vacías:</label><br />
+                <button id="add-bottle" class="btn_up"></button>
 
-                    <input class="cuadros_texto" type="number" id="empty-bottles" value="0" readonly>
-                    <button id="remove-bottle" class="btn_less"></button>
-                </div>
+                <input class="cuadros_texto" type="number" id="empty-bottles" value="0" readonly>
+                <button id="remove-bottle" class="btn_less"></button>
+            </div>
             <div class="fila1">
                 <label for="material-select">Material:</label>
                 <select id="material-select"></select>
@@ -521,7 +525,7 @@
                 <div>
                     <h1>Crear Poción</h1>
                 </div>
-               
+
 
 
             </section>
