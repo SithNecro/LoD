@@ -357,6 +357,8 @@ document.getElementById("add-material").addEventListener("click", () => {
 // Inicializar el desplegable de materiales
 function initializeMaterialDropdown() {
     const materialSelect = document.getElementById("material-select");
+      // 🔑 Limpia el select antes de volver a rellenarlo
+    materialSelect.innerHTML = "";
     combinedItems.forEach(({ name, type }) => {
         const option = document.createElement("option");
         option.value = name;
