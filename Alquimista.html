@@ -457,7 +457,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-">    <!-- Carga del menú lateral -->
+"> <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
         <button id="toggleMenu">☰</button>
@@ -466,22 +466,22 @@
     <div class="main-content-zonas">
         <button class="btn_opciones" id="reset-button">Reiniciar Libro de Alquimia</button>
 
-        <section id="bottle-section">
-            <div>
-                <h1>Inventario</h1>
-            </div>
-            <div class="contenedores">
-                <label for="empty-bottles">Botellas Vacías:</label><br />
-                <button id="add-bottle" class="btn_up"></button>
 
-                <input class="cuadros_texto" type="number" id="empty-bottles" value="0" readonly>
-                <button id="remove-bottle" class="btn_less"></button>
-            </div>
-
-
-        </section>
         <!-- Zona de contenido principal -->
-        <section class="contenedores" id="inventory-section">
+        <section class="contenedores" id="inventory-section" style="
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/interface/cinturon_alquimia.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    ">
+            <h1>Inventario</h1>
+             <div class="contenedores">
+                    <label for="empty-bottles">Botellas Vacías:</label><br />
+                    <button id="add-bottle" class="btn_up"></button>
+
+                    <input class="cuadros_texto" type="number" id="empty-bottles" value="0" readonly>
+                    <button id="remove-bottle" class="btn_less"></button>
+                </div>
             <div class="fila1">
                 <label for="material-select">Material:</label>
                 <select id="material-select"></select>
@@ -511,12 +511,24 @@
                 <tbody></tbody>
             </table>
         </section>
-        <h1>Crear Poción</h1>
-        <section class="contenedores" id="potion-section">
+        <section class="contenedores" id="potion-section" style="
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/interface/mesa_alquimia.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    ">
+            <section id="bottle-section">
+                <div>
+                    <h1>Crear Poción</h1>
+                </div>
+               
+
+
+            </section>
 
             <!-- Fila 1 -->
             <div class="fila1">
-                <label for="alchemy-skill">Hab. ALQ.:</label>
+                <label for="alchemy-skill">Habilidad de Alquimia (ALQ):</label>
                 <button id="add-alchemy" class="btn_up"></button>
                 <input class="cuadros_texto" type="number" id="alchemy-skill" min="0" max="100" value="50">
                 <button id="remove-alchemy" class="btn_less"></button>
@@ -542,7 +554,15 @@
             </div>
         </section>
 
-        <section class="contenedores" id="recipe-book-section">
+        <section class="contenedores" id="recipe-book-section" style="
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/interface/libro_alquimia.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    ">
+            <!-- contenido de la sección -->
+
+
             <h1>Libro de Alquimia</h1>
 
             <table border="2" id="recipe-table">
