@@ -205,7 +205,7 @@ function sonidoCritico()
     var audio = document.getElementById(diceSound);
     let ComprobarMute = localStorage.getItem('sonido')
     if (ComprobarMute == "on") {
-        const audio = new Audio("sonidos/critico.ogg");
+        const audio = new Audio("sonidos/critico.mp3");
         audio.play();
     }
 
