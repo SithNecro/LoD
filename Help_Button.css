@@ -1,0 +1,54 @@
+   /* Botón flotante de ayuda */
+        #help-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #222;
+            /* tono oscuro como el resto de la página */
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            border: 2px solid #555;
+            cursor: pointer;
+            z-index: 1000;
+            /* siempre por encima del contenido */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #help-button:hover {
+            background-color: #444;
+            transform: scale(1.1);
+        }
+           /* Botón flotante de ayuda */
+        #help-button2 {
+            position: fixed;
+            top: 120px;
+            right: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #222;
+            /* tono oscuro como el resto de la página */
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: 2px solid #555;
+            cursor: pointer;
+            z-index: 1000;
+            /* siempre por encima del contenido */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #help-button:hover2 {
+            background-color: #444;
+            transform: scale(1.1);
+        }

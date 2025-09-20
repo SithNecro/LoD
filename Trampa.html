@@ -7,121 +7,334 @@
     <title>Trampas</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="Help_Button.css">
 
-    <style>
-        /* Columna izquierda con ancho fijo de 300px y centrado arriba */
-        .column-left {
-            width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* Centrado horizontal */
-            justify-content: flex-start;
-            /* Alineado arriba */
-            margin-right: 10px;
-            /* Margen de 10px a la derecha */
-        }
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        .column-left img {
-            width: 300px;
-            /* Ancho de la imagen FAQ igual a la columna */
-            border-radius: 5%;
-            margin-bottom: 20px;
-        }
+    <!DOCTYPE html>
+    <html lang="es">
 
-        /* Columna derecha que toma el resto del espacio y se alinea arriba a la izquierda */
-        .column-right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            /* Alineado arriba */
-            text-align: left;
-            /* Texto y elementos alineados a la izquierda */
-            padding-top: 0px;
-            /* Eliminar cualquier espaciado superior */
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trampas</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="menu-acordeon.css">
+        <link rel="stylesheet" href="Help_Button.css">
 
-        .buttons {
-            margin-top: 10px;
-            /* Reducir el espacio entre la imagen y los botones */
-        }
+        <style>
+            .columns-container {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 20px;
+            }
 
-        button,
-        select {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 5px 0;
-            /* Reducir el margen vertical */
-        }
+            .column-left {
+                width: 300px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                margin-right: 10px;
+            }
 
-        /* Selector y botones debajo de la imagen de trampas */
-        .trampas-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            /* Alineado a la izquierda */
-        }
+            .column-left img {
+                width: 300px;
+                border-radius: 5%;
+                margin-bottom: 20px;
+            }
 
-        .treasure-image {
-            width: 280px;
-            /* Tamaño ajustado para la imagen de trampas */
-            border-radius: 5%;
-            margin-bottom: 10px;
-            /* Reducir el margen inferior de la imagen */
-        }
-         h1 {
-            color: #d4af37;
-            display: inline;
-            font-weight: bold;
-            font-size: 20px;
-        }
-    </style>
-</head>
+            .column-right {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                text-align: left;
+                padding-top: 0px;
+            }
 
-<body style=" background-image: url('img/interface/fondo_tesoros.png');
-    background-size: cover;        /* la imagen cubre todo el viewport */
-    background-repeat: no-repeat;  /* no se repite */
-    background-position: center;   /* centrada */
+            button,
+            select {
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                margin: 5px 0;
+            }
+
+            .trampas-container {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .treasure-image {
+                width: 280px;
+                border-radius: 5%;
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                color: #d4af37;
+                display: inline;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .mi-div {
+                border: 5px solid #8B4513;
+            }
+
+            #result {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .estado-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: rgba(20, 20, 20, 0.8);
+                border: 2px solid #8B4513;
+                border-radius: 12px;
+                padding: 15px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+                max-width: 600px;
+                margin: auto;
+                align-items: center;
+                /* centra verticalmente */
+
+            }
+
+            .estado-col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .estado-imagen {
+                width: 170px;
+                margin-bottom: 10px;
+                filter: drop-shadow(0 0 8px black);
+            }
+
+            .estado-texto {
+                color: #fff;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .dados-container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 10px;
+            }
+
+            .dado {
+                text-align: center;
+                color: white;
+            }
+
+            .resultado-dado {
+                font-size: 14px;
+                margin-top: 5px;
+            }
+
+            .btn_opciones {
+                color: #d4af37;
+                width: 100%;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                text-shadow: 1px 1px 2px #000;
+                background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+                border: 1px solid #6f3f2e;
+                border-radius: 6px;
+
+                box-shadow:
+                    inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                    0 2px 4px rgba(0, 0, 0, 0.4),
+                    0 6px 12px rgba(0, 0, 0, 0.35);
+                transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+                appearance: none;
+            }
+
+            .btn_opciones:hover {
+                box-shadow:
+                    inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                    0 3px 6px rgba(0, 0, 0, 0.5);
+                border-color: #9d5c48;
+            }
+
+            .btn_opciones:active {
+                transform: translateY(1px);
+
+                box-shadow:
+                    inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                    0 1px 2px rgba(0, 0, 0, 0.4);
+            }
+
+            #result6,
+            #result10 {
+                display: none;
+                /* Oculta el número de texto */
+            }
+
+            .estado-container {
+                display: flex;
+                flex-direction: row;
+                /* ahora en dos columnas */
+                justify-content: center;
+                align-items: center;
+                /* centra verticalmente */
+                gap: 20px;
+            }
+
+            .Desplegable {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #9d5c48;
+                border-radius: 6px;
+                font-size: 16px;
+                transition: border-color 0.3s;
+                background: rgba(40, 40, 40, 0.9);
+                color: #fff;
+                background-image: url('img/interface/select_arrow.png');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 20px;
+                padding-right: 35px;
+                appearance: none;
+            }
+
+            .nuevo-bloque-trampas {
+                display: flex;
+                flex-direction: row;
+                /* fila: botones izquierda, imagen derecha */
+                justify-content: center;
+                align-items: center;
+                /* centra verticalmente */
+                gap: 20px;
+
+            }
+
+            .col-botones {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                /* centra verticalmente dentro de la columna */
+                gap: 10px;
+            }
+
+            .col-imagen {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .botones-trampas {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+
+<body style="background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     margin: 0;
-    min-height: 100vh;             /* asegura que cubra el alto completo */
-">
+    min-height: 100vh;">
     <!-- Carga del menú lateral -->
     <div class="menu">
         <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
         <button id="toggleMenu">☰</button>
     </div>
 
+    <!-- Botón de ayuda -->
+    <button onclick="sonidoCritico()" id="help-button2">¡CRÍTICO!</button>
+    <button id="help-button">?</button>
+
     <!-- Zona de contenido principal -->
     <div class="main-content">
-        <h1>Trampas y Puertas</h1>
-        <!-- Columna izquierda (FAQ) con ancho fijo de 300px y centrado arriba -->
-        <div class="column-left">
-            <div class="buttons">
-                <button onclick="cargarTesoroLegendario()" id="tesoro-btn">Sacar Trampa</button>
-                <button onclick="barajarTesoros()">Barajar Trampas</button>
-            </div>
-            <img src="img/FAQ/FAQ_Puertas.png" alt="FAQ" class="faq-image">
-            <p>Tira 1d6, con 6 hay trampa.</p>
-            <button onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del Grupo)</button>
+        <h1>Abrir Puertas y Cofres</h1>
 
+        <!-- Botón de abrir puerta/cofre -->
+        <div class="acciones">
+            <button class="btn_opciones" onclick="tirarDado(6)" id="abrir-btn">Comprobar Cerradura</button>
         </div>
 
+        <!-- Cuadro de resultados con dados oculto al inicio -->
+        <div id="result" class="result" style="color:white">
+            <div class="estado-container" style="display:none;" id="estado-container">
+                <!-- Columna izquierda: resultados -->
+                <div class="estado-col" id="estado-col-izq">
+                    <img id="estado-imagen" class="estado-imagen" src="" alt="Estado de la puerta">
+                    <p id="estado-texto" class="estado-texto"></p>
+                    <div class="dados-container">
+                        <div class="dado">
+                            <img id="dice-image6" src="img/dados/D6-2.png" alt="Dado d6" width="80">
+                            <div id="result6" class="result"></div>
+                        </div>
+                        <div class="dado">
+                            <img id="dice-image10" src="img/dados/D10-01.png" alt="Dado d10" width="80">
+                            <div id="result10" class="result"></div>
+                        </div>
+                                        
 
-        <!-- Columna derecha (Trampas) que toma el resto del espacio, alineado arriba a la izquierda -->
-        <div class="column-right trampas-container">
-            <!-- Botones encima de la imagen de trampas -->
-            <select id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()"></select>
-            <img src="img/traseras/Trasera trampas.png" id="imagen-tesoro" alt="Trampas" class="treasure-image">
-            <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
-            </select>
+                    </div>
+                        <button class="btn_opciones" onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del
+                        Grupo)</button>
+                </div>
+
+                <!-- Columna derecha: trampa (se muestra solo si toca) -->
+                <div class="estado-col" id="estado-col-der" style="display:none;">
+                    <img src="img/traseras/Trasera trampas.png" id="imagen-tesoro" alt="Trampas" class="treasure-image">
+                    <select class="Desplegable" id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()"></select>
+                </div>
+            </div>
+        </div>
+        <!-- Nuevo bloque de trampas independientes -->
+        <h1>Sacar Trampa</h1>
+        <div class="estado-container">
+
+
+            <div class="nuevo-bloque-trampas">
+
+                <!-- Columna izquierda: botones -->
+                <div class="col-botones">
+                    <button class="btn_opciones" onclick="cargarTesoroExtra()" id="tesoro-btn-extra">Sacar
+                        Trampa</button>
+                    <button class="btn_opciones" onclick="barajarTesoroExtra()">Barajar Trampas</button>
+                    <button class="btn_opciones" onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del
+                        Grupo)</button>
+                </div>
+
+                <!-- Columna derecha: imagen + select -->
+                <div class="col-imagen">
+                    <img src="img/traseras/Trasera trampas.png" id="imagen-tesoro-extra" alt="Trampas"
+                        class="treasure-image">
+                    <select class="Desplegable" id="selector-tesoro-extra" onchange="cambiarImagenExtra()"></select>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Librería SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="Trampa.js"></script>
     <script src="menu-acordeon.js"></script>
-
+    <script src="dado.js"></script>
+    <audio id="diceSound" src="sonidos/dados.mp3"></audio>
 </body>
 
 </html>
