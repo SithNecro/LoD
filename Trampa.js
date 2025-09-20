@@ -139,7 +139,7 @@ async function tirarDado(caras) {
     // Variables de estado
     let estadocerrado = "";
     let tienetrampa = "";
-
+ 
     // Resultado de la cerradura
     if (valordadoTiradad10 <= 6) {
         estadocerrado = "La cerradura está abierta.";
