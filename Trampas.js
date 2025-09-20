@@ -154,7 +154,7 @@ async function tirarDado(caras) {
     }
 
     // Trampas (si el d6 es 6)
-    if (valordadoTiradad6 >=2) {
+    if (valordadoTiradad6 ===6) {
         tienetrampa = "¡¡Cuidado!! Se ha activado una trampa.";
         iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
 
