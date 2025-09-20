@@ -141,7 +141,7 @@ async function tirarDado(caras) {
     let tienetrampa = "";
  
     // Resultado de la cerradura
-    if (valordadoTiradad10 <= 6) {
+    if (valordadoTiradad10 === 6) {
         estadocerrado = "La cerradura está abierta.";
     } else if (valordadoTiradad10 === 7) {
         estadocerrado = "Está cerrado con llave: Forzar Cerr: 0%, VIT 10";
