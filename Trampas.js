@@ -83,7 +83,7 @@ document.getElementById("help-button").addEventListener("click", () => {
         <li>En el caso de una puerta, realizad una tirada para ver si hay monstruos dentro.<br>
             Ver ‘Encuentros’ y ‘Colocando Enemigos’ en la página 103.</li>
       </ol>
-     <img style="width:100%"src="img/FAQ/FAQ_Puertas.png" alt="FAQ" class="faq-image">`,
+     <img style="width:50%"src="img/FAQ/FAQ_Puertas.png" alt="FAQ" class="faq-image">`,
         confirmButtonText: 'Aceptar',
         background: '#222',
         color: '#fff',
