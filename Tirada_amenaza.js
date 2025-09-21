@@ -624,7 +624,7 @@ async function RealizarDescanso() {
 
     // Mostrar resultado en la página
     document.getElementById("resultadoDescanso").textContent =
-        `Tirada de descanso: ${tirada} Vs Amenaza de descansar: ${amenazaDescanso}`;
+        `${tirada} Sobre ${amenazaDescanso}`;
 
     // Resultado según comparación
     if (tirada < amenazaDescanso) {
