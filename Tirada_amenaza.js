@@ -573,6 +573,8 @@ async function RealizarDescanso() {
               <li>Se consume una Ración de Comida.</li>
               <li>Gestionar el equipo y mezclar pociones.</li>
               <li>Moral del grupo +2</li>
+              <li>Nive de Amenaza Actual -5.</li>
+
             </ul>
         `,
         icon: "question",
@@ -586,10 +588,12 @@ async function RealizarDescanso() {
     if (!isConfirmed) return;
 
     // Subida de moral
-    const valor = 2;
+    let valor = 2;
     const iframe = document.getElementById('iframeMenu');
     iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
-
+    //bajada de amenaza
+    valor = -5;
+    iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
     // Tirada de descanso 1d100
     let tirada = lanzarDado(100);
 
@@ -653,7 +657,7 @@ async function RealizarDescanso() {
         });
     }
 
- // 🔹 Incrementar automáticamente el número de descansos
+    // 🔹 Incrementar automáticamente el número de descansos
     let numeroDescansostotales = parseInt(document.getElementById("numeroDescansos").value) || 0;
     numeroDescansostotales++;
     document.getElementById("numeroDescansos").value = numeroDescansostotales;
