@@ -20,7 +20,7 @@
         .mi-popup-veneno {
             background-color: #222;
             color: #e0ff00;
-          
+
         }
 
         .mi-titulo-veneno {
@@ -201,9 +201,11 @@
             flex-direction: column;
             justify-content: flex-start;
         }
-.menu.open ~ #contentContainer0 {
-  margin-left: 0px;
-}
+
+        .menu.open~#contentContainer0 {
+            margin-left: 0px;
+        }
+
         #imageContainer {
             height: 50%;
             /* Ocupa toda la altura */
@@ -523,41 +525,48 @@
             padding: 0;
         }
 
-.nombre-exp-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px; /* separación entre elementos */
-}
+        .nombre-exp-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            /* separación entre elementos */
+        }
 
-.input-nombre {
-  width: 150px; /* o lo que quieras */
-}
+        .input-nombre {
+            width: 150px;
+            /* o lo que quieras */
+        }
 
-.input-exp {
-  width: 80px; /* más pequeño que el nombre */
-}
+        .input-exp {
+            width: 80px;
+            /* más pequeño que el nombre */
+        }
 
-.nombre-exp-item {
-  flex: 1; /* hace que ambos inputs crezcan en proporción */
-}
+        .nombre-exp-item {
+            flex: 1;
+            /* hace que ambos inputs crezcan en proporción */
+        }
 
 
-.nombre-exp-item:first-child {
-  flex: 3; /* nombre ocupa más espacio */
-}
+        .nombre-exp-item:first-child {
+            flex: 3;
+            /* nombre ocupa más espacio */
+        }
 
-.nombre-exp-item:last-child {
-  flex: 1; /* exp ocupa menos */
-}
+        .nombre-exp-item:last-child {
+            flex: 1;
+            /* exp ocupa menos */
+        }
 
-/* Estilo para la etiqueta "Experiencia:" */
-.exper-exp-label {
-  color: #9d5c48;        /* o el color que quieras */
-  font-weight: bold;
-  margin-right: 4px;     /* separación entre etiqueta y input */
-}
-
+        /* Estilo para la etiqueta "Experiencia:" */
+        .exper-exp-label {
+            color: #9d5c48;
+            /* o el color que quieras */
+            font-weight: bold;
+            margin-right: 4px;
+            /* separación entre etiqueta y input */
+        }
     </style>
     <link rel="stylesheet" href="dado.css">
 </head>
@@ -585,7 +594,7 @@
                     <!-- Botón “Reiniciar Bolsa” encima -->
                     <div class="contenedor-reiniciar">
                         <button class="fuente btn_opciones" onclick="iniciarBolsa()">Reiniciar Bolsa</button>
-                                                <button class="fuente btn_opciones" onclick="TerminarCombate()">Terminar el Combate</button>
+                        <button class="fuente btn_opciones" onclick="TerminarCombate()">Terminar el Combate</button>
 
                     </div>
 
@@ -643,7 +652,26 @@
     </td>
     <td align="center">
         <br />
-        
+
+        <h1>DESCANSO</h1>
+        <div>
+            <button onclick="RealizarDescanso()" class="fuente btn_opciones" id="btnDescanso">Realizar Descanso</button>
+        </div>
+        <div>
+            <label for="numeroDescansos">Nº Descansos:</label>
+            <input class="cuadros_texto" type="number" id="numeroDescansos" min="0" value="0">
+        </div>
+        <div>
+            <label for="centinela">Centinela:</label>
+            <input type="checkbox" id="centinela">
+        </div>
+
+        <p id="resultadoDescanso"></p>
+    </td>
+    </td>
+    <td align="center">
+        <br />
+
         <h1>AMENAZA</h1>
         <div>
             <br /><label for="modificadorTirada">Mod. Tirada: </label>
@@ -703,7 +731,7 @@
     </td>
     </tr>
     <tr>
-        <td colspan="3">
+        <td colspan="4">
             <div id="characterTableContainer" class="character-table-container">
                 <div id="controls">
                     <label for="estado-select">Asignar estado:</label>

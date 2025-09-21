@@ -367,6 +367,13 @@ function cargarDesdeLocalStorage() {
     const totalFichasLS = localStorage.getItem("totalFichas");
     const aliadasInputLS = localStorage.getItem("aliadasInput");
     const enemigasInputLS = localStorage.getItem("enemigasInput");
+    let numeroDescansosGuardado = parseInt(localStorage.getItem("numeroDescansos")) || 0;
+    let centinelaGuardado = localStorage.getItem("centinela") === "true";
+
+    // ponerlos en los inputs
+    document.getElementById("numeroDescansos").value = numeroDescansosGuardado;
+    document.getElementById("centinela").checked = centinelaGuardado;
+
 
     if (aliadasLS && enemigasLS && totalFichasLS && aliadasInputLS && enemigasInputLS) {
         fichasAliadas = parseInt(aliadasLS);
@@ -536,7 +543,7 @@ function TerminarCombate() {
     const valor = 1;
     const iframe = document.getElementById('iframeMenu');
     iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
-  
+
 
 
     const aliadasInput = 0;
@@ -550,3 +557,113 @@ function TerminarCombate() {
     document.getElementById("resultadoFicha").textContent = "";
     document.getElementById("imagenFicha").style.display = "none"; // Oculta la imagen al reiniciar
 }
+
+// ==========================
+//   DESCANSO
+// ==========================
+
+
+
+async function RealizarDescanso() {
+    const { isConfirmed } = await Swal.fire({
+        title: "<h1>¿El grupo realizará el descanso?</h1>",
+        html: `
+            <ul style="text-align:left;">
+              <li>Colocar a los héroes dentro de la sala.</li>
+              <li>Se consume una Ración de Comida.</li>
+              <li>Gestionar el equipo y mezclar pociones.</li>
+              <li>Moral del grupo +2</li>
+            </ul>
+        `,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Todos a tomar un descanso",
+        cancelButtonText: "Mejor en otro momento",
+        background: "#222",
+        color: "#d4af37"
+    });
+
+    if (!isConfirmed) return;
+
+    // Subida de moral
+    const valor = 2;
+    const iframe = document.getElementById('iframeMenu');
+    iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
+
+    // Tirada de descanso 1d100
+    let tirada = lanzarDado(100);
+
+
+    // referencia al documento dentro del iframe
+    const iframeDoc = iframe.contentWindow.document;
+
+    // obtener el input dentro del iframe
+    const valorAmenaza = parseInt(iframeDoc.getElementById("amenazaActual").value, 10);
+    // obtener la amenaza actual
+    let amenazaActual = valorAmenaza;
+
+
+    // Leer valores de controles y localStorage
+    let numeroDescansos = parseInt(document.getElementById("numeroDescansos").value) || 0;
+    let centinela = document.getElementById("centinela").checked;
+
+    // Guardar por si acaso
+    localStorage.setItem("numeroDescansos", numeroDescansos);
+    localStorage.setItem("centinela", centinela);
+
+    // Calcular amenaza de descanso
+    let amenazaDescanso = amenazaActual;
+    if (numeroDescansos === 0) {
+        amenazaDescanso += 5;
+    } else {
+        let extra = Math.min(70, numeroDescansos * 10);
+        amenazaDescanso += extra;
+    }
+    if (centinela) amenazaDescanso -= 10;
+    if (amenazaDescanso > 70) amenazaDescanso = 70;
+
+    // Mostrar resultado en la página
+    document.getElementById("resultadoDescanso").textContent =
+        `Tirada de descanso: ${tirada} Vs Amenaza de descansar: ${amenazaDescanso}`;
+
+    // Resultado según comparación
+    if (tirada < amenazaDescanso) {
+        Swal.fire({
+            title: "¡¡EMBOSCADA!!",
+            text: "Tira en la tabla de enemigos.",
+            imageUrl: "img/interface/pop_emboscada.png",
+            confirmButtonText: "Aceptar",
+            background: "#222",
+            color: "#ff4444"
+        });
+    } else {
+        Swal.fire({
+            title: "Descansáis sin sobresaltos",
+            html: `
+              <ul style="text-align:left;">
+                <li>Los héroes pueden recuperar 1d6 vitalidad</li>
+                <li>Se recupera todo el maná</li>
+                <li>Tirar 1d6 por cada punto de energía faltante (1-3 se recupera)</li>
+              </ul>
+            `,
+            imageUrl: "img/interface/pop_descanso.png",
+            confirmButtonText: "Aceptar",
+            background: "#222",
+            color: "#aaff00"
+        });
+    }
+
+ // 🔹 Incrementar automáticamente el número de descansos
+    let numeroDescansostotales = parseInt(document.getElementById("numeroDescansos").value) || 0;
+    numeroDescansostotales++;
+    document.getElementById("numeroDescansos").value = numeroDescansostotales;
+    localStorage.setItem("numeroDescansos", numeroDescansostotales);
+}
+
+document.getElementById("numeroDescansos").addEventListener("change", function () {
+    localStorage.setItem("numeroDescansos", this.value);
+});
+
+document.getElementById("centinela").addEventListener("change", function () {
+    localStorage.setItem("centinela", this.checked);
+});
