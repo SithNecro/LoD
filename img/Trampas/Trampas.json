@@ -1,16 +1,25 @@
 ﻿{
-    "Trampas":  [
-                    "Al hoyo.png",
-                    "Bola de fuego.png",
-                    "Click.png",
-                    "Dardos envenenados.png",
-                    "Esqueletos.png",
-                    "Flechas.png",
-                    "Gas venenoso.png",
-                    "Laberinto.png",
-                    "Mímico.png",
-                    "Puerta con trampa.png",
-                    "Techo derrumbándose.png",
-                    "Trampa de Lanzas.png"
-                ]
+  "Trampas": [
+        "Al hoyo.png",
+        "Bola de fuego.png",
+        "Click.png",
+        "Dardos envenenados.png",
+        "Esqueletos.png",
+        "Flechas.png",
+        "Gas venenoso.png",
+        "Laberinto.png",
+        "Mímico.png",
+        "Puerta con trampa.png",
+        "Techo derrumbándose.png",
+        "Trampa de Lanzas.png",
+        "Emboscada.png",
+        "Esporas.png",
+        "Llamarada.png",
+        "Los péndulos.png",
+        "Paredes opresivas.png",
+        "Rayo helador.png",
+        "Salpicadura de ácido.png",
+        "Tentáculos.png",
+        "Relámpago.png"
+    ]
 }

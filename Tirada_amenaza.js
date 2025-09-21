@@ -586,15 +586,38 @@ async function RealizarDescanso() {
     });
 
     if (!isConfirmed) return;
+let valor =0;
+  valor = -5;
+      const iframe = document.getElementById('iframeMenu');
+
+    iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
+ const { isConfirmed:isConfirmed2 } = await Swal.fire({
+        title: "<h1>¿Los errantes han alcanzado al grupo?</h1>",
+        html: `Si habéis sido alcanzados por errantes, comenzar el combate sin realizar las acciones de descanso.<br>En caso contrario:
+            <ul style="text-align:left;">
+              <li>Colocar a los héroes dentro de la sala.</li>
+              <li>Se consume una Ración de Comida.</li>
+              <li>Gestionar el equipo y mezclar pociones.</li>
+              <li>Moral del grupo +2</li>
+
+            </ul>
+        `,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "De momento todo tranquilo",
+        cancelButtonText: "¡Malditas bestias, nos han encontrado!",
+        background: "#222",
+        color: "#d4af37"
+    });
+
+    if (!isConfirmed2) return;
+    // Tirada de descanso 1d100
 
     // Subida de moral
-    let valor = 2;
-    const iframe = document.getElementById('iframeMenu');
+     valor = 2;
     iframe.contentWindow.postMessage({ tipo: 'cambiarMoral', valor }, '*');
     //bajada de amenaza
-    valor = -5;
-    iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
-    // Tirada de descanso 1d100
+   
     let tirada = lanzarDado(100);
 
 
