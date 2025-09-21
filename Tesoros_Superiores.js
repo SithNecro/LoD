@@ -230,6 +230,7 @@ function cargarStatsObjeto(tesoroSeleccionado) {
             const detalle2 = document.getElementById('enemigos-lista');
             //detalle2.innerHTML = ``; // limpiar
             const item = document.createElement('div');
+            let cantidadobjetosenlatirada = null; //Inicializar la variable para productos de cantidad variable
             item.className = 'enemigo-item';
             //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
 
@@ -273,7 +274,7 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                     }
 
                     const resultadoFinal = total + mod;
-
+                    cantidadobjetosenlatirada = resultadoFinal;
                     valorTexto = `${tesoro.valor} → [${tiradas.join(", ")}] ${mod !== 0 ? (mod > 0 ? `+ ${mod}` : `- ${Math.abs(mod)}`) : ""} = <b style="color: yellow;"> ${resultadoFinal}</b>`;
                 }
 
@@ -289,7 +290,7 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                 const match = tesoro.seleccion.match(/^(.+?)\*(\d+)$/);
                 if (match) {
                     dadoExpr = match[1];                // "1d10"
-                    repeticiones = parseInt(match[2]);  // 3
+                    repeticiones = parseInt(cantidadobjetosenlatirada);  // 3
                 }
 
                 const resultados = [];
