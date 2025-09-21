@@ -507,13 +507,13 @@ function reproducirSonido(tipo) {
 
 }
 
- // Inicializar Tippy para todos los tooltips creados
-            tippy('.efecto', {
-                allowHTML: true,
-                maxWidth: 400,
-                theme: 'light-border',
-                animation: 'scale'
-            });
+// Inicializar Tippy para todos los tooltips creados
+tippy('.efecto', {
+    allowHTML: true,
+    maxWidth: 400,
+    theme: 'light-border',
+    animation: 'scale'
+});
 // Escucha el cambio en los cuadros de texto para actualizar el localStorage en tiempo real
 document.getElementById("aliadas").addEventListener("input", guardarEnLocalStorage);
 document.getElementById("enemigas").addEventListener("input", guardarEnLocalStorage);
@@ -521,3 +521,33 @@ document.getElementById("enemigas").addEventListener("input", guardarEnLocalStor
 // Inicializar la bolsa al cargar la página
 //iniciarBolsa();
 cargarDesdeLocalStorage();
+
+
+// Función para inicializar la bolsa con las cantidades especificadas
+function TerminarCombate() {
+    // Si el total de fichas es distinto de 0, pedir confirmación antes de reiniciar
+
+    const confirmarReinicio = window.confirm("¿Has acabado el combate?");
+    if (!confirmarReinicio) {
+        return; // Si el usuario elige "Cancelar", no hace nada
+    }
+
+
+    const valor = 1;
+    const iframe = document.getElementById('iframeMenu');
+    iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
+  
+
+
+    const aliadasInput = 0;
+    const enemigasInput = 0;
+    fichasAliadas = aliadasInput;
+    fichasEnemigas = enemigasInput;
+    totalFichas = fichasAliadas + fichasEnemigas;
+    actualizarDisplay();
+    guardarEnLocalStorage();
+    document.getElementById('imagenAmenazaContainer').innerHTML = '';
+    document.getElementById("resultadoFicha").textContent = "";
+    document.getElementById("imagenFicha").style.display = "none"; // Oculta la imagen al reiniciar
+}
+

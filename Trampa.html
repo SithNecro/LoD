@@ -8,263 +8,251 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="menu-acordeon.css">
     <link rel="stylesheet" href="Help_Button.css">
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .columns-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    <!DOCTYPE html>
-    <html lang="es">
+        .column-left {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 10px;
+        }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Trampas</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="menu-acordeon.css">
-        <link rel="stylesheet" href="Help_Button.css">
+        .column-left img {
+            width: 300px;
+            border-radius: 5%;
+            margin-bottom: 20px;
+        }
 
-        <style>
-            .columns-container {
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-                gap: 20px;
-                margin-top: 20px;
-            }
+        .column-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            padding-top: 0px;
+        }
 
-            .column-left {
-                width: 300px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                margin-right: 10px;
-            }
+        button,
+        select {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
 
-            .column-left img {
-                width: 300px;
-                border-radius: 5%;
-                margin-bottom: 20px;
-            }
+        .trampas-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-            .column-right {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                text-align: left;
-                padding-top: 0px;
-            }
+        .treasure-image {
+            width: 280px;
+            border-radius: 5%;
+            margin-bottom: 10px;
+        }
 
-            button,
-            select {
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                margin: 5px 0;
-            }
+        h1 {
+            color: #d4af37;
+            display: inline;
+            font-weight: bold;
+            font-size: 20px;
+        }
 
-            .trampas-container {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .mi-div {
+            border: 5px solid #8B4513;
+        }
 
-            .treasure-image {
-                width: 280px;
-                border-radius: 5%;
-                margin-bottom: 10px;
-            }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+        }
 
-            h1 {
-                color: #d4af37;
-                display: inline;
-                font-weight: bold;
-                font-size: 20px;
-            }
+        .estado-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #8B4513;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            max-width: 600px;
+            margin: auto;
+            align-items: center;
+            /* centra verticalmente */
 
-            .mi-div {
-                border: 5px solid #8B4513;
-            }
+        }
 
-            #result {
-                margin-top: 20px;
-                text-align: center;
-            }
+        .estado-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-            .estado-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                background: rgba(20, 20, 20, 0.8);
-                border: 2px solid #8B4513;
-                border-radius: 12px;
-                padding: 15px;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-                max-width: 600px;
-                margin: auto;
-                align-items: center;
-                /* centra verticalmente */
+        .estado-imagen {
+            width: 170px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 8px black);
+        }
 
-            }
+        .estado-texto {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
 
-            .estado-col {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+        .dados-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
 
-            .estado-imagen {
-                width: 170px;
-                margin-bottom: 10px;
-                filter: drop-shadow(0 0 8px black);
-            }
+        .dado {
+            text-align: center;
+            color: white;
+        }
 
-            .estado-texto {
-                color: #fff;
-                font-size: 16px;
-                font-weight: bold;
-            }
+        .resultado-dado {
+            font-size: 14px;
+            margin-top: 5px;
+        }
 
-            .dados-container {
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-                margin-top: 10px;
-            }
+        .btn_opciones {
+            color: #d4af37;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+            border: 1px solid #6f3f2e;
+            border-radius: 6px;
 
-            .dado {
-                text-align: center;
-                color: white;
-            }
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
 
-            .resultado-dado {
-                font-size: 14px;
-                margin-top: 5px;
-            }
+        .btn_opciones:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
 
-            .btn_opciones {
-                color: #d4af37;
-                width: 100%;
-                font-size: 20px;
-                font-weight: bold;
-                text-align: center;
-                text-shadow: 1px 1px 2px #000;
-                background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
-                border: 1px solid #6f3f2e;
-                border-radius: 6px;
+        .btn_opciones:active {
+            transform: translateY(1px);
 
-                box-shadow:
-                    inset 0 2px 0 rgba(255, 255, 255, 0.15),
-                    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
-                    0 2px 4px rgba(0, 0, 0, 0.4),
-                    0 6px 12px rgba(0, 0, 0, 0.35);
-                transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
-                appearance: none;
-            }
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
 
-            .btn_opciones:hover {
-                box-shadow:
-                    inset 0 2px 0 rgba(255, 255, 255, 0.2),
-                    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
-                    0 3px 6px rgba(0, 0, 0, 0.5);
-                border-color: #9d5c48;
-            }
+        #result6,
+        #result10 {
+            display: none;
+            /* Oculta el número de texto */
+        }
 
-            .btn_opciones:active {
-                transform: translateY(1px);
+        .estado-container {
+            display: flex;
+            flex-direction: row;
+            /* ahora en dos columnas */
+            justify-content: center;
+            align-items: center;
+            /* centra verticalmente */
+            gap: 20px;
+        }
 
-                box-shadow:
-                    inset 0 3px 4px rgba(0, 0, 0, 0.55),
-                    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-                    0 1px 2px rgba(0, 0, 0, 0.4);
-            }
+        .Desplegable {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+        }
 
-            #result6,
-            #result10 {
-                display: none;
-                /* Oculta el número de texto */
-            }
+        .nuevo-bloque-trampas {
+            display: flex;
+            flex-direction: row;
+            /* fila: botones izquierda, imagen derecha */
+            justify-content: center;
+            align-items: center;
+            /* centra verticalmente */
+            gap: 20px;
 
-            .estado-container {
-                display: flex;
-                flex-direction: row;
-                /* ahora en dos columnas */
-                justify-content: center;
-                align-items: center;
-                /* centra verticalmente */
-                gap: 20px;
-            }
+        }
 
-            .Desplegable {
-                width: 100%;
-                padding: 12px;
-                border: 2px solid #9d5c48;
-                border-radius: 6px;
-                font-size: 16px;
-                transition: border-color 0.3s;
-                background: rgba(40, 40, 40, 0.9);
-                color: #fff;
-                background-image: url('img/interface/select_arrow.png');
-                background-repeat: no-repeat;
-                background-position: right 10px center;
-                background-size: 20px;
-                padding-right: 35px;
-                appearance: none;
-            }
+        .col-botones {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* centra verticalmente dentro de la columna */
+            gap: 10px;
+        }
 
-            .nuevo-bloque-trampas {
-                display: flex;
-                flex-direction: row;
-                /* fila: botones izquierda, imagen derecha */
-                justify-content: center;
-                align-items: center;
-                /* centra verticalmente */
-                gap: 20px;
+        .col-imagen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
-            }
+        .botones-trampas {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
 
-            .col-botones {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                /* centra verticalmente dentro de la columna */
-                gap: 10px;
-            }
+        .textos {
+            color: #d4af37;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+            border: 1px solid #6f3f2e;
+            border-radius: 6px;
 
-            .col-imagen {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            .botones-trampas {
-                display: flex;
-                gap: 10px;
-                margin-bottom: 10px;
-            }
-             .textos {
-                color: #d4af37;
-                width: 100%;
-                font-size: 20px;
-                font-weight: bold;
-                text-align: center;
-                text-shadow: 1px 1px 2px #000;
-                background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
-                border: 1px solid #6f3f2e;
-                border-radius: 6px;
-
-                box-shadow:
-                    inset 0 2px 0 rgba(255, 255, 255, 0.15),
-                    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
-                    0 2px 4px rgba(0, 0, 0, 0.4),
-                    0 6px 12px rgba(0, 0, 0, 0.35);
-                transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
-                appearance: none;
-            }
-        </style>
-    </head>
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+    </style>
+</head>
 
 <body style="background-image: url('img/interface/fondo_tesoros.png');
     background-size: cover;
@@ -307,10 +295,10 @@
                             <img id="dice-image10" src="img/dados/D10-01.png" alt="Dado d10" width="80">
                             <div id="result10" class="result"></div>
                         </div>
-                                        
+
 
                     </div>
-                        <button class="btn_opciones" onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del
+                    <button class="btn_opciones" onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del
                         Grupo)</button>
                 </div>
 
@@ -323,17 +311,18 @@
         </div>
         <!-- Nuevo bloque de trampas independientes -->
         <h1>Sacar Trampa</h1>
-                <div class="acciones">
+        <div class="acciones">
 
-          <button class="btn_opciones" onclick="cargarTesoroExtra()" id="tesoro-btn-extra">Comprobar Trampa</button></div>
-        <div class="estado-container"  style="display:none;" id="trampa-container">
+            <button class="btn_opciones" onclick="cargarTesoroExtra()" id="tesoro-btn-extra">Comprobar Trampa</button>
+        </div>
+        <div class="estado-container" style="display:none;" id="trampa-container">
 
 
-            <div class="nuevo-bloque-trampas" >
+            <div class="nuevo-bloque-trampas">
 
                 <!-- Columna izquierda: botones -->
                 <div class="col-botones">
-                  
+
                     <button class="btn_opciones" onclick="barajarTesoroExtra()">Barajar Trampas</button>
                     <button class="btn_opciones" onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del
                         Grupo)</button>
