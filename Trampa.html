@@ -323,15 +323,17 @@
         </div>
         <!-- Nuevo bloque de trampas independientes -->
         <h1>Sacar Trampa</h1>
-        <div class="estado-container">
+                <div class="acciones">
+
+          <button class="btn_opciones" onclick="cargarTesoroExtra()" id="tesoro-btn-extra">Comprobar Trampa</button></div>
+        <div class="estado-container"  style="display:none;" id="trampa-container">
 
 
-            <div class="nuevo-bloque-trampas">
+            <div class="nuevo-bloque-trampas" >
 
                 <!-- Columna izquierda: botones -->
                 <div class="col-botones">
-                    <button class="btn_opciones" onclick="cargarTesoroExtra()" id="tesoro-btn-extra">Sacar
-                        Trampa</button>
+                  
                     <button class="btn_opciones" onclick="barajarTesoroExtra()">Barajar Trampas</button>
                     <button class="btn_opciones" onclick="BajarMoral(-1)">Activar Trampa<BR>(-1 de Moral del
                         Grupo)</button>
