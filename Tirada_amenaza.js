@@ -550,4 +550,3 @@ function TerminarCombate() {
     document.getElementById("resultadoFicha").textContent = "";
     document.getElementById("imagenFicha").style.display = "none"; // Oculta la imagen al reiniciar
 }
-
