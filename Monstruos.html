@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bestiario</title>
+  <style>
+    body {
+      font-family: "Georgia", serif;
+      background: #f4f1e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      gap: 20px;
+    }
+
+    .monster-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 2px solid black;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      background: #fff;
+      position: relative;
+      width: 1200px;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    .monster-left {
+      flex: 0 0 auto;
+      position: relative;
+    }
+
+    .monster-left img {
+      width: 120px;
+      height: auto;
+      display: block;
+    }
+
+    .death-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5) url('img/icons/skull.png') center center no-repeat;
+      background-size: 60%;
+      display: none;
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    .center-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .weapons-column,
+    .armors-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .monster-center table {
+      border-collapse: collapse;
+    }
+
+    .monster-center table,
+    .monster-center th,
+    .monster-center td {
+      border: 1px solid black;
+    }
+
+    .monster-center td {
+      text-align: center;
+      font-weight: bold;
+      padding: 6px;
+    }
+
+    .monster-center th {
+      background: black;
+      color: white;
+      padding: 6px;
+    }
+
+    .equipment {
+      margin: 0 5px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .hechizos-list {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .hechizos-list span {
+      margin-right: 8px;
+    }
+
+    [data-tooltip] {
+      position: relative;
+      cursor: help;
+    }
+
+    [data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      white-space: pre-wrap;
+      top: 120%;
+      left: 0;
+      background: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 4px;
+      font-size: 12px;
+      z-index: 10;
+      max-width: 200px;
+    }
+
+    .monster-header {
+      display: flex;
+      align-items: stretch;
+      gap: 20px;
+    }
+
+    .monster-basic {
+      flex: 0 0 180px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monster-basic h2,
+    .monster-basic p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .monster-center {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .monster-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .monster-right p {
+      margin: 2px 0;
+      line-height: 1.2;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    /* NUEVA BARRA DE VIDA */
+    .vida-bar {
+      position: relative;
+      height: 18px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      background: #eee;
+      margin: 4px auto;
+      overflow: hidden;
+    }
+
+    .vida-bar-fill {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vida-bar-fill::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transform-origin: left center;
+      transform: scaleX(var(--vida-scale, 1));
+      background: var(--vida-color, #77dd77);
+      z-index: 0;
+    }
+
+    .vida-bar-text {
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .vida-btn {
+      width: 24px;
+      height: 24px;
+      margin: 0 2px;
+      padding: 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+    }
+    .vida-btn.restar {
+      background: red;
+    }
+    .vida-btn.sumar {
+      background: green;
+    }
+    .vida-btn:hover {
+      filter: brightness(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <label for="monsterSelect">Monstruo: </label>
+    <select id="monsterSelect">
+      <option value="" disabled selected>-- Selecciona --</option>
+    </select>
+
+    <label for="armaSelect">Armas: </label>
+    <select id="armaSelect" multiple></select>
+
+    <label for="armaduraSelect">Armaduras: </label>
+    <select id="armaduraSelect" multiple></select>
+
+    <label for="hechizoSelect">Hechizos: </label>
+    <select id="hechizoSelect" multiple></select>
+
+    <label for="colorSelect">Color: </label>
+    <select id="colorSelect">
+      <option value="#f8d7da">Rojo pastel</option>
+      <option value="#d1ecf1">Azul pastel</option>
+      <option value="#d4edda">Verde pastel</option>
+      <option value="#fff3cd">Amarillo pastel</option>
+      <option value="#e2d6f3">Violeta pastel</option>
+    </select>
+
+    <button id="addMonsterBtn">Añadir</button>
+  </div>
+
+  <div id="monsterContainer"></div>
+
+  <script>
+    const monsters = {
+      rata: {
+        nombre: "Rata Gigante",
+        tipo: "Bestia/Giant rat",
+        HC: 45, HD: 0, DAN: "1d6", DET: 30,
+        RG: -5, AN: 0, M: 6, DES: 40,
+        habilidades: [
+          "<strong>Escurridizo:</strong> Mueve a través de cualquier casilla y no penaliza por ZDC.",
+          "<strong>Oído fino:</strong> Añade +1 a la iniciativa del enemigo.",
+          "<strong>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        ],
+        vida: 6, exp: 40, recompensa: "Parte"
+      },
+      centauro: {
+        nombre: "Centauro",
+        tipo: "Bestia/Centaur",
+        HC: 50, HD: 50, DAN: "+1", DET: 60,
+        RG: -5, AN: 1, M: 7, DES: 30,
+        habilidades: [
+          "Patada: Puede hacer un ataque gratuito (0 PA) contra un héroe adyacente detrás. 1d10+2 DAÑ."
+        ],
+        vida: 20, exp: 150, recompensa: "R2"
+      }
+    };
+
+    let equipo = {};
+
+    fetch("Monstruos_equipo.json")
+      .then(r => r.json())
+      .then(data => {
+        equipo = data;
+        populateEquipoSelects();
+        loadFromLocalStorage();
+      });
+
+    function populateSelect(monsters) {
+      const select = document.getElementById("monsterSelect");
+      select.innerHTML = `<option value="" disabled selected>-- Selecciona --</option>`;
+      Object.entries(monsters).forEach(([key, monster]) => {
+        const opt = document.createElement("option");
+        opt.value = key;
+        opt.textContent = monster.nombre;
+        select.appendChild(opt);
+      });
+    }
+    populateSelect(monsters);
+
+    function populateEquipoSelects() {
+      document.getElementById("armaSelect").innerHTML =
+        equipo.Armas.map((a,i)=>`<option value="${i}">${a.Tipo}</option>`).join("");
+      document.getElementById("armaduraSelect").innerHTML =
+        equipo.Armaduras.map((a,i)=>`<option value="${i}">${a.Tipo}</option>`).join("");
+      document.getElementById("hechizoSelect").innerHTML =
+        equipo.Hechizos.map((h,i)=>`<option value="${i}">${h.Tipo}</option>`).join("");
+    }
+
+    function updateVidaBar(barFill, val, max) {
+      const percent = val / max;
+      barFill.style.setProperty("--vida-scale", percent);
+
+      const textEl = barFill.querySelector(".vida-bar-text");
+      if (textEl) textEl.textContent = `${val}/${max}`;
+
+      let color;
+      if (percent > 0.7) {
+        color = "linear-gradient(to right, #77dd77, #c1f0c1)";
+      } else if (percent > 0.3) {
+        color = "linear-gradient(to right, #fdfd96, #fffac8)";
+      } else {
+        color = "linear-gradient(to right, #ff6961, #ffcccb)";
+      }
+      barFill.style.setProperty("--vida-color", color);
+    }
+
+    function renderCard(monster, armas, armaduras, hechizos, color="#fff", vidaActual=null, save=true) {
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("monster-card");
+      wrapper.style.backgroundColor = color;
+
+      let vida = vidaActual ?? monster.vida;
+      wrapper._vida = vida;
+
+      const barraBase = 100;
+      const barraExtra = monster.vida * 2;
+      const barraMax = 300;
+      const barraWidth = Math.min(barraBase + barraExtra, barraMax);
+
+      const armasHTML = armas.map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🗡️ ${a.Tipo}${a.Daño ? " ("+a.Daño+")" : ""}</span>`).join("");
+      const armadurasHTML = armaduras.map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🛡️ ${a.Tipo}</span>`).join("");
+      const hechizosHTML = hechizos.length
+        ? `<strong>Hechizos:</strong> ` + hechizos.map(h => `<span data-tooltip="${h.Efecto}">${h.Categoría}: ${h.Tipo}</span>`).join(", ")
+        : "";
+
+      wrapper.innerHTML = `
+        <button class="remove-btn">X</button>
+        <div class="monster-header">
+          <div class="monster-left">
+            <img src="img/monstruos/${monster.nombre}.png" alt="${monster.nombre}">
+            <div class="death-overlay"></div>
+          </div>
+
+          <div class="monster-basic">
+            <h2>${monster.nombre}</h2>
+            <p><strong>Tipo:</strong> ${monster.tipo}</p>
+            <p>
+              ❤️ <button class="vida-btn restar">-</button>
+              <button class="vida-btn sumar">+</button>
+            </p>
+            <div class="vida-bar" style="width:${barraWidth}px">
+              <div class="vida-bar-fill">
+                <span class="vida-bar-text">${vida}/${monster.vida}</span>
+              </div>
+            </div>
+            <p>EXP: ${monster.exp}</p>
+            <p>💰 ${monster.recompensa}</p>
+          </div>
+
+          <div class="monster-center">
+            <div class="center-row">
+              <div class="weapons-column">${armasHTML}</div>
+              <div class="armors-column">${armadurasHTML}</div>
+            </div>
+            <div class="center-row">
+              <table>
+                <tr>
+                  <th>HC</th><th>HD</th><th>DAÑ</th><th>DET</th>
+                  <th>RG</th><th>AN</th><th>M</th><th>DES</th>
+                </tr>
+                <tr>
+                  <td>${monster.HC}</td><td>${monster.HD}</td><td>${monster.DAN}</td><td>${monster.DET}</td>
+                  <td>${monster.RG}</td><td>${monster.AN}</td><td>${monster.M}</td><td>${monster.DES}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="monster-right">
+            ${monster.habilidades.map(h => `<p>${h}</p>`).join("")}
+          </div>
+        </div>
+
+        <div class="hechizos-list">${hechizosHTML}</div>
+      `;
+
+      wrapper.querySelector(".remove-btn").addEventListener("click", () => {
+        wrapper.remove();
+        saveToLocalStorage();
+      });
+
+      const vidaBarFill = wrapper.querySelector(".vida-bar-fill");
+      const deathOverlay = wrapper.querySelector(".death-overlay");
+
+      function actualizarVida(nuevaVida) {
+        vida = Math.max(0, Math.min(monster.vida, nuevaVida));
+        wrapper._vida = vida;
+        updateVidaBar(vidaBarFill, vida, monster.vida);
+
+        if (vida === 0) {
+          deathOverlay.style.display = "block";
+        } else {
+          deathOverlay.style.display = "none";
+        }
+
+        saveToLocalStorage();
+      }
+
+      updateVidaBar(vidaBarFill, vida, monster.vida);
+      if (vida === 0) deathOverlay.style.display = "block";
+
+      wrapper.querySelector(".vida-btn.restar").addEventListener("click", () => actualizarVida(vida - 1));
+      wrapper.querySelector(".vida-btn.sumar").addEventListener("click", () => actualizarVida(vida + 1));
+
+      if (save) saveToLocalStorage();
+      return wrapper;
+    }
+
+    function saveToLocalStorage() {
+      const cards = [...document.querySelectorAll(".monster-card")].map(card => {
+        const data = JSON.parse(card.dataset.info);
+        data.vida = card._vida;
+        data.color = card.style.backgroundColor;
+        return data;
+      });
+      localStorage.setItem("monstersInPlay", JSON.stringify(cards));
+    }
+
+    function loadFromLocalStorage() {
+      const saved = JSON.parse(localStorage.getItem("monstersInPlay") || "[]");
+      saved.forEach(data => {
+        const monster = monsters[data.monsterKey];
+        if (!monster) return;
+        const armas = data.armas.map(i => equipo.Armas[i]);
+        const armaduras = data.armaduras.map(i => equipo.Armaduras[i]);
+        const hechizos = data.hechizos.map(i => equipo.Hechizos[i]);
+        const card = renderCard(monster, armas, armaduras, hechizos, data.color, parseInt(data.vida), false);
+        card.dataset.info = JSON.stringify(data);
+        document.getElementById("monsterContainer").appendChild(card);
+      });
+    }
+
+    document.getElementById("addMonsterBtn").addEventListener("click", () => {
+      const monsterKey = document.getElementById("monsterSelect").value;
+      if (!monsterKey) return;
+      const monster = monsters[monsterKey];
+
+      const armasSel = [...document.getElementById("armaSelect").selectedOptions].map(o => parseInt(o.value));
+      const armadurasSel = [...document.getElementById("armaduraSelect").selectedOptions].map(o => parseInt(o.value));
+      const hechizosSel = [...document.getElementById("hechizoSelect").selectedOptions].map(o => parseInt(o.value));
+      const colorSel = document.getElementById("colorSelect").value;
+
+      const armas = armasSel.map(i => equipo.Armas[i]);
+      const armaduras = armadurasSel.map(i => equipo.Armaduras[i]);
+      const hechizos = hechizosSel.map(i => equipo.Hechizos[i]);
+
+      const card = renderCard(monster, armas, armaduras, hechizos, colorSel);
+      card.dataset.info = JSON.stringify({ 
+        monsterKey, 
+        armas: armasSel, 
+        armaduras: armadurasSel, 
+        hechizos: hechizosSel, 
+        color: colorSel, 
+        vida: monster.vida 
+      });
+      document.getElementById("monsterContainer").appendChild(card);
+      saveToLocalStorage();
+    });
+
+    // ✅ MULTIPLE SELECTS: seleccionar/deseleccionar con clicks normales
+    document.querySelectorAll("select[multiple]").forEach(select => {
+      select.addEventListener("mousedown", function(e) {
+        if (e.target.tagName === "OPTION") {
+          e.preventDefault();
+          e.target.selected = !e.target.selected;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

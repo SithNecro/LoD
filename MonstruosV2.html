@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bestiario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f1e8;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border: 2px solid #b29b72;
+      border-radius: 12px;
+      padding: 15px;
+      width: 400px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .card img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto 10px;
+    }
+    .controls {
+      margin: 10px 0;
+    }
+    select {
+      margin-right: 5px;
+      padding: 5px;
+    }
+    button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 6px;
+      background: #b29b72;
+      color: #fff;
+      cursor: pointer;
+    }
+    .labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .label {
+      border: 2px solid #b29b72;
+      border-radius: 8px;
+      padding: 5px 10px;
+      background: #fdfbf6;
+      position: relative;
+      cursor: default;
+    }
+    .label span {
+      margin-left: 5px;
+      color: red;
+      cursor: pointer;
+    }
+    .center {
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="monsterSelect">Selecciona monstruo: </label>
+  <select id="monsterSelect"></select>
+
+  <div id="monsterCard"></div>
+
+  <script>
+    let dataEquipo = null;
+    let dataMonstruos = null;
+
+    // Cargar ambos JSON
+    Promise.all([
+      fetch("Monstruos_equipo.json").then(res => res.json()),
+      fetch("monstruos.json").then(res => res.json())
+    ])
+    .then(([equipo, monstruos]) => {
+      dataEquipo = equipo;
+      dataMonstruos = monstruos;
+      init();
+    })
+    .catch(err => console.error("Error cargando JSON:", err));
+
+    function init() {
+      const selectMonster = document.getElementById("monsterSelect");
+      const card = document.getElementById("monsterCard");
+
+      // Extraer todos los monstruos de todas las categorías
+      let monsterList = [];
+      for (const categoria in dataMonstruos) {
+        monsterList = monsterList.concat(dataMonstruos[categoria]);
+      }
+
+      // Ordenar alfabéticamente
+      monsterList.sort((a, b) => a.localeCompare(b, "es"));
+
+      // Poblar el select
+      monsterList.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        selectMonster.appendChild(opt);
+      });
+
+      // Evento de selección
+      selectMonster.addEventListener("change", e => {
+        renderMonster(e.target.value, card);
+      });
+
+      // Mostrar el primero al inicio
+      renderMonster(monsterList[0], card);
+    }
+
+    function createLabel(text, tooltip) {
+      const div = document.createElement("div");
+      div.className = "label";
+      div.title = tooltip || "";
+      div.textContent = text;
+      const close = document.createElement("span");
+      close.textContent = "✖";
+      close.onclick = () => div.remove();
+      div.appendChild(close);
+      return div;
+    }
+
+    function renderMonster(name, card) {
+      const fileName = name.toLowerCase().replace(/\s+/g, "_"); // araña gigante → araña_gigante.png
+      card.innerHTML = `
+        <div class="card">
+          <img src="img/monstruos/${fileName}.jpg" alt="${name}"width="75%">
+          <div class="controls">
+            <label>Arma:</label>
+            <select id="armaSelect"></select>
+            <button id="addArma">+</button>
+            <div class="labels" id="armaLabels"></div>
+          </div>
+          <div class="controls">
+            <label>Armadura:</label>
+            <select id="armaduraSelect"></select>
+            <button id="addArmadura">+</button>
+            <div class="labels" id="armaduraLabels"></div>
+          </div>
+          <div class="controls">
+            <label>Hechizo:</label>
+            <select id="hechizoSelect"></select>
+            <button id="addHechizo">+</button>
+            <div class="labels" id="hechizoLabels"></div>
+          </div>
+          <div class="center">
+            <button id="deleteMonster">Eliminar monstruo</button>
+          </div>
+        </div>
+      `;
+
+      // === Armas ===
+      const armaSelect = document.getElementById("armaSelect");
+      dataEquipo.Armas.forEach(a => {
+        const opt = document.createElement("option");
+        opt.value = a.Tipo;
+        opt.textContent = a.Tipo;
+        armaSelect.appendChild(opt);
+      });
+      document.getElementById("addArma").onclick = () => {
+        const arma = dataEquipo.Armas.find(a => a.Tipo === armaSelect.value);
+        const label = createLabel(`${arma.Tipo}: ${arma.Daño || ""}`, arma.Efecto || "");
+        document.getElementById("armaLabels").appendChild(label);
+      };
+
+      // === Armaduras ===
+      const armaduraSelect = document.getElementById("armaduraSelect");
+      dataEquipo.Armaduras.forEach(a => {
+        const opt = document.createElement("option");
+        opt.value = a.Tipo;
+        opt.textContent = a.Tipo;
+        armaduraSelect.appendChild(opt);
+      });
+      document.getElementById("addArmadura").onclick = () => {
+        const arm = dataEquipo.Armaduras.find(a => a.Tipo === armaduraSelect.value);
+        const label = createLabel(arm.Tipo, arm.Efecto || "");
+        document.getElementById("armaduraLabels").appendChild(label);
+      };
+
+      // === Hechizos ===
+      const hechizoSelect = document.getElementById("hechizoSelect");
+      dataEquipo.Hechizos.sort((a, b) => {
+        if (a.Categoría !== b.Categoría) return a.Categoría.localeCompare(b.Categoría, "es");
+        return a.Tipo.localeCompare(b.Tipo, "es");
+      });
+      dataEquipo.Hechizos.forEach(h => {
+        const opt = document.createElement("option");
+        opt.value = h.Tipo;
+        opt.textContent = `${h.Categoría}: ${h.Tipo}`;
+        hechizoSelect.appendChild(opt);
+      });
+      document.getElementById("addHechizo").onclick = () => {
+        const hech = dataEquipo.Hechizos.find(h => `${h.Categoría}: ${h.Tipo}` === hechizoSelect.selectedOptions[0].textContent);
+        const label = createLabel(hech.Tipo, hech.Efecto || "");
+        document.getElementById("hechizoLabels").appendChild(label);
+      };
+
+      // === Eliminar monstruo ===
+      document.getElementById("deleteMonster").onclick = () => {
+        card.innerHTML = "";
+      };
+    }
+  </script>
+</body>
+</html>
