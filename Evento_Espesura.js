@@ -28,6 +28,8 @@ function cambiarImagenSeleccionada() {
     imagen.src = `img/Evento_Espesura/${tesoroSeleccionado}`;
     urlaudio = `${tesoroSeleccionado}`
     urlaudio = urlaudio.replace(".png", ".mp3");
+    let ComprobarMute = localStorage.getItem('sonido')
+
     const audio = new Audio(`img/Evento_Espesura/${urlaudio}`);
     if (ComprobarMute == "on") {
         audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
@@ -53,6 +55,8 @@ function cargarTesoroLegendario() {
             // Muestra los dos tesoros y sus selectores
             document.getElementById('single-treasure-container').style.display = 'flex';
             urlaudio = `${tesoroAleatorio}`
+            let ComprobarMute = localStorage.getItem('sonido')
+
             urlaudio = urlaudio.replace(".png", ".mp3");
             const audio = new Audio(`img/Evento_Espesura/${urlaudio}`);
             if (ComprobarMute == "on") {
