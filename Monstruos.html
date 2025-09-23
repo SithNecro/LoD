@@ -1,32 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Bestiario</title>
+      <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="styles.css">
+
   <style>
-    body {
-      font-family: "Georgia", serif;
-      background: #f4f1e8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      gap: 20px;
-    }
+   .menu {
+  position: fixed;
+  top: 0;
+  left: 0;            /* visible por defecto */
+  width: 300px;
+  height: 100%;
+  overflow: hidden;   /* evita que el iframe sobresalga */
+  transition: left 0.3s ease;
+}
 
+.menu.open {
+  left: -310px;       /* cuando se oculta, realmente desaparece */
+}
+
+.menu-frame {
+  width: 300px;       /* fuerza a que el iframe NO se expanda */
+  height: 100%;
+  border: none;
+}
+#toggleMenu {
+  position: fixed;
+  top: 20px;
+  left: 290px; /* cuando el menú está abierto, justo al borde */
+  z-index: 2000;
+  width: 75px;
+  height: 75px;
+  border: 2px solid #a0522d;
+  background: rgba(35, 35, 35, 0.7);
+  color: white;
+  font-size: 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: left 0.3s ease;
+}
+
+/* Cuando el menú está cerrado */
+.menu.open ~ #toggleMenu {
+  left: 0;  /* pegado al borde izquierdo de la pantalla */
+}
+#togglePanelBtn {
+  margin: 0 auto 15px auto; /* arriba 0, derecha auto, abajo 15px, izquierda auto */
+  display: block;
+}
+
+/* Contenedor del contenido */
+.main-content2 {
+  position: relative;
+  max-width: 1300px;            /* ancho fijo */
+  margin: 0 auto;              /* centrado por defecto */
+  transition: transform 0.3s ease;
+  padding: 20px;
+  background: rgba(35, 35, 35, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid #8B4513;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Cuando el menú está abierto, lo empujamos 300px */
+.menu:not(.open) ~ .main-content2 {
+  transform: translateX(100px);
+}
+
+/* Cuando el menú está oculto, vuelve centrado */
+.menu.open ~ .main-content2 {
+  transform: translateX(0);
+}
+
+     select {
+            width: auto;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+        }
+ .btn_opciones {
+            color: #d4af37;
+            width: 250px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+            border: 1px solid #6f3f2e;
+            border-radius: 6px;
+
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_opciones:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_opciones:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
     .monster-card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      border: 2px solid black;
-      padding: 10px;
-      border-radius: 8px;
-      margin-top: 10px;
-      background: #fff;
-      position: relative;
-      width: 1200px;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px auto;   /* ya añade separación vertical y centra */
+  background: #fff;
+  position: relative;
 
+  /* cambio importante */
+  width: calc(100% - 20px); /* ocupa todo el ancho menos 10px por lado */
+  max-width: 100%;          /* evita que se pase del contenedor */
+  box-sizing: border-box;   /* asegura que el padding no rompa el ancho */
+}
     .remove-btn {
       position: absolute;
       top: 5px;
@@ -63,7 +181,7 @@
       background-size: 60%;
       display: none;
       border-radius: 4px;
-      z-index: 1;
+      z-index: 5;
     }
 
     .center-row {
@@ -111,7 +229,7 @@
 
     .hechizos-list {
       margin-top: 10px;
-      font-size: 13px;
+      font-size: 18px;
     }
 
     .hechizos-list span {
@@ -181,7 +299,7 @@
       text-align: left;
     }
 
-    /* NUEVA BARRA DE VIDA */
+    /* Barra de vida */
     .vida-bar {
       position: relative;
       height: 18px;
@@ -234,35 +352,125 @@
       font-weight: bold;
       color: white;
     }
-    .vida-btn.restar {
-      background: red;
+    .vida-btn.restar { background: red; }
+    .vida-btn.sumar { background: green; }
+    .vida-btn:hover { filter: brightness(1.2); }
+
+    .vidas-grid {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 10px;
+      margin-top: 10px;
+      align-items: start;
     }
-    .vida-btn.sumar {
-      background: green;
+
+    .vida-item {
+      padding: 6px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      min-width: 140px;
     }
-    .vida-btn:hover {
-      filter: brightness(1.2);
+
+    .vida-id {
+      font-weight: bold;
+      margin-bottom: 6px;
     }
+    label {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 16px;
+        }
+     .monster-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+
+  /* hace que las columnas tengan la misma altura */
+  align-items: stretch;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* los selects múltiples se estiran para ocupar toda la columna */
+.form-col select[multiple] {
+  flex: 1;
+  min-height: 100%;
+}
+.monster-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
   </style>
 </head>
-<body>
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
+  <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
+       
+    </div> <button id="toggleMenu">☰</button>
+ <div  class="main-content2" >
+    <!-- Botón toggle -->
+<button id="togglePanelBtn" class="btn_opciones">Mostrar Panel de Monstruos</button>
 
-  <div>
-    <label for="monsterSelect">Monstruo: </label>
-    <select id="monsterSelect">
-      <option value="" disabled selected>-- Selecciona --</option>
-    </select>
+ <!-- Panel que se oculta/muestra -->
+<div id="monsterPanel" style="display: none;">
+  <div class="monster-form">
+    <!-- Columna 1 -->
+    <div class="form-col">
+      <label for="monsterCategorySelect">Categoría:</label>
+      <select id="monsterCategorySelect">
+        <option value="" disabled selected>-- Selecciona categoría --</option>
+      </select>
 
-    <label for="armaSelect">Armas: </label>
-    <select id="armaSelect" multiple></select>
+      <label for="monsterSelect">Monstruo:</label>
+      <select id="monsterSelect">
+        <option value="" disabled selected>-- Selecciona monstruo --</option>
+      </select>
 
-    <label for="armaduraSelect">Armaduras: </label>
-    <select id="armaduraSelect" multiple></select>
+      <label for="cantidadSelect">Cantidad:</label>
+      <select id="cantidadSelect"></select>
+    </div>
 
-    <label for="hechizoSelect">Hechizos: </label>
-    <select id="hechizoSelect" multiple></select>
+    <!-- Columna 2 -->
+    <div class="form-col">
+      <label for="armaSelect">Armas:</label>
+      <select id="armaSelect" multiple></select>
+    </div>
 
-    <label for="colorSelect">Color: </label>
+    <!-- Columna 3 -->
+    <div class="form-col">
+      <label for="armaduraSelect">Armaduras:</label>
+      <select id="armaduraSelect" multiple></select>
+    </div>
+
+    <!-- Columna 4 -->
+    <div class="form-col">
+      <label for="hechizoSelect">Hechizos:</label>
+      <select id="hechizoSelect" multiple></select>
+    </div>
+  </div>
+
+  <!-- Color + Botón -->
+  <div class="monster-actions">
+    <label for="colorSelect">Color:</label>
     <select id="colorSelect">
       <option value="#f8d7da">Rojo pastel</option>
       <option value="#d1ecf1">Azul pastel</option>
@@ -271,105 +479,148 @@
       <option value="#e2d6f3">Violeta pastel</option>
     </select>
 
-    <button id="addMonsterBtn">Añadir</button>
+    <button class="btn_opciones" id="addMonsterBtn">Añadir Monstruos</button>
   </div>
-
+</div>
   <div id="monsterContainer"></div>
+</div>
+    <script src="menu-acordeon.js"></script>
 
   <script>
-    const monsters = {
-      rata: {
-        nombre: "Rata Gigante",
-        tipo: "Bestia/Giant rat",
-        HC: 45, HD: 0, DAN: "1d6", DET: 30,
-        RG: -5, AN: 0, M: 6, DES: 40,
-        habilidades: [
-          "<strong>Escurridizo:</strong> Mueve a través de cualquier casilla y no penaliza por ZDC.",
-          "<strong>Oído fino:</strong> Añade +1 a la iniciativa del enemigo.",
-          "<strong>Pirofobia:</strong> Ver regla especial en el Bestiario."
-        ],
-        vida: 6, exp: 40, recompensa: "Parte"
-      },
-      centauro: {
-        nombre: "Centauro",
-        tipo: "Bestia/Centaur",
-        HC: 50, HD: 50, DAN: "+1", DET: 60,
-        RG: -5, AN: 1, M: 7, DES: 30,
-        habilidades: [
-          "Patada: Puede hacer un ataque gratuito (0 PA) contra un héroe adyacente detrás. 1d10+2 DAÑ."
-        ],
-        vida: 20, exp: 150, recompensa: "R2"
-      }
-    };
-
+    let monstersByCategory = {};
     let equipo = {};
 
-    fetch("Monstruos_equipo.json")
-      .then(r => r.json())
-      .then(data => {
-        equipo = data;
-        populateEquipoSelects();
-        loadFromLocalStorage();
+    const coloresId = [
+      "white","red","lightblue","green","yellow","orange","black","gray",
+      "darkblue","darkgreen","brown","violet","gold","silver","turquoise"
+    ];
+
+    function populateCantidadSelect() {
+      const sel = document.getElementById("cantidadSelect");
+      sel.innerHTML = "";
+      for (let i = 1; i <= 15; i++) {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = i;
+        if (i === 1) opt.selected = true;
+        sel.appendChild(opt);
+      }
+    }
+
+    // Cargar JSONs
+    Promise.all([
+      fetch("Monstruos_stats.json").then(r => r.json()),
+      fetch("Monstruos_equipo.json").then(r => r.json())
+    ]).then(([monstruosData, equipoData]) => {
+      monstersByCategory = monstruosData;
+      equipo = equipoData;
+
+      // Poblar categorías
+      const catSelect = document.getElementById("monsterCategorySelect");
+      Object.keys(monstruosData).sort().forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        catSelect.appendChild(opt);
       });
 
-    function populateSelect(monsters) {
+      populateEquipoSelects();
+      populateCantidadSelect();
+      loadFromLocalStorage();
+    }).catch(err => {
+      console.error("Error cargando JSONs:", err);
+      populateCantidadSelect();
+    });
+const togglePanelBtn = document.getElementById("togglePanelBtn");
+const monsterPanel = document.getElementById("monsterPanel");
+
+togglePanelBtn.addEventListener("click", () => {
+  if (monsterPanel.style.display === "none") {
+    monsterPanel.style.display = "block";
+    togglePanelBtn.textContent = "Ocultar Panel de Monstruos";
+  } else {
+    monsterPanel.style.display = "none";
+    togglePanelBtn.textContent = "Mostrar Panel de Monstruos";
+  }
+});
+    function populateMonstersByCategory(cat) {
       const select = document.getElementById("monsterSelect");
-      select.innerHTML = `<option value="" disabled selected>-- Selecciona --</option>`;
-      Object.entries(monsters).forEach(([key, monster]) => {
-        const opt = document.createElement("option");
-        opt.value = key;
-        opt.textContent = monster.nombre;
-        select.appendChild(opt);
-      });
+      select.innerHTML = `<option value="" disabled selected>-- Selecciona monstruo --</option>`;
+      if (!monstersByCategory[cat]) return;
+
+      monstersByCategory[cat]
+        .slice()
+        .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))
+        .forEach(m => {
+          const opt = document.createElement("option");
+          opt.value = m.nombre; // usamos nombre como clave
+          opt.textContent = m.nombre;
+          select.appendChild(opt);
+        });
     }
-    populateSelect(monsters);
+
+    document.getElementById("monsterCategorySelect").addEventListener("change", e => {
+      populateMonstersByCategory(e.target.value);
+    });
 
     function populateEquipoSelects() {
       document.getElementById("armaSelect").innerHTML =
-        equipo.Armas.map((a,i)=>`<option value="${i}">${a.Tipo}</option>`).join("");
+        (equipo.Armas||[]).map((a, i) => `<option value="${i}">${a.Tipo}</option>`).join("");
       document.getElementById("armaduraSelect").innerHTML =
-        equipo.Armaduras.map((a,i)=>`<option value="${i}">${a.Tipo}</option>`).join("");
+        (equipo.Armaduras||[]).map((a, i) => `<option value="${i}">${a.Tipo}</option>`).join("");
       document.getElementById("hechizoSelect").innerHTML =
-        equipo.Hechizos.map((h,i)=>`<option value="${i}">${h.Tipo}</option>`).join("");
+        (equipo.Hechizos||[]).map((h, i) => `<option value="${i}">${h.Tipo}</option>`).join("");
     }
 
     function updateVidaBar(barFill, val, max) {
-      const percent = val / max;
+      const percent = max === 0 ? 0 : val / max;
       barFill.style.setProperty("--vida-scale", percent);
-
       const textEl = barFill.querySelector(".vida-bar-text");
       if (textEl) textEl.textContent = `${val}/${max}`;
-
       let color;
-      if (percent > 0.7) {
-        color = "linear-gradient(to right, #77dd77, #c1f0c1)";
-      } else if (percent > 0.3) {
-        color = "linear-gradient(to right, #fdfd96, #fffac8)";
-      } else {
-        color = "linear-gradient(to right, #ff6961, #ffcccb)";
-      }
+      if (percent > 0.7) color = "linear-gradient(to right,#77dd77,#c1f0c1)";
+      else if (percent > 0.3) color = "linear-gradient(to right,#fdfd96,#fffac8)";
+      else color = "linear-gradient(to right,#ff6961,#ffcccb)";
       barFill.style.setProperty("--vida-color", color);
     }
 
-    function renderCard(monster, armas, armaduras, hechizos, color="#fff", vidaActual=null, save=true) {
+    function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff", vidas = null, save = true) {
       const wrapper = document.createElement("div");
       wrapper.classList.add("monster-card");
       wrapper.style.backgroundColor = color;
 
-      let vida = vidaActual ?? monster.vida;
-      wrapper._vida = vida;
+      const cantidad = vidas ? vidas.length : parseInt(document.getElementById("cantidadSelect").value || "1", 10);
+      wrapper._vidas = vidas ? vidas.slice() : Array(cantidad).fill(monster.vida);
 
       const barraBase = 100;
       const barraExtra = monster.vida * 2;
       const barraMax = 300;
       const barraWidth = Math.min(barraBase + barraExtra, barraMax);
 
-      const armasHTML = armas.map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🗡️ ${a.Tipo}${a.Daño ? " ("+a.Daño+")" : ""}</span>`).join("");
-      const armadurasHTML = armaduras.map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🛡️ ${a.Tipo}</span>`).join("");
-      const hechizosHTML = hechizos.length
-        ? `<strong>Hechizos:</strong> ` + hechizos.map(h => `<span data-tooltip="${h.Efecto}">${h.Categoría}: ${h.Tipo}</span>`).join(", ")
-        : "";
+      const armasHTML = (armas || []).map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🗡️ ${a.Tipo}${a.Daño ? " (" + a.Daño + ")" : ""}</span>`).join("");
+      const armadurasHTML = (armaduras || []).map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🛡️ ${a.Tipo}</span>`).join("");
+      const hechizosHTML = (hechizos || []).length ? `<strong>Hechizos:</strong> ` + (hechizos || []).map(h => `<span data-tooltip="${h.Efecto}">${h.Categoría}: ${h.Tipo}</span>`).join(", ") : "";
 
+      // Build vidas grid
+      let vidasGrid = '<div class="vidas-grid">';
+      wrapper._vidas.forEach((vida, i) => {
+        const colorBorde = coloresId[i] || "black";
+        vidasGrid += `
+          <div class="vida-item" style="border:10px solid ${colorBorde};background-color: gray;" >
+           
+            <div style="display:flex;gap:6px;align-items:center"> <div class="vida-id">${i + 1}</div>
+              <button class="vida-btn restar">-</button>
+              <div class="vida-bar" style="width:${barraWidth}px">
+              <div class="vida-bar-fill"><span class="vida-bar-text">${vida}/${monster.vida}</span></div>
+            </div>
+              <button class="vida-btn sumar">+</button>
+            </div>
+            
+          </div>`;
+      });
+      vidasGrid += "</div>";
+
+      // Aquí incluimos la tabla de atributos y la sección derecha completa (restaurada)
       wrapper.innerHTML = `
         <button class="remove-btn">X</button>
         <div class="monster-header">
@@ -381,16 +632,18 @@
           <div class="monster-basic">
             <h2>${monster.nombre}</h2>
             <p><strong>Tipo:</strong> ${monster.tipo}</p>
+
             <p>
-              ❤️ <button class="vida-btn restar">-</button>
-              <button class="vida-btn sumar">+</button>
+               ❤️
             </p>
+
             <div class="vida-bar" style="width:${barraWidth}px">
               <div class="vida-bar-fill">
-                <span class="vida-bar-text">${vida}/${monster.vida}</span>
+                <span class="vida-bar-text">${monster.vida}/${monster.vida}</span>
               </div>
             </div>
-            <p>EXP: ${monster.exp}</p>
+
+            <p><strong>EXP:</strong> ${monster.exp}</p>
             <p>💰 ${monster.recompensa}</p>
           </div>
 
@@ -399,6 +652,7 @@
               <div class="weapons-column">${armasHTML}</div>
               <div class="armors-column">${armadurasHTML}</div>
             </div>
+
             <div class="center-row">
               <table>
                 <tr>
@@ -419,44 +673,65 @@
         </div>
 
         <div class="hechizos-list">${hechizosHTML}</div>
+
+        ${vidasGrid}
       `;
 
+      // remove button
       wrapper.querySelector(".remove-btn").addEventListener("click", () => {
         wrapper.remove();
         saveToLocalStorage();
       });
 
-      const vidaBarFill = wrapper.querySelector(".vida-bar-fill");
       const deathOverlay = wrapper.querySelector(".death-overlay");
+      const vidaItems = wrapper.querySelectorAll(".vida-item");
 
-      function actualizarVida(nuevaVida) {
-        vida = Math.max(0, Math.min(monster.vida, nuevaVida));
-        wrapper._vida = vida;
-        updateVidaBar(vidaBarFill, vida, monster.vida);
-
-        if (vida === 0) {
-          deathOverlay.style.display = "block";
-        } else {
-          deathOverlay.style.display = "none";
-        }
-
+      function actualizarVida(idx, nuevaVida) {
+        wrapper._vidas[idx] = Math.max(0, Math.min(monster.vida, nuevaVida));
+        const barFill = vidaItems[idx].querySelector(".vida-bar-fill");
+        updateVidaBar(barFill, wrapper._vidas[idx], monster.vida);
+        deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
         saveToLocalStorage();
       }
 
-      updateVidaBar(vidaBarFill, vida, monster.vida);
-      if (vida === 0) deathOverlay.style.display = "block";
+      vidaItems.forEach((item, idx) => {
+        const barFill = item.querySelector(".vida-bar-fill");
+        updateVidaBar(barFill, wrapper._vidas[idx], monster.vida);
+        item.querySelector(".restar").addEventListener("click", () => actualizarVida(idx, wrapper._vidas[idx] - 1));
+        item.querySelector(".sumar").addEventListener("click", () => actualizarVida(idx, wrapper._vidas[idx] + 1));
+      });
 
-      wrapper.querySelector(".vida-btn.restar").addEventListener("click", () => actualizarVida(vida - 1));
-      wrapper.querySelector(".vida-btn.sumar").addEventListener("click", () => actualizarVida(vida + 1));
+      // también actualizar la barra única central para compatibilidad visual
+      const centralRestar = wrapper.querySelector(".monster-basic .vida-btn.restar");
+      const centralSumar = wrapper.querySelector(".monster-basic .vida-btn.sumar");
+      const centralBarFill = wrapper.querySelector(".monster-basic .vida-bar-fill");
+      if (centralRestar && centralSumar && centralBarFill) {
+        // central tira de la primera vida por defecto
+        function actualizarCentral(nuevaVida) {
+          wrapper._vidas[0] = Math.max(0, Math.min(monster.vida, nuevaVida));
+          updateVidaBar(centralBarFill, wrapper._vidas[0], monster.vida);
+          // actualizar también la mini barra correspondiente
+          if (vidaItems[0]) {
+            updateVidaBar(vidaItems[0].querySelector(".vida-bar-fill"), wrapper._vidas[0], monster.vida);
+          }
+          deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
+          saveToLocalStorage();
+        }
+        centralRestar.addEventListener("click", () => actualizarCentral(wrapper._vidas[0] - 1));
+        centralSumar.addEventListener("click", () => actualizarCentral(wrapper._vidas[0] + 1));
+        // inicializamos central con el valor actual de la primera vida
+        updateVidaBar(centralBarFill, wrapper._vidas[0], monster.vida);
+      }
 
+      deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
       if (save) saveToLocalStorage();
       return wrapper;
     }
 
     function saveToLocalStorage() {
       const cards = [...document.querySelectorAll(".monster-card")].map(card => {
-        const data = JSON.parse(card.dataset.info);
-        data.vida = card._vida;
+        const data = JSON.parse(card.dataset.info || "{}");
+        data.vidas = card._vidas;
         data.color = card.style.backgroundColor;
         return data;
       });
@@ -465,53 +740,55 @@
 
     function loadFromLocalStorage() {
       const saved = JSON.parse(localStorage.getItem("monstersInPlay") || "[]");
+      const container = document.getElementById("monsterContainer");
       saved.forEach(data => {
-        const monster = monsters[data.monsterKey];
-        if (!monster) return;
-        const armas = data.armas.map(i => equipo.Armas[i]);
-        const armaduras = data.armaduras.map(i => equipo.Armaduras[i]);
-        const hechizos = data.hechizos.map(i => equipo.Hechizos[i]);
-        const card = renderCard(monster, armas, armaduras, hechizos, data.color, parseInt(data.vida), false);
+        const monster = (monstersByCategory[data.category] || []).find(m => m.nombre === data.monsterName);
+        if (!monster) {
+          console.warn("Monstruo no encontrado para", data);
+          return;
+        }
+        const armas = (data.armas || []).map(i => equipo.Armas[i]).filter(Boolean);
+        const armaduras = (data.armaduras || []).map(i => equipo.Armaduras[i]).filter(Boolean);
+        const hechizos = (data.hechizos || []).map(i => equipo.Hechizos[i]).filter(Boolean);
+        const card = renderCard(monster, data.category, armas, armaduras, hechizos, data.color || "#fff", data.vidas || null, false);
         card.dataset.info = JSON.stringify(data);
-        document.getElementById("monsterContainer").appendChild(card);
+        container.appendChild(card);
       });
     }
 
     document.getElementById("addMonsterBtn").addEventListener("click", () => {
-      const monsterKey = document.getElementById("monsterSelect").value;
-      if (!monsterKey) return;
-      const monster = monsters[monsterKey];
+      const category = document.getElementById("monsterCategorySelect").value;
+      const monsterName = document.getElementById("monsterSelect").value;
+      if (!category || !monsterName) return;
+      const monster = (monstersByCategory[category] || []).find(m => m.nombre === monsterName);
+      if (!monster) return;
 
       const armasSel = [...document.getElementById("armaSelect").selectedOptions].map(o => parseInt(o.value));
       const armadurasSel = [...document.getElementById("armaduraSelect").selectedOptions].map(o => parseInt(o.value));
       const hechizosSel = [...document.getElementById("hechizoSelect").selectedOptions].map(o => parseInt(o.value));
       const colorSel = document.getElementById("colorSelect").value;
 
-      const armas = armasSel.map(i => equipo.Armas[i]);
-      const armaduras = armadurasSel.map(i => equipo.Armaduras[i]);
-      const hechizos = hechizosSel.map(i => equipo.Hechizos[i]);
+      const armas = armasSel.map(i => equipo.Armas[i]).filter(Boolean);
+      const armaduras = armadurasSel.map(i => equipo.Armaduras[i]).filter(Boolean);
+      const hechizos = hechizosSel.map(i => equipo.Hechizos[i]).filter(Boolean);
 
-      const card = renderCard(monster, armas, armaduras, hechizos, colorSel);
-      card.dataset.info = JSON.stringify({ 
-        monsterKey, 
-        armas: armasSel, 
-        armaduras: armadurasSel, 
-        hechizos: hechizosSel, 
-        color: colorSel, 
-        vida: monster.vida 
-      });
+      const card = renderCard(monster, category, armas, armaduras, hechizos, colorSel);
+      const infoObj = { monsterName, category, armas: armasSel, armaduras: armadurasSel, hechizos: hechizosSel, color: colorSel, vidas: card._vidas };
+      card.dataset.info = JSON.stringify(infoObj);
       document.getElementById("monsterContainer").appendChild(card);
       saveToLocalStorage();
     });
 
-    // ✅ MULTIPLE SELECTS: seleccionar/deseleccionar con clicks normales
-    document.querySelectorAll("select[multiple]").forEach(select => {
-      select.addEventListener("mousedown", function(e) {
-        if (e.target.tagName === "OPTION") {
-          e.preventDefault();
-          e.target.selected = !e.target.selected;
-        }
-      });
+    function populateMonstersOnCategoryChange() {
+      // helper: nothing extra
+    }
+
+    document.addEventListener("mousedown", function (e) {
+      const target = e.target;
+      if (target.tagName === "OPTION" && target.parentElement && target.parentElement.multiple) {
+        e.preventDefault();
+        target.selected = !target.selected;
+      }
     });
   </script>
 </body>
