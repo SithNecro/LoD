@@ -1,5 +1,6 @@
 {
 "Armas": [
+{"Tipo":"Arma Envenenada","Efecto":"Una herida causada por un arma envenenada quita 1 punto de vida del objetivo"},
 {"Tipo":"Arma Maldita","Efecto":"Una herida causada por un arma maldita quita 1 punto de cordura del objetivo"},
 {"Tipo":"Alabarda","Daño":"1d12","Efecto":"Alcance: Puede atacar a 2 casillas aunque haya compañeros en medio., PArm(1): Ignora 1 punto de armadura."},
 {"Tipo":"Arbalesta","Daño":"3d6","Efecto":"Recarga: 3PA., Parm(2): Ignora 2 puntos de armadura."},

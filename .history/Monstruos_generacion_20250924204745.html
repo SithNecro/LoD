@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="Monstruos_generacion.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Tile Generator</title>
+    <style>
+        /* --- (tus estilos originales) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: url('img/interface/fondo_losetas.jpg') no-repeat center center fixed;
+            background-size: cover;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        /* Contenedor del contenido */
+        .main-content2 {
+            position: relative;
+            max-width: 1200px;
+            /* ancho fijo */
+            margin: 0 auto;
+            /* centrado por defecto */
+            transition: transform 0.3s ease;
+            padding: 20px;
+            background: rgba(35, 35, 35, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            background: rgba(35, 35, 35, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 1px;
+            border-bottom: 2px solid #8B4513;
+        }
+
+        .titulo-container {
+            width: 90%;
+            max-width: 2000px;
+            height: 500px;
+            margin: 0 auto 1px;
+            background: url('img/interface/titulo_losetas.png') no-repeat center center;
+            background-size: contain;
+        }
+
+        .subtitle {
+            color: #d4af37;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(60, 60, 60, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #5D4037;
+        }
+
+        .select-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 1px 1px 1px #000;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #5D4037;
+            border-radius: 6px;
+            font-size: 16px;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+            padding-right: 35px;
+        }
+
+        select:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+
+        .btn-container {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .btn {
+            width: 360px;
+            height: 120px;
+            background: url('img/interface/btn_generar.png') no-repeat center center;
+            background-size: contain;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .visualization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .loseta-container {
+            flex: 2;
+            min-width: 100px;
+            max-width: 1200px;
+            min-height: 100px;
+            max-height: 1200px;
+            background: rgba(60, 60, 60, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: 1px solid #5D4037;
+        }
+
+        .loseta-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #d4af37;
+            font-size: 1.4rem;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .matriz {
+            display: grid;
+            gap: 2px;
+            padding: 8px;
+            border-radius: 8px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            width: 100%;
+        }
+
+        .casilla {
+            aspect-ratio: 1/1;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background-size: contain;
+        }
+
+        .casilla:hover {
+            transform: scale(1.02);
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 3px rgba(255, 215, 0, 0.5);
+        }
+
+        .casilla.invalida {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .enemigo {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            animation: aparecer 0.5s ease-out;
+            z-index: 2;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .enemigo.normal {
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        @keyframes aparecer {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .info-panel {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(60, 60, 60, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #5D4037;
+        }
+
+        .info-panel h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        #enemigos-lista {
+            margin-top: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .enemigo-item {
+            padding: 12px;
+            margin-bottom: 12px;
+            background: rgba(40, 40, 40, 0.8);
+            border-left: 5px solid #e74c3c;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            color: #fff;
+        }
+
+        .enemigo-item:hover {
+            transform: translateX(5px);
+        }
+
+        .enemigo-item strong {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .tirada-info {
+            background: rgba(52, 152, 219, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            color: #fff;
+        }
+
+        .visitas-container {
+            display: flex;
+            justify-content: center;
+            background: rgba(52, 73, 94, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #5D4037;
+        }
+
+        .visitas-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .visitas-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+
+        .visitas-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
+
+    </div> <button id="toggleMenu">☰</button>
+    <div class="main-content2">
+        <div class="controls">
+            <div class="select-group">
+                <label for="nivel-heroes">Nivel de Héroes:</label>
+                <select id="nivel-heroes">
+                    <option value="">Selecciona nivel</option>
+                    <option value="1">Nivel 1</option>
+                    <option value="2">Nivel 2</option>
+                    <option value="3">Nivel 3</option>
+                    <option value="4">Nivel 4</option>
+                    <option value="5">Nivel 5</option>
+                    <option value="6">Nivel 6</option>
+                    <option value="7">Nivel 7</option>
+                    <option value="8">Nivel 8</option>
+                    <option value="9">Nivel 9</option>
+                    <option value="10">Nivel 10</option>
+                </select>
+            </div>
+
+            <div class="select-group">
+                <label for="tipo-enemigo">Tipo de Enemigos:</label>
+                <select id="tipo-enemigo">
+                    <option value="">Selecciona un tipo</option>
+                </select>
+            </div>
+
+            <div class="select-group">
+                <label for="loseta">Loseta:</label>
+                <select id="loseta">
+                    <option value="">Selecciona una loseta</option>
+                </select>
+            </div>
+
+            <div class="btn-container">
+                <button id="generar-btn" class="btn"></button>
+            </div>
+        </div>
+
+        <div class="visualization">
+            <div class="loseta-container">
+                <h3 class="loseta-title" id="loseta-title">Selecciona una loseta</h3>
+                <div id="matriz-loseta" class="matriz"></div>
+            </div>
+
+            <div class="info-panel">
+                <h3>Enemigos Generados</h3>
+                <div id="tirada-info" class="tirada-info" style="display: none;">
+                    <strong>Información de la tirada:</strong><br>
+                    <span id="tirada-detalle"></span>
+                </div>
+                <div id="enemigos-lista"></div>
+            </div>
+        </div>
+        <div class="main-content2">
+            <!-- Botón toggle -->
+            <button id="togglePanelBtn" class="btn_opciones">Mostrar Panel de Monstruos</button>
+
+            <!-- Panel que se oculta/muestra -->
+            <div id="monsterPanel" style="display: none;">
+                <div class="monster-form">
+                    <!-- Columna 1 -->
+                    <div class="form-col">
+                        <label for="monsterCategorySelect">Categoría:</label>
+                        <select id="monsterCategorySelect">
+                            <option value="" disabled selected>-- Selecciona categoría --</option>
+                        </select>
+
+                        <label for="monsterSelect">Monstruo:</label>
+                        <select id="monsterSelect">
+                            <option value="" disabled selected>-- Selecciona monstruo --</option>
+                        </select>
+
+                        <label for="cantidadSelect">Cantidad:</label>
+                        <select id="cantidadSelect"></select>
+                    </div>
+
+                    <!-- Columna 2 -->
+                    <div class="form-col">
+                        <label for="armaSelect">Armas:</label>
+                        <select id="armaSelect" multiple></select>
+                    </div>
+
+                    <!-- Columna 3 -->
+                    <div class="form-col">
+                        <label for="armaduraSelect">Armaduras:</label>
+                        <select id="armaduraSelect" multiple></select>
+                    </div>
+
+                    <!-- Columna 4 -->
+                    <div class="form-col">
+                        <label for="hechizoSelect">Hechizos:</label>
+                        <select id="hechizoSelect" multiple></select>
+                    </div>
+                </div>
+
+                <!-- Color + Botón -->
+                <div class="monster-actions">
+                    <label style="display:none" for="colorSelect">Color:</label>
+                    <select id="colorSelect" style="display:none">
+                        <option value="#2e1502a4">Rojo pastel</option>
+                        <option value="#d1ecf1">Azul pastel</option>
+                        <option value="#d4edda">Verde pastel</option>
+                        <option value="#fff3cd">Amarillo pastel</option>
+                        <option value="#e2d6f3">Violeta pastel</option>
+                    </select>
+
+                    <button class="btn_opciones" id="addMonsterBtn">Añadir Monstruos</button>
+                </div>
+            </div>
+            <div id="monsterContainer"></div>
+        </div>
+    </div>
+    <script>
+        // Variables globales
+        let monstruosData = {};
+        let losetasData = {};
+        let tamanosMonstruos = {};
+        let monstruosImagenes = {};
+        let tipoSeleccionado = "";
+        let nivelHeroes = 0;
+        const isGitHubPages = window.location.hostname.includes('github.io');
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await cargarMonstruos();
+            cargarLosetas();
+
+            document.getElementById('nivel-heroes').addEventListener('change', (e) => {
+                nivelHeroes = parseInt(e.target.value) || 0;
+            });
+            document.getElementById('tipo-enemigo').addEventListener('change', (e) => {
+                tipoSeleccionado = e.target.value;
+            });
+            document.getElementById('generar-btn').addEventListener('click', generarEnemigos);
+        });
+
+        async function cargarMonstruos() {
+            try {
+                const ruta = isGitHubPages
+                    ? './img/Monstruos/Monstruos_tabla_encuentros.json'   // GitHub Pages usa /
+                    : 'img/Monstruos/Monstruos_tabla_encuentros.json';    // local también /
+
+                const response = await fetch(ruta);
+                if (!response.ok) throw new Error(`Error al cargar JSON (${response.status})`);
+
+                monstruosData = await response.json();
+                console.log("✅ Monstruos cargados:", monstruosData);
+
+                // 🔹 solo cargar el select si realmente hay datos
+                cargarTiposEnemigos();
+
+            } catch (err) {
+                console.error("❌ Error cargando monstruos:", err);
+                monstruosData = {};
+            }
+        }
+
+        function cargarTiposEnemigos() {
+            const select = document.getElementById("tipo-enemigo");
+            select.innerHTML = '<option value="">Selecciona un tipo</option>';
+            Object.keys(monstruosData).forEach(tipo => {
+                const opt = document.createElement("option");
+                opt.value = tipo;
+                opt.textContent = tipo;
+                select.appendChild(opt);
+            });
+        }
+        // Cargar losetas disponibles
+        async function cargarLosetas() {
+            try {
+                const ruta = isGitHubPages ? 'img/Monstruos/losetas.json' : 'img/Monstruos/losetas.json';
+                const response = await fetch(ruta);
+
+                if (!response.ok) {
+                    throw new Error(`Error al cargar losetas.json: ${response.status}`);
+                }
+
+                const data = await response.json();
+                losetasData = data.losetas;
+
+                // Ordenar losetas alfabéticamente por nombre
+                losetasData.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+                const select = document.getElementById('loseta');
+
+                // Limpiar opciones existentes (excepto la primera)
+                while (select.options.length > 1) {
+                    select.remove(1);
+                }
+
+                // Añadir opciones
+                losetasData.forEach(loseta => {
+                    const option = document.createElement('option');
+                    option.value = loseta.nombre;
+                    option.textContent = loseta.nombre;
+                    select.appendChild(option);
+                });
+
+                select.addEventListener('change', async (e) => {
+                    if (e.target.value) {
+                        await cargarLoseta(e.target.value);
+                    }
+                });
+            } catch (error) {
+                console.error('Error cargando losetas:', error);
+                alert('Error al cargar las losetas.');
+            }
+        }
+
+        // Cargar loseta específica
+        async function cargarLoseta(nombre) {
+            try {
+                // Buscar la loseta por nombre
+                const loseta = losetasData.find(l => l.nombre === nombre);
+                if (!loseta) {
+                    throw new Error(`Loseta ${nombre} no encontrada`);
+                }
+
+                losetaSeleccionada = loseta;
+                document.getElementById('loseta-title').textContent = losetaSeleccionada.nombre;
+                visualizarLoseta(losetaSeleccionada);
+                console.log(`Loseta ${nombre} cargada:`, losetaSeleccionada);
+            } catch (error) {
+                console.error('Error cargando loseta:', error);
+                alert(`Error al cargar la loseta ${nombre}.`);
+            }
+        }
+
+        // Visualizar la loseta con su matriz
+        function visualizarLoseta(loseta) {
+            const matrizContainer = document.getElementById('matriz-loseta');
+            matrizContainer.innerHTML = '';
+            // 4. Limpiar panel y mostrar info
+            const listaPanel = document.getElementById("enemigos-lista");
+            listaPanel.innerHTML = "";
+
+            const rutaImagen = isGitHubPages ?
+                `img/Monstruos/losetas/${loseta.imagen}.png` :
+                `img/Monstruos/losetas/${loseta.imagen}.png`;
+
+            // Crear una imagen para precargarla y verificar si existe
+            const img = new Image();
+            img.onload = function () {
+                matrizContainer.style.backgroundImage = `url(${rutaImagen})`;
+                matrizContainer.style.backgroundSize = 'contain';
+                matrizContainer.style.backgroundRepeat = 'no-repeat'
+            };
+            img.onerror = function () {
+                console.warn(`No se pudo cargar la imagen: ${rutaImagen}`);
+                matrizContainer.style.backgroundImage = 'none';
+            };
+            img.src = rutaImagen;
+
+            // Determinar dimensiones de la matriz
+            const filas = loseta.matriz.length;
+            const columnas = loseta.matriz[0].length;
+
+            // Actualizar la cuadrícula CSS para que coincida con las dimensiones de la loseta
+            matrizContainer.style.gridTemplateColumns = `repeat(${columnas}, 1fr)`;
+            matrizContainer.style.gridTemplateRows = `repeat(${filas}, 1fr)`;
+
+            // Crear casillas
+            for (let i = 0; i < filas; i++) {
+                for (let j = 0; j < columnas; j++) {
+                    const casilla = document.createElement('div');
+                    casilla.className = 'casilla';
+                    casilla.dataset.fila = i;
+                    casilla.dataset.columna = j;
+
+                    if (loseta.matriz[i][j] === 0) {
+                        casilla.classList.add('invalida');
+                    }
+
+                    matrizContainer.appendChild(casilla);
+                }
+            }
+        }
+
+        // === GENERAR ENEMIGOS ===
+        function generarEnemigos() {
+            if (nivelHeroes < 1) {
+                alert('Por favor, selecciona un nivel de héroes.');
+                return;
+            }
+
+
+
+            if (!losetaSeleccionada) {
+                alert('Por favor, selecciona una loseta.');
+                return;
+            }
+
+            const lista = monstruosData[tipoSeleccionado];
+            if (!lista || lista.length === 0) {
+                alert("No hay encuentros disponibles en esta categoría");
+                return;
+            }
+            // Limpiar enemigos anteriores
+            limpiarEnemigosAnteriores();
+
+
+            // 1. Buscar el ID más alto
+            const maxID = Math.max(...lista.map(e => e.ID));
+            // Calcular tirada
+            const tirada = calcularTirada(maxID);
+
+
+            // 3. Filtrar enemigos con ese ID
+            const encuentro = lista.filter(e => e.ID === tirada.total);
+
+            if (encuentro.length === 0) {
+                alert(`No hay enemigos con ID ${tirada.total}`);
+                return;
+            }
+
+            // 4. Limpiar panel y mostrar info
+            const listaPanel = document.getElementById("enemigos-lista");
+            listaPanel.innerHTML = "";
+
+            const tiradaInfo = document.getElementById("tirada-info");
+            const tiradaDetalle = document.getElementById("tirada-detalle");
+            tiradaInfo.style.display = "block";
+            tiradaDetalle.textContent = `Dado: ${tirada.dado} + Modificador (Nivel ${nivelHeroes}): ${tirada.modificador} = Total: ${tirada.total}`;
+
+            // Mostrar enemigos en la lista
+            mostrarEnemigosLista(encuentro);
+
+            // Colocar enemigos en la loseta
+            colocarEnemigosEnLoseta(encuentro);
+
+            //Generamos sus tarjetas
+            generarTarjetas(encuentro);
+        }
+
+        // Limpiar enemigos anteriores
+        function limpiarEnemigosAnteriores() {
+            // Remover elementos enemigo del DOM
+            document.querySelectorAll('.enemigo').forEach(el => el.remove());
+
+            // Limpiar clases ocupadas
+            document.querySelectorAll('.casilla.ocupada').forEach(el => {
+                el.classList.remove('ocupada');
+            });
+
+            // Limpiar lista de enemigos
+            document.getElementById('enemigos-lista').innerHTML = '';
+            enemigosCargados = [];
+        }
+        // === FUNCIONES DE DADOS ===
+        function resolverTirada(expresion) {
+            if (!expresion) return { total: 0, detalle: "—" };
+            expresion = expresion.trim();
+            if (/^\d+$/.test(expresion)) {
+                const fijo = parseInt(expresion, 10);
+                return { total: fijo, detalle: fijo.toString() };
+            }
+            const match = expresion.match(/(\d*)d(\d+)([+-]\d+)?/i);
+            if (!match) return { total: 0, detalle: expresion };
+            const numDados = parseInt(match[1] || "1", 10);
+            const caras = parseInt(match[2], 10);
+            const modificador = match[3] ? parseInt(match[3], 10) : 0;
+            let tiradas = [];
+            let total = 0;
+            for (let i = 0; i < numDados; i++) {
+                const dado = Math.floor(Math.random() * caras) + 1;
+                tiradas.push(dado);
+                total += dado;
+            }
+            total += modificador;
+            let detalle = `${tiradas.join(" + ")}`;
+            if (modificador !== 0) detalle += (modificador > 0 ? ` + ${modificador}` : ` ${modificador}`);
+            detalle += ` = ${total}`;
+            return { total, detalle };
+        }
+
+        // Realizar tirada de dado de 20 caras
+        function tirarD20() {
+            return Math.floor(Math.random() * 20) + 1;
+        }
+
+        // Calcular tirada según nivel de héroes
+        function calcularTirada(maxID) {
+            if (nivelHeroes < 1) return 0;
+
+            let tiradaFinal;
+            let tiradaDado;
+            let modificador = (nivelHeroes - 1) * 10;
+
+            do {
+                tiradaDado = tirarD20();
+                tiradaFinal = tiradaDado + modificador;
+            } while (tiradaFinal > maxID); // Repetir si supera maxID
+
+            return {
+                dado: tiradaDado,
+                modificador: modificador,
+                total: tiradaFinal
+            };
+        }
+
+
+        // Mostrar enemigos en la lista
+        function mostrarEnemigosLista(encuentro) {
+            const listaPanel = document.getElementById("enemigos-lista");
+
+            // 5. Para cada enemigo, hacer su tirada y mostrarlo
+            encuentro.forEach(enemigo => {
+                const tirada = resolverTirada(enemigo.Cantidad);
+
+                const item = document.createElement("div");
+                item.classList.add("enemigo-item");
+                item.innerHTML = `
+            <strong>${tirada.total}x ${enemigo.Encuentro}</strong>
+            Armas: ${enemigo.Armas || "Ninguna"} Y Armadura: ${enemigo.Armadura}<br>
+            Especial: ${enemigo.Especial || "-"}
+             Hechizos (Melé: ${enemigo.Hechizos_Melé}, Distancia: ${enemigo.Hechizos_Distancia}, Apoyo: ${enemigo.Hechizos_Apoyo})
+        `;
+                listaPanel.appendChild(item);
+                enemigo.apariciones = tirada.total;
+            });
+        }
+
+
+        // Colocar enemigos en la loseta
+        function colocarEnemigosEnLoseta(enemigos) {
+            // Primero, ordenar enemigos por tamaño (más grandes primero)
+            enemigos.sort((a, b) => {
+                const tamanoA = obtenerDimensionesEnemigo(a.Tamaño).casillas;
+                const tamanoB = obtenerDimensionesEnemigo(b.Tamaño).casillas;
+                return tamanoB - tamanoA;
+            });
+
+            // Encontrar todas las casillas válidas y disponibles
+            const casillasValidas = [];
+            const casillas = document.querySelectorAll('.casilla:not(.invalida):not(.ocupada)');
+
+            casillas.forEach(casilla => {
+                casillasValidas.push({
+                    elemento: casilla,
+                    fila: parseInt(casilla.dataset.fila),
+                    columna: parseInt(casilla.dataset.columna)
+                });
+            });
+
+            // Mezclar casillas válidas para colocación aleatoria
+            for (let i = casillasValidas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [casillasValidas[i], casillasValidas[j]] = [casillasValidas[j], casillasValidas[i]];
+            }
+
+            // Intentar colocar cada enemigo
+            const enemigosNoColocados = [];
+
+            for (const enemigo of enemigos) {
+                for (let i = 0; i < enemigo.apariciones; i++) {
+                    let colocado = false;
+
+                    for (const casilla of casillasValidas) {
+                        if (!casilla.elemento.classList.contains('ocupada') &&
+                            areaDisponible(casilla.fila, casilla.columna, enemigo.Tamaño)) {
+
+                            // Colocar el enemigo
+                            colocarEnemigo(casilla.fila, casilla.columna, enemigo);
+                            marcarAreaOcupada(casilla.fila, casilla.columna, enemigo.Tamaño);
+                            colocado = true;
+                            break;
+                        }
+                    }
+
+                    if (!colocado) {
+                        enemigosNoColocados.push(enemigo);
+                    }
+                }
+            }
+
+            // Mostrar advertencia si no se pudieron colocar todos los enemigos
+            if (enemigosNoColocados.length > 0) {
+                console.warn('No se pudieron colocar todos los enemigos:', enemigosNoColocados);
+
+                // Agrupar enemigos no colocados para el mensaje
+                const noColocadosAgrupados = {};
+                enemigosNoColocados.forEach(e => {
+                    noColocadosAgrupados[e.nombre] = (noColocadosAgrupados[e.nombre] || 0) + 1;
+                });
+
+                const mensaje = Object.entries(noColocadosAgrupados)
+                    .map(([nombre, cantidad]) => `${cantidad}x ${nombre}`)
+                    .join(', ');
+
+                alert(`No hay suficiente espacio para colocar: ${mensaje}`);
+            }
+        }
+
+        function obtenerDimensionesEnemigo(tamano) {
+            switch (tamano) {
+                case 'Enorme':
+                    return { ancho: 2, alto: 2, casillas: 4 };
+                case 'Extraenorme':
+                    return { ancho: 3, alto: 2, casillas: 6 };
+                default:
+                    return { ancho: 1, alto: 1, casillas: 1 };
+            }
+        }
+
+
+        // Verificar si un área está disponible para colocar un enemigo
+        function areaDisponible(filaInicio, columnaInicio, tamano) {
+            const dimensiones = obtenerDimensionesEnemigo(tamano);
+            const ancho = dimensiones.ancho;
+            const alto = dimensiones.alto;
+
+            for (let i = 0; i < alto; i++) {
+                for (let j = 0; j < ancho; j++) {
+                    const fila = filaInicio + i;
+                    const columna = columnaInicio + j;
+
+                    // Verificar si está dentro de los límites
+                    if (fila >= losetaSeleccionada.matriz.length || columna >= losetaSeleccionada.matriz[0].length) {
+                        return false;
+                    }
+
+                    const casilla = document.querySelector(`.casilla[data-fila="${fila}"][data-columna="${columna}"]`);
+
+                    if (!casilla ||
+                        casilla.classList.contains('invalida') ||
+                        casilla.classList.contains('ocupada')) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        // Marcar área como ocupada
+        function marcarAreaOcupada(filaInicio, columnaInicio, tamano) {
+            const dimensiones = obtenerDimensionesEnemigo(tamano);
+            const ancho = dimensiones.ancho;
+            const alto = dimensiones.alto;
+
+            for (let i = 0; i < alto; i++) {
+                for (let j = 0; j < ancho; j++) {
+                    const fila = filaInicio + i;
+                    const columna = columnaInicio + j;
+
+                    const casilla = document.querySelector(`.casilla[data-fila="${fila}"][data-columna="${columna}"]`);
+                    if (casilla) {
+                        casilla.classList.add('ocupada');
+                    }
+                }
+            }
+        }
+
+
+
+
+        // Colocar un enemigo específico en la posición dada
+        function colocarEnemigo(fila, columna, enemigo) {
+            const matrizContainer = document.getElementById('matriz-loseta');
+            const dimensiones = obtenerDimensionesEnemigo(enemigo.Tamaño);
+
+            // Crear elemento enemigo
+            const enemigoElement = document.createElement('div');
+            enemigoElement.className = `enemigo ${enemigo.Tamaño}`;
+
+            // Obtener la imagen del token
+            const imagenToken = obtenerImagenToken(enemigo.Encuentro);
+
+            // Establecer estilos según el tamaño
+            enemigoElement.style.width = `calc(${dimensiones.ancho} * (100% / ${losetaSeleccionada.matriz[0].length}) - 4px)`;
+            enemigoElement.style.height = `calc(${dimensiones.alto} * (100% / ${losetaSeleccionada.matriz.length}) - 4px)`;
+            enemigoElement.style.left = `calc(${columna} * (100% / ${losetaSeleccionada.matriz[0].length}))`;
+            enemigoElement.style.top = `calc(${fila} * (100% / ${losetaSeleccionada.matriz.length}))`;
+            enemigoElement.style.position = 'absolute';
+            enemigoElement.style.backgroundImage = `url(${imagenToken})`;
+            enemigoElement.style.backgroundSize = 'contain';
+            enemigoElement.style.backgroundPosition = 'center';
+            enemigoElement.style.backgroundRepeat = 'no-repeat';
+            enemigoElement.title = enemigo.Encuentro;
+
+            // Añadir tooltip con información
+            enemigoElement.dataset.tooltip = `${enemigo.Encuentro} (${enemigo.Tamaño})`;
+
+            // Añadir evento para mostrar información al pasar el mouse
+            enemigoElement.addEventListener('mouseenter', () => {
+                // Podrías añadir un tooltip o información adicional aquí
+                console.log(enemigoElement.dataset.tooltip);
+            });
+
+            matrizContainer.appendChild(enemigoElement);
+        }
+
+        function obtenerImagenToken(nombre) {
+            let nombreLimpio = nombre.split(" con ")[0].trim();
+            const ruta = 'img/Monstruos/imagenes/' + encodeURIComponent(nombreLimpio) + '.png';
+            console.log("Buscando imagen:", ruta);
+            return ruta;
+        }
+        function generarTarjetas(encuentro) {
+            const container = document.getElementById("monsterContainer");
+
+            // Función auxiliar para añadir hechizos sin repetir
+            function añadirHechizos(categoria, cantidad, hechizos, hechizosIdx) {
+                const candidatos = equipo.Hechizos
+                    .map((h, i) => ({ ...h, _idx: i }))
+                    .filter(h => h.Categoría.toLowerCase() === categoria.toLowerCase());
+
+                // Barajar candidatos
+                for (let i = candidatos.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [candidatos[i], candidatos[j]] = [candidatos[j], candidatos[i]];
+                }
+
+                candidatos.slice(0, cantidad).forEach(elegido => {
+                    hechizos.push(elegido);
+                    hechizosIdx.push(elegido._idx);
+                });
+            }
+
+            encuentro.forEach(enemigo => {
+                // Buscar monstruo por nombre dentro de monstersByCategory
+                let monster, category;
+                for (const cat in monstersByCategory) {
+                    monster = (monstersByCategory[cat] || []).find(m => m.nombre === enemigo.Encuentro);
+                    if (monster) {
+                        category = cat;
+                        break;
+                    }
+                }
+                if (!monster) {
+                    console.warn("❌ No se encontró definición para:", enemigo.Encuentro);
+                    return;
+                }
+
+                // Cantidad = apariciones
+                const cantidad = enemigo.apariciones || 1;
+                const vidas = Array(cantidad).fill(monster.vida);
+
+                // --- Armas ---
+                let armas = [];
+                let listaArmasOriginal = [];
+
+                if (enemigo.Armas) {
+                    const listaArmas = enemigo.Armas.split(",").map(a => a.trim());
+                    listaArmas.forEach(nombreOriginal => {
+                        let nombre = nombreOriginal;
+                        let esMaldita = false;
+                        let esEnvenenada = false;
+
+                        // Detectar modificadores
+                        if (nombre.toLowerCase().includes("maldita")) {
+                            esMaldita = true;
+                        }
+                        if (nombre.toLowerCase().includes("envenenada")) {
+                            esEnvenenada = true;
+                        }
+
+                        // Guardamos la versión original (para el título extendido)
+                        listaArmasOriginal.push(nombreOriginal.trim());
+
+                        // Limpiar para buscar el arma base
+                        nombre = nombre.replace(/maldita/i, "").replace(/envenenada/i, "").trim();
+
+                        if (nombre.toLowerCase() === "escudo") {
+                            const escudoRG = equipo.Armaduras.find(a => a.Tipo.toLowerCase() === "escudo -5 rg");
+                            if (escudoRG) armas.push(escudoRG);
+                        } else if (nombre) {
+                            const armaObj = equipo.Armas.find(
+                                a => a.Tipo.toLowerCase() === nombre.toLowerCase()
+                            );
+                            if (armaObj) armas.push(armaObj);
+                        }
+
+                        // Añadir modificadores desde JSON
+                        if (esMaldita) {
+                            const malditaObj = equipo.Armas.find(a => a.Tipo.toLowerCase() === "arma maldita");
+                            if (malditaObj) armas.push(malditaObj);
+                        }
+                        if (esEnvenenada) {
+                            const envenenadaObj = equipo.Armas.find(a => a.Tipo.toLowerCase() === "arma envenenada");
+                            if (envenenadaObj) armas.push(envenenadaObj);
+                        }
+                    });
+                }
+
+                // --- Armaduras ---
+                let armaduras = [];
+                if (enemigo.Armadura) {
+                    const valorEscudo = enemigo.Armadura.toString().trim();
+                    if (valorEscudo === "-5") {
+                        const escudoRG = equipo.Armaduras.find(a => a.Tipo.toLowerCase() === "escudo -5 rg");
+                        if (escudoRG) armaduras.push(escudoRG);
+                    } else {
+                        const escudoBuscado = `Escudo ${valorEscudo}`;
+                        const escudoObj = equipo.Armaduras.find(
+                            a => a.Tipo.toLowerCase() === escudoBuscado.toLowerCase()
+                        );
+                        if (escudoObj) armaduras.push(escudoObj);
+                    }
+                }
+
+                // --- Hechizos ---
+                const hechizos = [];
+                const hechizosIdx = [];
+
+                if (enemigo.Hechizos_Melé && enemigo.Hechizos_Melé > 0) {
+                    añadirHechizos("mele", enemigo.Hechizos_Melé, hechizos, hechizosIdx);
+                }
+                if (enemigo.Hechizos_Distancia && enemigo.Hechizos_Distancia > 0) {
+                    añadirHechizos("distancia", enemigo.Hechizos_Distancia, hechizos, hechizosIdx);
+                }
+                if (enemigo.Hechizos_Apoyo && enemigo.Hechizos_Apoyo > 0) {
+                    añadirHechizos("apoyo", enemigo.Hechizos_Apoyo, hechizos, hechizosIdx);
+                }
+
+                // --- Nombre extendido con armas ---
+                let nombreExtendido = monster.nombre;
+                if (listaArmasOriginal.length > 0) {
+                    if (listaArmasOriginal.length === 1) {
+                        nombreExtendido += " con " + listaArmasOriginal[0];
+                    } else {
+                        const ultima = listaArmasOriginal.pop();
+                        nombreExtendido += " con " + listaArmasOriginal.join(", ") + " y " + ultima;
+                    }
+                }
+
+                // Usamos copia del monstruo con nombre extendido
+                const monsterCopia = { ...monster, nombre: nombreExtendido };
+
+                // Renderizar tarjeta
+                const card = renderCard(monsterCopia, category, armas, armaduras, hechizos, "#2e1502a4", vidas);
+                const infoObj = {
+                    monsterName: monster.nombre,
+                    category,
+                    armas: armas.map(a => equipo.Armas.indexOf(a)),
+                    armaduras: armaduras.map(a => equipo.Armaduras.indexOf(a)),
+                    hechizos: hechizosIdx,
+                    color: "#2e1502a4",
+                    vidas
+                };
+                card.dataset.info = JSON.stringify(infoObj);
+
+                container.appendChild(card);
+                saveToLocalStorage();
+            });
+        }
+
+
+
+        function añadirHechizos(categoria, cantidad, hechizos, hechizosIdx) {
+            const candidatos = equipo.Hechizos
+                .map((h, i) => ({ ...h, _idx: i })) // guardamos índice real
+                .filter(h => h.Categoría.toLowerCase() === categoria.toLowerCase());
+
+            // Barajar candidatos
+            for (let i = candidatos.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [candidatos[i], candidatos[j]] = [candidatos[j], candidatos[i]];
+            }
+
+            // Tomar los primeros 'cantidad' (sin repetir)
+            candidatos.slice(0, cantidad).forEach(elegido => {
+                hechizos.push(elegido);
+                hechizosIdx.push(elegido._idx);
+            });
+        }
+        function renderCardrandom(monster, category, armas, armaduras, hechizos, color, vidas) {
+            // ✅ Imagen: usamos nombreBase si existe, si no, el extendido
+            const imagen = obtenerImagenToken(monster.nombreBase || monster.nombre);
+
+            // --- Armas con iconos especiales ---
+            const armasHTML = (armas || []).map(a => {
+                let icono = "🗡️"; // por defecto
+                if (a.Tipo.toLowerCase() === "arma maldita") icono = "🗡️☠️";
+                if (a.Tipo.toLowerCase() === "arma envenenada") icono = "🗡️🧪";
+                return `<span class="equipment" data-tooltip="${a.Efecto || ""}">${icono} ${a.Tipo}${a.Daño ? " (" + a.Daño + ")" : ""}</span>`;
+            }).join("");
+
+            // --- Armaduras ---
+            const armadurasHTML = (armaduras || []).map(a =>
+                `<span class="equipment" data-tooltip="${a.Efecto || ""}">🛡️ ${a.Tipo}</span>`
+            ).join("");
+
+            // --- Hechizos ---
+            const hechizosHTML = (hechizos || []).map(h =>
+                `<span class="equipment" data-tooltip="${h.Efecto || ""}">✨ ${h.Tipo}</span>`
+            ).join("");
+
+            // --- Barras de vida ---
+            const vidaHTML = (vidas || []).map(v => {
+                let hearts = "";
+                for (let i = 0; i < v; i++) hearts += "❤️";
+                return `<div class="vida-bar">${hearts}</div>`;
+            }).join("");
+
+            // --- HTML de la tarjeta ---
+            const cardHTML = `
+        <div class="monster-card" style="background:${color}">
+            <h3>${monster.nombre}</h3>
+            <div class="monster-image">
+                <img src="${imagen}" 
+                     onerror="this.onerror=null; this.src='img/Monstruos/imagenes/default.png';">
+            </div>
+            <div class="monster-info">
+                <div><strong>Armas:</strong> ${armasHTML || "-"}</div>
+                <div><strong>Armaduras:</strong> ${armadurasHTML || "-"}</div>
+                <div><strong>Hechizos:</strong> ${hechizosHTML || "-"}</div>
+            </div>
+            <div class="monster-vida">
+                <strong>Vida:</strong> ${vidaHTML}
+            </div>
+        </div>
+    `;
+
+            const wrapper = document.createElement("div");
+            wrapper.innerHTML = cardHTML.trim();
+            return wrapper.firstChild;
+        }
+    </script>
+    <script src="Monstruos_generacion.js"></script>
+    <script src="menu-acordeon.js"></script>
+
+</body>
