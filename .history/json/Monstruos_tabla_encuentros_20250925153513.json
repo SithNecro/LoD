@@ -4480,7 +4480,7 @@
     },
     {
       "ID": 37,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1",
       "Armas": "Espada Larga, Escudo",
       "Armadura": 4,
@@ -4492,7 +4492,7 @@
     },
     {
       "ID": 38,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1",
       "Armas": "Espada Larga, Escudo",
       "Armadura": 4,
@@ -4504,7 +4504,7 @@
     },
     {
       "ID": 37,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1",
       "Armas": "Hacha de Batalla, Escudo",
       "Armadura": 4,
@@ -4516,7 +4516,7 @@
     },
     {
       "ID": 38,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1",
       "Armas": "Hacha de Batalla, Escudo",
       "Armadura": 4,
@@ -4768,7 +4768,7 @@
     },
     {
       "ID": 51,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d3",
       "Armas": "Espada Larga, Escudo",
       "Armadura": 4,
@@ -4780,7 +4780,7 @@
     },
     {
       "ID": 52,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d3",
       "Armas": "Espada Larga, Escudo",
       "Armadura": 4,
@@ -5128,7 +5128,7 @@
     },
     {
       "ID": 71,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d4",
       "Armas": "Espada Larga Maldita, Escudo",
       "Armadura": 4,
@@ -5140,7 +5140,7 @@
     },
     {
       "ID": 72,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d4",
       "Armas": "Espada Larga Maldita, Escudo",
       "Armadura": 4,
@@ -5176,7 +5176,7 @@
     },
     {
       "ID": 73,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d6",
       "Armas": "Espada Larga, Escudo",
       "Armadura": 4,
@@ -5188,7 +5188,7 @@
     },
     {
       "ID": 74,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d6",
       "Armas": "Espada Larga, Escudo",
       "Armadura": 4,
@@ -5560,7 +5560,7 @@
     },
     {
       "ID": 95,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d6",
       "Armas": "Espada Larga Maldita, Escudo",
       "Armadura": 4,
@@ -5572,7 +5572,7 @@
     },
     {
       "ID": 96,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d6",
       "Armas": "Espada Larga Maldita, Escudo",
       "Armadura": 4,
@@ -5728,7 +5728,7 @@
     },
     {
       "ID": 103,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d6",
       "Armas": "Espada Larga Maldita, Escudo",
       "Armadura": 4,
@@ -5740,7 +5740,7 @@
     },
     {
       "ID": 104,
-      "Encuentro": "Caballero de la Muerte",
+      "Encuentro": "Caballero Caído",
       "Cantidad": "1d6",
       "Armas": "Espada Larga Maldita, Escudo",
       "Armadura": 4,
