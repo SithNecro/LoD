@@ -484,7 +484,6 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             await cargarMonstruos();
-            cargarTamanos();   // 🔹 nuevo
             cargarLosetas();
 
             document.getElementById('nivel-heroes').addEventListener('change', (e) => {
@@ -495,19 +494,7 @@
             });
             document.getElementById('generar-btn').addEventListener('click', generarEnemigos);
         });
-        async function cargarTamanos() {
-            try {
-                const ruta = isGitHubPages ? './json/tamanos_monstruos.json' : 'json/tamanos_monstruos.json';
-                const response = await fetch(ruta);
-                if (!response.ok) throw new Error(`Error al cargar tamaños (${response.status})`);
-                const data = await response.json();
-                tamanosMonstruos = data.tamaños || {};
-                console.log("✅ Tamaños cargados:", tamanosMonstruos);
-            } catch (err) {
-                console.error("❌ Error cargando tamaños:", err);
-                tamanosMonstruos = {};
-            }
-        }
+
         async function cargarMonstruos() {
             try {
                 const ruta = isGitHubPages
@@ -681,11 +668,7 @@
 
             // 3. Filtrar enemigos con ese ID
             const encuentro = lista.filter(e => e.ID === tirada.total);
-            
-            // 🔹 Reasignar tamaños desde tamanos_monstruos.json
-            encuentro.forEach(e => {
-                e.Tamaño = tamanosMonstruos[e.Encuentro] || e.Tamaño || "Normal";
-            });
+
             if (encuentro.length === 0) {
                 alert(`No hay enemigos con ID ${tirada.total}`);
                 return;

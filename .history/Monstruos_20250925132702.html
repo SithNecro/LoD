@@ -175,7 +175,7 @@
             gap: 10px;
             border: 2px solid white;
             padding: 10px;
-            color: white;
+            color:white;
             border-radius: 8px;
             margin: 10px auto;
             /* ya añade separación vertical y centra */
@@ -711,7 +711,7 @@
         <button class="remove-btn">X</button>
         <div class="monster-header">
           <div class="monster-left">
-            <img src="img/monstruos/imagenes/${monster.nombre}.png" alt="${monster.nombre}">
+            <img src="img/monstruos/${monster.nombre}.png" alt="${monster.nombre}">
             <div class="death-overlay"></div>
           </div>
 
@@ -844,14 +844,7 @@
                 container.appendChild(card);
             });
         }
-        // evento al cambiar de monstruo
-        document.getElementById("monsterSelect").addEventListener("change", () => {
-            // 1. Eliminar todas las cards existentes
-            document.querySelectorAll(".monster-card").forEach(card => card.remove());
 
-            // 2. Lanzar el evento del botón como si se hubiera hecho click
-            document.getElementById("addMonsterBtn").click();
-        });
         document.getElementById("addMonsterBtn").addEventListener("click", () => {
             const category = document.getElementById("monsterCategorySelect").value;
             const monsterName = document.getElementById("monsterSelect").value;

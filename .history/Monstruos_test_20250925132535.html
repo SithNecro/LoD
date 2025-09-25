@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test de Monstruos</title>
+  <link rel="stylesheet" href="Monstruos_generacion.css">
+  <style>
+    body { background: #222; color: #fff; font-family: sans-serif; }
+    .container { display: flex; gap: 20px; }
+    .loseta-container, .info-panel { border: 1px solid #555; border-radius: 8px; padding: 10px; }
+    .loseta-container { flex: 2; position: relative; }
+    .info-panel { flex: 1; background: rgba(50,50,50,0.8); }
+    #monsterContainer { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Test de Monstruos (Loseta fija: LA_GRAN_CRIPTA)</h1>
+
+  <div>
+    <label for="monsterCategorySelect">Categoría:</label>
+    <select id="monsterCategorySelect">
+      <option value="" disabled selected>-- Selecciona categoría --</option>
+    </select>
+
+    <label for="monsterSelect">Monstruo:</label>
+    <select id="monsterSelect">
+      <option value="" disabled selected>-- Selecciona monstruo --</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <div class="loseta-container">
+      <h3 id="loseta-title">LA_GRAN_CRIPTA</h3>
+      <div id="matriz-loseta" class="matriz"></div>
+    </div>
+    <div class="info-panel">
+      <h3>Enemigo Seleccionado</h3>
+      <div id="enemigos-lista"></div>
+    </div>
+  </div>
+
+  <div id="monsterContainer"></div>
+
+  <!-- Tu JS original -->
+  <script src="Monstruos_generacion.js"></script>
+
+  <script>
+    let losetaSeleccionada = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Esperar hasta que monstersByCategory tenga datos
+      await esperarDatosMonstruos();
+
+      // Cargar loseta fija
+      const response = await fetch("json/losetas.json");
+      const data = await response.json();
+      losetaSeleccionada = data.losetas.find(l => l.nombre === "LA_GRAN_CRIPTA");
+      if (losetaSeleccionada) {
+        document.getElementById('loseta-title').textContent = losetaSeleccionada.nombre;
+        visualizarLoseta(losetaSeleccionada);
+      }
+
+      // Poblar categorías desde monstersByCategory
+      const catSelect = document.getElementById("monsterCategorySelect");
+      Object.keys(monstersByCategory).sort().forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        catSelect.appendChild(opt);
+      });
+
+      // Rellenar monstruos al cambiar de categoría
+      catSelect.addEventListener("change", e => {
+        const monsterSel = document.getElementById("monsterSelect");
+        monsterSel.innerHTML = `<option value="" disabled selected>-- Selecciona monstruo --</option>`;
+        (monstersByCategory[e.target.value] || []).forEach(m => {
+          const opt = document.createElement("option");
+          opt.value = m.nombre;
+          opt.textContent = m.nombre;
+          monsterSel.appendChild(opt);
+        });
+      });
+
+      // Mostrar monstruo al seleccionarlo
+      document.getElementById("monsterSelect").addEventListener("change", e => {
+        const cat = document.getElementById("monsterCategorySelect").value;
+        const monster = (monstersByCategory[cat] || []).find(m => m.nombre === e.target.value);
+        if (!monster) return;
+
+        // Limpiar lo anterior
+        document.getElementById("enemigos-lista").innerHTML = "";
+        document.getElementById("monsterContainer").innerHTML = "";
+        document.querySelectorAll(".enemigo").forEach(el => el.remove());
+        document.querySelectorAll(".casilla.ocupada").forEach(el => el.classList.remove("ocupada"));
+
+        // Info a la derecha
+        document.getElementById("enemigos-lista").innerHTML = `
+          <strong>${monster.nombre}</strong><br>
+          Tipo: ${monster.tipo}<br>
+          Vida: ${monster.vida}<br>
+          EXP: ${monster.exp}<br>
+          Recompensa: ${monster.recompensa}
+        `;
+
+        // Colocar en la loseta (tamaño del JSON original)
+        const enemigo = { Encuentro: monster.nombre, Tamaño: monster.tamano || "Normal" };
+        colocarEnemigo(0, 0, enemigo);
+
+        // Tarjeta
+        const card = renderCard(monster, cat, [], [], [], "#d4edda");
+        document.getElementById("monsterContainer").appendChild(card);
+      });
+    });
+
+    // 🔹 Función para esperar a que monstersByCategory esté listo
+    function esperarDatosMonstruos() {
+      return new Promise(resolve => {
+        const check = () => {
+          if (typeof monstersByCategory !== "undefined" &&
+              Object.keys(monstersByCategory).length > 0) {
+            resolve();
+          } else {
+            setTimeout(check, 100);
+          }
+        };
+        check();
+      });
+    }
+  </script>
+</body>
+</html>
