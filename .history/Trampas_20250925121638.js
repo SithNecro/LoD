@@ -46,13 +46,7 @@ function cargarTesoroLegendario() {
 
             const selector = document.getElementById('selector-tesoro-0');
             selector.value = tesoroAleatorio;
-            urlaudio = `${tesoroAleatorio}`
-            urlaudio = urlaudio.replace(".png", ".mp3");
-            const audio = new Audio(`img/Trampas/${urlaudio}`);
-            let ComprobarMute = localStorage.getItem('sonido')
-            if (ComprobarMute == "on") {
-                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-            }
+
             document.getElementById('single-treasure-container').style.display = 'flex';
         });
 }
@@ -145,7 +139,7 @@ async function tirarDado(caras) {
     // Variables de estado
     let estadocerrado = "";
     let tienetrampa = "";
-
+ 
     // Resultado de la cerradura
     if (valordadoTiradad10 <= 6) {
         estadocerrado = "La cerradura está abierta.";
@@ -160,7 +154,7 @@ async function tirarDado(caras) {
     }
 
     // Trampas (si el d6 es 6)
-    if (valordadoTiradad6 === 6) {
+    if (valordadoTiradad6 ===6) {
         tienetrampa = "¡¡Cuidado!! Se ha activado una trampa.";
         iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
 
@@ -199,25 +193,23 @@ function cargarTesoroExtra() {
             // Seleccionar en el desplegable
             const selector = document.getElementById('selector-tesoro-extra');
             selector.value = tesoroAleatorio;
-             urlaudio = `${tesoroAleatorio}`
+        });
+            document.getElementById('trampa-container').style.display = 'flex';
+  urlaudio = `${tesoroAleatorio}`
     urlaudio = urlaudio.replace(".png", ".mp3");
     const audio = new Audio(`img/Trampas/${urlaudio}`);
     let ComprobarMute = localStorage.getItem('sonido')
     if (ComprobarMute == "on") {
         audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
     }
-        }); 
-        
-    
-    document.getElementById('trampa-container').style.display = 'flex';
-      
 }
 
 // Barajar: volver a mostrar trasera
 function barajarTesoroExtra() {
     document.getElementById('imagen-tesoro-extra').src = 'img/traseras/Trasera trampas.png';
 }
-function sonidoCritico() {
+function sonidoCritico()
+{
     var audio = document.getElementById(diceSound);
     let ComprobarMute = localStorage.getItem('sonido')
     if (ComprobarMute == "on") {
@@ -232,7 +224,7 @@ function cambiarImagenExtra() {
     const imagen = document.getElementById('imagen-tesoro-extra');
     const tesoroSeleccionado = selector.value;
     imagen.src = `img/Trampas/${tesoroSeleccionado}`;
-    urlaudio = `${tesoroSeleccionado}`
+     urlaudio = `${tesoroSeleccionado}`
     urlaudio = urlaudio.replace(".png", ".mp3");
     const audio = new Audio(`img/Trampas/${urlaudio}`);
     let ComprobarMute = localStorage.getItem('sonido')

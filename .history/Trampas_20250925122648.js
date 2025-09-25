@@ -199,18 +199,15 @@ function cargarTesoroExtra() {
             // Seleccionar en el desplegable
             const selector = document.getElementById('selector-tesoro-extra');
             selector.value = tesoroAleatorio;
-             urlaudio = `${tesoroAleatorio}`
+        }); urlaudio = `${tesoroAleatorio}`
     urlaudio = urlaudio.replace(".png", ".mp3");
     const audio = new Audio(`img/Trampas/${urlaudio}`);
     let ComprobarMute = localStorage.getItem('sonido')
     if (ComprobarMute == "on") {
         audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
     }
-        }); 
-        
-    
     document.getElementById('trampa-container').style.display = 'flex';
-      
+   
 }
 
 // Barajar: volver a mostrar trasera
