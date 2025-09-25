@@ -498,8 +498,8 @@
         async function cargarMonstruos() {
             try {
                 const ruta = isGitHubPages
-                    ? './img/Monstruos/Monstruos_tabla_encuentros.json'   // GitHub Pages usa /
-                    : 'img/Monstruos/Monstruos_tabla_encuentros.json';    // local también /
+                    ? './json/Monstruos_tabla_encuentros.json'   // GitHub Pages usa /
+                    : 'json/Monstruos_tabla_encuentros.json';    // local también /
 
                 const response = await fetch(ruta);
                 if (!response.ok) throw new Error(`Error al cargar JSON (${response.status})`);
@@ -529,7 +529,7 @@
         // Cargar losetas disponibles
         async function cargarLosetas() {
             try {
-                const ruta = isGitHubPages ? 'img/Monstruos/losetas.json' : 'img/Monstruos/losetas.json';
+                const ruta = isGitHubPages ? 'json/losetas.json' : 'json/losetas.json';
                 const response = await fetch(ruta);
 
                 if (!response.ok) {

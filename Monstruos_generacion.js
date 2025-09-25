@@ -20,8 +20,8 @@
 
         // Cargar JSONs
         Promise.all([
-            fetch("Monstruos_stats.json").then(r => r.json()),
-            fetch("Monstruos_equipo.json").then(r => r.json())
+            fetch("json/Monstruos_stats.json").then(r => r.json()),
+            fetch("json/Monstruos_equipo.json").then(r => r.json())
         ]).then(([monstruosData, equipoData]) => {
             monstersByCategory = monstruosData;
             equipo = equipoData;
