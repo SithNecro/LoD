@@ -11,22 +11,6 @@
     <script src="https://unpkg.com/tippy.js@6"></script>
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
     <style>
-        #enemigos-lista table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  font-size: 14px;
-}
-#enemigos-lista th, #enemigos-lista td {
-  border: 1px solid #ccc;
-  padding: 6px 8px;
-  text-align: center;
-}
-#enemigos-lista th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
         .info-panel {
             flex: 1;
             min-width: 300px;
@@ -35,7 +19,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border: 1px solid #5D4037;
-            color:white;
         }
 
         .info-panel h3 {
@@ -45,7 +28,6 @@
             border-bottom: 2px solid #8B4513;
             text-align: center;
             text-shadow: 1px 1px 2px #000;
-
         }
 
         .menu {
@@ -597,7 +579,6 @@
                 <button class="btn_opciones" id="addMonsterBtn">Añadir Monstruos</button>
             </div>
         </div>
-           <div id="monsterContainer"></div>
         <div class="info-panel">
             <h3>Enemigos Generados</h3>
             <div id="tirada-info" class="tirada-info" style="display: none;">
@@ -606,20 +587,19 @@
             </div>
             <div id="enemigos-lista"></div>
         </div>
-     
+        <div id="monsterContainer"></div>
     </div>
     <script src="menu-acordeon.js"></script>
 
     <script>
         let monstersByCategory = {};
         let equipo = {};
-        let monstruosData = {}; // tabla de encuentros cargada
 
+        let monstruosData = {}; // tabla de encuentros cargada
         const coloresId = [
             "white", "red", "lightblue", "green", "yellow", "orange", "black", "gray",
             "darkblue", "darkgreen", "brown", "violet", "gold", "silver", "turquoise"
         ];
-
         // Cargar JSONs
         Promise.all([
             fetch("json/Monstruos_stats.json").then(r => r.json()),
@@ -630,7 +610,8 @@
             equipo = equipoData;
             monstruosData = encuentros;
 
-            // Poblar categorías
+
+            // poblar categorías, equipo, etc.
             const catSelect = document.getElementById("monsterCategorySelect");
             Object.keys(monstruosDataStats).sort().forEach(cat => {
                 const opt = document.createElement("option");
@@ -638,15 +619,26 @@
                 opt.textContent = cat;
                 catSelect.appendChild(opt);
             });
-
-            populateEquipoSelects();
+            function populateCantidadSelect() {
+                const sel = document.getElementById("cantidadSelect");
+                sel.innerHTML = "";
+                for (let i = 1; i <= 15; i++) {
+                    const opt = document.createElement("option");
+                    opt.value = i;
+                    opt.textContent = i;
+                    if (i === 1) opt.selected = true;
+                    sel.appendChild(opt);
+                }
+            } populateEquipoSelects();
             populateCantidadSelect();
             loadFromLocalStorage();
         }).catch(err => console.error("Error cargando JSONs:", err));
 
-        // Mostrar/ocultar panel
+        // Cargar JSONs
+
         const togglePanelBtn = document.getElementById("togglePanelBtn");
         const monsterPanel = document.getElementById("monsterPanel");
+
         togglePanelBtn.addEventListener("click", () => {
             if (monsterPanel.style.display === "none") {
                 monsterPanel.style.display = "block";
@@ -656,7 +648,6 @@
                 togglePanelBtn.textContent = "Mostrar Panel de Monstruos";
             }
         });
-
         function populateMonstersByCategory(cat) {
             const select = document.getElementById("monsterSelect");
             select.innerHTML = `<option value="" disabled selected>-- Selecciona monstruo --</option>`;
@@ -667,7 +658,7 @@
                 .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))
                 .forEach(m => {
                     const opt = document.createElement("option");
-                    opt.value = m.nombre;
+                    opt.value = m.nombre; // usamos nombre como clave
                     opt.textContent = m.nombre;
                     select.appendChild(opt);
                 });
@@ -685,115 +676,62 @@
             document.getElementById("hechizoSelect").innerHTML =
                 (equipo.Hechizos || []).map((h, i) => `<option value="${i}">${h.Tipo}</option>`).join("");
         }
+        // Evento al cambiar monstruo
+        document.getElementById("monsterSelect").addEventListener("change", () => {
+            // 1. Eliminar todas las cards
+            document.querySelectorAll(".monster-card").forEach(card => card.remove());
 
-        function populateCantidadSelect() {
-            const sel = document.getElementById("cantidadSelect");
-            sel.innerHTML = "";
-            for (let i = 1; i <= 15; i++) {
-                const opt = document.createElement("option");
-                opt.value = i;
-                opt.textContent = i;
-                if (i === 1) opt.selected = true;
-                sel.appendChild(opt);
+
+            // 2. Eliminar lista de enemigos
+            document.getElementById("enemigos-lista").innerHTML = "";
+
+
+            // 3. Crear la nueva card
+            document.getElementById("addMonsterBtn").click();
+
+
+            // 4. Buscar datos del monstruo en tabla de encuentros
+            const category = document.getElementById("monsterCategorySelect").value;
+            const monsterName = document.getElementById("monsterSelect").value;
+            if (!category || !monsterName) return;
+
+
+            const encuentro = (monstruosData[category] || []).filter(e => e.Encuentro === monsterName);
+
+
+            if (encuentro.length > 0) {
+                mostrarEnemigosLista(encuentro);
+                document.getElementById("tirada-info").style.display = "block";
+                document.getElementById("tirada-detalle").textContent = `Monstruo: ${monsterName}`;
             }
+        });
+        // Mostrar enemigos en el panel lateral
+        function mostrarEnemigosLista(encuentro) {
+            const listaPanel = document.getElementById("enemigos-lista");
+            listaPanel.innerHTML = "";
+
+
+            encuentro.forEach(enemigo => {
+                const tirada = resolverTirada(enemigo.Cantidad);
+                const item = document.createElement("div");
+                item.classList.add("enemigo-item");
+                item.innerHTML = `
+<strong>${tirada.total}x ${enemigo.Encuentro}</strong><br>
+Armas: ${enemigo.Armas || "Ninguna"} | Armadura: ${enemigo.Armadura}<br>
+Especial: ${enemigo.Especial || "-"}<br>
+Hechizos (Melé: ${enemigo.Hechizos_Melé}, Distancia: ${enemigo.Hechizos_Distancia}, Apoyo: ${enemigo.Hechizos_Apoyo})
+`;
+                listaPanel.appendChild(item);
+                enemigo.apariciones = tirada.total;
+            });
         }
 
-      // 🚩 Listener ÚNICO para cambio de monstruo
-document.getElementById("monsterSelect").addEventListener("change", () => {
-    // 1. Eliminar todas las cards existentes
-    document.querySelectorAll(".monster-card").forEach(card => card.remove());
 
-    // 2. Limpiar lista de enemigos
-    document.getElementById("enemigos-lista").innerHTML = "";
-    document.getElementById("tirada-info").style.display = "none";
-    document.getElementById("tirada-detalle").textContent = "";
-
-    // 3. Crear la nueva card (usa tu lógica existente de addMonsterBtn)
-    document.getElementById("addMonsterBtn").click();
-
-    // 4. Buscar datos del monstruo en el JSON de encuentros
-    const category = document.getElementById("monsterCategorySelect").value;
-    const monsterName = document.getElementById("monsterSelect").value;
-    if (!category || !monsterName) return;
-
-    const listaCategoria = monstruosData[category] || [];
-    const encuentro = listaCategoria.filter(e => e.Encuentro === monsterName);
-const enemigo = listaCategoria.find(e => e.Encuentro === monsterName);
-    console.log("🎯 Resultado del filtro:", encuentro);
-
-    if (encuentro.length > 0) {
-        mostrarEnemigosLista(encuentro);
-        document.getElementById("tirada-info").style.display = "block";
-        document.getElementById("tirada-detalle").textContent = `Monstruo: ${monsterName}`;
-    } else {
-        console.warn("⚠️ No se encontró encuentro para", monsterName, "en categoría", category);
-    }
-});
-        // Mostrar enemigos en el panel lateral
-    function mostrarEnemigosLista(encuentro) {
-    const listaPanel = document.getElementById("enemigos-lista");
-    listaPanel.innerHTML = "";
-
-    if (!encuentro || encuentro.length === 0) {
-        listaPanel.textContent = "No se encontraron datos del encuentro.";
-        return;
-    }
-
-    // Crear tabla
-    const table = document.createElement("table");
-
-    // Cabecera
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Encuentro</th>
-                <th>Cantidad</th>
-                <th>Armas</th>
-                <th>Armadura</th>
-                <th>Especial</th>
-                <th>Hechizos Melé</th>
-                <th>Hechizos Distancia</th>
-                <th>Hechizos Apoyo</th>
-                <th>Tamaño</th>
-            </tr>
-        </thead>
-    `;
-
-    const tbody = document.createElement("tbody");
-
-    encuentro.forEach(enemigo => {
-        const tirada = resolverTirada(enemigo.Cantidad);
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${enemigo.ID}</td>
-            <td><strong>${enemigo.Encuentro}</strong> (${tirada.total}x)</td>
-            <td>${enemigo.Cantidad}</td>
-            <td>${enemigo.Armas || "Ninguna"}</td>
-            <td>${enemigo.Armadura}</td>
-            <td>${enemigo.Especial || "-"}</td>
-            <td>${enemigo.Hechizos_Melé}</td>
-            <td>${enemigo.Hechizos_Distancia}</td>
-            <td>${enemigo.Hechizos_Apoyo}</td>
-            <td>${enemigo.Tamaño || "-"}</td>
-        `;
-        tbody.appendChild(row);
-
-        // Guardar apariciones en el objeto
-        enemigo.apariciones = tirada.total;
-    });
-
-    table.appendChild(tbody);
-    listaPanel.appendChild(table);
-}
-
-        // Dummy de resolverTirada (pon tu lógica real)
+        // Dummy de resolverTirada (usa tu lógica real aquí)
         function resolverTirada(cantidad) {
-            const total = 1;
+            const total = Math.floor(Math.random() * cantidad) + 1;
             return { total };
         }
-
 
         function updateVidaBar(barFill, val, max) {
             const percent = max === 0 ? 0 : val / max;
@@ -989,7 +927,7 @@ const enemigo = listaCategoria.find(e => e.Encuentro === monsterName);
                 container.appendChild(card);
             });
         }
-
+       
         document.getElementById("addMonsterBtn").addEventListener("click", () => {
             const category = document.getElementById("monsterCategorySelect").value;
             const monsterName = document.getElementById("monsterSelect").value;

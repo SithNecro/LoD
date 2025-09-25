@@ -11,22 +11,6 @@
     <script src="https://unpkg.com/tippy.js@6"></script>
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
     <style>
-        #enemigos-lista table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  font-size: 14px;
-}
-#enemigos-lista th, #enemigos-lista td {
-  border: 1px solid #ccc;
-  padding: 6px 8px;
-  text-align: center;
-}
-#enemigos-lista th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
         .info-panel {
             flex: 1;
             min-width: 300px;
@@ -597,7 +581,6 @@
                 <button class="btn_opciones" id="addMonsterBtn">Añadir Monstruos</button>
             </div>
         </div>
-           <div id="monsterContainer"></div>
         <div class="info-panel">
             <h3>Enemigos Generados</h3>
             <div id="tirada-info" class="tirada-info" style="display: none;">
@@ -606,7 +589,7 @@
             </div>
             <div id="enemigos-lista"></div>
         </div>
-     
+        <div id="monsterContainer"></div>
     </div>
     <script src="menu-acordeon.js"></script>
 
@@ -730,62 +713,23 @@ const enemigo = listaCategoria.find(e => e.Encuentro === monsterName);
     }
 });
         // Mostrar enemigos en el panel lateral
-    function mostrarEnemigosLista(encuentro) {
+      function mostrarEnemigosLista(encuentro) {
     const listaPanel = document.getElementById("enemigos-lista");
     listaPanel.innerHTML = "";
 
-    if (!encuentro || encuentro.length === 0) {
-        listaPanel.textContent = "No se encontraron datos del encuentro.";
-        return;
-    }
-
-    // Crear tabla
-    const table = document.createElement("table");
-
-    // Cabecera
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Encuentro</th>
-                <th>Cantidad</th>
-                <th>Armas</th>
-                <th>Armadura</th>
-                <th>Especial</th>
-                <th>Hechizos Melé</th>
-                <th>Hechizos Distancia</th>
-                <th>Hechizos Apoyo</th>
-                <th>Tamaño</th>
-            </tr>
-        </thead>
-    `;
-
-    const tbody = document.createElement("tbody");
-
     encuentro.forEach(enemigo => {
-        const tirada = resolverTirada(enemigo.Cantidad);
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${enemigo.ID}</td>
-            <td><strong>${enemigo.Encuentro}</strong> (${tirada.total}x)</td>
-            <td>${enemigo.Cantidad}</td>
-            <td>${enemigo.Armas || "Ninguna"}</td>
-            <td>${enemigo.Armadura}</td>
-            <td>${enemigo.Especial || "-"}</td>
-            <td>${enemigo.Hechizos_Melé}</td>
-            <td>${enemigo.Hechizos_Distancia}</td>
-            <td>${enemigo.Hechizos_Apoyo}</td>
-            <td>${enemigo.Tamaño || "-"}</td>
+        const tirada = resolverTirada(1);
+        const item = document.createElement("div");
+        item.classList.add("enemigo-item");
+        item.innerHTML = `
+            <strong>${tirada.total}x ${enemigo.Encuentro}</strong><br>
+            Armas: ${enemigo.Armas || "Ninguna"} | Armadura: ${enemigo.Armadura}<br>
+            Especial: ${enemigo.Especial || "-"}<br>
+            Hechizos (Melé: ${enemigo.Hechizos_Melé}, Distancia: ${enemigo.Hechizos_Distancia}, Apoyo: ${enemigo.Hechizos_Apoyo})
         `;
-        tbody.appendChild(row);
-
-        // Guardar apariciones en el objeto
+        listaPanel.appendChild(item);
         enemigo.apariciones = tirada.total;
     });
-
-    table.appendChild(tbody);
-    listaPanel.appendChild(table);
 }
 
         // Dummy de resolverTirada (pon tu lógica real)
