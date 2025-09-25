@@ -1,9 +1,9 @@
 window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
-            const tesoros = data.Objeto_Legendario;
+            const tesoros = data.Buscar_Objetos;
             const selector = document.getElementById('selector-tesoro-0');
 
 
@@ -25,50 +25,53 @@ function cambiarImagenSeleccionada() {
     const selector = document.getElementById('selector-tesoro-0');
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
-    imagen.src = `img/Objeto_Legendario/${tesoroSeleccionado}`;
-    urlaudio = `${tesoroSeleccionado}`
-    urlaudio = urlaudio.replace(".png", ".mp3");
-    const audio = new Audio(`img/Objeto_Legendario/${urlaudio}`);
-    let ComprobarMute = localStorage.getItem('sonido')
-    if (ComprobarMute == "on") {
-        audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-    }
+    imagen.src = `img/Buscar_Objetos/${tesoroSeleccionado}`;
+    tirarDado(10);
+
 }
 
 // Función para cargar una imagen aleatoria
 function cargarTesoroLegendario() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
-            const tesoros = data.Objeto_Legendario;
+            const tesoros = data.Buscar_Objetos;
             const randomIndex = Math.floor(Math.random() * tesoros.length);
             const tesoroAleatorio = tesoros[randomIndex];
 
             // Cambiar la imagen
             const imagen = document.getElementById('imagen-tesoro');
-            imagen.src = `img/Objeto_Legendario/${tesoroAleatorio}`;
+            imagen.src = `img/Buscar_Objetos/${tesoroAleatorio}`;
 
             // Seleccionar el tesoro en el desplegable
             const selector = document.getElementById('selector-tesoro-0');
             selector.value = tesoroAleatorio;
             // Muestra los dos tesoros y sus selectores
             document.getElementById('single-treasure-container').style.display = 'flex';
-                let ComprobarMute = localStorage.getItem('sonido')
-
-            urlaudio = `${tesoroAleatorio}`
-            urlaudio = urlaudio.replace(".png", ".mp3");
-            const audio = new Audio(`img/Objeto_Legendario/${urlaudio}`);
-            if (ComprobarMute == "on") {
-                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
-            }
+            const hueco = document.getElementById('hueco');
+            //hueco.innerHTML = '<iframe src="Tesoros_Superiores.html" width="700" height="700" loading="lazy" style="border:0;"></iframe>';
+tirarDado(10);
         });
 }
+function playSound() {
+    var audio = document.getElementById("diceSound");
+    audio.play();
+}
 
+async function tirarDado(caras) {
+    let ComprobarMute = localStorage.getItem('sonido')
+    if (ComprobarMute == "on") {
+        playSound();
+    }
+    rollDice(10, 'dice-image', 'result');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    const valordadoTiradad10 = document.getElementById('result');
+    valordadoTiradad10.style.display = 'none';
 
-
+}
 
 
 // Función para barajar y poner la imagen de trasera del tesoro
 function barajarTesoros() {
-    document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera legendarios.png';
+    document.getElementById('imagen-tesoro').src = 'img/traseras/Tabla_Tesoros.png';
 }

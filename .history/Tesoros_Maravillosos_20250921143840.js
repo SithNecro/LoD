@@ -1,6 +1,6 @@
 window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Tesoro_Maravilloso;
@@ -71,7 +71,7 @@ function tirarDado(expresion) {
 
 // Función para cargar una imagen aleatoria y mostrar sus datos
 function cargarTesoroSuperior() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(r => r.json())
         .then(data => {
             const tesoros = data.Tesoro_Maravilloso;
@@ -108,7 +108,7 @@ function cargarTesoroSuperior() {
 
 // Función para cargar la habilidad de buscatesoros, mostrando dos tesoros
 function habilidadBuscatesoros() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Tesoro_Maravilloso; // Cargar la lista de tesoros desde el JSON
@@ -224,7 +224,7 @@ function BajarMoral(valor) {
 
 // Cargar stats y pintar detalles
 function cargarStatsObjeto(tesoroSeleccionado) {
-    fetch('json/stats_tesoros_maravillosos.json')
+    fetch('img/Tesoro_Maravilloso/stats_tesoros_maravillosos.json')
         .then(r2 => r2.json())
         .then(stats => {
             const detalle2 = document.getElementById('enemigos-lista');

@@ -1,6 +1,6 @@
 window.onload = function() {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Asentamiento;
@@ -23,7 +23,7 @@ window.onload = function() {
             });
         })
         .catch(error => console.error('Error al cargar los tesoros:', error));
-        fetch('json/Listado_Cartas.json')
+        fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.EventosAsentamiento;
@@ -63,7 +63,7 @@ function cargarTesoroCorriente(color) {
     } else if (color === "Asentamiento")
     {
        
-        fetch('json/Listado_Cartas.json')
+        fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
            // palancasAudio.play();
@@ -85,7 +85,7 @@ function cargarTesoroCorriente(color) {
         });
     } else if (color === "Evento")
     {
-        fetch('json/Listado_Cartas.json')
+        fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             //palancasAudio.play();

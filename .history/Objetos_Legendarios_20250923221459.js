@@ -1,6 +1,6 @@
 window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Objeto_Legendario;
@@ -37,7 +37,7 @@ function cambiarImagenSeleccionada() {
 
 // Función para cargar una imagen aleatoria
 function cargarTesoroLegendario() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Objeto_Legendario;

@@ -82,7 +82,7 @@ async function manejarAmenaza() {
         imagenAmenaza.alt = 'Amenaza';
         imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
         imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
-        imagenAmenaza.src = 'img/Amenaza/Evento_Habitacion.png';
+        imagenAmenaza.src = 'img/Evento_Habitacion.png';
 
         document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
@@ -159,7 +159,7 @@ async function manejarAmenaza() {
                 imagenAmenaza.alt = 'Amenaza';
                 imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
                 imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
-                imagenAmenaza.src = 'img/Amenaza/se_apagan_antorchas.png';
+                imagenAmenaza.src = 'img/se_apagan_antorchas.png';
 
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 
@@ -175,7 +175,7 @@ async function manejarAmenaza() {
                 imagenAmenaza.alt = 'Amenaza';
                 imagenAmenaza.style.width = '250px'; // Puedes ajustar el tamaño
                 imagenAmenaza.style.display = 'block'; // Asegúrate de que se muestre en bloque
-                imagenAmenaza.src = 'img/Amenaza/se_apagan_antorchas.png';
+                imagenAmenaza.src = 'img/se_apagan_antorchas.png';
 
                 document.getElementById('imagenAmenazaContainer').appendChild(imagenAmenaza);
 

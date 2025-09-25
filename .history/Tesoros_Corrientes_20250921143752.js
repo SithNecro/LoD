@@ -1,9 +1,9 @@
 window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
-            const tesoros = data.Tesoro_Maravilloso;
+            const tesoros = data.Tesoros_Corrientes;
             const selector = document.getElementById('selector-tesoro-0');
             const selector2 = document.getElementById('selector-tesoro-1');
             const selector3 = document.getElementById('selector-tesoro-2');
@@ -37,13 +37,13 @@ function cambiarImagenSeleccionada() {
     const selector = document.getElementById('selector-tesoro-0');
     const imagen = document.getElementById('imagen-tesoro');
     const tesoroSeleccionado = selector.value;
-    imagen.src = `img/Tesoro_Maravilloso/${tesoroSeleccionado}`;
+    imagen.src = `img/Tesoros_Corrientes/${tesoroSeleccionado}`;
     //Limpiamos el Botín Encontrado
     const detalle2 = document.getElementById('enemigos-lista');
     detalle2.innerHTML = ``; // limpiar
     cargarStatsObjeto(tesoroSeleccionado);
     const nombreAudio = tesoroSeleccionado.replace(/\.png$/i, '.mp3');
-    const audio = new Audio(`img/Tesoro_Maravilloso//${nombreAudio}`);
+    const audio = new Audio(`img/Tesoros_Corrientes/${nombreAudio}`);
 
     let ComprobarMute = localStorage.getItem('sonido')
     if (ComprobarMute == "on") {
@@ -70,17 +70,17 @@ function tirarDado(expresion) {
 }
 
 // Función para cargar una imagen aleatoria y mostrar sus datos
-function cargarTesoroSuperior() {
-    fetch('json/Listado_Cartas.json')
+function cargarTesoroCorriente() {
+    fetch('img/Listado_Cartas.json')
         .then(r => r.json())
         .then(data => {
-            const tesoros = data.Tesoro_Maravilloso;
+            const tesoros = data.Tesoros_Corrientes;
             const randomIndex = Math.floor(Math.random() * tesoros.length);
             const tesoroAleatorio = tesoros[randomIndex];
 
             // Cambiar la imagen
             const imagen = document.getElementById('imagen-tesoro');
-            imagen.src = `img/Tesoro_Maravilloso/${tesoroAleatorio}`;
+            imagen.src = `img/Tesoros_Corrientes/${tesoroAleatorio}`;
 
             // Seleccionar el tesoro en el desplegable
             const selector = document.getElementById('selector-tesoro-0');
@@ -96,7 +96,7 @@ function cargarTesoroSuperior() {
             cargarStatsObjeto(tesoroAleatorio);
             //Reproduccion audio
             const nombreAudio = tesoroAleatorio.replace(/\.png$/i, '.mp3');
-            const audio = new Audio(`img/Tesoro_Maravilloso//${nombreAudio}`);
+            const audio = new Audio(`img/Tesoros_Corrientes//${nombreAudio}`);
             let ComprobarMute = localStorage.getItem('sonido')
             if (ComprobarMute == "on") {
                 audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
@@ -108,10 +108,10 @@ function cargarTesoroSuperior() {
 
 // Función para cargar la habilidad de buscatesoros, mostrando dos tesoros
 function habilidadBuscatesoros() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
-            const tesoros = data.Tesoro_Maravilloso; // Cargar la lista de tesoros desde el JSON
+            const tesoros = data.Tesoros_Corrientes; // Cargar la lista de tesoros desde el JSON
 
             // Seleccionar dos tesoros aleatorios
             let tesoro1 = tesoros[Math.floor(Math.random() * tesoros.length)];
@@ -124,8 +124,8 @@ function habilidadBuscatesoros() {
             } while (tesoro1 === tesoro2);
 
             // Cambia la imagen de ambos tesoros
-            document.getElementById('imagen-tesoro-1').src = `img/Tesoro_Maravilloso/${tesoro1}`;
-            document.getElementById('imagen-tesoro-2').src = `img/Tesoro_Maravilloso/${tesoro2}`;
+            document.getElementById('imagen-tesoro-1').src = `img/Tesoros_Corrientes/${tesoro1}`;
+            document.getElementById('imagen-tesoro-2').src = `img/Tesoros_Corrientes/${tesoro2}`;
             //Selecciona en los desplegables los objetos
             const selector1 = document.getElementById('selector-tesoro-1');
             selector1.value = tesoro1;
@@ -155,7 +155,7 @@ function habilidadBuscatesoros() {
 }
 function reproducirAudiosSecuencial(audios) {
     let i = 0;
-    const basePath = "img/Tesoro_Maravilloso/";
+    const basePath = "img/Tesoros_Corrientes/";
 
     function playNext() {
         if (i >= audios.length) return;
@@ -176,7 +176,7 @@ function cambiarImagenSeleccionadaTesoro1() {
     const selector = document.getElementById('selector-tesoro-1');
     const imagen = document.getElementById('imagen-tesoro-1');
     const tesoroSeleccionado = selector.value;
-    imagen.src = `img/Tesoro_Maravilloso/${tesoroSeleccionado}`; // Ajusta la ruta
+    imagen.src = `img/Tesoros_Corrientes/${tesoroSeleccionado}`; // Ajusta la ruta
 
 
     cargarStatsObjeto(tesoroSeleccionado);
@@ -187,7 +187,7 @@ function cambiarImagenSeleccionadaTesoro2() {
     const selector = document.getElementById('selector-tesoro-2');
     const imagen = document.getElementById('imagen-tesoro-2');
     const tesoroSeleccionado = selector.value;
-    imagen.src = `img/Tesoro_Maravilloso/${tesoroSeleccionado}`; // Ajusta la ruta
+    imagen.src = `img/Tesoros_Corrientes/${tesoroSeleccionado}`; // Ajusta la ruta
     cargarStatsObjeto(tesoroSeleccionado);
     cargarStatsObjeto(tesoro2);
 }
@@ -196,9 +196,9 @@ function cambiarImagenSeleccionadaTesoro2() {
 
 // Función para barajar y poner la imagen de trasera del tesoro
 function barajarTesoros() {
-    document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera_tesoro_superior.png';
-    document.getElementById('imagen-tesoro-1').src = 'img/traseras/Trasera_tesoro_superior.png';
-    document.getElementById('imagen-tesoro-2').src = 'img/traseras/Trasera_tesoro_superior.png';
+    document.getElementById('imagen-tesoro').src = 'img/traseras/Trasera tesoro corriente.png';
+    document.getElementById('imagen-tesoro-1').src = 'img/traseras/Trasera tesoro corriente.png';
+    document.getElementById('imagen-tesoro-2').src = 'img/traseras/Trasera tesoro corriente.png';
     document.getElementById('selector-tesoro-0').value = 0;
     document.getElementById('selector-tesoro-1').value = 0;
     document.getElementById('selector-tesoro-2').value = 0;
@@ -214,7 +214,7 @@ function BajarMoral(valor) {
 
     // --- AUDIO ---
     const nombreAudio = "pa_la_saca.mp3";
-    const audio = new Audio(`img/Tesoro_Maravilloso/${nombreAudio}`);
+    const audio = new Audio(`img/Tesoros_Corrientes/${nombreAudio}`);
     let ComprobarMute = localStorage.getItem('sonido')
     if (ComprobarMute == "on") {
         audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
@@ -224,7 +224,7 @@ function BajarMoral(valor) {
 
 // Cargar stats y pintar detalles
 function cargarStatsObjeto(tesoroSeleccionado) {
-    fetch('json/stats_tesoros_maravillosos.json')
+    fetch('img/Tesoros_corrientes/stats_tesoros_corrientes.json')
         .then(r2 => r2.json())
         .then(stats => {
             const detalle2 = document.getElementById('enemigos-lista');
@@ -234,7 +234,7 @@ function cargarStatsObjeto(tesoroSeleccionado) {
             //item.innerHTML = `<div>hola</div><div>hola</div><div>hola</div>`;
             let cantidadobjetosenlatirada = null; //Inicializar la variable para productos de cantidad variable
 
-            const tesoro = stats.Tesoros_Maravilloso.find(t => t.nombre === tesoroSeleccionado);
+            const tesoro = stats.Tesoros_Corrientes.find(t => t.nombre === tesoroSeleccionado);
             if (!tesoro) {
                 let html = '<div>No se encontró información de este tesoro.</div>';
                 item.innerHTML = html;

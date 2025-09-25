@@ -1,6 +1,6 @@
 window.onload = function () {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Trampas;
@@ -34,7 +34,7 @@ function cambiarImagenSeleccionada() {
 
 // Imagen aleatoria de trampa
 function cargarTesoroLegendario() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Trampas;
@@ -179,7 +179,7 @@ async function tirarDado(caras) {
 }
 // Cargar carta aleatoria para el bloque extra
 function cargarTesoroExtra() {
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
             const tesoros = data.Trampas;

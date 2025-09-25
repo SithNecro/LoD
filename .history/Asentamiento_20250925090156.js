@@ -1,17 +1,17 @@
-window.onload = function () {
+window.onload = function() {
     // Cargar la lista de tesoros desde el archivo JSON
-    fetch('json/Listado_Cartas.json')
+    fetch('img/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
-            const tesoros = data.PalancasNegras;
-
+            const tesoros = data.Asentamiento;
+           
             const selector2 = document.getElementById('selector-tesoro-1');
-
+            
 
             // Añadir opciones al selector
             tesoros.forEach(tesoro => {
                 // Crear una opción para el primer selector
-
+               
 
                 // Crear una opción para el segundo selector
                 let option2 = document.createElement('option');
@@ -19,16 +19,16 @@ window.onload = function () {
                 option2.text = tesoro.replace('.png', '').replace('_', ' ');
                 selector2.appendChild(option2);
 
-
+               
             });
         })
         .catch(error => console.error('Error al cargar los tesoros:', error));
-    fetch('json/Listado_Cartas.json')
+        fetch('json/Listado_Cartas.json')
         .then(response => response.json())
         .then(data => {
-            const tesoros = data.PalancasRojas;
-
-
+            const tesoros = data.EventosAsentamiento;
+           
+            
             const selector3 = document.getElementById('selector-tesoro-2');
 
             // Añadir opciones al selector
@@ -56,60 +56,55 @@ function cargarTesoroCorriente(color) {
     const palancasAudio = document.getElementById('palancasAudio');
     const imagen = document.getElementById('imagen-tesoro-2');
     const imagen2 = document.getElementById('imagen-tesoro-1');
-    if (imagen2.src === "https://sithnecro.github.io/Test5/img/traseras/PalancaNDOWN.png" || imagen.src === "https://sithnecro.github.io/Test5/img/traseras/PalancaRDOWN.png") {
+    if (imagen2.src === "https://sithnecro.github.io/Test5/img/traseras/PalancaNDOWN.png" || imagen.src === "https://sithnecro.github.io/Test5/img/traseras/PalancaRDOWN.png" )
+    {
         document.getElementById('imagen-tesoro-1').src = 'img/traseras/PalancaNUP.png';
-        document.getElementById('imagen-tesoro-2').src = 'img/traseras/PalancaRUP.png';
-    } else if (color === "Rojas") {
-
+		document.getElementById('imagen-tesoro-2').src = 'img/traseras/PalancaRUP.png';
+    } else if (color === "Asentamiento")
+    {
+       
         fetch('json/Listado_Cartas.json')
-            .then(response => response.json())
-            .then(data => {
-                let ComprobarMute = localStorage.getItem('sonido')
-                if (ComprobarMute == "on") {
-                    palancasAudio.play();
-                }
+        .then(response => response.json())
+        .then(data => {
+           // palancasAudio.play();
+            const tesoros = data.PalancasRojas;
+            const randomIndex = Math.floor(Math.random() * tesoros.length);
+            const tesoroAleatorio = tesoros[randomIndex];
 
-                const tesoros = data.PalancasRojas;
-                const randomIndex = Math.floor(Math.random() * tesoros.length);
-                const tesoroAleatorio = tesoros[randomIndex];
+            // Cambiar la imagen
+            
+            
 
-                // Cambiar la imagen
-
-
-
-                // Seleccionar el tesoro en el desplegable
-                const selector = document.getElementById('selector-tesoro-2');
-                selector.value = tesoroAleatorio;
-                // Muestra los dos tesoros y sus selectores
-
-                imagen.src = `img/traseras/PalancaRDOWN.png`;
-                imagen2.src = `img/PalancasRojas/${tesoroAleatorio}`;
-            });
-    } else if (color === "Negras") {
+            // Seleccionar el tesoro en el desplegable
+            const selector = document.getElementById('selector-tesoro-2');
+            selector.value = tesoroAleatorio;
+            // Muestra los dos tesoros y sus selectores
+            
+            imagen.src = `img/traseras/PalancaRDOWN.png`;
+            imagen2.src = `img/PalancasRojas/${tesoroAleatorio}`;
+        });
+    } else if (color === "Evento")
+    {
         fetch('json/Listado_Cartas.json')
-            .then(response => response.json())
-            .then(data => {
-                let ComprobarMute = localStorage.getItem('sonido')
-                if (ComprobarMute == "on") {
-                    palancasAudio.play();
-                }
+        .then(response => response.json())
+        .then(data => {
+            //palancasAudio.play();
+            const tesoros = data.EventosAsentamiento;
+            const randomIndex = Math.floor(Math.random() * tesoros.length);
+            const tesoroAleatorio = tesoros[randomIndex];
 
-                const tesoros = data.PalancasNegras;
-                const randomIndex = Math.floor(Math.random() * tesoros.length);
-                const tesoroAleatorio = tesoros[randomIndex];
-
-                // Cambiar la imagen
-
-                imagen2.src = `img/traseras/PalancaNDOWN.png`;
-                imagen.src = `img/PalancasNegras/${tesoroAleatorio}`;
-                // Seleccionar el tesoro en el desplegable
-                const selector = document.getElementById('selector-tesoro-1');
-                selector.value = tesoroAleatorio;
+            // Cambiar la imagen
+            
+            //imagen2.src = `img/traseras/PalancaNDOWN.png`;
+            imagen.src = `img/EventosAsentamiento/${tesoroAleatorio}`;
+            // Seleccionar el tesoro en el desplegable
+            const selector = document.getElementById('selector-tesoro-2');
+            selector.value = tesoroAleatorio;
 
 
-            });
+        });
     }
-
+    
 }
 
 
@@ -119,21 +114,25 @@ function cambiarImagenSeleccionadaTesoro1() {
     const selector = document.getElementById('selector-tesoro-1');
     const imagen = document.getElementById('imagen-tesoro-1');
     const tesoroSeleccionado = selector.value;
-    imagen.src = `img/PalancasNegras/${tesoroSeleccionado}`; // Ajusta la ruta
+    imagen.src = `img/Asentamiento/${tesoroSeleccionado}`; // Ajusta la ruta
+
+    
+    const imagen2 = document.getElementById('imagen-tesoro-2');
+    imagen2.src = `img/Asentamiento/a${tesoroSeleccionado}`; // Ajusta la ruta
 }
 
 function cambiarImagenSeleccionadaTesoro2() {
     const selector = document.getElementById('selector-tesoro-2');
     const imagen = document.getElementById('imagen-tesoro-2');
     const tesoroSeleccionado = selector.value;
-    imagen.src = `img/PalancasRojas/${tesoroSeleccionado}`; // Ajusta la ruta
+    imagen.src = `img/EventosAsentamiento/${tesoroSeleccionado}`; // Ajusta la ruta
 }
 
 
 
-// Función para barajar y poner la imagen de trasera del tesoro
-function barajarTesoros() {
-
-    document.getElementById('imagen-tesoro-1').src = 'img/traseras/PalancaNUP.png';
-    document.getElementById('imagen-tesoro-2').src = 'img/traseras/PalancaRUP.png';
-}
+ // Función para barajar y poner la imagen de trasera del tesoro
+        function barajarTesoros() {
+          
+		document.getElementById('imagen-tesoro-1').src = 'img/traseras/Asentamientos.png';
+		document.getElementById('imagen-tesoro-2').src = 'img/traseras/Asentamientos.png';
+        }

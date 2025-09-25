@@ -102,7 +102,7 @@ async function manejarAmenaza() {
 
                     // Cambiar la imagen
                     const imagen = document.createElement('img');
-                    imagen.src = `img/Eventos_habitacion/${tesoroAleatorio}`;
+                    imagen.src = `img/Amenaza/Eventos_habitacion/${tesoroAleatorio}`;
                     imagen.alt = 'Amenaza';
                     imagen.style.width = '300px'; // Puedes ajustar el tamaño
                     imagen.style.display = 'block'; // Asegúrate de que se muestre en bloque
