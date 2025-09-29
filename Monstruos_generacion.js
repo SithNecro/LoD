@@ -152,9 +152,9 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
 
     const armadurasHTML = (armaduras || []).map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🛡️ ${a.Tipo}</span>`).join("");
 
-   const hechizosHTML = (hechizos || []).length
-    ? `<strong>Hechizos:</strong> ` +
-      (hechizos || []).map(h => `
+    const hechizosHTML = (hechizos || []).length
+        ? `<strong>Hechizos:</strong> ` +
+        (hechizos || []).map(h => `
           <span 
               class="tooltip-hechizo"
               data-tippy-content="<div style='width:500px;height:100%;font-size:20px; text-align:left; border:5px solid orange; border-radius:10px; padding:5px;'>
@@ -164,8 +164,8 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
              <img src="img/hechizos/${h.Tipo}.png" style="width:50px;height:50px;vertical-align:middle;margin-right:5px;">
               ${h.Categoría}: ${h.Tipo}
           </span>`
-      ).join(", ")
-    : "";
+        ).join(", ")
+        : "";
 
     // --- Vidas grid ---
     wrapper._activados = (vidas && vidas._activados) ? vidas._activados.slice() : Array(cantidad).fill(false);
@@ -187,6 +187,7 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
             </div>
             <button class="vida-btn sumar">+</button>
             </div>
+            <div class="estado-herido" style="text-align:center; font-weight:bold; color:orange; margin-top:3px;"></div>
             <!-- 🔹 Botón de saquear oculto por defecto -->
             <div class="saqueo-container" style="text-align:center; margin-top:5px;">
             <button class="btn-saquear" style="display:none; font-size:12px; padding:2px 6px;">Saquea</button>
@@ -272,12 +273,23 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
         }
 
         deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
+        const heridoEl = vidaItems[idx].querySelector(".estado-herido");
+        if (wrapper._vidas[idx] <= monster.vida / 2 && wrapper._vidas[idx] > 0) {
+            heridoEl.innerHTML = "💀 <span style='color:orange; font-weight:bold;'>Herido: -1PA</span>";
+        } else {
+            heridoEl.innerHTML = "";
+        }
         saveToLocalStorage();
     }
 
     vidaItems.forEach((item, idx) => {
         const barFill = item.querySelector(".vida-bar-fill");
         updateVidaBar(barFill, wrapper._vidas[idx], monster.vida);
+        const heridoEl = item.querySelector(".estado-herido");
+        if (wrapper._vidas[idx] <= monster.vida / 2 && wrapper._vidas[idx] > 0) {
+            heridoEl.innerHTML = "💀 <span style='color:orange; font-weight:bold;'>Herido: -1PA</span>";
+        }
+
         item.querySelector(".restar").addEventListener("click", () => actualizarVida(idx, wrapper._vidas[idx] - 1));
         item.querySelector(".sumar").addEventListener("click", () => actualizarVida(idx, wrapper._vidas[idx] + 1));
         //eventos del check activado
@@ -298,7 +310,40 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
 
         // inicializar estilo
         actualizarEstiloActivado();
+        // 🔹 Evento: click en el borde para elegir color
+        item.addEventListener("click", e => {
+            // Solo disparar si haces click en el borde, no en los botones/checkbox
+            if (e.target.closest(".vida-btn") || e.target.classList.contains("chk-activado")) return;
 
+            // Crear input color oculto
+            const colorInput = document.createElement("input");
+            colorInput.type = "color";
+            colorInput.style.position = "fixed";
+            colorInput.style.left = "-9999px"; // oculto
+            document.body.appendChild(colorInput);
+
+            // Cuando elijas color → aplicar al borde
+            colorInput.addEventListener("input", () => {
+                const nuevoColor = colorInput.value;
+                item.style.borderColor = nuevoColor;
+
+                // Guardar en _borderColors del card
+                wrapper._borderColors = wrapper._borderColors || {};
+                wrapper._borderColors[idx] = nuevoColor;
+
+                // actualizar en dataset y localStorage
+                const data = JSON.parse(wrapper.dataset.info || "{}");
+                data.borderColors = wrapper._borderColors;
+                wrapper.dataset.info = JSON.stringify(data);
+                saveToLocalStorage();
+            });
+
+            // Abrir selector
+            colorInput.click();
+
+            // Limpiar
+            colorInput.addEventListener("blur", () => colorInput.remove());
+        });
         // evento cambio
         chk.addEventListener("change", () => {
             wrapper._activados[idx] = chk.checked;
@@ -355,7 +400,7 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
 
     if (save) saveToLocalStorage();
 
- 
+
 
     // Inicializar tooltips solo dentro de esta carta
     tippy(wrapper.querySelectorAll('.tooltip-hechizo'), {
@@ -377,7 +422,7 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
             animation: 'scale',
             theme: 'carta',
             placement: 'right',
-            content: `<img src="${imgSrc}" style="width:300%;height:300%;object-fit:contain;">`,
+            content: `<img src="${imgSrc}" style="width:auto;height:500px;object-fit:contain;">`,
         });
     }
 
@@ -391,6 +436,8 @@ function saveToLocalStorage() {
         const data = JSON.parse(card.dataset.info || "{}");
         data.vidas = card._vidas;
         data.color = card.style.backgroundColor;
+        data.borderColors = card._borderColors || {};
+
         data.activados = card._activados || [];   // 🔹 Guardamos los checks
         return data;
     });
@@ -422,7 +469,16 @@ function loadFromLocalStorage() {
 
         // Crear la carta sin forzar guardado (save = false)
         const card = renderCard(monster, data.category, armas, armaduras, hechizos, data.color || "#fff", vidasParam, false);
-
+        if (data.borderColors) {
+            const vidaItems = card.querySelectorAll(".vida-item");
+            Object.entries(data.borderColors).forEach(([idx, color]) => {
+                const item = vidaItems[idx];
+                if (item) {
+                    item.style.borderColor = color;
+                }
+            });
+            card._borderColors = data.borderColors;
+        }
         // Guardar la info original en el dataset (como antes)
         card.dataset.info = JSON.stringify(data);
 
