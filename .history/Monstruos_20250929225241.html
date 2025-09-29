@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bestiario</title>
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Popper.js requerido por Tippy -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
+    <style>
+        #enemigos-lista table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+#enemigos-lista th, #enemigos-lista td {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: center;
+}
+#enemigos-lista th {
+  background-color: black;
+  font-weight: bold;
+}
+
+        .info-panel {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(60, 60, 60, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid #5D4037;
+            color:white;
+        }
+
+        .info-panel h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* visible por defecto */
+            width: 300px;
+            height: 100%;
+            overflow: hidden;
+            /* evita que el iframe sobresalga */
+            transition: left 0.3s ease;
+        }
+
+        .menu.open {
+            left: -310px;
+            /* cuando se oculta, realmente desaparece */
+        }
+
+        .menu-frame {
+            width: 300px;
+            /* fuerza a que el iframe NO se expanda */
+            height: 100%;
+            border: none;
+        }
+
+
+        .tooltip-img {
+            display: block;
+            margin: 0 auto 8px auto;
+            max-width: 80px;
+
+        }
+
+        .tippy-box[theme~='carta'] {
+            background-color: rgba(30, 30, 30, 0.95);
+            /* fondo oscuro */
+            border: 2px solid #a0522d;
+            /* borde dorado */
+            border-radius: 8px;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            font-size: 24px;
+            /* 👈 tamaño del texto */
+
+        }
+
+        #toggleMenu {
+            position: fixed;
+            top: 20px;
+            left: 290px;
+            /* cuando el menú está abierto, justo al borde */
+            z-index: 2000;
+            width: 75px;
+            height: 75px;
+            border: 2px solid #a0522d;
+            background: rgba(35, 35, 35, 0.7);
+            color: white;
+            font-size: 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: left 0.3s ease;
+        }
+
+        /* Cuando el menú está cerrado */
+        .menu.open~#toggleMenu {
+            left: 0;
+            /* pegado al borde izquierdo de la pantalla */
+        }
+
+        #togglePanelBtn {
+            margin: 0 auto 15px auto;
+            /* arriba 0, derecha auto, abajo 15px, izquierda auto */
+            display: block;
+        }
+
+        /* Contenedor del contenido */
+        .main-content2 {
+            position: relative;
+            max-width: 1300px;
+            /* ancho fijo */
+            margin: 0 auto;
+            /* centrado por defecto */
+            transition: transform 0.3s ease;
+            padding: 20px;
+            background: rgba(35, 35, 35, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Cuando el menú está abierto, lo empujamos 300px */
+        .menu:not(.open)~.main-content2 {
+            transform: translateX(100px);
+        }
+
+        /* Cuando el menú está oculto, vuelve centrado */
+        .menu.open~.main-content2 {
+            transform: translateX(0);
+        }
+
+        select {
+            width: auto;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+        }
+
+        .btn_opciones {
+            color: #d4af37;
+            width: 250px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            background: linear-gradient(180deg, rgba(60, 60, 60, 0.95) 0%, rgba(40, 40, 40, 0.95) 60%, rgba(25, 25, 25, 0.95) 100%);
+            border: 1px solid #6f3f2e;
+            border-radius: 6px;
+
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.35);
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+        }
+
+        .btn_opciones:hover {
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.5);
+            border-color: #9d5c48;
+        }
+
+        .btn_opciones:active {
+            transform: translateY(1px);
+
+            box-shadow:
+                inset 0 3px 4px rgba(0, 0, 0, 0.55),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .monster-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 2px solid white;
+            padding: 10px;
+            color: white;
+            border-radius: 8px;
+            margin: 10px auto;
+            /* ya añade separación vertical y centra */
+            background: #fff;
+            position: relative;
+
+            /* cambio importante */
+            width: calc(100% - 20px);
+            /* ocupa todo el ancho menos 10px por lado */
+            max-width: 100%;
+            /* evita que se pase del contenedor */
+            box-sizing: border-box;
+            /* asegura que el padding no rompa el ancho */
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+
+            /* centrado perfecto */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .monster-left {
+            flex: 0 0 auto;
+            position: relative;
+        }
+
+        .monster-left img {
+            width: 120px;
+            height: auto;
+            display: block;
+        }
+
+        .death-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5) url('img/icons/skull.png') center center no-repeat;
+            background-size: 60%;
+            display: none;
+            border-radius: 4px;
+            z-index: 5;
+        }
+
+        .center-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .weapons-column,
+        .armors-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .monster-center table {
+            border-collapse: collapse;
+        }
+
+        .monster-center table,
+        .monster-center th,
+        .monster-center td {
+            border: 1px solid black;
+        }
+
+        .monster-center td {
+            text-align: center;
+            font-weight: bold;
+            padding: 6px;
+        }
+
+        .monster-center th {
+            background: black;
+            color: white;
+            padding: 6px;
+        }
+
+        .equipment {
+            margin: 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .hechizos-list {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .hechizos-list span {
+            margin-right: 8px;
+        }
+
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            white-space: pre-wrap;
+            top: 120%;
+            left: 0;
+            background: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10;
+            max-width: 200px;
+        }
+
+        .monster-header {
+            display: flex;
+            align-items: stretch;
+            gap: 20px;
+        }
+
+        .monster-basic {
+            flex: 0 0 180px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .monster-basic h2,
+        .monster-basic p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .monster-center {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .monster-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .monster-right p {
+            margin: 2px 0;
+            line-height: 1.2;
+            font-size: 16px;
+            text-align: left;
+            font-weight: bold;
+
+        }
+
+        /* Barra de vida */
+        .vida-bar {
+            position: relative;
+            height: 18px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            background: #eee;
+            margin: 4px auto;
+            overflow: hidden;
+        }
+
+        .vida-bar-fill {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vida-bar-fill::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transform-origin: left center;
+            transform: scaleX(var(--vida-scale, 1));
+            background: var(--vida-color, #77dd77);
+            z-index: 0;
+        }
+
+        .vida-bar-text {
+            position: relative;
+            z-index: 1;
+            font-size: 13px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .vida-btn {
+            width: 24px;
+            height: 24px;
+            margin: 0 2px;
+            padding: 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+
+        .vida-btn.restar {
+            background: red;
+        }
+
+        .vida-btn.sumar {
+            background: green;
+        }
+
+        .vida-btn:hover {
+            filter: brightness(1.2);
+        }
+
+        .vidas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, auto);
+            gap: 10px;
+            margin-top: 10px;
+            align-items: start;
+        }
+
+        .vida-item {
+            padding: 6px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            min-width: 140px;
+        }
+
+        .vida-id {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        label {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .monster-form {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+
+            /* hace que las columnas tengan la misma altura */
+            align-items: stretch;
+        }
+
+        .form-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* los selects múltiples se estiran para ocupar toda la columna */
+        .form-col select[multiple] {
+            flex: 1;
+            min-height: 100%;
+            width: auto;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
+        }
+
+        .monster-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame" id="iframeMenu"></iframe>
+
+    </div> <button id="toggleMenu">☰</button>
+    <div class="main-content2">
+        <!-- Botón toggle -->
+        <button id="togglePanelBtn" class="btn_opciones">Mostrar Panel de Monstruos</button>
+
+        <!-- Panel que se oculta/muestra -->
+        <div id="monsterPanel" style="display: none;">
+            <div class="monster-form">
+                <!-- Columna 1 -->
+                <div class="form-col">
+                    <label for="monsterCategorySelect">Categoría:</label>
+                    <select id="monsterCategorySelect">
+                        <option value="" disabled selected>-- Selecciona categoría --</option>
+                    </select>
+
+                    <label for="monsterSelect">Monstruo:</label>
+                    <select id="monsterSelect">
+                        <option value="" disabled selected>-- Selecciona monstruo --</option>
+                    </select>
+
+                    <label for="cantidadSelect">Cantidad:</label>
+                    <select id="cantidadSelect"></select>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="form-col">
+                    <label for="armaSelect">Armas:</label>
+                    <select id="armaSelect" multiple></select>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="form-col">
+                    <label for="armaduraSelect">Armaduras:</label>
+                    <select id="armaduraSelect" multiple></select>
+                </div>
+
+                <!-- Columna 4 -->
+                <div class="form-col">
+                    <label for="hechizoSelect">Hechizos:</label>
+                    <select id="hechizoSelect" multiple></select>
+                </div>
+            </div>
+
+            <!-- Color + Botón -->
+            <div class="monster-actions">
+                <label style="display:none" for="colorSelect">Color:</label>
+                <select id="colorSelect" style="display:none">
+                    <option value="#fdb17b81">Rojo pastel</option>
+                    <option value="#d1ecf1">Azul pastel</option>
+                    <option value="#d4edda">Verde pastel</option>
+                    <option value="#fff3cd">Amarillo pastel</option>
+                    <option value="#e2d6f3">Violeta pastel</option>
+                </select>
+
+                <button class="btn_opciones" id="addMonsterBtn">Añadir Monstruos</button>
+            </div>
+        </div>
+           <div id="monsterContainer"></div>
+        <div class="info-panel">
+            <h3>Enemigos Generados</h3>
+            <div id="tirada-info" class="tirada-info" style="display: none;">
+                <strong>Información de la tirada:</strong><br>
+                <span id="tirada-detalle"></span>
+            </div>
+            <div id="enemigos-lista"></div>
+        </div>
+     
+    </div>
+    <script src="menu-acordeon.js"></script>
+
+    <script>
+        let monstersByCategory = {};
+        let equipo = {};
+        let monstruosData = {}; // tabla de encuentros cargada
+
+        const coloresId = [
+            "white", "red", "lightblue", "green", "yellow", "orange", "black", "gray",
+            "darkblue", "darkgreen", "brown", "violet", "gold", "silver", "turquoise"
+        ];
+
+        // Cargar JSONs
+        Promise.all([
+            fetch("json/Monstruos_stats.json").then(r => r.json()),
+            fetch("json/Monstruos_equipo.json").then(r => r.json()),
+            fetch("json/Monstruos_tabla_encuentros.json").then(r => r.json())
+        ]).then(([monstruosDataStats, equipoData, encuentros]) => {
+            monstersByCategory = monstruosDataStats;
+            equipo = equipoData;
+            monstruosData = encuentros;
+
+            // Poblar categorías
+            const catSelect = document.getElementById("monsterCategorySelect");
+            Object.keys(monstruosDataStats).sort().forEach(cat => {
+                const opt = document.createElement("option");
+                opt.value = cat;
+                opt.textContent = cat;
+                catSelect.appendChild(opt);
+            });
+
+            populateEquipoSelects();
+            populateCantidadSelect();
+            loadFromLocalStorage();
+        }).catch(err => console.error("Error cargando JSONs:", err));
+
+        // Mostrar/ocultar panel
+        const togglePanelBtn = document.getElementById("togglePanelBtn");
+        const monsterPanel = document.getElementById("monsterPanel");
+        togglePanelBtn.addEventListener("click", () => {
+            if (monsterPanel.style.display === "none") {
+                monsterPanel.style.display = "block";
+                togglePanelBtn.textContent = "Ocultar Panel de Monstruos";
+            } else {
+                monsterPanel.style.display = "none";
+                togglePanelBtn.textContent = "Mostrar Panel de Monstruos";
+            }
+        });
+
+        function populateMonstersByCategory(cat) {
+            const select = document.getElementById("monsterSelect");
+            select.innerHTML = `<option value="" disabled selected>-- Selecciona monstruo --</option>`;
+            if (!monstersByCategory[cat]) return;
+
+            monstersByCategory[cat]
+                .slice()
+                .sort((a, b) => a.nombre.localeCompare(b.nombre, "es"))
+                .forEach(m => {
+                    const opt = document.createElement("option");
+                    opt.value = m.nombre;
+                    opt.textContent = m.nombre;
+                    select.appendChild(opt);
+                });
+        }
+
+        document.getElementById("monsterCategorySelect").addEventListener("change", e => {
+            populateMonstersByCategory(e.target.value);
+        });
+
+        function populateEquipoSelects() {
+            document.getElementById("armaSelect").innerHTML =
+                (equipo.Armas || []).map((a, i) => `<option value="${i}">${a.Tipo}</option>`).join("");
+            document.getElementById("armaduraSelect").innerHTML =
+                (equipo.Armaduras || []).map((a, i) => `<option value="${i}">${a.Tipo}</option>`).join("");
+            document.getElementById("hechizoSelect").innerHTML =
+                (equipo.Hechizos || []).map((h, i) => `<option value="${i}">${h.Tipo}</option>`).join("");
+        }
+
+        function populateCantidadSelect() {
+            const sel = document.getElementById("cantidadSelect");
+            sel.innerHTML = "";
+            for (let i = 1; i <= 15; i++) {
+                const opt = document.createElement("option");
+                opt.value = i;
+                opt.textContent = i;
+                if (i === 1) opt.selected = true;
+                sel.appendChild(opt);
+            }
+        }
+
+      // 🚩 Listener ÚNICO para cambio de monstruo
+document.getElementById("monsterSelect").addEventListener("change", () => {
+    // 1. Eliminar todas las cards existentes
+    document.querySelectorAll(".monster-card").forEach(card => card.remove());
+
+    // 2. Limpiar lista de enemigos
+    document.getElementById("enemigos-lista").innerHTML = "";
+    document.getElementById("tirada-info").style.display = "none";
+    document.getElementById("tirada-detalle").textContent = "";
+
+    // 3. Crear la nueva card (usa tu lógica existente de addMonsterBtn)
+    document.getElementById("addMonsterBtn").click();
+
+    // 4. Buscar datos del monstruo en el JSON de encuentros
+    const category = document.getElementById("monsterCategorySelect").value;
+    const monsterName = document.getElementById("monsterSelect").value;
+    if (!category || !monsterName) return;
+
+    const listaCategoria = monstruosData[category] || [];
+    const encuentro = listaCategoria.filter(e => e.Encuentro === monsterName);
+const enemigo = listaCategoria.find(e => e.Encuentro === monsterName);
+    console.log("🎯 Resultado del filtro:", encuentro);
+
+    if (encuentro.length > 0) {
+        mostrarEnemigosLista(encuentro);
+        document.getElementById("tirada-info").style.display = "block";
+        document.getElementById("tirada-detalle").textContent = `Monstruo: ${monsterName}`;
+    } else {
+        console.warn("⚠️ No se encontró encuentro para", monsterName, "en categoría", category);
+    }
+});
+        // Mostrar enemigos en el panel lateral
+    function mostrarEnemigosLista(encuentro) {
+    const listaPanel = document.getElementById("enemigos-lista");
+    listaPanel.innerHTML = "";
+
+    if (!encuentro || encuentro.length === 0) {
+        listaPanel.textContent = "No se encontraron datos del encuentro.";
+        return;
+    }
+
+    // Crear tabla
+    const table = document.createElement("table");
+
+    // Cabecera
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Encuentro</th>
+                <th>Cantidad</th>
+                <th>Armas</th>
+                <th>Armadura</th>
+                <th>Especial</th>
+                <th>Hechizos Melé</th>
+                <th>Hechizos Distancia</th>
+                <th>Hechizos Apoyo</th>
+                <th>Tamaño</th>
+            </tr>
+        </thead>
+    `;
+
+    const tbody = document.createElement("tbody");
+
+    encuentro.forEach(enemigo => {
+        const tirada = resolverTirada(enemigo.Cantidad);
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${enemigo.ID}</td>
+            <td><strong>${enemigo.Encuentro}</strong> (${tirada.total}x)</td>
+            <td>${enemigo.Cantidad}</td>
+            <td>${enemigo.Armas || "Ninguna"}</td>
+            <td>${enemigo.Armadura}</td>
+            <td>${enemigo.Especial || "-"}</td>
+            <td>${enemigo.Hechizos_Melé}</td>
+            <td>${enemigo.Hechizos_Distancia}</td>
+            <td>${enemigo.Hechizos_Apoyo}</td>
+            <td>${enemigo.Tamaño || "-"}</td>
+        `;
+        tbody.appendChild(row);
+
+        // Guardar apariciones en el objeto
+        enemigo.apariciones = tirada.total;
+    });
+
+    table.appendChild(tbody);
+    listaPanel.appendChild(table);
+}
+
+        // Dummy de resolverTirada (pon tu lógica real)
+        function resolverTirada(cantidad) {
+            const total = 1;
+            return { total };
+        }
+
+
+        function updateVidaBar(barFill, val, max) {
+            const percent = max === 0 ? 0 : val / max;
+            barFill.style.setProperty("--vida-scale", percent);
+            const textEl = barFill.querySelector(".vida-bar-text");
+            if (textEl) textEl.textContent = `${val}/${max}`;
+            let color;
+            if (percent > 0.7) color = "linear-gradient(to right,#77dd77,#c1f0c1)";
+            else if (percent > 0.3) color = "linear-gradient(to right,#fdfd96,#fffac8)";
+            else color = "linear-gradient(to right,#ff6961,#ffcccb)";
+            barFill.style.setProperty("--vida-color", color);
+        }
+
+        function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff", vidas = null, save = true) {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("monster-card");
+            wrapper.style.backgroundColor = color;
+
+            const cantidad = vidas ? vidas.length : parseInt(document.getElementById("cantidadSelect").value || "1", 10);
+            wrapper._vidas = vidas ? vidas.slice() : Array(cantidad).fill(monster.vida);
+
+            const barraBase = 100;
+            const barraExtra = monster.vida * 2;
+            const barraMax = 300;
+            const barraWidth = Math.min(barraBase + barraExtra, barraMax);
+
+            const armasHTML = (armas || []).map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🗡️ ${a.Tipo}${a.Daño ? " (" + a.Daño + ")" : ""}</span>`).join("");
+            const armadurasHTML = (armaduras || []).map(a => `<span class="equipment" data-tooltip="${a.Efecto || ""}">🛡️ ${a.Tipo}</span>`).join("");
+            const hechizosHTML = (hechizos || []).length
+                ? `<strong>Hechizos:</strong> ` +
+                (hechizos || []).map(h => `
+                 <span 
+  class="tooltip-hechizo"
+  data-tippy-content="<img src='img/hechizos/${h.Tipo}.png' style='width:100px;height:100px;display:block;margin:0 auto 5px auto;'>${h.Efecto}">
+  ${h.Categoría}: ${h.Tipo}
+</span>`
+                ).join(", ")
+                : "";
+            // Build vidas grid
+            let vidasGrid = '<div class="vidas-grid">';
+            wrapper._vidas.forEach((vida, i) => {
+                const colorBorde = coloresId[i] || "black";
+                vidasGrid += `
+          <div class="vida-item" style="border:10px solid ${colorBorde};background-color: gray;" >
+           
+            <div style="display:flex;gap:6px;align-items:center"> <div class="vida-id">${i + 1}</div>
+              <button class="vida-btn restar">-</button>
+              <div class="vida-bar" style="width:${barraWidth}px">
+              <div class="vida-bar-fill"><span class="vida-bar-text">${vida}/${monster.vida}</span></div>
+            </div>
+              <button class="vida-btn sumar">+</button>
+            </div>
+            
+          </div>`;
+            });
+            vidasGrid += "</div>";
+
+            // Aquí incluimos la tabla de atributos y la sección derecha completa (restaurada)
+            wrapper.innerHTML = `
+        <button class="remove-btn">X</button>
+        <div class="monster-header">
+          <div class="monster-left">
+            <img src="img/Monstruos/imagenes/${encodeURIComponent(monster.nombre)}.png" alt="${monster.nombre}">
+            <video src="img/Monstruos/imagenes/${encodeURIComponent(monster.nombre)}..mp4" autoplay loop muted width="300"></video>
+            <div class="death-overlay"></div>
+          </div>
+
+          <div class="monster-basic">
+            <h2>${monster.nombre}</h2>
+            <p><strong>Tipo:</strong> ${monster.tipo}</p>
+
+            <p>
+               ❤️<strong>:</strong> ${monster.vida}
+            </p>
+
+           
+
+            <p><strong>EXP:</strong> ${monster.exp} 💰 ${monster.recompensa}</p>
+          </div>
+
+          <div class="monster-center">
+            <div class="center-row">
+              <div class="weapons-column">${armasHTML}</div>
+              <div class="armors-column">${armadurasHTML}</div>
+            </div>
+
+            <div class="center-row">
+              <table>
+                <tr>
+                  <th>HC</th><th>HD</th><th>DAÑ</th><th>DET</th>
+                  <th>RG</th><th>AN</th><th>M</th><th>DES</th>
+                </tr>
+                <tr>
+                  <td>${monster.HC}</td><td>${monster.HD}</td><td>${monster.DAN}</td><td>${monster.DET}</td>
+                  <td>${monster.RG}</td><td>${monster.AN}</td><td>${monster.M}</td><td>${monster.DES}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="monster-right">
+            ${monster.habilidades.map(h => `<p>${h}</p>`).join("")}
+          </div>
+        </div>
+
+        <div class="hechizos-list">${hechizosHTML}</div>
+
+        ${vidasGrid}
+      `;
+
+            // remove button
+            wrapper.querySelector(".remove-btn").addEventListener("click", () => {
+                wrapper.remove();
+                saveToLocalStorage();
+            });
+
+            const deathOverlay = wrapper.querySelector(".death-overlay");
+            const vidaItems = wrapper.querySelectorAll(".vida-item");
+
+            function actualizarVida(idx, nuevaVida) {
+                wrapper._vidas[idx] = Math.max(0, Math.min(monster.vida, nuevaVida));
+                const barFill = vidaItems[idx].querySelector(".vida-bar-fill");
+                updateVidaBar(barFill, wrapper._vidas[idx], monster.vida);
+                deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
+                saveToLocalStorage();
+            }
+
+            vidaItems.forEach((item, idx) => {
+                const barFill = item.querySelector(".vida-bar-fill");
+                updateVidaBar(barFill, wrapper._vidas[idx], monster.vida);
+                item.querySelector(".restar").addEventListener("click", () => actualizarVida(idx, wrapper._vidas[idx] - 1));
+                item.querySelector(".sumar").addEventListener("click", () => actualizarVida(idx, wrapper._vidas[idx] + 1));
+            });
+
+            // también actualizar la barra única central para compatibilidad visual
+            const centralRestar = wrapper.querySelector(".monster-basic .vida-btn.restar");
+            const centralSumar = wrapper.querySelector(".monster-basic .vida-btn.sumar");
+            const centralBarFill = wrapper.querySelector(".monster-basic .vida-bar-fill");
+            if (centralRestar && centralSumar && centralBarFill) {
+                // central tira de la primera vida por defecto
+                function actualizarCentral(nuevaVida) {
+                    wrapper._vidas[0] = Math.max(0, Math.min(monster.vida, nuevaVida));
+                    updateVidaBar(centralBarFill, wrapper._vidas[0], monster.vida);
+                    // actualizar también la mini barra correspondiente
+                    if (vidaItems[0]) {
+                        updateVidaBar(vidaItems[0].querySelector(".vida-bar-fill"), wrapper._vidas[0], monster.vida);
+                    }
+                    deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
+                    saveToLocalStorage();
+                }
+                centralRestar.addEventListener("click", () => actualizarCentral(wrapper._vidas[0] - 1));
+                centralSumar.addEventListener("click", () => actualizarCentral(wrapper._vidas[0] + 1));
+                // inicializamos central con el valor actual de la primera vida
+                updateVidaBar(centralBarFill, wrapper._vidas[0], monster.vida);
+            }
+
+            deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
+            if (save) saveToLocalStorage();
+            // Inicializa tooltips SOLO dentro de esta carta recién creada
+            tippy(wrapper.querySelectorAll('.tooltip-hechizo'), {
+                allowHTML: true,
+                animation: 'scale',
+                theme: 'carta',
+                placement: 'top',
+                maxWidth: 250,
+            });
+            return wrapper;
+        }
+
+        function saveToLocalStorage() {
+            const cards = [...document.querySelectorAll(".monster-card")].map(card => {
+                const data = JSON.parse(card.dataset.info || "{}");
+                data.vidas = card._vidas;
+                data.color = card.style.backgroundColor;
+                return data;
+            });
+            localStorage.setItem("monstersInPlay", JSON.stringify(cards));
+        }
+
+        function loadFromLocalStorage() {
+            const saved = JSON.parse(localStorage.getItem("monstersInPlay") || "[]");
+            const container = document.getElementById("monsterContainer");
+            saved.forEach(data => {
+                const monster = (monstersByCategory[data.category] || []).find(m => m.nombre === data.monsterName);
+                if (!monster) {
+                    console.warn("Monstruo no encontrado para", data);
+                    return;
+                }
+                const armas = (data.armas || []).map(i => equipo.Armas[i]).filter(Boolean);
+                const armaduras = (data.armaduras || []).map(i => equipo.Armaduras[i]).filter(Boolean);
+                const hechizos = (data.hechizos || []).map(i => equipo.Hechizos[i]).filter(Boolean);
+                const card = renderCard(monster, data.category, armas, armaduras, hechizos, data.color || "#fff", data.vidas || null, false);
+                card.dataset.info = JSON.stringify(data);
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById("addMonsterBtn").addEventListener("click", () => {
+            const category = document.getElementById("monsterCategorySelect").value;
+            const monsterName = document.getElementById("monsterSelect").value;
+            if (!category || !monsterName) return;
+            const monster = (monstersByCategory[category] || []).find(m => m.nombre === monsterName);
+            if (!monster) return;
+
+            const armasSel = [...document.getElementById("armaSelect").selectedOptions].map(o => parseInt(o.value));
+            const armadurasSel = [...document.getElementById("armaduraSelect").selectedOptions].map(o => parseInt(o.value));
+            const hechizosSel = [...document.getElementById("hechizoSelect").selectedOptions].map(o => parseInt(o.value));
+            const colorSel = document.getElementById("colorSelect").value;
+
+            const armas = armasSel.map(i => equipo.Armas[i]).filter(Boolean);
+            const armaduras = armadurasSel.map(i => equipo.Armaduras[i]).filter(Boolean);
+            const hechizos = hechizosSel.map(i => equipo.Hechizos[i]).filter(Boolean);
+
+            const card = renderCard(monster, category, armas, armaduras, hechizos, colorSel);
+            const infoObj = { monsterName, category, armas: armasSel, armaduras: armadurasSel, hechizos: hechizosSel, color: colorSel, vidas: card._vidas };
+            card.dataset.info = JSON.stringify(infoObj);
+            document.getElementById("monsterContainer").appendChild(card);
+            saveToLocalStorage();
+        });
+
+        function populateMonstersOnCategoryChange() {
+            // helper: nothing extra
+        }
+
+        document.addEventListener("mousedown", function (e) {
+            const target = e.target;
+            if (target.tagName === "OPTION" && target.parentElement && target.parentElement.multiple) {
+                e.preventDefault();
+                target.selected = !target.selected;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
