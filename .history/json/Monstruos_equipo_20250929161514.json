@@ -1,0 +1,61 @@
+{
+"Armas": [
+{"Tipo":"Arma Envenenada","Efecto":"Una herida causada por un arma envenenada quita 1 punto de vida del objetivo"},
+{"Tipo":"Arma Maldita","Efecto":"Una herida causada por un arma maldita quita 1 punto de cordura del objetivo"},
+{"Tipo":"Alabarda","Daño":"1d12","Efecto":"Alcance: Puede atacar a 2 casillas aunque haya compañeros en medio., PArm(1): Ignora 1 punto de armadura."},
+{"Tipo":"Arbalesta","Daño":"3d6","Efecto":"Recarga: 3PA., Parm(2): Ignora 2 puntos de armadura."},
+{"Tipo":"Arco Corto","Daño":"1d8","Efecto":"Recarga: 1PA."},
+{"Tipo":"Arco Élfico","Daño":"1d10+2","Efecto":"PArm(1): Ignora 1 punto de armadura."},
+{"Tipo":"Arco Largo","Daño":"1d10","Efecto":"Recarga: 1PA., PArm(1): Ignora 1 punto de armadura."},
+{"Tipo":"Ballesta","Daño":"1d10+3","Efecto":"Recarga: 2PA., PArm(1): Ignora 1 punto de armadura."},
+{"Tipo":"Bastón","Daño":"1d8","Efecto":"Defensivo: -5RG cuando está en posición defensiva en combate a melé."},
+{"Tipo":"Daga","Daño":"1d6","Efecto":"Sigiloso: +2 Daño por detrás."},
+{"Tipo":"Espada Ancha","Daño":"1d8+2","Efecto":null},
+{"Tipo":"Espada Corta","Daño":"1d6+2","Efecto":null},
+{"Tipo":"Espada Larga","Daño":"1d12","Efecto":null},
+{"Tipo":"Espadón","Daño":"2d6","Efecto":"Lento: +5RG a melé."},
+{"Tipo":"Estoque","Daño":"1d6+1","Efecto":"Rápido: Da -5RG en combate a melé."},
+{"Tipo":"Gran Hacha","Daño":"1d12+2","Efecto":"Lento: +5RG a melé., PArm(2): Ignora 2 punto de armadura., HPA: +5RG a melé."},
+{"Tipo":"Hacha de Batalla","Daño":"1d10+1","Efecto":"PArm(1): Ignora 1 punto de armadura., HPA: +5RG a melé."},
+{"Tipo":"Honda","Daño":"1d8","Efecto":"Recarga: 1PA."},
+{"Tipo":"Jabalina","Daño":"1d10","Efecto":"Alcance: Puede atacar a 2 casillas aunque haya compañeros en medio., PArm(1): Ignora 1 punto de armadura., HPA: +5RG a melé."},
+{"Tipo":"Lucero del Alba","Daño":"1d8+4","Efecto":"Inmanejable: +4 Daño solo en el primer golpe., HPA: +5RG a melé., Aturdir: El objetivo pierde 1PA si el daño es impar."},
+{"Tipo":"Martillo de Batalla","Daño":"1d10","Efecto":"Aturdir: El objetivo pierde 1PA si el daño es impar., HPA: +5RG a melé."},
+{"Tipo":"Martillo de Guerra","Daño":"","Efecto":"Lento: +5RG a melé., HPA: +5RG a melé., Aturdir: El objetivo pierde 1PA si el daño es impar., HPA: +5RG a melé."},
+{"Tipo":"Mayal","Daño":"1d10+4","Efecto":"Inmanejable: +4 Daño solo en el primer golpe., HPA: +5RG a melé., Aturdir: El objetivo pierde 1PA si el daño es impar."},
+{"Tipo":"Pistola Ballesta","Daño":"1d8+1","Efecto":"Arma Secundaria: Puede dispararse sin tener que intecambiar armas., Recarga: 1PA."},
+{"Tipo":"Red","Daño":"Especial","Efecto":"Atrapar: El objetivo queda atrapado y debe gastar 1PA y hacer un test de DES para liberarse. El enemigo solo usará este arma mientras haya aliados vivos. Tras un ataque exitoso con la red, cambia de arma."}
+
+],
+"Armaduras":[
+{"Tipo":"Escudo 1","Efecto":null},
+{"Tipo":"Escudo 2","Efecto":null},
+{"Tipo":"Escudo 3","Efecto":null},
+{"Tipo":"Escudo 4","Efecto":null},
+{"Tipo":"Escudo -5 RG","Efecto":"Salvo que el último ataque sea poderoso."}
+],
+"Hechizos":[
+{"Tipo":"Curación","Categoría":"Apoyo","Efecto":"<br>El mago se cura a sí mismo o al aliado más herido.<br><br> <strong> Tira 1d10 VIT.</strong>"},
+{"Tipo":"Enmudecer","Categoría":"Apoyo","Efecto":"<br>El mago lanza un conjuro que dificulta el uso de hechizos y plegarias del enemigo.<br><br>Los sacerdotes y Magos en la misma loseta que el conjurador <strong>añaden +15 a dificultad</strong> de sus test de habilidades mágicas.<br><br> Este hechizo permanecerá activo hasta que el mago que lo lanzó tire otro hechizo diferente."},
+{"Tipo":"Escudo","Categoría":"Apoyo","Efecto":"<br>El mago conjura un hechizo en torno a un aliado al azar, incluido él mismo.<br><br><strong>El objetivo recibe +2 de Armadura.</strong><br><br>El hechizo dura hasta el final de la batalla o hasta que muera el lanzador.<br><br>No se requiere LDV.<br><br>Esta bonificación solo puede obtenerse una vez."},
+{"Tipo":"Frenesí","Categoría":"Apoyo","Efecto":"<br>El mago escoge un aliado para que obtenga Frenesí.<br><br>Por cada ataque normal que dañe al héroe, podrá hacer otro gratuitamente.<br><br>Los ataques ganan PArm (1).<br><br>Durará hasta el final de la batalla.<br><br>No se requiere LDV."},
+{"Tipo":"Invocar Demonio","Categoría":"Apoyo","Efecto":"<br>El mago invoca un demonio al azar.<br><br>Colócalo en una casilla vacía al azar en la misma loseta que el lanzador, si no hay casillas vacías se pondrá en una loseta adyacente.<br><br><strong>Tira 1d10:</strong><br>--> 1-6 Invoca: Diablillo de la plaga.<br>--> 7-8 Invoca: Demonio de sangre con armadura 2.<br>--> 9-10 Invoca: Demonio de la plaga con armadura 1 y un arma al azar."},
+{"Tipo":"Invocar Gran Demonio","Categoría":"Apoyo","Efecto":"<br>El mago invoca un demonio al azar.<br><br>Colócalo en una casilla vacía al azar en la misma loseta que el lanzador, si no hay casillas vacías se pondrá en una loseta adyacente.<br><br>Solo 1 por batalla.<br><br><strong>Tira 1d10:</strong><br>-->1-6 Invoca: Demonio Hinchado.<br>--> 7-9 Invoca: Acechador.<br>--> 10 Invoca: Gran Demonio con un arma al azar."},
+{"Tipo":"Levantar a los Muertos","Categoría":"Apoyo","Efecto":"<br><strong>Solo no muertos.</strong><br><br>El mago levanta a un enemigo aleatorio no muerto que haya sido derrotado.<br><br>Recupera toda su VIT y equipo.<br><br>Si no hay enemigos caídos, este hechizo curará a un no muerto al azar 1d6VIT.<br><br>No se requiere LDV.<br><br>Si el lanzador muere, los resucitados caerán desplomados al suelo."},
+{"Tipo":"Mano Sanadora","Categoría":"Apoyo","Efecto":"<br>El mago se cura a sí mismo o al aliado adyacente más herido.<br><br><strong>Tira 1d10 VIT.</strong>"},
+{"Tipo":"Cegar","Categoría":"Distancia","Efecto":"<br>El mago logra cegar a un objetivo en LDV. No importa si hay miniaturas o muebles por el medio, siempre que el mago pueda ver razonablemente su objetivo. Este quedará cerrado durante su próximo turno y no podrá luchar. Cualquier personaje que golpea al objetivo tiene una bonificación de +20 HC. El objetivo caminará 2 Casillas en direcciones aleatorias, tira al azar cada casilla."},
+{"Tipo":"Rayo de Escarcha","Categoría":"Distancia","Efecto":"<br>El mago dispara un Rayo de escarcha a un objetivo en LDV. Este objetivo sufre 1d8DAÑ y queda aturdido. Pierde un PA en el siguiente turno."},
+{"Tipo":"Ráfaga de Viento","Categoría":"Distancia","Efecto":"<br>El mago invoca una ráfaga de viento que dificulta el uso de proyectiles. Cualquier arma a distancia en la que el proyectil pase a 10 Casillas del mago, el tirador sufre un modificador para impactar de -10. El hechizo dura toda la batalla o hasta que el lanzador muere."},
+{"Tipo":"Bola de Fuego","Categoría":"Distancia","Efecto":"<br>El mago lanza una bola de fuego en la casilla que pueda golpear al mayor número de objetivos no aliados. El hechizo afecta la casilla objetivo y a todas las adyacentes. El lanzador ignorará si esto puede dañar a sus compañeros. La casilla sufre 1d10+2 DAÑ de fuego y las adyacentes 1d6+1 DAÑ de fuego. El hechizo requiere de LDV a la casilla objetivo."},
+{"Tipo":"Lentitud","Categoría":"Distancia","Efecto":"<br>El mago ralentiza un enemigo aleatorio. No importa si miniaturas o muebles por el medio, siempre que el mago pueda haber razonablemente a su objetivo. La víctima aún puede moverse, pero cada casilla ahora cuenta como 2 lo que reduce su movimiento a la mitad (RAB). El hechizo dura hasta el final de la batalla, pero se puede disipar con un test de DET que se podrá realizar al comienzo de cada turno."},
+{"Tipo":"Llamarada","Categoría":"Distancia","Efecto":"<br>El mago lanza un enemigo aleatorio un misil mágico. El objetivo debe estar en LDV del lanzador y recibe 1d10 DAÑ. Armadura y AN funcionan con normalidad."},
+{"Tipo":"Aturdir","Categoría":"mele","Efecto":"<br>El mago toca su objetivo y le transfiere una corriente eléctrica a través de él. El objetivo queda aturdido y pierde 1PA en su siguiente turno."},
+{"Tipo":"Clonarse","Categoría":"mele","Efecto":"<br>El mago crea un duplicado de sí mismo en cualquier casilla vacía al azar de la loseta. Esta copia está en las mismas condiciones VIT y Heridas que el mago. Una vez colocado, no se sabe cuál es la copia y cuál es el mago de verdad. Ambos lucharán con normalidad y lanzarán hechizos. Una vez que 1 de ellos muera, hay un 50% de que fuese el mago verdadero. En ese caso la copia también desaparece. De lo contrario, el mago seguirá luchando."},
+{"Tipo":"Ráfaga Mental","Categoría":"mele","Efecto":"<br>El mago toca el objetivo y un dolor punzante atraviesa su cabeza. El afectado pierde 1d3 puntos de cordura. Si el objetivo no es un héroe, pierde 1d6 VIT sin armadura o AN."},
+{"Tipo":"Seducir","Categoría":"mele","Efecto":"<br>El mago usa un hechizo de seducción en un objetivo adyacente. Ese objetivo debe pasar un test de DET. Si queda seducido luchará para su enemigo hasta que supere un test de DET al comienzo de su turno o el lanzador muera. Durante la seducción, el objetivo actuará como una bestia o humanoide con un arma de mano/distancia. El objetivo nunca usará magia ni ventajas. No funciona con no muertos."},
+{"Tipo":"Teleportación","Categoría":"mele","Efecto":"<br>El mago se teletransportará a sí mismo a una ubicación aleatoria en la misma loseta, siempre que no quede adyacente aún no-aliado. Si no hay ninguna casilla disponible, el mago aparecerá en una casilla aleatoria de una loseta adyacente al azar."},
+{"Tipo":"Toque Vampírico","Categoría":"mele","Efecto":"<br>El mago extiende la mano y toca lo del objetivo adyacente. Absorbe la vida de la víctima añadiéndola a la suya. El objetivo pierde 1d10 VIT, sin contra armadura ni AN. El lanzador gana esa misma cantidad de vitalidad, sin superar su máximo."}
+
+]
+
+}

@@ -1,0 +1,253 @@
+{
+    "R1": [
+        {
+            "1d10": "1",
+            "Objeto": "⚔️ Arma del enemigo (-1d4 DUR)"
+        },
+        {
+            "1d10": "2",
+            "Objeto": "💰 20 Monedas"
+        },
+        {
+            "1d10": "3",
+            "Objeto": "💰 10 Monedas"
+        },
+        {
+            "1d10": "4",
+            "Objeto": "1 Venda"
+        },
+        {
+            "1d10": "5",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "6",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "7",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "8",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "9",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "10",
+            "Objeto": "💩 Basura"
+        }
+    ],
+    "R2": [
+        {
+            "1d10": "1",
+            "Objeto": "💎 1 Tesoro Superior"
+        },
+        {
+            "1d10": "2",
+            "Objeto": "💎 1 Tesoro Corriente"
+        },
+        {
+            "1d10": "3",
+            "Objeto": "💰 50 Monedas"
+        },
+        {
+            "1d10": "4",
+            "Objeto": "💰 40 Monedas"
+        },
+        {
+            "1d10": "5",
+            "Objeto": "💰 20 Monedas"
+        },
+        {
+            "1d10": "6",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "7",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "8",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "9",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "10",
+            "Objeto": "💩 Basura"
+        }
+    ],
+        "R3": [
+        {
+            "1d10": "1",
+            "Objeto": "💎 1 Tesoro Superior"
+        },
+        {
+            "1d10": "2",
+            "Objeto": "💎 1 Tesoro Superior"
+        },
+        {
+            "1d10": "3",
+            "Objeto": "💰 100 Monedas"
+        },
+        {
+            "1d10": "4",
+            "Objeto": "💰 100 Monedas"
+        },
+        {
+            "1d10": "5",
+            "Objeto": "💎 1 Tesoro Corriente"
+        },
+        {
+            "1d10": "6",
+            "Objeto": "💰 80 Monedas"
+        },
+        {
+            "1d10": "7",
+            "Objeto": "💰 60 Monedas"
+        },
+        {
+            "1d10": "8",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "9",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "10",
+            "Objeto": "💩 Basura"
+        }
+    ],
+          "R4": [
+        {
+            "1d10": "1",
+            "Objeto": "📚 1 Grimorio con un Hechizo Aleatorio"
+        },
+        {
+            "1d10": "2",
+            "Objeto": "📜 1 Pargamino Aleatorio"
+        },
+        {
+            "1d10": "3",
+            "Objeto": "📜 1 Pargamino Aleatorio"
+        },
+        {
+            "1d10": "4",
+            "Objeto": "🧪 1d2 Pociones"
+        },
+        {
+            "1d10": "5",
+            "Objeto": "💰 60 Monedas"
+        },
+        {
+            "1d10": "6",
+            "Objeto": "💰 50 Monedas"
+        },
+        {
+            "1d10": "7",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "8",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "9",
+            "Objeto": "💩 Basura"
+        },
+        {
+            "1d10": "10",
+            "Objeto": "💩 Basura"
+        }
+    ],    "R5": [
+        {
+            "1d10": "1",
+            "Objeto": "💎 1 Tesoro Maravilloso y 2 Tesoros Superiores"
+        },
+        {
+            "1d10": "2",
+            "Objeto": "💎 1 Tesoro Maravilloso y 2 Tesoros Superiores"
+        },
+        {
+            "1d10": "3",
+            "Objeto": "💎 2 Tesoros Superiores y 📚 1 Grimorio con un Hechizo Aleatorio"
+        },
+        {
+            "1d10": "4",
+            "Objeto": "💎 2 Tesoros Superiores y 📚 1 Grimorio con un Hechizo Aleatorio"
+        },
+        {
+            "1d10": "5",
+            "Objeto": "💎 3 Tesoros Superiores"
+        },
+        {
+            "1d10": "6",
+            "Objeto": "💎 3 Tesoros Superiores"
+        },
+        {
+            "1d10": "7",
+            "Objeto": "💎 3 Tesoros Superiores"
+        },
+        {
+            "1d10": "8",
+            "Objeto": "💰 500 Monedas"
+        },
+        {
+            "1d10": "9",
+            "Objeto": "💰 500 Monedas"
+        },
+        {
+            "1d10": "10",
+            "Objeto": "💰 500 Monedas"
+        }
+    ],
+    "Parte": [
+        {
+            "1d10": "1",
+            "Objeto": "💎 1 Tesoro Maravilloso y 2 Tesoros Superiores"
+        },
+        {
+            "1d10": "2",
+            "Objeto": "💎 1 Tesoro Maravilloso y 2 Tesoros Superiores"
+        },
+        {
+            "1d10": "3",
+            "Objeto": "💎 2 Tesoros Superiores y 📚 1 Grimorio con un Hechizo Aleatorio"
+        },
+        {
+            "1d10": "4",
+            "Objeto": "💎 2 Tesoros Superiores y 📚 1 Grimorio con un Hechizo Aleatorio"
+        },
+        {
+            "1d10": "5",
+            "Objeto": "💎 3 Tesoros Superiores"
+        },
+        {
+            "1d10": "6",
+            "Objeto": "💎 3 Tesoros Superiores"
+        },
+        {
+            "1d10": "7",
+            "Objeto": "💎 3 Tesoros Superiores"
+        },
+        {
+            "1d10": "8",
+            "Objeto": "💰 500 Monedas"
+        },
+        {
+            "1d10": "9",
+            "Objeto": "💰 500 Monedas"
+        },
+        {
+            "1d10": "10",
+            "Objeto": "💰 500 Monedas"
+        }
+    ]
+}
