@@ -470,7 +470,7 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
     const tipoEl = wrapper.querySelector(".monster-basic p span.tipo-monstruo");
     if (tipoEl) {
         const tipoTexto = tipoEl.dataset.tipo.split("/")[0].trim(); // solo la primera parte
-        const imgSrc = 'img/Monstruos/comportamiento/' + encodeURIComponent(tipoTexto) + '.png';
+        const imgSrc = 'img/Monstruos/comportamiento/' + encodeURIComponent(${tipoTexto}) + '.png';
 
         tippy(tipoEl, {
             allowHTML: true,
