@@ -1457,7 +1457,7 @@
       "DES": 40,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>En los huesos:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
+        "<strong style='color:#d4af37;'>¡En los huesos!:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
         "<strong style='color:#d4af37;'>Armas malditas:</strong> El daño causado por un arma maldita también reduce 1 punto de Cordura."
       ]
     },
@@ -1818,7 +1818,7 @@
       "DES": 35,
       "habilidades": [
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad.",
-        "<strong style='color:#d4af37;'>Psíquico:</strong> Todos los Héroes -20 DET mientras el Psíquico esté vivo. No es un efecto acumulativo."
+        "<strong style='color:#d4af37;'>Mentalista:</strong> Todos los Héroes -20 DET mientras el Psíquico esté vivo. No es un efecto acumulativo."
       ]
     },
     {
@@ -1918,7 +1918,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Regeneración:</strong> 1d3 VIT cada turno.",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 daño extra.",
+        "<strong style='color:#d4af37;'>Daño Extra por fuego:</strong> 1d6 daño extra.",
         "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
       ]
     },
@@ -1939,7 +1939,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Mágico:</strong> Desvanece cuando es destruido — No se puede registrar.",
         "<strong style='color:#d4af37;'>Daño de Fuego:</strong> Todos los ataques causan daño de Fuego.",
-        "<strong style='color:#d4af37;'>Débil a Agua:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Agua:</strong> 1d6 DAÑ extra.",
         "Si es invocado por un Héroe, el elemental gana 2VIT por cada NM por encima de 3, y +1DAÑ por cada NM por encima de 6."
       ]
     },
@@ -1997,8 +1997,8 @@
       "M": 7,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>AutoAtaque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
-        "<strong style='color:#d4af37;'>Actúa primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
+        "<strong style='color:#d4af37;'>Auto Ataque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
+        "<strong style='color:#d4af37;'>Actuar Primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
         "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
       ]
     },

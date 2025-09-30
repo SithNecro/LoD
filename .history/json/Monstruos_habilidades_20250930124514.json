@@ -1,0 +1,380 @@
+{
+    "Especiales": [
+        {
+            "Habilidad": "Actúa primero",
+            "Descripcion": "(Pasiva) Debido a su velocidad o su gran número, estas criaturas siempre actuarán primero durante el primer turno, independientemente de lo que digan las fichas de iniciativa."
+        },
+        {
+            "Habilidad": "Ahogar",
+            "Descripcion": "(Activa) Peligrosa práctica en la que una criatura impide que otra respire eliminando aire o bloqueando las vías respiratorias con sustancias como arena, agua o barro. Para iniciar el ahogamiento, el atacante primero debe pasar una prueba de HC como si estuviera atacando. Para mantener el efecto de ahogamiento, el atacante debe gastar 2 PA en cada asalto. Esta acción siempre tiene prioridad sobre otras acciones. Si la VIT del objetivo cae a 0, el atacante lo libera automáticamente. Mientras se ahoga, el objetivo sufre 1d4 DAÑ y pierde 1 COR cada turno. El objetivo no puede realizar ninguna acción excepto intentar liberarse. Para escapar, el objetivo debe pasar un test de FUE, que puede intentarse una vez por turno. Si el atacante es “Enorme”, se aplica un -20FUE a la víctima para ese test.Si el atacante muere, el efecto de ahogamiento termina y el objetivo es liberado."
+        },
+        {
+            "Habilidad": "Aliento de fuego",
+            "Descripcion": "(Activa) El aliento impacta automáticamente, no necesita una tirada de HD, pero puede ser esquivado. Causa 1d10 DAÑ de fuego y 1d6 en las 8 casillas adyacentes. La criatura es inmune a su propio fuego. Los monstruos Extra-Enormes causan 1d10+5 DAÑ y 1d6+5 en las adyacentes y las adyacentes a estas,                 25 casillas afectadas en total."
+        },
+        {
+            "Habilidad": "Apestoso",
+            "Descripcion": "(Pasiva) Como será el tufo de esta criatura que cuesta concentrarse. Todos los ataques cuerpo a cuerpo a esta criatura sufren una penalización de -10 HC."
+        },
+        {
+            "Habilidad": "Armas malditas",
+            "Descripcion": "(Pasiva) Las Armas Malditas están impregnadas de magia impía o han sido utilizadas como receptáculo del mal por su portador. El daño causado por estas armas quita 1 punto de Cordura del objetivo."
+        },
+        {
+            "Habilidad": "Armas rústicas",
+            "Descripcion": "(Pasiva) Estas criaturas usan elementos cotidianos para atacar en vez de las armas típicas. Aquí se incluyen troncos o piedras, por ejemplo. En lo que al juego se refiere, todas estas Armas Rústicas reciben el tratamiento de Martillo de Guerra y poseen los mismos atributos."
+        },
+        {
+            "Habilidad": "Ataque múltiple Hidra",
+            "Descripcion": "(Pasiva) Tiene 5 fichas de iniciativa y puede activarse con cada una. El único momento en que podrá moverse es en su primera activación. En las siguientes, sólo tendrá 1PA y será usado para atacar. En la medida de lo posible, los ataques serán a objetivos separados en cualquier dirección y hasta a 4 casillas de distancia."
+        },
+        {
+            "Habilidad": "Ataque múltiple X",
+            "Descripcion": "(Pasiva) Esta criatura puede atacar a sus objetivos repetidas veces. Cada vez que haga un ataque normal, en vez de eso golpeará X número de veces. Realiza tiradas para atacar y DAÑ por separado. Este ataque cuenta como 1PA."
+        },
+        {
+            "Habilidad": "Aura congelada",
+            "Descripcion": "(Pasiva) Cualquier jugador adyacente a esta criatura debe pasar test de CON al comienzo de su activación o quedará aturdido. Esta prueba debe repetirse cada turno."
+        },
+        {
+            "Habilidad": "Barrido",
+            "Descripcion": "(Activa) Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
+        },
+        {
+            "Habilidad": "Bomba de esporas",
+            "Descripcion": "(Pasiva) Las Bombas de Esporas se consideran como armas a distancia, como un arco. Por ello, el Explorador Fungoide usa la Carta de Conducta ‘Humanoide con Arma a Distancia’. Este es un ataque en área que causa 1d6 DAÑ al objetivo ignorando armadura y AN. Los personajes adyacentes no-Fúngidos reciben 1d4 DAÑ, ignorando armadura y AN. Todos los personajes dañados deberán superar una tirada de CON o serán aturdidos."
+        },
+        {
+            "Habilidad": "Bramido",
+            "Descripcion": "(Activa) E La criatura ruge a todo pulmón causando que cualquier héroe en 4 casillas sea aturdido (1 acción menos el siguiente turno) a menos que gane una tirada de DET."
+        },
+        {
+            "Habilidad": "Brinco",
+            "Descripcion": "(Especial) Siempre que esta criatura no pueda alcanzar a ningún objetivo debido a la obstaculización de personajes, salta (hasta 3 casillas). Este salto requiere una tirada HC exitosa, sin gasto de PA, aterrizando en una casilla aleatoria lo más cerca posible del objetivo, mirando en la dirección del salto. Luego puede gastar los PA restantes. Una tirada de HC fallida hará que la criatura quede boca abajo en la casilla en la que aterriza y necesite gastar 1PA en levantarse."
+        },
+        {
+            "Habilidad": "Camuflaje",
+            "Descripcion": "(Activa) Algunas criaturas tienen la habilidad de fundirse en el entorno cambiando el color de su piel. Si esta habilidad se activa quita la miniatura del tablero. Al siguiente turno, aparecerá aleatoriamente en cualquier habitación donde haya héroes o en una habitación adyacente a ellos, en este segundo caso debe colocarse de manera que pueda ver al máximo de héroes posibles."
+        },
+        {
+            "Habilidad": "Carga feroz",
+            "Descripcion": "(Pasiva) Esta criatura pone tanto énfasis cuando carga, que causa 1d4 DAÑ más durante ese ataque."
+        },
+        {
+            "Habilidad": "Carga paralizadora",
+            "Descripcion": "(Pasiva) La carga de esta criatura aturde a su objetivo a menos que pase un test de CON."
+        },
+        {
+            "Habilidad": "Chillido fantasmal",
+            "Descripcion": "(Activa) Las Almas en Pena son conocidas por su estremecedor grito, dando escalofríos que recorren la espalda del más valiente de los héroes. Chillido Fantasmal funciona igual que Toque Fantasmal, pero es un ataque a distancia que afecta a todos los héroes a la vez. No necesita una tirada de HD. No puede ser ni esquivado ni parado."
+        },
+        {
+            "Habilidad": "Coletazo",
+            "Descripcion": "(Activa) Tiene una poderosa cola que puede usar para atacar a los enemigos en cualquiera de sus 3 casillas posteriores. Necesita un test de HC y un objetivo en esas casillas. Hace 1d6+1 DAÑ y provoca aturdimiento. Este ataque es gratuito (0 AP) y solo se puede hacer 1 por activación."
+        },
+        {
+            "Habilidad": "Corrosivo",
+            "Descripcion": "(Pasiva) El enemigo causa corrosión en todos los metales salvo el Mithril y la plata. Armaduras de rango 3 o 4 golpeadas con esta habilidad pierden 1 punto de durabilidad, incluso si el daño es menor que el valor defensivo de la armadura. Cualquier arma de metal que golpee a una criatura con esta habilidad y le cause una cantidad impar de daño pierde 1 punto de durabilidad."
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+        {
+            "Habilidad": "",
+            "Descripcion": ""
+        },
+    ]
+}

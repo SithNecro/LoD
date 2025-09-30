@@ -51,20 +51,20 @@ Promise.all([
 let habilidadesDict = {};
 
 fetch("json/Monstruos_habilidades.json")
-    .then(r => r.json())
-    .then(data => {
-        data.Especiales.forEach(h => {
-            // Normalizamos: minúsculas, sin tildes, y X como comodín
-            const key = normalizarHabilidad(h.Habilidad);
-            habilidadesDict[key] = h.Descripcion;
-        });
-    });
+  .then(r => r.json())
+  .then(data => {
+      data.Especiales.forEach(h => {
+          // Normalizamos: minúsculas, sin tildes, y X como comodín
+          const key = normalizarHabilidad(h.Habilidad);
+          habilidadesDict[key] = h.Descripcion;
+      });
+  });
 
 function normalizarHabilidad(str) {
     return str
-        .toLowerCase()
-        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quitar acentos
-        .replace(/\bx\b/g, "x"); // la X se queda en minúscula
+      .toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quitar acentos
+      .replace(/\bx\b/g, "x"); // la X se queda en minúscula
 }
 
 const togglePanelBtn = document.getElementById("togglePanelBtn");
@@ -218,9 +218,7 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
             </div>`;
     });
     vidasGrid += "</div>";
-   const habilidadesHTML = (monster.habilidades || [])
-    .map(h => `<p>${renderHabilidad(h)}</p>`)
-    .join("");
+
     // --- HTML principal ---
     wrapper.innerHTML = `
         <button class="remove-btn">X</button>
@@ -265,8 +263,7 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
             </div>
 
             <div class="monster-right">
-            
-                  ${habilidadesHTML}
+                ${monster.especiales.map(h => renderHabilidad(h)).join(", ")}
             </div>
         </div>
 
@@ -274,36 +271,25 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
 
         ${vidasGrid}
     `;
-  function renderHabilidad(rawHtml) {
-    // 1. Extraer el contenido del <strong>...</strong>
-    const match = rawHtml.match(/<strong[^>]*>([^<:]+):?<\/strong>/i);
-    if (!match) {
-        return rawHtml; // no hay strong, lo dejamos como está
-    }
+function renderHabilidad(nombre) {
+    const norm = normalizarHabilidad(nombre);
 
-    let habilidadName = match[1].trim(); // ej. "Imbecil"
-
-    // 2. Normalizar (minúsculas, quitar acentos, tratar X como comodín)
-    const norm = normalizarHabilidad(habilidadName);
-
-    // 3. Buscar en el diccionario
+    // Buscar coincidencia exacta
     let descripcion = habilidadesDict[norm];
 
-    // 4. Manejar habilidades con X (ej. "miedo 3" → "miedo x")
+    // Buscar patrón con X → ej: "ataque multiple 3" debe coincidir con "ataque multiple x"
     if (!descripcion) {
         const conX = norm.replace(/\d+/g, "x");
         descripcion = habilidadesDict[conX];
     }
 
-    // 5. Si existe descripción, añadimos tooltip
     if (descripcion) {
         return `<span class="tooltip-habilidad" data-tippy-content="${descripcion}">
-                    ${rawHtml}
+                   ${nombre}
                 </span>`;
+    } else {
+        return nombre; // si no hay match, lo dejamos normal
     }
-
-    // Si no hay descripción, devolvemos el HTML tal cual
-    return rawHtml;
 }
     // --- Botón eliminar ---
     wrapper.querySelector(".remove-btn").addEventListener("click", () => {
@@ -458,14 +444,17 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
 
 
     // Inicializar tooltips solo dentro de esta carta
-    tippy(wrapper.querySelectorAll('.tooltip-hechizo, .tooltip-habilidad'), {
+    tippy(wrapper.querySelectorAll('.tooltip-hechizo'), {
         allowHTML: true,
         animation: 'scale',
         theme: 'carta',
         placement: 'top',
         maxWidth: 500,
     });
-
+tippy(card.querySelectorAll('.tooltip-habilidad'), {
+  allowHTML: true,
+  theme: 'carta'
+});
     // 🔹 Tooltip para el tipo de monstruo
     const tipoEl = wrapper.querySelector(".monster-basic p span.tipo-monstruo");
     if (tipoEl) {

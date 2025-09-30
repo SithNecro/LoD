@@ -1457,7 +1457,7 @@
       "DES": 40,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>En los huesos:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
+        "<strong style='color:#d4af37;'>¡En los huesos!:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
         "<strong style='color:#d4af37;'>Armas malditas:</strong> El daño causado por un arma maldita también reduce 1 punto de Cordura."
       ]
     },
@@ -1997,8 +1997,8 @@
       "M": 7,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>AutoAtaque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
-        "<strong style='color:#d4af37;'>Actúa primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
+        "<strong style='color:#d4af37;'>Auto Ataque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
+        "<strong style='color:#d4af37;'>Actuar Primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
         "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
       ]
     },

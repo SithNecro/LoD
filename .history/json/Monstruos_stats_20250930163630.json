@@ -35,7 +35,7 @@
       "M": 7,
       "DES": 30,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Patada:</strong> Puede hacer un ataque gratuito (0 PA) contra un héroe adyacente detrás. 1d10+2 DAÑ."
+        "Patada: Puede hacer un ataque gratuito (0 PA) contra un héroe adyacente detrás. 1d10+2 DAÑ."
       ]
     },
     {
@@ -151,7 +151,7 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con 1 (1d6).",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra.",
@@ -403,7 +403,7 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con un 1 (1d6).",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra.",
@@ -506,7 +506,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Volador:</strong> Mueve a través de casillas ocupadas, ignora ZDC.",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Maestro de los acertijos:</strong> Ver reglas"
+        "<strong style='color:#d4af37;'>Maestro de acertijos:</strong> Ver reglas"
       ]
     },
     {
@@ -547,7 +547,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Aliento de Fuego:</strong> 1d10+5 DAÑ en casilla objetivo y 1d6+5 DAÑ en las 24 casillas adyacentes.",
         "<strong style='color:#d4af37;'>Terror 10:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
-        "<strong style='color:#d4af37;'>X-Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>ExtraEnorme:</strong> Ver en la Pag 9 del Bestiario.",
         "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario.",
         "<strong style='color:#d4af37;'>Ataque múltiple 2</strong>"
       ]
@@ -604,7 +604,7 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT por turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT por turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con 1 (1d6).",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra",
@@ -650,7 +650,7 @@
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
         "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario",
-        "<strong style='color:#d4af37;'>Lanzarrocas:</strong> 1d12+BD a distancia cuando no tiene Héroes adyacentes. Objetivo aleatorio.",
+        "<strong style='color:#d4af37;'>Lanzarocas:</strong> 1d12+BD a distancia cuando no tiene Héroes adyacentes. Objetivo aleatorio.",
         "<strong style='color:#d4af37;'>Armas rústicas:</strong> Martillo de Guerra"
       ]
     },
@@ -688,8 +688,8 @@
       "DES": 30,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>X-Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Ataque Múltiple Hidra:</strong> Ver reglas especiales en el Bestiario."
+        "<strong style='color:#d4af37;'>ExtraEnorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Ataque Múltiple (Hidra):</strong> Ver reglas especiales en el Bestiario."
       ]
     },
     {
@@ -727,7 +727,7 @@
       "DES": 30,
       "habilidades": [
         "<strong style='color:#d4af37;'>Terror 8:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
-        "<strong style='color:#d4af37;'>X-Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>ExtraEnorme:</strong> Ver en la Pag 9 del Bestiario."
       ]
     },
     {
@@ -745,7 +745,7 @@
       "M": 9,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT por turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT por turno.",
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ en carga."
       ]
     }
@@ -1355,7 +1355,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Maestro de los Muertos:</strong> 1 No muerto (incluso a 0 VIT) recupera toda su salud. Si no se puede, el Vampiro gana 1d6 VIT. Si ya estaba lleno, realiza un ataque normal.",
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Ultra rápido:</strong> 2 fichas de iniciativa, se activa 2 veces por turno."
       ]
     },
@@ -1396,7 +1396,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Seducción:</strong> Test de DET o el Héroe es seducido. Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Rápido:</strong> 2 fichas de iniciativa, se activa 2 veces por turno, solo 1AP en su segunda activación."
       ]
     },
@@ -1436,7 +1436,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad."
       ]
@@ -1457,7 +1457,7 @@
       "DES": 40,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>En los huesos:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
+        "<strong style='color:#d4af37;'>¡En los huesos!:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
         "<strong style='color:#d4af37;'>Armas malditas:</strong> El daño causado por un arma maldita también reduce 1 punto de Cordura."
       ]
     },
@@ -1533,7 +1533,7 @@
       "M": 4,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad."
       ]
@@ -1574,7 +1574,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 extra DAÑ.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 extra DAÑ.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
       ]
     },
@@ -1716,7 +1716,7 @@
       "M": 4,
       "DES": 40,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Mágico:</strong> Desvanece cuando es destruido — No se puede registrar.",
         "Si es invocado por un Héroe, el elemental gana 2VIT por cada NM por encima de 3, y +1DAÑ por cada NM por encima de 6."
       ]
@@ -1818,7 +1818,7 @@
       "DES": 35,
       "habilidades": [
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad.",
-        "<strong style='color:#d4af37;'>Psíquico:</strong> Todos los Héroes -20 DET mientras el Psíquico esté vivo. No es un efecto acumulativo."
+        "<strong style='color:#d4af37;'>Mentalista:</strong> Todos los Héroes -20 DET mientras el Psíquico esté vivo. No es un efecto acumulativo."
       ]
     },
     {
@@ -1918,7 +1918,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Regeneración:</strong> 1d3 VIT cada turno.",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 daño extra.",
+        "<strong style='color:#d4af37;'>Daño Extra por fuego:</strong> 1d6 daño extra.",
         "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
       ]
     },
@@ -1939,7 +1939,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Mágico:</strong> Desvanece cuando es destruido — No se puede registrar.",
         "<strong style='color:#d4af37;'>Daño de Fuego:</strong> Todos los ataques causan daño de Fuego.",
-        "<strong style='color:#d4af37;'>Débil a Agua:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Agua:</strong> 1d6 DAÑ extra.",
         "Si es invocado por un Héroe, el elemental gana 2VIT por cada NM por encima de 3, y +1DAÑ por cada NM por encima de 6."
       ]
     },
@@ -1997,8 +1997,8 @@
       "M": 7,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>AutoAtaque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
-        "<strong style='color:#d4af37;'>Actúa primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
+        "<strong style='color:#d4af37;'>Auto Ataque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
+        "<strong style='color:#d4af37;'>Actuar Primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
         "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
       ]
     },
@@ -2418,7 +2418,7 @@
       "DES": 50,
       "habilidades": [
         "<strong style='color:#d4af37;'>Esporas:</strong> Cualquier héroe a 2 casillas de distancia debe superar una tirada de DET por cada acción realizada. Si falla, la acción se anula.",
-        "<strong style='color:#d4af37;'>Bomba de Esporas:</strong> Ataque en área. Causa 1d6 DAÑ al objetivo ignorando armadura y AN. Los personajes adyacentes no-Fúngidos reciben 1d4 DAÑ, sin armadura y AN. Los personajes dañados deberán superar una tirada de CON o serán aturdidos."
+        "<strong style='color:#d4af37;'>Bombas de Esporas (Arma):</strong> Ataque en área. Causa 1d6 DAÑ al objetivo ignorando armadura y AN. Los personajes adyacentes no-Fúngidos reciben 1d4 DAÑ, sin armadura y AN. Los personajes dañados deberán superar una tirada de CON o serán aturdidos."
       ]
     },
     {
@@ -2714,7 +2714,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Seducción:</strong> Héroe DET o es seducido. Falla: Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 extra DAÑ",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 extra DAÑ",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad, conoce Toque Vampírico, Bola de Fuego, Curación.",
         "Daga, Armadura 1"
       ]
@@ -2918,9 +2918,9 @@
       "M": 4,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno."
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno."
       ]
     },
     {
@@ -2940,7 +2940,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HR/AA.",
         "<strong style='color:#d4af37;'>Seducción:</strong> Héroe DET o es seducido. Falla: Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 daño extra.",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 daño extra.",
         "<strong style='color:#d4af37;'>Rápido:</strong> 2 fichas de iniciativa, se activa 2 veces por turno, solo 1AP en su segunda activación.",
         "Espada Larga, Armadura 2"
       ]
@@ -3038,7 +3038,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad.",
         "Daga",
@@ -3060,7 +3060,7 @@
       "M": 6,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d3 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d3 VIT cada turno.",
         "<strong style='color:#d4af37;'>Frenesí:</strong> Si daña a un Héroe, hará un ataque normal inmediato adicional.",
         "Espada Ancha, Armadura 2",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA",
@@ -3082,7 +3082,7 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con un 1 (1d6).",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
         "Martillo de Guerra, Armadura 2",
@@ -3146,7 +3146,7 @@
       "M": 4,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad, conoce Levantar a los Muertos, 2 de apoyo, 3 a melé y 2 a distancia.",
         "Daga, Armadura 0"
@@ -3333,7 +3333,7 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",

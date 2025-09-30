@@ -17,7 +17,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Escurridizo:</strong> Mueve a través de cualquier casilla y no penaliza por ZDC.",
         "<strong style='color:#d4af37;'>Oído fino:</strong> Añade +1 a la iniciativa del enemigo.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -35,7 +35,7 @@
       "M": 7,
       "DES": 30,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Patada:</strong> Puede hacer un ataque gratuito (0 PA) contra un héroe adyacente detrás. 1d10+2 DAÑ."
+        "Patada: Puede hacer un ataque gratuito (0 PA) contra un héroe adyacente detrás. 1d10+2 DAÑ."
       ]
     },
     {
@@ -56,7 +56,7 @@
         "<strong style='color:#d4af37;'>Autogolpe*:</strong> 1d4 de DAÑ automático por acción a todos los Héroes adyacentes. Cuando hayan sido dañados se reduce a 1d2.",
         "<strong style='color:#d4af37;'>Actúa primero:</strong> Siempre actúan primero en el primer turno.",
         "<strong style='color:#d4af37;'>Volador:</strong> Mueve a través de casillas ocupadas, ignora ZDC.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -113,8 +113,8 @@
       "DES": 50,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Volador:</strong> Mueve a través de casillas ocupadas, ignora ZDC."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Volador (E):</strong> Mueve a través de casillas ocupadas, ignora ZDC."
       ]
     },
     {
@@ -132,7 +132,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Enredar:</strong> Ver regla especial en Bestiario."
       ]
     },
@@ -151,9 +151,9 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con 1 (1d6).",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra.",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
@@ -194,8 +194,8 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Venenoso:</strong> Si el Héroe es herido, tira CON o envenenado. Si es envenenado, tira CON durante 1d10 turnos y si falla, pierde 1 VIT.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
       ]
     },
     {
@@ -215,7 +215,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Terror 10:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
         "<strong style='color:#d4af37;'>Venenoso:</strong> Si el Héroe es herido, tira CON o envenenado. Si es envenenado, tira CON durante 1d10 turnos y si falla, pierde 1 VIT.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -270,10 +270,10 @@
       "DES": 20,
       "habilidades": [
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con un 1 (1d6).",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra.",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos. Cuando hagas esto la otra cabeza hará un ataque normal en esta acción.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario."
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
       ]
     },
     {
@@ -310,7 +310,7 @@
       "DES": 35,
       "habilidades": [
         "<strong style='color:#d4af37;'>Oído fino:</strong> Añade +1 a la iniciativa del enemigo.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -403,9 +403,9 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con un 1 (1d6).",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra.",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
@@ -448,7 +448,7 @@
       "DES": 30,
       "habilidades": [
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ en carga.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -468,7 +468,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Enfermedad:</strong> Héroe herido, tira CON o enfermará.",
         "<strong style='color:#d4af37;'>Escurridizo:</strong> Mueve a través de cualquier casilla y no penaliza por ZDC. No puede detenerse en una casilla ocupada.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -504,9 +504,9 @@
       "M": 6,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Volador:</strong> Mueve a través de casillas ocupadas, ignora ZDC.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Maestro de los acertijos:</strong> Ver reglas"
+        "<strong style='color:#d4af37;'>Volador (E):</strong> Mueve a través de casillas ocupadas, ignora ZDC.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Maestro de acertijos:</strong> Ver reglas"
       ]
     },
     {
@@ -524,7 +524,7 @@
       "M": 6,
       "DES": 40,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ en carga.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
@@ -547,8 +547,8 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Aliento de Fuego:</strong> 1d10+5 DAÑ en casilla objetivo y 1d6+5 DAÑ en las 24 casillas adyacentes.",
         "<strong style='color:#d4af37;'>Terror 10:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
-        "<strong style='color:#d4af37;'>X-Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario.",
+        "<strong style='color:#d4af37;'>ExtraEnorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar.",
         "<strong style='color:#d4af37;'>Ataque múltiple 2</strong>"
       ]
     },
@@ -585,8 +585,8 @@
       "M": 6,
       "DES": 30,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Volador:</strong> Mueve a través de casillas ocupadas, ignora ZDC.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Volador (E):</strong> Mueve a través de casillas ocupadas, ignora ZDC.",
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -604,9 +604,9 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT por turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT por turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con 1 (1d6).",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Apestoso:</strong> Héroes adyacentes -10HC.",
@@ -648,9 +648,9 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Terror 8:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario",
-        "<strong style='color:#d4af37;'>Lanzarrocas:</strong> 1d12+BD a distancia cuando no tiene Héroes adyacentes. Objetivo aleatorio.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha.",
+        "<strong style='color:#d4af37;'>Lanzarocas:</strong> 1d12+BD a distancia cuando no tiene Héroes adyacentes. Objetivo aleatorio.",
         "<strong style='color:#d4af37;'>Armas rústicas:</strong> Martillo de Guerra"
       ]
     },
@@ -688,8 +688,8 @@
       "DES": 30,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>X-Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Ataque Múltiple Hidra:</strong> Ver reglas especiales en el Bestiario."
+        "<strong style='color:#d4af37;'>ExtraEnorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Ataque Múltiple (Hidra):</strong> Ver reglas especiales en el Bestiario."
       ]
     },
     {
@@ -727,7 +727,7 @@
       "DES": 30,
       "habilidades": [
         "<strong style='color:#d4af37;'>Terror 8:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
-        "<strong style='color:#d4af37;'>X-Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>ExtraEnorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -745,7 +745,7 @@
       "M": 9,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT por turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT por turno.",
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ en carga."
       ]
     }
@@ -766,9 +766,9 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Terror 8:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario.",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar.",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra."
       ]
     },
@@ -823,8 +823,8 @@
       "M": 6,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver reglas."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
       ]
     },
     {
@@ -878,8 +878,8 @@
       "M": 6,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar.",
         "<strong style='color:#d4af37;'>Frenesí:</strong> Si daña a un Héroe, hará un ataque normal inmediato adicional."
       ]
     },
@@ -916,8 +916,8 @@
       "M": 6,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
       ]
     }
   ],
@@ -937,7 +937,7 @@
       "M": 4,
       "DES": 30,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Engullir:</strong> Ver reglas.",
         "<strong style='color:#d4af37;'>Lengüetazo:</strong> Ataque que apunta a 1 casilla de distancia. Fallo en bloqueo o esquiva moverá al Héroe junto al sapo, cambiando la posición con cualquiera que estuviese en ella. Si no se puede, jugar Engullir."
       ]
@@ -959,7 +959,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Sangrado:</strong> Si el Raptor daña a su objetivo, sacudirá violentamente su cabeza causando más daño. Si el Héroe falla FUE, suma otro 1d6 DAÑ.",
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ en carga.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -1014,7 +1014,7 @@
       "DES": 45,
       "habilidades": [
         "<strong style='color:#d4af37;'>Petrificar:</strong> Héroe adyacente aleatorio deberá tirar DET o ser petrificado 1d6 turnos. Mientras lo está, el Héroe no puede ser objetivo de nada mientras haya otros vivos. El Héroe no puede hacer nada petrificado.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -1086,7 +1086,7 @@
       "M": 4,
       "DES": 30,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Lento:</strong> Mueve solo una vez por turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con 1 (1d6).",
         "<strong style='color:#d4af37;'>Aliento de Fuego:</strong> Golpe automático en 4 casillas, frontal y diagonal. 1d10 DAÑ de fuego."
@@ -1184,7 +1184,7 @@
       "DES": 25,
       "habilidades": [
         "<strong style='color:#d4af37;'>Odia a los Enanos:</strong> +5 HC contra Enanos. Si está adyacente a dos Héroes distintos, atacará al enano si es posible.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver regla especial en el Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -1334,7 +1334,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA."
       ]
     },
@@ -1355,7 +1355,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Maestro de los Muertos:</strong> 1 No muerto (incluso a 0 VIT) recupera toda su salud. Si no se puede, el Vampiro gana 1d6 VIT. Si ya estaba lleno, realiza un ataque normal.",
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Ultra rápido:</strong> 2 fichas de iniciativa, se activa 2 veces por turno."
       ]
     },
@@ -1396,7 +1396,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Seducción:</strong> Test de DET o el Héroe es seducido. Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Rápido:</strong> 2 fichas de iniciativa, se activa 2 veces por turno, solo 1AP en su segunda activación."
       ]
     },
@@ -1436,7 +1436,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad."
       ]
@@ -1457,7 +1457,7 @@
       "DES": 40,
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>En los huesos:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
+        "<strong style='color:#d4af37;'>¡En los huesos!:</strong> Reduce el daño de proyectiles en -2. Recibe +2 de armas aplastantes.",
         "<strong style='color:#d4af37;'>Armas malditas:</strong> El daño causado por un arma maldita también reduce 1 punto de Cordura."
       ]
     },
@@ -1533,7 +1533,7 @@
       "M": 4,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad."
       ]
@@ -1555,7 +1555,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Lento:</strong> Sólo mueve una vez por turno.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Armas Rústicas:</strong> Martillo de Guerra."
       ]
     },
@@ -1574,7 +1574,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 extra DAÑ.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 extra DAÑ.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
       ]
     },
@@ -1655,7 +1655,7 @@
         "<strong style='color:#d4af37;'>En los Huesos:</strong> Armas a distancia -2 DAÑ",
         "<strong style='color:#d4af37;'>Parte:</strong> Da Harina de Huesos además de R2.",
         "<strong style='color:#d4af37;'>Miedo 3:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -1695,7 +1695,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Lento:</strong> Sólo puede mover una vez por turno.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno."
       ]
     }
@@ -1716,7 +1716,7 @@
       "M": 4,
       "DES": 40,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Mágico:</strong> Desvanece cuando es destruido — No se puede registrar.",
         "Si es invocado por un Héroe, el elemental gana 2VIT por cada NM por encima de 3, y +1DAÑ por cada NM por encima de 6."
       ]
@@ -1736,7 +1736,7 @@
       "M": 3,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Demonio:</strong> Recibir 10 de DAÑ Mágico, fuerza al Demonio a una tirada DET. Si falla será devuelto al Vacío. Retira la figura, no se puede registrar.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Levitar:</strong> Inmune a trampas y fosos.",
@@ -1818,7 +1818,7 @@
       "DES": 35,
       "habilidades": [
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad.",
-        "<strong style='color:#d4af37;'>Psíquico:</strong> Todos los Héroes -20 DET mientras el Psíquico esté vivo. No es un efecto acumulativo."
+        "<strong style='color:#d4af37;'>Mentalista:</strong> Todos los Héroes -20 DET mientras el Psíquico esté vivo. No es un efecto acumulativo."
       ]
     },
     {
@@ -1857,7 +1857,7 @@
       "DES": 30,
       "habilidades": [
         "<strong style='color:#d4af37;'>Terror 10:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Demonio:</strong> Recibir 10 de DAÑ Mágico, fuerza al Demonio a una tirada DET. Si falla será devuelto al Vacío. Retira la figura, no se puede registrar."
       ]
     },
@@ -1878,7 +1878,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Duro como una piedra:</strong> Inmune armas a distancia, mitad de daño de armas empuñadas salvo Plata o Mithril.",
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Quiebrasuelos:</strong> 1d10 DAÑ y aturde (-1PA) en las 8 casillas adyacentes."
       ]
     },
@@ -1917,9 +1917,9 @@
       "DES": 20,
       "habilidades": [
         "<strong style='color:#d4af37;'>Regeneración:</strong> 1d3 VIT cada turno.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 daño extra.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Daño Extra por fuego:</strong> 1d6 daño extra.",
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -1939,7 +1939,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Mágico:</strong> Desvanece cuando es destruido — No se puede registrar.",
         "<strong style='color:#d4af37;'>Daño de Fuego:</strong> Todos los ataques causan daño de Fuego.",
-        "<strong style='color:#d4af37;'>Débil a Agua:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al Agua:</strong> 1d6 DAÑ extra.",
         "Si es invocado por un Héroe, el elemental gana 2VIT por cada NM por encima de 3, y +1DAÑ por cada NM por encima de 6."
       ]
     },
@@ -1997,9 +1997,9 @@
       "M": 7,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>AutoAtaque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
-        "<strong style='color:#d4af37;'>Actúa primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
+        "<strong style='color:#d4af37;'>Auto Ataque*:</strong> Ataca automáticamente causando 1d6 DAÑ (a piernas) por acción a todos los héroes adyacentes. Si ha recibido daño, el daño se reduce a 1d2.",
+        "<strong style='color:#d4af37;'>Actuar Primero:</strong> La criatura siempre actúa primero en el primer turno, sin importar las fichas de iniciativa.",
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -2035,11 +2035,11 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Bramido:</strong> Los heroes en 4 casillas deben pasar una tirada de DET o serán aturdidos.",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Carga Feroz:</strong> +1d4 DAÑ a la carga.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -2059,7 +2059,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Enfermedad:</strong> Un héroe que recibe daño debe pasar una tirada de CON o contraerá una enfermedad.",
         "<strong style='color:#d4af37;'>Miedo 3:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario."
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
       ]
     },
     {
@@ -2188,9 +2188,9 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Enfermedad:</strong> Un héroe que recibe daño debe pasar una tirada de CON o contraerá una enfermedad.",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Pirofobia:</strong> Ver en la Pag 11 del Bestiario.",
+        "<strong style='color:#d4af37;'>Pirofobia:</strong> Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha.",
         "<strong style='color:#d4af37;'>Demonio:</strong> El daño mágico de 10 obliga al demonio a realizar una tirada de DET. Si falla, el demonio vuelve al vacío. Quita la miniatura y dala por muerta. No puede ser registrada.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -2249,7 +2249,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Trepamuros:</strong> Puede moverse por muros e ignorar ZDC.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -2398,7 +2398,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando su HD.",
         "<strong style='color:#d4af37;'>Esporas:</strong> Cualquier héroe a 2 casillas de distancia debe superar una tirada de DET por cada acción realizada. Si falla, la acción se anula.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
       ]
     },
@@ -2418,7 +2418,7 @@
       "DES": 50,
       "habilidades": [
         "<strong style='color:#d4af37;'>Esporas:</strong> Cualquier héroe a 2 casillas de distancia debe superar una tirada de DET por cada acción realizada. Si falla, la acción se anula.",
-        "<strong style='color:#d4af37;'>Bomba de Esporas:</strong> Ataque en área. Causa 1d6 DAÑ al objetivo ignorando armadura y AN. Los personajes adyacentes no-Fúngidos reciben 1d4 DAÑ, sin armadura y AN. Los personajes dañados deberán superar una tirada de CON o serán aturdidos."
+        "<strong style='color:#d4af37;'>Bombas de Esporas (Arma):</strong> Ataque en área. Causa 1d6 DAÑ al objetivo ignorando armadura y AN. Los personajes adyacentes no-Fúngidos reciben 1d4 DAÑ, sin armadura y AN. Los personajes dañados deberán superar una tirada de CON o serán aturdidos."
       ]
     },
     {
@@ -2437,7 +2437,7 @@
       "DES": 35,
       "habilidades": [
         "<strong style='color:#d4af37;'>Esporas:</strong> Cualquier héroe a 2 casillas de distancia debe superar una tirada de DET por cada acción realizada. Si falla, la acción se anula.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA."
       ]
     }
@@ -2575,7 +2575,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Duro como una piedra:</strong> Inmune a armas a distancia, mitad de daño de armas empuñadas salvo Plata o Mithril.",
         "<strong style='color:#d4af37;'>Miedo 3:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -2714,7 +2714,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Seducción:</strong> Héroe DET o es seducido. Falla: Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 extra DAÑ",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 extra DAÑ",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad, conoce Toque Vampírico, Bola de Fuego, Curación.",
         "Daga, Armadura 1"
       ]
@@ -2796,7 +2796,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Trepamuros:</strong> Puede moverse por muros e ignorar ZDC.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "Espadón, Armadura 2"
       ]
     },
@@ -2859,7 +2859,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Especial:</strong> Golpea 2 veces en cada ataque, incluso en ataques poderosos. Lanza los dados para cada ataque.",
         "2 Goblins Muertos (Martillos de Batalla)",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario."
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
       ]
     },
     {
@@ -2918,9 +2918,9 @@
       "M": 4,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno."
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno."
       ]
     },
     {
@@ -2940,7 +2940,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Miedo 10:</strong> DET para atacar, fallo: -10 HC/HR/AA.",
         "<strong style='color:#d4af37;'>Seducción:</strong> Héroe DET o es seducido. Falla: Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista.",
-        "<strong style='color:#d4af37;'>Débil a Plata:</strong> 1d6 daño extra.",
+        "<strong style='color:#d4af37;'>Débil a la Plata:</strong> 1d6 daño extra.",
         "<strong style='color:#d4af37;'>Rápido:</strong> 2 fichas de iniciativa, se activa 2 veces por turno, solo 1AP en su segunda activación.",
         "Espada Larga, Armadura 2"
       ]
@@ -3038,7 +3038,7 @@
       "M": 4,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad.",
         "Daga",
@@ -3060,7 +3060,7 @@
       "M": 6,
       "DES": 50,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d3 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d3 VIT cada turno.",
         "<strong style='color:#d4af37;'>Frenesí:</strong> Si daña a un Héroe, hará un ataque normal inmediato adicional.",
         "Espada Ancha, Armadura 2",
         "<strong style='color:#d4af37;'>Miedo 7:</strong> DET para atacar, fallo: -10 HC/HD/AA",
@@ -3082,9 +3082,9 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con un 1 (1d6).",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "Martillo de Guerra, Armadura 2",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA"
@@ -3125,8 +3125,8 @@
       "M": 6,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar.",
         "<strong style='color:#d4af37;'>Frenesí:</strong> Si daña a un Héroe, hará un ataque normal inmediato adicional.",
         "Martillo de Guerra, Armadura 2"
       ]
@@ -3146,7 +3146,7 @@
       "M": 4,
       "DES": 35,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Débil a Fuego:</strong> 1d6 DAÑ extra.",
+        "<strong style='color:#d4af37;'>Débil al fuego:</strong> 1d6 DAÑ extra.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA",
         "<strong style='color:#d4af37;'>Mago:</strong> Puede lanzar hechizos usando HD como habilidad, conoce Levantar a los Muertos, 2 de apoyo, 3 a melé y 2 a distancia.",
         "Daga, Armadura 0"
@@ -3167,7 +3167,7 @@
       "M": 6,
       "DES": 40,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ cuando carga.",
         "<strong style='color:#d4af37;'>Frenesí:</strong> Si daña a un Héroe, hará un ataque normal inmediato adicional.",
@@ -3292,7 +3292,7 @@
       "habilidades": [
         "<strong style='color:#d4af37;'>Terror 5:</strong> DET-20, fallo: -10 HC/HD/AA y aturdido 1PA.",
         "<strong style='color:#d4af37;'>Venenoso:</strong> Si el Héroe es herido, CON o envenenado. Si es envenenado, tira CON durante 1d10 turnos y si falla, pierde 1 VIT.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Invocar crías:</strong> Invoca una Araña Gigante si se activa esta habilidad especial."
       ]
     },
@@ -3312,10 +3312,10 @@
       "DES": 20,
       "habilidades": [
         "<strong style='color:#d4af37;'>Imbécil:</strong> Inactivo con un 1 (1d6)",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Martillo de Guerra:</strong> Causa enfermedades igual que el veneno.",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos. Cuando hagas esto la otra cabeza hará un ataque normal en esta acción.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario."
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
       ]
     },
     {
@@ -3333,8 +3333,8 @@
       "M": 6,
       "DES": 20,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Regeneración:</strong> 1d6 VIT cada turno.",
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Regenerar:</strong> 1d6 VIT cada turno.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
         "Martillo de Guerra Mágico (AP2), Armadura 1"
@@ -3374,7 +3374,7 @@
       "M": 6,
       "DES": 40,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
         "<strong style='color:#d4af37;'>Bramido:</strong> Todos los Héroes deben pasar un test DET o quedar aturdidos.",
         "<strong style='color:#d4af37;'>Carga feroz:</strong> +1d4 DAÑ cuando carga.",
         "<strong style='color:#d4af37;'>Miedo 5:</strong> DET para atacar, fallo: -10 HC/HD/AA.",
@@ -3417,8 +3417,8 @@
       "M": 6,
       "DES": 25,
       "habilidades": [
-        "<strong style='color:#d4af37;'>Enorme:</strong> Ver en la Pag 9 del Bestiario.",
-        "<strong style='color:#d4af37;'>Barrido:</strong> Ver en la Pag 8 del Bestiario.",
+        "<strong style='color:#d4af37;'>Enorme:</strong> La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2).",
+        "<strong style='color:#d4af37;'>Barrido:</strong> Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar.",
         "Martillo de Guerra",
         "Armadura 2"
       ]

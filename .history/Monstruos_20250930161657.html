@@ -969,7 +969,7 @@
                 animation: 'scale',
                 theme: 'carta',
                 placement: 'top',
-                maxWidth: 500,
+                maxWidth: 250,
             });
 
             return wrapper;
@@ -999,46 +999,4 @@
                 const hechizos = (data.hechizos || []).map(i => equipo.Hechizos[i]).filter(Boolean);
                 const card = renderCard(monster, data.category, armas, armaduras, hechizos, data.color || "#fff", data.vidas || null, false);
                 card.dataset.info = JSON.stringify(data);
-                container.appendChild(card);
-            });
-        }
-
-        document.getElementById("addMonsterBtn").addEventListener("click", () => {
-            const category = document.getElementById("monsterCategorySelect").value;
-            const monsterName = document.getElementById("monsterSelect").value;
-            if (!category || !monsterName) return;
-            const monster = (monstersByCategory[category] || []).find(m => m.nombre === monsterName);
-            if (!monster) return;
-
-            const armasSel = [...document.getElementById("armaSelect").selectedOptions].map(o => parseInt(o.value));
-            const armadurasSel = [...document.getElementById("armaduraSelect").selectedOptions].map(o => parseInt(o.value));
-            const hechizosSel = [...document.getElementById("hechizoSelect").selectedOptions].map(o => parseInt(o.value));
-            const colorSel = document.getElementById("colorSelect").value;
-
-            const armas = armasSel.map(i => equipo.Armas[i]).filter(Boolean);
-            const armaduras = armadurasSel.map(i => equipo.Armaduras[i]).filter(Boolean);
-            const hechizos = hechizosSel.map(i => equipo.Hechizos[i]).filter(Boolean);
-
-            const card = renderCard(monster, category, armas, armaduras, hechizos, colorSel);
-            const infoObj = { monsterName, category, armas: armasSel, armaduras: armadurasSel, hechizos: hechizosSel, color: colorSel, vidas: card._vidas };
-            card.dataset.info = JSON.stringify(infoObj);
-            document.getElementById("monsterContainer").appendChild(card);
-            saveToLocalStorage();
-        });
-
-        function populateMonstersOnCategoryChange() {
-            // helper: nothing extra
-        }
-
-        document.addEventListener("mousedown", function (e) {
-            const target = e.target;
-            if (target.tagName === "OPTION" && target.parentElement && target.parentElement.multiple) {
-                e.preventDefault();
-                target.selected = !target.selected;
-            }
-        });
-
-    </script>
-</body>
-
-</html>
+                container.appendC
