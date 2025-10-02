@@ -1,0 +1,241 @@
+        .ql-toolbar.ql-snow {
+            border: 2px solid #8B4513 !important;
+            background: rgba(35, 35, 35, 0.1);
+
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-label {
+            margin-bottom: 3px !important;
+        }
+
+        .ql-snow.ql-toolbar button,
+        .ql-snow .ql-toolbar button {
+            background: #ff6b02;
+        }
+
+        .ql-editor.ql-blank::before {
+            color: white;
+            /* color del placeholder */
+            opacity: 0.8;
+            /* opcional: un poco translúcido */
+            font-style: italic;
+            /* opcional: estilo cursiva */
+        }
+
+        .ql-snow .ql-picker-label {
+            background: #ff6b02;
+        }
+
+        .ql-editor {
+            border: 2px solid #8B4513 !important;
+            background: rgba(35, 35, 35, 0.1);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .notas-quill {
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+
+            border-radius: 5px;
+            /* opcional, esquinas redondeadas */
+
+        }
+
+        .notas {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            resize: none;
+            padding: 10px;
+        }
+
+        .hero-card {
+            max-height: 90vh;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .img-preview {
+            max-width: 100%;
+            max-height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .hero-card-title {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            /* igual que la tarjeta */
+            z-index: 10;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: url('images/interface/fondo_losetas.jpg') no-repeat center center fixed;
+            background-size: cover;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(35, 35, 35, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+        }
+
+        h5 {
+            text-align: center;
+            color: #ff6b02;
+        }
+
+        h1,
+        .hero-card-title {
+            text-align: center;
+            color: #ff6b02;
+            margin-bottom: 30px;
+            padding-bottom: 1px;
+            border-bottom: 2px solid #8B4513;
+            background: rgba(35, 35, 35, 0.1);
+        }
+
+        .container {
+            margin: 0 auto;
+            background: rgba(35, 35, 35, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #8B4513;
+        }
+
+        /* Chrome, Safari, Edge, Opera 
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }*/
+
+        /* Firefox 
+        input[type=number] {
+            -moz-appearance: textfield;
+        }*/
+
+        /* Inputs oscuros con texto claro */
+        .container input.form-control {
+            background: rgba(40, 40, 40, 0.9) !important;
+            color: #fff !important;
+            font-size: 16px;
+            border: 2px solid #a05c48 !important;
+            /* 👈 forzado */
+            border-radius: 8px;
+        }
+
+        /* Placeholder */
+        .container input.form-control::placeholder {
+            color: #bbb;
+            opacity: 1;
+        }
+
+        /* Focus */
+        .container input.form-control:focus {
+            border: 2px solid #8B4513 !important;
+            box-shadow: 0 0 8px rgba(139, 69, 19, 0.8);
+            background: rgba(50, 50, 50, 1);
+            color: #fff;
+        }
+
+        .hero-card {
+            background: rgba(40, 40, 40, 0.9) !important;
+            color: #fff;
+            border-radius: 12px;
+            border: 2px solid #5D4037;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            margin-bottom: 20px;
+            height: 100%;
+            /* Para que ocupe todo el alto de la columna */
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 800px;
+            /* Igual al contenedor */
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 800px;
+            /* Ambas caras ocupan lo mismo */
+            backface-visibility: hidden;
+            border-radius: 12px;
+        }
+
+        .flip-card-front {
+            background: rgba(40, 40, 40, 0.9);
+            color: white;
+        }
+
+        .flip-card-back {
+            background: rgba(25, 25, 25, 0.95);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+
+
+        /* Botón pequeño en esquina */
+        .flip-btn {
+            border: 2px solid #8B4513 !important;
+            top: 8px;
+            right: 8px;
+            z-index: 10;
+            display: inline-block;
+            /* o block si quieres que ocupe todo el ancho */
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+            /* asegurarte de que esté sobre otros elementos */
+        }
+    

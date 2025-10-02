@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Personajes</title>
+    <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="menu-acordeon.css">
+
+    <style>
+        /* Diseño básico */
+        #generarPDF {
+            width: 150px;
+            /* Ajusta el ancho según sea necesario */
+            height: 150px;
+            /* Ajusta la altura según sea necesario */
+            background-image: url('./img/traseras/downloadPDF.png');
+            background-size: cover;
+            /* Escala la imagen para cubrir todo el botón */
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+            /* Elimina el borde del botón */
+            cursor: pointer;
+            /* Cambia el cursor al pasar sobre el botón */
+        }
+
+
+
+        .reroll-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .stat {
+            margin-bottom: 5px;
+        }
+
+
+
+        .roll-select option.available {
+            color: #148e14;
+            font-weight: bold;
+        }
+
+        .roll-select option.unavailable {
+            color: red;
+            font-weight: bold;
+
+        }
+
+        table.stats-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.stats-table th,
+        table.stats-table td {
+            border: 2px solid #9d5c48;
+            padding: 2px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+
+
+
+       
+
+        .rigth-content {
+
+            width: 700px;
+            padding: 25px;
+            border-radius: 12px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+       
+        .buttons {
+            margin-top: 10px;
+            /* Reducir el espacio entre la imagen y los botones */
+        }
+
+        button {
+            padding: 5px 5px;
+            font-size: 12px;
+            cursor: pointer;
+            margin: 5px 0;
+            /* Reducir el margen vertical */
+
+        }
+
+        .cuadros_texto {
+            width: 100%;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            appearance: none;
+            font-weight: bold;
+            height: 30px;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            appearance: none;
+            font-weight: bold;
+        }
+
+
+
+        h1 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .character-preview {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8B4513;
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            width: 100%;
+        }
+
+        label {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            font-weight: bold;
+        }
+
+        p {
+            color: #d4af37;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+
+            text-align: center;
+            text-shadow: 1px 1px 2px #000;
+            font-weight: bold;
+        }
+
+        .btn_tirada {
+
+            width: 120px;
+            height: 120px;
+            background: url(img/interface/btn_lanzar_dados.png) no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            transition: box-shadow .2s, transform .1s, border-color .2s, background .2s;
+            appearance: none;
+
+        }
+
+        
+.menu.open~.main-div {
+    margin-left: 0px;
+    /* se desplaza cuando menú está abierto */
+}
+    </style>
+</head>
+
+<body style=" background-image: url('img/interface/fondo_tesoros.png');
+    background-size: cover;        /* la imagen cubre todo el viewport */
+    background-repeat: no-repeat;  /* no se repite */
+    background-position: center;   /* centrada */
+    margin: 0;
+    min-height: 100vh;             /* asegura que cubra el alto completo */
+">
+    <!-- Carga del menú lateral -->
+    <div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
+    </div>
+        <!-- Zona de contenido principal -->
+        <div class="main-content">
+            <!-- Columna izquierda (FAQ) con ancho fijo de 300px y centrado arriba -->
+
+            <h1>Creación del Personaje</h1>
+            <div class="stat">
+                <label for="Name">Nombre:</label>
+                <input class="cuadros_texto" id="Name" />
+                <label for="race">Raza:</label>
+                <select id="race" onchange="loadBaseStats()">
+                    <option value="Enano">Enano</option>
+                    <option value="Elfo">Elfo</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Humano">Humano</option>
+                    <option value="Semiogro">Semiogro</option>
+                    <option value="Pato">Pato</option>
+                </select>
+
+            </div>
+            <div>
+                <label><input type="checkbox" id="advantageOption" onchange="toggleAdvantage()"> Opción
+                    ventajosa</label>
+            </div>
+            <div class="stat">
+                <button class="btn_tirada" onclick="generateRolls()"></button>
+            </div>
+            <!-- Atributos Base en Tabla -->
+            <h1 id="estadisticasbaseh3" style="display: none;">Estadísticas Base</h3>
+                <div id="statics" class="stat" style="display: none;">
+                    <label for="class">Clase:</label>
+                    <select id="classSelect" onchange="updateClassStats()">
+                        <option value="SeleccionaClase">Selecciona la Clase</option>
+                        <option value="Alquimista">Alquimista</option>
+                        <option value="Bárbaro">Bárbaro</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Ladrón">Ladrón</option>
+                        <option value="Mago">Mago</option>
+                        <option value="Montaraz">Montaraz</option>
+                        <option value="Pícaro">Pícaro</option>
+                        <option value="Sacerdote Guerrero">Sacerdote Guerrero</option>
+                        <option value="Druida">Druida</option>
+                        <option value="Caballero">Caballero</option>
+                    </select>
+                </div>
+                <table id="stats-table" class="stats-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>FUE</th>
+                            <th>CON</th>
+                            <th>DES</th>
+                            <th>SAB</th>
+                            <th>DET</th>
+                            <th>VIT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="base-values">
+                            <td id="base-strength">-</td>
+                            <td id="base-constitution">-</td>
+                            <td id="base-dexterity">-</td>
+                            <td id="base-wisdom">-</td>
+                            <td id="base-determination">-</td>
+                            <td id="base-vitality">-</td>
+                        </tr>
+                        <tr id="roll-selectors" style="display: none;">
+                            <td><select id="select-strength" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select></td>
+                            <td><select id="select-constitution" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select>
+                            </td>
+                            <td><select id="select-dexterity" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select>
+                            </td>
+                            <td><select id="select-wisdom" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select></td>
+                            <td><select id="select-determination" class="roll-select"
+                                    onchange="updateAdjustedStats()"></select>
+                            </td>
+                            <td id="roll-vitality">-</td>
+                        </tr>
+                        <tr id="roll-values" style="display: none;">
+                            <td id="roll-strength">-</td>
+                            <td id="roll-constitution">-</td>
+                            <td id="roll-dexterity">-</td>
+                            <td id="roll-wisdom">-</td>
+                            <td id="roll-determination">-</td>
+                            <td id="roll-vitality-2">-</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" id="reroll-points" style="text-align: center;"><strong>Puedes relanzar hasta
+                                    2 dados
+                                    (Se mantendrá el valor más alto)</strong></td>
+                        </tr>
+                        <tr id="reroll-values">
+                            <td id="roll-strength"><button id="reroll-btn-strength" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('strength', 'strength')">↻</button>
+                            </td>
+                            <td id="roll-constitution"><button id="reroll-btn-constitution" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('constitution', 'constitution')">↻</button></td>
+                            <td id="roll-dexterity"><button id="reroll-btn-dexterity" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('dexterity', 'dexterity')">↻</button>
+                            </td>
+                            <td id="roll-wisdom"><button id="reroll-btn-wisdom" class="reroll-button"
+                                    style="background-color: green;" onclick="rerollStat('wisdom', 'wisdom')">↻</button>
+                            </td>
+                            <td id="roll-determination"><button id="reroll-btn-determination" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('determination', 'determination')">↻</button></td>
+                            <td id="roll-vitality-2"><button id="reroll-btn-vitality-2" class="reroll-button"
+                                    style="background-color: green;"
+                                    onclick="rerollStat('vitality-2', 'vitality-2')">↻</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6" id="remaining-points" style="text-align: center;"><strong>Distribuye 15
+                                    puntos
+                                    adicionales</strong></td>
+                        </tr>
+                        <tr>
+                            <td> <input class="cuadros_texto" type="number" id="extra-strength" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-constitution" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-dexterity" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-wisdom" value="0" min="0" max="10"
+                                    onchange="updateExtraPoints()"> </td>
+                            <td> <input class="cuadros_texto" type="number" id="extra-determination" value="0" min="0"
+                                    max="10" onchange="updateExtraPoints()"> </td>
+                            <td id="extra-vitality">-</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" id="totallabel-points" style="text-align: center;"><strong>ESTADÍSTICAS
+                                    TOTALES</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span id="final-strength">-</span></td>
+                            <td><span id="final-constitution">-</span></td>
+                            <td><span id="final-dexterity">-</span></td>
+                            <td><span id="final-wisdom">-</span></td>
+                            <td><span id="final-determination">-</span></td>
+                            <td><span id="final-vitality">-</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <!-- Select para seleccionar valores negativos de la clase -->
+                <label for="class" id="txt_atributos_deventaja" style="display:none">Selecciona un atributo en
+                    desventaja para sumarle +10</label>
+                <select style="display: none;" onchange="applyNegativeBonus()" id="classNegative">
+                    <option value="">Selecciona un atributo...</option>
+                </select>
+
+
+        
+
+
+        <!-- Columna derecha (Trampas) que toma el resto del espacio, alineado arriba a la izquierda -->
+        <div class="rigth-content ">
+            <!-- Botones encima de la imagen de trampas -->
+            <!-- Imagen con fondo transparente -->
+            <img src="./img/Amenaza/goblin_dibujante.png" alt="Goblin Dibujante" id="goblinImage"
+                style="align-items: center ;width: 50%; height: auto; align-content: center">
+
+            <h1 id="txt_vista_previa" style="display:none">Vista Previa del Personaje</h1>
+            <div id="character-preview" style="display: none;" class="character-preview">
+                <p style="etiquetas"><strong style="etiquetas">Raza:</strong> <span id="preview-race">-</span></p>
+                <table class="stats-table">
+                    <thead>
+
+                        <tr>
+                            <th>FUE</th>
+                            <th>CON</th>
+                            <th>DES</th>
+                            <th>SAB</th>
+                            <th>DET</th>
+                            <th>VIT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="base-values">
+                            <td id="preview-strength">-</td>
+                            <td id="preview-constitution">-</td>
+                            <td id="preview-dexterity">-</td>
+                            <td id="preview-wisdom">-</td>
+                            <td id="preview-determination">-</td>
+                            <td id="preview-vitality">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Clase:</strong> <span id="preview-class">-</span></p>
+                <h3>Estadísticas de Combate</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>HC</th>
+                            <th>HD</th>
+                            <th>ESQ</th>
+                            <th>FC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="preview-HC">-</td>
+                            <td id="preview-HD">-</td>
+                            <td id="preview-ESQ">-</td>
+                            <td id="preview-FC">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>AA</th>
+                            <th>TRU</th>
+                            <th>CU</th>
+                            <th>ALQ</th>
+                            <th>PER</th>
+                            <th>MANA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="preview-AA">-</td>
+                            <td id="preview-TRU">-</td>
+                            <td id="preview-CU">-</td>
+                            <td id="preview-ALQ">-</td>
+                            <td id="preview-PER">-</td>
+                            <td id="preview-MANA">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>SUP</th>
+                            <th>BD</th>
+                            <th>AN</th>
+                            <th>ENR</th>
+                            <th>MOV</th>
+                            <th>COR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="preview-SUP">-</td>
+                            <td id="preview-BD">-</td>
+                            <td id="preview-AN">-</td>
+                            <td id="preview-ENR">1</td>
+                            <td id="preview-MOV">4</td>
+                            <td id="preview-COR">8</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+
+                    <button id="generarPDF" onclick="exportPdf()"></button>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    <script>
+        const raceStats = {
+            "Enano": { strength: 40, constitution: 30, dexterity: 25, wisdom: 25, determination: 30, vitality: "1d6+8" },
+            "Elfo": { strength: 25, constitution: 20, dexterity: 40, wisdom: 35, determination: 30, vitality: "1d6+6" },
+            "Mediano": { strength: 20, constitution: 20, dexterity: 40, wisdom: 30, determination: 40, vitality: "1d6+5" },
+            "Humano": { strength: 30, constitution: 30, dexterity: 30, wisdom: 30, determination: 30, vitality: "1d6+7" },
+            "Semiogro": { strength: 50, constitution: 40, dexterity: 25, wisdom: 15, determination: 40, vitality: "2d6+10" },
+            "Pato": { strength: 25, constitution: 25, dexterity: 30, wisdom: 30, determination: 40, vitality: "1d6+6" }
+        };
+        const classModifiers = {
+            "SeleccionaClase": { HC: 0, HD: 0, ESQ: 0, FC: 0, AA: 0, TRU: 0, CU: 0, ALQ: 0, PER: 0, MANA: 0, SUP: 0, BD: 0, AN: 0, ENR: 0, VIT: 0 },
+            "Alquimista": { HC: -5, HD: -5, ESQ: -10, FC: -20, AA: "N/A", TRU: 0, CU: 5, ALQ: 10, PER: -10, MANA: "N/A", SUP: -20, BD: 0, AN: 0, ENR: 0, VIT: 0 },
+            "Bárbaro": { HC: 15, HD: -10, ESQ: 5, FC: -20, AA: "N/A", TRU: -15, CU: -10, ALQ: -25, PER: -5, MANA: "N/A", SUP: -15, BD: 0, AN: 0, ENR: 0, VIT: 2 },
+            "Guerrero": { HC: 10, HD: 5, ESQ: 0, FC: -20, AA: "N/A", TRU: -15, CU: -10, ALQ: -25, PER: -10, MANA: "N/A", SUP: -15, BD: 0, AN: 0, ENR: 0, VIT: 3 },
+            "Ladrón": { HC: -5, HD: 5, ESQ: 5, FC: 10, AA: "N/A", TRU: 0, CU: -20, ALQ: -30, PER: 10, MANA: "N/A", SUP: -20, BD: 0, AN: 0, ENR: 0, VIT: 0 },
+            "Mago": { HC: -5, HD: -10, ESQ: -10, FC: -20, AA: 10, TRU: 5, CU: -5, ALQ: -20, PER: -10, MANA: 0, SUP: -20, BD: 0, AN: 0, ENR: 0, VIT: 0 },
+            "Montaraz": { HC: -5, HD: 15, ESQ: -5, FC: -25, AA: "N/A", TRU: -20, CU: -10, ALQ: -20, PER: 0, MANA: "N/A", SUP: 15, BD: 0, AN: 0, ENR: 0, VIT: 0 },
+            "Pícaro": { HC: 0, HD: 0, ESQ: 0, FC: 0, AA: "N/A", TRU: 5, CU: -10, ALQ: -25, PER: 0, MANA: "N/A", SUP: 0, BD: 0, AN: 0, ENR: 0, VIT: 1 },
+            "Sacerdote Guerrero": { HC: 5, HD: -5, ESQ: -5, FC: -20, AA: "N/A", TRU: -10, CU: 5, ALQ: -15, PER: -10, MANA: "N/A", SUP: -20, BD: 0, AN: 0, ENR: 1, VIT: 1 },
+            "Druida": { HC: -5, HD: 0, ESQ: -10, FC: -20, AA: 5, TRU: 0, CU: 5, ALQ: 0, PER: -5, MANA: 0, SUP: 0, BD: 0, AN: 0, ENR: 0, VIT: 0 },
+            "Caballero": { HC: 10, HD: 0, ESQ: 0, FC: -25, AA: "N/A", TRU: 5, CU: -15, ALQ: -20, PER: -10, MANA: "N/A", SUP: -25, BD: 0, AN: 0, ENR: 0, VIT: 2 },
+        };
+        let finalStats = {};
+        let rolls = [];
+        let remainingPoints = 15;
+        // Definición de la variable global para controlar los rerolls
+        let remainingRerolls = 2;
+        let bonusApplied = {}; // Objeto para almacenar el estado de bonificación
+
+        function loadBaseStats() {
+            const race = document.getElementById("race").value;
+            const stats = raceStats[race];
+
+            for (let [key, value] of Object.entries(stats)) {
+                finalStats[key] = value;
+                if (key === 'vitality') {
+                    const vitalityRoll = rollDice(value);
+                    document.getElementById("base-" + key).textContent = value;
+                    // document.getElementById("roll-" + key).textContent = vitalityRoll;
+                    finalStats[key] = vitalityRoll;
+                } else {
+                    document.getElementById("base-" + key).textContent = value;
+                }
+                document.getElementById("final-" + key).textContent = value;
+            }
+
+
+            updatePreview();
+            updateCombatPreview();
+        }
+
+        function rollDice(dice) {
+            const [num, sides, bonus] = dice.match(/\d+/g).map(Number);
+            let sum = 0;
+            for (let i = 0; i < num; i++) {
+                sum += Math.floor(Math.random() * sides) + 1;
+            }
+            document.getElementById("roll-vitality").textContent = sum;
+            document.getElementById("roll-vitality-2").textContent = sum;
+            sum += bonus;
+            return sum;
+        }
+
+        function rerollDiceVitality(dice) {
+            const [num, sides, bonus] = dice.match(/\d+/g).map(Number);
+            let sum = 0;
+            for (let i = 0; i < num; i++) {
+                sum += Math.floor(Math.random() * sides) + 1;
+            }
+
+
+            return sum;
+        }
+        function bonusVitality(dice) {
+            const [num, sides, bonus] = dice.match(/\d+/g).map(Number);
+            return bonus;
+        }
+
+        function toggleAdvantage() {
+            const advantage = document.getElementById("advantageOption").checked;
+            document.getElementById("roll-selectors").style.display = advantage ? 'table-row' : 'none';
+            document.getElementById("roll-values").style.display = advantage ? 'none' : 'table-row';
+        }
+
+        function generateRolls() {
+            document.getElementById('txt_vista_previa').style.display = 'inline';
+            document.getElementById('estadisticasbaseh3').style.display = 'table';
+            document.getElementById('stats-table').style.display = 'table';
+            document.getElementById('character-preview').style.display = 'table';
+            document.getElementById('statics').style.display = 'table';
+            document.getElementById('goblinImage').style.display = 'none';
+
+
+
+            rolls = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10) + 1);
+            const advantage = document.getElementById("advantageOption").checked;
+
+            document.getElementById("extra-strength").value = 0;
+            document.getElementById("extra-constitution").value = 0;
+            document.getElementById("extra-dexterity").value = 0;
+            document.getElementById("extra-wisdom").value = 0;
+            document.getElementById("extra-determination").value = 0;
+            document.getElementById("remaining-points").innerText = "Distribuye 15 puntos adicionales";
+
+            if (advantage) {
+                showRollSelectors();
+                document.getElementById("roll-values").style.display = 'none';
+            } else {
+                applyRollsDirectly();
+                hideRollSelectors();
+                document.getElementById("roll-values").style.display = 'table-row';
+                document.getElementById("roll-strength").textContent = rolls[0];
+                document.getElementById("roll-constitution").textContent = rolls[1];
+                document.getElementById("roll-dexterity").textContent = rolls[2];
+                document.getElementById("roll-wisdom").textContent = rolls[3];
+                document.getElementById("roll-determination").textContent = rolls[4];
+            }
+
+            calculateVitality(document.getElementById("race").value);
+            updatePreview();
+            updateCombatPreview();
+            resetRerollButtons();
+        }
+        function resetRerollButtons() {
+            const rerollButtons = document.querySelectorAll('.reroll-button');
+            rerollButtons.forEach(button => {
+                button.style.display = 'inline-block'; // Muestra los botones
+                button.style.backgroundColor = 'green'; // Fondo verde
+                button.disabled = false; // Asegura que los botones estén habilitados
+                document.getElementById("reroll-points").textContent = 'Puedes relanzar hasta 2 dados (Se mantendrá el valor más alto)';
+
+            });
+            remainingRerolls = 2; // Reinicia el contador de rerolls permitidos
+        }
+
+        function rerollStat(stat, id) {
+            if (remainingRerolls > 0) {
+                let newRoll;
+                const advantage = document.getElementById("advantageOption").checked;
+                // Verifica si es una tirada de vitalidad o una tirada estándar
+                if (stat === 'vitality' || stat === 'vitality-2') {
+                    newRoll = rerollDiceVitality(raceStats[document.getElementById("race").value].vitality);
+                } else {
+                    newRoll = Math.floor(Math.random() * 10) + 1; // Simulación de d10 para otras estadísticas
+                }
+                let oldRoll;
+                if (advantage) {
+                    if (stat === 'vitality' || stat === 'vitality-2') {
+                        oldRoll = parseInt(document.getElementById("roll-vitality").textContent);
+                        oldRoll = parseInt(document.getElementById("roll-vitality-2").textContent);
+                    } else {
+                        oldRoll = parseInt(document.getElementById("select-" + id).value);
+                    }
+                    if (newRoll > oldRoll) {
+
+                        if (stat === 'vitality-2' || stat === 'vitality') {
+                            document.getElementById("roll-vitality" + id).textContent = newRoll;
+                            document.getElementById("roll-vitality-2" + id).textContent = newRoll;
+                            bonus = bonusVitality(raceStats[document.getElementById("race").value].vitality);
+                            let total = newRoll + bonus;
+                            document.getElementById("final-vitality").textContent = total;
+                            document.getElementById("final-vitality").textContent = total;
+                            document.getElementById("reroll-btn-vitality-2").style.display = 'none';
+                        } else {
+                            // Obtener el elemento select
+                            var select = document.getElementById("select-" + id);
+
+                            // Crear un nuevo elemento option
+                            var newOption = document.createElement("option");
+                            newOption.value = newRoll; // Establecer el valor de la opción
+                            newOption.text = newRoll; // Establecer el texto visible de la opción (puedes cambiarlo si necesario)
+
+                            // Añadir la nueva opción al select
+                            select.appendChild(newOption);
+
+                            // Seleccionar la nueva opción
+                            select.value = newRoll;
+                            document.getElementById("final-" + id).textContent = newRoll;
+                        }
+                        updateStatsadvantage(); // Función para recalcular y actualizar las estadísticas totales y de combate
+                    } else {
+                        alert('Atributos sin cambios, Sacaste: ' + newRoll + ' , manteniendo el valor más alto.');
+                    }
+                } else {
+                    const oldRoll = parseInt(document.getElementById("roll-" + id).textContent);
+                    if (newRoll > oldRoll) {
+                        document.getElementById("roll-" + id).textContent = newRoll;
+                        if (stat === 'vitality-2' || stat === 'vitality') {
+                            document.getElementById("roll-" + id).textContent = newRoll;
+                            bonus = bonusVitality(raceStats[document.getElementById("race").value].vitality);
+                            let total = newRoll + bonus;
+                            document.getElementById("final-vitality").textContent = total;
+                        } else {
+                            document.getElementById("final-" + id).textContent = newRoll;
+                        }
+                        updateStats(); // Función para recalcular y actualizar las estadísticas totales y de combate
+                    } else {
+                        alert('Atributos sin cambios, Sacaste: ' + newRoll + ' , manteniendo el valor más alto.');
+
+                    }
+                }
+
+                // Ocultar el botón después de usarlo
+                document.getElementById("reroll-btn-" + id).style.display = 'none';
+                remainingRerolls--;
+                if (remainingRerolls === 0) {
+                    // Oculta todos los botones restantes
+                    const rerollButtons = document.querySelectorAll('.reroll-button');
+                    rerollButtons.forEach(button => button.style.display = 'none');
+                    document.getElementById("reroll-points").textContent = 'Ya usastes los 2 intentos de relanzar atributo.';
+
+
+                }
+            }
+        }
+
+        function updateStats() {
+            // Actualiza las estadísticas basadas en los nuevos valores de roll
+            ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                const baseValue = raceStats[document.getElementById("race").value][stat];
+                const rollValue = parseInt(document.getElementById("roll-" + stat).textContent) || 0;
+                const extraValue = parseInt(document.getElementById("extra-" + stat).value) || 0;
+                finalStats[stat] = baseValue + rollValue + extraValue;
+                document.getElementById("final-" + stat).textContent = finalStats[stat];
+            });
+
+            updatePreview();
+            updateCombatPreview();
+        }
+        function updateStatsadvantage() {
+            // Actualiza las estadísticas basadas en los nuevos valores de roll
+            ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                const baseValue = raceStats[document.getElementById("race").value][stat];
+                const rollValue = parseInt(document.getElementById("select-" + stat).value) || 0;
+                const extraValue = parseInt(document.getElementById("extra-" + stat).value) || 0;
+                finalStats[stat] = baseValue + rollValue + extraValue;
+                document.getElementById("final-" + stat).textContent = finalStats[stat];
+            });
+
+            updatePreview();
+            updateCombatPreview();
+        }
+        function showRollSelectors() {
+            document.querySelectorAll('.roll-select').forEach((select, index) => {
+                select.style.display = 'inline';
+                select.innerHTML = '<option value="">-- Seleccionar --</option>' + rolls.map(roll => `<option value="${roll}" class="available">${roll}</option>`).join('');
+            });
+        }
+
+        function hideRollSelectors() {
+            document.querySelectorAll('.roll-select').forEach(select => select.style.display = 'none');
+        }
+        // Calcular la vitalidad del personaje en función de la raza
+        function calculateVitality(race) {
+            const vitalityStat = raceStats[race].vitality;
+            const vitalityValue = rollDice(vitalityStat);
+            finalStats["vitality"] = vitalityValue;
+            document.getElementById("final-vitality").textContent = vitalityValue;
+            // document.getElementById("roll-vitality").textContent = vitalityValue;
+        }
+        function updateAdjustedStats() {
+            let selectedValues = {};
+            document.querySelectorAll('.roll-select').forEach(select => {
+                const value = parseInt(select.value);
+                if (!isNaN(value)) {
+                    selectedValues[value] = (selectedValues[value] || 0) + 1;
+                }
+            });
+
+            document.querySelectorAll('.roll-select').forEach(select => {
+                const selectedValue = parseInt(select.value);
+                select.querySelectorAll("option").forEach(option => {
+                    const optionValue = parseInt(option.value);
+                    option.className = (optionValue && selectedValues[optionValue] >= rolls.filter(r => r === optionValue).length && optionValue !== selectedValue) ? 'unavailable' : 'available';
+                });
+            });
+
+            ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                const baseValue = raceStats[document.getElementById("race").value][stat];
+                const selectedValue = parseInt(document.getElementById("select-" + stat).value) || 0;
+                const extraValue = parseInt(document.getElementById("extra-" + stat).value) || 0;
+                finalStats[stat] = baseValue + selectedValue + extraValue;
+                document.getElementById("final-" + stat).textContent = `${finalStats[stat]}`;
+            });
+
+
+            updatePreview();
+            updateCombatPreview();
+        }
+
+        function applyRollsDirectly() {
+            ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach((stat, i) => {
+                const baseValue = raceStats[document.getElementById("race").value][stat];
+                finalStats[stat] = baseValue + rolls[i];
+                document.getElementById("final-" + stat).textContent = `${finalStats[stat]}`;
+                document.getElementById("roll-" + stat).textContent = rolls[i];
+            });
+
+            updatePreview();
+            updateCombatPreview();
+        }
+
+        function updateExtraPoints() {
+            let totalExtraPoints = 0;
+
+            // Recorremos todos los puntos extra y calculamos el total
+            ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                const inputElement = document.getElementById("extra-" + stat);
+                const value = parseInt(inputElement.value) || 0;
+                totalExtraPoints += value;
+            });
+
+            // Si el total de puntos extra excede el límite, ajustamos los valores
+            if (totalExtraPoints > 15) {
+                //alert("No puedes asignar más de 15 puntos en total.");
+
+                // Ajustamos cada campo para asegurar que el total no exceda 15 puntos
+                let remainingPoints = 15;
+                ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                    const inputElement = document.getElementById("extra-" + stat);
+                    let value = parseInt(inputElement.value) || 0;
+
+                    if (value > remainingPoints) {
+                        value = remainingPoints;
+                    }
+                    inputElement.value = value;
+                    remainingPoints -= value;
+                });
+
+                totalExtraPoints = 15; // Ahora el total de puntos es 15
+            }
+
+            // Actualizamos el texto de puntos restantes
+            remainingPoints = 15 - totalExtraPoints;
+            document.getElementById("remaining-points").textContent = "Distribuye " + remainingPoints + " puntos adicionales";
+
+            // Ajustamos los valores finales con los puntos extra
+            const advantage = document.getElementById("advantageOption").checked;
+            if (advantage) {
+                ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                    const baseValue = raceStats[document.getElementById("race").value][stat];
+                    const selectedValue = parseInt(document.getElementById("select-" + stat).value) || 0;
+                    const extraValue = parseInt(document.getElementById("extra-" + stat).value) || 0;
+                    finalStats[stat] = baseValue + selectedValue + extraValue;
+                    document.getElementById("final-" + stat).textContent = `${finalStats[stat]}`;
+                });
+            } else {
+                ["strength", "constitution", "dexterity", "wisdom", "determination"].forEach(stat => {
+                    const baseValue = raceStats[document.getElementById("race").value][stat];
+                    const selectedValue = parseInt(document.getElementById("roll-" + stat).innerText) || 0;
+                    const extraValue = parseInt(document.getElementById("extra-" + stat).value) || 0;
+                    finalStats[stat] = baseValue + selectedValue + extraValue;
+                    document.getElementById("final-" + stat).textContent = `${finalStats[stat]}`;
+                });
+            }
+
+
+            updatePreview();
+            updateCombatPreview();
+        }
+
+        function updateCombatPreview() {
+            // Obtener la clase seleccionada
+            const selectedClass = document.getElementById("classSelect").value; // Asegúrate de que el ID sea correcto
+            const modifiers = classModifiers[selectedClass] || {};
+
+            const dexterity = (finalStats.dexterity || 0);
+            const wisdom = (finalStats.wisdom || 0);
+            const constitution = (finalStats.constitution || 0);
+            const strength = (finalStats.strength || 0);
+            const determination = (finalStats.determination || 0);
+
+            // Aplicar valores modificados a los elementos de vista previa
+            document.getElementById("preview-HC").textContent = dexterity + (modifiers.HC || 0) + (bonusApplied["HC"] || 0);
+            document.getElementById("preview-HD").textContent = dexterity + (modifiers.HD || 0) + (bonusApplied["HD"] || 0);
+            document.getElementById("preview-ESQ").textContent = dexterity + (modifiers.ESQ || 0) + (bonusApplied["ESQ"] || 0);
+            document.getElementById("preview-FC").textContent = dexterity + (modifiers.FC || 0) + (bonusApplied["FC"] || 0);
+
+            document.getElementById("preview-AA").textContent = modifiers.AA !== "N/A" ? modifiers.AA + wisdom : "N/A";
+            document.getElementById("preview-TRU").textContent = wisdom + (modifiers.TRU || 0) + (bonusApplied["TRU"] || 0);;
+            document.getElementById("preview-CU").textContent = wisdom + (modifiers.CU || 0) + (bonusApplied["CU"] || 0);
+            document.getElementById("preview-ALQ").textContent = wisdom + (modifiers.ALQ || 0) + (bonusApplied["ALQ"] || 0);
+            document.getElementById("preview-PER").textContent = wisdom + (modifiers.PER || 0) + (bonusApplied["PER"] || 0);
+            document.getElementById("preview-MANA").textContent = modifiers.MANA !== "N/A" ? Math.floor(wisdom * 1.5) : "N/A";
+
+            document.getElementById("preview-SUP").textContent = constitution + (modifiers.SUP || 0) + (bonusApplied["SUP"] || 0);;
+            document.getElementById("preview-AN").textContent = constitution >= 50 ? Math.floor((constitution - 50) / 5) + 1 : 0;
+
+            document.getElementById("preview-BD").textContent = strength >= 50 ? Math.floor((strength - 50) / 10) + 1 : 0;
+
+            document.getElementById("preview-vitality").textContent = parseInt(document.getElementById("final-vitality").textContent) + modifiers.VIT;
+        }
+
+        // Asumiendo que tienes un <select id="classSelect"> en tu HTML para la selección de clase.
+
+
+        function updateClassStats() {
+            document.getElementById('classNegative').style.display = 'table';
+            const selectedClass = document.getElementById("classSelect").value;
+            document.getElementById("preview-class").textContent = selectedClass;
+            const classNegativeSelect = document.getElementById("classNegative");
+            // Limpiamos el select de opciones previas
+            classNegativeSelect.innerHTML = '<option value="">Selecciona una opción negativa</option>';
+            bonusApplied = {}; // Restablecer cualquier bonificación aplicada
+            document.getElementById("txt_atributos_deventaja").style.display = 'inline';
+
+            updateCombatPreview();
+
+            if (selectedClass === "SeleccionaClase") return;
+
+            // Obtenemos los modificadores de la clase seleccionada
+            const modifiers = classModifiers[selectedClass];
+
+            // Filtramos las propiedades con valor negativo
+            for (const [key, value] of Object.entries(modifiers)) {
+                if (typeof value === "number" && value < 0) {
+                    const option = document.createElement("option");
+                    option.value = key;
+                    option.textContent = key;
+                    classNegativeSelect.appendChild(option);
+                }
+            }
+
+        }
+
+        function updatePreview() {
+            document.getElementById("preview-race").textContent = document.getElementById("race").value;
+            ["strength", "constitution", "dexterity", "wisdom", "determination", "vitality"].forEach(stat => {
+                document.getElementById("preview-" + stat).textContent = finalStats[stat];
+            });
+        }
+
+        window.onload = loadBaseStats;
+
+        // Mostrar los desplegables para asignar tiradas manualmente
+        function showRollSelectors() {
+            const abbreviations = {
+                strength: "FUE",
+                constitution: "CON",
+                dexterity: "DES",
+                wisdom: "SAB",
+                determination: "DET"
+            };
+
+            document.querySelectorAll('.roll-select').forEach((select, index) => {
+                const stat = select.id.split('-')[1]; // Obtiene el nombre del atributo
+                const abbreviation = abbreviations[stat]; // Obtiene la abreviatura correspondiente
+                select.style.display = 'inline';
+                select.innerHTML = `<option value="">${abbreviation}</option>` +
+                    rolls.map(roll => `<option value="${roll}" class="available">${roll}</option>`).join('');
+            });
+        }
+    </script>
+    <script src="https://unpkg.com/pdf-lib@1.16.0"></script>
+    <script>
+        async function exportPdf() {
+
+            const imageUrl = 'semiogro_barbaro.png'; // Imagen en la misma carpeta
+            // URL del PDF en la misma carpeta que el HTML
+            const url = 'personaje.pdf'; // Archivo PDF en la misma ubicación que el archivo HTML
+
+            // Cargar el PDF
+            const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
+
+            // Cargar el documento PDF
+            const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+
+            // Obtener el formulario del PDF
+            const form = pdfDoc.getForm();
+
+            // Campos <td> individuales
+            const strengthValue = document.getElementById('preview-strength').textContent;
+            form.getTextField('preview-strength').setText(strengthValue);
+
+            const constitutionValue = document.getElementById('preview-constitution').textContent;
+            form.getTextField('preview-constitution').setText(constitutionValue);
+
+            const dexterityValue = document.getElementById('preview-dexterity').textContent;
+            form.getTextField('preview-dexterity').setText(dexterityValue);
+
+            const wisdomValue = document.getElementById('preview-wisdom').textContent;
+            form.getTextField('preview-wisdom').setText(wisdomValue);
+
+            const determinationValue = document.getElementById('preview-determination').textContent;
+            form.getTextField('preview-determination').setText(determinationValue);
+
+            const vitalityValue = document.getElementById('preview-vitality').textContent;
+            form.getTextField('preview-vitality').setText(vitalityValue);
+            form.getTextField('preview-vitalityMAX').setText(vitalityValue);
+            const hcValue = document.getElementById('preview-HC').textContent;
+            form.getTextField('preview-HC').setText(hcValue);
+
+            const hdValue = document.getElementById('preview-HD').textContent;
+            form.getTextField('preview-HD').setText(hdValue);
+
+            const esqValue = document.getElementById('preview-ESQ').textContent;
+            form.getTextField('preview-ESQ').setText(esqValue);
+
+            const fcValue = document.getElementById('preview-FC').textContent;
+            form.getTextField('preview-FC').setText(fcValue);
+
+            const aaValue = document.getElementById('preview-AA').textContent;
+            form.getTextField('preview-AA').setText(aaValue);
+
+            const truValue = document.getElementById('preview-TRU').textContent;
+            form.getTextField('preview-TRU').setText(truValue);
+
+            const cuValue = document.getElementById('preview-CU').textContent;
+            form.getTextField('preview-CU').setText(cuValue);
+
+            const alqValue = document.getElementById('preview-ALQ').textContent;
+            form.getTextField('preview-ALQ').setText(alqValue);
+
+            const perValue = document.getElementById('preview-PER').textContent;
+            form.getTextField('preview-PER').setText(perValue);
+
+            const manaValue = document.getElementById('preview-MANA').textContent;
+            form.getTextField('preview-MANA').setText(manaValue);
+
+            const supValue = document.getElementById('preview-SUP').textContent;
+            form.getTextField('preview-SUP').setText(supValue);
+
+            const bdValue = document.getElementById('preview-BD').textContent;
+            form.getTextField('preview-BD').setText(bdValue);
+
+            const anValue = document.getElementById('preview-AN').textContent;
+            form.getTextField('preview-AN').setText(anValue);
+
+            const enrValue = document.getElementById('preview-ENR').textContent;
+            form.getTextField('preview-ENR').setText(enrValue);
+
+            const movValue = document.getElementById('preview-MOV').textContent;
+            form.getTextField('preview-MOV').setText(movValue);
+
+            const corValue = document.getElementById('preview-COR').textContent;
+            form.getTextField('preview-COR').setText(corValue);
+
+            const NameValue = document.getElementById('Name').value;
+            form.getTextField('Name').setText(NameValue);
+
+            // Campos <select>
+            const classValue = document.getElementById('classSelect').value;
+            form.getTextField('classSelect').setText(classValue);
+
+            const raceValue = document.getElementById('race').value;
+            form.getTextField('race').setText(raceValue);
+
+            // Cargar la imagen
+            const imageBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
+            const pngImage = await pdfDoc.embedPng(imageBytes);
+
+            // Obtener la primera página del PDF
+            const pages = pdfDoc.getPages();
+            const firstPage = pages[0];
+
+            // Insertar la imagen en la posición y tamaño especificado
+            firstPage.drawImage(pngImage, {
+                x: 455, // Coordenada X en puntos
+                //y: 354, // Coordenada Y en puntos
+                y: 100, // Coordenada Y en puntos
+
+                width: 99, // Ancho en puntos
+                height: 141 // Alto en puntos
+            });
+
+            // Guardar el PDF modificado
+            const pdfBytes = await pdfDoc.save();
+
+            // Crear un enlace para la descarga
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const urlBlob = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = urlBlob;
+            link.download = 'LoD_' + NameValue + '_' + raceValue + '_' + classValue + '.pdf';
+            link.click();
+
+            // Liberar el objeto URL
+            URL.revokeObjectURL(urlBlob);
+        }
+        function applyNegativeBonus() {
+            const selectedNegative = document.getElementById("classNegative").value;
+
+            if (selectedNegative) {
+                bonusApplied = { [selectedNegative]: 10 };
+            } else {
+                bonusApplied = {};
+            }
+
+            updateCombatPreview();
+        }
+    </script>
+        <script src="menu-acordeon.js"></script>
+
+</body>
+
+</html>

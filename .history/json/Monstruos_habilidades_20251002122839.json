@@ -1,0 +1,440 @@
+{
+    "Especiales": [
+        {
+            "Habilidad": "Actúa primero",
+            "Descripcion": "(Pasiva) Debido a su velocidad o su gran número, estas criaturas siempre actuarán primero durante el primer turno, independientemente de lo que digan las fichas de iniciativa."
+        },
+        {
+            "Habilidad": "Ahogar",
+            "Descripcion": "(Activa) Peligrosa práctica en la que una criatura impide que otra respire eliminando aire o bloqueando las vías respiratorias con sustancias como arena, agua o barro. Para iniciar el ahogamiento, el atacante primero debe pasar una prueba de HC como si estuviera atacando. Para mantener el efecto de ahogamiento, el atacante debe gastar 2 PA en cada asalto. Esta acción siempre tiene prioridad sobre otras acciones. Si la VIT del objetivo cae a 0, el atacante lo libera automáticamente. Mientras se ahoga, el objetivo sufre 1d4 DAÑ y pierde 1 COR cada turno. El objetivo no puede realizar ninguna acción excepto intentar liberarse. Para escapar, el objetivo debe pasar un test de FUE, que puede intentarse una vez por turno. Si el atacante es “Enorme”, se aplica un -20FUE a la víctima para ese test.Si el atacante muere, el efecto de ahogamiento termina y el objetivo es liberado."
+        },
+        {
+            "Habilidad": "Aliento de fuego",
+            "Descripcion": "(Activa) El aliento impacta automáticamente, no necesita una tirada de HD, pero puede ser esquivado. Causa 1d10 DAÑ de fuego y 1d6 en las 8 casillas adyacentes. La criatura es inmune a su propio fuego. Los monstruos Extra-Enormes causan 1d10+5 DAÑ y 1d6+5 en las adyacentes y las adyacentes a estas,                 25 casillas afectadas en total."
+        },
+        {
+            "Habilidad": "Apestoso",
+            "Descripcion": "(Pasiva) Como será el tufo de esta criatura que cuesta concentrarse. Todos los ataques cuerpo a cuerpo a esta criatura sufren una penalización de -10 HC."
+        },
+        {
+            "Habilidad": "Piel venenosa",
+            "Descripcion":"Héroes y mercenarios pueden frotar sus armas sobre el lomo de un anuro (siempre que no estén en combate) y así emponzoñarlas. Sólo se puede envenenar un arma o hasta diez flechas por anuro. El veneno seguirá siendo eficaz hasta finalizar la siguiente batalla o hasta que se hayan utilizado todas las flechas."
+        },
+        {
+            "Habilidad": "Arma maldita",
+            "Descripcion": "(Pasiva) Las Armas Malditas están impregnadas de magia impía o han sido utilizadas como receptáculo del mal por su portador. El daño causado por estas armas quita 1 punto de Cordura del objetivo."
+        },
+        {
+            "Habilidad": "Armas rústicas",
+            "Descripcion": "(Pasiva) Estas criaturas usan elementos cotidianos para atacar en vez de las armas típicas. Aquí se incluyen troncos o piedras, por ejemplo. En lo que al juego se refiere, todas estas Armas Rústicas reciben el tratamiento de Martillo de Guerra y poseen los mismos atributos."
+        },
+        {
+            "Habilidad": "Ataque múltiple Hidra",
+            "Descripcion": "(Pasiva) Tiene 5 fichas de iniciativa y puede activarse con cada una. El único momento en que podrá moverse es en su primera activación. En las siguientes, sólo tendrá 1PA y será usado para atacar. En la medida de lo posible, los ataques serán a objetivos separados en cualquier dirección y hasta a 4 casillas de distancia."
+        },
+        {
+            "Habilidad": "Ataque múltiple X",
+            "Descripcion": "(Pasiva) Esta criatura puede atacar a sus objetivos repetidas veces. Cada vez que haga un ataque normal, en vez de eso golpeará X número de veces. Realiza tiradas para atacar y DAÑ por separado. Este ataque cuenta como 1PA."
+        },
+        {
+            "Habilidad": "Aura congelada",
+            "Descripcion": "(Pasiva) Cualquier jugador adyacente a esta criatura debe pasar test de CON al comienzo de su activación o quedará aturdido. Esta prueba debe repetirse cada turno."
+        },
+        {
+            "Habilidad": "Barrido",
+            "Descripcion": "(Activa) Esta criatura puede hacer un poderoso ataque en área que si tiene éxito (usa HC) empuja a todos los héroes en la ZDC hacia atrás 1 casilla causando la mitad de daño normal (RAB) pero también forzando una tirada de DES. Puede ser esquivado, pero no bloqueado. En ocasiones, el monstruo tendrá otra oportunidad de golpear a otros héroes. Sólo se realiza una tirada de dados y se compara con lo que requiera cada héroe. Si falla, eso significa que el héroe se cae y debe gastar la siguiente acción en levantarse. Si el héroe está contra un muro y no puede moverse hacia atrás, el daño no será reducido a la mitad y la tirada para caer se realiza en esa misma casilla. Cualquier héroe situado detrás de un héroe empujado también se mueve hacia atrás 1 casilla, pero sin otros efectos. El atacante permanece en su lugar."
+        },
+        {
+            "Habilidad": "Bomba de esporas",
+            "Descripcion": "(Pasiva) Las Bombas de Esporas se consideran como armas a distancia, como un arco. Por ello, el Explorador Fungoide usa la Carta de Conducta ‘Humanoide con Arma a Distancia’. Este es un ataque en área que causa 1d6 DAÑ al objetivo ignorando armadura y AN. Los personajes adyacentes no-Fúngidos reciben 1d4 DAÑ, ignorando armadura y AN. Todos los personajes dañados deberán superar una tirada de CON o serán aturdidos."
+        },
+        {
+            "Habilidad": "Bramido",
+            "Descripcion": "(Activa) E La criatura ruge a todo pulmón causando que cualquier héroe en 4 casillas sea aturdido (1 acción menos el siguiente turno) a menos que gane una tirada de DET."
+        },
+        {
+            "Habilidad": "Brinco",
+            "Descripcion": "(Especial) Siempre que esta criatura no pueda alcanzar a ningún objetivo debido a la obstaculización de personajes, salta (hasta 3 casillas). Este salto requiere una tirada HC exitosa, sin gasto de PA, aterrizando en una casilla aleatoria lo más cerca posible del objetivo, mirando en la dirección del salto. Luego puede gastar los PA restantes. Una tirada de HC fallida hará que la criatura quede boca abajo en la casilla en la que aterriza y necesite gastar 1PA en levantarse."
+        },
+        {
+            "Habilidad": "Camuflaje",
+            "Descripcion": "(Activa) Algunas criaturas tienen la habilidad de fundirse en el entorno cambiando el color de su piel. Si esta habilidad se activa quita la miniatura del tablero. Al siguiente turno, aparecerá aleatoriamente en cualquier habitación donde haya héroes o en una habitación adyacente a ellos, en este segundo caso debe colocarse de manera que pueda ver al máximo de héroes posibles."
+        },
+        {
+            "Habilidad": "Carga feroz",
+            "Descripcion": "(Pasiva) Esta criatura pone tanto énfasis cuando carga, que causa 1d4 DAÑ más durante ese ataque."
+        },
+        {
+            "Habilidad": "Carga paralizadora",
+            "Descripcion": "(Pasiva) La carga de esta criatura aturde a su objetivo a menos que pase un test de CON."
+        },
+        {
+            "Habilidad": "Chillido fantasmal",
+            "Descripcion": "(Activa) Las Almas en Pena son conocidas por su estremecedor grito, dando escalofríos que recorren la espalda del más valiente de los héroes. Chillido Fantasmal funciona igual que Toque Fantasmal, pero es un ataque a distancia que afecta a todos los héroes a la vez. No necesita una tirada de HD. No puede ser ni esquivado ni parado."
+        },
+        {
+            "Habilidad": "Coletazo",
+            "Descripcion": "(Activa) Tiene una poderosa cola que puede usar para atacar a los enemigos en cualquiera de sus 3 casillas posteriores. Necesita un test de HC y un objetivo en esas casillas. Hace 1d6+1 DAÑ y provoca aturdimiento. Este ataque es gratuito (0 AP) y solo se puede hacer 1 por activación."
+        },
+        {
+            "Habilidad": "Corrosivo",
+            "Descripcion": "(Pasiva) El enemigo causa corrosión en todos los metales salvo el Mithril y la plata. Armaduras de rango 3 o 4 golpeadas con esta habilidad pierden 1 punto de durabilidad, incluso si el daño es menor que el valor defensivo de la armadura. Cualquier arma de metal que golpee a una criatura con esta habilidad y le cause una cantidad impar de daño pierde 1 punto de durabilidad."
+        },
+        {
+            "Habilidad": "Daño de Fuego",
+            "Descripcion": "(Pasiva) Esta criatura causa daño de fuego o frío."
+        },
+        {
+            "Habilidad": "Daño de Frío",
+            "Descripcion": "(Pasiva) Esta criatura causa daño de fuego o frío."
+        },
+        {
+            "Habilidad": "Débil a Fuego",
+            "Descripcion": "(Pasiva) Estas criaturas son susceptibles al daño causado por algún elemento o material y reciben 1d6 DAÑ adicional por cualquier herida causada por una fuente con su debilidad."
+        },
+        {
+            "Habilidad": "Débil a Agua",
+            "Descripcion": "(Pasiva) Estas criaturas son susceptibles al daño causado por algún elemento o material y reciben 1d6 DAÑ adicional por cualquier herida causada por una fuente con su debilidad."
+        },
+        {
+            "Habilidad": "Débil a Plata",
+            "Descripcion": "(Pasiva) Estas criaturas son susceptibles al daño causado por algún elemento o material y reciben 1d6 DAÑ adicional por cualquier herida causada por una fuente con su debilidad."
+        },
+        {
+            "Habilidad": "Débil a Frío",
+            "Descripcion": "(Pasiva) Estas criaturas son susceptibles al daño causado por algún elemento o material y reciben 1d6 DAÑ adicional por cualquier herida causada por una fuente con su debilidad."
+        },
+        {
+            "Habilidad": "Demonio",
+            "Descripcion": "(Pasiva) Los demonios no son de este mundo y la magia puede devolverlos a su reino. Todo daño mágico de 10 obliga al demonio a realizar una tirada de DET. Si falla, envía al demonio a su dimensión. Quita la miniatura y dala por muerta. No puede ser registrada."
+        },
+        {
+            "Habilidad": "Disciplinado",
+            "Descripcion": "(Pasiva) Este enemigo añade 1 ficha extra de iniciativa a la bolsa."
+        },
+        {
+            "Habilidad": "Duro como una piedra",
+            "Descripcion": "(Pasiva) Criaturas muy difíciles de dañar. Son inmunes a todas las armas a distancia. Las armas solo hacen la mitad de daño (RAB) a menos que estén hechas de Mithril o sean mágicas."
+        },
+        {
+            "Habilidad": "Elfofóbico",
+            "Descripcion": "(Pasiva) Estos enemigos temen a los Elfos y sufren Miedo al encontrarse con uno si fallan una tirada de Determinación."
+        },
+        {
+            "Habilidad": "En los huesos",
+            "Descripcion": "(Pasiva) Los Esqueletos y Tumularios no tienen apenas carne, y eso hace complicado atacarles. Flechas, virotes y hondas sufren una penalización de -2 DAÑ. Las armas aplastantes (Martillos, Mayales, Bastones, Luceros del Alba y similares) ganan +2 DAÑ."
+        },
+        {
+            "Habilidad": "Enfermedad",
+            "Descripcion": "Un héroe que recibe daño debe pasar una tirada de CON o contraerá una enfermedad."
+        },
+        {
+            "Habilidad": "Engullir",
+            "Descripcion": "(Activa) Esta criatura traga a sus víctimas sin masticar. Este ataque no puede ser bloqueado, pero sí esquivado. Si la esquiva falla, la criatura comienza a tragar a su objetivo. En su siguiente turno, el héroe puede intentar librarse con una tirada de FUE (sólo una vez). Si esto falla el héroe no puede hacer nada. En el siguiente turno el héroe puede hacer un último intento a la desesperada para librarse, una tirada de FUE a la mitad (RAB). Si esto también falla, el héroe es engullido y quitado del tablero. La criatura no hará nada durante estos turnos. La única manera de liberar al héroe es que otro héroe mate a la criatura. En ese caso, el héroe es colocado en el lugar de la criatura y actuará al principio de su siguiente turno."
+        },
+        {
+            "Habilidad": "Enorme",
+            "Descripcion": "(Pasiva) La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
+        },
+        {
+            "Habilidad": "X-Enorme",
+            "Descripcion": "(Pasiva) La criatura es enorme y eso la hace más fácil de acertar a distancia. Su tamaño también le permite causar gran daño. Las tiradas de daño las realiza 2 veces y escoge la más alta. Sea cual sea su equipamiento, tienen la habilidad de armas “Alcance” que permite atacar a 2 casillas y añaden una ficha de iniciativa extra. Estos monstruos ocupan 4 casillas. Un X-Enorme ocupa 2x3 casillas. Para calcular el movimiento, haz como si su peana ocupara sólo una casilla y cuenta de una en una las casillas. En el ejemplo del diagrama, la base del Troll ha invadido 2 casillas más para no quedar estancado bajo el marco de la puerta. Hazlo así en esos casos y empuja automáticamente a quien estuviese ahí. Una criatura Enorme no puede pasar por filas de una casilla excepto puentes. Cuando hacen un ataque poderoso ganan PArm(2)."
+        },
+        {
+            "Habilidad": "Ahogar",
+            "Descripcion": "(Activa) Este es un ataque especial donde una criatura intenta capturar a un héroe. El ataque puede ser bloqueado y esquivado. Si tiene éxito, el héroe habrá sido atrapado y no puede hacer nada excepto intentar liberarse. Al final del primer turno de ser atrapado, el héroe sufre 1 punto de daño. Al final del segundo turno, esto se incrementa a 2 puntos de daño porque el agarre se hace más intenso. Al final del tercer turno, serán 3 de daño y así sucesivamente. Liberarse requiere 1 PA y tener que ganar una tirada de FUE. Cada turno después del primero, la tirada se modifica con un -10. En el turno 3 por ejemplo, será -20. (-0 en el primer turno, -10 en el segundo turno -20 en el tercer turno). Cualquier héroe adyacente al atrapado puede intentar rescatarlo. Cuesta 2 PA pero con FUE +10 ya que puede usar sus armas como recurso. Si la criatura muere, el efecto Enredar se cancela. La criatura no puede girarse si ha atrapado a un héroe, pero puede atacar con normalidad. Puede atrapar a un segundo objetivo, pero si lo hace, no podrá luchar."
+        },
+        {
+            "Habilidad": "Escupitajo ácido",
+            "Descripcion": "(Activa) Puede escupir ácido hasta a 3 casillas. Puede escoger a enemigos adyacentes y siempre ataca al más cercano, si coincide que hay varios, tira al azar. Los adyacentes son impactados automáticamente, mientras que los alejados requieren un test HD+20. 1d6 de DAÑ a su objetivo y -1DUR a la parte de armadura o escudo donde impacte el golpe."
+        },
+        {
+            "Habilidad": "Escupitajo venenoso",
+            "Descripcion": "(Activa) Igual que Venenoso, pero a distancia utilizando HD. Se puede utilizar en objetivos adyacentes y a una casilla de distancia. Puede ser bloqueado con un escudo o esquivado."
+        },
+        {
+            "Habilidad": "Escurridizo",
+            "Descripcion": "(Pasiva) Las ratas son demasiado rápidas y pueden moverse a través de casillas con Héroes. Las ratas son inmunes a la ZDC de los héroes, pero a los héroes sí les afecta la ZDC de las ratas."
+        },
+        {
+            "Habilidad": "Esporas",
+            "Descripcion": "(Pasiva) Las criaturas están rodeadas de una nube de esporas casi invisibles. Estas esporas atacan la mente de los héroes haciendo que sea más difícil pensar y concentrarse. Cualquier héroe a 2 casillas de distancia debe superar una tirada de DET por cada acción realizada. Si falla, la acción se anula."
+        },
+        {
+            "Habilidad": "Etéreo",
+            "Descripcion": "(Pasiva) El enemigo es inmune a las armas normales y trampas. Se necesitarán armas mágicas, agua bendita o magia para hacerle daño. Las criaturas Etéreas no precisan de movimiento extra en la ZDC de un héroe y pueden moverse atravesándolos. Los héroes si deben seguir las reglas de ZDC. Las criaturas etéreas no pueden ser empujadas."
+        },
+        {
+            "Habilidad": "Explosión",
+            "Descripcion": "(Pasiva) Al morir, la criatura puede explotar causando daño y ceguera a su alrededor. Si el golpe final sobre esta criatura reduce su VIT a -5 o menos, la criatura explota en una ráfaga ígnea. Todas las criaturas adyacentes quedan aturdidas y sufren 1d6 DAÑ de fuego. Hay un 50% de posibilidades de que todos los objetos en los atajos reciban 1d2 de daño por el fuego; Tira para cada atajo."
+        },
+        {
+            "Habilidad": "Explosión gaseosa",
+            "Descripcion": "Al morir, la criatura puede explotar causando daño y ceguera a su alrededor. Si el golpe final sobre esta criatura reduce su VIT a -5 o menos, la criatura explota despedazándose. Todas las criaturas que se encuentran adyacentes quedan aturdidas y reciben 1d4 de daño, golpeando la parte menos blindada de su cuerpo. Luego, asigna al azar 4 casillas en la loseta que serán golpeados por trozos voladores. Cualquier héroe en dicha casilla debe pasar una prueba de CON+10 o enfermará."
+        },
+        {
+            "Habilidad": "Fogonazo",
+            "Descripcion": "(Activa) Esta criatura es capaz de conjurar y lanzar una pequeña bola de fuego a un enemigo en LDV. No hay un alcance máximo e incluso puede lanzarlo a un enemigo adyacente. Esto es una habilidad y no cuenta como un hechizo. 1d6+2 DAÑ de fuego."
+        },
+        {
+            "Habilidad": "Fotofobia",
+            "Descripcion": "(Pasiva) Esta criatura se debilita con la luz. Cada fuente de luz a 3 casillas de ella la da +10 RG. Esto podría incluso llevar su RG a un valor positivo."
+        },
+        {
+            "Habilidad": "Frenesí",
+            "Descripcion": "(Pasiva) Este enemigo siempre está fuera de sí y gana 1 golpe extra cuando causa daño y Parm(1). No está limitado en duración como el frenesí de los Héroes, que solo dura 2 turnos."
+        },
+        {
+            "Habilidad": "Golpe aturdidor",
+            "Descripcion": "(Pasiva) Un golpe que cause una pérdida de VIT, aturde a su objetivo."
+        },
+        {
+            "Habilidad": "Guadaña del alma",
+            "Descripcion": "(Pasiva) Un arma temible, blandida generalmente por Espectros. Al igual que su prima corpórea, se blande dando amplios barridos, que golpean a cada Héroe dentro de la ZDC del portador. Los aliados del portador no se ven afectados. Esta guadaña es etérea, como el Espectro y atraviesa sin problemas los objetos materiales. Solo puede ser bloqueada por armas que tengan propiedades mágicas o estén recubiertas con plata. Solo las armaduras y escudos que sean mágicos o de plata ofrecen protección contra esta arma. El resto de armaduras incluida la AN, se ignoran. Un ataque exitoso de la Guadaña del alma, hace 1d6+2 daño de Frío y el Héroe golpeado debe tirar 1d10 y sacar una puntuación menor que su cordura actual, o perder 1 punto de ésta."
+        },
+        {
+            "Habilidad": "Horda",
+            "Descripcion": "(Pasiva) Si hay más enemigos que miembros del grupo, los enemigos ganan una ficha de iniciativa adicional. Después de que todos los enemigos hayan sido activados, un enemigo aleatorio con esta regla puede activarse nuevamente cuando se extraiga su última ficha. Si las condiciones de esta regla ya no se cumplen, la ficha adicional se elimina."
+        },
+        {
+            "Habilidad": "Ignorar armadura",
+            "Descripcion": "(Pasiva) Los ataques de esta criatura ignoran cualquier tipo de armadura que no sea mágica."
+        },
+        {
+            "Habilidad": "Imbécil",
+            "Descripcion": "(Pasiva) Tira 1d6 al comienzo de su turno. Con un resultado de 1, no hará nada más que mirar a su alrededor confundido."
+        },
+        {
+            "Habilidad": "Inmune a X",
+            "Descripcion": "(Pasiva) Esta criatura es immune al DAÑ producido por la fuente especificada."
+        },
+        {
+            "Habilidad": "Inspirador",
+            "Descripcion": "(Pasiva) Mientras esta criatura esté sobre la mesa, se añaden 2 fichas de iniciativa extra a la bolsa. Si este enemigo resulta herido, puede agregar 1 ficha adicional, lo que hace un total de 3."
+        },
+        {
+            "Habilidad": "Invocador",
+            "Descripcion": "(Pasiva) En cada turno en el que el invocador no tenga Héroes adyacentes, intentará traer unas ratas de otro plano. Tira 1d8 y si sale 1-2, logra invocarlas. Haz una tirada de encuentros en la tabla de Rátidos y coloca su resultado en la loseta más cercana a la del invocador, y que no tuviera enemigos previamente. El invocador se comporta como un mago; sin embargo, no tiene otros hechizos."
+        },
+        {
+            "Habilidad": "Lanzarrocas",
+            "Descripcion": "(Activa) Si no hay Héroes adyacentes a este enemigo, su ataque siempre será lanzar una roca a un miembro aleatorio del grupo en LDV. Esto prioriza su tabla de comportamiento y no tendrás que tirar dado para ver que hace. Este ataque consume 1PA, y usa HD para chequear el impacto. La roca hace 1d12 DAÑ más el BD propio de la criatura."
+        },
+        {
+            "Habilidad": "Latigazo de Fuego",
+            "Descripcion": "(Activa) Este es un ataque en el que la criatura usa su propio cuerpo para arremeter contra los héroes. Puede atacar a una distancia de 2 casillas (4 si es Enorme), incluso si hay una criatura amiga entre medias. Se requiere test de HC; Se aplica daño normal y elemental."
+        },
+        {
+            "Habilidad": "Latigazo de Arena",
+            "Descripcion": "(Activa) Este es un ataque en el que la criatura usa su propio cuerpo para arremeter contra los héroes. Puede atacar a una distancia de 2 casillas (4 si es Enorme), incluso si hay una criatura amiga entre medias. Se requiere test de HC; Se aplica daño normal y elemental."
+        },
+        {
+            "Habilidad": "Latigazo de Hielo",
+            "Descripcion": "(Activa) Este es un ataque en el que la criatura usa su propio cuerpo para arremeter contra los héroes. Puede atacar a una distancia de 2 casillas (4 si es Enorme), incluso si hay una criatura amiga entre medias. Se requiere test de HC; Se aplica daño normal y elemental."
+        },
+        {
+            "Habilidad": "Lengüetazo",
+            "Descripcion": "(Activa) Este es un ataque a distancia donde el monstruo atacará a 1 casilla de distancia. Los obstáculos de media altura bloquearán este ataque, pero otras miniaturas entre medias no. Un ataque con éxito puede ser esquivado o bloqueado. Si esto falla, la miniatura será arrastrada a una casilla adyacente al Sapo. Cualquier miniatura en esa casilla intercambiará posiciones con el objetivo."
+        },
+        {
+            "Habilidad": "Lento",
+            "Descripcion": "(Pasiva) Este enemigo se mueve tan lento que sólo puede hacer un movimiento por turno. Tiene 2 PA, si el segundo PA no puede ser usado para otra acción, se perderá."
+        },
+        {
+            "Habilidad": "Levitar",
+            "Descripcion": "(Pasiva) Esta criatura se eleva sobre el suelo, por ello es capaz de evitar fosos y trampas. Nunca activarán trampas y pueden moverse por ellas con normalidad. Pueden terminar su movimiento sobre una trampa."
+        },
+        {"Habilidad":"Elevar y Soltar","Descripcion":"Con un HD exitoso, la arpía agarra y levanta al héroe más cercano dentro de M casillas. Luego, el héroe cae en una casilla aleatoria de la misma loseta, a no mas de 4 casillas de su posición inicial. El héroe sufre 1d6 de daño sin modificador de armadura excepto AN. Si el héroe cae sobre otro héroe, ambos sufren 1d6 de daño. El héroe caído se coloca en la casilla desocupada más cercana. Cualquier héroe afectado por este ataque termina tumbado en el suelo."},
+        {
+            "Habilidad": "Maestro de los acertijos",
+            "Descripcion": "(Pasiva) Cada vez que te enfrentes a una Esfinge (o varias) sin otros enemigos cerca, tienes la opción de responder un acertijo. Requiere una tirada de SAB para el héroe escogido. Una respuesta correcta quitará la Esfinge del tablero sin luchar y dará 150 puntos de EXP. Un fallo enfadará a la Esfinge y la conducirá a la batalla."
+        },
+        {
+            "Habilidad": "Maestro de los muertos",
+            "Descripcion": "(Activa) Un no muerto enemigo recupera toda su vitalidad, incluso si comenzó a 0 VIT. Si no puede utilizarse esta habilidad, el Vampiro recupera 1d6 VIT. Si tampoco se puede, realiza un ataque normal."
+        },
+        {
+            "Habilidad": "Mágico",
+            "Descripcion": "(Pasiva) Estas criaturas están hechas de magia y, por tanto, una vez destruidas no dejan botín."
+        },
+        {
+            "Habilidad": "Mago",
+            "Descripcion": "(Pasiva) Este enemigo puede utilizar magia. En particular los hechizos mencionados en la Tabla de Encuentros. Los enemigos utilizan el HD para determinar si el hechizo tiene éxito."
+        },
+        {
+            "Habilidad": "Manada",
+            "Descripcion": "(Pasiva) Esta criatura depende de su manada. Si esta disminuye, también lo hace su moral. Si más de la mitad de las criaturas de esta facción en la mesa mueren o huyen, esta criatura tendrá que superar un test de DET (una sola vez) para no huir."
+        },
+        {
+            "Habilidad": "Masa divisible",
+            "Descripcion": "(Pasiva) Cuando la viscosidad gigante adquiere el estado de herida, se divide en dos. Reemplázala por 2 viscosidades, lo más cerca posible de la posición original de la gigante. Las nuevas viscosidades comienzan sin heridas."
+        },
+        {
+            "Habilidad": "Metal pesado",
+            "Descripcion": "(Pasiva) Esta criatura es de metal, sin puntos débiles evidentes. Las armas de filo son menos efectivas y causan -2 DAÑ. Las armas con “Aturdir” causan +2 DAÑ contra él, y cualquier efecto de aturdimiento dura 2 PA."
+        },
+        {
+            "Habilidad": "Miedo X",
+            "Descripcion": "(Pasiva) El enemigo inflige Miedo a todos los héroes de nivel X e inferior. Todos los héroes deben realizar una tirada de DET al momento. Un fallo dará -10 HC/HD/-10AA hasta el final de la batalla. Solo se hará una tirada, contra la puntuación más alta de Miedo que haya."
+        },
+        {
+            "Habilidad": "Miope",
+            "Descripcion": "(Pasiva) Esta criatura nunca puede cargar y siempre que no haya objetivos en un radio de 4 casillas se considera 'Imbécil'."
+        },
+        {
+            "Habilidad": "Mordisco",
+            "Descripcion": "(Activa) Esta criatura goza de un mordisco extra poderoso que causa 1d8+2 DAÑ y PArm (2)."
+        },
+        {
+            "Habilidad": "Muerte espectacular",
+            "Descripcion": "(Pasiva) Cuando esta criatura muera, tira 1d6. Con 1-2, la criatura se convierte en piedra, reduciendo en 1 DUR el arma que la mató. Con 3-4, la criatura se convierte en un charco de ácido que salpica a cualquier héroe adyacente y reduce en 1 DUR una pieza aleatoria de armadura. Con 5-6, la criatura explota provocando 1d6 DAÑ de Fuego a cualquier personaje adyacente."
+        },
+        {
+            "Habilidad": "Observador",
+            "Descripcion": "(Pasiva) Esta criatura tiene la habilidad de permanecer oculta hasta el momento perfecto para atacar, quizás acechando en las sombras o incluso en el techo. Al colocarla en el tablero, cualquier casilla ocupada por héroes, así como la loseta recién revelada, puede usarse como área de colocación válida. Comienza aleatorizando la loseta para cada criatura. Si hay un héroe equipado con una fuente de luz, ya sea mundana o mágica, en una loseta donde podría aparecer una criatura, la probabilidad de ser emboscado se reduce. Ese Héroe realiza un test PER contra cada criatura afectada por la fuente de luz. Si la prueba tiene éxito, la criatura se coloca en la loseta recién revelada. Una vez que se haya determinado en que loseta aparece cada criatura, aleatoriza su casilla como de costumbre. Esta regla no se aplica ni para errantes, ni para escenarios de exterior."
+        },
+        {
+            "Habilidad": "Odio",
+            "Descripcion": "(Pasiva) ¿Detestas a tus enemigos? Bueno, pues ellos a ti también. La criatura gana +5 HC."
+        },
+        {
+            "Habilidad": "Oído fino",
+            "Descripcion": "(Pasiva) Este enemigo escucha con precisión todo lo que le rodea. Añade 1 ficha de iniciativa de monstruo el primer turno de la batalla."
+        },
+        {
+            "Habilidad": "Patada",
+            "Descripcion": "(Pasiva) Esta criatura puede hacer un ataque gratuito cada turno, contra un Héroe situado en alguna de las 3 casillas detrás del monstruo. (No consume PA)."
+        },
+        {
+            "Habilidad": "Penetración de armadura (X)",
+            "Descripcion": "(Pasiva) Los ataques de esta criatura son muy efectivos para desgarrar armaduras. Resta X de la armadura del héroe al calcular el DAÑ."
+        },
+        {
+            "Habilidad": "Petrificar",
+            "Descripcion": "(Activa) Si miras a los ojos a este monstruo, te petrifica. Si la habilidad se activa, un héroe adyacente aleatorio debe superar una tirada de DET o petrificarse durante 1d6 turnos. Mientras está petrificado, el héroe no será tomado como objetivo mientras haya otros héroes vivos. El héroe no puede hacer nada durante esos turnos."
+        },
+        {
+            "Habilidad": "Pies ligeros",
+            "Descripcion": "(Pasiva) Esta criatura puede moverse sin esfuerzo sobre la nieve, sin importar su profundidad o lo que resbale. Se ignoran los efectos negativos de la nieve en el movimiento."
+        },
+        {
+            "Habilidad": "Pirofobia",
+            "Descripcion": "(Pasiva) Esta criatura debe pasar un test de DET para atacar al Héroe que porte la antorcha. Si falla, el PA se pierde. Los Trolls que fallen su test, automáticamente usarán la acción “Bramido” en vez de atacar. Una vez que el test de DET haya sido exitoso, no será necesario repetirlo. Los enjambres de murciélagos solo hacen la mitad de daño (RAB) cuando ataquen al portador de la antorcha."
+        },
+        {
+            "Habilidad": "Podrido",
+            "Descripcion": "(Pasiva) Esta criatura está tan llena de enfermedades que estar a su lado ya es un peligro. Al comienzo de cada turno, un héroe adyacente a esta criatura debe ganar una tirada de CON +X, para resistir una enfermedad."
+        },
+        {
+            "Habilidad": "Psíquico",
+            "Descripcion": "(Pasiva) Disminuye automáticamente el DET de todos los héroes en -20 tan pronto como entra en juego. El efecto termina cuando la criatura muere. Este efecto no es acumulativo si hay 2 psíquicos."
+        },
+        {
+            "Habilidad": "Puntas de hielo",
+            "Descripcion": "(Activa) Con un movimiento rápido, la criatura invoca unas puntas afiladas desde su cuerpo cristalino, golpeando a su objetivo con una fuerza escalofriante. PArm (2), DAÑ de frio y DAÑ según la ficha del enemigo."
+        },
+        {
+            "Habilidad": "Quiebrasuelos",
+            "Descripcion": "(Activa) Golpea furiosamente el suelo, rompiéndolo y haciendo que tiemble. 1d10 DAÑ a todas las casillas adyacentes al monstruo (ignora armadura), todos los afectados quedan aturdidos (-1PA)."
+        },
+        {
+            "Habilidad": "Ráfagas",
+            "Descripcion": "(Pasiva) La criatura crea poderosas ráfagas de aire que dificultan el uso de armas a distancia. Todas las criaturas en la habitación o pasillo donde se encuentre esta criatura sufren una penalización de -15 a su HD."
+        },
+        {
+            "Habilidad": "Rápido",
+            "Descripcion": "(Pasiva) Esta criatura se mueve increíblemente rápido. Añade una ficha de iniciativa extra. Se puede activar 2 veces por turno, pero en la segunda activación solo puede usar 1 PA."
+        },
+        {
+            "Habilidad": "Regeneración",
+            "Descripcion": "(Pasiva) Este enemigo regenera 1d6 VIT al principio de cada turno."
+        },
+        {
+            "Habilidad": "Rodar",
+            "Descripcion": "(Activa) Durante su turno, la criatura puede realizar un movimiento rodante en lugar de un movimiento normal. El movimiento rodante debe ejecutarse utilizando todos los M en línea recta o diagonal a través de la casilla de un héroe y sólo puede terminar en una casilla vacía. Este movimiento sólo es posible si el movimiento termina en una casilla vacía. Todos los Héroes en el camino deben realizar un test de DES para evitar el atropello. Si tiene éxito, el héroe no sufre daño. En caso de fallo, se aplica daño normal ignorando armaduras."
+        },
+        {
+            "Habilidad": "Sacudida",
+            "Descripcion": "(Activa) Esta criatura paraliza a un héroe adyacente aleatorio. El héroe elegido debe pasar test de DET o perderá 1COR y quedará aturdido."
+        },
+        {
+            "Habilidad": "Sangrado",
+            "Descripcion": "(Pasiva) Si la criatura atrapa a su objetivo con sus fauces, agitará la cabeza violentamente causando mayor daño. Si el héroe falla una tirada de FUE, añade 1d6 al DAÑ de ese ataque que acaba de impactar."
+        },
+        {
+            "Habilidad": "Sangre fría",
+            "Descripcion": "(Pasiva) La sangre de la criatura es fuerte contra el frío intenso. La criatura tiene resistencia total al daño de frío y cualquier daño mágico de frío se reduce a la mitad (RAB)."
+        },
+        {
+            "Habilidad": "Sanguijuela",
+            "Descripcion": "(Pasiva) Un ataque con éxito permitirá a la criatura pegarse a su objetivo. Este no podrá moverse o atacar a algo que no sea la criatura. La criatura drena 1d4 VIT al comienzo de su turno. El héroe debe realizar una tirada de enfermedad por cada turno que permanezca pegado a la criatura. Para atacar al monstruo, se hace de manera normal pero otros héroes que lo intenten deberán tener mucho cuidado para no golpear a su compañero y por ello solo hacen la mitad de daño (RAB)."
+        },
+        {
+            "Habilidad": "Seducción",
+            "Descripcion": "(Activa) Este es un ataque especial que obliga al héroe objetivo adyacente a pasar una tirada de DET. Si falla, el héroe será incapacitado. Para romper la seducción, el héroe debe ganar una tirada de DET al principio de su turno. El monstruo ignorará a un Héroe seducido a la hora de atacar, siempre que haya objetivos no-seducidos disponibles."
+        },
+        {
+            "Habilidad": "Sensible a la luz",
+            "Descripcion": "(Pasiva) Cuando se expone a la luz del sol, la criatura sufre una penalización de -10 en HC/HD, y cualquier hechizo que use LDV sufre una penalización de -20. Cualquier pelea al aire libre que no tenga indicación de que es de noche, se considera de día y entonces entra en vigor esta regla."
+        },
+        {
+            "Habilidad": "Sigiloso",
+            "Descripcion": "(Pasiva) Estos monstruos son expertos emboscando enemigos y pueden añadir 1 ficha extra de iniciativa de monstruo a la mochila mientras esté en el tablero."
+        },
+        {
+            "Habilidad": "Silencioso",
+            "Descripcion": "(Pasiva) Estos enemigos son muy complicados de escuchar. Oído fino no dará a los jugadores la bonificación correspondiente."
+        },
+        {
+            "Habilidad": "Telaraña",
+            "Descripcion": "(Activa) Ciertas arañas pueden lanzar telas como ataque especial. Es el mismo efecto que el del arma “Red”."
+        },
+        {
+            "Habilidad": "Terror X",
+            "Descripcion": "(Pasiva) El enemigo inflige Terror en todos los héroes de nivel X e inferior. Los de nivel superior a X sufren Miedo. Se realizará una tirada de Terror con -20 DET donde un fallo causará el mismo efecto que Miedo y quedará aturdido (-1PA). Si varios enemigos tienen esta pasiva, el test de DET se realiza contra el Terror más alto."
+        },
+         {
+            "Habilidad": "Toque fantasmal",
+            "Descripcion": "(Pasiva) Estas criaturas etéreas no usan armas, sino que llegan al mismísimo corazón de sus objetivos. Estos ataques no pueden ser bloqueados, pero sí esquivados. La Armadura y la AN no sirven de ayuda, pero el objetivo puede realizar una tirada de DET para evitar el daño. Si falla, el objetivo recibe 1d8 de daño y pierde 1 COR. Este ataque sigue las reglas normales del ataque poderoso."
+        },
+        {
+            "Habilidad": "Trepamuros",
+            "Descripcion": "(Pasiva) Las arañas pueden moverse por las paredes para adelantar a los héroes. No pueden terminar su turno en una pared (molaría, pero no). Las arañas ignoran la ZDC cuando se mueven por las paredes."
+        },
+        {
+            "Habilidad": "Ultra rápido",
+            "Descripcion": "(Pasiva) Esta criatura se mueve como el rayo. Añade una ficha de iniciativa extra. Se puede activar 2 veces por turno, teniendo en total 4PA."
+        },
+        {
+            "Habilidad": "Venenoso",
+            "Descripcion": "(Pasiva) El enemigo es venenoso. Si es herido, el héroe debe ganar una tirada de CON o sufrir las consecuencias del veneno."
+        },
+        {
+            "Habilidad": "Venganza",
+            "Descripcion": "(Pasiva) La amargura fluye por la sangre de esta criatura. Si es golpeado con éxito con un ataque a melé o a distancia, la criatura gana +1 DAÑ permanente. Cuando esta criatura falle un ataque, pierde esos bonos. Esto no se acumula con Ataque Múltiple."
+        },
+         {
+            "Habilidad": "Vientre débil",
+            "Descripcion": "(Pasiva) Cuando un dragón hace un ataque poderoso, expone su vientre Su AN se reduce en -3 hasta su siguiente activación. Los ataques por la espalda que reciba, no se benefician de esta reducción de AN."
+        },
+        {
+            "Habilidad": "Violinista",
+            "Descripcion": "(Activa) Cada vez que se toca el violín, todos los Héroes en juego deben pasar un test DET. El que falle pierde 1 COR y se mueve 4 casillas en una dirección aleatoria, recta o diagonal, y queda aturdido. El violín solo puede ser tocado una vez en cada activación del Naxxor. Si Naxxor ha movido, tocar el violín cuesta 1PA, si no ha movido, tocar cuesta 2PA."
+        },
+        {
+            "Habilidad": "Volador",
+            "Descripcion": "(Pasiva) Estos enemigos pueden volar y moverse a través de otras miniaturas mientras no terminen su movimiento en una casilla ocupada. Tampoco sufre penalizaciones por la ZDC del héroe. Es capaz de evitar fosos y trampas. Nunca activarán trampas y pueden moverse por ellas con normalidad. Pueden terminar su movimiento sobre una trampa. Todo movimiento es considerado como volar. Algunos voladores son tan grandes que sólo pueden volar en exteriores durante una escaramuza. Si se da el caso, la regla está escrita como Volador (E)."
+        },
+        {
+            "Habilidad": "Mutación Troll",
+            "Descripcion":"<strong>Tira 1d20:</strong>             <br><strong style='color:orange;'>Con 1-9:</strong> No hay mutación.            <br><strong style='color:orange;'>Con 10:</strong> <strong style='color:#d4af37;'>Pierna débil:</strong> Sólo puede hacer un movimiento por turno. Tiene 2 PA, si el segundo PA no puede ser usado para otra acción, se perderá.            <br><strong style='color:orange;'>Con 11:</strong> <strong style='color:#d4af37;'>Frágil:</strong> -10 VIT.            <br><strong style='color:orange;'>Con 12:</strong> <strong style='color:#d4af37;'>Piel gruesa:</strong> +1 AN.            <br><strong style='color:orange;'>Con 13:</strong> <strong style='color:#d4af37;'>Brazo extra:</strong> Lo que le permite realizar 1 ataque normal adicional (1d8+1 DAÑ) cada turno.            <br><strong style='color:orange;'>Con 14:</strong> <strong style='color:#d4af37;'>Astado:</strong> (Pasiva) Esta criatura pone tanto énfasis cuando carga, que causa 1d4 DAÑ más durante ese ataque.            <br><strong style='color:orange;'>Con 15:</strong> <strong style='color:#d4af37;'>Fauces estomacales:</strong> Le otorga un ataque normal adicional cada turno contra el personaje en la casilla directamente frente a él. (1d8 DAÑ, PArm 2)            <br><strong style='color:orange;'>Con 16:</strong> <strong style='color:#d4af37;'>Garras:</strong> Posee unas garras antinaturalmente grandes, ganando PArm (2).            <br><strong style='color:orange;'>Con 17:</strong> <strong style='color:#d4af37;'>Inmune a Fuego</strong> Si posee la regla especial Pirofobia, esta queda anulada.            <br><strong style='color:orange;'>Con 18:</strong> <strong style='color:#d4af37;'>Extra duro:</strong> +10 VIT.            <br><strong style='color:orange;'>Con 19:</strong> <strong style='color:#d4af37;'>Uno con el Vacío:</strong> La criatura es completamente inmune a todo daño mágico y a cualquier efecto causado por la magia.            <br><strong style='color:orange;'>Con 20:</strong> Frio como el hielo: <strong style='color:#d4af37;'>Inmune a Frío</strong>. Además, cada uno de sus ataques inflige daño de frío y obtiene la regla especial <strong style='color:#d4af37;'>Aura Congelada</strong>Aura Congelada, (Pasiva) Cualquier jugador adyacente a esta criatura debe pasar test de CON al comienzo de su activación o quedará aturdido. Esta prueba debe repetirse cada turno."
+        }  ,
+        {
+              "Habilidad": "Mutación Demoníaca",
+            "Descripcion":"Tira 1d6:             <br><strong style='color:#orange;'>Con 1-2:</strong> No tiene mutación.            <br><strong style='color:#orange;'>Con 3:</strong>  <strong style='color:#d4af37;'>Enfermedad:</strong> Héroe herido, tira CON o enfermará.            <br><strong style='color:#orange;'>Con 4:</strong>   <strong style='color:#d4af37;'>Cola:</strong> El demonio tiene una cola larga cubierta de púas afiladas. Cada turno, puede realizar un ataque gratuito (no se necesitan PA) contra cualquier héroe adyacente que no esté en las tres casillas delanteras. Inflige 1d10+2 (PArm2) de daño.            <br><strong style='color:#orange;'>Con 5:</strong> <strong style='color:#d4af37;'>Aliento de Fuego:</strong> 1d10+5 DAÑ en casilla objetivo y 1d6+5 DAÑ en las 24 casillas adyacentes.            <br><strong style='color:#orange;'>Con 6:</strong> <strong style='color:#d4af37;'>Seducción:</strong> Héroe DET o es seducido. Falla: Pierde los PA. DET al principio de su turno para perder este estado. Los Héroes seducidos no serán objetivo si hay Héroes no seducidos a la vista."
+        }
+    
+    
+    
+    ]
+}

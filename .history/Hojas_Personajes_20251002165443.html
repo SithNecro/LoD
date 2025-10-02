@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Héroes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS de Quill -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="Hoja_Personajes.css">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+</head>
+
+<body class="bg-dark">
+    <!--<div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
+    </div>-->
+    <div class="d-flex gap-2 mb-3">
+        <button onclick="verSlots()" class="btn btn-info">Ver Slots</button>
+        <button id="exportar" class="btn btn-success">Exportar a JSON</button>
+        <button id="btnImportar" class="btn btn-secondary">Importar JSON</button>
+        <input type="file" id="importar" accept="application/json" class="d-none">
+        <button class="btn btn-secondary w-100 mb-1" onclick="nuevoHeroeSlot()">Nuevo Héroe</button>
+
+    </div>
+    <div class="container" style="max-width:100%;">
+        <h1 class="mb-4 text-center">Gestión de Héroes - 4 Slots</h1>
+
+
+
+        <!-- Panel de 4 héroes -->
+        <div class="row" id="heroSlots"></div>
+
+        <h2 class="mb-3 mt-4">Lista de héroes guardados</h2>
+        <div id="lista" class="row gy-3"></div>
+    </div>
+
+  <script>
+// ====== Configuración de campos ======
+const baseActualIds = [
+  'Nivel','Suerte','Energia','Vida',
+  'hc','hd','esquiva','fcerrad','trueque','curar','alquimia',
+  'plegaria','aArcanas','percep','superviv','cordura','peso'
+]; // Sin 'det' aquí para evitar duplicados [attached_file:1]
+
+const atributosBase = ['fue','des','con','sab','det']; // Atributos base únicos [attached_file:1]
+
+// Parejas izquierda/base y derecha/actual para el mismo atributo lógico
+// Ej: 'fue' (base) y 'bd' (actual) quedan dentro de la clave 'fue' {base, actual}
+const slashPairs = [
+  ['fue','bd'],
+  ['con','an'],
+  ['des','m'],
+  ['sab','mana'],
+  ['m1','m2']
+]; // Declaradas como pares reales, no lista plana [attached_file:1]
+
+// ====== IndexedDB ======
+const DB_NAME = 'heroesDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'heroes';
+let db = null;
+
+function abrirDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const dbu = e.target.result;
+      if (!dbu.objectStoreNames.contains(STORE_NAME)) {
+        dbu.createObjectStore(STORE_NAME, { keyPath: 'slot' });
+      }
+    };
+    req.onsuccess = e => { db = e.target.result; resolve(db); };
+    req.onerror = e => reject(e.target.error);
+  });
+}
+
+function guardarSlot(slot, data) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction([STORE_NAME], 'readwrite');
+    const store = tx.objectStore(STORE_NAME);
+    store.put({ slot, ...data });
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = e => reject(e.target.error);
+  });
+}
+
+function cargarSlot(slot) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction([STORE_NAME], 'readonly');
+    const store = tx.objectStore(STORE_NAME);
+    const req = store.get(slot);
+    req.onsuccess = () => resolve(req.result || null);
+    req.onerror = e => reject(e.target.error);
+  });
+}
+
+function cargarTodos() {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction([STORE_NAME], 'readonly');
+    const store = tx.objectStore(STORE_NAME);
+    const res = [];
+    const cursorReq = store.openCursor();
+    cursorReq.onsuccess = e => {
+      const cursor = e.target.result;
+      if (cursor) {
+        res.push(cursor.value);
+        cursor.continue();
+      } else {
+        resolve(res);
+      }
+    };
+    cursorReq.onerror = e => reject(e.target.error);
+  });
+}
+
+// ====== Helpers DOM ======
+function valNum(id) {
+  const el = document.getElementById(id);
+  return el ? (parseInt(el.value) || 0) : 0;
+}
+
+function setVal(id, v) {
+  const el = document.getElementById(id);
+  if (el) el.value = v ?? 0;
+}
+
+function getText(id) {
+  const el = document.getElementById(id);
+  return el ? el.value || '' : '';
+}
+
+function setText(id, v) {
+  const el = document.getElementById(id);
+  if (el) el.value = v || '';
+}
+
+// ====== Extracción / Relleno ======
+function obtenerBaseActualSlot(slot) {
+  const obj = {};
+  baseActualIds.forEach(k => {
+    obj[k] = valNum(`${k}${slot}`);
+  });
+  return obj;
+}
+
+function rellenarBaseActualSlot(slot, data) {
+  baseActualIds.forEach(k => {
+    setVal(`${k}${slot}`, data?.[k] ?? 0);
+  });
+}
+
+function obtenerAtributosSlot(slot) {
+  const atributos = {};
+
+  // Atributos base simples
+  atributosBase.forEach(k => {
+    atributos[k] = atributos[k] || {};
+    atributos[k].base = valNum(`${k}${slot}`);
+  });
+
+  // Parejas izquierda(base)/derecha(actual) en la misma clave de la izquierda
+  slashPairs.forEach(([left, right]) => {
+    atributos[left] = atributos[left] || {};
+    atributos[left].base = atributos[left].base ?? 0; // por si ya lo puso atributosBase
+    atributos[left].actual = valNum(`${right}${slot}`);
+  });
+
+  return atributos;
+}
+
+function rellenarAtributosSlot(slot, atributos) {
+  // Atributos base
+  atributosBase.forEach(k => {
+    setVal(`${k}${slot}`, atributos?.[k]?.base ?? 0);
+  });
+
+  // Parejas: el right rellena el "actual" dentro de la clave left
+  slashPairs.forEach(([left, right]) => {
+    setVal(`${right}${slot}`, atributos?.[left]?.actual ?? 0);
+  });
+}
+
+// Campos de texto/notas si aplica
+function obtenerTextosSlot(slot) {
+  return {
+    nombre: getText(`nombre${slot}`),
+    raza: getText(`raza${slot}`),
+    clase: getText(`clase${slot}`),
+    notas: getText(`notas${slot}`)
+  };
+}
+
+function rellenarTextosSlot(slot, data) {
+  setText(`nombre${slot}`, data?.nombre || '');
+  setText(`raza${slot}`, data?.raza || '');
+  setText(`clase${slot}`, data?.clase || '');
+  setText(`notas${slot}`, data?.notas || '');
+}
+
+// ====== Guardado/Relleno principal ======
+async function guardarSlotAuto(slot) {
+  await abrirDB();
+  const baseActual = obtenerBaseActualSlot(slot);
+  const atributos = obtenerAtributosSlot(slot);
+  const textos = obtenerTextosSlot(slot);
+
+  await guardarSlot(slot, {
+    baseActual,
+    atributos,
+    textos,
+    actualizado: Date.now()
+  });
+}
+
+async function rellenarSlotDesdeDB(slot) {
+  await abrirDB();
+  const data = await cargarSlot(slot);
+  if (!data) return;
+
+  rellenarBaseActualSlot(slot, data.baseActual || {});
+  rellenarAtributosSlot(slot, data.atributos || {});
+  rellenarTextosSlot(slot, data.textos || {});
+}
+
+// ====== Exportar / Importar ======
+async function exportarJSON() {
+  await abrirDB();
+  const todos = await cargarTodos();
+  const blob = new Blob([JSON.stringify(todos, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'heroes.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+async function importarJSON(file) {
+  const text = await file.text();
+  const arr = JSON.parse(text || '[]');
+  await abrirDB();
+  const tx = db.transaction([STORE_NAME], 'readwrite');
+  const store = tx.objectStore(STORE_NAME);
+  arr.forEach(obj => store.put(obj));
+  return new Promise((resolve, reject) => {
+    tx.oncomplete = resolve;
+    tx.onerror = e => reject(e.target.error);
+  });
+}
+
+// ====== Listeners ======
+function wireInputsSlot(slot) {
+  // baseActualIds
+  baseActualIds.forEach(id => {
+    const el = document.getElementById(`${id}${slot}`);
+    if (!el) return;
+    el.addEventListener('blur', () => guardarSlotAuto(slot));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); guardarSlotAuto(slot); }
+    });
+  });
+
+  // atributosBase
+  atributosBase.forEach(id => {
+    const el = document.getElementById(`${id}${slot}`);
+    if (!el) return;
+    el.addEventListener('blur', () => guardarSlotAuto(slot));
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); guardarSlotAuto(slot); }
+    });
+  });
+
+  // slashPairs
+  slashPairs.forEach(([left, right]) => {
+    [left, right].forEach(id => {
+      const el = document.getElementById(`${id}${slot}`);
+      if (!el) return;
+      el.addEventListener('blur', () => guardarSlotAuto(slot));
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter') { e.preventDefault(); guardarSlotAuto(slot); }
+      });
+    });
+  });
+}
+
+function wireBotonesGenerales() {
+  const btnExportar = document.getElementById('exportar');
+  if (btnExportar) {
+    btnExportar.addEventListener('click', exportarJSON);
+  }
+
+  const btnImportar = document.getElementById('btnImportar');
+  const inputImportar = document.getElementById('importar');
+  if (btnImportar && inputImportar) {
+    btnImportar.addEventListener('click', () => inputImportar.click());
+    inputImportar.addEventListener('change', async e => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      await importarJSON(file);
+      // Recargar los 4 slots visibles tras importar
+      [1,2,3,4].forEach(s => rellenarSlotDesdeDB(s));
+    });
+  }
+}
+
+// ====== Inicialización ======
+document.addEventListener('DOMContentLoaded', async () => {
+  await abrirDB();
+  // Conectar inputs de los 4 slots (ajusta si hay más)
+  [1,2,3,4].forEach(slot => {
+    wireInputsSlot(slot);
+    rellenarSlotDesdeDB(slot);
+  });
+  wireBotonesGenerales();
+});
+
+// ====== Utilidades UI opcionales ======
+// Mostrar datos de todos los slots (para depurar)
+async function verSlotsEnConsola() {
+  await abrirDB();
+  const todos = await cargarTodos();
+  console.log('Héroes en DB:', todos);
+}
+</script>
+
+
+    <!-- JS de Quill -->
+</body>
+
+
+
+</html>

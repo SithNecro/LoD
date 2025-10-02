@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Héroes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS de Quill -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="Hoja_Personajes.css">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+</head>
+
+<body class="bg-dark">
+    <!--<div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
+    </div>-->
+    <div class="d-flex gap-2 mb-3">
+        <button onclick="verSlots()" class="btn btn-info">Ver Slots</button>
+        <button id="exportar" class="btn btn-success">Exportar a JSON</button>
+        <button id="btnImportar" class="btn btn-secondary">Importar JSON</button>
+        <input type="file" id="importar" accept="application/json" class="d-none">
+        <button class="btn btn-secondary w-100 mb-1" onclick="nuevoHeroeSlot()">Nuevo Héroe</button>
+
+    </div>
+    <div class="container" style="max-width:100%;">
+        <h1 class="mb-4 text-center">Gestión de Héroes - 4 Slots</h1>
+
+
+
+        <!-- Panel de 4 héroes -->
+        <div class="row" id="heroSlots"></div>
+
+        <h2 class="mb-3 mt-4">Lista de héroes guardados</h2>
+        <div id="lista" class="row gy-3"></div>
+    </div>
+
+    <script>
+        let db;
+        let cambiosPendientes = { 1: false, 2: false, 3: false, 4: false };
+        const quills = {};
+
+        const baseActualIds = [
+            "Nivel", "Suerte", "Energía", "Vida", "det", "hc", "hd",
+            "esquiva", "fcerrad", "trueque", "curar", "alquimia",
+            "plegaria", "aArcanas", "percep", "superviv", "cordura", "peso", "mana"
+        ];
+        const slashPairs = [["fue", "bd"], ["con", "an"], ["des", "m"], ["m1", "m2"]];
+        const especiales = ["Nivel", "Suerte", "Energía"]; // 👈 atributos solo con base
+        const atributosBase = ["FUE", "DES", "CON", "SAB", "DET"];
+
+        // Inicializar IndexedDB
+        const request = indexedDB.open("PersonajesDB", 2);
+        request.onupgradeneeded = e => {
+            db = e.target.result;
+            if (!db.objectStoreNames.contains("personajes")) {
+                db.createObjectStore("personajes", { keyPath: "id", autoIncrement: true });
+            }
+            if (!db.objectStoreNames.contains("slots")) {
+                db.createObjectStore("slots", { keyPath: "slot" });
+            }
+        };
+        request.onsuccess = e => {
+            db = e.target.result;
+            generarSlots();
+            mostrarPersonajes();
+            restaurarSlots();
+        };
+
+        function generarSlots() {
+            const container = document.getElementById("heroSlots");
+            container.innerHTML = "";
+
+            for (let i = 1; i <= 4; i++) {
+                const col = document.createElement("div");
+                col.className = "col-12 col-sm-6 col-lg-3 mb-3";
+
+                col.innerHTML = `
+            <div class="flip-card" id="slot${i}">
+              <div class="flip-card-inner">
+
+                <div class="flip-card-front p-3 shadow-sm hero-card">
+                    <button class="btn btn-sm btn-dark flip-btn">↺</button>
+                    <h5 class="hero-card-title" id="nombreSlotDisplay${i}">Héroe ${i}</h5>
+                    <input type="text" placeholder="Nombre" class="form-control mb-1" id="nombre${i}">
+                    <div class="row g-2 mb-1">
+                        <div class="col-6">
+                            <input type="text" placeholder="Raza" class="form-control" id="raza${i}">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" placeholder="Profesión" class="form-control" id="profesion${i}">
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2" id="atributos${i}"></div>
+                    <img src="" alt="Preview" class="img-preview" id="preview${i}">
+                    <input type="file" accept="image/*" class="form-control mb-1" id="imagen${i}">
+                    <button class="btn btn-primary w-100 mb-1" onclick="guardarSlot(${i})">Guardar Slot</button>
+                </div>
+
+                <div class="flip-card-back p-3 shadow-sm hero-card">
+                    <button class="btn btn-sm btn-dark flip-btn">↺</button>
+                    <h5>Notas</h5>
+                    <div id="notas-slot${i}" class="notas-quill"></div>
+                </div>
+
+              </div>
+            </div>`;
+
+                container.appendChild(col);
+
+                quills[i] = new Quill(`#notas-slot${i}`, {
+                    theme: 'snow',
+                    placeholder: 'Escribe tus NOTAS aquí...',
+                    modules: {
+                        toolbar: [
+                            ['bold', 'italic', 'underline'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            ['link', 'image']
+                        ]
+                    }
+                });
+                quills[i].on('text-change', () => { guardarSlotAuto(i); });
+
+                //Nivel Energía y Vida
+                const attrContainer = document.getElementById(`atributos${i}`);
+                baseActualIds.forEach(id => {
+                    if (especiales.includes(id)) {
+                        attrContainer.innerHTML += `
+        <div class="col-4 mb-1">
+            <label class="form-label">${id}</label>
+            <input type="number" id="${id}_base${i}" class="form-control" placeholder="Base">
+        </div>`;
+                    } else {
+                        attrContainer.innerHTML += `
+        <div class="col-6 mb-1">
+            <label class="form-label">${id}</label>
+            <div class="input-group">
+                <input type="number" id="${id}_base${i}" class="form-control" placeholder="Base">
+                <input type="number" id="${id}_actual${i}" class="form-control" placeholder="Actual">
+            </div>
+        </div>`;
+                    }
+
+                    // 👇 Insertamos la fila justo después de Energía
+                    if (id === "Energía") {
+                        attrContainer.innerHTML += `
+    <div class="col-12 mb-2">
+      <div class="d-flex justify-content-center text-center gap-2">
+        ${atributosBase.map(attr => `
+          <div class="flex-fill">
+            <label class="form-label">${attr.toUpperCase()}</label>
+            <input type="number" id="${attr}_base${i}" class="form-control text-center" placeholder="${attr.toUpperCase()}">
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+                    }
+                });
+
+                slashPairs.forEach(pair => {
+                    attrContainer.innerHTML += `
+                <div class="col-6 mb-1">
+                    <label class="form-label">${pair[0]}/${pair[1]}</label>
+                    <div class="input-group">
+                        <input type="number" id="${pair[0]}${i}" class="form-control" placeholder="${pair[0]}">
+                        <span class="input-group-text">/</span>
+                        <input type="number" id="${pair[1]}${i}" class="form-control" placeholder="${pair[1]}">
+                    </div>
+                </div>`;
+                });
+
+                activarAutoGuardadoSlot(i);
+            }
+        }
+
+        function obtenerAtributosSlot(slot) {
+            let atributos = {};
+            baseActualIds.forEach(id => {
+                if (especiales.includes(id)) {
+                    atributos[id] = {
+                        base: parseInt(document.getElementById(`${id}_base${slot}`).value) || 0
+                    };
+                } else {
+                    atributos[id] = {
+                        base: parseInt(document.getElementById(`${id}_base${slot}`).value) || 0,
+                        actual: parseInt(document.getElementById(`${id}_actual${slot}`).value) || 0
+                    };
+                }
+            });
+            atributosBase.forEach(id => {
+                atributos[id] = {
+                    base: parseInt(document.getElementById(`${id}_base${slot}`).value) || 0
+                };
+            });
+            slashPairs.forEach(pair => {
+                atributos[pair[0]] = {
+                    base: parseInt(document.getElementById(`${pair[0]}${slot}`).value) || 0,
+                    actual: parseInt(document.getElementById(`${pair[1]}${slot}`).value) || 0
+                };
+            });
+            return atributos;
+        }
+
+        function rellenarAtributosSlot(slot, atributos) {
+            baseActualIds.forEach(id => {
+                if (atributos[id]) {
+                    const baseElem = document.getElementById(`${id}_base${slot}`);
+                    if (baseElem) baseElem.value = atributos[id].base ?? 0;
+
+                    if (!especiales.includes(id)) {
+                        const actualElem = document.getElementById(`${id}_actual${slot}`);
+                        if (actualElem) actualElem.value = atributos[id].actual ?? 0;
+                    }
+                }
+            });
+            atributosBase.forEach(id => {
+                if (atributos[id]) {
+                    const baseElem = document.getElementById(`${id}_base${slot}`);
+                    if (baseElem) baseElem.value = atributos[id].base ?? 0;
+                }
+            });
+            slashPairs.forEach(pair => {
+                if (atributos[pair[0]]) {
+                    const a = document.getElementById(`${pair[0]}${slot}`);
+                    const b = document.getElementById(`${pair[1]}${slot}`);
+                    if (a) a.value = atributos[pair[0]].base ?? 0;
+                    if (b) b.value = atributos[pair[0]].actual ?? 0;
+                }
+            });
+        }
+
+        // Guardar un slot en IndexedDB
+        function guardarSlot(slot) {
+            const nombre = document.getElementById(`nombre${slot}`).value.trim();
+            const raza = document.getElementById(`raza${slot}`).value.trim();
+            const profesion = document.getElementById(`profesion${slot}`).value.trim();
+            const imagen = document.getElementById(`preview${slot}`).src;
+            const atributos = obtenerAtributosSlot(slot);
+            const notas = quills[slot].root.innerHTML;
+
+            if (!nombre || !raza || !profesion || !imagen) { alert("Completa todos los campos"); return; }
+
+            const tx = db.transaction("personajes", "readwrite");
+            const store = tx.objectStore("personajes");
+            let actualizado = false;
+            store.openCursor().onsuccess = e => {
+                const cursor = e.target.result;
+                if (cursor) {
+                    if (cursor.value.nombre === nombre) {
+                        const p = cursor.value;
+                        p.raza = raza; p.profesion = profesion; p.imagen = imagen; p.atributos = atributos;
+                        const reqUpdate = cursor.update(p);
+                        reqUpdate.onsuccess = () => asignarPersonajeASlot(slot, p.id); // 🔹 Guardar asignación slot→personaje
+                        actualizado = true;
+                        cambiosPendientes[slot] = false;
+                        mostrarPersonajes();
+                        return;
+                    } else cursor.continue();
+                } else {
+                    if (!actualizado) {
+                        const reqAdd = store.add({ nombre, raza, profesion, imagen, atributos, notas });
+                        reqAdd.onsuccess = e => {
+                            asignarPersonajeASlot(slot, e.target.result); // 🔹 Guardar asignación slot→personaje nuevo
+                        };
+                        cambiosPendientes[slot] = false;
+                        mostrarPersonajes();
+                    }
+                }
+            };
+        }
+
+        //Cuando pulsas el botón Cargar de un héroe en un slot, además de rellenar el formulario, guardamos esa asignación en la tabla slots.
+        function asignarPersonajeASlot(slot, personajeId) {
+            const tx = db.transaction("slots", "readwrite");
+            const store = tx.objectStore("slots");
+            store.put({ slot, personajeId });
+        }
+        //Cuando se abre la página, hacemos una lectura de la tabla slots y cargamos automáticamente cada personaje en su formulario correspondiente:
+        function restaurarSlots() {
+            const tx = db.transaction("slots", "readonly");
+            const store = tx.objectStore("slots");
+            store.getAll().onsuccess = e => {
+                e.target.result.forEach(asignacion => {
+                    cargarEnSlot(asignacion.slot, asignacion.personajeId);
+                });
+            };
+        }
+
+
+
+        // Auto-guardar al perder foco o Enter
+        // Activar auto-guardado al perder foco o Enter por slot
+        function activarAutoGuardadoSlot(slot) {
+            const campos = ["nombre", "raza", "profesion"];
+            campos.forEach(id => {
+                const input = document.getElementById(`${id}${slot}`);
+                input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                input.addEventListener("keydown", e => {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        guardarSlotAuto(slot);
+                    }
+                });
+            });
+
+            // Campos baseActualIds
+            baseActualIds.forEach(id => {
+                if (especiales.includes(id)) {
+                    // solo existe _base
+                    const input = document.getElementById(`${id}_base${slot}`);
+                    if (input) {
+                        input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                        input.addEventListener("keydown", e => {
+                            if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                        });
+                    }
+                } else {
+                    ["_base", "_actual"].forEach(suf => {
+                        const input = document.getElementById(`${id}${suf}${slot}`);
+                        if (input) {
+                            input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                            input.addEventListener("keydown", e => {
+                                if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                            });
+                        }
+                    });
+                }
+            });
+
+            // 👇 Ahora también los atributos base (FUE, DES, CON, SAB, DET)
+            atributosBase.forEach(attr => {
+                const input = document.getElementById(`${attr}_base${slot}`);
+                if (input) {
+                    input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                    input.addEventListener("keydown", e => {
+                        if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                    });
+                }
+            });
+
+            // Campos slashPairs
+            slashPairs.forEach(pair => {
+                [0, 1].forEach(k => {
+                    const input = document.getElementById(`${pair[k]}${slot}`);
+                    if (input) {
+                        input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                        input.addEventListener("keydown", e => {
+                            if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                        });
+                    }
+                });
+            });
+
+            // Imagen
+            const imgInput = document.getElementById(`imagen${slot}`);
+            imgInput.addEventListener("change", e => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        document.getElementById(`preview${slot}`).src = e.target.result;
+                        guardarSlotAuto(slot);
+                    };
+                    reader.readAsDataURL(file);
+                }
+                // 👇 Ahora también los atributos base (FUE, DES, CON, SAB, DET)
+                atributosBase.forEach(attr => {
+                    const input = document.getElementById(`${attr}_base${slot}`);
+                    if (input) {
+                        input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                        input.addEventListener("keydown", e => {
+                            if (e.key === "Enter") {
+                                e.preventDefault();
+                                guardarSlotAuto(slot);
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        // Guardar slot automáticamente (no limpia campos)
+        // Guardar slot automáticamente (no limpia campos)
+        function guardarSlotAuto(slot) {
+            const nombre = document.getElementById(`nombre${slot}`).value.trim();
+            const raza = document.getElementById(`raza${slot}`).value.trim();
+            const profesion = document.getElementById(`profesion${slot}`).value.trim();
+            const imagen = document.getElementById(`preview${slot}`).src;
+            const atributos = obtenerAtributosSlot(slot);
+            const notas = quills[slot].root.innerHTML;
+
+            // 🔹 Comprobar si el slot ya tiene personaje asignado
+            const txCheck = db.transaction("slots", "readonly");
+            const storeCheck = txCheck.objectStore("slots");
+            storeCheck.get(slot).onsuccess = e => {
+                const asignacion = e.target.result;
+
+                // Si no hay personaje asignado y faltan datos básicos, no guardar aún
+                if (!asignacion && (!nombre || !raza || !profesion || !imagen)) return;
+
+                // En este punto: o hay personaje asignado, o todos los campos están completos
+                const tx = db.transaction("personajes", "readwrite");
+                const store = tx.objectStore("personajes");
+                let actualizado = false;
+
+                store.openCursor().onsuccess = ev => {
+                    const cursor = ev.target.result;
+                    if (cursor) {
+                        if (cursor.value.nombre === nombre || (asignacion && cursor.value.id === asignacion.personajeId)) {
+                            const p = cursor.value;
+                            p.raza = raza;
+                            p.profesion = profesion;
+                            p.imagen = imagen;
+                            p.atributos = atributos;
+                            p.notas = notas; // 🔹 Guardar notas también
+
+                            const reqUpdate = cursor.update(p);
+                            reqUpdate.onsuccess = () => asignarPersonajeASlot(slot, p.id);
+
+                            actualizado = true;
+                            cambiosPendientes[slot] = false;
+                            mostrarPersonajes();
+                            return;
+                        } else cursor.continue();
+                    } else {
+                        if (!actualizado && !asignacion) {
+                            const reqAdd = store.add({ nombre, raza, profesion, imagen, atributos, notas });
+                            reqAdd.onsuccess = ev2 => asignarPersonajeASlot(slot, ev2.target.result);
+                            cambiosPendientes[slot] = false;
+                            mostrarPersonajes();
+                        }
+                    }
+                };
+            };
+        }
+
+        // Vaciar slot
+        function nuevoHeroeSlot() {
+            let slot = prompt("¿En qué slot quieres crear el héroe? (1-4)");
+            slot = parseInt(slot);
+            const nombreActual = document.getElementById(`nombre${slot}`).value;
+            if (cambiosPendientes[slot] && nombreActual) {
+                if (confirm(`Tienes cambios sin guardar en el héroe: ${nombreActual}. ¿Deseas guardarlos antes?`)) {
+                    guardarSlot(slot);
+                }
+            }
+            document.getElementById(`nombre${slot}`).value = "";
+            document.getElementById(`raza${slot}`).value = "";
+            document.getElementById(`profesion${slot}`).value = "";
+            document.getElementById(`preview${slot}`).src = "";
+            document.getElementById(`imagen${slot}`).value = "";
+
+            baseActualIds.forEach(id => {
+                document.getElementById(`${id}_base${slot}`).value = "";
+                if (!especiales.includes(id)) {
+                    document.getElementById(`${id}_actual${slot}`).value = "";
+                }
+            });
+
+            // 👇 limpiar también atributosBase
+            atributosBase.forEach(id => {
+                document.getElementById(`${id}_base${slot}`).value = "";
+            });
+
+            slashPairs.forEach(pair => {
+                document.getElementById(`${pair[0]}${slot}`).value = "";
+                document.getElementById(`${pair[1]}${slot}`).value = "";
+            });
+
+            cambiosPendientes[slot] = false;
+        }
+
+        // Mostrar lista de héroes
+        function mostrarPersonajes() {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.getAll().onsuccess = e => {
+                const lista = document.getElementById("lista");
+                lista.innerHTML = "";
+                e.target.result.forEach(p => {
+                    lista.innerHTML += `
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${p.nombre}</h5>
+                        <p class="card-text">Raza: ${p.raza}<br>Profesión: ${p.profesion}</p>
+                        <img src="${p.imagen}" alt="${p.nombre}" class="img-fluid rounded mb-3">
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-warning" onclick="cargarEnSlotPrompt(${p.id})">Cargar</button>
+                            <button class="btn btn-danger" onclick="eliminarPersonaje(${p.id})">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                });
+            };
+        }
+
+        // Cargar héroe con prompt de slot
+        function cargarEnSlotPrompt(id) {
+            let slot = prompt("¿En qué slot cargar? (1-4)");
+            slot = parseInt(slot);
+            if (slot >= 1 && slot <= 4) { cargarEnSlot(slot, id); }
+            else alert("Slot inválido");
+        }
+
+        function cargarEnSlot(slot, id) {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.get(id).onsuccess = e => {
+                const p = e.target.result;
+                if (p) {
+                    document.getElementById(`nombre${slot}`).value = p.nombre;
+                    document
+                    document.getElementById(`raza${slot}`).value = p.raza;
+                    document.getElementById(`profesion${slot}`).value = p.profesion;
+                    document.getElementById(`preview${slot}`).src = p.imagen;
+                    rellenarAtributosSlot(slot, p.atributos);
+                    cambiosPendientes[slot] = false;
+                    if (p.notas) {
+                        quills[slot].root.innerHTML = p.notas;
+                    }
+                    // 🔹 Aquí se guarda qué héroe va en ese slot
+                    asignarPersonajeASlot(slot, p.id);
+                }
+            };
+        }
+
+        // Eliminar personaje
+        function eliminarPersonaje(id) {
+            if (confirm("¿Eliminar este personaje?")) {
+                const tx = db.transaction("personajes", "readwrite");
+                tx.objectStore("personajes").delete(id);
+                tx.oncomplete = () => mostrarPersonajes();
+            }
+        }
+
+        // Exportar
+        document.getElementById("exportar").addEventListener("click", () => {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.getAll().onsuccess = e => {
+                const personajes = e.target.result.map(p => {
+                    return {
+                        id: p.id,
+                        nombre: p.nombre,
+                        raza: p.raza,
+                        profesion: p.profesion,
+                        imagen: p.imagen,
+                        atributos: p.atributos,
+                        notas: p.notas   // 👈 añade esta línea
+                    };
+                });
+                const blob = new Blob([JSON.stringify(personajes, null, 2)], { type: "application/json" });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "personajes.json";
+                a.click();
+            };
+        });
+        // Importar
+        document.getElementById("btnImportar").addEventListener("click", () => document.getElementById("importar").click());
+        document.getElementById("importar").addEventListener("change", e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    const tx = db.transaction("personajes", "readwrite");
+                    const store = tx.objectStore("personajes");
+                    data.forEach(p => store.put(p));
+                    tx.oncomplete = () => mostrarPersonajes();
+                } catch (err) { alert("Error al importar JSON"); }
+            };
+            reader.readAsText(file);
+        });
+
+        // Antes de cerrar navegador
+        window.addEventListener("beforeunload", e => {
+            if (Object.values(cambiosPendientes).some(v => v)) {
+                e.preventDefault();
+                e.returnValue = "Tienes cambios sin guardar. ¿Deseas salir igualmente?";
+                return "Tienes cambios sin guardar. ¿Deseas salir igualmente?";
+            }
+        });
+
+        //  document.getElementById(`nombre${i}`).addEventListener("input", e => {
+        //    document.getElementById(`nombreSlotDisplay${i}`).textContent = e.target.value || `Héroe ${i}`;
+        //});
+
+        /*   for (let i = 1; i <= 4; i++) {
+               const nombreInput = document.getElementById(`nombre${i}`);
+               const nombreDisplay = document.getElementById(`nombreSlotDisplay${i}`);
+   
+               nombreInput.addEventListener("input", e => {
+                   // Si el campo está vacío, mostrar "Héroe i"
+                   nombreDisplay.textContent = e.target.value || `Héroe ${i}`;
+               });
+           }*/
+        // Mostrar contenido de la tabla slots en un prompt/alert
+        function verSlots() {
+            const tx = db.transaction("slots", "readonly");
+            const store = tx.objectStore("slots");
+            store.getAll().onsuccess = e => {
+                const datos = e.target.result;
+                if (datos.length === 0) {
+                    alert("No hay slots guardados todavía.");
+                } else {
+                    alert(JSON.stringify(datos, null, 2)); // lo ves formateado
+                    console.log("Contenido de la tabla slots:", datos); // también en consola
+                }
+            };
+        }
+
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("flip-btn")) {
+                const card = e.target.closest(".flip-card");
+                if (card) {
+                    card.classList.toggle("flipped");
+                    console.log("Flip ejecutado en", card.id); // 👈 Debug
+                }
+            }
+        });
+
+        window.onload = function () {
+            // todo tu código actual
+            generarSlots();
+            mostrarPersonajes();
+            restaurarSlots();
+        };
+    </script>
+
+    <!-- JS de Quill -->
+</body>
+
+
+
+</html>
