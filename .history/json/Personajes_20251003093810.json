@@ -1,0 +1,26 @@
+{
+  "razas": [
+    "Enano",
+    "Elfo",
+    "Mediano",
+    "Humano",
+    "Semiogro",
+    "Pato",
+    "Anguro",
+    "Gnomo",
+    "Goblin Pálido",
+    "Orco Pálido"
+  ],
+  "clases": [
+    "Alquimista",
+    "Bárbaro",
+    "Guerrero",
+    "Ladrón",
+    "Mago",
+    "Montaraz",
+    "Pícaro",
+    "Sacerdote Guerrero",
+    "Druida",
+    "Caballero"
+  ]
+}

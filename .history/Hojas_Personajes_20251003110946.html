@@ -787,7 +787,6 @@ async function renombrarPersonaje(id) {
 
 
    // ✅ MODIFICADA: usa selects de Raza/Profesión y mantiene el resto de tu lógica
-// ✅ REEMPLAZA tu cargarEnSlot por esta (solo cambia el cálculo de tieneRetrato)
 function cargarEnSlot(slot, id) {
     const tx = db.transaction("personajes", "readonly");
     const store = tx.objectStore("personajes");
@@ -796,7 +795,7 @@ function cargarEnSlot(slot, id) {
         if (p) {
             document.getElementById(`nombre${slot}`).value = p.nombre;
 
-            // Selects de raza/profesión
+            // Si usas selects para raza/profesión
             if (typeof setSelectSafely === "function") {
                 setSelectSafely(slot, 'raza', p.raza || '');
                 setSelectSafely(slot, 'profesion', p.profesion || '');
@@ -805,10 +804,7 @@ function cargarEnSlot(slot, id) {
                 document.getElementById(`profesion${slot}`).value = p.profesion || "";
             }
 
-            // Preview principal
-            const prevEl = document.getElementById(`preview${slot}`);
-            if (prevEl) prevEl.src = p.imagen || "";
-
+            document.getElementById(`preview${slot}`).src = p.imagen || "";
             rellenarAtributosSlot(slot, p.atributos);
             cambiosPendientes[slot] = false;
             if (p.notas) { quills[slot].root.innerHTML = p.notas; }
@@ -825,10 +821,8 @@ function cargarEnSlot(slot, id) {
                 else { backThumb.removeAttribute("src"); backThumb.style.display = "none"; }
             }
 
-            // 👇 Ocultar controles solo si tiene retrato REAL (no el placeholder por defecto)
-            const DEFAULT_PORTRAIT = 'img/Monstruos/imagenes/Default.png';
-            const tieneRetrato = !!(p.imagen && p.imagen !== DEFAULT_PORTRAIT);
-            setImagenControlesVisibles(slot, !tieneRetrato);
+            // Ocultar controles de imagen si ya tiene retrato
+            setImagenControlesVisibles(slot, !p.imagen);
 
             if (typeof setNombreVisible === "function") setNombreVisible(slot, false);
         }
@@ -1138,26 +1132,11 @@ function setSelectSafely(slot, field, value) {
 }
 
 
-// ✅ REEMPLAZA por esta versión: oculta/mostrar usando clases Bootstrap
 function setImagenControlesVisibles(slot, visible) {
     const file = document.getElementById(`imagen${slot}`);
     const prev = document.getElementById(`preview${slot}`);
-
-    if (file) {
-        // usa d-none para ocultar (Bootstrap usa !important)
-        file.classList.toggle('d-none', !visible);
-    }
-    if (prev) {
-        // si ocultamos, quitamos d-block y ponemos d-none
-        if (!visible) {
-            prev.classList.remove('d-block');
-            prev.classList.add('d-none');
-        } else {
-            prev.classList.remove('d-none');
-            // mantener centrado como antes
-            if (!prev.classList.contains('d-block')) prev.classList.add('d-block');
-        }
-    }
+    if (file) file.style.display = visible ? "" : "none";
+    if (prev) prev.style.display = visible ? "" : "none";
 }
 
 let _portraitModal, _portraitFile, _portraitPreview, _portraitAcceptBtn, _portraitCancelBtn;

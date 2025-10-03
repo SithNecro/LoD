@@ -223,17 +223,19 @@
 
 
 
-       .flip-btn {
-    border: 2px solid #8B4513 !important;
-    right: 8px;
-    z-index: 10;
-    display: flex;              /* ✅ usar flex para centrar */
-    align-items: center;        /* ✅ centra vertical */
-    justify-content: center;    /* ✅ centra horizontal */
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    position: relative;
-    font-size: 24px;            /* ✅ tamaño del emoji dentro */
-}
+        /* Botón pequeño en esquina */
+        .flip-btn {
+            border: 2px solid #8B4513 !important;
+            top: 8px;
+            right: 8px;
+            z-index: 10;
+            display:block;
+            /* o block si quieres que ocupe todo el ancho */
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+            /* asegurarte de que esté sobre otros elementos */
+        }
     
