@@ -308,7 +308,6 @@
 /* Para Firefox */
 .hero-card input[type=number] {
   -moz-appearance: textfield;      /* quita los spinners por defecto */
-  appearance:  textfield;
   position: relative;
 }
 

@@ -195,21 +195,10 @@ window.openInventarioEditor = async function (slot) {
         </div>
     `;
 
-    // 🔹 SweetAlert2 con skin de la app (customClass) y HTML envuelto en .sai-body
     await Swal.fire({
         title: 'Editor de Inventario',
-        html: `<div class="sai-body">
-           ${html}
-         </div>`,
+        html,
         width: modalWidth,
-        customClass: {
-          popup: 'sai-popup',
-          title: 'sai-title',
-          htmlContainer: 'sai-html',
-          actions: 'sai-actions',
-          confirmButton: 'sai-confirm',
-          cancelButton: 'sai-cancel'
-        },
         didOpen: () => {
             if (window.tippy) tippy('[data-tippy-content]', { theme: 'light', delay: [300, 0] });
 
@@ -235,15 +224,7 @@ window.openInventarioEditor = async function (slot) {
                     text: '¿Deseas guardar antes de salir?',
                     showCancelButton: true,
                     confirmButtonText: 'Guardar y cerrar',
-                    cancelButtonText: 'Cerrar sin guardar',
-                    customClass: {
-                      popup: 'sai-popup',
-                      title: 'sai-title',
-                      htmlContainer: 'sai-html',
-                      actions: 'sai-actions',
-                      confirmButton: 'sai-confirm',
-                      cancelButton: 'sai-cancel'
-                    }
+                    cancelButtonText: 'Cerrar sin guardar'
                 });
                 if (res.isConfirmed) await window.savePersonaje(personaje);
                 Swal.close();
@@ -356,19 +337,7 @@ window.openInventarioEditor = async function (slot) {
                         window.renderInventarioLists(personaje);
                     }
                 } else if (action === 'traspasar') {
-                    Swal.fire({
-                      icon: 'info',
-                      title: 'Pendiente',
-                      text: 'La función "Traspasar" se implementará más adelante.',
-                      customClass: {
-                        popup: 'sai-popup',
-                        title: 'sai-title',
-                        htmlContainer: 'sai-html',
-                        actions: 'sai-actions',
-                        confirmButton: 'sai-confirm',
-                        cancelButton: 'sai-cancel'
-                      }
-                    });
+                    Swal.fire('Pendiente', 'La función "Traspasar" se implementará más adelante.', 'info');
                 }
             };
 
@@ -379,10 +348,6 @@ window.openInventarioEditor = async function (slot) {
 
             // Pintar listas iniciales
             window.renderInventarioLists(personaje);
-
-            // Foco al primer control del editor
-            const first = document.querySelector('#invRoot input, #invRoot select, #invRoot textarea');
-            if (first) first.focus();
         },
         showConfirmButton: false,
         allowOutsideClick: false,
