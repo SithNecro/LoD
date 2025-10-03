@@ -910,9 +910,7 @@
                         profesion: p.profesion,
                         imagen: p.imagen,
                         atributos: p.atributos,
-                        notas: p.notas,
-                        // ✅ NUEVO: exportar inventario completo (con valores por defecto si faltan)
-                        inventario: p.inventario ?? { objetos: [], armaduras: [], armas: [] }
+                        notas: p.notas   // 👈 añade esta línea
                     };
                 });
                 const blob = new Blob([JSON.stringify(personajes, null, 2)], { type: "application/json" });
@@ -922,8 +920,6 @@
                 a.click();
             };
         });
-
-
         // Importar
         document.getElementById("btnImportar").addEventListener("click", () => document.getElementById("importar").click());
         document.getElementById("importar").addEventListener("change", e => {
@@ -932,23 +928,13 @@
             const reader = new FileReader();
             reader.onload = e => {
                 try {
-                    const raw = JSON.parse(e.target.result);
-                    // ✅ aceptar array o { personajes: [...] }
-                    const data = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.personajes) ? raw.personajes : []);
-
+                    const data = JSON.parse(e.target.result);
                     const tx = db.transaction("personajes", "readwrite");
                     const store = tx.objectStore("personajes");
-                    data.forEach(p => {
-                        // ✅ aseguramos inventario aunque el JSON sea antiguo
-                        if (!p.inventario) p.inventario = { objetos: [], armaduras: [], armas: [] };
-                        store.put(p);
-                    });
+                    data.forEach(p => store.put(p));
                     tx.oncomplete = () => mostrarPersonajes();
-                } catch (err) {
-                    alert("Error al importar JSON");
-                }
+                } catch (err) { alert("Error al importar JSON"); }
             };
-
             reader.readAsText(file);
         });
 
