@@ -237,23 +237,31 @@
     font-size: 24px;            /* ✅ tamaño del emoji dentro */
 }
     /* === Mejora de legibilidad para inputs numéricos en la ficha === */
-/* --- Mantener Base/Actual en la MISMA fila dentro de la ficha --- */
-.hero-card .input-group {
-  display: flex;         /* ya lo es, pero reforzamos el contexto */
-  flex-wrap: nowrap;     /* 🔒 no permitir salto de línea */
-  gap: 6px;              /* un poco de aire entre los dos inputs */
+.hero-card input[type="number"].form-control {
+  /* números más grandes y centrados */
+  font-size: 18px;          /* antes heredaba 16px */
+  line-height: 1.25;
+  text-align: center;
+  /* menos relleno interno para ganar “anchura útil” de dígitos */
+  padding: 2px 6px;
+  /* garantiza espacio para varios dígitos sin romper el grid */
+  min-width: 6ch;           /* ~6 caracteres (escala según fuente) */
 }
 
-/* Que ambos inputs se repartan el ancho y NO fuercen salto */
-.hero-card .input-group > .form-control[type="number"] {
-  flex: 1 1 0;           /* se reparten el espacio por igual */
-  min-width: 0;          /* permite encoger sin romper el layout */
+/* Dentro de los “dobles” (Base / Actual) metidos en .input-group */
+.hero-card .input-group > input[type="number"].form-control {
+  /* que cada uno se reserve mínimo 6ch y pueda crecer si hay hueco */
+  /*min-width: 5.5ch;*/
+  flex: 0 1 auto;           /* evita que encojan más de lo deseable */
 }
 
-/* Ajuste de legibilidad sin provocar wrap en tablet/móvil */
+/* En tablet/móvil damos un pelín más de aire */
 @media (max-width: 992px) {
-  .hero-card .input-group > .form-control[type="number"] {
-    font-size: 18px;     /* números un pelín más grandes */
-    padding: 2px 6px;
+  .hero-card input[type="number"].form-control {
+    font-size: 19px;
+    min-width: 7ch;
+  }
+  .hero-card .input-group > input[type="number"].form-control {
+    min-width: 7ch;
   }
 }
