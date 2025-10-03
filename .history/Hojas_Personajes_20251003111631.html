@@ -69,126 +69,97 @@
             restaurarSlots();
         };
 
-// ✅ MODIFICADA: ahora añade los 3 botones nuevos y secciones en la cara trasera
-function generarSlots() {
-    const container = document.getElementById("heroSlots");
-    container.innerHTML = "";
+        function generarSlots() {
+            const container = document.getElementById("heroSlots");
+            container.innerHTML = "";
 
-    for (let i = 1; i <= 4; i++) {
-        const col = document.createElement("div");
-        col.className = "col-12 col-sm-6 col-lg-3 mb-3";
+            for (let i = 1; i <= 4; i++) {
+                const col = document.createElement("div");
+                col.className = "col-12 col-sm-6 col-lg-3 mb-3";
 
-        col.innerHTML = `
+                col.innerHTML = `
       <div class="flip-card" id="slot${i}">
         <div class="flip-card-inner">
-          <!-- FRONT -->
           <div class="flip-card-front p-3 shadow-sm hero-card">
             <div class="d-flex align-items-center mb-1" style="gap:10px;">
               <img id="thumb${i}" alt="Miniatura" style="width:50px;height:50px;object-fit:cover;border-radius:6px;display:none;">
-              <button class="btn btn-sm btn-dark flip-to" data-section="notas" title="Ir a Notas">📝</button>
-              <button class="btn btn-sm btn-dark flip-to" data-section="equip" title="Equipamiento">⚔️</button>
-              <button class="btn btn-sm btn-dark flip-to" data-section="mochila" title="Inventario">🎒</button>
-              <button class="btn btn-sm btn-dark flip-to" data-section="talentos" title="Talentos y Ventajas">⭐</button>
+              <button class="btn btn-sm btn-dark flip-btn" title="Ir a Notas">📝</button>
             </div>
+                        <h5 class="hero-card-title" id="nombreSlotDisplay${i}">Héroe ${i}</h5>
 
-            <h5 class="hero-card-title" id="nombreSlotDisplay${i}">Héroe ${i}</h5>
-
-            <!-- Nombre -->
-            <input type="text" placeholder="🪪 Nombre" class="form-control mb-2" id="nombre${i}">
-
-            <!-- ATRIBUTOS -->
+            <input type="text" placeholder="📝Nombre" class="form-control mb-1" id="nombre${i}">
+           
             <div class="row g-2 mb-2" id="atributos${i}"></div>
 
-            <!-- Raza / Profesión (inputs, luego los reemplaza initRazaProfesionSelects) -->
-            <div class="row g-2 mb-2">
+            <div class="row g-2 mb-1">
               <div class="col-6">
-                <input type="text" placeholder="🧬 Raza" class="form-control" id="raza${i}">
+                <input type="text" placeholder="🧝Raza" class="form-control" id="raza${i}">
               </div>
               <div class="col-6">
-                <input type="text" placeholder="⚒️ Profesión" class="form-control" id="profesion${i}">
+                <input type="text" placeholder="⚒️Profesión" class="form-control" id="profesion${i}">
               </div>
             </div>
 
-            <!-- Imagen -->
-            <img src="img/Monstruos/imagenes/Default.png" alt="👤" class="img-preview d-block mx-auto mb-2" id="preview${i}">
-            <input type="file" accept="image/*" class="form-control mb-2" id="imagen${i}">
-
-            <!-- Guardar -->
-            <button class="btn btn-primary w-100" onclick="guardarSlot(${i})">Guardar Slot</button>
+           <img src="img/Monstruos/imagenes/Default.png" 
+     alt="👤" 
+     class="img-preview d-block mx-auto" 
+     id="preview${i}">
+            <input type="file" accept="image/*" class="form-control mb-1" id="imagen${i}">
+            <button class="btn btn-primary w-100 mb-1" onclick="guardarSlot(${i})">Guardar Slot</button>
           </div>
 
-          <!-- BACK -->
           <div class="flip-card-back p-3 shadow-sm hero-card">
             <div class="d-flex align-items-center mb-1" style="gap:10px;">
               <img id="thumb${i}-back" alt="Miniatura" style="width:50px;height:50px;object-fit:cover;border-radius:6px;display:none;">
-              <button class="btn btn-sm btn-dark flip-btn" title="Volver a la ficha">🧑</button>
+              <button class="btn btn-sm btn-dark flip-btn" title="Ir a Ficha de Personaje">🧙</button>
             </div>
-
-            <!-- Secciones traseras (solo una visible a la vez) -->
-            <div id="backNotas${i}" class="back-section">
-              <h5>Notas</h5>
-              <div id="notas-slot${i}" class="notas-quill"></div>
-            </div>
-
-            <div id="backEquip${i}" class="back-section" style="display:none;">
-              <h5>⚔️ Equipamiento</h5>
-              <div id="equipamiento-slot${i}" class="small text-muted">[Aquí irá el equipamiento del personaje]</div>
-            </div>
-
-            <div id="backMochila${i}" class="back-section" style="display:none;">
-              <h5>🎒 Mochila</h5>
-              <div id="mochila-slot${i}" class="small text-muted">[Aquí irá el inventario/mochila]</div>
-            </div>
-
-            <div id="backTalentos${i}" class="back-section" style="display:none;">
-              <h5>⭐ Talentos y Ventajas</h5>
-              <div id="talentos-slot${i}" class="small text-muted">[Aquí irán talentos y ventajas]</div>
-            </div>
+            <h5>Notas</h5>
+            <div id="notas-slot${i}" class="notas-quill"></div>
           </div>
         </div>
       </div>`;
 
-        container.appendChild(col);
+                container.appendChild(col);
 
-        // === NOTAS (Quill) ===
-        quills[i] = new Quill(`#notas-slot${i}`, {
-            theme: 'snow',
-            placeholder: 'Escribe tus NOTAS aquí...',
-            modules: {
-                toolbar: [
-                    ['bold', 'italic', 'underline'],
-                    [{ 'color': [] }, { 'background': [] }],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    ['link', 'image']
-                ]
-            }
-        });
-        quills[i].on('text-change', () => { guardarSlotAuto(i); });
+                // Quill
+                quills[i] = new Quill(`#notas-slot${i}`, {
+                    theme: 'snow',
+                    placeholder: 'Escribe tus NOTAS aquí...',
+                    modules: {
+                        toolbar: [
+                            ['bold', 'italic', 'underline'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            ['link', 'image']
+                        ]
+                    }
+                });
+                quills[i].on('text-change', () => { guardarSlotAuto(i); });
 
-        // === ATRIBUTOS PINTADOS A MANO ===
-        const attr = document.getElementById(`atributos${i}`);
+                // ⚡️ Atributos pintados a mano (sin bucle)
+                const attr = document.getElementById(`atributos${i}`);
 
-        // BD / AN / M (solo base)
-        attr.innerHTML += `
+                // BD / AN / M (solo base)
+                attr.innerHTML += `
           <div class="col-12 mb-1">
             <div class="row g-2 text-center">
               <div class="col-4">
-                <label class="form-label">⚔️ B. Daño</label>
+                <label class="form-label">💥BD</label>
                 <input type="number" id="bd_base${i}" class="form-control" placeholder="Base">
               </div>
               <div class="col-4">
-                <label class="form-label">🛡️ Arm. Natural</label>
+                <label class="form-label">🔰AN </label>
                 <input type="number" id="an_base${i}" class="form-control" placeholder="Base">
               </div>
               <div class="col-4">
-                <label class="form-label">🏃 Movimiento</label>
+                <label class="form-label">🏃 Mov.</label>
                 <input type="number" id="m_base${i}" class="form-control" placeholder="Base">
               </div>
             </div>
           </div>`;
 
-        // FUE/DES/CON/SAB/DET (solo base)
-        attr.innerHTML += `
+                // Atributos base FUE/DES/CON/SAB/DET (solo base)
+                attr.innerHTML += `
           <div class="col-12 mb-2">
             <div class="d-flex justify-content-center text-center gap-2">
               ${atributosBase.map(attrId => `
@@ -200,26 +171,26 @@ function generarSlots() {
             </div>
           </div>`;
 
-        // Vida / Maná / Cordura
-        attr.innerHTML += `
+                // Vida / Maná / Cordura
+                attr.innerHTML += `
           <div class="col-12 mb-1">
             <div class="row g-2 text-center">
               <div class="col-4">
-                <label class="form-label">💚✨ Vida</label>
+                <label class="form-label">🩸VIT</label>
                 <div class="input-group">
                   <input type="number" id="Vida_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="Vida_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🔮 Maná</label>
+                <label class="form-label">🔮Maná</label>
                 <div class="input-group">
                   <input type="number" id="mana_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="mana_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🧠 Cor.</label>
+                <label class="form-label">🧠Cordura</label>
                 <div class="input-group">
                   <input type="number" id="cordura_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="cordura_actual${i}" class="form-control" placeholder="Actual">
@@ -228,26 +199,26 @@ function generarSlots() {
             </div>
           </div>`;
 
-        // HC / HD / Esquiva
-        attr.innerHTML += `
+                // HC / HD / Esquiva
+                attr.innerHTML += `
           <div class="col-12 mb-1">
             <div class="row g-2 text-center">
               <div class="col-4">
-                <label class="form-label">⚔️ HC</label>
+                <label class="form-label">⚔️HC</label>
                 <div class="input-group">
                   <input type="number" id="hc_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="hc_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🏹 HD/label>
+                <label class="form-label">🏹HD</label>
                 <div class="input-group">
                   <input type="number" id="hd_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="hd_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🤸 Esq.</label>
+                <label class="form-label">🤸peEsquiva</label>
                 <div class="input-group">
                   <input type="number" id="esquiva_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="esquiva_actual${i}" class="form-control" placeholder="Actual">
@@ -256,26 +227,26 @@ function generarSlots() {
             </div>
           </div>`;
 
-        // Percepción / Supervivencia / F. Cerraduras
-        attr.innerHTML += `
+                // Percepción / Supervivencia / F. Cerraduras
+                attr.innerHTML += `
           <div class="col-12 mb-1">
             <div class="row g-2 text-center">
               <div class="col-4">
-                <label class="form-label">👁️ Per.</label>
+                <label class="form-label">👁️Percep.</label>
                 <div class="input-group">
                   <input type="number" id="percep_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="percep_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🌲 Sup.</label>
+                <label class="form-label">🌲Superv.</label>
                 <div class="input-group">
                   <input type="number" id="superviv_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="superviv_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🗝️ F.Cerr.</label>
+                <label class="form-label">🗝️F.Cerra.</label>
                 <div class="input-group">
                   <input type="number" id="fcerrad_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="fcerrad_actual${i}" class="form-control" placeholder="Actual">
@@ -284,26 +255,26 @@ function generarSlots() {
             </div>
           </div>`;
 
-        // A. Arcanas / Curar / Plegarias
-        attr.innerHTML += `
+                // A. Arcanas / Curar / Plegarias
+                attr.innerHTML += `
           <div class="col-12 mb-1">
             <div class="row g-2 text-center">
               <div class="col-4">
-                <label class="form-label">🔮 A. Arc.</label>
+                <label class="form-label">✨A.Arcanas</label>
                 <div class="input-group">
                   <input type="number" id="aArcanas_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="aArcanas_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🩹 Cur.</label>
+                <label class="form-label">💚Curar</label>
                 <div class="input-group">
                   <input type="number" id="curar_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="curar_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🙏 Pleg.</label>
+                <label class="form-label">🙏Pleg.</label>
                 <div class="input-group">
                   <input type="number" id="plegaria_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="plegaria_actual${i}" class="form-control" placeholder="Actual">
@@ -312,26 +283,26 @@ function generarSlots() {
             </div>
           </div>`;
 
-        // Trueque / Alquimia / Peso (al final)
-        attr.innerHTML += `
+                // ✅ Trueque / Alquimia / Peso (al final)
+                attr.innerHTML += `
           <div class="col-12 mb-1">
             <div class="row g-2 text-center">
               <div class="col-4">
-                <label class="form-label">💱 True.</label>
+                <label class="form-label">💱Trueque</label>
                 <div class="input-group">
                   <input type="number" id="trueque_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="trueque_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">⚗️ Alq.</label>
+                <label class="form-label">⚗️Alquimia</label>
                 <div class="input-group">
                   <input type="number" id="alquimia_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="alquimia_actual${i}" class="form-control" placeholder="Actual">
                 </div>
               </div>
               <div class="col-4">
-                <label class="form-label">🎒 Peso</label>
+                <label class="form-label">⚖️Peso</label>
                 <div class="input-group">
                   <input type="number" id="peso_base${i}" class="form-control" placeholder="Base">
                   <input type="number" id="peso_actual${i}" class="form-control" placeholder="Actual">
@@ -340,14 +311,10 @@ function generarSlots() {
             </div>
           </div>`;
 
-        // Auto-guardado y listeners
-        activarAutoGuardadoSlot(i);
-    }
-}
-
-
-
-        function obtenerAtributosSlot(slot) {
+                activarAutoGuardadoSlot(i);
+            }
+        }
+function obtenerAtributosSlot(slot) {
     const getNum = (id) => {
         const el = document.getElementById(id);
         return el && el.value !== "" ? parseInt(el.value, 10) : 0;
@@ -958,28 +925,15 @@ function cargarEnSlot(slot, id) {
             };
         }
 
-       // ✅ MODIFICADA: ahora también maneja botones frontales con data-section
-document.addEventListener("click", function (e) {
-    // Botones de la cara frontal que indican sección destino
-    const btn = e.target.closest('.flip-to');
-    if (btn && btn.dataset.section) {
-        const card = btn.closest(".flip-card");
-        if (card) {
-            const slot = parseInt(card.id.replace("slot", ""), 10);
-            showBackSection(slot, btn.dataset.section);
-            card.classList.add("flipped"); // gira a la cara trasera
-        }
-        return;
-    }
-
-    // Botón de "volver" (cara trasera) mantiene el comportamiento anterior
-    if (e.target.classList.contains("flip-btn")) {
-        const card = e.target.closest(".flip-card");
-        if (card) {
-            card.classList.toggle("flipped");
-        }
-    }
-});
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("flip-btn")) {
+                const card = e.target.closest(".flip-card");
+                if (card) {
+                    card.classList.toggle("flipped");
+                    console.log("Flip ejecutado en", card.id); // 👈 Debug
+                }
+            }
+        });
 
         window.onload = function () {
             // todo tu código actual
@@ -1166,43 +1120,21 @@ async function initRazaProfesionSelects() {
 }
 
 // Fija el valor de un select y, si no existe la opción, la añade al vuelo
-// ✅ REEMPLAZA por esta versión robusta
 function setSelectSafely(slot, field, value) {
-    const el = document.getElementById(`${field}${slot}`);
-    if (!el) return;
-
-    const val = (value || "").trim();
-
-    // Si todavía no es <select> (ej. sigue siendo <input>), solo setea el valor y sal.
-    if (el.tagName !== 'SELECT') {
-        el.value = val;
+    const sel = document.getElementById(`${field}${slot}`);
+    if (!sel) return;
+    if (!value) {
+        sel.value = '';
         return;
     }
-
-    // Ya es <select>
-    const sel = /** @type {HTMLSelectElement} */ (el);
-
-    if (!val) {
-        // Si no hay valor, selecciona el placeholder (si existe) o deja vacío
-        if (sel.options && sel.options.length > 0) {
-            // Busca el placeholder (value === "")
-            let idx = Array.from(sel.options).findIndex(o => o.value === "");
-            sel.selectedIndex = idx >= 0 ? idx : 0;
-        } else {
-            sel.value = "";
-        }
-        return;
-    }
-
-    // Asegura que exista la opción con ese valor
-    const exists = sel.options ? Array.from(sel.options).some(o => o.value === val) : false;
+    const exists = Array.from(sel.options).some(o => o.value === value);
     if (!exists) {
         const opt = document.createElement('option');
-        opt.value = val;
-        opt.textContent = val;
+        opt.value = value;
+        opt.textContent = value;
         sel.appendChild(opt);
     }
-    sel.value = val;
+    sel.value = value;
 }
 
 
@@ -1347,25 +1279,6 @@ function cambiarRetrato(personajeId) {
     _portraitAcceptBtn.disabled = true;
     _portraitModal.style.display = "block";
 }
-
-// ✅ NUEVA: muestra una sección de la cara trasera y oculta el resto
-function showBackSection(slot, section) {
-    const map = {
-        notas: `backNotas${slot}`,
-        equip: `backEquip${slot}`,
-        mochila: `backMochila${slot}`,
-        talentos: `backTalentos${slot}`
-    };
-    const ids = Object.values(map);
-    ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = "none";
-    });
-    const targetId = map[section];
-    const target = document.getElementById(targetId);
-    if (target) target.style.display = "";
-}
-
 
 
     </script>
