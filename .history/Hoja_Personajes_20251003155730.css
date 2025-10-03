@@ -289,7 +289,6 @@
   line-height: 1.2;
   text-align: center;
   padding: 2px 4px;     /* mantiene aire, pero más compacto */
-  height: 40px;
 }
 @media (max-width: 768px) {
   .hero-card input[type="number"].form-control {

@@ -283,16 +283,3 @@
   padding-left: 2.5px !important;
   padding-right: 2.5px !important;
 }
-/* Tamaño más compacto para los números de atributos */
-.hero-card input[type="number"].form-control {
-  font-size: 14px;      /* antes lo subimos a 18px, ahora más discreto */
-  line-height: 1.2;
-  text-align: center;
-  padding: 2px 4px;     /* mantiene aire, pero más compacto */
-  height: 40px;
-}
-@media (max-width: 768px) {
-  .hero-card input[type="number"].form-control {
-    font-size: 15px;
-  }
-}
