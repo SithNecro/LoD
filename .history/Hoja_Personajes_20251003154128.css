@@ -251,7 +251,7 @@
 /* Dentro de los “dobles” (Base / Actual) metidos en .input-group */
 .hero-card .input-group > input[type="number"].form-control {
   /* que cada uno se reserve mínimo 6ch y pueda crecer si hay hueco */
-  /*min-width: 5.5ch;*/
+  
   flex: 0 1 auto;           /* evita que encojan más de lo deseable */
 }
 

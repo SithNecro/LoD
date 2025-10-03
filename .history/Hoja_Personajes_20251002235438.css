@@ -236,32 +236,4 @@
     position: relative;
     font-size: 24px;            /* ✅ tamaño del emoji dentro */
 }
-    /* === Mejora de legibilidad para inputs numéricos en la ficha === */
-.hero-card input[type="number"].form-control {
-  /* números más grandes y centrados */
-  font-size: 18px;          /* antes heredaba 16px */
-  line-height: 1.25;
-  text-align: center;
-  /* menos relleno interno para ganar “anchura útil” de dígitos */
-  padding: 2px 6px;
-  /* garantiza espacio para varios dígitos sin romper el grid */
-  min-width: 6ch;           /* ~6 caracteres (escala según fuente) */
-}
-
-/* Dentro de los “dobles” (Base / Actual) metidos en .input-group */
-.hero-card .input-group > input[type="number"].form-control {
-  /* que cada uno se reserve mínimo 6ch y pueda crecer si hay hueco */
-  /*min-width: 5.5ch;*/
-  flex: 0 1 auto;           /* evita que encojan más de lo deseable */
-}
-
-/* En tablet/móvil damos un pelín más de aire */
-@media (max-width: 992px) {
-  .hero-card input[type="number"].form-control {
-    font-size: 19px;
-    min-width: 7ch;
-  }
-  .hero-card .input-group > input[type="number"].form-control {
-    min-width: 7ch;
-  }
-}
+    
