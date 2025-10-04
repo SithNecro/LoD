@@ -47,8 +47,8 @@ window.openInventarioEditor = async function (slot) {
   const modalHeight = Math.min(window.innerHeight - 20, 800);
 
   const html = `
-<div id="invRoot" style="max-height:${modalHeight - 90}px;">
-        <div class="d-flex align-items-center justify-content-between mb-2">
+      <div id="invRoot" style="max-height:${modalHeight - 90}px;">
+        <div class="d-flex align-items-center justify-content-between mb-2" style="position:sticky;top:0;z-index:5;background:var(--bs-body-bg,#fff);padding:6px 0;">
           <div><strong>Inventario de:</strong> ${personaje.nombre}</div>
           <button id="invCloseX" class="btn btn-sm btn-outline-danger" title="Cerrar">✖</button>
         </div>
@@ -72,35 +72,35 @@ window.openInventarioEditor = async function (slot) {
                   <label class="form-label" data-tippy-content="Nombre del objeto">Nombre Objeto</label>
                   <input id="objNombre" class="form-control" type="text">
                 </div>
-              <div class="col-6 col-md-2">
-              <label class="form-label">Lugar</label>
-              <select id="objLugar" class="form-select">
-                <option value="">--Lugar--</option>
-                <option value="Mochila">Mochila</option>
-                <option value="Atajo 1">Atajo 1</option>
-                <option value="Atajo 2">Atajo 2</option>
-                <option value="Atajo 3">Atajo 3</option>
-                <option value="Atajo 4">Atajo 4</option>
-                <option value="Atajo 5">Atajo 5</option>
-                <option value="Atajo 6">Atajo 6</option>
-                <option value="Atajo 7">Atajo 7</option>
-              </select>
-            </div>
                 <div class="col-6 col-md-2">
-                  <label class="form-label">Cantidad</label>
-                  <input id="objCantidad" class="form-control" type="number" min="0" value="1">
+                  <label class="form-label">Lugar</label>
+                  <select id="objLugar" class="form-select">
+                    <option value="">--Lugar--</option>
+                    <option value="Mochila">Mochila</option>
+                    <option value="Atajo 1">Atajo 1</option>
+                    <option value="Atajo 2">Atajo 2</option>
+                    <option value="Atajo 3">Atajo 3</option>
+                    <option value="Atajo 4">Atajo 4</option>
+                    <option value="Atajo 5">Atajo 5</option>
+                    <option value="Atajo 6">Atajo 6</option>
+                    <option value="Atajo 7">Atajo 7</option>
+                  </select>
+                </div>
+                <div class="col-6 col-md-1">
+                  <label class="form-label">Cant.</label>
+                  <input id="objCantidad" class="form-control" type="number" min="0" value="0">
                 </div>
                 <div class="col-6 col-md-2">
-                  <label class="form-label" data-tippy-content="Peso unitario">Peso</label>
-                  <input id="objPeso" class="form-control" type="number" min="0" step="0.1">
+                  <label class="form-label">Peso</label>
+                  <input id="objPeso" class="form-control" type="number" min="0" step="0.1" value="0">
                 </div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Durabilidad</label>
-                  <select id="objDur" class="form-select">
-                    ${Array.from({ length: 11 }, (_, i) => `<option value="${i}">${i}</option>`).join('')}
+                  <select id="objDurabilidad" class="form-select">
+                    ${Array.from({length:11},(_,i)=>`<option value="${i}">${i}</option>`).join('')}
                   </select>
                 </div>
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-2">
                   <label class="form-label">Uso</label>
                   <input id="objUso" class="form-control" type="text">
                 </div>
@@ -110,52 +110,61 @@ window.openInventarioEditor = async function (slot) {
               </div>
             </div>
 
-            <!-- Grupo Armadura (cobertura acumulada en <p>) -->
+            <!-- Grupo Armadura -->
             <div id="grpArm" class="col-12" style="display:none;">
               <div class="row g-2">
+                <div class="col-6 col-md-2 d-flex align-items-center">
+                  <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" id="armEquipado">
+                    <label class="form-check-label" for="armEquipado">Equipado</label>
+                  </div>
+                </div>
                 <div class="col-12 col-md-3">
                   <label class="form-label">Armadura</label>
                   <input id="armNombre" class="form-control" type="text">
                 </div>
-
-                <div class="col-12 col-md-6">
-                  <label class="form-label" data-tippy-content="Añade una a una las partes que cubre">Cobertura</label>
-                  <div class="d-flex gap-2">
-                    <select id="armCobertura" class="form-select">
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Cobertura</label>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <select id="armCobSel" class="form-select">
                       <option value="Cabeza">Cabeza</option>
-                      <option value="Torso">Torso</option>
+                      <option value="Cara">Cara</option>
+                      <option value="Cuello">Cuello</option>
+                      <option value="Hombros">Hombros</option>
                       <option value="Brazos">Brazos</option>
+                      <option value="Manos">Manos</option>
+                      <option value="Cuerpo">Cuerpo</option>
+                      <option value="Cadera">Cadera</option>
                       <option value="Piernas">Piernas</option>
-                      <option value="Escudo">Escudo</option>
+                      <option value="Pies">Pies</option>
                     </select>
-                    <button id="armCobAdd" class="btn btn-outline-primary" type="button">Añadir</button>
-                    <button id="armCobClear" class="btn btn-outline-secondary" type="button" title="Vaciar">Vaciar</button>
+                    <button id="armCobAdd" class="btn btn-outline-secondary">Añadir</button>
+                    <button id="armCobClear" class="btn btn-outline-warning">Limpiar</button>
                   </div>
-                  <p id="armCoberturaList" class="mt-2 mb-0 small text-info"></p>
+                  <p id="armCobList" class="mt-2 mb-0 small text-muted"></p>
                 </div>
-
                 <div class="col-6 col-md-2">
                   <label class="form-label">Defensa</label>
-                  <select id="armDef" class="form-select">
-                    ${Array.from({ length: 11 }, (_, i) => `<option value="${i}">${i}</option>`).join('')}
+                  <select id="armDefensa" class="form-select">
+                    ${Array.from({length:11},(_,i)=>`<option value="${i}">${i}</option>`).join('')}
                   </select>
-                </div>
-                <div class="col-6 col-md-3">
-                  <label class="form-label">Especial</label>
-                  <input id="armEsp" class="form-control" type="text">
                 </div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Durabilidad</label>
-                  <select id="armDur" class="form-select">
-                    ${Array.from({ length: 11 }, (_, i) => `<option value="${i}">${i}</option>`).join('')}
+                  <select id="armDurabilidad" class="form-select">
+                    ${Array.from({length:11},(_,i)=>`<option value="${i}">${i}</option>`).join('')}
                   </select>
+                </div>
+                <div class="col-12 col-md-3">
+                  <label class="form-label">Especial</label>
+                  <input id="armEspecial" class="form-control" type="text">
                 </div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Peso</label>
                   <input id="armPeso" class="form-control" type="number" min="0" step="0.1">
                 </div>
                 <div class="col-12 col-md-2">
-                  <button id="btnAddArm" class="btn btn-primary w-100">Añadir</button>
+                  <button id="btnAddArmadura" class="btn btn-primary w-100">Añadir</button>
                 </div>
               </div>
             </div>
@@ -163,31 +172,37 @@ window.openInventarioEditor = async function (slot) {
             <!-- Grupo Arma -->
             <div id="grpArma" class="col-12" style="display:none;">
               <div class="row g-2">
+                <div class="col-6 col-md-2 d-flex align-items-center">
+                  <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" id="armaEquipado">
+                    <label class="form-check-label" for="armaEquipado">Equipado</label>
+                  </div>
+                </div>
                 <div class="col-12 col-md-3">
                   <label class="form-label">Arma</label>
                   <input id="armaNombre" class="form-control" type="text">
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-2">
                   <label class="form-label">Mano</label>
                   <select id="armaMano" class="form-select">
-                    <option value="Izquierda">Mano izquierda</option>
-                    <option value="Derecha">Mano derecha</option>
-                    <option value="Ambas">Ambas manos</option>
+                    <option value="Izquierda">Izquierda</option>
+                    <option value="Derecha">Derecha</option>
+                    <option value="Ambas">Ambas</option>
                   </select>
                 </div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Daño</label>
-                  <input id="armaDmg" class="form-control" type="text" placeholder="ej. 1d6+2">
+                  <input id="armaDanio" class="form-control" type="text">
                 </div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Durabilidad</label>
-                  <select id="armaDur" class="form-select">
-                    ${Array.from({ length: 11 }, (_, i) => `<option value="${i}">${i}</option>`).join('')}
+                  <select id="armaDurabilidad" class="form-select">
+                    ${Array.from({length:11},(_,i)=>`<option value="${i}">${i}</option>`).join('')}
                   </select>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-md-3">
                   <label class="form-label">Especial</label>
-                  <input id="armaEsp" class="form-control" type="text">
+                  <input id="armaEspecial" class="form-control" type="text">
                 </div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Peso</label>
@@ -210,230 +225,153 @@ window.openInventarioEditor = async function (slot) {
             <div id="listArmas" class="table-responsive"></div>
           </div>
         </div>
-    `;
+      </div>`;
 
   await Swal.fire({
-    title: 'Editor de Inventario',
-    html: `<div class="sai-body">${html}</div>`,
-    width: '90%',
-    customClass: {
-      popup: 'sai-popup',
-      title: 'sai-title',
-      htmlContainer: 'sai-html',
-      actions: 'sai-actions',
-      confirmButton: 'sai-confirm',
-      cancelButton: 'sai-cancel'
-    },
-    didOpen: () => {
-      if (window.tippy) tippy('[data-tippy-content]', { theme: 'light', delay: [300, 0] });
-
-      const elRoot = document.getElementById('invRoot');
-      const elTipo = document.getElementById('invTipo');
-
-      const updateGroups = () => {
-        const v = elTipo.value;
-        document.getElementById('grpObj').style.display = (v === 'obj') ? '' : 'none';
-        document.getElementById('grpArm').style.display = (v === 'arm') ? '' : 'none';
-        document.getElementById('grpArma').style.display = (v === 'arma') ? '' : 'none';
-      };
-
-      // ===== Helpers de limpieza =====
-      let armCobSel = [];
-      const elCobSel = () => document.getElementById('armCobertura');
-      const elCobList = () => document.getElementById('armCoberturaList');
-      const paintCob = () => { const p = elCobList(); if (p) p.textContent = armCobSel.join(', '); };
-      const addCob = () => { const val = elCobSel()?.value; if (!val) return; if (!armCobSel.includes(val)) armCobSel.push(val); paintCob(); };
-      const clearCob = () => { armCobSel = []; paintCob(); };
-
-      const clearGrupoObj = () => {
-        const n = (id) => document.getElementById(id);
-        n('objNombre').value = '';
-        n('objLugar').value = '';
-        n('objCantidad').value = '1';
-        n('objPeso').value = '';
-        n('objDur').value = '0';
-        n('objUso').value = '';
-      };
-
-      const clearGrupoArm = () => {
-        const n = (id) => document.getElementById(id);
-        n('armNombre').value = '';
-        n('armDef').value = '0';
-        n('armEsp').value = '';
-        n('armDur').value = '0';
-        n('armPeso').value = '';
-        n('armCobertura').value = 'Cabeza';
-        clearCob(); // limpia <p> de coberturas
-      };
-
-      const clearGrupoArma = () => {
-        const n = (id) => document.getElementById(id);
-        n('armaNombre').value = '';
-        n('armaMano').value = 'Izquierda';
-        n('armaDmg').value = '';
-        n('armaDur').value = '0';
-        n('armaEsp').value = '';
-        n('armaPeso').value = '';
-      };
-
-      // 👉 helper para resetear el select tipo, ocultar y limpiar todo
-      const resetTipo = () => {
-        elTipo.value = '';
-        updateGroups();           // oculta todos
-        clearGrupoObj();
-        clearGrupoArm();
-        clearGrupoArma();
-      };
-
-      // Botones Cobertura
-      document.addEventListener('click', (ev) => {
-        if (ev.target && ev.target.id === 'armCobAdd') { addCob(); }
-        if (ev.target && ev.target.id === 'armCobClear') { clearCob(); }
-      });
-
-      elTipo.addEventListener('change', updateGroups);
-      // Inicio: placeholder seleccionado y grupos ocultos
-      resetTipo();
-
-      // Cerrar con confirm guardado
-      document.getElementById('invCloseX').addEventListener('click', async () => { Swal.close();
-      });
-        //if (res.isConfirmed) await window.savePersonaje(personaje);
-       
-      
-
-      // ===== Añadir OBJETO =====
-      document.getElementById('btnAddObj').addEventListener('click', async () => {
-        const item = {
-          id: Date.now(),
-          nombre: document.getElementById('objNombre').value.trim(),
-          lugar: document.getElementById('objLugar').value.trim(),
-          cantidad: parseInt(document.getElementById('objCantidad').value || '0', 10),
-          peso: parseFloat(document.getElementById('objPeso').value || '0'),
-          durabilidad: parseInt(document.getElementById('objDur').value || '0', 10),
-          uso: document.getElementById('objUso').value.trim()
-        };
-        if (!item.nombre) { Swal.fire('Falta nombre', 'Indica el nombre del objeto', 'warning'); return; }
-        personaje.inventario.objetos.push(item);
-        await window.savePersonaje(personaje);
-        window.renderInventarioLists(personaje);
-        resetTipo(); // vuelve a placeholder y limpia todo
-      });
-
-      // ===== Añadir ARMADURA =====
-      document.getElementById('btnAddArm').addEventListener('click', async () => {
-        const item = {
-          id: Date.now(),
-          armadura: document.getElementById('armNombre').value.trim(),
-          cobertura: [...armCobSel],
-          defensa: parseInt(document.getElementById('armDef').value || '0', 10),
-          especial: document.getElementById('armEsp').value.trim(),
-          durabilidad: parseInt(document.getElementById('armDur').value || '0', 10),
-          peso: parseFloat(document.getElementById('armPeso').value || '0'),
-          equipado: false
-        };
-        if (!item.armadura) { Swal.fire('Falta armadura', 'Indica el nombre de la armadura', 'warning'); return; }
-        personaje.inventario.armaduras.push(item);
-        await window.savePersonaje(personaje);
-        window.renderInventarioLists(personaje);
-        resetTipo();
-      });
-
-      // ===== Añadir ARMA =====
-      document.getElementById('btnAddArma').addEventListener('click', async () => {
-        const item = {
-          id: Date.now(),
-          arma: document.getElementById('armaNombre').value.trim(),
-          mano: document.getElementById('armaMano').value,
-          danio: document.getElementById('armaDmg').value.trim(),
-          durabilidad: parseInt(document.getElementById('armaDur').value || '0', 10),
-          especial: document.getElementById('armaEsp').value.trim(),
-          peso: parseFloat(document.getElementById('armaPeso').value || '0'),
-          equipado: false
-        };
-        if (!item.arma) { Swal.fire('Falta arma', 'Indica el nombre del arma', 'warning'); return; }
-        personaje.inventario.armas.push(item);
-        await window.savePersonaje(personaje);
-        window.renderInventarioLists(personaje);
-        resetTipo();
-      });
-
-      // ===== Edición inline =====
-      const onInput = async (ev) => {
-        const t = ev.target;
-        const row = t.closest('[data-itemid]'); if (!row) return;
-        const id = Number(row.dataset.itemid);
-
-        const updateItem = (arr, fields) => {
-          const idx = arr.findIndex(x => x.id === id);
-          if (idx < 0) return false;
-          const f = t.name; if (!fields.includes(f)) return false;
-          let v = t.type === 'number' ? (t.step && t.step !== "1" ? parseFloat(t.value) : parseInt(t.value || '0', 10)) : t.value;
-          if (t.tagName === 'SELECT' && t.multiple) v = Array.from(t.selectedOptions).map(o => o.value);
-          arr[idx][f] = v; return true;
-        };
-
-        if (updateItem(personaje.inventario.objetos, ['nombre', 'lugar', 'cantidad', 'peso', 'durabilidad', 'uso']) ||
-          updateItem(personaje.inventario.armaduras, ['armadura', 'defensa', 'especial', 'durabilidad', 'peso']) || // cobertura no editable aquí
-          updateItem(personaje.inventario.armas, ['arma', 'mano', 'danio', 'durabilidad', 'especial', 'peso'])) {
-          await window.savePersonaje(personaje);
-        }
-      };
-
-      // ===== Check equipado =====
-      const onChange = async (ev) => {
-        const t = ev.target;
-        if (t.name !== 'equipado') return;
-        const row = t.closest('[data-itemid]'); if (!row) return;
-        const id = Number(row.dataset.itemid);
-
-        let item = personaje.inventario.armaduras.find(x => x.id === id);
-        if (item) { item.equipado = t.checked; await window.savePersonaje(personaje); return; }
-        item = personaje.inventario.armas.find(x => x.id === id);
-        if (item) { item.equipado = t.checked; await window.savePersonaje(personaje); return; }
-      };
-
-      // ===== Eliminar / Traspasar =====
-      const onClick = async (ev) => {
-        const btn = ev.target.closest('[data-action]'); if (!btn) return;
-        const row = btn.closest('[data-itemid]'); if (!row) return;
-        const id = Number(row.dataset.itemid);
-        const action = btn.dataset.action;
-
-        const delFrom = (arr) => {
-          const i = arr.findIndex(x => x.id === id);
-          if (i >= 0) { arr.splice(i, 1); return true; }
-          return false;
-        };
-
-        if (action === 'eliminar') {
-          if (delFrom(personaje.inventario.objetos) || delFrom(personaje.inventario.armaduras) || delFrom(personaje.inventario.armas)) {
-            await window.savePersonaje(personaje);
-            window.renderInventarioLists(personaje);
-          }
-        } else if (action === 'traspasar') {
-          Swal.fire({
-            icon: 'info',
-            title: 'Pendiente',
-            text: 'La función "Traspasar" se implementará más adelante.',
-            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm', cancelButton: 'sai-cancel' }
-          });
-        }
-      };
-
-      elRoot.addEventListener('input', onInput);
-      elRoot.addEventListener('change', onChange);
-      elRoot.addEventListener('click', onClick);
-
-      window.renderInventarioLists(personaje);
-
-      const first = document.querySelector('#invRoot input, #invRoot select, #invRoot textarea');
-      if (first) first.focus();
-    },
+    width: Math.min(1100, window.innerWidth - 40),
+    html,
     showConfirmButton: false,
+    showCancelButton: false,
     allowOutsideClick: false,
-    allowEscapeKey: true
+    customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-body' }
   });
+
+  // Tooltips
+  if (window.tippy) tippy('[data-tippy-content]', { theme: 'light-border' });
+
+  // Render inicial de listas ordenadas alfabéticamente
+  window.renderInventarioLists(personaje);
+
+  // --- helpers de reset/visibilidad ---
+  const elTipo = document.getElementById('invTipo');
+  const elGrpObj = document.getElementById('grpObj');
+  const elGrpArm = document.getElementById('grpArm');
+  const elGrpArma = document.getElementById('grpArma');
+
+  const resetTipo = () => {
+    elTipo.value = '';
+    elGrpObj.style.display = 'none';
+    elGrpArm.style.display = 'none';
+    elGrpArma.style.display = 'none';
+    // limpiar campos de los 3 grupos
+    ['objNombre','objLugar','objCantidad','objPeso','objDurabilidad','objUso'].forEach(id => { const el = document.getElementById(id); if (el) el.value = (el.tagName === 'SELECT' ? '' : ''); });
+    ['armEquipado','armNombre','armCobSel','armDefensa','armDurabilidad','armEspecial','armPeso'].forEach(id => { const el = document.getElementById(id); if (!el) return; if (el.type === 'checkbox') el.checked = false; else el.value = (el.tagName === 'SELECT' ? '' : ''); });
+    const cob = document.getElementById('armCobList'); if (cob) cob.textContent = '';
+    ['armaEquipado','armaNombre','armaMano','armaDanio','armaDurabilidad','armaEspecial','armaPeso'].forEach(id => { const el = document.getElementById(id); if (!el) return; if (el.type === 'checkbox') el.checked = false; else el.value = (el.tagName === 'SELECT' ? '' : ''); });
+  };
+
+  const updateGroups = () => {
+    const v = elTipo.value;
+    elGrpObj.style.display = (v === 'obj') ? '' : 'none';
+    elGrpArm.style.display = (v === 'arm') ? '' : 'none';
+    elGrpArma.style.display = (v === 'arma') ? '' : 'none';
+  };
+
+  // Añadir Objeto
+  document.getElementById('btnAddObj').addEventListener('click', async () => {
+    const o = {
+      id: Date.now() + Math.floor(Math.random() * 1000),
+      nombre: document.getElementById('objNombre').value.trim(),
+      lugar: document.getElementById('objLugar').value,
+      cantidad: parseInt(document.getElementById('objCantidad').value || '0', 10),
+      peso: parseFloat(document.getElementById('objPeso').value || '0'),
+      durabilidad: parseInt(document.getElementById('objDurabilidad').value || '0', 10),
+      uso: document.getElementById('objUso').value.trim()
+    };
+    personaje.inventario.objetos.push(o);
+    await window.savePersonaje(personaje);
+    window.renderInventarioLists(personaje);
+    resetTipo();
+  });
+
+  // Cobertura Armadura
+  const cobList = [];
+  const updateCobList = () => {
+    const p = document.getElementById('armCobList');
+    if (p) p.textContent = cobList.join(', ');
+  };
+  const addCob = () => {
+    const sel = document.getElementById('armCobSel').value;
+    if (sel && !cobList.includes(sel)) cobList.push(sel);
+    updateCobList();
+  };
+  const clearCob = () => { cobList.length = 0; updateCobList(); };
+
+  // Añadir Armadura
+  document.getElementById('btnAddArmadura').addEventListener('click', async () => {
+    const a = {
+      id: Date.now() + Math.floor(Math.random() * 1000),
+      equipado: document.getElementById('armEquipado').checked,
+      armadura: document.getElementById('armNombre').value.trim(),
+      cobertura: cobList.slice(),
+      defensa: parseInt(document.getElementById('armDefensa').value || '0', 10),
+      especial: document.getElementById('armEspecial').value.trim(),
+      durabilidad: parseInt(document.getElementById('armDurabilidad').value || '0', 10),
+      peso: parseFloat(document.getElementById('armPeso').value || '0')
+    };
+    personaje.inventario.armaduras.push(a);
+    await window.savePersonaje(personaje);
+    window.renderInventarioLists(personaje);
+    resetTipo();
+    clearCob();
+  });
+
+  // Añadir Arma
+  document.getElementById('btnAddArma').addEventListener('click', async () => {
+    const w = {
+      id: Date.now() + Math.floor(Math.random() * 1000),
+      equipado: document.getElementById('armaEquipado').checked,
+      arma: document.getElementById('armaNombre').value.trim(),
+      mano: document.getElementById('armaMano').value,
+      danio: document.getElementById('armaDanio').value.trim(),
+      durabilidad: parseInt(document.getElementById('armaDurabilidad').value || '0', 10),
+      especial: document.getElementById('armaEspecial').value.trim(),
+      peso: parseFloat(document.getElementById('armaPeso').value || '0')
+    };
+    personaje.inventario.armas.push(w);
+    await window.savePersonaje(personaje);
+    window.renderInventarioLists(personaje);
+    resetTipo();
+  });
+
+  // Ediciones en línea de las tablas (auto-guardado)
+  const onInput = async (ev) => {
+    const t = ev.target;
+    const row = t.closest('[data-itemid]'); if (!row) return;
+    const id = Number(row.dataset.itemid);
+
+    const updateItem = (arr, fields) => {
+      const idx = arr.findIndex(x => x.id === id);
+      if (idx < 0) return false;
+      const f = t.name; if (!fields.includes(f)) return false;
+      let v = t.type === 'number' ? (t.step && t.step !== "1" ? parseFloat(t.value || '0') : parseInt(t.value || '0', 10)) : t.value;
+      if (t.tagName === 'SELECT' && t.multiple) v = Array.from(t.selectedOptions).map(o => o.value);
+      arr[idx][f] = v; return true;
+    };
+
+    if (updateItem(personaje.inventario.objetos, ['nombre','lugar','cantidad','peso','durabilidad','uso'])
+      || updateItem(personaje.inventario.armaduras, ['equipado','armadura','cobertura','defensa','especial','durabilidad','peso'])
+      || updateItem(personaje.inventario.armas, ['equipado','arma','mano','danio','durabilidad','especial','peso'])) {
+      await window.savePersonaje(personaje);
+      window.renderInventarioLists(personaje);
+    }
+  };
+
+  document.getElementById('invLists').addEventListener('input', onInput);
+  document.getElementById('invLists').addEventListener('change', onInput);
+
+  // Botones Cobertura
+  document.addEventListener('click', (ev) => {
+    if (ev.target && ev.target.id === 'armCobAdd') { addCob(); }
+    if (ev.target && ev.target.id === 'armCobClear') { clearCob(); }
+  });
+
+  elTipo.addEventListener('change', updateGroups);
+  // Inicio: placeholder seleccionado y grupos ocultos
+  resetTipo();
+
+  // Cerrar sin confirmación (todo se guarda automáticamente en cada cambio)
+  document.getElementById('invCloseX').addEventListener('click', () => { Swal.close(); });
 };
 
 

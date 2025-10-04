@@ -296,11 +296,12 @@ window.openInventarioEditor = async function (slot) {
       resetTipo();
 
       // Cerrar con confirm guardado
-      document.getElementById('invCloseX').addEventListener('click', async () => { Swal.close();
-      });
+      document.getElementById('invCloseX').addEventListener('click', async () => {
+        const res = await Swal.fire({ Swal.close();
+         });
         //if (res.isConfirmed) await window.savePersonaje(personaje);
-       
-      
+        Swal.close();
+      });
 
       // ===== Añadir OBJETO =====
       document.getElementById('btnAddObj').addEventListener('click', async () => {

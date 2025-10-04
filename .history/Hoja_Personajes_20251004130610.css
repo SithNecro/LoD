@@ -470,12 +470,3 @@ th ,td{
   margin-top: 6px !important;   /* antes ~16px */
   margin-bottom: 4px !important;
 }
-/* Mantener la barra superior del popup fija al hacer scroll */
-.sai-popup #invRoot > .d-flex {
-  position: sticky;
-  top: 0;
-  z-index: 50; /* más alto que las tablas */
-  background: rgba(35, 35, 35, 0.95); /* mismo fondo oscuro, sólido */
-  padding: 6px 0;
-  border-bottom: 1px solid #5D4037;
-}

@@ -47,7 +47,7 @@ window.openInventarioEditor = async function (slot) {
   const modalHeight = Math.min(window.innerHeight - 20, 800);
 
   const html = `
-<div id="invRoot" style="max-height:${modalHeight - 90}px;">
+      <div id="invRoot" style="max-height:${modalHeight - 90}px; overflow:auto;">
         <div class="d-flex align-items-center justify-content-between mb-2">
           <div><strong>Inventario de:</strong> ${personaje.nombre}</div>
           <button id="invCloseX" class="btn btn-sm btn-outline-danger" title="Cerrar">✖</button>
@@ -296,11 +296,19 @@ window.openInventarioEditor = async function (slot) {
       resetTipo();
 
       // Cerrar con confirm guardado
-      document.getElementById('invCloseX').addEventListener('click', async () => { Swal.close();
+      document.getElementById('invCloseX').addEventListener('click', async () => {
+        const res = await Swal.fire({
+          icon: 'question',
+          title: '¿Cerrar editor?',
+          text: '¿Deseas guardar antes de salir?',
+          showCancelButton: true,
+          confirmButtonText: 'Guardar y cerrar',
+          cancelButtonText: 'Cerrar sin guardar',
+          customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm', cancelButton: 'sai-cancel' }
+        });
+        if (res.isConfirmed) await window.savePersonaje(personaje);
+        Swal.close();
       });
-        //if (res.isConfirmed) await window.savePersonaje(personaje);
-       
-      
 
       // ===== Añadir OBJETO =====
       document.getElementById('btnAddObj').addEventListener('click', async () => {
@@ -441,31 +449,8 @@ window.openInventarioEditor = async function (slot) {
 
 // ✅ NUEVA: renderizado de tablas de Objetos / Armaduras / Armas con edición inline
 // ✅ GLOBAL: renderizado de tablas del inventario
-// ✅ GLOBAL: renderizado de tablas del inventario (orden alfabético al pintar)
 window.renderInventarioLists = function (personaje) {
   const mkOpts = (n, sel) => Array.from({ length: n }, (_, i) => `<option value="${i}" ${i == sel ? 'selected' : ''}>${i}</option>`).join('');
-
-  // --- helpers de ordenación sin mutar el inventario original ---
-  const byStr = (get) => (a, b) => {
-    const A = (get(a) || '').toString().trim().toLowerCase();
-    const B = (get(b) || '').toString().trim().toLowerCase();
-    if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
-    if (!A && B) return 1;   // vacíos al final
-    if (A && !B) return -1;
-    return 0;
-  };
-
-  const objetosOrden = Array.isArray(personaje.inventario?.objetos)
-    ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre))
-    : [];
-
-  const armadurasOrden = Array.isArray(personaje.inventario?.armaduras)
-    ? personaje.inventario.armaduras.slice().sort(byStr(a => a.armadura))
-    : [];
-
-  const armasOrden = Array.isArray(personaje.inventario?.armas)
-    ? personaje.inventario.armas.slice().sort(byStr(w => w.arma))
-    : [];
 
   // Objetos
   const objHtml = `
@@ -482,7 +467,7 @@ window.renderInventarioLists = function (personaje) {
           <th style="width:80px;"></th>
         </tr></thead>
         <tbody>
-        ${objetosOrden.map(o => `
+        ${personaje.inventario.objetos.map(o => `
           <tr data-itemid="${o.id}">
             <td><input class="form-control form-control-sm" name="nombre" value="${o.nombre || ''}"></td>
             <td>
@@ -510,7 +495,7 @@ window.renderInventarioLists = function (personaje) {
           <th>Armadura</th><th>Cobertura</th><th>Defensa</th><th>Especial</th><th>Durabilidad</th><th>Peso</th><th style="width:80px;"></th><th style="width:80px;"></th>
         </tr></thead>
         <tbody>
-        ${armadurasOrden.map(a => `
+        ${personaje.inventario.armaduras.map(a => `
           <tr data-itemid="${a.id}">
             <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
             <td><input class="form-control form-control-sm" name="armadura" value="${a.armadura || ''}"></td>
@@ -533,7 +518,7 @@ window.renderInventarioLists = function (personaje) {
           <th>Arma</th><th>Mano</th><th>Daño</th><th>Durabilidad</th><th>Especial</th><th>Peso</th><th style="width:80px;"></th><th style="width:80px;"></th>
         </tr></thead>
         <tbody>
-        ${armasOrden.map(w => `
+        ${personaje.inventario.armas.map(w => `
           <tr data-itemid="${w.id}">
             <td><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
             <td><input class="form-control form-control-sm" name="arma" value="${w.arma || ''}"></td>
@@ -557,3 +542,4 @@ window.renderInventarioLists = function (personaje) {
   set('listArmaduras', armHtml);
   set('listArmas', armasHtml);
 };
+

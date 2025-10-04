@@ -49,7 +49,7 @@ window.openInventarioEditor = async function (slot) {
   const html = `
 <div id="invRoot" style="max-height:${modalHeight - 90}px;">
         <div class="d-flex align-items-center justify-content-between mb-2">
-          <div><strong>Inventario de:</strong> ${personaje.nombre}</div>
+        
           <button id="invCloseX" class="btn btn-sm btn-outline-danger" title="Cerrar">✖</button>
         </div>
 
@@ -213,7 +213,7 @@ window.openInventarioEditor = async function (slot) {
     `;
 
   await Swal.fire({
-    title: 'Editor de Inventario',
+    title: '  <div><strong>Inventario de:</strong> ${personaje.nombre}</div>',
     html: `<div class="sai-body">${html}</div>`,
     width: '90%',
     customClass: {

@@ -47,7 +47,7 @@ window.openInventarioEditor = async function (slot) {
   const modalHeight = Math.min(window.innerHeight - 20, 800);
 
   const html = `
-<div id="invRoot" style="max-height:${modalHeight - 90}px;">
+      <div id="invRoot" style="max-height:${modalHeight - 90}px; overflow:auto;">
         <div class="d-flex align-items-center justify-content-between mb-2">
           <div><strong>Inventario de:</strong> ${personaje.nombre}</div>
           <button id="invCloseX" class="btn btn-sm btn-outline-danger" title="Cerrar">✖</button>
@@ -296,11 +296,19 @@ window.openInventarioEditor = async function (slot) {
       resetTipo();
 
       // Cerrar con confirm guardado
-      document.getElementById('invCloseX').addEventListener('click', async () => { Swal.close();
+      document.getElementById('invCloseX').addEventListener('click', async () => {
+        const res = await Swal.fire({
+          icon: 'question',
+          title: '¿Cerrar editor?',
+          text: '¿Deseas guardar antes de salir?',
+          showCancelButton: true,
+          confirmButtonText: 'Guardar y cerrar',
+          cancelButtonText: 'Cerrar sin guardar',
+          customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm', cancelButton: 'sai-cancel' }
+        });
+        if (res.isConfirmed) await window.savePersonaje(personaje);
+        Swal.close();
       });
-        //if (res.isConfirmed) await window.savePersonaje(personaje);
-       
-      
 
       // ===== Añadir OBJETO =====
       document.getElementById('btnAddObj').addEventListener('click', async () => {
