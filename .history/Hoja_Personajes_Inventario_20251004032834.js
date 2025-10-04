@@ -470,13 +470,7 @@ window.renderInventarioLists = function (personaje) {
         ${personaje.inventario.objetos.map(o => `
           <tr data-itemid="${o.id}">
             <td><input class="form-control form-control-sm" name="nombre" value="${o.nombre || ''}"></td>
-            <td>
-  <select class="form-select form-select-sm" name="lugar">
-    ${['','Mochila','Atajo 1','Atajo 2','Atajo 3','Atajo 4','Atajo 5','Atajo 6','Atajo 7']
-      .map(l => `<option value="${l}" ${o.lugar===l?'selected':''}>${l || '--Lugar--'}</option>`)
-      .join('')}
-  </select>
-</td>
+            <td><input class="form-control form-control-sm" name="lugar" value="${o.lugar || ''}"></td>
             <td><input class="form-control form-control-sm" type="number" min="0" name="cantidad" value="${o.cantidad ?? 0}"></td>
             <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${o.peso ?? 0}"></td>
             <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, o.durabilidad ?? 0)}</select></td>

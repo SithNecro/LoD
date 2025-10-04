@@ -324,7 +324,7 @@
 /* === SweetAlert2: piel de la app para el popup de Inventario === */
 /* Usamos clases personalizadas con customClass para no tocar otros alerts */
 .sai-popup.swal2-popup {
-  background: rgba(35, 35, 35, 0.7);               /* igual que tu tema oscuro */
+  background: #8B4513;               /* igual que tu tema oscuro */
   color: #ff6666;
   border: 1px solid #2a2e33;
   border-radius: 18px;
@@ -345,14 +345,12 @@
   margin: 0;
   padding: 0;
   color: inherit;
-  
 }
 
 /* Contenido del editor: grid suave y compactado */
 .sai-body {
   display: grid;
   gap: 10px;
-  
 }
 
 /* Inputs internos del popup con tu mismo estilo */
@@ -361,19 +359,17 @@
 .sai-popup input[type="number"],
 .sai-popup select,
 .sai-popup textarea {
+  background:  rgba(35, 35, 35, 0.7);
+  color: #e7e7e7;
+  border: 1px solid #2a2e33;
+  border-radius: 10px;
+  padding: 6px 10px;
   font-size: 14px;                   /* no alteramos el tamaño global */
   line-height: 1.25;
-   background: rgba(40, 40, 40, 0.9) !important;
-            color: #fff !important;
-            font-size: 16px;
-            border: 2px solid #a05c48 !important;
-            /* 👈 forzado */
-            border-radius: 8px;
 }
 
 .sai-popup input[type="number"] {
   text-align: center;
-
 }
 
 /* Spinners más visibles (Chromium/WebKit) */
@@ -392,7 +388,6 @@
   outline: none;
   border-color: #3b82f6;             /* azul primario */
   box-shadow: 0 0 0 2px rgba(59,130,246,.25);
-  
 }
 
 /* Botones como Bootstrap */
@@ -449,14 +444,4 @@
 .sai-popup .form-check-input:checked {
   background-color: #3b82f6;
   border-color: #3b82f6;
-}
-th ,td{
-   background: rgba(40, 40, 40, 0.9) !important;
-                        color: #d4af37!important;
-
-            border-radius: 12px;
-            border: 2px solid #5D4037!important;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            
-
 }

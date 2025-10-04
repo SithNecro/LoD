@@ -73,19 +73,19 @@ window.openInventarioEditor = async function (slot) {
                   <input id="objNombre" class="form-control" type="text">
                 </div>
               <div class="col-6 col-md-2">
-              <label class="form-label">Lugar</label>
-              <select id="objLugar" class="form-select">
-                <option value="">--Lugar--</option>
-                <option value="Mochila">Mochila</option>
-                <option value="Atajo 1">Atajo 1</option>
-                <option value="Atajo 2">Atajo 2</option>
-                <option value="Atajo 3">Atajo 3</option>
-                <option value="Atajo 4">Atajo 4</option>
-                <option value="Atajo 5">Atajo 5</option>
-                <option value="Atajo 6">Atajo 6</option>
-                <option value="Atajo 7">Atajo 7</option>
-              </select>
-            </div>
+  <label class="form-label">Lugar</label>
+  <select id="objLugar" class="form-select">
+    <option value="">--Lugar--</option>
+    <option value="Mochila">Mochila</option>
+    <option value="Atajo 1">Atajo 1</option>
+    <option value="Atajo 2">Atajo 2</option>
+    <option value="Atajo 3">Atajo 3</option>
+    <option value="Atajo 4">Atajo 4</option>
+    <option value="Atajo 5">Atajo 5</option>
+    <option value="Atajo 6">Atajo 6</option>
+    <option value="Atajo 7">Atajo 7</option>
+  </select>
+</div>
                 <div class="col-6 col-md-2">
                   <label class="form-label">Cantidad</label>
                   <input id="objCantidad" class="form-control" type="number" min="0" value="1">
@@ -470,13 +470,7 @@ window.renderInventarioLists = function (personaje) {
         ${personaje.inventario.objetos.map(o => `
           <tr data-itemid="${o.id}">
             <td><input class="form-control form-control-sm" name="nombre" value="${o.nombre || ''}"></td>
-            <td>
-  <select class="form-select form-select-sm" name="lugar">
-    ${['','Mochila','Atajo 1','Atajo 2','Atajo 3','Atajo 4','Atajo 5','Atajo 6','Atajo 7']
-      .map(l => `<option value="${l}" ${o.lugar===l?'selected':''}>${l || '--Lugar--'}</option>`)
-      .join('')}
-  </select>
-</td>
+            <td><input class="form-control form-control-sm" name="lugar" value="${o.lugar || ''}"></td>
             <td><input class="form-control form-control-sm" type="number" min="0" name="cantidad" value="${o.cantidad ?? 0}"></td>
             <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${o.peso ?? 0}"></td>
             <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, o.durabilidad ?? 0)}</select></td>
