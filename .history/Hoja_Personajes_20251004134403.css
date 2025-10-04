@@ -479,11 +479,11 @@ th ,td{
 .sai-popup input[type="number"],
 .sai-popup select,
 .sai-popup textarea {
+  font-size: 14px;                   /* no alteramos el tamaño global */
   line-height: 1.25;
-  
    background: rgba(40, 40, 40, 0.9) !important;
             color: #fff !important;
-            font-size: 15px;
+            font-size: 116px;
             border: 2px solid #a05c48 !important;
             /* 👈 forzado */
             border-radius: 8px;

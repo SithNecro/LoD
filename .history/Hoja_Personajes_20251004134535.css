@@ -480,7 +480,7 @@ th ,td{
 .sai-popup select,
 .sai-popup textarea {
   line-height: 1.25;
-  
+  height: 35px !important;
    background: rgba(40, 40, 40, 0.9) !important;
             color: #fff !important;
             font-size: 15px;

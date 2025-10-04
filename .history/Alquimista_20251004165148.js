@@ -1166,3 +1166,158 @@ function formatRecipeIngredientsWithAvailability(ingredientsArr) {
     return parts.join('');
 }
 
+
+/***********  NUEVO: Config DB compartida con Hojas_Personajes  ***********/
+const DB_NAME = 'Hojas_Personajes_DB';  // 🔁 Cambia si tu DB se llama distinto
+const STORE_SLOTS = 'slots';
+const STORE_PERSONAJES = 'personajes';
+
+let __db_ref = null;
+async function openDBShared() {
+    if (window.db) return window.db;        // si ya existe global (misma página)
+    if (__db_ref) return __db_ref;          // cache local
+
+    return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME);
+        req.onerror = () => reject(req.error);
+        req.onsuccess = () => { __db_ref = req.result; resolve(__db_ref); };
+        // No hacemos onupgradeneeded: asumimos que ya existe con stores 'slots' y 'personajes'
+    });
+}
+
+/***********  NUEVO: Héroes cargados en los slots (1..4)  ***********/
+async function getLoadedHeroesFromSlots() {
+    const db = await openDBShared();
+    // leemos slots 1..4 y luego sus personajes
+    const slotIds = [1,2,3,4];
+
+    const personajeIds = await Promise.all(slotIds.map(slot => new Promise((resolve) => {
+        const tx = db.transaction(STORE_SLOTS, 'readonly');
+        const st = tx.objectStore(STORE_SLOTS);
+        const r = st.get(slot);
+        r.onsuccess = () => resolve(r.result?.personajeId ?? null);
+        r.onerror = () => resolve(null);
+    })));
+
+    const heroes = [];
+    for (let i = 0; i < slotIds.length; i++) {
+        const pid = personajeIds[i];
+        if (!pid) continue;
+        const p = await new Promise((resolve) => {
+            const tx = db.transaction(STORE_PERSONAJES, 'readonly');
+            const st = tx.objectStore(STORE_PERSONAJES);
+            const r = st.get(pid);
+            r.onsuccess = () => resolve(r.result || null);
+            r.onerror = () => resolve(null);
+        });
+        if (p) heroes.push({ slot: slotIds[i], id: p.id, nombre: p.nombre || `Héroe ${slotIds[i]}` });
+    }
+    return heroes;
+}
+
+/***********  NUEVO: Insertar poción en inventario de un héroe  ***********/
+async function addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo }) {
+    const db = await openDBShared();
+    const personaje = await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_PERSONAJES, 'readonly');
+        const st = tx.objectStore(STORE_PERSONAJES);
+        const r = st.get(personajeId);
+        r.onsuccess = () => resolve(r.result || null);
+        r.onerror = () => reject(r.error);
+    });
+    if (!personaje) throw new Error('Personaje no encontrado');
+
+    if (!personaje.inventario) personaje.inventario = { objetos: [], armaduras: [], armas: [] };
+    if (!Array.isArray(personaje.inventario.objetos)) personaje.inventario.objetos = [];
+
+    const item = {
+        id: Date.now(),
+        nombre: nombrePocion,     // 📛 Nombre de la poción
+        lugar: 'Mochila',         // 📦 donde guardar
+        cantidad: 1,              // 🔢 1 unidad
+        peso: 1,                  // ⚖️ 1
+        durabilidad: 0,           // 🛠️ 0
+        uso: `${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}` // 🧪 Tipo + “tooltip/info”
+    };
+
+    personaje.inventario.objetos.push(item);
+
+    await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_PERSONAJES, 'readwrite');
+        const st = tx.objectStore(STORE_PERSONAJES);
+        const r = st.put(personaje);
+        r.onsuccess = () => resolve();
+        r.onerror = () => reject(r.error);
+    });
+
+    return personaje;
+}
+
+/***********  NUEVO: Popup de éxito con selector de héroe y guardado ***********
+ * Llama a esta función cuando completes con éxito la creación de la poción.
+ * - nombrePocion: string (p.ej. "Antídoto")
+ * - tipoPocion: string (p.ej. "Curativa", "Veneno", etc.)
+ * - tooltipTitulo: string (p.ej. título o nombre de la info del tooltip)
+ ***************************************************************************/
+async function onPotionCraftedSuccess(nombrePocion, tipoPocion, tooltipTitulo = '') {
+    // 1) recogemos héroes cargados
+    const heroes = await getLoadedHeroesFromSlots();
+
+    if (!window.Swal) {
+        alert(`Se creó la poción ${nombrePocion}. No tengo SweetAlert2 para elegir héroe.`);
+        return;
+    }
+
+    // 2) construimos el select
+    const optionsHtml = heroes.length
+        ? heroes.map(h => `<option value="${h.id}">Slot ${h.slot} · ${h.nombre}</option>`).join('')
+        : `<option value="">(no hay héroes cargados en los slots)</option>`;
+
+    const html = `
+      <div class="sai-body">
+        <p class="mb-2">¡Has creado <strong>${nombrePocion}</strong>!</p>
+        <label class="form-label">¿En qué inventario guardarla?</label>
+        <select id="selHeroInv" class="form-select" ${heroes.length ? '' : 'disabled'}>
+          ${optionsHtml}
+        </select>
+        <p class="mt-3 mb-0 small text-muted">
+          Se guardará en <em>Objetos</em> con: Lugar <strong>Mochila</strong>, Cantidad <strong>1</strong>, Peso <strong>1</strong>, Durabilidad <strong>0</strong>, Uso <strong>${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}</strong>.
+        </p>
+      </div>
+    `;
+
+  onPotionCraftedSuccess(nombreDeLaPocion, tipoDeLaPocion, tituloTooltip /* opcional */);
+
+    if (!res.isConfirmed) return;
+
+    const sel = document.getElementById('selHeroInv');
+    const personajeId = sel ? sel.value : '';
+
+    if (!personajeId) {
+        await Swal.fire({
+            icon: 'warning',
+            title: 'Sin héroe',
+            text: 'No hay héroes cargados en los slots para guardar la poción.',
+            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm' }
+        });
+        return;
+    }
+
+    try {
+        await addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo });
+        await Swal.fire({
+            icon: 'success',
+            title: 'Guardado',
+            text: `Se añadió "${nombrePocion}" al inventario del héroe seleccionado.`,
+            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm' }
+        });
+    } catch (err) {
+        console.error(err);
+        await Swal.fire({
+            icon: 'error',
+            title: 'Error guardando',
+            text: 'No se pudo guardar la poción en el inventario.',
+            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm' }
+        });
+    }
+}

@@ -48,7 +48,7 @@ window.openInventarioEditor = async function (slot) {
 
   const html = `
   <div id="invRoot" style="max-height:${modalHeight - 90}px;">
-    <div class="d-flex align-items-center justify-content-between mb-2" style="position:sticky;top:0;z-index:5;padding:6px 0;">
+    <div class="d-flex align-items-center justify-content-between mb-2" style="position:sticky;top:0;z-index:5;background:var(--bs-body-bg,#fff);padding:6px 0;">
       <div><strong>Inventario de:</strong> ${personaje.nombre}</div>
       <button id="invCloseX" class="btn btn-sm btn-outline-danger" title="Cerrar">✖</button>
     </div>

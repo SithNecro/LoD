@@ -3,7 +3,7 @@ const ingredients = [
     "Raíz arqueada", "Jengibre ceniciento", "Ajenjo Espinado", "Ambrosía", "Equinácea azul",
     "Callicarpa brillante", "Polen del Amaru", "Corteza de arce rojo", "Artemisa salada",
     "Asclepia picante", "Frambuesa gigante", "Baya lunar", "Laurel del monje", "Agracejo",
-    "Belladona", "Dulcamara", "Hiedra dulce", "Perejil tóxico", "Barbárea", "Trébol llorón"
+    "Belladona", "Dulcamara", "Hiedra dulce", "Perejil tóxico", "Barbarea", "Trébol llorón"
 ];
 
 const monsterParts = Array.from(new Set([
@@ -157,13 +157,8 @@ function customConfirm(mensaje_confirmacion, imagen_icono, message, onConfirm, o
 // Asociar la función al botón "Comenzar de 0"
 document.getElementById("reset-button").addEventListener("click", resetAlchemyData);
 // Guardar en LocalStorage
-// 🔧 MODIFICADA: al guardar inventario, refrescamos el libro de recetas
 function saveInventory() {
     localStorage.setItem(INVENTORY_KEY, JSON.stringify(inventory));
-    // Refrescar recetario para mostrar disponibilidad en tiempo real
-    if (typeof renderRecipeTable === 'function') {
-        renderRecipeTable();
-    }
 }
 
 function saveRecipes() {
@@ -255,7 +250,6 @@ function removeInventoryItem(index) {
 // Renderizar la tabla de recetas
 // Renderizar la tabla de recetas
 // Actualizar la función renderRecipeTable
-// 🔧 MODIFICADA: render de la tabla de recetas con ingredientes coloreados según disponibilidad
 function renderRecipeTable() {
     const tbody = document.querySelector("#recipe-table tbody");
     if (!tbody) {
@@ -275,17 +269,16 @@ function renderRecipeTable() {
     recipes.forEach((recipe, index) => {
         const row = document.createElement("tr");
 
-        // Descripción de la poción (tooltip)
+        // Obtener la descripción de la poción
         const description = potionDescriptions[recipe.name] || "Descripción no disponible";
-        const potionLink = `<span style="color: white;"><p href="#" title="${description}">${recipe.name}</p></span>`;
 
-        // 🔹 Ingredientes con color por disponibilidad
-        const ingHTML = formatRecipeIngredientsWithAvailability(recipe.ingredients);
+        // Crear el enlace con tooltip
+        const potionLink = `<span style="color: white;"><p href="#" title="${description}">${recipe.name}</a></span>`;
 
         row.innerHTML = `
-            <td>${potionLink}</td>
+            <td >${potionLink}</td>
             <td>${recipe.type}</td>
-            <td>${ingHTML}</td>
+            <td>${recipe.ingredients.join(", ")}</td>
             <td>${recipe.default ? "" : `
                 <button class="forget-recipe" data-index="${index}" style="background-color: red; color: white; border-radius: 5px;">Olvidar</button>
             `}</td>
@@ -300,8 +293,6 @@ function renderRecipeTable() {
         }
     });
 }
-
-
 // Ordenar recetas
 function sortRecipes() {
     recipes.sort((a, b) => a.name.localeCompare(b.name));
@@ -1137,32 +1128,3 @@ function reproducirAudiosSecuencial(audios) {
 
     playNext();
 }
-
-// 🔸 NUEVO: helper para normalizar (minúsculas + sin tildes)
-function normStr(s) {
-    return (s || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, '');
-}
-
-// 🔸 NUEVO: comprueba si hay al menos 1 unidad de un material (sin distinguir exquisito) en inventario
-function hasMaterialAvailable(name) {
-    const target = normStr(name);
-    return inventory.some(it => normStr(it.name) === target && (it.units || 0) > 0);
-}
-
-// 🔸 NUEVO: devuelve HTML con ingredientes coloreados y comas en blanco
-function formatRecipeIngredientsWithAvailability(ingredientsArr) {
-    if (!Array.isArray(ingredientsArr) || ingredientsArr.length === 0) return "";
-    const parts = [];
-    ingredientsArr.forEach((ing, idx) => {
-        const ok = hasMaterialAvailable(ing);
-        parts.push(`<span style="color:${ok ? '#67e667' : '#ff6b6b'}; font-weight:bold;">${ing}</span>`);
-        if (idx < ingredientsArr.length - 1) {
-            parts.push(`<span style="color:#fff;">, </span>`); // coma en blanco
-        }
-    });
-    return parts.join('');
-}
-

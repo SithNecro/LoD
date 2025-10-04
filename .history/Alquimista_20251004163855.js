@@ -1165,4 +1165,3 @@ function formatRecipeIngredientsWithAvailability(ingredientsArr) {
     });
     return parts.join('');
 }
-

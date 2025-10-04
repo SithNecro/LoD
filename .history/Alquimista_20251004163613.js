@@ -3,7 +3,7 @@ const ingredients = [
     "Raíz arqueada", "Jengibre ceniciento", "Ajenjo Espinado", "Ambrosía", "Equinácea azul",
     "Callicarpa brillante", "Polen del Amaru", "Corteza de arce rojo", "Artemisa salada",
     "Asclepia picante", "Frambuesa gigante", "Baya lunar", "Laurel del monje", "Agracejo",
-    "Belladona", "Dulcamara", "Hiedra dulce", "Perejil tóxico", "Barbárea", "Trébol llorón"
+    "Belladona", "Dulcamara", "Hiedra dulce", "Perejil tóxico", "Barbarea", "Trébol llorón"
 ];
 
 const monsterParts = Array.from(new Set([
@@ -1165,4 +1165,3 @@ function formatRecipeIngredientsWithAvailability(ingredientsArr) {
     });
     return parts.join('');
 }
-
