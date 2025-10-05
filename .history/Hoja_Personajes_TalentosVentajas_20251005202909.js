@@ -103,7 +103,7 @@
         const html = `
       <div id="tvRoot" class="hero-card p-2" style="max-height:${Math.min(window.innerHeight - 80, 700)}px;overflow:auto;">
         <div class="row g-2 mb-2">
-        <h5>Aprender/Olvidar Talentos y Ventajas</h5>
+        <h5>Hola</h5>
           <div class="col-12 col-md-3">
             <label class="form-label">Categoría</label>
             <select id="tvGrupo" class="form-select">
