@@ -944,10 +944,7 @@
                     data.forEach(p => {
                         // ✅ aseguramos inventario aunque el JSON sea antiguo
                         if (!p.inventario) p.inventario = { objetos: [], armaduras: [], armas: [] };
-                        // ✅ NUEVO: asegurar talentos/ventajas aunque el JSON sea antiguo
-                        if (!p.talentosVentajas) p.talentosVentajas = { talentos: [], ventajas: [] };
                         store.put(p);
-
                     });
                     tx.oncomplete = () => mostrarPersonajes();
                 } catch (err) {

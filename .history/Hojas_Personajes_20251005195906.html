@@ -912,10 +912,7 @@
                         atributos: p.atributos,
                         notas: p.notas,
                         // ✅ NUEVO: exportar inventario completo (con valores por defecto si faltan)
-                        inventario: p.inventario ?? { objetos: [], armaduras: [], armas: [] },
-                        // ✅ NUEVO: exportar talentos y ventajas (con valores por defecto si faltan)
-                        talentosVentajas: p.talentosVentajas ?? { talentos: [], ventajas: [] }
-
+                        inventario: p.inventario ?? { objetos: [], armaduras: [], armas: [] }
                     };
                 });
                 const blob = new Blob([JSON.stringify(personajes, null, 2)], { type: "application/json" });
@@ -944,10 +941,7 @@
                     data.forEach(p => {
                         // ✅ aseguramos inventario aunque el JSON sea antiguo
                         if (!p.inventario) p.inventario = { objetos: [], armaduras: [], armas: [] };
-                        // ✅ NUEVO: asegurar talentos/ventajas aunque el JSON sea antiguo
-                        if (!p.talentosVentajas) p.talentosVentajas = { talentos: [], ventajas: [] };
                         store.put(p);
-
                     });
                     tx.oncomplete = () => mostrarPersonajes();
                 } catch (err) {
