@@ -1,0 +1,544 @@
+{
+    "Ventajas de Liderazgo": [
+        {
+            "Nombre": "Agrupar",
+            "Efecto": "Intentas motivar a un camarada. Un héroe que haya fallado una tirada de Miedo o Terror puede repetir al momento la tirada.<br>- Puede usarse fuera de turno cuando sea necesaria una tirada de miedo o terror."
+        },
+        {
+            "Nombre": "Aliento",
+            "Efecto": "Los ánimos del héroe fortalecen los corazones de sus camaradas dándoles +10 para la siguiente tirada de Miedo o Terror.<br>- Puede usarse fuera de turno cuando sea necesaria una tirada de miedo o terror."
+        },
+        {
+            "Nombre": "¡Ante todo, mucha calma!",
+            "Efecto": "La Determinación del héroe mantiene al grupo unido. Puedes incrementar la Moral de Grupo en +2.<br> Esto no puede incrementar la moral por encima de la moral inicial."
+        },
+        {
+            "Nombre": "Llamada a la Acción",
+            "Efecto": "El héroe lanza un grito de guerra dándole a otro la posibilidad de actuar de inmediato. Usa esta ventaja cuando se active el Héroe, y cuando haya terminado su turno saca una ficha de héroe del saco y activa a otro héroe en LDV gracias al grito de guerra."
+        }
+    ],
+    "Ventajas Comunes": [
+        {
+            "Nombre": "Esprintar",
+            "Efecto": "El héroe puede mover hasta 6 casillas en su primera acción. El segundo movimiento sigue disponible pero reducido a la mitad como siempre."
+        },
+        {
+            "Nombre": "Fuerza de voluntad heróica",
+            "Efecto": "El héroe puede añadir +10 a una habilidad o estadística para una tirada de dados."
+        },
+        {
+            "Nombre": "Ignorar Heridas",
+            "Efecto": "El héroe gana Armadura Natural +2.<br> Dura una batalla."
+        },
+        {
+            "Nombre": "Provocar",
+            "Efecto": "Tu héroe sabe cómo molestar al enemigo. Tu héroe puede obligar a un enemigo que no esté luchando a melé, a atacarle a él.<br> Elige al enemigo antes de que realice cualquier tirada de ataque ese turno."
+        },
+        {
+            "Nombre": "Sanguinario",
+            "Efecto": "La Sed de Sangre aparecerá sacando 01-10 en vez de 01-05 durante toda la batalla.<br> Debe usarse antes de la tirada de daño, dura toda la batalla."
+        },
+        {
+            "Nombre": "Sexto Sentido",
+            "Efecto": "Puedes añadir +20 al resultado de una tirada de esquiva o +20 a una tirada de Percepción cuando estés evitando una trampa activada."
+        }
+    ],
+    "Ventajas de Combate": [
+        {
+            "Nombre": "Escudazo",
+            "Efecto": "Empuja a un enemigo del mismo tamaño o menor una casilla. El objetivo debe pasar un test de DES o caerse, gastando su próxima acción en levantarse. El Héroe puede ocupar la casilla del objetivo si quiere.<br> Voladores son inmunes. Requiere un escudo Heraldo o de Torre."
+        },
+        {
+            "Nombre": "Frenesí",
+            "Efecto": "El Héroe golpea salvajemente a los enemigos. Por cada ataque normal que dañe al enemigo, podrá hacer otro gratuitamente. Este ataque no tiene porqué que ser al mismo objetivo. Mientras esté frenético, todos los ataques serán con PArm (1) acumulativo a otros bonos si los hubiese. El Héroe solo puede moverse o atacar y no puede hacer nada más, ni bloquear ni esquivar.<br> Sólo Bárbaros. Dura 2 turnos. Significa que se podrán hacer un máximo de 8 ataques normales durante un frenesí."
+        },
+        {
+            "Nombre": "Furioso",
+            "Efecto": "Usando su energía interior, el Héroe puede hacer 2 ataques poderosos en un turno, ya que solo cuestan 1PA."
+        },
+        {
+            "Nombre": "Golpe aturdidor",
+            "Efecto": "Tu Héroe puede elegir aturdir al enemigo en lugar de dañarlo. Haz un ataque normal con una penalización de -10 HC, si tiene éxito, el enemigo no podrá realizar ninguna acción durante su próximo turno.<br> Sólo armas a melé. No funciona en ExtraEnormes y los Enormes solo perderán 1PA."
+        },
+        {
+            "Nombre": "Golpe mortal",
+            "Efecto": "Añade +25 HC a tu próximo ataque."
+        },
+        {
+            "Nombre": "Golpe potente",
+            "Efecto": "Tu Héroe ataca con todas sus fuerzas, causando 1d6 DAÑ adicional. Solo armas de melé.<br> Debe declararse antes de hacer el ataque."
+        },
+        {
+            "Nombre": "Muro de escudo",
+            "Efecto": "La veteranía le permite a tu Héroe manejar el escudo como un profesional. Puedes bloquear 2 veces por turno si estás en posición defensiva.<br> Puede ser usado cuando te atacan."
+        },
+        {
+            "Nombre": "Ojo de cazador",
+            "Efecto": "Tu Héroe puede disparar 2 proyectiles a la vez. Ambos proyectiles deben apuntar al mismo enemigo. Tira por separado para cada ataque.<br> Sólo se activará usando arcos u hondas."
+        },
+        {
+            "Nombre": "Puntería perfecta",
+            "Efecto": "Tu puntería está afinada. Añade +25 HD a tu próximo ataque a distancia."
+        }
+    ],
+    "Ventajas de Sigilo": [
+        {
+            "Nombre": "Avaricioso",
+            "Efecto": "Cuando tires por una cantidad de oro, puedes repetir la tirada una vez.<br> La decisión se toma después de la primera tirada. El segundo resultado es definitivo."
+        },
+        {
+            "Nombre": "Dedos Rápidos",
+            "Efecto": "Gracias a su experiencia, los dedos del héroe bailan por el mecanismo. Añade +25 a forzar una cerradura o desarmar una trampa.<br> Usar antes de tirar."
+        },
+        {
+            "Nombre": "Donde Duele",
+            "Efecto": "Tu héroe ataca con mucha precisión, golpeando en la zona más vulnerable. Ignora la armadura del enemigo para todos tus ataques este turno.<br> Debe decidirse antes de atacar."
+        },
+        {
+            "Nombre": "Oculto en la Sombra",
+            "Efecto": "Encuentras el rincón para desviar la atención. Ningún enemigo te toma como objetivo si está a más de 2 casillas de distancia cuando empiece su turno. Si estás adyacente a un enemigo, el enemigo siempre atacará a otro adyacente si hay. Si no, esta Ventaja no tiene efecto."
+        },
+        {
+            "Nombre": "Reflejos Felinos",
+            "Efecto": "Unos buenos reflejos lo son todo. El héroe puede esquivar, aunque haya usado la esquiva normal antes.<br> Puede usarse cuando se es atacado."
+        },
+        {
+            "Nombre": "Tonto con Suerte",
+            "Efecto": "Como siempre, la fortuna te sonríe. Reduce la Amenaza en 2 puntos."
+        },
+        {
+            "Nombre": "Vivir con Nada",
+            "Efecto": "Acostumbrado a las penurias, no necesitas mucho para mantenerte. Gastar 1 Punto de Energía para activar esta Ventaja cuenta como consumir una ración.<br> El Punto de Energía no se recupera en el mismo descanso que ha sido gastado."
+        }
+    ],
+    "Ventajas de Fe": [
+        {
+            "Nombre": "Dueño de mi Destino",
+            "Efecto": "Gastando 1 Punto de Energía, el Sacerdote puede repetir la tirada de Escenario.<br> Se usa cuando el dado de Escenario se lance."
+        },
+        {
+            "Nombre": "Favorito de los dioses",
+            "Efecto": "Eres el favorito de los dioses y siempre te escuchan. Tus oraciones hacen que todos los problemas parezcan menores. Reduce el nivel de amenaza en 1d6."
+        },
+        {
+            "Nombre": "Hágase mi voluntad",
+            "Efecto": "Con su enorme vocación, el Sacerdote manifiesta una tremenda Determinación. Añade +10 DET.<br> Dura hasta el final de la siguiente batalla."
+        },
+        {
+            "Nombre": "Primeros Auxilios",
+            "Efecto": "Hacer un vendaje en condiciones puede cambiar el rumbo del combate. Cuando se ponga una venda, esta Ventaja añade +3 VIT al resultado.<br> Se usa a la vez que Curar."
+        }
+    ],
+    "Ventajas Arcanas": [
+        {
+            "Nombre": "Concentración Rápida",
+            "Efecto": "El mago tiene la habilidad de Concentrarse al máximo. Añade +10 Artes Arcanas sin gastar una acción en Concentración. El riesgo de Perturbación permanece.<br> Usado al mismo tiempo que un hechizo. Sólo afecta a ese hechizo."
+        },
+        {
+            "Nombre": "Disipador",
+            "Efecto": "El mago es muy habilidoso contrarrestando magia enemiga.<br> El mago obtiene +20AA en una tirada para disipar un hechizo."
+        },
+        {
+            "Nombre": "Energía en Maná",
+            "Efecto": "El mago puede convertir energía en Maná. Por cada punto gastado, el mago recupera 20 de Maná.<br> El mago puede gastar toda la energía que quiera."
+        },
+        {
+            "Nombre": "En Sintonía con la Magia",
+            "Efecto": "El mago puede usar Concentración antes de identificar un objeto mágico. Sin embargo, quedar tan expuesto a la magia pone en riesgo su Cordura.<br> Funciona como un hechizo, pero se añade Perturbación también. 1 concentración añade Perturbación de 95-00. Por cada acción, el margen aumenta en 5 puntos."
+        },
+        {
+            "Nombre": "Poder Interior",
+            "Efecto": "El mago incrementa el poder de sus misiles mágicos, causando 1d6 de Daño extra.<br> Debe decidirse antes de realizar el hechizo."
+        }
+    ],
+    "Ventajas de Alquimista": [
+        {
+            "Nombre": "Cirujano",
+            "Efecto": "Con mucha calma y paciencia, el alquimista puede extirpar partes con precisión. El alquimista recolecta el doble de partes.<br> Un enemigo por punto de Energía gastado."
+        },
+        {
+            "Nombre": "Con Cuidado",
+            "Efecto": "Tienes unos nervios de acero. Posibilidad de conseguir Ingrediente Exquisito o Parte +20.<br> Antes de recoger o recolectar."
+        },
+        {
+            "Nombre": "Conocedor",
+            "Efecto": "Tienes un don para identificar pociones. Ganas +10 en el siguiente intento de identificar una poción (sólo una por Punto de Energía).<br> La Energía se gasta a la vez que se identifica la poción."
+        },
+        {
+            "Nombre": "Lanzador",
+            "Efecto": "Respira hondo. El alquimista puede lanzar un frasco en un arco perfecto. Gana +10 HD en el siguiente intento de arrojar una poción.<br> Sólo afecta a una poción y debe decidirse antes de lanzarla."
+        },
+        {
+            "Nombre": "Mixtura Perfecta",
+            "Efecto": "Una buena mezcla puede decidirlo todo. El alquimista puede repetir el resultado de una tirada cuando se cree una poción.<br> La Energía se gasta después de la primera tirada. El segundo resultado es definitivo."
+        },
+        {
+            "Nombre": "Sanador Veterano",
+            "Efecto": "El buen hacer del héroe incrementa la potencia de sus pociones. La Poción Curativa sana +3 VIT.<br> Se usa a la vez que se mezcla la poción."
+        }
+    ],
+    "Talentos Físicos": [
+        {
+            "Nombre": "Centinela",
+            "Efecto": "<strong>Solo montaraz.</strong> Acostumbrado a acampar en lugares peligrosos, un montaraz no es presa fácil. Reduce en 10 las posibilidades de ser emboscado durante un descanso. Además, de darse la emboscada, todo el grupo comenzará de pie la batalla, y los enemigos no gozarán de las 3 fichas extra de activación."
+        },
+        {
+            "Nombre": "Felino",
+            "Efecto": "El héroe se mueve ágil y con un equilibro sobrenatural. Tu héroe gana +5 DES."
+        },
+        {
+            "Nombre": "Fuerte",
+            "Efecto": "Las horas ejercitándose dan ahora sus frutos y gana +5 a su estadística Fuerza."
+        },
+        {
+            "Nombre": "Mula",
+            "Efecto": "El Héroe está acostumbrado a llevar equipo pesado durante los viajes. Puede cargar 20PES más de lo que su fuerza le permite con normalidad."
+        },
+        {
+            "Nombre": "Oído Fino",
+            "Efecto": "El oído del héroe es excepcional y puede añadir 1 ficha de iniciativa de héroe la primera ronda de una batalla tras abrir una puerta y encontrar enemigos. No puede usarse si la puerta fue derribada. Este talento solo lo pueden recibir personajes que estén siendo creados nuevos y que lo especifiquen en su descripción."
+        },
+        {
+            "Nombre": "Rápido",
+            "Efecto": "Tu héroe gana velocidad inusitada y obtiene permanentemente +1 al Movimiento."
+        },
+        {
+            "Nombre": "Resistencia a la Enfermedad",
+            "Efecto": "Tu héroe parece tener una salud de hierro. Tu héroe obtiene +25 Constitución cuando realice una tirada por enfermedad."
+        },
+        {
+            "Nombre": "Resistencia al Veneno",
+            "Efecto": "Tu héroe parece tener una salud de hierro. Tu héroe obtiene +25 Constitución cuando realice una tirada por veneno."
+        },
+        {
+            "Nombre": "Resistente",
+            "Efecto": "El musculoso físico de tu personaje le otorga +5 a su estadística Constitución."
+        },
+        {
+            "Nombre": "Saludable",
+            "Efecto": "Tu héroe gana +2 Vitalidad máxima."
+        },
+        {
+            "Nombre": "Tanque",
+            "Efecto": "Llevar armadura pesada apenas afecta a la movilidad del héroe. Ignora la regla especial de las armaduras “Tosca”."
+        },
+        {
+            "Nombre": "Visión Nocturna",
+            "Efecto": "La raza de tu héroe tiene la habilidad de ver a oscuras. Un héroe con Visión Nocturna gana +10 Percepción. Este talento sólo lo recibirán los personajes en cuya raza se especifique."
+        }
+    ],
+    "Talentos de Combate": [
+        {
+            "Nombre": "Agarre Fuerte",
+            "Efecto": "Dotado con unas manos extraordinariamente fuertes, ganas +10 FUE cuando calcules que clase de arma puedes llevar."
+        },
+        {
+            "Nombre": "Ambidiestro",
+            "Efecto": "Este talento requiere 60 puntos de DES. Cualquier héroe con este talento puede usar un arma en la mano secundaria con la regla especial “Doble Empuñado”. Los ataques se siguen realizando con el arma principal pero cada ataque añade +X DAÑ al objetivo, donde X viene definido en la tabla de armas. Bloquear con dos armas es más fácil, obtienes un modificador +5 bloqueando."
+        },
+        {
+            "Nombre": "Desarmar",
+            "Efecto": "Este ataque especial utiliza la DES del objetivo como modificador negativo al ataque. Si tienes éxito no infliges daño, pero haces que el enemigo tire su arma. El enemigo debe gastar su siguiente acción intentando recogerla. Para ello, tendrá que superar una tirada de DES. El enemigo hará esto hasta tener éxito. Si el ataque del héroe falla, no pasa nada. Sólo puede usarse con enemigos que porten armas."
+        },
+        {
+            "Nombre": "Destructor",
+            "Efecto": "Este héroe ha perfeccionado su técnica con las armas contundentes. Desata sed de sangre con una tirada de 01-10 usando cualquier tipo de martillo, mayal, bastón y lucero del alba."
+        },
+        {
+            "Nombre": "Disparo Perfecto",
+            "Efecto": "Identificar los puntos débiles de la armadura puede marcar la diferencia cuando se dispara una flecha desde muy lejos. Si la tirada de daño es impar, el héroe ignora la armadura (pero no la AN)."
+        },
+        {
+            "Nombre": "Espadachín",
+            "Efecto": "Este héroe ha perfeccionado su técnica con la espada. Desata sed de sangre con una tirada de 01-10 usando cualquier tipo de espada."
+        },
+        {
+            "Nombre": "Francotirador",
+            "Efecto": "No te tiembla el pulso y no fallas un disparo. La acción Apuntar da al héroe un modificador +15 en vez de +10."
+        },
+        {
+            "Nombre": "Golpe Poderoso",
+            "Efecto": "Tu héroe es un experto encontrando puntos débiles. Gana +1 en la Tirada de Daño cuando utilice armas a melé."
+        },
+        {
+            "Nombre": "Guerrero de Interior",
+            "Efecto": "Tu Héroe está acostumbrado a luchar en espacios estrechos. +10 HC cuando pelees en un pasillo."
+        },
+        {
+            "Nombre": "Hachero",
+            "Efecto": "Este héroe ha perfeccionado su técnica con el hacha. Desata sed de sangre con una tirada de 01-10 usando cualquier tipo de hacha."
+        },
+        {
+            "Nombre": "¡Hoy no!",
+            "Efecto": "Donde otros claudican, tú te niegas a morir. Cada vez que el héroe llegue a 0 VIT tira un 1d6, si obtienes un resultado 1-3, el héroe gana 1 punto de VIT."
+        },
+        {
+            "Nombre": "Maestro de la Réplica",
+            "Efecto": "Cuando bloquees con éxito un ataque enemigo, puedes causar automáticamente 2 puntos de DAÑ a ese enemigo. Sólo puede realizarse con armas de clase 3 o inferior. Ignora armadura y AN."
+        },
+        {
+            "Nombre": "Maestro del Bloqueo",
+            "Efecto": "No hay quien te toque. Si el héroe está en Posición Defensiva, puede realizar dos bloqueos con un arma en un turno."
+        },
+        {
+            "Nombre": "Recarga Rápida",
+            "Efecto": "Años de práctica han hecho al héroe ser muy rápido y recargar en un abrir y cerrar de ojos. Puede recargar arcos y hondas con la misma acción que dispara, una vez por turno. Las Ballestas pueden recargarse con 1 PA y dispararse en el siguiente. La Arbalesta se recarga con 2 acciones, y se dispara al siguiente turno."
+        },
+        {
+            "Nombre": "Tirador",
+            "Efecto": "Este héroe ha perfeccionado su técnica con las armas de proyectiles. Desata sed de sangre con una tirada de 01-10 usando cualquier arma de ese tipo."
+        },
+        {
+            "Nombre": "Tiro letal",
+            "Efecto": "El Héroe siempre parece encontrar el punto débil del enemigo. +2 DAÑ con armas de proyectiles."
+        }
+    ],
+    "Talentos de Fe": [
+        {
+            "Nombre": "Devoto",
+            "Efecto": "Ganas un punto extra de Energía que sólo puede ser usado para plegarias."
+        },
+        {
+            "Nombre": "Elegido de Dios",
+            "Efecto": "Como por voluntad divina, nada parecer herir a este humilde servidor. +1 Suerte."
+        },
+        {
+            "Nombre": "Mesías",
+            "Efecto": "Con una confianza que deslumbra la habitación, eres un referente para tus compañeros. Todos los héroes en la loseta del Sacerdote ganan +5 Determinación."
+        },
+        {
+            "Nombre": "Pío",
+            "Efecto": "El resplandor de este Sacerdote ciega los ojos de los demonios. Cualquier demonio que intente atacarle lo hace con un modificador -10 HC."
+        },
+        {
+            "Nombre": "Relicario",
+            "Efecto": "Cómo será su fe en las reliquias sagradas, que este devoto puede canalizar el poder de 3 reliquias en lugar de las 2 habituales."
+        },
+        {
+            "Nombre": "Sanador",
+            "Efecto": "Este misionero ha puesto tantos vendajes que los hace como nadie. Una venda puesta por este héroe cura +1 VIT extra."
+        }
+    ],
+    "Talentos de Alquimia": [
+        {
+            "Nombre": "Casquería",
+            "Efecto": "Con certeras incisiones puedes recolectar partes de buena calidad. +10 Alquimia cuando intentes obtener partes."
+        },
+        {
+            "Nombre": "Envenenador",
+            "Efecto": "Tu capacidad para preparar todo tipo de venenos es sorprendente. Los venenos hechos por este alquimista infligen 1 daño extra por turno."
+        },
+        {
+            "Nombre": "Maestro sanador",
+            "Efecto": "Este héroe ha perfeccionado el arte de hacer Pociones Curativas. Todas las pociones curan +2 extra."
+        },
+        {
+            "Nombre": "Mezclador experto",
+            "Efecto": "El Alquimista es un maestro mezclando pociones ofensivas. Todas las pociones arrojables que hagan daño, ganan +1 DAÑ a cada objetivo."
+        },
+        {
+            "Nombre": "Ojo Entrenado",
+            "Efecto": "El Alquimista tiene una vista de halcón para encontrar materiales. Puede repetir una tirada para ver qué ha encontrado. El segundo resultado es definitivo."
+        },
+        {
+            "Nombre": "Pociones Poderosas",
+            "Efecto": "El vigor de las pociones de este héroe es increíble. Todas las pociones que mejoren las estadísticas básicas (excepto M) otorgan un +5 extra."
+        },
+        {
+            "Nombre": "Recolector",
+            "Efecto": "Se te da bien encontrar ingredientes en la naturaleza. +10 Alquimia cuando busques ingredientes en la espesura."
+        },
+        {
+            "Nombre": "Tiro al Hueco",
+            "Efecto": "El alquimista tiene gran habilidad para lanzar las pociones perfectamente. Gana +10 HD cuando tire una poción que pase sobre las cabezas de otros."
+        }
+    ],
+    "Talentos Comunes": [
+        {
+            "Nombre": "Bardo",
+            "Efecto": "El Héroe gana +10 SAB cuando use instrumentos musicales."
+        },
+        {
+            "Nombre": "Campechano",
+            "Efecto": "Caes bien a todo el mundo y sacas una sonrisa a todo aquel con quien hablas. Bien consciente de ello, el grupo deja que tú negocies todas las recompensas y ganáis +5% Bonus Recompensa en todas las misiones."
+        },
+        {
+            "Nombre": "Cartógrafo",
+            "Efecto": "El Héroe es muy hábil dibujando mapas. Si pasa un test de SAB justo antes de entrar en una mazmorra, se usarán 2 cartas menos en el mazo de exploración, un pasillo y una habitación. No es acumulativo en caso de haber 2 cartógrafos."
+        },
+        {
+            "Nombre": "Cazador",
+            "Efecto": "Mientras estés en la naturaleza no pasarás ni hambre ni frío. El héroe gana +10 Supervivencia."
+        },
+        {
+            "Nombre": "Cocinillas",
+            "Efecto": "Durante un descanso, los miembros del grupo recuperan +2 VIT extra si tienen raciones debido a lo bien que cocinas. No es acumulativo si otros héroes tienen el mismo talento."
+        },
+        {
+            "Nombre": "Disciplinado",
+            "Efecto": "Gracias a su pasado militar, el héroe puede mantener los nervios a raya bajo presión. Su grupo también se beneficia de esto. El héroe gana +10 DET y el resto del equipo +5 mientras el héroe no esté inconsciente. El efecto no es acumulativo si otros héroes tienen el mismo talento. Es más, otro héroe con este talento tampoco se beneficia del efecto de grupo +5."
+        },
+        {
+            "Nombre": "Explorador",
+            "Efecto": "El Héroe tiene buen ojo para escoger el lugar donde resguardarse. Todos los Héroes recuperan +1 VIT cuando descansan."
+        },
+        {
+            "Nombre": "Líder Nato",
+            "Efecto": "Tu liderazgo natural otorga +2 Moral del Grupo permanentemente. No es acumulativo si otros héroes tienen el mismo talento."
+        },
+        {
+            "Nombre": "Líder Veloz",
+            "Efecto": "El grupo puede añadir siempre una ficha de iniciativa al saco. Sólo sirve para incrementar las posibilidades de iniciativa y todos los héroes siguen actuando una sola vez por turno. Efecto no acumulativo."
+        },
+        {
+            "Nombre": "Ordenado",
+            "Efecto": "Tienes tu equipo bien ordenado haciendo que sea muy fácil encontrar las cosas. Puedes usar equipo de un Atajo sin gastar Punto de Acción (una vez por turno)."
+        },
+        {
+            "Nombre": "Portador del Anillo",
+            "Efecto": "Por alguna razón inexplicable, llevar un anillo mágico no te cansa tanto como a los demás. En vez de llevar solamente un anillo, puedes llevar hasta dos al mismo tiempo."
+        },
+        {
+            "Nombre": "Suertudo",
+            "Efecto": "La suerte es una lotería y tú has comprado todos los boletos de la ciudad. Ganas +1 Suerte."
+        },
+        {
+            "Nombre": "Superviviente",
+            "Efecto": "Este talento permite al héroe rebuscar una ración de cualquier enemigo de tipo Bestia (en mazmorra o tras una escaramuza), siempre que se tenga éxito en una tirada de Supervivencia."
+        }
+    ],
+    "Talentos Mágicos": [
+        {
+            "Nombre": "Ahorrador",
+            "Efecto": "El mago precisa de 2 Maná menos para cada hechizo."
+        },
+        {
+            "Nombre": "Adivino",
+            "Efecto": "El mago obtiene +5 Artes Arcanas cuando realiza hechizos de Adivinación. Además, el coste de Maná de estos hechizos se reduce en 5 puntos."
+        },
+        {
+            "Nombre": "Concentrado",
+            "Efecto": "Sincronizado con el Vacío, el héroe puede canalizar mejor su poder. Obtiene +15 Artes Arcanas cuando se use Concentración."
+        },
+        {
+            "Nombre": "Conjurador",
+            "Efecto": "Asomarse al Vacío y traer otros seres en tu ayuda, se ha convertido en algo sencillo con años de práctica. Las criaturas invocadas por el Mago, durarán 2 turnos más de lo que normalmente permite su NM."
+        },
+        {
+            "Nombre": "Invocador",
+            "Efecto": "Contactar con otras entidades y traerlas a tu plano se ha vuelto muy fácil para ti con los años. Tus criaturas invocadas vienen con +5 VIT."
+        },
+        {
+            "Nombre": "Magia de Sangre",
+            "Efecto": "El mago puede usar su propia sangre para crear Maná. Por cada 2 VIT gastados, el mago gana 5 Maná. Esta transformación puede hacerse sin coste adicional durante el turno del mago."
+        },
+        {
+            "Nombre": "Misiles poderosos",
+            "Efecto": "Has perfeccionado los proyectiles mágicos sabiendo donde hay que golpear. Los hechizos de Misiles Mágicos hacen +1 daño extra."
+        },
+        {
+            "Nombre": "Místico",
+            "Efecto": "El mago es un experto en Misticismo y gana +5 Artes Arcanas cuando conjure uno de este tipo, y reduce su coste de maná en 5 puntos."
+        },
+        {
+            "Nombre": "Nigromante",
+            "Efecto": "Eres un experto en hechizos y ganas +5 Artes Arcanas cuando realices hechizos de Nigromancia. Además, el coste de Maná de estos hechizos se reduce 5 puntos. Un personaje no puede tener este talento si tiene el talento Restaurador y viceversa."
+        },
+        {
+            "Nombre": "Persistente",
+            "Efecto": "Tu Héroe gana permanentemente +15 Maná."
+        },
+        {
+            "Nombre": "Reflejos Relámpago",
+            "Efecto": "Como un rayo, el héroe extiende su mano y toca a sus enemigos cuando conjura un hechizo. Tu héroe gana +15 HC cuando realice un hechizo de Toque."
+        },
+        {
+            "Nombre": "Restaurador",
+            "Efecto": "Los hechizos de Restauración son tus favoritos y por ello todos tus hechizos de esta clase curan +2 VIT extra. Un personaje no puede tener este talento si tiene el talento Nigromante y viceversa."
+        },
+        {
+            "Nombre": "Sustento",
+            "Efecto": "El coste de mantenimiento de los hechizos se reduce en 1 punto de maná."
+        }
+    ],
+    "Talentos de Sigilo": [
+        {
+            "Nombre": "Ágil",
+            "Efecto": "El héroe puede esquivar dos veces por batalla en vez de una."
+        },
+        {
+            "Nombre": "Apuñalador",
+            "Efecto": "Siempre buscando aumentar tus posibilidades, ignoras la armadura y la AN del enemigo cuando ataques por detrás."
+        },
+        {
+            "Nombre": "Asesino",
+            "Efecto": "Con asombrosa precisión, el héroe golpeará automáticamente si está en la espalda de un enemigo con un arma de clase 1 o 2."
+        },
+        {
+            "Nombre": "Callejero",
+            "Efecto": "Solo pícaro. Tu héroe conoce a un tipo que le proporciona equipo de dudoso origen. En cada tirada de disponibilidad puedes restar -1."
+        },
+        {
+            "Nombre": "Caminante de las sombras",
+            "Efecto": "El Héroe se mueve con presteza entre los enemigos, e ignora las restricciones de movimiento debidas a la ZDC enemiga."
+        },
+        {
+            "Nombre": "Cerrajero",
+            "Efecto": "Ninguna cerradura o candado se resiste a este Héroe. Cuando falle una tirada de forzar cerraduras, puede volver a tirar los dados una vez más."
+        },
+        {
+            "Nombre": "Genio de la Mecánica",
+            "Efecto": "Tu héroe es un prodigio de la mecánica y sus componentes. Gana +10 cuando desarme trampas."
+        },
+        {
+            "Nombre": "Mangante",
+            "Efecto": "Una vez por cada visita a un asentamiento tu héroe puede intentar robar a una víctima desprevenida. Esto debe hacerse nada más entrar al pueblo. Tira 1d6. Un resultado de 1-2 ganas 1d100 monedas. Si el resultado es 6, has sido detectado y el héroe es inmediatamente expulsado del asentamiento. El héroe no puede hacer nada hasta que el resto del grupo decida marcharse. Las raciones se consumen como de costumbre y si no hay suficientes, el héroe se vuelve hambriento. Mientras espera puede usar Supervivencia."
+        },
+        {
+            "Nombre": "Manitas",
+            "Efecto": "Acostumbrado a trabajar bajo presión, tu héroe se desenvuelve muy rápido con las cerraduras. Forzar una le cuesta 1PA en vez de 2."
+        },
+        {
+            "Nombre": "Radar de Trampas",
+            "Efecto": "Esquivas las trampas como un rayo. Tu héroe gana +10 PER cuando evite trampas. Se acumula con Vista de Águila."
+        },
+        {
+            "Nombre": "Regateador",
+            "Efecto": "Tu héroe conoce el valor de las cosas. Una tirada de Trueque con éxito dará al héroe un +15% de descuento en vez del +10% habitual."
+        },
+        {
+            "Nombre": "Tesorero",
+            "Efecto": "Hueles el dinero y los tesoros a kilómetros. Cuando busques tesoros en la tabla de Mobiliario, el héroe puede restar -1 a la tirada."
+        },
+        {
+            "Nombre": "Vista de Águila",
+            "Efecto": "Tu héroe tiene un extremo sentido del detalle y puede percibir irregularidades fácilmente. Tu héroe gana +10 a tiradas de Percepción."
+        }
+    ],
+    "Talentos Mentales": [
+        {
+            "Nombre": "Impávido",
+            "Efecto": "Tu héroe es completamente inmune a los efectos de Miedo, y el Terror actúa como Miedo. Este talento requiere que el héroe tenga el talento Valeroso."
+        },
+        {
+            "Nombre": "Mente Fría",
+            "Efecto": "Al héroe le afectan menos los horrores que encontráis en la mazmorra. +1 punto de Cordura."
+        },
+        {
+            "Nombre": "Odio",
+            "Efecto": "Ya sea por vivencias personales o por la historia de tu pueblo, has desarrollado animadversión por ciertos enemigos. El odio te empuja a la batalla. Ganas +5 HC cuando los ataques. Pero cegado por el odio pierdes -5 esquiva/bloqueo cuando seas golpeado por ellos. El héroe puede elegir un enemigo al que odiar. Si odias a los goblins, por ejemplo, odiarás a cada enemigo que lleve ’Goblin’ en el nombre. Este talento puede adquirirse en repetidas ocasiones para odiar diferentes tipos de enemigos."
+        },
+        {
+            "Nombre": "Sagaz",
+            "Efecto": "Tu héroe puede repetir una vez, cada test fallido de SAB."
+        },
+        {
+            "Nombre": "Seguridad",
+            "Efecto": "No hay enemigo ni tarea difícil. El héroe gana +5 a su estadística Determinación."
+        },
+        {
+            "Nombre": "Valeroso",
+            "Efecto": "Eres más valiente que nadie. +10 a tiradas de Miedo y Terror."
+        }
+    ]
+}
