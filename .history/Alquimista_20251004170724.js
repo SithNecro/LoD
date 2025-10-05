@@ -354,6 +354,7 @@ function initializeMaterialDropdown() {
 // DOM Ready (carga básica)
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Cargando datos de LocalStorage...");
+
     let storedRecipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
     const isDefaultLoaded = storedRecipes.some(recipe => recipe.default);
     if (!isDefaultLoaded) {
@@ -366,8 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeMaterialDropdown();
     renderInventoryTable();
     renderRecipeTable();
-    populateHeroAlchemySelect(); 
-
 });
 
 // Popular selects de poción desde inventario
@@ -590,8 +589,7 @@ document.querySelectorAll(".potion-selector").forEach(select => {
 });
 
 // ====== DB compartida con Hojas_Personajes (IndexedDB) ======
-// 🔁 ACTUALIZA el nombre de la BD compartida
-const DB_NAME = 'PersonajesDB';
+const DB_NAME = 'Hojas_Personajes_DB';
 const STORE_SLOTS = 'slots';
 const STORE_PERSONAJES = 'personajes';
 
@@ -606,171 +604,70 @@ async function openDBShared() {
     });
 }
 
-// 🔧 Afectada: leemos héroes cargados y coercionamos ids numéricos
 async function getLoadedHeroesFromSlots() {
     const db = await openDBShared();
-    const slotIds = [1, 2, 3, 4];
+    const slotIds = [1,2,3,4];
 
-    // 1) obtener personajeId de cada slot
     const personajeIds = await Promise.all(slotIds.map(slot => new Promise((resolve) => {
         const tx = db.transaction(STORE_SLOTS, 'readonly');
         const st = tx.objectStore(STORE_SLOTS);
         const r = st.get(slot);
         r.onsuccess = () => resolve(r.result?.personajeId ?? null);
-        r.onerror   = () => resolve(null);
+        r.onerror = () => resolve(null);
     })));
 
-    // 2) cargar personajes por id (coercionando a number si procede)
     const heroes = [];
     for (let i = 0; i < slotIds.length; i++) {
-        let pid = personajeIds[i];
-        if (pid == null) continue;
-
-        // si es string numérico → a number
-        if (typeof pid === 'string' && pid.trim() !== '' && !Number.isNaN(Number(pid))) {
-            pid = Number(pid);
-        }
-
+        const pid = personajeIds[i];
+        if (!pid) continue;
         const p = await new Promise((resolve) => {
             const tx = db.transaction(STORE_PERSONAJES, 'readonly');
             const st = tx.objectStore(STORE_PERSONAJES);
             const r = st.get(pid);
             r.onsuccess = () => resolve(r.result || null);
-            r.onerror   = () => resolve(null);
+            r.onerror = () => resolve(null);
         });
-
         if (p) heroes.push({ slot: slotIds[i], id: p.id, nombre: p.nombre || `Héroe ${slotIds[i]}` });
     }
     return heroes;
 }
 
-// Lee ALQ (actual si existe; si no, base) del personaje por id
-// 🔹 Lee la ALQ del personaje por ID (actual > base > otros alias)
-async function getHeroAlqValueById(personajeId) {
-  const db = await openDBShared();
-
-  // coerción por si viene como string
-  let key = personajeId;
-  if (typeof key === 'string' && key.trim() !== '' && !Number.isNaN(Number(key))) {
-    key = Number(key);
-  }
-
-  return await new Promise((resolve) => {
-    const tx = db.transaction(STORE_PERSONAJES, 'readonly');
-    const st = tx.objectStore(STORE_PERSONAJES);
-    const r = st.get(key);
-    r.onsuccess = () => {
-      const p = r.result || {};
-      // rutas posibles
-      const a = p.atributos || {};
-      const alq = a.alquimia || a.alq || {};
-      // soporta {actual, base} o valores sueltos
-      const val =
-        (Number.isFinite(alq.actual) ? alq.actual :
-        Number.isFinite(alq.base)   ? alq.base   :
-        Number.isFinite(a.alquimiaBase) ? a.alquimiaBase :
-        Number.isFinite(p.alquimia) ? p.alquimia :
-        Number.isFinite(p.alq) ? p.alq : 0);
-      resolve(val || 0);
-    };
-    r.onerror = () => resolve(0);
-  });
-}
-
-// POPULA el select con "Slot · Nombre (ALQ: X)" y al seleccionar rellena #alchemy-skill
-// 🔹 Rellena el <select id="hero-alq-select"> con "Slot · Nombre (ALQ: X)"
-//    y al seleccionar copia el valor a #alchemy-skill
-async function populateHeroAlchemySelect() {
-  const sel = document.getElementById('hero-alq-select');
-  if (!sel) return;
-
-  sel.innerHTML = `<option value="">— Héroe (ALQ) —</option>`;
-
-  const heroes = await getLoadedHeroesFromSlots();
-  for (const h of heroes) {
-    const alq = await getHeroAlqValueById(h.id);
-    const opt = document.createElement('option');
-    opt.value = String(h.id);               // guardamos el id
-    opt.dataset.alq = String(alq);          // cacheamos ALQ para el change
-    opt.textContent = `Slot ${h.slot} · ${h.nombre} (ALQ: ${alq})`;
-    sel.appendChild(opt);
-  }
-
-  sel.onchange = () => {
-    const opt = sel.selectedOptions[0];
-    const alq = Number(opt?.dataset.alq ?? NaN);
-    if (Number.isFinite(alq)) {
-      const input = document.getElementById('alchemy-skill');
-      if (input) {
-        input.value = alq;
-        if (typeof saveAlchemySkill === 'function') saveAlchemySkill();
-      }
-    }
-  };
-}
-
-
-
-
-// 🔧 Afectada: guardar poción en inventario del héroe (coerción del id del <select>)
 async function addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo }) {
     const db = await openDBShared();
-
-    // coerción segura: si es numérico, úsalo como number
-    let key = personajeId;
-    if (typeof key === 'string' && key.trim() !== '' && !Number.isNaN(Number(key))) {
-        key = Number(key);
-    }
-
     const personaje = await new Promise((resolve, reject) => {
         const tx = db.transaction(STORE_PERSONAJES, 'readonly');
         const st = tx.objectStore(STORE_PERSONAJES);
-        const r = st.get(key);
+        const r = st.get(personajeId);
         r.onsuccess = () => resolve(r.result || null);
-        r.onerror   = () => reject(r.error);
+        r.onerror = () => reject(r.error);
     });
-
     if (!personaje) throw new Error('Personaje no encontrado');
 
     if (!personaje.inventario) personaje.inventario = { objetos: [], armaduras: [], armas: [] };
     if (!Array.isArray(personaje.inventario.objetos)) personaje.inventario.objetos = [];
 
-    const uso = `${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}`;
+    const item = {
+        id: Date.now(),
+        nombre: nombrePocion,
+        lugar: 'Mochila',
+        cantidad: 1,
+        peso: 1,
+        durabilidad: 0,
+        uso: `${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}`
+    };
 
-    // 🔍 buscar si ya existe misma poción con mismo uso
-    const existing = personaje.inventario.objetos.find(
-        o => o.nombre === nombrePocion && o.uso === uso
-    );
-
-    if (existing) {
-        // sumamos cantidad y peso
-        existing.cantidad += 1;
-        existing.peso += 1; // suponiendo que cada poción pesa 1
-    } else {
-        // crear nueva entrada
-        personaje.inventario.objetos.push({
-            id: Date.now(),
-            nombre: 'Poción '+ nombrePocion,
-            lugar: 'Mochila',
-            cantidad: 1,
-            peso: 1,
-            durabilidad: 0,
-            uso
-        });
-    }
+    personaje.inventario.objetos.push(item);
 
     await new Promise((resolve, reject) => {
         const tx = db.transaction(STORE_PERSONAJES, 'readwrite');
         const st = tx.objectStore(STORE_PERSONAJES);
         const r = st.put(personaje);
         r.onsuccess = () => resolve();
-        r.onerror   = () => reject(r.error);
+        r.onerror = () => reject(r.error);
     });
 
     return personaje;
 }
-
-
 
 // Inyectar selector de héroe dentro del alert
 async function attachPotionInventorySelectorInAlert({ nombrePocion, tipoPocion, tooltipTitulo = '' }) {
@@ -910,13 +807,7 @@ document.getElementById("create-potion").addEventListener("click", () => {
 
         // Mensaje
         const baseMsg = isCritical
-            ?  `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br><strong>¡ÉXITO CRÍTICO!</strong><br><br>` +
-    (knownRecipe
-      ? `¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>`
-      : `¡Has Descubierto una nueva Poción: <strong>"${potionName}"</strong>!<br><br>` +
-        `¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>`) +
-    `<span style="color:gold;"><strong>✨ Tus dotes alquímicas mejoran gracias a esta hazaña.</strong></span><br>
-     Aumenta tu <strong>Habilidad de Alquimia +1</strong> permanentemente.<br><br>`
+            ? `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br><strong>¡ÉXITO CRÍTICO!</strong><br><br>`
             : `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br><br>`;
 
         const msg =

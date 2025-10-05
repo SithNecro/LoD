@@ -450,9 +450,9 @@
             /* opcional, espacio entre botón y formulario */
         }
 
-        .menu.open~.main-content-zonas {
-            margin-left: 0px;
-        }
+       .menu.open ~ .main-content-zonas {
+    margin-left: 0px;
+}
     </style>
 </head>
 
@@ -532,16 +532,12 @@
 
             <!-- Fila 1 -->
             <div class="fila1">
-                <select id="hero-alq-select" title="Elegir héroe (ALQ)" style="max-width: 260px; margin-right:10px;">
-                    <option value="">— Héroe (ALQ) —</option>
-                </select>
-
                 <label for="alchemy-skill">Habilidad de Alquimia (ALQ):</label>
                 <button id="add-alchemy" class="btn_up"></button>
                 <input class="cuadros_texto" type="number" id="alchemy-skill" min="0" max="100" value="50">
                 <button id="remove-alchemy" class="btn_less"></button>
             </div>
-            
+
             <!-- Fila 2 -->
             <div class="fila2">
                 <label for="potion-type">Calidad de la Poción:</label>

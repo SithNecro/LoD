@@ -14,7 +14,6 @@ const monsterParts = Array.from(new Set([
     "Diente de ogro", "Sangre de orco", "Cola de rata", "Viscosidad", "Piel anfibia",
     "Sangre de troll", "Sangre Vampiro", "Piel de zombi"
 ]));
-
 const defaultRecipes = [
     { type: "Básica", name: "Poción de Curación", ingredients: ["Sangre humana", "Cola de rata", "Jengibre ceniciento"], default: true, title: "Sana Sanita" },
     { type: "Básica", name: "Contra Enfermedades", ingredients: ["Piel de zombi", "Ala de murciélago", "Laurel del monje"], default: true, title: "Sana enferme" },
@@ -23,7 +22,6 @@ const defaultRecipes = [
     { type: "Básica", name: "Experiencia", ingredients: ["Sangre de dragón", "Hiedra dulce", "Belladona"], default: true, title: "Exp up" },
     { type: "Básica", name: "Restauración", ingredients: ["Sangre de vampiro", "Sangre de troll", "Corteza de arce rojo"], default: true, title: "restaura tripita" }
 ];
-
 // Nombres de pociones
 const potionNames = {
     Básica: {
@@ -44,8 +42,7 @@ const potionNames = {
         "Maná", "Fuerza", "Sabiduría", "Ácido", "Contra Enfermedades", "Antídoto"
     ]
 };
-
-// Descripciones de las pociones
+// Agregar descripciones de las pociones
 const potionDescriptions = {
     "Experiencia": "Otorga 300 EXP. Un héroe sólo puede beber una entre mazmorras.",
     "Constitución": "Débil: +10 CON; Básica: +15 CON; Supremaa: +20 CON.",
@@ -77,7 +74,6 @@ const potionDescriptions = {
     "Escupefuego": "Alcance de 2 casillas y puede causar 1d8 Daño de Fuego en la casilla adyacente al héroe o 1d4 Daño de Fuego en la casilla adyacente y la siguiente a esa también.",
     "Humo": "Obstruye la LDV en la casilla donde explota y las 8 adyacentes. Toda pelea dentro del rango del humo sufre -20 HC y disparar a través del humo no es posible. Dura 4 turnos."
 };
-
 // LocalStorage Keys
 const INVENTORY_KEY = "alchemy_inventory";
 const RECIPES_KEY = "alchemy_recipes";
@@ -86,7 +82,9 @@ const RECIPES_KEY = "alchemy_recipes";
 const inventory = JSON.parse(localStorage.getItem(INVENTORY_KEY)) || [];
 const recipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
 
-// Borrar datos de alquimia
+
+// Función para borrar las claves específicas de localStorage
+// Función para borrar las claves específicas de localStorage con confirmación
 function resetAlchemyData() {
     customConfirm("Eliminar Todo Conocimiento",
         "reiniciar_alquimia", "Inventario y recetas serán borrados.<br>El destino no permite deshacerlo.<br><br><strong>¿Estás seguro?</strong>",
@@ -96,16 +94,18 @@ function resetAlchemyData() {
             customAlert("¡Se han eliminado los datos de Alquimia! Comenzamos de 0.", "reiniciar_alquimia");
             location.reload();
         },
-        () => {}
+        () => {
+            // customAlert("La acción ha sido cancelada. Los datos no se han eliminado.");
+        }
     );
 }
-
-// ✅ MODIFICADA: customAlert con hook y contenedor adicional
-function customAlert(message, imagen_icono, onAfterRender) {
+// Reemplazo de alert con SweetAlert2 e icono personalizado
+function customAlert(message, imagen_icono) {
     if (typeof Swal !== 'undefined' && Swal.fire) {
         Swal.fire({
-            html: `${message}<div id="custom-alert-extra" style="margin-top:10px;"></div>`,
-            imageUrl: `img/interface/${imagen_icono}.png`,
+            // title: '⚗️ Alquimia',
+            html: message,
+            imageUrl: `img/interface/${imagen_icono}.png`,   // tu icono personalizado
             imageWidth: 150,
             imageHeight: 150,
             confirmButtonText: 'Entendido',
@@ -113,23 +113,21 @@ function customAlert(message, imagen_icono, onAfterRender) {
                 popup: 'mi-popup-veneno',
                 title: 'mi-titulo-veneno',
                 content: 'mi-texto-veneno'
-            },
-            didOpen: () => {
-                if (typeof onAfterRender === 'function') {
-                    try { onAfterRender(); } catch (e) { console.error(e); }
-                }
             }
         });
     } else {
-        alert(message); // fallback
+        alert(message); // fallback si no carga Swal
     }
 }
 
-// confirm con SweetAlert2
+// Reemplazo de confirm con SweetAlert2 e icono personalizado
 function customConfirm(mensaje_confirmacion, imagen_icono, message, onConfirm, onCancel) {
     if (typeof Swal !== 'undefined' && Swal.fire) {
         Swal.fire({
+
+            //title: '¿Estás seguro?',
             html: message,
+
             imageUrl: `img/interface/${imagen_icono}.png`,
             imageWidth: 150,
             imageHeight: 150,
@@ -141,29 +139,37 @@ function customConfirm(mensaje_confirmacion, imagen_icono, message, onConfirm, o
                 title: 'mi-titulo-veneno',
                 content: 'mi-texto-veneno'
             }
+
         }).then(result => {
             if (result.isConfirmed && typeof onConfirm === 'function') onConfirm();
             else if (result.dismiss === Swal.DismissReason.cancel && typeof onCancel === 'function') onCancel();
         });
     } else {
-        if (confirm(message)) { if (typeof onConfirm === 'function') onConfirm(); }
-        else { if (typeof onCancel === 'function') onCancel(); }
+        // fallback nativo
+        if (confirm(message)) {
+            if (typeof onConfirm === 'function') onConfirm();
+        } else {
+            if (typeof onCancel === 'function') onCancel();
+        }
     }
 }
 
-// Botón "Comenzar de 0"
+// Asociar la función al botón "Comenzar de 0"
 document.getElementById("reset-button").addEventListener("click", resetAlchemyData);
-
-// Guardar
+// Guardar en LocalStorage
+// 🔧 MODIFICADA: al guardar inventario, refrescamos el libro de recetas
 function saveInventory() {
     localStorage.setItem(INVENTORY_KEY, JSON.stringify(inventory));
-    if (typeof renderRecipeTable === 'function') renderRecipeTable();
+    // Refrescar recetario para mostrar disponibilidad en tiempo real
+    if (typeof renderRecipeTable === 'function') {
+        renderRecipeTable();
+    }
 }
+
 function saveRecipes() {
     localStorage.setItem(RECIPES_KEY, JSON.stringify(recipes));
 }
-
-// Listas combinadas
+// Ordenar ingredientes y partes por tipo y nombre
 const combinedItems = [
     ...ingredients.map(name => ({ name, type: "Ingrediente" })),
     ...monsterParts.map(name => ({ name, type: "Parte" }))
@@ -177,15 +183,20 @@ function sortInventory() {
     inventory.sort((a, b) => {
         const typeA = ingredients.includes(a.name) ? "Ingrediente" : "Parte";
         const typeB = ingredients.includes(b.name) ? "Ingrediente" : "Parte";
+
         if (typeA !== typeB) return typeA.localeCompare(typeB);
         return a.name.localeCompare(b.name);
     });
 }
-
-// Render inventario
+// Renderizar inventario (original)
+// Renderizar inventario
 function renderInventoryTable() {
     const tbody = document.querySelector("#inventory-table tbody");
-    if (!tbody) { console.error("El elemento #inventory-table tbody no existe."); return; }
+    if (!tbody) {
+        console.error("El elemento #inventory-table tbody no existe.");
+        return;
+    }
+
     tbody.innerHTML = "";
 
     if (inventory.length === 0) {
@@ -193,7 +204,7 @@ function renderInventoryTable() {
         return;
     }
 
-    sortInventory();
+    sortInventory(); // Ordenar el inventario antes de renderizar
 
     inventory.forEach((item, index) => {
         const itemType = ingredients.includes(item.name) ? "Ingrediente" : "Parte";
@@ -215,55 +226,43 @@ function renderInventoryTable() {
         });
     });
 }
+// Eliminar elementos del inventario
 
-// Eliminar del inventario
 function removeInventoryItem(index) {
-    if (index < 0 || index >= inventory.length) { console.error("Índice inválido:", index); return; }
+    if (index < 0 || index >= inventory.length) {
+        console.error("Índice de inventario inválido:", index);
+        return;
+    }
+
     const itemName = inventory[index].name;
 
     customConfirm("Eliminar el Ingrediente",
-        "eliminar_ingrediente",
-        `¿Deseas desterrar </strong>"${itemName}"</strong> de tu inventario?<br>Una vez hecho, su esencia se perderá para siempre.`,
+        "eliminar_ingrediente", `¿Deseas desterrar </strong>"${itemName}"</strong> de tu inventario?<br>Una vez hecho, su esencia se perderá para siempre.`,
         () => {
+            // Acción al confirmar
             const removedItem = inventory.splice(index, 1);
             saveInventory();
             renderInventoryTable();
             customAlert(`Ingrediente <strong>"${removedItem[0].name}"</strong> Destruido.`, "eliminar_ingrediente");
         },
-        () => {}
+        () => {
+            // Acción al cancelar (opcional)
+            //customAlert(`La eliminación de "${itemName}" fue cancelada.`, "pocima");
+        }
     );
 }
-
-// 🔸 Normalización para comprobaciones
-function normStr(s) {
-    return (s || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, '');
-}
-
-// 🔸 ¿tengo el material?
-function hasMaterialAvailable(name) {
-    const target = normStr(name);
-    return inventory.some(it => normStr(it.name) === target && (it.units || 0) > 0);
-}
-
-// 🔸 Pinta ingredientes con colores (coma blanca)
-function formatRecipeIngredientsWithAvailability(ingredientsArr) {
-    if (!Array.isArray(ingredientsArr) || ingredientsArr.length === 0) return "";
-    const parts = [];
-    ingredientsArr.forEach((ing, idx) => {
-        const ok = hasMaterialAvailable(ing);
-        parts.push(`<span style="color:${ok ? '#67e667' : '#ff6b6b'}; font-weight:bold;">${ing}</span>`);
-        if (idx < ingredientsArr.length - 1) parts.push(`<span style="color:#fff;">, </span>`);
-    });
-    return parts.join('');
-}
-
-// Render recetario
+// Renderizar recetario como tabla
+// Renderizar la tabla de recetas
+// Renderizar la tabla de recetas
+// Actualizar la función renderRecipeTable
+// 🔧 MODIFICADA: render de la tabla de recetas con ingredientes coloreados según disponibilidad
 function renderRecipeTable() {
     const tbody = document.querySelector("#recipe-table tbody");
-    if (!tbody) { console.error("El elemento #recipe-table tbody no existe."); return; }
+    if (!tbody) {
+        console.error("El elemento #recipe-table tbody no existe.");
+        return;
+    }
+
     tbody.innerHTML = "";
 
     if (recipes.length === 0) {
@@ -271,12 +270,16 @@ function renderRecipeTable() {
         return;
     }
 
-    sortRecipes();
+    sortRecipes(); // Ordenar recetas antes de renderizar
 
     recipes.forEach((recipe, index) => {
         const row = document.createElement("tr");
+
+        // Descripción de la poción (tooltip)
         const description = potionDescriptions[recipe.name] || "Descripción no disponible";
         const potionLink = `<span style="color: white;"><p href="#" title="${description}">${recipe.name}</p></span>`;
+
+        // 🔹 Ingredientes con color por disponibilidad
         const ingHTML = formatRecipeIngredientsWithAvailability(recipe.ingredients);
 
         row.innerHTML = `
@@ -298,16 +301,20 @@ function renderRecipeTable() {
     });
 }
 
+
 // Ordenar recetas
 function sortRecipes() {
     recipes.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-// Olvidar receta
+// Función para olvidar una receta
 function forgetRecipe(index) {
     const recipeToForget = recipes[index];
     if (recipeToForget.default) {
-        customAlert(`La receta <strong>"${recipeToForget.name}"</strong> es predeterminada y no se puede olvidar.`, "eliminar_receta");
+        customAlert(
+            `La receta <strong>"${recipeToForget.name}"</strong> es predeterminada y no se puede olvidar.`,
+            "eliminar_receta"
+        );
         return;
     }
 
@@ -316,32 +323,50 @@ function forgetRecipe(index) {
         "eliminar_receta",
         `¿Deseas olvidar la Receta <strong>"${recipeToForget.name}"</strong>?<br>Una vez hecho, su conocimiento se desvanecerá para siempre.`,
         () => {
+            // Acción al confirmar
             recipes.splice(index, 1);
             saveRecipes();
             renderRecipeTable();
-            customAlert(`Receta <strong>"${recipeToForget.name}"</strong> olvidada con éxito.`, "eliminar_receta");
+            customAlert(
+                `Receta <strong>"${recipeToForget.name}"</strong> olvidada con éxito.`,
+                "eliminar_receta"
+            );
         },
-        () => {}
+        () => {
+            // Acción al cancelar (opcional)
+            // customAlert(`Has decidido conservar la receta "${recipeToForget.name}".`, "receta");
+        }
     );
+
+
 }
 
-// Añadir material al inventario
+
+
+
+// Agregar material al inventario
+// Evento para agregar material al inventario
 document.getElementById("add-material").addEventListener("click", () => {
     const material = document.getElementById("material-select").value;
     const units = parseInt(document.getElementById("material-units").value, 10);
     const exquisite = document.getElementById("material-exquisite").checked;
 
     const existing = inventory.find(item => item.name === material && item.exquisite === exquisite);
-    if (existing) existing.units += units;
-    else inventory.push({ name: material, units, exquisite });
+    if (existing) {
+        existing.units += units;
+    } else {
+        inventory.push({ name: material, units, exquisite });
+    }
 
     saveInventory();
     renderInventoryTable();
 });
 
-// Inicializar desplegable de materiales
+// Inicializar materiales en el desplegable
+// Inicializar el desplegable de materiales
 function initializeMaterialDropdown() {
     const materialSelect = document.getElementById("material-select");
+      // 🔑 Limpia el select antes de volver a rellenarlo
     materialSelect.innerHTML = "";
     combinedItems.forEach(({ name, type }) => {
         const option = document.createElement("option");
@@ -351,37 +376,42 @@ function initializeMaterialDropdown() {
     });
 }
 
-// DOM Ready (carga básica)
+// Inicializar
+// Inicializar
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Cargando datos de LocalStorage...");
+
     let storedRecipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
+
     const isDefaultLoaded = storedRecipes.some(recipe => recipe.default);
     if (!isDefaultLoaded) {
         storedRecipes = [...storedRecipes, ...defaultRecipes];
         localStorage.setItem(RECIPES_KEY, JSON.stringify(storedRecipes));
     }
+
     recipes.length = 0;
     recipes.push(...storedRecipes);
 
     initializeMaterialDropdown();
     renderInventoryTable();
     renderRecipeTable();
-    populateHeroAlchemySelect(); 
-
 });
 
-// Popular selects de poción desde inventario
+
+// Popular los desplegables con los materiales del inventario
+// Popular los desplegables con los materiales del inventario
 function populatePotionSelectors() {
     const selectors = document.querySelectorAll(".potion-selector");
     const usedNames = Array.from(selectors)
-        .filter(select => select.value)
-        .map(select => select.value.split("#")[0]);
+        .filter(select => select.value) // Filtrar solo los que ya tienen un valor seleccionado
+        .map(select => select.value.split("#")[0]); // Extraer solo el nombre (ignorando exquisito)
 
     selectors.forEach(select => {
-        const type = select.dataset.type;
-        const previousValue = select.value;
-        select.innerHTML = "";
+        const type = select.dataset.type; // "ingredient" o "monsterPart"
+        const previousValue = select.value; // Guardar el valor seleccionado previamente
+        select.innerHTML = ""; // Limpiar opciones previas
 
+        // Añadir la opción por defecto
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
         defaultOption.textContent = "Seleccionar material";
@@ -389,6 +419,7 @@ function populatePotionSelectors() {
         defaultOption.selected = true;
         select.appendChild(defaultOption);
 
+        // Filtrar opciones disponibles en el inventario según el tipo
         const availableItems = inventory.filter(item =>
             (type === "ingredient" && ingredients.includes(item.name) && item.units > 0) ||
             (type === "monsterPart" && monsterParts.includes(item.name) && item.units > 0)
@@ -397,26 +428,35 @@ function populatePotionSelectors() {
         availableItems.forEach(item => {
             const optionValue = `${item.name}#${item.exquisite ? "Exquisito" : "Normal"}`;
             const optionText = `${item.name} (${item.exquisite ? "Exquisito" : "Normal"})`;
+
+            // Verificar si el nombre del material ya está en uso en otros selectores
             const isNameUsed = usedNames.includes(item.name);
 
             const option = document.createElement("option");
             option.value = optionValue;
             option.textContent = optionText;
 
-            if (isNameUsed && optionValue !== previousValue) option.disabled = true;
+            // Deshabilitar si el nombre ya está en uso en otro selector
+            if (isNameUsed && optionValue !== previousValue) {
+                option.disabled = true;
+            }
+
             select.appendChild(option);
         });
 
+        // Restaurar el valor previamente seleccionado, si todavía está disponible
         select.value = previousValue || "";
     });
 }
-
-// Generar selects de ingredientes según tipo
+// Generar los desplegables para seleccionar materiales
+// Reemplaza la función generatePotionSelectors existente por esta
 function generatePotionSelectors(type) {
     const container = document.getElementById("potion-ingredients");
-    container.innerHTML = "";
+    container.innerHTML = ""; // Limpiar cualquier contenido previo
+
     if (!type) return;
 
+    // Asegurarnos de que container actúe como fila3 (column)
     container.classList.add("fila3");
 
     if (type === "Básica") {
@@ -439,8 +479,11 @@ function generatePotionSelectors(type) {
             }
         ];
 
+        // Subcontenedor para los radios (fila3a)
         const radioContainer = document.createElement("div");
         radioContainer.classList.add("fila3a");
+
+        // Subcontenedor para los selects (fila3b)
         const selectsContainer = document.createElement("div");
         selectsContainer.classList.add("fila3b");
 
@@ -453,6 +496,8 @@ function generatePotionSelectors(type) {
             radio.name = "selectorCombination";
             radio.value = combination.value;
             if (index === 0) radio.checked = true;
+
+            // IMPORTANTE: al cambiar, generamos los selects DENTRO de selectsContainer
             radio.addEventListener("change", () => {
                 createSelectors(combination.selectors, selectsContainer);
             });
@@ -464,8 +509,9 @@ function generatePotionSelectors(type) {
 
         container.appendChild(radioContainer);
         container.appendChild(selectsContainer);
-        createSelectors(combinations[0].selectors, selectsContainer);
 
+        // Crear los selectores iniciales dentro de selectsContainer
+        createSelectors(combinations[0].selectors, selectsContainer);
     } else {
         let selectorsNeeded;
         if (type === "Débil") {
@@ -479,17 +525,20 @@ function generatePotionSelectors(type) {
                 { type: "monsterPart", count: 2 }
             ];
         }
+
         const selectsContainer = document.createElement("div");
         selectsContainer.classList.add("fila3b");
         container.appendChild(selectsContainer);
+
         createSelectors(selectorsNeeded, selectsContainer);
     }
 }
 
-// Crear selects
+// Reemplaza la función createSelectors existente por esta
 function createSelectors(selectorsNeeded, container = document.getElementById("potion-ingredients")) {
     if (!container) return;
 
+    // Eliminar únicamente los selects existentes dentro de este contenedor
     const existingSelectors = container.querySelectorAll(".potion-selector");
     existingSelectors.forEach(s => s.remove());
 
@@ -506,40 +555,47 @@ function createSelectors(selectorsNeeded, container = document.getElementById("p
             defaultOption.selected = true;
             select.appendChild(defaultOption);
 
+            // rellenado posterior por populatePotionSelectors
             select.addEventListener("change", () => populatePotionSelectors());
             container.appendChild(select);
         }
     });
 
+    // Rellenar opciones (busca todos los .potion-selector en el documento)
     populatePotionSelectors();
 }
-
-// Detectar cambio de tipo de poción
+// Detectar cambio en el tipo de poción y generar los desplegables
 document.getElementById("potion-type").addEventListener("change", (e) => {
     generatePotionSelectors(e.target.value);
 });
 
-// DOM Ready adicional
+
+// Inicializar
+// Inicialización al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Cargando datos de LocalStorage...");
     if (!localStorage.getItem(RECIPES_KEY)) {
+
+
         localStorage.setItem(RECIPES_KEY, JSON.stringify(defaultRecipes));
         console.log("Recetas predeterminadas guardadas:", defaultRecipes);
     }
+    // Leer inventario y recetas de LocalStorage
     const storedRecipes = JSON.parse(localStorage.getItem(RECIPES_KEY)) || [];
-    recipes.length = 0;
-    recipes.push(...storedRecipes);
+    recipes.length = 0; // Vaciar el array actual (si ya existe en memoria)
+    recipes.push(...storedRecipes); // Asegurarse de que contiene las recetas cargadas
     console.log("Recetas cargadas:", recipes);
 
-    initializeMaterialDropdown();
-    renderInventoryTable();
-    generatePotionSelectors("");
-});
+    // Renderizar elementos de la interfaz
+    initializeMaterialDropdown(); // Inicializar el desplegable de materiales
+    renderInventoryTable(); // Renderizar el inventario
 
-// Nombre de poción aleatorio por tipo
+    generatePotionSelectors(""); // Limpiar y generar los selectores de ingredientes
+});
+// Función para generar un nombre de poción basado en el tipo
 function getPotionName(type) {
     if (type === "Básica") {
-        const roll = Math.floor(Math.random() * 3) + 1;
+        const roll = Math.floor(Math.random() * 3) + 1; // Tirada de 1d3
         if (roll === 1 || roll === 2) {
             const BásicaNames = [
                 "Experiencia", "Constitución", "Valentía", "Destreza", "Energía",
@@ -567,11 +623,9 @@ function getPotionName(type) {
     }
     return "Poción Desconocida";
 }
-
-// Gestión de botellas y skill
+// Gestión de botellas vacías
 let emptyBottles = parseInt(localStorage.getItem("empty_bottles")) || 0;
 let alchemyskill = parseInt(localStorage.getItem("alchemy_skill")) || 0;
-
 function updateBottleCount() {
     document.getElementById("empty-bottles").value = emptyBottles;
     localStorage.setItem("empty_bottles", emptyBottles);
@@ -580,243 +634,43 @@ function updateAlchemyskill() {
     document.getElementById("alchemy-skill").value = alchemyskill;
     localStorage.setItem("alchemy_skill", alchemyskill);
 }
-document.getElementById("add-bottle").addEventListener("click", () => { emptyBottles++; updateBottleCount(); });
-document.getElementById("remove-bottle").addEventListener("click", () => { if (emptyBottles > 0) { emptyBottles--; updateBottleCount(); } });
-document.getElementById("add-alchemy").addEventListener("click", () => { alchemyskill++; updateAlchemyskill(); });
-document.getElementById("remove-alchemy").addEventListener("click", () => { if (alchemyskill > 0) { alchemyskill--; updateAlchemyskill(); } });
+
+document.getElementById("add-bottle").addEventListener("click", () => {
+    emptyBottles++;
+    updateBottleCount();
+});
+
+document.getElementById("remove-bottle").addEventListener("click", () => {
+    if (emptyBottles > 0) {
+        emptyBottles--;
+        updateBottleCount();
+    }
+});
+
+document.getElementById("add-alchemy").addEventListener("click", () => {
+    alchemyskill++;
+    updateAlchemyskill();
+});
+
+document.getElementById("remove-alchemy").addEventListener("click", () => {
+    if (alchemyskill > 0) {
+        alchemyskill--;
+        updateAlchemyskill();
+    }
+});
 
 document.querySelectorAll(".potion-selector").forEach(select => {
     select.addEventListener("change", () => populatePotionSelectors());
 });
 
-// ====== DB compartida con Hojas_Personajes (IndexedDB) ======
-// 🔁 ACTUALIZA el nombre de la BD compartida
-const DB_NAME = 'PersonajesDB';
-const STORE_SLOTS = 'slots';
-const STORE_PERSONAJES = 'personajes';
 
-let __db_ref = null;
-async function openDBShared() {
-    if (window.db) return window.db;
-    if (__db_ref) return __db_ref;
-    return new Promise((resolve, reject) => {
-        const req = indexedDB.open(DB_NAME);
-        req.onerror = () => reject(req.error);
-        req.onsuccess = () => { __db_ref = req.result; resolve(__db_ref); };
-    });
-}
-
-// 🔧 Afectada: leemos héroes cargados y coercionamos ids numéricos
-async function getLoadedHeroesFromSlots() {
-    const db = await openDBShared();
-    const slotIds = [1, 2, 3, 4];
-
-    // 1) obtener personajeId de cada slot
-    const personajeIds = await Promise.all(slotIds.map(slot => new Promise((resolve) => {
-        const tx = db.transaction(STORE_SLOTS, 'readonly');
-        const st = tx.objectStore(STORE_SLOTS);
-        const r = st.get(slot);
-        r.onsuccess = () => resolve(r.result?.personajeId ?? null);
-        r.onerror   = () => resolve(null);
-    })));
-
-    // 2) cargar personajes por id (coercionando a number si procede)
-    const heroes = [];
-    for (let i = 0; i < slotIds.length; i++) {
-        let pid = personajeIds[i];
-        if (pid == null) continue;
-
-        // si es string numérico → a number
-        if (typeof pid === 'string' && pid.trim() !== '' && !Number.isNaN(Number(pid))) {
-            pid = Number(pid);
-        }
-
-        const p = await new Promise((resolve) => {
-            const tx = db.transaction(STORE_PERSONAJES, 'readonly');
-            const st = tx.objectStore(STORE_PERSONAJES);
-            const r = st.get(pid);
-            r.onsuccess = () => resolve(r.result || null);
-            r.onerror   = () => resolve(null);
-        });
-
-        if (p) heroes.push({ slot: slotIds[i], id: p.id, nombre: p.nombre || `Héroe ${slotIds[i]}` });
-    }
-    return heroes;
-}
-
-// Lee ALQ (actual si existe; si no, base) del personaje por id
-// 🔹 Lee la ALQ del personaje por ID (actual > base > otros alias)
-async function getHeroAlqValueById(personajeId) {
-  const db = await openDBShared();
-
-  // coerción por si viene como string
-  let key = personajeId;
-  if (typeof key === 'string' && key.trim() !== '' && !Number.isNaN(Number(key))) {
-    key = Number(key);
-  }
-
-  return await new Promise((resolve) => {
-    const tx = db.transaction(STORE_PERSONAJES, 'readonly');
-    const st = tx.objectStore(STORE_PERSONAJES);
-    const r = st.get(key);
-    r.onsuccess = () => {
-      const p = r.result || {};
-      // rutas posibles
-      const a = p.atributos || {};
-      const alq = a.alquimia || a.alq || {};
-      // soporta {actual, base} o valores sueltos
-      const val =
-        (Number.isFinite(alq.actual) ? alq.actual :
-        Number.isFinite(alq.base)   ? alq.base   :
-        Number.isFinite(a.alquimiaBase) ? a.alquimiaBase :
-        Number.isFinite(p.alquimia) ? p.alquimia :
-        Number.isFinite(p.alq) ? p.alq : 0);
-      resolve(val || 0);
-    };
-    r.onerror = () => resolve(0);
-  });
-}
-
-// POPULA el select con "Slot · Nombre (ALQ: X)" y al seleccionar rellena #alchemy-skill
-// 🔹 Rellena el <select id="hero-alq-select"> con "Slot · Nombre (ALQ: X)"
-//    y al seleccionar copia el valor a #alchemy-skill
-async function populateHeroAlchemySelect() {
-  const sel = document.getElementById('hero-alq-select');
-  if (!sel) return;
-
-  sel.innerHTML = `<option value="">— Héroe (ALQ) —</option>`;
-
-  const heroes = await getLoadedHeroesFromSlots();
-  for (const h of heroes) {
-    const alq = await getHeroAlqValueById(h.id);
-    const opt = document.createElement('option');
-    opt.value = String(h.id);               // guardamos el id
-    opt.dataset.alq = String(alq);          // cacheamos ALQ para el change
-    opt.textContent = `Slot ${h.slot} · ${h.nombre} (ALQ: ${alq})`;
-    sel.appendChild(opt);
-  }
-
-  sel.onchange = () => {
-    const opt = sel.selectedOptions[0];
-    const alq = Number(opt?.dataset.alq ?? NaN);
-    if (Number.isFinite(alq)) {
-      const input = document.getElementById('alchemy-skill');
-      if (input) {
-        input.value = alq;
-        if (typeof saveAlchemySkill === 'function') saveAlchemySkill();
-      }
-    }
-  };
-}
-
-
-
-
-// 🔧 Afectada: guardar poción en inventario del héroe (coerción del id del <select>)
-async function addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo }) {
-    const db = await openDBShared();
-
-    // coerción segura: si es numérico, úsalo como number
-    let key = personajeId;
-    if (typeof key === 'string' && key.trim() !== '' && !Number.isNaN(Number(key))) {
-        key = Number(key);
-    }
-
-    const personaje = await new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_PERSONAJES, 'readonly');
-        const st = tx.objectStore(STORE_PERSONAJES);
-        const r = st.get(key);
-        r.onsuccess = () => resolve(r.result || null);
-        r.onerror   = () => reject(r.error);
-    });
-
-    if (!personaje) throw new Error('Personaje no encontrado');
-
-    if (!personaje.inventario) personaje.inventario = { objetos: [], armaduras: [], armas: [] };
-    if (!Array.isArray(personaje.inventario.objetos)) personaje.inventario.objetos = [];
-
-    const uso = `${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}`;
-
-    // 🔍 buscar si ya existe misma poción con mismo uso
-    const existing = personaje.inventario.objetos.find(
-        o => o.nombre === nombrePocion && o.uso === uso
-    );
-
-    if (existing) {
-        // sumamos cantidad y peso
-        existing.cantidad += 1;
-        existing.peso += 1; // suponiendo que cada poción pesa 1
-    } else {
-        // crear nueva entrada
-        personaje.inventario.objetos.push({
-            id: Date.now(),
-            nombre: 'Poción '+ nombrePocion,
-            lugar: 'Mochila',
-            cantidad: 1,
-            peso: 1,
-            durabilidad: 0,
-            uso
-        });
-    }
-
-    await new Promise((resolve, reject) => {
-        const tx = db.transaction(STORE_PERSONAJES, 'readwrite');
-        const st = tx.objectStore(STORE_PERSONAJES);
-        const r = st.put(personaje);
-        r.onsuccess = () => resolve();
-        r.onerror   = () => reject(r.error);
-    });
-
-    return personaje;
-}
-
-
-
-// Inyectar selector de héroe dentro del alert
-async function attachPotionInventorySelectorInAlert({ nombrePocion, tipoPocion, tooltipTitulo = '' }) {
-    const extra = document.getElementById('custom-alert-extra');
-    if (!extra) return;
-
-    const heroes = await getLoadedHeroesFromSlots();
-    const options = heroes.length
-        ? heroes.map(h => `<option value="${h.id}">Slot ${h.slot} · ${h.nombre}</option>`).join('')
-        : `<option value="">(no hay héroes cargados)</option>`;
-
-    extra.innerHTML = `
-      <div class="alert-section" style="margin-top:10px;">
-        <label class="form-label">¿En qué inventario guardar la poción?</label>
-        <select id="alertSelHero" class="form-select" ${heroes.length ? '' : 'disabled'}>${options}</select>
-        <p class="small" style="margin:6px 0 10px;">
-          Se guardará en <em>Objetos</em> con: Lugar <strong>Mochila</strong>, Cantidad <strong>1</strong>, Peso <strong>1</strong>, Durabilidad <strong>0</strong>, Uso <strong>${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}</strong>.
-        </p>
-        <button id="alertSavePotion" class="btn btn-primary">Guardar en inventario</button>
-      </div>
-    `;
-
-    const btn = document.getElementById('alertSavePotion');
-    if (btn) {
-        btn.onclick = async () => {
-            const sel = document.getElementById('alertSelHero');
-            const personajeId = sel ? sel.value : '';
-            if (!personajeId) {
-                customAlert('No hay héroes cargados en los slots para guardar la poción.', 'crea_pocion');
-                return;
-            }
-            try {
-                await addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo });
-                customAlert(`Se añadió <strong>${nombrePocion}</strong> al inventario del héroe seleccionado.`, 'crea_pocion');
-            } catch (e) {
-                console.error(e);
-                customAlert('No se pudo guardar la poción en el inventario.', 'crea_pocion');
-            }
-        };
-    }
-}
-
-// Crear poción
 document.getElementById("create-potion").addEventListener("click", () => {
     if (emptyBottles <= 0) {
-        customAlert(`No se puede crear una poción sin <strong>Botellas Vacías</strong>.`, "sin_botellas");
+
+        customAlert(
+            `No se puede crear una poción sin <strong>Botellas Vacías</strong>.`,
+            "sin_botellas"
+        );
         return;
     }
 
@@ -824,21 +678,28 @@ document.getElementById("create-potion").addEventListener("click", () => {
     const selectors = document.querySelectorAll(".potion-selector");
 
     if (!type) {
-        customAlert(`Primero Selecciona la Calidad de la Poción`, "selecciona_pocion");
+
+        customAlert(
+            `Primero Selecciona la Calidad de la Poción`,
+            "selecciona_pocion"
+        );
         return;
     }
 
     const selectedItems = Array.from(selectors).map(select => {
-        const [name, quality] = (select.value || "").split("#");
+        const [name, quality] = select.value.split("#");
         return { name, exquisite: quality === "Exquisito" };
     });
 
     if (selectedItems.some(item => !item.name)) {
-        customAlert(`Debes seleccionar todos los <strong>Ingredientes</strong> que vas a usar.`, "ingredientes_alquimia");
+        customAlert(
+            `Debes seleccionar todos los <strong>Ingredientes</strong> que vas a usar.`,
+            "ingredientes_alquimia"
+        );
         return;
     }
 
-    // Comprobar inventario disponible
+    // Verificar inventario
     const missingItems = selectedItems.filter(({ name, exquisite }) => {
         const inventoryItem = inventory.find(item => item.name === name && item.exquisite === exquisite);
         return !inventoryItem || inventoryItem.units < 1;
@@ -853,120 +714,130 @@ document.getElementById("create-potion").addEventListener("click", () => {
     }
 
     const alchemySkill = parseInt(document.getElementById("alchemy-skill").value, 10);
+
+    // Calcular habilidad total
     let totalAlchemySkill = alchemySkill;
 
-    // Bonus por exquisitos
+    // Sumar 10 puntos por cada ingrediente o parte exquisito
     const exquisiteBonus = selectedItems.reduce((bonus, { name, exquisite }) => {
         const inventoryItem = inventory.find(item => item.name === name && item.exquisite === exquisite);
         return bonus + (inventoryItem && inventoryItem.exquisite ? 10 : 0);
     }, 0);
+
     totalAlchemySkill += exquisiteBonus;
 
-    // +10 si la receta ya es conocida (mismos ingredientes)
+    // Verificar si la poción es conocida
     const knownRecipe = recipes.find(recipe =>
-        JSON.stringify([...recipe.ingredients].sort()) === JSON.stringify(selectedItems.map(item => item.name).sort())
+        JSON.stringify(recipe.ingredients.sort()) === JSON.stringify(selectedItems.map(item => item.name).sort())
     );
     if (knownRecipe) totalAlchemySkill += 10;
 
-    // Tirada d100
+    // Realizar tirada
     const roll = Math.floor(Math.random() * 100) + 1;
     if (roll <= totalAlchemySkill || roll <= 5) {
+        // Éxito crítico o normal
         const isCritical = roll <= 5;
 
-        // Determinar nombre de la poción
-        let potionName;
-        if (knownRecipe) {
-            potionName = knownRecipe.name;
-            const audio = new Audio(`img/interface/pocion_burbujeante.mp3`);
-            let ComprobarMute = localStorage.getItem('sonido');
-            if (ComprobarMute == "on") audio.play().catch(() => {});
-        } else {
-            const audio = new Audio(`img/interface/Eureka.mp3`);
-            let ComprobarMute = localStorage.getItem('sonido');
-            if (ComprobarMute == "on") audio.play().catch(() => {});
-            potionName = getPotionName(type);
-
-            // Añadir receta descubierta
-            const newRecipe = { type, name: potionName, ingredients: selectedItems.map(item => item.name) };
-            recipes.push(newRecipe);
-            saveRecipes();
-            console.log("Receta nueva agregada:", newRecipe);
+        if (isCritical) {
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+                <strong>¡ÉXITO CRÍTICO!"</strong><br><br>** Mejora Hab. ALQ. en 1 ó<br>Recupera Toda la Energía **`,
+                "pocion_critico"
+            ); return;
         }
 
-        // Consumir ingredientes (también en crítico)
+        // Restar ingredientes y partes
         selectedItems.forEach(({ name, exquisite }) => {
             const inventoryItem = inventory.find(item => item.name === name && item.exquisite === exquisite);
             if (inventoryItem) {
                 inventoryItem.units -= 1;
                 if (inventoryItem.units === 0) {
+                    // Eliminar del inventario si se queda en 0
                     const index = inventory.indexOf(inventoryItem);
                     inventory.splice(index, 1);
                 }
             }
         });
 
-        // Consumir botella
+        // Restar botella
         emptyBottles--;
 
-        // Mensaje
-        const baseMsg = isCritical
-            ?  `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br><strong>¡ÉXITO CRÍTICO!</strong><br><br>` +
-    (knownRecipe
-      ? `¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>`
-      : `¡Has Descubierto una nueva Poción: <strong>"${potionName}"</strong>!<br><br>` +
-        `¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>`) +
-    `<span style="color:gold;"><strong>✨ Tus dotes alquímicas mejoran gracias a esta hazaña.</strong></span><br>
-     Aumenta tu <strong>Habilidad de Alquimia +1</strong> permanentemente.<br><br>`
-            : `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br><br>`;
 
-        const msg =
-            `${baseMsg}` +
-            (knownRecipe
-                ? `¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>`
-                : `¡Has Descubierto una nueva Poción: <strong>"${potionName}"</strong>!<br><br>` +
-                  `¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>`) +
-            `** Elige en qué Inventario guardarla. **`;
+        // Crear poción
+        let potionName;
+        if (knownRecipe) {
+            potionName = knownRecipe.name;
+            const audio = new Audio(`img/interface/pocion_burbujeante.mp3`);
+            let ComprobarMute = localStorage.getItem('sonido')
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+                <br>¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>
+                ** Recuerda añadirla a tu Inventario. **`,
+                "crea_pocion"
+            );
+        } else {
+            const audio = new Audio(`img/interface/Eureka.mp3`);
+            let ComprobarMute = localStorage.getItem('sonido')
+            if (ComprobarMute == "on") {
+                audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
+            }
 
-        // Mostrar alert + inyectar selector de héroe
-        const tooltipTitulo = potionDescriptions[potionName] ? potionName : '';
-        customAlert(msg, "crea_pocion", () => {
-            attachPotionInventorySelectorInAlert({
-                nombrePocion: potionName,
-                tipoPocion: type,
-                tooltipTitulo
-            });
-        });
+            potionName = getPotionName(type);
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+                <br>¡Has Descubierto una nueva Poción:<strong>"${potionName}"!</strong><br>
+                <br>¡La Poción <strong>"${potionName}"</strong> ha sido elaborada con éxito!<br><br>
+                ** Recuerda añadirla a tu Inventario. **`,
+                "crea_pocion"
+            );
 
-        // Guardar y refrescar
+            // Agregar la poción al recetario
+            const newRecipe = {
+                type,
+                name: potionName,
+                ingredients: selectedItems.map(item => item.name)
+            };
+            recipes.push(newRecipe);
+            saveRecipes(); // Guardar en localStorage
+            console.log("Receta nueva agregada:", newRecipe);
+        }
+
+        // Guardar cambios y actualizar vistas
         saveInventory();
         saveRecipes();
         renderInventoryTable();
         renderRecipeTable();
-
     } else {
-        // Fallo
+        // Fallo en la creación
         customAlert(
             `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
             ¡Los ingredientes se han estropeado!<br><br>
             <strong>Has Perdido los Siguientes Ingredientes:</strong><br>${selectedItems.map(item => item.name).join("<br>")}`,
             "fracaso_pocion"
         );
-
         selectedItems.forEach(({ name, exquisite }) => {
             const inventoryItem = inventory.find(item => item.name === name && item.exquisite === exquisite);
             if (inventoryItem) {
                 inventoryItem.units -= 1;
                 if (inventoryItem.units === 0) {
+                    // Eliminar del inventario si se queda en 0
                     const index = inventory.indexOf(inventoryItem);
                     inventory.splice(index, 1);
                 }
             }
         });
-
         if (roll >= 95) {
             emptyBottles--;
+            customAlert(
+                `Has obtenido un <span style="border: 3px solid limegreen; padding: 5px; border-radius: 6px; font-weight: bold;">${roll}</span> en la Tirada.<br>
+            ¡Los ingredientes se han estropeado!<br><br>
+            <strong>Has Perdido los Siguientes Ingredientes:</strong><br>${selectedItems.map(item => item.name).join("<br>")}`,
+                "fracaso_pocion"
+            );
         }
-
         saveInventory();
         renderInventoryTable();
         renderRecipeTable();
@@ -975,13 +846,11 @@ document.getElementById("create-potion").addEventListener("click", () => {
     updateBottleCount();
 });
 
-// DOM Ready (ajustes finales)
+// Inicialización al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     updateBottleCount();
     updateAlchemyskill();
 });
-
-// ===== Añadir poción manual =====
 function createManualPotionAdder() {
     const container = document.getElementById("manual-potion-adder");
     const toggleButton = document.getElementById("add-manual-potion-button");
@@ -997,6 +866,7 @@ function createManualPotionAdder() {
             ? "Ocultar Añadir Poción a Mano"
             : "Añadir Poción a Mano";
 
+        // Resetear contenido del contenedor
         container.innerHTML = "";
         if (container.style.display === "block") {
             generatePotionTypeSelector(container);
@@ -1008,22 +878,24 @@ function generatePotionTypeSelector(container) {
     const rowDiv = document.createElement("div");
     rowDiv.style.display = "flex";
     rowDiv.style.alignItems = "center";
-    rowDiv.style.marginBottom = "10px";
+    rowDiv.style.marginBottom = "10px"; // opcional: espacio con el siguiente elemento
 
     const typeLabel = document.createElement("label");
     typeLabel.textContent = "Calidad de la Poción: ";
-    typeLabel.style.marginRight = "10px";
+    typeLabel.style.marginRight = "10px"; // separa label del select
 
     const typeSelect = document.createElement("select");
     typeSelect.id = "manual-potion-type";
-    typeSelect.style.flex = "1";
+    typeSelect.style.flex = "1"; // ocupa el resto del espacio
 
     ["", "Débil", "Básica", "Suprema"].forEach(type => {
         const option = document.createElement("option");
+        //  option.value = type.toLowerCase();
         option.textContent = type || "Seleccionar tipo";
         typeSelect.appendChild(option);
     });
 
+    // Añadir label y select al contenedor
     rowDiv.appendChild(typeLabel);
     rowDiv.appendChild(typeSelect);
     container.appendChild(rowDiv);
@@ -1034,13 +906,18 @@ function generatePotionTypeSelector(container) {
 }
 
 function generatePotionMaterialsForm(container, type) {
+    // Limpiar cualquier formulario existente
     const existingForm = container.querySelector("#manual-potion-materials-form");
-    if (existingForm) existingForm.remove();
+    if (existingForm) {
+        existingForm.remove();
+    }
+
     if (!type) return;
 
     const form = document.createElement("div");
     form.id = "manual-potion-materials-form";
 
+    // Desplegable de nombre de poción
     const potionNameLabel = document.createElement("label");
     potionNameLabel.textContent = "Nombre de la poción: ";
     const potionNameSelect = document.createElement("select");
@@ -1051,6 +928,7 @@ function generatePotionMaterialsForm(container, type) {
     defaultPotionOption.selected = true;
     potionNameSelect.appendChild(defaultPotionOption);
 
+    // Obtener los nombres de las pociones según el tipo
     let availablePotions = [];
     if (type === "Débil" || type === "Suprema") {
         availablePotions = potionNames.Débil_and_Suprema;
@@ -1072,6 +950,7 @@ function generatePotionMaterialsForm(container, type) {
     form.appendChild(potionNameSelect);
     form.appendChild(document.createElement("br"));
 
+    // Generar los selects según el tipo de poción
     if (type === "Débil") {
         createSelect(form, "Ingrediente", ingredients);
         createSelect(form, "Parte de Monstruo", monsterParts);
@@ -1088,18 +967,19 @@ function generatePotionMaterialsForm(container, type) {
         createSelect(form, "Parte de Monstruo", monsterParts);
     }
 
+    // Botón para añadir al recetario
     const addButton = document.createElement("button");
     addButton.textContent = "Añadir al Libro de Alquimia";
     addButton.className = "btn_opciones";
     const buttonContainer = document.createElement("div");
     buttonContainer.style.display = "flex";
     buttonContainer.style.justifyContent = "center";
-    buttonContainer.style.marginTop = "10px";
-    buttonContainer.appendChild(addButton);
+    buttonContainer.style.marginTop = "10px"; // opcional, para separar del resto
 
+    buttonContainer.appendChild(addButton);
     addButton.addEventListener("click", () => {
         const selectedPotionName = potionNameSelect.value;
-        const materialSelects = Array.from(form.querySelectorAll("select")).slice(1);
+        const materialSelects = Array.from(form.querySelectorAll("select")).slice(1); // ignorar select de poción
         const selectedMaterials = materialSelects.map(s => s.value).filter(v => v);
 
         if (!selectedPotionName) {
@@ -1112,6 +992,7 @@ function generatePotionMaterialsForm(container, type) {
             return;
         }
 
+        // Comprobar si la receta ya existe (sin importar el orden de los materiales)
         const recipeExists = recipes.some(recipe =>
             recipe.name === selectedPotionName &&
             recipe.type === type &&
@@ -1123,6 +1004,7 @@ function generatePotionMaterialsForm(container, type) {
             return;
         }
 
+        // Crear la nueva receta
         const newRecipe = {
             name: selectedPotionName,
             type,
@@ -1141,19 +1023,21 @@ function generatePotionMaterialsForm(container, type) {
     form.appendChild(buttonContainer);
     container.appendChild(form);
 
+    // --------- FUNCIONES AUXILIARES ---------
+
     function createSelect(container, labelText, optionsArray) {
         const rowDiv = document.createElement("div");
         rowDiv.style.display = "flex";
         rowDiv.style.alignItems = "center";
-        rowDiv.style.marginBottom = "8px";
+        rowDiv.style.marginBottom = "8px"; // espacio entre filas
 
         const label = document.createElement("label");
         label.textContent = labelText + ": ";
-        label.style.width = "150px";
+        label.style.width = "150px"; // ancho fijo para alinear todos los selects
         label.style.marginRight = "10px";
 
         const select = document.createElement("select");
-        select.style.flex = "1";
+        select.style.flex = "1"; // ocupa todo el espacio restante
 
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
@@ -1169,6 +1053,7 @@ function generatePotionMaterialsForm(container, type) {
             select.appendChild(option);
         });
 
+        // Evento para evitar duplicados
         select.addEventListener("change", () => {
             enforceUniqueSelections(container);
         });
@@ -1178,8 +1063,9 @@ function generatePotionMaterialsForm(container, type) {
         container.appendChild(rowDiv);
     }
 
+
     function enforceUniqueSelections(container) {
-        const selects = Array.from(container.querySelectorAll("select")).slice(1);
+        const selects = Array.from(container.querySelectorAll("select")).slice(1); // el 1º es poción
         const selectedValues = selects.map(s => s.value).filter(v => v);
 
         selects.forEach(select => {
@@ -1201,20 +1087,27 @@ function generatePotionMaterialsForm(container, type) {
     }
 }
 
-// Inicialización del módulo manual
+
+
+// Inicialización
 document.addEventListener("DOMContentLoaded", () => {
     createManualPotionAdder();
 });
 
-// Guardar / cargar alchemy skill
+// Event listener para guardar la habilidad al cambiar el valor
 document.getElementById("alchemy-skill").addEventListener("input", saveAlchemySkill);
+
+// Cargar la habilidad al inicializar la página
 document.addEventListener("DOMContentLoaded", loadAlchemySkill);
 
+// Función para guardar el valor de alchemy-skill en localStorage
 function saveAlchemySkill() {
     const alchemySkillValue = document.getElementById("alchemy-skill").value;
     localStorage.setItem("alchemy_skill", alchemySkillValue);
     console.log(`Habilidad de alquimia guardada: ${alchemySkillValue}`);
 }
+
+// Función para cargar el valor de alchemy-skill desde localStorage
 function loadAlchemySkill() {
     const savedSkill = localStorage.getItem("alchemy_skill");
     const skillInput = document.getElementById("alchemy-skill");
@@ -1223,24 +1116,223 @@ function loadAlchemySkill() {
         skillInput.value = savedSkill;
         console.log(`Habilidad de alquimia cargada: ${savedSkill}`);
     } else {
-        skillInput.value = 0;
+        skillInput.value = 0; // Valor por defecto si no existe en localStorage
         console.log("No se encontró habilidad de alquimia en localStorage. Usando valor predeterminado.");
     }
 }
-
-// Reproducir audios en secuencia
 function reproducirAudiosSecuencial(audios) {
     let i = 0;
     const basePath = "img/interface/";
+
     function playNext() {
         if (i >= audios.length) return;
         const audio = new Audio(basePath + audios[i]);
         i++;
-        let ComprobarMute = localStorage.getItem('sonido');
+        let ComprobarMute = localStorage.getItem('sonido')
         if (ComprobarMute == "on") {
             audio.play().catch(err => console.error("No se pudo reproducir el audio:", err));
         }
         audio.addEventListener("ended", playNext);
     }
+
     playNext();
+}
+
+// 🔸 NUEVO: helper para normalizar (minúsculas + sin tildes)
+function normStr(s) {
+    return (s || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, '');
+}
+
+// 🔸 NUEVO: comprueba si hay al menos 1 unidad de un material (sin distinguir exquisito) en inventario
+function hasMaterialAvailable(name) {
+    const target = normStr(name);
+    return inventory.some(it => normStr(it.name) === target && (it.units || 0) > 0);
+}
+
+// 🔸 NUEVO: devuelve HTML con ingredientes coloreados y comas en blanco
+function formatRecipeIngredientsWithAvailability(ingredientsArr) {
+    if (!Array.isArray(ingredientsArr) || ingredientsArr.length === 0) return "";
+    const parts = [];
+    ingredientsArr.forEach((ing, idx) => {
+        const ok = hasMaterialAvailable(ing);
+        parts.push(`<span style="color:${ok ? '#67e667' : '#ff6b6b'}; font-weight:bold;">${ing}</span>`);
+        if (idx < ingredientsArr.length - 1) {
+            parts.push(`<span style="color:#fff;">, </span>`); // coma en blanco
+        }
+    });
+    return parts.join('');
+}
+
+/***********  NUEVO: Config DB compartida con Hojas_Personajes  ***********/
+const DB_NAME = 'Hojas_Personajes_DB';  // 🔁 Cambia si tu DB se llama distinto
+const STORE_SLOTS = 'slots';
+const STORE_PERSONAJES = 'personajes';
+
+let __db_ref = null;
+async function openDBShared() {
+    if (window.db) return window.db;        // si ya existe global (misma página)
+    if (__db_ref) return __db_ref;          // cache local
+
+    return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME);
+        req.onerror = () => reject(req.error);
+        req.onsuccess = () => { __db_ref = req.result; resolve(__db_ref); };
+        // No hacemos onupgradeneeded: asumimos que ya existe con stores 'slots' y 'personajes'
+    });
+}
+
+/***********  NUEVO: Héroes cargados en los slots (1..4)  ***********/
+async function getLoadedHeroesFromSlots() {
+    const db = await openDBShared();
+    // leemos slots 1..4 y luego sus personajes
+    const slotIds = [1,2,3,4];
+
+    const personajeIds = await Promise.all(slotIds.map(slot => new Promise((resolve) => {
+        const tx = db.transaction(STORE_SLOTS, 'readonly');
+        const st = tx.objectStore(STORE_SLOTS);
+        const r = st.get(slot);
+        r.onsuccess = () => resolve(r.result?.personajeId ?? null);
+        r.onerror = () => resolve(null);
+    })));
+
+    const heroes = [];
+    for (let i = 0; i < slotIds.length; i++) {
+        const pid = personajeIds[i];
+        if (!pid) continue;
+        const p = await new Promise((resolve) => {
+            const tx = db.transaction(STORE_PERSONAJES, 'readonly');
+            const st = tx.objectStore(STORE_PERSONAJES);
+            const r = st.get(pid);
+            r.onsuccess = () => resolve(r.result || null);
+            r.onerror = () => resolve(null);
+        });
+        if (p) heroes.push({ slot: slotIds[i], id: p.id, nombre: p.nombre || `Héroe ${slotIds[i]}` });
+    }
+    return heroes;
+}
+
+/***********  NUEVO: Insertar poción en inventario de un héroe  ***********/
+async function addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo }) {
+    const db = await openDBShared();
+    const personaje = await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_PERSONAJES, 'readonly');
+        const st = tx.objectStore(STORE_PERSONAJES);
+        const r = st.get(personajeId);
+        r.onsuccess = () => resolve(r.result || null);
+        r.onerror = () => reject(r.error);
+    });
+    if (!personaje) throw new Error('Personaje no encontrado');
+
+    if (!personaje.inventario) personaje.inventario = { objetos: [], armaduras: [], armas: [] };
+    if (!Array.isArray(personaje.inventario.objetos)) personaje.inventario.objetos = [];
+
+    const item = {
+        id: Date.now(),
+        nombre: nombrePocion,     // 📛 Nombre de la poción
+        lugar: 'Mochila',         // 📦 donde guardar
+        cantidad: 1,              // 🔢 1 unidad
+        peso: 1,                  // ⚖️ 1
+        durabilidad: 0,           // 🛠️ 0
+        uso: `${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}` // 🧪 Tipo + “tooltip/info”
+    };
+
+    personaje.inventario.objetos.push(item);
+
+    await new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_PERSONAJES, 'readwrite');
+        const st = tx.objectStore(STORE_PERSONAJES);
+        const r = st.put(personaje);
+        r.onsuccess = () => resolve();
+        r.onerror = () => reject(r.error);
+    });
+
+    return personaje;
+}
+
+/***********  NUEVO: Popup de éxito con selector de héroe y guardado ***********
+ * Llama a esta función cuando completes con éxito la creación de la poción.
+ * - nombrePocion: string (p.ej. "Antídoto")
+ * - tipoPocion: string (p.ej. "Curativa", "Veneno", etc.)
+ * - tooltipTitulo: string (p.ej. título o nombre de la info del tooltip)
+ ***************************************************************************/
+async function onPotionCraftedSuccess(nombrePocion, tipoPocion, tooltipTitulo = '') {
+    // 1) recogemos héroes cargados
+    const heroes = await getLoadedHeroesFromSlots();
+
+    if (!window.Swal) {
+        alert(`Se creó la poción ${nombrePocion}. No tengo SweetAlert2 para elegir héroe.`);
+        return;
+    }
+
+    // 2) construimos el select
+    const optionsHtml = heroes.length
+        ? heroes.map(h => `<option value="${h.id}">Slot ${h.slot} · ${h.nombre}</option>`).join('')
+        : `<option value="">(no hay héroes cargados en los slots)</option>`;
+
+    const html = `
+      <div class="sai-body">
+        <p class="mb-2">¡Has creado <strong>${nombrePocion}</strong>!</p>
+        <label class="form-label">¿En qué inventario guardarla?</label>
+        <select id="selHeroInv" class="form-select" ${heroes.length ? '' : 'disabled'}>
+          ${optionsHtml}
+        </select>
+        <p class="mt-3 mb-0 small text-muted">
+          Se guardará en <em>Objetos</em> con: Lugar <strong>Mochila</strong>, Cantidad <strong>1</strong>, Peso <strong>1</strong>, Durabilidad <strong>0</strong>, Uso <strong>${tipoPocion}${tooltipTitulo ? ' · ' + tooltipTitulo : ''}</strong>.
+        </p>
+      </div>
+    `;
+
+    const res = await Swal.fire({
+        icon: 'success',
+        title: 'Poción creada',
+        html,
+        width: '600px',
+        showCancelButton: true,
+        confirmButtonText: 'Guardar en inventario',
+        cancelButtonText: 'Cerrar',
+        customClass: {
+            popup: 'sai-popup',
+            title: 'sai-title',
+            htmlContainer: 'sai-html',
+            actions: 'sai-actions',
+            confirmButton: 'sai-confirm',
+            cancelButton: 'sai-cancel'
+        }
+    });
+
+    if (!res.isConfirmed) return;
+
+    const sel = document.getElementById('selHeroInv');
+    const personajeId = sel ? sel.value : '';
+
+    if (!personajeId) {
+        await Swal.fire({
+            icon: 'warning',
+            title: 'Sin héroe',
+            text: 'No hay héroes cargados en los slots para guardar la poción.',
+            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm' }
+        });
+        return;
+    }
+
+    try {
+        await addPotionToHeroInventory(personajeId, { nombrePocion, tipoPocion, tooltipTitulo });
+        await Swal.fire({
+            icon: 'success',
+            title: 'Guardado',
+            text: `Se añadió "${nombrePocion}" al inventario del héroe seleccionado.`,
+            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm' }
+        });
+    } catch (err) {
+        console.error(err);
+        await Swal.fire({
+            icon: 'error',
+            title: 'Error guardando',
+            text: 'No se pudo guardar la poción en el inventario.',
+            customClass: { popup: 'sai-popup', title: 'sai-title', htmlContainer: 'sai-html', actions: 'sai-actions', confirmButton: 'sai-confirm' }
+        });
+    }
 }
