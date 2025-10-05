@@ -708,7 +708,7 @@ window.renderInventarioLists = function (personaje) {
                 <td><span class="tip-obj" data-tippy-content="${esc(o.uso||'')}">${esc(o.nombre||'')}</span></td>
                 <td>${esc(o.cantidad ?? 0)}</td>
                 <td>${esc(o.peso ?? '')}</td>
-               <td class="text-center">
+                <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="obj" data-id="${o.id||''}" data-slot="${slot}">
                     ⇄
@@ -735,7 +735,7 @@ window.renderInventarioLists = function (personaje) {
                 <td>${esc(a.durabilidad ?? '')}</td>
                
                 <td>${esc(a.peso ?? '')}</td>
-<td class="text-center">
+                 <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="arm" data-id="${a.id||''}" data-slot="${slot}">
                     ⇄
@@ -762,7 +762,7 @@ window.renderInventarioLists = function (personaje) {
                 <td>${esc(w.danio || '')}</td>
                
                 <td>${esc(w.peso ?? 0)}</td>
-<td class="text-center">
+                 <td class="text-end" style="text-align: center;">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="arma" data-id="${w.id||''}" data-slot="${slot}">
                     ⇄

@@ -708,7 +708,7 @@ window.renderInventarioLists = function (personaje) {
                 <td><span class="tip-obj" data-tippy-content="${esc(o.uso||'')}">${esc(o.nombre||'')}</span></td>
                 <td>${esc(o.cantidad ?? 0)}</td>
                 <td>${esc(o.peso ?? '')}</td>
-               <td class="text-center">
+                <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="obj" data-id="${o.id||''}" data-slot="${slot}">
                     ⇄
@@ -735,7 +735,7 @@ window.renderInventarioLists = function (personaje) {
                 <td>${esc(a.durabilidad ?? '')}</td>
                
                 <td>${esc(a.peso ?? '')}</td>
-<td class="text-center">
+                 <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="arm" data-id="${a.id||''}" data-slot="${slot}">
                     ⇄
@@ -751,7 +751,7 @@ window.renderInventarioLists = function (personaje) {
         <h6 class="mt-2 mb-1">⚔️ Armas</h6>
         <table class="table table-sm table-dark table-striped">
           <thead>
-            <tr><th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Peso</th><th>Trasp.</th></tr>
+            <tr><th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Trasp.</th><th>Peso</th></tr>
           </thead>
           <tbody>
             ${armas.map(w => `
@@ -760,14 +760,13 @@ window.renderInventarioLists = function (personaje) {
                 <td><span class="tip-arma" data-tippy-content="${esc(w.especial||'')}">${esc(w.arma||'')}</span></td>
                 <td>${esc(w.mano || '')}</td>
                 <td>${esc(w.danio || '')}</td>
-               
-                <td>${esc(w.peso ?? 0)}</td>
-<td class="text-center">
+                <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="arma" data-id="${w.id||''}" data-slot="${slot}">
                     ⇄
                   </button>
                 </td>
+                <td>${esc(w.peso ?? 0)}</td>
               </tr>`).join('')}
           </tbody>
         </table>`;

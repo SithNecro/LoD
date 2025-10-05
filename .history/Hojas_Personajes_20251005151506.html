@@ -1407,11 +1407,6 @@
             const targetId = map[section];
             const target = document.getElementById(targetId);
             if (target) target.style.display = "";
-
-            // 👉 nuevo: cuando entramos en "mochila", pintamos los listados
-            if (section === "mochila" && window.renderInventarioPreview) {
-                window.renderInventarioPreview(slot);
-            }
         }
 
 

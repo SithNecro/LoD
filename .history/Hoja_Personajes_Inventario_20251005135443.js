@@ -1,4 +1,5 @@
-// Obtener personaje por slot
+// ✅ NUEVA: obtener el personaje asignado a un slot (lee store "slots" -> personajeId -> "personajes")
+// ✅ GLOBAL: obtener el personaje asignado a un slot
 window.getPersonajeBySlot = async function (slot) {
   const personajeId = await new Promise((resolve, reject) => {
     const tx = db.transaction("slots", "readonly");
@@ -18,7 +19,8 @@ window.getPersonajeBySlot = async function (slot) {
   });
 };
 
-// Guardar personaje
+// ✅ NUEVA: persistir cambios de un personaje
+// ✅ GLOBAL: persistir cambios de un personaje
 window.savePersonaje = function (p) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction("personajes", "readwrite");
@@ -29,7 +31,16 @@ window.savePersonaje = function (p) {
   });
 };
 
-// Editor de Inventario
+// ✅ NUEVA: abrir editor Inventario con SweetAlert2 + tippy tooltips
+// ✅ GLOBAL: abrir el editor (usa SweetAlert2 + Tippy)
+//    *idéntica a la que tenías*, solo cambia la cabecera para quedar en window.*
+// ✅ Reemplaza íntegramente tu openInventarioEditor por esta versión (sin redeclaraciones)
+// Hoja_Personajes_Inventario.js
+// ✅ NUEVA: abrir editor Inventario con SweetAlert2 + tippy tooltips
+// ✅ GLOBAL: abrir el editor (usa SweetAlert2 + Tippy)
+//    *idéntica a la que tenías*, solo cambia la cabecera para quedar en window.*
+// ✅ Reemplaza íntegramente tu openInventarioEditor por esta versión (sin redeclaraciones)
+// Hoja_Personajes_Inventario.js
 window.openInventarioEditor = async function (slot) {
   if (!window.Swal) { alert("Falta SweetAlert2 (Swal). Inclúyelo para usar el editor de inventario."); return; }
   if (!window.tippy) { console.warn("tippy.js no encontrado. Los tooltips no se activarán."); }
@@ -98,10 +109,6 @@ window.openInventarioEditor = async function (slot) {
               <label class="form-label">Uso</label>
               <input id="objUso" class="form-control" type="text">
             </div>
-            <div class="col-6 col-md-2">
-              <label class="form-label">Valor</label>
-              <input id="objValor" class="form-control" type="number" min="0" value="0">
-            </div>
             <div class="col-12 col-md-2">
               <button id="btnAddObj" class="btn btn-primary w-100">Añadir</button>
             </div>
@@ -157,10 +164,6 @@ window.openInventarioEditor = async function (slot) {
                 <label class="form-check-label">Equipado</label>
               </div>
             </div>
-            <div class="col-6 col-md-2">
-              <label class="form-label">Valor</label>
-              <input id="armValor" class="form-control" type="number" min="0" value="0">
-            </div>
             <div class="col-12 col-md-2">
               <button id="btnAddArmadura" class="btn btn-primary w-100">Añadir</button>
             </div>
@@ -199,10 +202,6 @@ window.openInventarioEditor = async function (slot) {
             <div class="col-6 col-md-2">
               <label class="form-label">Peso</label>
               <input id="armaPeso" class="form-control" type="number" min="0" step="0.1">
-            </div>
-            <div class="col-6 col-md-2">
-              <label class="form-label">Valor</label>
-              <input id="armaValor" class="form-control" type="number" min="0" value="0">
             </div>
             <div class="col-12 col-md-2">
               <button id="btnAddArma" class="btn btn-primary w-100">Añadir</button>
@@ -259,7 +258,6 @@ window.openInventarioEditor = async function (slot) {
         if (n('objPeso')) n('objPeso').value = '0';
         if (n('objDurabilidad')) n('objDurabilidad').value = '0';
         if (n('objUso')) n('objUso').value = '';
-        if (n('objValor')) n('objValor').value = '0';
         // limpiar ARMADURA
         if (n('armEquipado')) n('armEquipado').checked = false;
         if (n('armNombre')) n('armNombre').value = '';
@@ -269,7 +267,6 @@ window.openInventarioEditor = async function (slot) {
         if (n('armDurabilidad')) n('armDurabilidad').value = '0';
         if (n('armEspecial')) n('armEspecial').value = '';
         if (n('armPeso')) n('armPeso').value = '';
-        if (n('armValor')) n('armValor').value = '0';
         // limpiar ARMA
         if (n('armaEquipado')) n('armaEquipado').checked = false;
         if (n('armaNombre')) n('armaNombre').value = '';
@@ -278,7 +275,6 @@ window.openInventarioEditor = async function (slot) {
         if (n('armaDurabilidad')) n('armaDurabilidad').value = '0';
         if (n('armaEspecial')) n('armaEspecial').value = '';
         if (n('armaPeso')) n('armaPeso').value = '';
-        if (n('armaValor')) n('armaValor').value = '0';
       };
 
       // Cerrar
@@ -318,17 +314,19 @@ window.openInventarioEditor = async function (slot) {
         const id = Number(row.dataset.itemid);
 
         const updateItem = (arr, fields) => {
+          if (!Array.isArray(arr)) return false;
           const idx = arr.findIndex(x => x.id === id);
           if (idx < 0) return false;
-          const f = t.name; if (!fields.includes(f)) return false;
+          const f = t.name;
+          if (!fields.includes(f)) return false;
           let v = t.type === 'number' ? (t.step && t.step !== "1" ? parseFloat(t.value || '0') : parseInt(t.value || '0', 10)) : t.value;
           if (t.tagName === 'SELECT' && t.multiple) v = Array.from(t.selectedOptions).map(o => o.value);
           arr[idx][f] = v; return true;
         };
 
-        if (updateItem(personaje.inventario.objetos, ['nombre','lugar','cantidad','peso','durabilidad','uso','valor'])
-          || updateItem(personaje.inventario.armaduras, ['equipado','armadura','defensa','especial','durabilidad','peso','valor'])
-          || updateItem(personaje.inventario.armas, ['equipado','arma','mano','danio','durabilidad','especial','peso','valor'])) {
+        if (updateItem(personaje.inventario.objetos, ['nombre','lugar','cantidad','peso','durabilidad','uso'])
+          || updateItem(personaje.inventario.armaduras, ['equipado','armadura','defensa','especial','durabilidad','peso'])
+          || updateItem(personaje.inventario.armas, ['equipado','arma','mano','danio','durabilidad','especial','peso'])) {
           await window.savePersonaje(personaje);
           window.renderInventarioLists(personaje);
         }
@@ -372,7 +370,7 @@ window.openInventarioEditor = async function (slot) {
         window.renderInventarioLists(personaje);
       };
 
-      // ===== Eliminar / Traspasar =====
+      // ===== Eliminar / Traspasar (implementado) =====
       const onClick = async (ev) => {
         const btn = ev.target.closest('[data-action]'); if (!btn) return;
         const row = btn.closest('[data-itemid]'); if (!row) return;
@@ -397,7 +395,8 @@ window.openInventarioEditor = async function (slot) {
         }
 
         if (action === 'traspasar') {
-          // 1) Obtener destinos válidos
+          // Seleccionar destino y mover el ítem (no copiar)
+          // 1) Obtener destinos válidos (otros slots con héroe cargado)
           const asigs = await new Promise((resolve, reject) => {
             const tx = db.transaction('slots', 'readonly');
             const st = tx.objectStore('slots');
@@ -442,10 +441,10 @@ window.openInventarioEditor = async function (slot) {
           if (!moved) { categoria = 'armas'; moved = delFrom(personaje.inventario.armas); }
           if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
 
-          // Armaduras/Armas: llegan como no equipadas
+          // Armaduras/Armas: al llegar al destino van como no equipadas
           if (categoria !== 'objetos') moved.equipado = false;
 
-          // 3) Añadir en destino (id se conserva salvo colisión)
+          // 3) Añadir en destino (asegurando id único SOLO si hay colisión)
           const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
           if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
           if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
@@ -454,11 +453,12 @@ window.openInventarioEditor = async function (slot) {
           if (destArr.some(x => x.id === moved.id)) {
             let newId = Date.now();
             while (destArr.some(x => x.id === newId)) newId++;
-            moved.id = newId;
+            moved.id = newId; // Solo cambia si colisiona
           }
 
           destArr.push(moved);
 
+          // 4) Guardar origen y destino, y refrescar UI del origen
           await window.savePersonaje(personaje);
           await window.savePersonaje(destPersonaje);
           window.renderInventarioLists(personaje);
@@ -473,7 +473,7 @@ window.openInventarioEditor = async function (slot) {
       root.addEventListener('change', onChange);
       root.addEventListener('click', onClick);
 
-      // ===== Añadir =====
+      // ===== AÑADIR: ahora añade + limpia + oculta =====
       const btnObj = document.getElementById('btnAddObj');
       if (btnObj) btnObj.addEventListener('click', async () => {
         const nombre = (document.getElementById('objNombre')?.value || '').trim();
@@ -485,13 +485,12 @@ window.openInventarioEditor = async function (slot) {
           cantidad: parseInt(document.getElementById('objCantidad')?.value || '0', 10),
           peso: parseFloat(document.getElementById('objPeso')?.value || '0'),
           durabilidad: parseInt(document.getElementById('objDurabilidad')?.value || '0', 10),
-          uso: document.getElementById('objUso')?.value || '',
-          valor: parseInt(document.getElementById('objValor')?.value || '0', 10)
+          uso: document.getElementById('objUso')?.value || ''
         };
         personaje.inventario.objetos.push(item);
         await window.savePersonaje(personaje);
         window.renderInventarioLists(personaje);
-        resetAfterAdd();
+        resetAfterAdd();  // 👈 limpia y oculta
       });
 
       const btnArm = document.getElementById('btnAddArmadura');
@@ -509,13 +508,12 @@ window.openInventarioEditor = async function (slot) {
           especial: document.getElementById('armEspecial')?.value || '',
           durabilidad: parseInt(document.getElementById('armDurabilidad')?.value || '0', 10),
           peso: parseFloat(document.getElementById('armPeso')?.value || '0'),
-          equipado: !!document.getElementById('armEquipado')?.checked,
-          valor: parseInt(document.getElementById('armValor')?.value || '0', 10)
+          equipado: !!document.getElementById('armEquipado')?.checked
         };
         personaje.inventario.armaduras.push(item);
         await window.savePersonaje(personaje);
         window.renderInventarioLists(personaje);
-        resetAfterAdd();
+        resetAfterAdd();  // 👈 limpia y oculta
       });
 
       const btnArma = document.getElementById('btnAddArma');
@@ -530,13 +528,12 @@ window.openInventarioEditor = async function (slot) {
           durabilidad: parseInt(document.getElementById('armaDurabilidad')?.value || '0', 10),
           especial: document.getElementById('armaEspecial')?.value || '',
           peso: parseFloat(document.getElementById('armaPeso')?.value || '0'),
-          equipado: !!document.getElementById('armaEquipado')?.checked,
-          valor: parseInt(document.getElementById('armaValor')?.value || '0', 10)
+          equipado: !!document.getElementById('armaEquipado')?.checked
         };
         personaje.inventario.armas.push(item);
         await window.savePersonaje(personaje);
         window.renderInventarioLists(personaje);
-        resetAfterAdd();
+        resetAfterAdd();  // 👈 limpia y oculta
       });
 
       // Enfocar algo usable
@@ -546,15 +543,21 @@ window.openInventarioEditor = async function (slot) {
   });
 };
 
-// Render de listas
+// ✅ NUEVA: renderizado de tablas de Objetos / Armaduras / Armas con edición inline
+// ✅ GLOBAL: renderizado de tablas del inventario
+// ✅ GLOBAL: renderizado de tablas del inventario (orden alfabético al pintar)
+// ✅ NUEVA: renderizado de tablas de Objetos / Armaduras / Armas con edición inline
+// ✅ GLOBAL: renderizado de tablas del inventario
+// ✅ GLOBAL: renderizado de tablas del inventario (orden alfabético al pintar)
 window.renderInventarioLists = function (personaje) {
   const mkOpts = (n, sel) => Array.from({ length: n }, (_, i) => `<option value="${i}" ${i == sel ? 'selected' : ''}>${i}</option>`).join('');
 
+  // --- helpers de ordenación sin mutar el inventario original ---
   const byStr = (get) => (a, b) => {
     const A = (get(a) || '').toString().trim().toLowerCase();
     const B = (get(b) || '').toString().trim().toLowerCase();
     if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
-    if (!A && B) return 1;
+    if (!A && B) return 1;   // vacíos al final
     if (A && !B) return -1;
     return 0;
   };
@@ -582,7 +585,6 @@ window.renderInventarioLists = function (personaje) {
           <th>Peso</th>
           <th>Durabilidad</th>
           <th>Uso</th>
-          <th style="width:90px;">Valor</th>
           <th style="width:80px;"></th>
           <th style="width:80px;"></th>
         </tr></thead>
@@ -601,31 +603,29 @@ window.renderInventarioLists = function (personaje) {
             <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${o.peso ?? 0}"></td>
             <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, o.durabilidad ?? 0)}</select></td>
             <td><input class="form-control form-control-sm" name="uso" value="${o.uso || ''}"></td>
-            <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${o.valor ?? 0}"></td>
             <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
             <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
           </tr>`).join('')}
         </tbody>
       </table>`;
 
-  // Armaduras
+  // Armaduras (Cobertura como <p> con lista unida por comas)
   const armHtml = `
       <table class="table table-sm align-middle">
         <thead><tr>
           <th style="width:120px;">Equipado</th>
-          <th>Armadura</th><th>Cobertura</th><th>Defensa</th><th>Especial</th><th>Durabilidad</th><th>Peso</th><th style="width:90px;">Valor</th><th style="width:80px;"></th><th style="width:80px;"></th>
+          <th>Armadura</th><th>Cobertura</th><th>Defensa</th><th>Especial</th><th>Durabilidad</th><th>Peso</th><th style="width:80px;"></th><th style="width:80px;"></th>
         </tr></thead>
         <tbody>
         ${armadurasOrden.map(a => `
           <tr data-itemid="${a.id}">
             <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
             <td><input class="form-control form-control-sm" name="armadura" value="${a.armadura || ''}"></td>
-            <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : ''}</p></td>
-            <td><select class="form-select form-select-sm" name="defensa">${mkOpts(11, a.defensa ?? 0)}</select></td>
+            <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : (a.cobertura || '')}</p></td>
+            <td><input class="form-control form-control-sm" type="number" min="0" name="defensa" value="${a.defensa ?? 0}"></td>
             <td><input class="form-control form-control-sm" name="especial" value="${a.especial || ''}"></td>
             <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, a.durabilidad ?? 0)}</select></td>
             <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${a.peso ?? 0}"></td>
-            <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${a.valor ?? 0}"></td>
             <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
             <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
           </tr>`).join('')}
@@ -633,11 +633,11 @@ window.renderInventarioLists = function (personaje) {
       </table>`;
 
   // Armas
-  const armasHtml = `
+  const armaHtml = `
       <table class="table table-sm align-middle">
         <thead><tr>
           <th style="width:120px;">Equipado</th>
-          <th>Arma</th><th>Mano</th><th>Daño</th><th>Durabilidad</th><th>Especial</th><th>Peso</th><th style="width:90px;">Valor</th><th style="width:80px;"></th><th style="width:80px;"></th>
+          <th>Arma</th><th>Mano</th><th>Daño</th><th>Durabilidad</th><th>Especial</th><th>Peso</th><th style="width:80px;"></th><th style="width:80px;"></th>
         </tr></thead>
         <tbody>
         ${armasOrden.map(w => `
@@ -646,234 +646,24 @@ window.renderInventarioLists = function (personaje) {
             <td><input class="form-control form-control-sm" name="arma" value="${w.arma || ''}"></td>
             <td>
               <select class="form-select form-select-sm" name="mano">
-                ${['Izquierda', 'Derecha', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
+                ${['Izquierda','Derecha','Ambas'].map(m => `<option value="${m}" ${w.mano===m?'selected':''}>${m}</option>`).join('')}
               </select>
             </td>
             <td><input class="form-control form-control-sm" name="danio" value="${w.danio || ''}"></td>
             <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, w.durabilidad ?? 0)}</select></td>
             <td><input class="form-control form-control-sm" name="especial" value="${w.especial || ''}"></td>
             <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${w.peso ?? 0}"></td>
-            <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${w.valor ?? 0}"></td>
             <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
             <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
           </tr>`).join('')}
         </tbody>
       </table>`;
 
-  const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
-  set('listObjetos', objHtml);
-  set('listArmaduras', armHtml);
-  set('listArmas', armasHtml);
+  // Pinta
+  const listObj = document.getElementById('listObjetos');
+  const listArm = document.getElementById('listArmaduras');
+  const listArma = document.getElementById('listArmas');
+  if (listObj) listObj.innerHTML = objHtml;
+  if (listArm) listArm.innerHTML = armHtml;
+  if (listArma) listArma.innerHTML = armaHtml;
 };
-/* ============================================================
- *  PREVIEW DE INVENTARIO EN LA SECCIÓN "MOCHILA" (APPEND-ONLY)
- *  - No modifica el popup ni sus funciones.
- *  - Pinta tablas debajo del botón "Abrir Inventario".
- *  - Reutiliza misma mecánica de "Traspasar" entre slots.
- * ============================================================ */
-
-(function () {
-  "use strict";
-
-  const $ = (sel, ctx=document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
-  const esc = (s) => (s==null ? '' : String(s).replace(/[&<>"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])));
-
-  // ---------- Render del PREVIEW debajo del botón ----------
-  window.renderInventarioPreview = async function(slot) {
-    try {
-      const container = document.getElementById(`mochila-slot${slot}`);
-      if (!container) return;
-
-      const pj = await window.getPersonajeBySlot(slot);
-      if (!pj || !pj.inventario) {
-        container.innerHTML = '<em>Sin inventario</em>';
-        return;
-      }
-
-      const objetos  = Array.isArray(pj.inventario.objetos)   ? pj.inventario.objetos   : [];
-      const armaduras= Array.isArray(pj.inventario.armaduras) ? pj.inventario.armaduras : [];
-      const armas    = Array.isArray(pj.inventario.armas)     ? pj.inventario.armas     : [];
-
-      // OBJETOS: Nombre (tooltip Uso), Cantidad, Peso, Traspasar
-      const tblObjs = `
-        <h6 class="mt-2 mb-1">🧰 Objetos</h6>
-        <table class="table table-sm table-dark table-striped">
-          <thead>
-            <tr><th>Nombre</th><th>Cant.</th><th>Peso</th><th></th></tr>
-          </thead>
-          <tbody>
-            ${objetos.map(o => `
-              <tr data-itemid="${o.id||''}" data-cat="obj">
-                <td><span class="tip-obj" data-tippy-content="${esc(o.uso||'')}">${esc(o.nombre||'')}</span></td>
-                <td>${esc(o.cantidad ?? 0)}</td>
-                <td>${esc(o.peso ?? '')}</td>
-               <td class="text-center">
-                  <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                          data-cat="obj" data-id="${o.id||''}" data-slot="${slot}">
-                    ⇄
-                  </button>
-                </td>
-              </tr>`).join('')}
-          </tbody>
-        </table>`;
-
-      // ARMADURAS: Equipado, Armadura (tooltip Especial), Cobertura, Defensa, Durabilidad, Traspasar, Peso
-      const tblArmad = `
-        <h6 class="mt-2 mb-1">🛡️ Armaduras</h6>
-        <table class="table table-sm table-dark table-striped">
-          <thead>
-            <tr><th>Equip.</th><th>Armadura</th><th>Cob.</th><th>Def.</th><th>Durab.</th><th>Peso</th><th>Trasp.</th></tr>
-          </thead>
-          <tbody>
-            ${armaduras.map(a => `
-              <tr data-itemid="${a.id||''}" data-cat="arm">
-                <td><input type="checkbox" disabled ${a.equipado ? 'checked':''}></td>
-                <td><span class="tip-arm" data-tippy-content="${esc(a.especial||'')}">${esc(a.armadura||'')}</span></td>
-                <td>${esc(Array.isArray(a.cobertura)? a.cobertura.join(', '):(a.cobertura||''))}</td>
-                <td>${esc(a.defensa ?? '')}</td>
-                <td>${esc(a.durabilidad ?? '')}</td>
-               
-                <td>${esc(a.peso ?? '')}</td>
-<td class="text-center">
-                  <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                          data-cat="arm" data-id="${a.id||''}" data-slot="${slot}">
-                    ⇄
-                  </button>
-                </td>
-              </tr>`).join('')}
-          </tbody>
-        </table>`;
-
-      // ARMAS: Equipado, Arma (tooltip Especial), Mano, Daño, Trasp., Valor
-      // (Usamos "Ambas" si así está guardado en tus datos)
-      const tblArmas = `
-        <h6 class="mt-2 mb-1">⚔️ Armas</h6>
-        <table class="table table-sm table-dark table-striped">
-          <thead>
-            <tr><th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Peso</th><th>Trasp.</th></tr>
-          </thead>
-          <tbody>
-            ${armas.map(w => `
-              <tr data-itemid="${w.id||''}" data-cat="arma">
-                <td><input type="checkbox" disabled ${w.equipado ? 'checked':''}></td>
-                <td><span class="tip-arma" data-tippy-content="${esc(w.especial||'')}">${esc(w.arma||'')}</span></td>
-                <td>${esc(w.mano || '')}</td>
-                <td>${esc(w.danio || '')}</td>
-               
-                <td>${esc(w.peso ?? 0)}</td>
-<td class="text-center">
-                  <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                          data-cat="arma" data-id="${w.id||''}" data-slot="${slot}">
-                    ⇄
-                  </button>
-                </td>
-              </tr>`).join('')}
-          </tbody>
-        </table>`;
-
-      container.innerHTML = tblObjs + tblArmad + tblArmas;
-
-      // Activa tooltips si Tippy está cargado en la página
-      if (window.tippy) {
-        tippy($$('.tip-obj, .tip-arm, .tip-arma', container), { allowHTML:true, theme:'light-border' });
-      }
-    } catch (err) {
-      console.error('renderInventarioPreview error', err);
-    }
-  };
-
-  // ---------- Hook: al entrar en la sección "mochila" pinto el preview ----------
-  // (El HTML ya llama a showBackSection; aquí escuchamos el click del botón frontal)
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.flip-to');
-    if (!btn || btn.dataset.section !== 'mochila') return;
-    const card = btn.closest('.flip-card');
-    if (!card) return;
-    const slot = parseInt(card.id.replace('slot',''), 10);
-    if (!Number.isInteger(slot)) return;
-    // Pequeño defer para asegurar que el contenedor está visible
-    setTimeout(() => window.renderInventarioPreview(slot), 0);
-  });
-
-  // ---------- Delegación: botón "Traspasar" del preview ----------
-  document.addEventListener('click', async (ev) => {
-    const btn = ev.target.closest('.slot-traspasar');
-    if (!btn) return;
-    ev.preventDefault();
-
-    const cat  = btn.dataset.cat;             // 'obj' | 'arm' | 'arma'
-    const id   = Number(btn.dataset.id);      // id del elemento
-    const slot = Number(btn.dataset.slot);    // slot origen
-
-    const src = await window.getPersonajeBySlot(slot);
-    if (!src || !src.inventario) return;
-
-    // Cargar posibles destinos (otros slots con personaje)
-    const asignaciones = await new Promise((resolve) => {
-      try {
-        const tx = db.transaction('slots','readonly');
-        const st = tx.objectStore('slots');
-        const req = st.getAll();
-        req.onsuccess = e => resolve(e.target.result || []);
-        req.onerror   = () => resolve([]);
-      } catch (_) { resolve([]); }
-    });
-
-    const opciones = {};
-    for (const a of asignaciones) {
-      if (!a || a.slot === slot) continue;
-      try {
-        const p = await window.getPersonajeBySlot(a.slot);
-        if (p) opciones[a.slot] = `${a.slot}: ${p.nombre || 'Sin nombre'}`;
-      } catch(_) {}
-    }
-    if (Object.keys(opciones).length === 0) { alert('No hay otro slot con personaje para traspasar.'); return; }
-
-    let destino = null;
-    if (window.Swal?.fire) {
-      const { value } = await Swal.fire({
-        title: 'Traspasar a…',
-        input: 'select',
-        inputOptions: opciones,
-        inputPlaceholder: 'Selecciona slot destino',
-        showCancelButton: true,
-        confirmButtonText: 'Traspasar'
-      });
-      destino = value ? Number(value) : null;
-    } else {
-      const val = prompt('¿A qué slot traspasar? (' + Object.keys(opciones).join(', ') + ')');
-      destino = val ? Number(val) : null;
-    }
-    if (!destino || !opciones[destino]) return;
-
-    const dst = await window.getPersonajeBySlot(destino);
-    if (!dst) { alert('Destino inválido'); return; }
-    if (!dst.inventario) dst.inventario = { objetos: [], armaduras: [], armas: [] };
-
-    const move = (arrSrc, arrDst) => {
-      const i = arrSrc.findIndex(x => x.id === id);
-      if (i < 0) return false;
-      arrDst.push(arrSrc[i]);
-      arrSrc.splice(i, 1);
-      return true;
-    };
-
-    let ok = false;
-    if (cat === 'obj') ok = move(src.inventario.objetos,   dst.inventario.objetos);
-    else if (cat === 'arm') ok = move(src.inventario.armaduras, dst.inventario.armaduras);
-    else if (cat === 'arma') ok = move(src.inventario.armas,     dst.inventario.armas);
-
-    if (!ok) { alert('No se encontró el elemento.'); return; }
-
-    await window.savePersonaje(src);
-    await window.savePersonaje(dst);
-
-    // Refresca preview de ambos slots
-    if (typeof window.renderInventarioPreview === 'function') {
-      window.renderInventarioPreview(slot);
-      window.renderInventarioPreview(destino);
-    }
-  });
-
-})(); // ← IIFE aislado (no contamina el popup)

@@ -680,7 +680,15 @@ window.renderInventarioLists = function (personaje) {
   const esc = (s) => (s==null ? '' : String(s).replace(/[&<>"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])));
 
   // ---------- Render del PREVIEW debajo del botón ----------
-  window.renderInventarioPreview = async function(slot) {
+ /* ==== PATCH: Preview Inventario — Añadir "Valor" en Objetos (append-only) ==== */
+(function () {
+  if (typeof window.renderInventarioPreview !== 'function') return;
+
+  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+  const esc = (s) => (s==null ? '' : String(s).replace(/[&<>"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])));
+
+  // Versión que solo cambia la tabla de OBJETOS para añadir "Valor"
+  const renderInventarioPreviewConValor = async function(slot) {
     try {
       const container = document.getElementById(`mochila-slot${slot}`);
       if (!container) return;
@@ -691,16 +699,16 @@ window.renderInventarioLists = function (personaje) {
         return;
       }
 
-      const objetos  = Array.isArray(pj.inventario.objetos)   ? pj.inventario.objetos   : [];
-      const armaduras= Array.isArray(pj.inventario.armaduras) ? pj.inventario.armaduras : [];
-      const armas    = Array.isArray(pj.inventario.armas)     ? pj.inventario.armas     : [];
+      const objetos   = Array.isArray(pj.inventario.objetos)   ? pj.inventario.objetos   : [];
+      const armaduras = Array.isArray(pj.inventario.armaduras) ? pj.inventario.armaduras : [];
+      const armas     = Array.isArray(pj.inventario.armas)     ? pj.inventario.armas     : [];
 
-      // OBJETOS: Nombre (tooltip Uso), Cantidad, Peso, Traspasar
+      // OBJETOS: + Valor
       const tblObjs = `
         <h6 class="mt-2 mb-1">🧰 Objetos</h6>
         <table class="table table-sm table-dark table-striped">
           <thead>
-            <tr><th>Nombre</th><th>Cant.</th><th>Peso</th><th></th></tr>
+            <tr><th>Nombre</th><th>Cant.</th><th>Peso</th><th>Valor</th><th></th></tr>
           </thead>
           <tbody>
             ${objetos.map(o => `
@@ -708,7 +716,8 @@ window.renderInventarioLists = function (personaje) {
                 <td><span class="tip-obj" data-tippy-content="${esc(o.uso||'')}">${esc(o.nombre||'')}</span></td>
                 <td>${esc(o.cantidad ?? 0)}</td>
                 <td>${esc(o.peso ?? '')}</td>
-               <td class="text-center">
+                <td>${esc(o.valor ?? 0)}</td>
+                <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="obj" data-id="${o.id||''}" data-slot="${slot}">
                     ⇄
@@ -718,12 +727,12 @@ window.renderInventarioLists = function (personaje) {
           </tbody>
         </table>`;
 
-      // ARMADURAS: Equipado, Armadura (tooltip Especial), Cobertura, Defensa, Durabilidad, Traspasar, Peso
+      // ARMADURAS (sin cambios)
       const tblArmad = `
         <h6 class="mt-2 mb-1">🛡️ Armaduras</h6>
         <table class="table table-sm table-dark table-striped">
           <thead>
-            <tr><th>Equip.</th><th>Armadura</th><th>Cob.</th><th>Def.</th><th>Durab.</th><th>Peso</th><th>Trasp.</th></tr>
+            <tr><th>Equip.</th><th>Armadura</th><th>Cob.</th><th>Def.</th><th>Durab.</th><th>Traspasar</th><th>Peso</th></tr>
           </thead>
           <tbody>
             ${armaduras.map(a => `
@@ -733,25 +742,23 @@ window.renderInventarioLists = function (personaje) {
                 <td>${esc(Array.isArray(a.cobertura)? a.cobertura.join(', '):(a.cobertura||''))}</td>
                 <td>${esc(a.defensa ?? '')}</td>
                 <td>${esc(a.durabilidad ?? '')}</td>
-               
-                <td>${esc(a.peso ?? '')}</td>
-<td class="text-center">
+                <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="arm" data-id="${a.id||''}" data-slot="${slot}">
                     ⇄
                   </button>
                 </td>
+                <td>${esc(a.peso ?? '')}</td>
               </tr>`).join('')}
           </tbody>
         </table>`;
 
-      // ARMAS: Equipado, Arma (tooltip Especial), Mano, Daño, Trasp., Valor
-      // (Usamos "Ambas" si así está guardado en tus datos)
+      // ARMAS (sin cambios)
       const tblArmas = `
         <h6 class="mt-2 mb-1">⚔️ Armas</h6>
         <table class="table table-sm table-dark table-striped">
           <thead>
-            <tr><th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Peso</th><th>Trasp.</th></tr>
+            <tr><th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Traspasar</th><th>Valor</th></tr>
           </thead>
           <tbody>
             ${armas.map(w => `
@@ -760,29 +767,30 @@ window.renderInventarioLists = function (personaje) {
                 <td><span class="tip-arma" data-tippy-content="${esc(w.especial||'')}">${esc(w.arma||'')}</span></td>
                 <td>${esc(w.mano || '')}</td>
                 <td>${esc(w.danio || '')}</td>
-               
-                <td>${esc(w.peso ?? 0)}</td>
-<td class="text-center">
+                <td class="text-end">
                   <button class="btn btn-sm btn-outline-warning slot-traspasar"
                           data-cat="arma" data-id="${w.id||''}" data-slot="${slot}">
                     ⇄
                   </button>
                 </td>
+                <td>${esc(w.valor ?? 0)}</td>
               </tr>`).join('')}
           </tbody>
         </table>`;
 
       container.innerHTML = tblObjs + tblArmad + tblArmas;
 
-      // Activa tooltips si Tippy está cargado en la página
       if (window.tippy) {
         tippy($$('.tip-obj, .tip-arm, .tip-arma', container), { allowHTML:true, theme:'light-border' });
       }
     } catch (err) {
-      console.error('renderInventarioPreview error', err);
+      console.error('renderInventarioPreview (Valor objetos) error', err);
     }
   };
 
+  // Reemplaza la implementación manteniendo la misma API
+  window.renderInventarioPreview = renderInventarioPreviewConValor;
+})();
   // ---------- Hook: al entrar en la sección "mochila" pinto el preview ----------
   // (El HTML ya llama a showBackSection; aquí escuchamos el click del botón frontal)
   document.addEventListener('click', (e) => {

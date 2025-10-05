@@ -1392,7 +1392,7 @@
         }
 
         // ✅ NUEVA: muestra una sección de la cara trasera y oculta el resto
-        function showBackSection(slot, section) {
+       function showBackSection(slot, section) {
             const map = {
                 notas: `backNotas${slot}`,
                 equip: `backEquip${slot}`,
@@ -1408,15 +1408,32 @@
             const target = document.getElementById(targetId);
             if (target) target.style.display = "";
 
-            // 👉 nuevo: cuando entramos en "mochila", pintamos los listados
-            if (section === "mochila" && window.renderInventarioPreview) {
-                window.renderInventarioPreview(slot);
-            }
+            // Al entrar en Mochila, pintamos preview
+            if (section === "mochila" && window.renderInventarioPreview) { try { window.renderInventarioPreview(slot); } catch(_){} }
         }
 
 
 
     </script>
+    <script>
+function cargarEnSlot(slot, id) {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.get(id).onsuccess = e => {
+                const p = e.target.result;
+                if (p) {
+                    document.getElementById(`nombre${slot}`).value = p.nombre;
+
+                    // Selects de raza/profesión
+                    // ...
+                    // (contenido existente sin cambios)
+
+                    // Render preview de inventario en la sección Mochila
+                    if (window.renderInventarioPreview) { try { window.renderInventarioPreview(slot); } catch (_) {} }
+                }
+            };
+        }
+</script>
     <script src="Hoja_Personajes_Inventario.js"></script>
     <!-- JS de Quill -->
 </body>

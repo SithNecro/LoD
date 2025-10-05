@@ -1407,16 +1407,30 @@
             const targetId = map[section];
             const target = document.getElementById(targetId);
             if (target) target.style.display = "";
-
-            // 👉 nuevo: cuando entramos en "mochila", pintamos los listados
-            if (section === "mochila" && window.renderInventarioPreview) {
-                window.renderInventarioPreview(slot);
-            }
         }
 
 
 
     </script>
+    <script>
+function cargarEnSlot(slot, id) {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.get(id).onsuccess = e => {
+                const p = e.target.result;
+                if (p) {
+                    document.getElementById(`nombre${slot}`).value = p.nombre;
+
+                    // Selects de raza/profesión
+                    // ...
+                    // (contenido existente sin cambios)
+
+                    // Render preview de inventario en la sección Mochila
+                    if (window.renderInventarioPreview) { try { window.renderInventarioPreview(slot); } catch (_) {} }
+                }
+            };
+        }
+</script>
     <script src="Hoja_Personajes_Inventario.js"></script>
     <!-- JS de Quill -->
 </body>

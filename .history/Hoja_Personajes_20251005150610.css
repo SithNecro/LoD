@@ -488,3 +488,8 @@ th ,td{
             /* 👈 forzado */
             border-radius: 8px;
 }
+/* ===== Inventario: preview compacto en la cara trasera ===== */
+.inv-preview h6 { margin: 6px 0; }
+.inv-preview table { margin-bottom: 6px; }
+.inv-preview th, .inv-preview td { white-space: nowrap; }
+.inv-preview .table-dark { --bs-table-bg: rgba(35,35,35,.6); --bs-table-color: #d4af37; }
