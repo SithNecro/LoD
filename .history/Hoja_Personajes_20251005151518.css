@@ -223,7 +223,7 @@
 
 
 
-       .flip-btn, .flip-to {
+       .flip-btn {
     border: 2px solid #8B4513 !important;
     right: 8px;
     z-index: 10;
