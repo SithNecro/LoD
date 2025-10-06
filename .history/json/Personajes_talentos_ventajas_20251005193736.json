@@ -17,18 +17,6 @@
             "Efecto": "El héroe lanza un grito de guerra dándole a otro la posibilidad de actuar de inmediato. Usa esta ventaja cuando se active el Héroe, y cuando haya terminado su turno saca una ficha de héroe del saco y activa a otro héroe en LDV gracias al grito de guerra."
         }
     ],
-    "Ventajas de Caballero": [
-        {
-            "Nombre": "Desafío",
-            "Efecto": "Un caballero puede desafiar a un enemigo dentro de 4 casillas. Mientras el enemigo esté vivo, el caballero siempre lo atacará a él, y lo hará con +10HC. El enemigo a cambio siempre intentará atacar al caballero hasta que sea eliminado.<br> <strong>Sólo Caballero. </strong>Si el enemigo no puede alcanzarlo, actuará con normalidad hasta que surja la oportunidad de hacerlo. De ahí en adelante seguirá atacando al caballero."
-        }
-    ],
-     "Ventajas de Druida": [
-        {
-            "Nombre": "Cambiaforma",
-            "Efecto": " el druida puede convertirse en una bestia. Elijo una carta de forma de bestia aprendida, usará las estadísticas de la bestia, con el máximo de VIT. volver a la forma normal cuesta 1PA. al volver a la forma normal perderá 1 VIT por cada 3 que perdió de animal. si de animal cae a 0 VIT volveré inmediatamente a su forma habitual antes de caer inconsciente.<br><strong>Sólo Druida.</strong> la forma durará una batalla o 5 turnos. de bestia no puede usar magia ni equipo, ni esquivar ni parar, usa su RG para evitar los golpes. no hay zonas de impacto."
-        }
-    ],
     "Ventajas Comunes": [
         {
             "Nombre": "Esprintar",
@@ -199,10 +187,6 @@
             "Efecto": "El héroe se mueve ágil y con un equilibro sobrenatural. Tu héroe gana +5 DES."
         },
         {
-            "Nombre": "Resistencia Mágica",
-            "Efecto": "El héroe tiene resistencia natural a la magia. el héroe siempre que se vea afectado por magia negativa, puedes realizar una prueba de DET. si tiene éxito ignora el efecto. si falla, el efecto actúa como de costumbre."
-        },
-        {
             "Nombre": "Fuerte",
             "Efecto": "Las horas ejercitándose dan ahora sus frutos y gana +5 a su estadística Fuerza."
         },
@@ -247,10 +231,6 @@
         {
             "Nombre": "Agarre Fuerte",
             "Efecto": "Dotado con unas manos extraordinariamente fuertes, ganas +10 FUE cuando calcules que clase de arma puedes llevar."
-        },
-          {
-            "Nombre": "Poco Convencional",
-            "Efecto": "El héroe valora la protección por encima de las tradiciones de su profesión. El héroe puede usar una armadura de una clase superior a la permitida por su profesión."
         },
         {
             "Nombre": "Ambidiestro",
@@ -425,30 +405,6 @@
         {
             "Nombre": "Superviviente",
             "Efecto": "Este talento permite al héroe rebuscar una ración de cualquier enemigo de tipo Bestia (en mazmorra o tras una escaramuza), siempre que se tenga éxito en una tirada de Supervivencia."
-        },
-         {
-            "Nombre": "Prospector",
-            "Efecto": "El héroe es muy hábil identificando objetos preciosos.<br> el héroe añade +20 SAB cuando tira para identificar un nodo. si el nodo puede indicado por un héroe con este talento, el grupo puede volver a tirar la cantidad de objetos de valor encontrados."
-        },
-         {
-            "Nombre": "Peletero",
-            "Efecto": "El héroe puede fabricar armaduras improvisadas de piel de animal.<br> la armadura improvisada puede ser utilizada por cualquier profesión. puedes fabricar las piezas siguientes: gorro de piel; chaleco de piel; casaca de piel; pantalones de piel; abrigo de piel.<br> fabricar la requiere 3 descansos (en mazmorras, Posadas o mientras viajas)."
-        },
-         {
-            "Nombre": "Minero",
-            "Efecto": "El héroe tiene mucha experiencia tras tantos años pasados en las minas.<br> cada vez que el héroe intenta extraer objetos de valor, puedes repetir el test de FUE."
-        },
-         {
-            "Nombre": "Herrero de Mithril",
-            "Efecto": "El héroe aprendió este talento en un asentamiento enano.<br> el héroe al subir de nivel en un asentamiento en algo y pagando 400 monedas, puede aprender a forjar Mithril desde ese momento."
-        },
-         {
-            "Nombre": "Herrero",
-            "Efecto": "El héroe puede usar los materiales encontrados para crear armas y armaduras.<br> el héroe puede crear armaduras con hierro y mithril ( con su talento correspondiente), y puede crear armas con cualquier metal. puede usar una pepita de hierro para convertir una pieza de armadura de cuero en una pieza de armadura de cuero con tachuelas. los artículos conservarán el efecto del material utilizado. solo puede fabricar o modificar una pieza por jornada.<strong> requiere acceso a una herrería</strong>."
-        },
-         {
-            "Nombre": "Combate Montado",
-            "Efecto": " el héroe es un experto jinete lo que le permite combatir desde la silla de montar. este talento permite al héroe luchar cuando va montado a caballo."
         }
     ],
     "Talentos Mágicos": [
@@ -508,10 +464,6 @@
     "Talentos de Sigilo": [
         {
             "Nombre": "Ágil",
-            "Efecto": " el héroe es asombrosamente letal cuando ataca por la espalda. el héroe obtiene una bonificación de 1d6 DAÑ adicional cuando ataca por la espalda."
-        },
-         {
-            "Nombre": "Asesino Nato",
             "Efecto": "El héroe puede esquivar dos veces por batalla en vez de una."
         },
         {
@@ -569,10 +521,6 @@
             "Efecto": "Tu héroe es completamente inmune a los efectos de Miedo, y el Terror actúa como Miedo. Este talento requiere que el héroe tenga el talento Valeroso."
         },
         {
-            "Nombre": "Fuerte de Mente",
-            "Efecto": " la mente del euro no es tan frágil como la del resto. el héroe comienza con +2 puntos de cordura, incrementando así su máximo anterior."
-        },
-        {
             "Nombre": "Mente Fría",
             "Efecto": "Al héroe le afectan menos los horrores que encontráis en la mazmorra. +1 punto de Cordura."
         },
@@ -592,24 +540,5 @@
             "Nombre": "Valeroso",
             "Efecto": "Eres más valiente que nadie. +10 a tiradas de Miedo y Terror."
         }
-    ],
-      "Talentos de Caballero": [
-        {
-            "Nombre": "Caballeroso",
-            "Efecto": "El héroe es aquel cuya nobleza brilla en cada gesto, donde la cortesía y el honor valen más que su vida.<br> cualquier misión que obliga al héroe a rescatar a alguien ( tanto misiones normales como secundarias) activará una bonificación de +30 DET ( desde el momento en que se afecta ha....ecibe la recompensa o la misión falla)."
-        }
-    ],
-      "Talentos de Pato": [
-        {
-            "Nombre": "Nadador Nato",
-            "Efecto": "El héroe ignora todos los efectos nehativos del agua y se mueve en ella con normalidad."
-        }
-    ],
-      "Talentos de Semiogro": [
-        {
-            "Nombre": "Imbécil",
-            "Efecto": "El héroe durante las batallas debe tirar 1d6 cada turno.<br> Con un 6, el héroe queda inactivo ese turno. Si está en estado Frenesí nose hace la tirada."
-        }
     ]
-
 }

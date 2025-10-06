@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Héroes</title>
+    <!-- CSS de Quill -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="menu-acordeon.css">
+    <link rel="stylesheet" href="Hoja_Personajes.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Popper.js requerido por Tippy -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Tippy.js -->
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+</head>
+
+<body class="bg-dark">
+    <!--<div class="menu">
+        <iframe src="menu.html" frameborder="0" class="menu-frame"></iframe>
+        <button id="toggleMenu">☰</button>
+    </div>-->
+
+    <div class="container" style="max-width:100%;">
+
+
+
+        <!-- Panel de 4 héroes -->
+        <div class="row" id="heroSlots"></div>
+        <button type="button" class="btn btn-outline-danger mb-2" onclick="limpiarSlotPrompt()">
+            Limpiar Slot
+        </button>
+        <h2 class="mb-3 mt-4">Lista de héroes guardados</h2>
+        <div id="lista" class="row gy-3"></div>
+    </div>
+    <div class="d-flex gap-2 mb-3">
+        <button onclick="verSlots()" class="btn btn-info">Ver Slots</button>
+        <button id="exportar" class="btn btn-success">Exportar a JSON</button>
+        <button id="btnImportar" class="btn btn-secondary">Importar JSON</button>
+        <input type="file" id="importar" accept="application/json" class="d-none">
+        <button class="btn btn-secondary w-100 mb-1" onclick="nuevoHeroeSlot()">Nuevo Héroe</button>
+
+    </div>
+    <script>
+        let db;
+        let cambiosPendientes = { 1: false, 2: false, 3: false, 4: false };
+        const quills = {};
+
+        const baseActualIds = [
+            "Nivel", "Suerte", "Energía", "Vida", "hc", "hd",
+            "esquiva", "fcerrad", "trueque", "curar", "alquimia",
+            "plegaria", "aArcanas", "percep", "superviv", "cordura", "peso", "mana", "bd", "an", "m"
+        ];
+        const especiales = ["Nivel", "Suerte", "Energía"]; // 👈 atributos solo con base
+        const atributosBase = ["FUE", "DES", "CON", "SAB", "DET",];
+
+        // Inicializar IndexedDB
+        const request = indexedDB.open("PersonajesDB", 2);
+        request.onupgradeneeded = e => {
+            db = e.target.result;
+            if (!db.objectStoreNames.contains("personajes")) {
+                db.createObjectStore("personajes", { keyPath: "id", autoIncrement: true });
+            }
+            if (!db.objectStoreNames.contains("slots")) {
+                db.createObjectStore("slots", { keyPath: "slot" });
+            }
+        };
+        request.onsuccess = e => {
+            db = e.target.result;
+            generarSlots();
+            mostrarPersonajes();
+            restaurarSlots();
+        };
+
+        // ✅ MODIFICADA: ahora añade los 3 botones nuevos y secciones en la cara trasera
+        // ✅ MODIFICADA: añade botón "Editar" en la sección Mochila (inventario)
+        function generarSlots() {
+            const container = document.getElementById("heroSlots");
+            container.innerHTML = "";
+
+            for (let i = 1; i <= 4; i++) {
+                const col = document.createElement("div");
+                col.className = "col-12 col-sm-6 col-lg-3 mb-3";
+
+                col.innerHTML = `
+      <div class="flip-card" id="slot${i}">
+        <div class="flip-card-inner">
+          <!-- FRONT -->
+          <div class="flip-card-front p-3 shadow-sm hero-card">
+            <div class="d-flex align-items-center mb-1" style="gap:10px;">
+              <img id="thumb${i}" alt="Miniatura" style="width:50px;height:50px;object-fit:cover;border-radius:6px;display:none;">
+              <button class="btn btn-sm btn-dark flip-to" data-section="notas" title="Ir a Notas">📝</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="equip" title="Equipamiento">⚔️</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="mochila" title="Mochila / Inventario">🎒</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="talentos" title="Talentos y Ventajas">⭐</button>
+            </div>
+
+            <h5 class="hero-card-title" id="nombreSlotDisplay${i}">Héroe ${i}</h5>
+
+            <!-- Nombre -->
+            <input type="text" placeholder="🪪 Nombre" class="form-control mb-2" id="nombre${i}">
+
+            <!-- ATRIBUTOS -->
+            <div class="row g-2 mb-2" id="atributos${i}"></div>
+
+            <!-- Raza / Profesión (inputs; luego los convierte initRazaProfesionSelects) -->
+            <div class="row g-2 mb-2">
+              <div class="col-6">
+                <input type="text" placeholder="🧬 Raza" class="form-control" id="raza${i}">
+              </div>
+              <div class="col-6">
+                <input type="text" placeholder="⚒️ Profesión" class="form-control" id="profesion${i}">
+              </div>
+            </div>
+
+            <!-- Imagen -->
+            <img src="img/Monstruos/imagenes/Default.png" alt="👤" class="img-preview d-block mx-auto mb-2" id="preview${i}">
+            <input type="file" accept="image/*" class="form-control mb-2" id="imagen${i}">
+
+            <!-- Guardar -->
+            <button class="btn btn-primary w-100" onclick="guardarSlot(${i})">Guardar Slot</button>
+          </div>
+
+          <!-- BACK -->
+          <div class="flip-card-back p-3 shadow-sm hero-card">
+            <div class="d-flex align-items-center mb-1" style="gap:10px;">
+              <img id="thumb${i}-back" alt="Miniatura" style="width:50px;height:50px;object-fit:cover;border-radius:6px;display:none;">
+              <button class="btn btn-sm btn-dark flip-btn" title="Volver a la ficha">🧑</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="notas" title="Ir a Notas">📝</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="equip" title="Equipamiento">⚔️</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="mochila" title="Mochila / Inventario">🎒</button>
+              <button class="btn btn-sm btn-dark flip-to" data-section="talentos" title="Talentos y Ventajas">⭐</button>
+            </div>
+
+            <div id="backNotas${i}" class="back-section">
+              <h5>Notas</h5>
+              <div id="notas-slot${i}" class="notas-quill"></div>
+            </div>
+
+            <div id="backEquip${i}" class="back-section" style="display:none;">
+              <h5>⚔️ Equipamiento</h5>
+              <div id="equipamiento-slot${i}" class="small text-muted">[Aquí irá el equipamiento del personaje]</div>
+            </div>
+
+            <div id="backMochila${i}" class="back-section" style="display:none;">
+              <div class="d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">🎒 Inventario</h5>
+                
+              </div>
+               <div class="mt-2 text-center">
+   <button type="button" class="btn btn-sm btn-primary inv-edit-btn" data-slot="${i}">
+  Abrir Inventario
+</button>
+  </div>
+              <div id="mochila-slot${i}" class="small text-muted mt-2">[Resumen/preview del inventario]</div>
+            </div>
+
+            <div id="backTalentos${i}" class="back-section" style="display:none;">
+              <h5>⭐ Talentos y Ventajas</h5>
+              <div id="talentos-slot${i}" class="small text-muted">[Aquí irán talentos y ventajas]</div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+                container.appendChild(col);
+
+                // === NOTAS (Quill) ===
+                quills[i] = new Quill(`#notas-slot${i}`, {
+                    theme: 'snow',
+                    placeholder: 'Escribe tus NOTAS aquí...',
+                    modules: {
+                        toolbar: [
+                            ['bold', 'italic', 'underline'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            ['link', 'image']
+                        ]
+                    }
+                });
+                quills[i].on('text-change', () => { guardarSlotAuto(i); });
+
+                // === ATRIBUTOS PINTADOS A MANO (con iconos) ===
+                const attr = document.getElementById(`atributos${i}`);
+
+                // BD / AN / M (solo base)
+                attr.innerHTML += `
+          <div class="col-12 mb-1">
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <label class="form-label">⚔️ BD</label>
+                <input type="number" id="bd_base${i}" class="form-control" placeholder="Base">
+              </div>
+              <div class="col-4">
+                <label class="form-label">🛡️ AN</label>
+                <input type="number" id="an_base${i}" class="form-control" placeholder="Base">
+              </div>
+              <div class="col-4">
+                <label class="form-label">🏃 Mov</label>
+                <input type="number" id="m_base${i}" class="form-control" placeholder="Base">
+              </div>
+            </div>
+          </div>`;
+
+                // FUE/DES/CON/SAB/DET (solo base)
+                attr.innerHTML += `
+          <div class="col-12 mb-2">
+            <div class="d-flex justify-content-center text-center gap-2">
+              ${atributosBase.map(attrId => `
+                <div class="flex-fill">
+                  <label class="form-label">${attrId.toUpperCase()}</label>
+                  <input type="number" id="${attrId}_base${i}" class="form-control text-center" placeholder="${attrId.toUpperCase()}">
+                </div>
+              `).join('')}
+            </div>
+          </div>`;
+
+                // Vida / Maná / Cordura
+                attr.innerHTML += `
+          <div class="col-12 mb-1">
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <label class="form-label"> 🩸Vida</label>
+                <div class="input-group">
+                  <input type="number" id="Vida_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="Vida_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🔮 Maná</label>
+                <div class="input-group">
+                  <input type="number" id="mana_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="mana_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🧠 Cor</label>
+                <div class="input-group">
+                  <input type="number" id="cordura_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="cordura_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+            </div>
+          </div>`;
+
+                // HC / HD / Esquiva
+                attr.innerHTML += `
+          <div class="col-12 mb-1">
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <label class="form-label">⚔️ HC</label>
+                <div class="input-group">
+                  <input type="number" id="hc_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="hc_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🏹 HD</label>
+                <div class="input-group">
+                  <input type="number" id="hd_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="hd_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🤸 Esq</label>
+                <div class="input-group">
+                  <input type="number" id="esquiva_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="esquiva_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+            </div>
+          </div>`;
+
+                // Percepción / Supervivencia / F. Cerraduras
+                attr.innerHTML += `
+          <div class="col-12 mb-1">
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <label class="form-label">👁️ Per</label>
+                <div class="input-group">
+                  <input type="number" id="percep_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="percep_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🌲 Sup</label>
+                <div class="input-group">
+                  <input type="number" id="superviv_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="superviv_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🗝️ FC</label>
+                <div class="input-group">
+                  <input type="number" id="fcerrad_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="fcerrad_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+            </div>
+          </div>`;
+
+                // A. Arcanas / Curar / Plegarias
+                attr.innerHTML += `
+          <div class="col-12 mb-1">
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <label class="form-label">🔮 AA</label>
+                <div class="input-group">
+                  <input type="number" id="aArcanas_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="aArcanas_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🩹 Cur</label>
+                <div class="input-group">
+                  <input type="number" id="curar_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="curar_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🙏 Pleg</label>
+                <div class="input-group">
+                  <input type="number" id="plegaria_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="plegaria_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+            </div>
+          </div>`;
+
+                // Trueque / Alquimia / Peso (al final)
+                attr.innerHTML += `
+          <div class="col-12 mb-1">
+            <div class="row g-2 text-center">
+              <div class="col-4">
+                <label class="form-label">💱 True</label>
+                <div class="input-group">
+                  <input type="number" id="trueque_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="trueque_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">⚗️ Alq</label>
+                <div class="input-group">
+                  <input type="number" id="alquimia_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="alquimia_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+              <div class="col-4">
+                <label class="form-label">🎒 Peso</label>
+                <div class="input-group">
+                  <input type="number" id="peso_base${i}" class="form-control" placeholder="Base">
+                  <input type="number" id="peso_actual${i}" class="form-control" placeholder="Actual">
+                </div>
+              </div>
+            </div>
+          </div>`;
+
+                // Auto-guardado y listeners
+                activarAutoGuardadoSlot(i);
+            }
+        }
+
+
+
+        function obtenerAtributosSlot(slot) {
+            const getNum = (id) => {
+                const el = document.getElementById(id);
+                return el && el.value !== "" ? parseInt(el.value, 10) : 0;
+            };
+
+            // Solo base
+            const baseSoloEspeciales = ["bd", "an", "m"];
+            // Base + Actual (los que pintas a mano)
+            const baseMasActual = [
+                "Vida", "mana", "cordura",
+                "hc", "hd", "esquiva",
+                "percep", "superviv", "fcerrad",
+                "aArcanas", "curar", "plegaria",
+                "trueque", "alquimia", "peso"
+            ];
+
+            let atributos = {};
+
+            // Especiales solo base (bd, an, m)
+            baseSoloEspeciales.forEach(id => {
+                atributos[id] = { base: getNum(`${id}_base${slot}`) };
+            });
+
+            // Atributos base FUE/DES/CON/SAB/DET (solo base)
+            atributosBase.forEach(id => {
+                atributos[id] = { base: getNum(`${id}_base${slot}`) };
+            });
+
+            // Base + Actual
+            baseMasActual.forEach(id => {
+                atributos[id] = {
+                    base: getNum(`${id}_base${slot}`),
+                    actual: getNum(`${id}_actual${slot}`)
+                };
+            });
+
+            return atributos;
+        }
+        function rellenarAtributosSlot(slot, atributos) {
+            const setVal = (id, val) => {
+                const el = document.getElementById(id);
+                if (el) el.value = (val ?? 0);
+            };
+
+            const baseSoloEspeciales = ["bd", "an", "m"];
+            const baseMasActual = [
+                "Vida", "mana", "cordura",
+                "hc", "hd", "esquiva",
+                "percep", "superviv", "fcerrad",
+                "aArcanas", "curar", "plegaria",
+                "trueque", "alquimia", "peso"
+            ];
+
+            // Especiales solo base
+            baseSoloEspeciales.forEach(id => {
+                if (atributos[id]) setVal(`${id}_base${slot}`, atributos[id].base);
+            });
+
+            // Atributos base FUE/DES/CON/SAB/DET
+            atributosBase.forEach(id => {
+                if (atributos[id]) setVal(`${id}_base${slot}`, atributos[id].base);
+            });
+
+            // Base + Actual
+            baseMasActual.forEach(id => {
+                if (atributos[id]) {
+                    setVal(`${id}_base${slot}`, atributos[id].base);
+                    setVal(`${id}_actual${slot}`, atributos[id].actual);
+                }
+            });
+        }
+
+        // Guardar un slot en IndexedDB
+        function guardarSlot(slot) {
+            const nombre = document.getElementById(`nombre${slot}`).value.trim();
+            const raza = document.getElementById(`raza${slot}`).value.trim();
+            const profesion = document.getElementById(`profesion${slot}`).value.trim();
+            const imagen = document.getElementById(`preview${slot}`).src;
+            const atributos = obtenerAtributosSlot(slot);
+            const notas = quills[slot].root.innerHTML;
+
+            if (!nombre) { alert("Completa todos los campos"); return; }
+
+            const tx = db.transaction("personajes", "readwrite");
+            const store = tx.objectStore("personajes");
+            let actualizado = false;
+            store.openCursor().onsuccess = e => {
+                const cursor = e.target.result;
+                if (cursor) {
+                    if (cursor.value.nombre === nombre) {
+                        const p = cursor.value;
+                        p.raza = raza; p.profesion = profesion; p.imagen = imagen; p.atributos = atributos;
+                        const reqUpdate = cursor.update(p);
+                        reqUpdate.onsuccess = () => asignarPersonajeASlot(slot, p.id);
+                        actualizado = true;
+                        cambiosPendientes[slot] = false;
+                        mostrarPersonajes();
+                    } else cursor.continue();
+                } else {
+                    if (!actualizado) {
+                        const reqAdd = store.add({ nombre, raza, profesion, imagen, atributos, notas });
+                        reqAdd.onsuccess = e => {
+                            asignarPersonajeASlot(slot, e.target.result);
+                        };
+                        cambiosPendientes[slot] = false;
+                        mostrarPersonajes();
+                    }
+                }
+            };
+
+            // 🔹 Actualizar display
+            const display = document.getElementById(`nombreSlotDisplay${slot}`);
+            if (display) display.textContent = nombre;
+        }
+        //Cuando pulsas el botón Cargar de un héroe en un slot, además de rellenar el formulario, guardamos esa asignación en la tabla slots.
+        function asignarPersonajeASlot(slot, personajeId) {
+            const tx = db.transaction("slots", "readwrite");
+            const store = tx.objectStore("slots");
+            store.put({ slot, personajeId });
+        }
+        //Cuando se abre la página, hacemos una lectura de la tabla slots y cargamos automáticamente cada personaje en su formulario correspondiente:
+        function restaurarSlots() {
+            const tx = db.transaction("slots", "readonly");
+            const store = tx.objectStore("slots");
+            store.getAll().onsuccess = e => {
+                e.target.result.forEach(asignacion => {
+                    cargarEnSlot(asignacion.slot, asignacion.personajeId);
+                });
+            };
+        }
+
+
+
+        // ✅ Validar nombre duplicado en slot vacío y guardar si procede
+        function validarNombreYGuardar(slot) {
+            const input = document.getElementById(`nombre${slot}`);
+            const nombre = input.value.trim();
+
+            // Consultar si este slot ya tiene personaje asignado
+            const tx = db.transaction("slots", "readonly");
+            const store = tx.objectStore("slots");
+            store.get(slot).onsuccess = ev => {
+                const asignacion = ev.target.result;
+
+                // Si el slot está asignado, seguimos con el guardado normal
+                if (asignacion) {
+                    guardarSlotAuto(slot);
+                    return;
+                }
+
+                // Slot vacío: si no hay nombre, no hacemos nada
+                if (!nombre) return;
+
+                // Comparar con otros slots en pantalla (case-insensitive)
+                for (let j = 1; j <= 4; j++) {
+                    if (j === slot) continue;
+                    const otro = (document.getElementById(`nombre${j}`).value || "").trim();
+                    if (otro && otro.toLowerCase() === nombre.toLowerCase()) {
+                        // Duplicado encontrado en otro slot
+                        input.value = "";
+                        alert("Ya existe ese nombre cargado en otro slot.");
+                        input.focus();
+                        return;
+                    }
+                }
+
+                // No hay duplicado → guardar normalmente
+                guardarSlotAuto(slot);
+            };
+        }
+
+        // Auto-guardar al perder foco o Enter
+        // Activar auto-guardado al perder foco o Enter por slot
+        function activarAutoGuardadoSlot(slot) {
+            const baseOnly = new Set(["bd", "an", "m"]); // solo Base
+
+            const campos = ["nombre", "raza", "profesion"];
+            campos.forEach(id => {
+                const input = document.getElementById(`${id}${slot}`);
+                if (id === "nombre") {
+                    input.addEventListener("blur", () => { validarNombreYGuardar(slot); });
+                    input.addEventListener("keydown", e => {
+                        if (e.key === "Enter") { e.preventDefault(); validarNombreYGuardar(slot); }
+                    });
+                } else {
+                    input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                    input.addEventListener("keydown", e => {
+                        if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                    });
+                }
+            });
+
+            // baseActualIds
+            baseActualIds.forEach(id => {
+                if (especiales.includes(id) || baseOnly.has(id)) {
+                    const input = document.getElementById(`${id}_base${slot}`);
+                    if (input) {
+                        input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                        input.addEventListener("keydown", e => {
+                            if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                        });
+                    }
+                } else {
+                    ["_base", "_actual"].forEach(suf => {
+                        const input = document.getElementById(`${id}${suf}${slot}`);
+                        if (input) {
+                            input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                            input.addEventListener("keydown", e => {
+                                if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                            });
+                        }
+                    });
+                }
+            });
+
+            // Atributos base (FUE, DES, CON, SAB, DET)
+            atributosBase.forEach(attr => {
+                const input = document.getElementById(`${attr}_base${slot}`);
+                if (input) {
+                    input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                    input.addEventListener("keydown", e => {
+                        if (e.key === "Enter") { e.preventDefault(); guardarSlotAuto(slot); }
+                    });
+                }
+            });
+
+            // Imagen
+            const imgInput = document.getElementById(`imagen${slot}`);
+            imgInput.addEventListener("change", e => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        const dataUrl = e.target.result;
+                        document.getElementById(`preview${slot}`).src = dataUrl;
+                        setThumb(slot, dataUrl);
+                        const backThumb = document.getElementById(`thumb${slot}-back`);
+                        if (backThumb) { backThumb.src = dataUrl; backThumb.style.display = "inline-block"; }
+                        guardarSlotAuto(slot);
+                    };
+                    reader.readAsDataURL(file);
+                }
+                // asegurar también los atributos base (FUE, DES, CON, SAB, DET)
+                atributosBase.forEach(attr => {
+                    const input = document.getElementById(`${attr}_base${slot}`);
+                    if (input) {
+                        input.addEventListener("blur", () => { guardarSlotAuto(slot); });
+                        input.addEventListener("keydown", ev => {
+                            if (ev.key === "Enter") { ev.preventDefault(); guardarSlotAuto(slot); }
+                        });
+                    }
+                });
+            });
+        }
+
+        // Guardar slot automáticamente (no limpia campos)
+        // Guardar slot automáticamente (no limpia campos)
+        function guardarSlotAuto(slot) {
+            const nombre = document.getElementById(`nombre${slot}`).value.trim();
+            const raza = document.getElementById(`raza${slot}`).value.trim();
+            const profesion = document.getElementById(`profesion${slot}`).value.trim();
+            const imagen = document.getElementById(`preview${slot}`).src;
+            const atributos = obtenerAtributosSlot(slot);
+            const notas = quills[slot].root.innerHTML;
+
+            const txCheck = db.transaction("slots", "readonly");
+            const storeCheck = txCheck.objectStore("slots");
+            storeCheck.get(slot).onsuccess = e => {
+                const asignacion = e.target.result;
+                if (!asignacion && (!nombre)) return;
+
+                const tx = db.transaction("personajes", "readwrite");
+                const store = tx.objectStore("personajes");
+                let actualizado = false;
+
+                store.openCursor().onsuccess = ev => {
+                    const cursor = ev.target.result;
+                    if (cursor) {
+                        if (cursor.value.nombre === nombre || (asignacion && cursor.value.id === asignacion.personajeId)) {
+                            const p = cursor.value;
+                            p.raza = raza;
+                            p.profesion = profesion;
+                            p.imagen = imagen;
+                            p.atributos = atributos;
+                            p.notas = notas;
+
+                            const reqUpdate = cursor.update(p);
+                            reqUpdate.onsuccess = () => asignarPersonajeASlot(slot, p.id);
+
+                            actualizado = true;
+                            cambiosPendientes[slot] = false;
+                            mostrarPersonajes();
+                        } else cursor.continue();
+                    } else {
+                        if (!actualizado && !asignacion) {
+                            const reqAdd = store.add({ nombre, raza, profesion, imagen, atributos, notas });
+                            reqAdd.onsuccess = ev2 => asignarPersonajeASlot(slot, ev2.target.result);
+                            cambiosPendientes[slot] = false;
+                            mostrarPersonajes();
+                        }
+                    }
+                };
+            };
+
+            // 🔹 Actualizar display
+            const display = document.getElementById(`nombreSlotDisplay${slot}`);
+            if (display) display.textContent = nombre || `Héroe ${slot}`;
+        }
+        // Vaciar slot
+        function nuevoHeroeSlot() {
+            let slot = prompt("¿En qué slot quieres crear el héroe? (1-4)");
+            slot = parseInt(slot);
+            const nombreActual = document.getElementById(`nombre${slot}`).value;
+            if (cambiosPendientes[slot] && nombreActual) {
+                if (confirm(`Tienes cambios sin guardar en el héroe: ${nombreActual}. ¿Deseas guardarlos antes?`)) {
+                    guardarSlot(slot);
+                }
+            }
+
+            document.getElementById(`nombre${slot}`).value = "";
+            document.getElementById(`raza${slot}`).value = "";
+            document.getElementById(`profesion${slot}`).value = "";
+            document.getElementById(`preview${slot}`).src = "";
+            document.getElementById(`imagen${slot}`).value = "";
+
+            baseActualIds.forEach(id => {
+                const b = document.getElementById(`${id}_base${slot}`); if (b) b.value = "";
+                if (!especiales.includes(id)) {
+                    const a = document.getElementById(`${id}_actual${slot}`); if (a) a.value = "";
+                }
+            });
+            atributosBase.forEach(id => { const el = document.getElementById(`${id}_base${slot}`); if (el) el.value = ""; });
+
+            setThumb(slot, "");
+            const backThumb = document.getElementById(`thumb${slot}-back`);
+            if (backThumb) { backThumb.removeAttribute("src"); backThumb.style.display = "none"; }
+
+            cambiosPendientes[slot] = false;
+
+            if (typeof setNombreVisible === "function") setNombreVisible(slot, true);
+
+            // 👇 mostrar controles para poder subir retrato del nuevo
+            setImagenControlesVisibles(slot, true);
+        }
+
+        // Mostrar lista de héroes
+        function mostrarPersonajes() {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.getAll().onsuccess = e => {
+                const lista = document.getElementById("lista");
+                lista.innerHTML = "";
+                e.target.result.forEach(p => {
+                    lista.innerHTML += `
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${p.nombre}</h5>
+                        <p class="card-text">Raza: ${p.raza}<br>Profesión: ${p.profesion}</p>
+                        <img id="cardImg${p.id}" src="${p.imagen || 'img/Monstruos/imagenes/Default.png'}" alt="${p.nombre}" style="width:100px; height:100px; object-fit:cover;" class="img-fluid rounded mb-3">
+                        <div class="d-flex gap-2 mt-auto flex-wrap">
+                            <button class="btn btn-warning" onclick="cargarEnSlotPrompt(${p.id})">Cargar</button>
+                            <button class="btn btn-secondary" onclick="renombrarPersonaje(${p.id})">Renombrar</button>
+                            <button class="btn btn-info" onclick="cambiarRetrato(${p.id})">Cambiar retrato</button>
+                            <button class="btn btn-danger" onclick="eliminarPersonaje(${p.id})">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+                });
+            };
+        }
+
+
+
+        // Comprueba si ya existe un personaje con ese nombre (ignora el id pasado)
+        function nombrePersonajeExiste(nombre, excludeId = null) {
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction("personajes", "readonly");
+                const store = tx.objectStore("personajes");
+                const req = store.getAll();
+                req.onsuccess = e => {
+                    const n = (nombre || "").trim().toLowerCase();
+                    const exists = e.target.result.some(p => {
+                        if (excludeId != null && p.id === excludeId) return false;
+                        return (p.nombre || "").trim().toLowerCase() === n;
+                    });
+                    resolve(exists);
+                };
+                req.onerror = () => reject(req.error);
+            });
+        }
+
+        async function renombrarPersonaje(id) {
+            // Leer personaje actual
+            const p = await new Promise((resolve, reject) => {
+                const tx = db.transaction("personajes", "readonly");
+                const store = tx.objectStore("personajes");
+                const req = store.get(id);
+                req.onsuccess = e => resolve(e.target.result);
+                req.onerror = () => reject(req.error);
+            });
+            if (!p) { alert("No se encontró el personaje."); return; }
+
+            let nuevo = p.nombre;
+            while (true) {
+                nuevo = prompt("Nuevo nombre para el personaje:", nuevo || "");
+                if (nuevo === null) return; // cancelado
+                nuevo = (nuevo || "").trim();
+                if (!nuevo) { alert("El nombre no puede estar vacío."); continue; }
+
+                const yaExiste = await nombrePersonajeExiste(nuevo, id);
+                if (yaExiste) {
+                    alert("Ese nombre ya existe. Introduce otro diferente.");
+                    continue;
+                }
+                break;
+            }
+
+            // Actualizar en IndexedDB
+            await new Promise((resolve, reject) => {
+                const tx = db.transaction("personajes", "readwrite");
+                const store = tx.objectStore("personajes");
+                p.nombre = nuevo;
+                const req = store.put(p);
+                req.onsuccess = () => resolve();
+                req.onerror = () => reject(req.error);
+            });
+
+            // Refrescar listado
+            mostrarPersonajes();
+
+            // Si este personaje está cargado en algún slot, actualizar UI (nombre input + display)
+            try {
+                const asignaciones = await new Promise((resolve, reject) => {
+                    const tx = db.transaction("slots", "readonly");
+                    const store = tx.objectStore("slots");
+                    const req = store.getAll();
+                    req.onsuccess = e => resolve(e.target.result || []);
+                    req.onerror = () => reject(req.error);
+                });
+
+                asignaciones.forEach(a => {
+                    if (a.personajeId === id) {
+                        const slot = a.slot;
+                        const nombreInput = document.getElementById(`nombre${slot}`);
+                        if (nombreInput) nombreInput.value = nuevo;
+
+                        const display = document.getElementById(`nombreSlotDisplay${slot}`);
+                        if (display) display.textContent = nuevo;
+
+                        // si ocultas el input de nombre cuando está cargado, mantenlo oculto:
+                        if (typeof setNombreVisible === "function") setNombreVisible(slot, false);
+                    }
+                });
+            } catch (_) {
+                // si falla leer slots, no es crítico para el renombrado
+            }
+
+            alert("Nombre actualizado correctamente.");
+        }
+
+        // Cargar héroe con prompt de slot
+        function cargarEnSlotPrompt(id) {
+            let slot = prompt("¿En qué slot cargar? (1-4)");
+            slot = parseInt(slot);
+            if (slot >= 1 && slot <= 4) { cargarEnSlot(slot, id); }
+            else alert("Slot inválido");
+        }
+
+
+        // ✅ MODIFICADA: usa selects de Raza/Profesión y mantiene el resto de tu lógica
+        // ✅ REEMPLAZA tu cargarEnSlot por esta (solo cambia el cálculo de tieneRetrato)
+        function cargarEnSlot(slot, id) {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.get(id).onsuccess = e => {
+                const p = e.target.result;
+                if (p) {
+                    document.getElementById(`nombre${slot}`).value = p.nombre;
+
+                    // Selects de raza/profesión
+                    if (typeof setSelectSafely === "function") {
+                        setSelectSafely(slot, 'raza', p.raza || '');
+                        setSelectSafely(slot, 'profesion', p.profesion || '');
+                    } else {
+                        document.getElementById(`raza${slot}`).value = p.raza || "";
+                        document.getElementById(`profesion${slot}`).value = p.profesion || "";
+                    }
+
+                    // Preview principal
+                    const prevEl = document.getElementById(`preview${slot}`);
+                    if (prevEl) prevEl.src = p.imagen || "";
+
+                    rellenarAtributosSlot(slot, p.atributos);
+                    cambiosPendientes[slot] = false;
+                    if (p.notas) { quills[slot].root.innerHTML = p.notas; }
+                    asignarPersonajeASlot(slot, p.id);
+
+                    const display = document.getElementById(`nombreSlotDisplay${slot}`);
+                    if (display) display.textContent = p.nombre || `Héroe ${slot}`;
+
+                    // Miniaturas (front y back)
+                    setThumb(slot, p.imagen || "");
+                    const backThumb = document.getElementById(`thumb${slot}-back`);
+                    if (backThumb) {
+                        if (p.imagen) { backThumb.src = p.imagen; backThumb.style.display = "inline-block"; }
+                        else { backThumb.removeAttribute("src"); backThumb.style.display = "none"; }
+                    }
+
+                    // 👇 Ocultar controles solo si tiene retrato REAL (no el placeholder por defecto)
+                    const DEFAULT_PORTRAIT = 'img/Monstruos/imagenes/Default.png';
+                    const tieneRetrato = !!(p.imagen && p.imagen !== DEFAULT_PORTRAIT);
+                    setImagenControlesVisibles(slot, !tieneRetrato);
+
+                    if (typeof setNombreVisible === "function") setNombreVisible(slot, false);
+                }
+            };
+        }
+
+
+
+        // Eliminar personaje
+        function eliminarPersonaje(id) {
+            if (confirm("¿Eliminar este personaje?")) {
+                const tx = db.transaction("personajes", "readwrite");
+                tx.objectStore("personajes").delete(id);
+                tx.oncomplete = () => mostrarPersonajes();
+            }
+        }
+
+        // Exportar
+        document.getElementById("exportar").addEventListener("click", () => {
+            const tx = db.transaction("personajes", "readonly");
+            const store = tx.objectStore("personajes");
+            store.getAll().onsuccess = e => {
+                const personajes = e.target.result.map(p => {
+                    return {
+                        id: p.id,
+                        nombre: p.nombre,
+                        raza: p.raza,
+                        profesion: p.profesion,
+                        imagen: p.imagen,
+                        atributos: p.atributos,
+                        notas: p.notas,
+                        // ✅ NUEVO: exportar inventario completo (con valores por defecto si faltan)
+                        inventario: p.inventario ?? { objetos: [], armaduras: [], armas: [] },
+                        // ✅ NUEVO: exportar talentos y ventajas (con valores por defecto si faltan)
+                        talentosVentajas: p.talentosVentajas ?? { talentos: [], ventajas: [] }
+
+                    };
+                });
+                const blob = new Blob([JSON.stringify(personajes, null, 2)], { type: "application/json" });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "personajes.json";
+                a.click();
+            };
+        });
+
+
+        // Importar
+        document.getElementById("btnImportar").addEventListener("click", () => document.getElementById("importar").click());
+        document.getElementById("importar").addEventListener("change", e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                try {
+                    const raw = JSON.parse(e.target.result);
+                    // ✅ aceptar array o { personajes: [...] }
+                    const data = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.personajes) ? raw.personajes : []);
+
+                    const tx = db.transaction("personajes", "readwrite");
+                    const store = tx.objectStore("personajes");
+                    data.forEach(p => {
+                        // ✅ aseguramos inventario aunque el JSON sea antiguo
+                        if (!p.inventario) p.inventario = { objetos: [], armaduras: [], armas: [] };
+                        // ✅ NUEVO: asegurar talentos/ventajas aunque el JSON sea antiguo
+                        if (!p.talentosVentajas) p.talentosVentajas = { talentos: [], ventajas: [] };
+                        store.put(p);
+
+                    });
+                    tx.oncomplete = () => mostrarPersonajes();
+                } catch (err) {
+                    alert("Error al importar JSON");
+                }
+            };
+
+            reader.readAsText(file);
+        });
+
+        // Antes de cerrar navegador
+        window.addEventListener("beforeunload", e => {
+            if (Object.values(cambiosPendientes).some(v => v)) {
+                e.preventDefault();
+                e.returnValue = "Tienes cambios sin guardar. ¿Deseas salir igualmente?";
+                return "Tienes cambios sin guardar. ¿Deseas salir igualmente?";
+
+            }
+        });
+
+        //  document.getElementById(`nombre${i}`).addEventListener("input", e => {
+        //    document.getElementById(`nombreSlotDisplay${i}`).textContent = e.target.value || `Héroe ${i}`;
+        //});
+
+        /*   for (let i = 1; i <= 4; i++) {
+               const nombreInput = document.getElementById(`nombre${i}`);
+               const nombreDisplay = document.getElementById(`nombreSlotDisplay${i}`);
+   
+               nombreInput.addEventListener("input", e => {
+                   // Si el campo está vacío, mostrar "Héroe i"
+                   nombreDisplay.textContent = e.target.value || `Héroe ${i}`;
+               });
+           }*/
+        // Mostrar contenido de la tabla slots en un prompt/alert
+        function verSlots() {
+            const tx = db.transaction("slots", "readonly");
+            const store = tx.objectStore("slots");
+            store.getAll().onsuccess = e => {
+                const datos = e.target.result;
+                if (datos.length === 0) {
+                    alert("No hay slots guardados todavía.");
+                } else {
+                    alert(JSON.stringify(datos, null, 2)); // lo ves formateado
+                    console.log("Contenido de la tabla slots:", datos); // también en consola
+                }
+            };
+        }
+
+        // ✅ MODIFICADA: ahora también maneja botones frontales con data-section
+        document.addEventListener("click", function (e) {
+            // Botones de la cara frontal que indican sección destino
+            const btn = e.target.closest('.flip-to');
+            if (btn && btn.dataset.section) {
+                const card = btn.closest(".flip-card");
+                if (card) {
+                    const slot = parseInt(card.id.replace("slot", ""), 10);
+                    showBackSection(slot, btn.dataset.section);
+                    card.classList.add("flipped"); // gira a la cara trasera
+                }
+                return;
+            }
+
+            // Botón de "volver" (cara trasera) mantiene el comportamiento anterior
+            if (e.target.classList.contains("flip-btn")) {
+                const card = e.target.closest(".flip-card");
+                if (card) {
+                    card.classList.toggle("flipped");
+                }
+            }
+            // Botón "Editar" (Inventario) en la cara trasera
+            const editBtn = e.target.closest('.inv-edit-btn');
+            if (editBtn) {
+                const slot = parseInt(editBtn.dataset.slot, 10);
+                if (Number.isInteger(slot) && window.openInventarioEditor) {
+                    e.preventDefault();
+                    window.openInventarioEditor(slot);
+                }
+                return; // evitamos que siga propagando a otros handlers
+            }
+
+        });
+
+        window.onload = function () {
+            // todo tu código actual
+            generarSlots();
+            mostrarPersonajes();
+            restaurarSlots();
+            initRazaProfesionSelects();
+
+        };
+
+        // Crea el botón "Limpiar Slot" y lo coloca encima de "Lista de héroes guardados"
+        function insertarBotonLimpiarSlot() {
+            const lista = document.getElementById("lista");
+            if (!lista || !lista.parentNode) return;
+
+            const h2 = lista.previousElementSibling; // <h2 class="mb-3 mt-4">Lista de héroes guardados</h2>
+            if (!h2 || h2.tagName !== "H2") return;
+
+            // Evitar duplicados si se llama varias veces
+            if (document.getElementById("btn-limpiar-slot")) return;
+
+            const btn = document.createElement("button");
+            btn.id = "btn-limpiar-slot";
+            btn.type = "button";
+            btn.className = "btn btn-outline-danger mb-2";
+            btn.textContent = "Limpiar Slot";
+            btn.addEventListener("click", limpiarSlotPrompt);
+
+            h2.parentNode.insertBefore(btn, h2);
+        }
+
+        // Pregunta el slot (1–4) y limpia ese formulario dejándolo listo para crear un personaje nuevo
+        function limpiarSlotPrompt() {
+            let slot = prompt("¿Qué slot quieres limpiar? (1-4)");
+            slot = parseInt(slot, 10);
+            if (!(slot >= 1 && slot <= 4)) { alert("Slot inválido"); return; }
+
+            const nombreActual = document.getElementById(`nombre${slot}`)?.value || "";
+            if (cambiosPendientes && cambiosPendientes[slot] && nombreActual) {
+                const seguir = confirm(`Tienes cambios sin guardar en el héroe: "${nombreActual}".\n¿Deseas continuar sin guardar?`);
+                if (!seguir) return;
+            }
+
+            const setsafe = (id, prop, val) => { const el = document.getElementById(id); if (el) el[prop] = val; };
+
+            setsafe(`nombre${slot}`, "value", "");
+            setsafe(`raza${slot}`, "value", "");
+            setsafe(`profesion${slot}`, "value", "");
+            setsafe(`preview${slot}`, "src", "");
+            setsafe(`imagen${slot}`, "value", "");
+
+            const titulo = document.getElementById(`nombreSlotDisplay${slot}`);
+            if (titulo) titulo.textContent = `Héroe ${slot}`;
+
+            if (Array.isArray(baseActualIds)) {
+                baseActualIds.forEach(id => {
+                    setsafe(`${id}_base${slot}`, "value", "");
+                    if (!Array.isArray(especiales) || !especiales.includes(id)) {
+                        setsafe(`${id}_actual${slot}`, "value", "");
+                    }
+                });
+            }
+            if (Array.isArray(atributosBase)) {
+                atributosBase.forEach(id => setsafe(`${id}_base${slot}`, "value", ""));
+            }
+
+            // miniaturas fuera
+            setThumb(slot, "");
+            const backThumb = document.getElementById(`thumb${slot}-back`);
+            if (backThumb) { backThumb.removeAttribute("src"); backThumb.style.display = "none"; }
+
+            if (window.quills && quills[slot]) {
+                try { quills[slot].setText(""); } catch (_) { }
+            }
+
+            if (typeof cambiosPendientes === "object") cambiosPendientes[slot] = false;
+
+            try {
+                const tx = db.transaction("slots", "readwrite");
+                tx.objectStore("slots").delete(slot);
+            } catch (_) { }
+
+            if (typeof setNombreVisible === "function") setNombreVisible(slot, true);
+
+            // 👇 volver a mostrar selector/preview en slot vacío
+            setImagenControlesVisibles(slot, true);
+
+            alert(`Slot ${slot} limpiado. Ya puedes crear un personaje nuevo en ese formulario.`);
+        }
+
+
+        // ✅ NUEVA: mostrar/ocultar el input de nombre del slot
+        function setNombreVisible(slot, visible) {
+            const el = document.getElementById(`nombre${slot}`);
+            if (el) el.classList.toggle('d-none', !visible); // usa Bootstrap
+        }
+
+        // ✅ NUEVA: setear/ocultar la miniatura del slot
+        function setThumb(slot, url) {
+            const thumb = document.getElementById(`thumb${slot}`);
+            if (!thumb) return;
+            if (url) {
+                thumb.src = url;
+                thumb.style.display = "inline-block";
+            } else {
+                thumb.removeAttribute("src");
+                thumb.style.display = "none";
+            }
+        }
+
+        // Lee json/Personajes.json -> { razas:[], clases:[] }
+        async function loadPersonajesData() {
+            const resp = await fetch('json/Personajes.json');
+            if (!resp.ok) throw new Error('No se pudo cargar json/Personajes.json');
+            return resp.json();
+        }
+
+        // Crea un <select> con placeholder y opciones
+        function buildSelect({ id, placeholder, options, onChange }) {
+            const sel = document.createElement('select');
+            sel.id = id;
+            sel.className = 'form-select';
+            // placeholder
+            const opt0 = document.createElement('option');
+            opt0.value = '';
+            opt0.textContent = placeholder;
+            opt0.disabled = true;
+            opt0.selected = true;
+            sel.appendChild(opt0);
+            // opciones
+            options.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v;
+                opt.textContent = v;
+                sel.appendChild(opt);
+            });
+            if (typeof onChange === 'function') {
+                sel.addEventListener('change', onChange);
+            }
+            return sel;
+        }
+
+        // Reemplaza los <input id="razaX"> y <input id="profesionX"> por selects con las opciones del JSON
+        async function initRazaProfesionSelects() {
+            try {
+                const data = await loadPersonajesData();
+                const razas = Array.isArray(data.razas) ? data.razas : [];
+                const clases = Array.isArray(data.clases) ? data.clases : [];
+
+                for (let slot = 1; slot <= 4; slot++) {
+                    // RAza
+                    const razaOld = document.getElementById(`raza${slot}`);
+                    if (razaOld) {
+                        const razaSelect = buildSelect({
+                            id: `raza${slot}`,
+                            placeholder: 'Selecciona Raza',
+                            options: razas,
+                            onChange: () => guardarSlotAuto(slot)
+                        });
+                        // Si había un valor escrito antes de transformar, intentamos mantenerlo seleccionado
+                        const prev = (razaOld.value || '').trim();
+                        razaOld.replaceWith(razaSelect);
+                        if (prev) setSelectSafely(slot, 'raza', prev);
+                    }
+
+                    // Profesión
+                    const profOld = document.getElementById(`profesion${slot}`);
+                    if (profOld) {
+                        const profSelect = buildSelect({
+                            id: `profesion${slot}`,
+                            placeholder: 'Selecciona Profesión',
+                            options: clases,
+                            onChange: () => guardarSlotAuto(slot)
+                        });
+                        const prevP = (profOld.value || '').trim();
+                        profOld.replaceWith(profSelect);
+                        if (prevP) setSelectSafely(slot, 'profesion', prevP);
+                    }
+                }
+            } catch (err) {
+                console.error('initRazaProfesionSelects error:', err);
+                alert('No se pudo cargar la lista de Razas/Clases (revisa json/Personajes.json).');
+            }
+        }
+
+        // Fija el valor de un select y, si no existe la opción, la añade al vuelo
+        // ✅ REEMPLAZA por esta versión robusta
+        function setSelectSafely(slot, field, value) {
+            const el = document.getElementById(`${field}${slot}`);
+            if (!el) return;
+
+            const val = (value || "").trim();
+
+            // Si todavía no es <select> (ej. sigue siendo <input>), solo setea el valor y sal.
+            if (el.tagName !== 'SELECT') {
+                el.value = val;
+                return;
+            }
+
+            // Ya es <select>
+            const sel = /** @type {HTMLSelectElement} */ (el);
+
+            if (!val) {
+                // Si no hay valor, selecciona el placeholder (si existe) o deja vacío
+                if (sel.options && sel.options.length > 0) {
+                    // Busca el placeholder (value === "")
+                    let idx = Array.from(sel.options).findIndex(o => o.value === "");
+                    sel.selectedIndex = idx >= 0 ? idx : 0;
+                } else {
+                    sel.value = "";
+                }
+                return;
+            }
+
+            // Asegura que exista la opción con ese valor
+            const exists = sel.options ? Array.from(sel.options).some(o => o.value === val) : false;
+            if (!exists) {
+                const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                sel.appendChild(opt);
+            }
+            sel.value = val;
+        }
+
+
+        // ✅ REEMPLAZA por esta versión: oculta/mostrar usando clases Bootstrap
+        function setImagenControlesVisibles(slot, visible) {
+            const file = document.getElementById(`imagen${slot}`);
+            const prev = document.getElementById(`preview${slot}`);
+
+            if (file) {
+                // usa d-none para ocultar (Bootstrap usa !important)
+                file.classList.toggle('d-none', !visible);
+            }
+            if (prev) {
+                // si ocultamos, quitamos d-block y ponemos d-none
+                if (!visible) {
+                    prev.classList.remove('d-block');
+                    prev.classList.add('d-none');
+                } else {
+                    prev.classList.remove('d-none');
+                    // mantener centrado como antes
+                    if (!prev.classList.contains('d-block')) prev.classList.add('d-block');
+                }
+            }
+        }
+
+        let _portraitModal, _portraitFile, _portraitPreview, _portraitAcceptBtn, _portraitCancelBtn;
+        let _portraitCurrentId = null; // personajeId en edición
+        function ensurePortraitModal() {
+            if (_portraitModal) return;
+
+            _portraitModal = document.createElement('div');
+            _portraitModal.id = "portraitModal";
+            _portraitModal.style.position = "fixed";
+            _portraitModal.style.inset = "0";
+            _portraitModal.style.background = "rgba(0,0,0,0.5)";
+            _portraitModal.style.display = "none";
+            _portraitModal.style.zIndex = "2000";
+            _portraitModal.innerHTML = `
+      <div style="max-width:420px;margin:10% auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25);">
+        <div style="padding:12px 16px;border-bottom:1px solid #eee;font-weight:600;">Cambiar retrato</div>
+        <div style="padding:16px;">
+          <input type="file" id="portraitFile" accept="image/*" class="form-control mb-2">
+          <img id="portraitPreview" src="" alt="preview" style="width:100%;max-height:260px;object-fit:contain;display:none;border:1px solid #ddd;border-radius:8px;padding:4px;">
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end;padding:12px 16px;border-top:1px solid #eee;">
+          <button id="portraitCancel" class="btn btn-secondary">Cancelar</button>
+          <button id="portraitAccept" class="btn btn-primary" disabled>Aceptar</button>
+        </div>
+      </div>`;
+            document.body.appendChild(_portraitModal);
+
+            _portraitFile = _portraitModal.querySelector('#portraitFile');
+            _portraitPreview = _portraitModal.querySelector('#portraitPreview');
+            _portraitAcceptBtn = _portraitModal.querySelector('#portraitAccept');
+            _portraitCancelBtn = _portraitModal.querySelector('#portraitCancel');
+
+            _portraitFile.addEventListener('change', () => {
+                const f = _portraitFile.files?.[0];
+                if (!f) {
+                    _portraitPreview.style.display = "none";
+                    _portraitPreview.src = "";
+                    _portraitAcceptBtn.disabled = true;
+                    return;
+                }
+                const r = new FileReader();
+                r.onload = ev => {
+                    _portraitPreview.src = ev.target.result;
+                    _portraitPreview.style.display = "block";
+                    _portraitAcceptBtn.disabled = false;
+                };
+                r.readAsDataURL(f);
+            });
+
+            _portraitCancelBtn.addEventListener('click', () => {
+                _portraitCurrentId = null;
+                _portraitFile.value = "";
+                _portraitPreview.src = "";
+                _portraitPreview.style.display = "none";
+                _portraitAcceptBtn.disabled = true;
+                _portraitModal.style.display = "none";
+            });
+
+            _portraitAcceptBtn.addEventListener('click', async () => {
+                if (!_portraitCurrentId || !_portraitPreview.src) return;
+                const dataUrl = _portraitPreview.src;
+
+                // Actualiza en IndexedDB
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction("personajes", "readwrite");
+                    const store = tx.objectStore("personajes");
+                    const req = store.get(_portraitCurrentId);
+                    req.onsuccess = e => {
+                        const p = e.target.result;
+                        if (!p) { resolve(); return; }
+                        p.imagen = dataUrl;
+                        const put = store.put(p);
+                        put.onsuccess = () => resolve();
+                        put.onerror = () => reject(put.error);
+                    };
+                    req.onerror = () => reject(req.error);
+                });
+
+                // Refresca tarjeta de lista
+                const imgCard = document.getElementById(`cardImg${_portraitCurrentId}`);
+                if (imgCard) imgCard.src = dataUrl;
+
+                // Refresca en todos los slots donde esté asignado
+                try {
+                    const tx = db.transaction("slots", "readonly");
+                    const st = tx.objectStore("slots");
+                    st.getAll().onsuccess = ev => {
+                        const asigs = ev.target.result || [];
+                        asigs.forEach(a => {
+                            if (a.personajeId === _portraitCurrentId) {
+                                const slot = a.slot;
+                                const prev = document.getElementById(`preview${slot}`);
+                                if (prev) prev.src = dataUrl;
+
+                                setThumb(slot, dataUrl);
+                                const backThumb = document.getElementById(`thumb${slot}-back`);
+                                if (backThumb) { backThumb.src = dataUrl; backThumb.style.display = "inline-block"; }
+
+                                // Como ya tiene imagen, oculta controles en ese slot
+                                setImagenControlesVisibles(slot, false);
+                            }
+                        });
+                    };
+                } catch (_) { }
+
+                // Cierra modal
+                _portraitCancelBtn.click();
+                alert("Retrato actualizado.");
+            });
+        }
+
+        function cambiarRetrato(personajeId) {
+            ensurePortraitModal();
+            _portraitCurrentId = personajeId;
+            _portraitFile.value = "";
+            _portraitPreview.src = "";
+            _portraitPreview.style.display = "none";
+            _portraitAcceptBtn.disabled = true;
+            _portraitModal.style.display = "block";
+        }
+
+        // ✅ NUEVA: muestra una sección de la cara trasera y oculta el resto
+        function showBackSection(slot, section) {
+            const map = {
+                notas: `backNotas${slot}`,
+                equip: `backEquip${slot}`,
+                mochila: `backMochila${slot}`,
+                talentos: `backTalentos${slot}`
+            };
+            const ids = Object.values(map);
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = "none";
+            });
+            const targetId = map[section];
+            const target = document.getElementById(targetId);
+            if (target) target.style.display = "";
+
+            // 👉 nuevo: cuando entramos en "mochila", pintamos los listados
+            if (section === "mochila" && window.renderInventarioPreview) {
+                window.renderInventarioPreview(slot);
+            }
+        }
+
+
+
+    </script>
+    <script src="Hoja_Personajes_Inventario.js"></script>
+    <script src="Hoja_Personajes_TalentosVentajas.js"></script>
+
+    <!-- JS de Quill -->
+</body>
+
+
+
+</html>

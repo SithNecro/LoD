@@ -199,10 +199,6 @@
             "Efecto": "El héroe se mueve ágil y con un equilibro sobrenatural. Tu héroe gana +5 DES."
         },
         {
-            "Nombre": "Resistencia Mágica",
-            "Efecto": "El héroe tiene resistencia natural a la magia. el héroe siempre que se vea afectado por magia negativa, puedes realizar una prueba de DET. si tiene éxito ignora el efecto. si falla, el efecto actúa como de costumbre."
-        },
-        {
             "Nombre": "Fuerte",
             "Efecto": "Las horas ejercitándose dan ahora sus frutos y gana +5 a su estadística Fuerza."
         },
@@ -508,10 +504,6 @@
     "Talentos de Sigilo": [
         {
             "Nombre": "Ágil",
-            "Efecto": " el héroe es asombrosamente letal cuando ataca por la espalda. el héroe obtiene una bonificación de 1d6 DAÑ adicional cuando ataca por la espalda."
-        },
-         {
-            "Nombre": "Asesino Nato",
             "Efecto": "El héroe puede esquivar dos veces por batalla en vez de una."
         },
         {
@@ -569,10 +561,6 @@
             "Efecto": "Tu héroe es completamente inmune a los efectos de Miedo, y el Terror actúa como Miedo. Este talento requiere que el héroe tenga el talento Valeroso."
         },
         {
-            "Nombre": "Fuerte de Mente",
-            "Efecto": " la mente del euro no es tan frágil como la del resto. el héroe comienza con +2 puntos de cordura, incrementando así su máximo anterior."
-        },
-        {
             "Nombre": "Mente Fría",
             "Efecto": "Al héroe le afectan menos los horrores que encontráis en la mazmorra. +1 punto de Cordura."
         },
@@ -592,24 +580,5 @@
             "Nombre": "Valeroso",
             "Efecto": "Eres más valiente que nadie. +10 a tiradas de Miedo y Terror."
         }
-    ],
-      "Talentos de Caballero": [
-        {
-            "Nombre": "Caballeroso",
-            "Efecto": "El héroe es aquel cuya nobleza brilla en cada gesto, donde la cortesía y el honor valen más que su vida.<br> cualquier misión que obliga al héroe a rescatar a alguien ( tanto misiones normales como secundarias) activará una bonificación de +30 DET ( desde el momento en que se afecta ha....ecibe la recompensa o la misión falla)."
-        }
-    ],
-      "Talentos de Pato": [
-        {
-            "Nombre": "Nadador Nato",
-            "Efecto": "El héroe ignora todos los efectos nehativos del agua y se mueve en ella con normalidad."
-        }
-    ],
-      "Talentos de Semiogro": [
-        {
-            "Nombre": "Imbécil",
-            "Efecto": "El héroe durante las batallas debe tirar 1d6 cada turno.<br> Con un 6, el héroe queda inactivo ese turno. Si está en estado Frenesí nose hace la tirada."
-        }
     ]
-
 }
