@@ -48,9 +48,9 @@ window.openInventarioEditor = async function (slot) {
     </div>
 
     <div class="border rounded p-2 mb-3 hero-card">
-      <div class="row g-2 align-items-end" style="justify-content:center;">
-        <div class="col-12 col-md-3" >
-          <label class="form-label">Añadir Nuevo Objeto al Inventario</label>
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-3">
+          <label class="form-label">Tipo</label>
           <select id="invTipo" class="form-select">
             <option value="">--Selecciona Tipo de Objeto--</option>
             <option value="obj">Objeto</option>
@@ -58,8 +58,6 @@ window.openInventarioEditor = async function (slot) {
             <option value="arma">Arma</option>
           </select>
         </div>
-
-
 
         <!-- Grupo Objeto -->
         <div id="grpObj" class="col-12" style="display:none; border:3px solid #666; border-radius:8px; padding:10px;">
@@ -215,11 +213,11 @@ window.openInventarioEditor = async function (slot) {
 
       <!-- Listados -->
       <div id="invLists">
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Objetos</h6>
+        <h6 class="mt-3">Objetos</h6>
         <div id="listObjetos" class="table-responsive"></div>
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Armaduras</h6>
+        <h6 class="mt-3">Armaduras</h6>
         <div id="listArmaduras" class="table-responsive"></div>
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Armas</h6>
+        <h6 class="mt-3">Armas</h6>
         <div id="listArmas" class="table-responsive"></div>
       </div>
     </div>
@@ -623,13 +621,13 @@ window.renderInventarioLists = function (personaje) {
       <table class="table table-sm align-middle">
         <thead><tr>
           
-          <th>🏷️ Objetos</th>
+          <th>🏷️ Objeto</th>
           <th>💼 Lugar</th>
           <th style="width:100px;">🧮 Cant.</th>
           <th>📜 Uso</th>
-                    <th style="width:90px;">⚒️ Dur.</th>
-           <th style="width:90px;">⚖️ Peso</th>
-          <th style="width:90px;">💰 Valor</th>
+                    <th style="width:100px;">⚒️ Dur.</th>
+           <th style="width:100px;">⚖️ Peso</th>
+          <th style="width:100px;">💰 Valor</th>
           <th style="width:60px;"></th>
           <th style="width:60px;"></th>
         </tr></thead>
@@ -661,14 +659,14 @@ window.renderInventarioLists = function (personaje) {
   const armHtml = `
       <table class="table table-sm align-middle">
         <thead><tr>
-          <th style="width:40px;">⚙️</th>
-          <th>👕 Armaduras</th>
+          <th style="width:80px;">⚙️ EQ.</th>
+          <th>👕 Armadura</th>
           <th>🥾 Cob.</th>
           <th style="width:100px;">🛡️ Def.</th>
           <th>✨ Espec.</th>
-          <th style="width:90px;">⚒️ Dur.</th>
-          <th style="width:90px;">⚖️ Peso</th>
-          <th style="width:90px;">💰 Valor</th>
+          <th style="width:100px;">⚒️ Dur.</th>
+          <th style="width:100px;">⚖️ Peso</th>
+          <th style="width:100px;">💰 Valor</th>
           <th style="width:60px;"></th><th style="width:60px;"></th>
         </tr></thead>
         <tbody>
@@ -694,15 +692,15 @@ window.renderInventarioLists = function (personaje) {
   const armasHtml = `
       <table class="table table-sm align-middle">
         <thead><tr>
-          <th style="width:40px;">⚙️</th>
-          <th>⚔️ Armas</th>
+          <th style="width:80px;">⚙️ EQ.</th>
+          <th>⚔️ Arma</th>
           <th>✋🤚 Mano</th>
           <th style="width:100px;">💥 DAÑ</th>
         
           <th>Especial</th>
-            <th style="width:90px;">⚒️ Dur.</th>
-          <th style="width:90px;">⚖️ Peso</th>
-          <th style="width:90px;">💰 Valor</th>
+            <th style="width:900px;">⚒️ Dur.</th>
+          <th style="width:900px;">⚖️ Peso</th>
+          <th style="width:900px;">💰 Valor</th>
          
           <th style="width:60px;"></th><th style="width:60px;"></th>
         </tr></thead>

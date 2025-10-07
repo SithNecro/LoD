@@ -377,7 +377,10 @@
   transform: scale(1.3);
   margin: 0;
 }
-
+.sai-popup .hero-card {
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
 /* Focus consistente con tu estética */
 .sai-popup .form-control:focus,
 .sai-popup input:focus,
@@ -444,11 +447,6 @@
   background-color: #3b82f6;
   border-color: #3b82f6;
 }
-.sai-popup input[type="checkbox"] {
-  transform: scale(1.6);
-  accent-color: #cfa75f; /* color dorado del tema */
-}
-
 th ,td{
    background: rgba(40, 40, 40, 0.9) !important;
                         color: #d4af37!important;
@@ -545,23 +543,4 @@ select.form-select {
   background-position: right 10px center;
   background-size: 20px;
   appearance: none;
-}
-/* (opcional) multi-select con estética oscura y flecha custom */
-#armCobSel.form-select[multiple] {
-  min-height: 140px;
-  background-image: url('img/interface/select_arrow.png');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 20px;
-  appearance: none;
-  color: #fff;
-  background-color: #1e1e1e;
-  border: 1px solid #444;
-  padding-right: 35px;
-}
-.sai-popup .btn-add-armadura .btn-add-arma .btn-add-objeto {
-  vertical-align: middle;
-  position: relative;
-  top: 50%;
-  transform: translateY(-20%);
 }

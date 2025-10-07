@@ -215,11 +215,11 @@ window.openInventarioEditor = async function (slot) {
 
       <!-- Listados -->
       <div id="invLists">
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Objetos</h6>
+        <h6 class="mt-12">Objetos</h6>
         <div id="listObjetos" class="table-responsive"></div>
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Armaduras</h6>
+        <h6 class="mt-12">Armaduras</h6>
         <div id="listArmaduras" class="table-responsive"></div>
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Armas</h6>
+        <h6 class="mt-12">Armas</h6>
         <div id="listArmas" class="table-responsive"></div>
       </div>
     </div>

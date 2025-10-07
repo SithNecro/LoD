@@ -444,11 +444,6 @@
   background-color: #3b82f6;
   border-color: #3b82f6;
 }
-.sai-popup input[type="checkbox"] {
-  transform: scale(1.6);
-  accent-color: #cfa75f; /* color dorado del tema */
-}
-
 th ,td{
    background: rgba(40, 40, 40, 0.9) !important;
                         color: #d4af37!important;
@@ -559,9 +554,10 @@ select.form-select {
   border: 1px solid #444;
   padding-right: 35px;
 }
-.sai-popup .btn-add-armadura .btn-add-arma .btn-add-objeto {
-  vertical-align: middle;
-  position: relative;
-  top: 50%;
-  transform: translateY(-20%);
+/* Centrar verticalmente el botón Añadir dentro del popup */
+.sai-popup .row .btn-add-armadura {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

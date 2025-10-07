@@ -48,8 +48,8 @@ window.openInventarioEditor = async function (slot) {
     </div>
 
     <div class="border rounded p-2 mb-3 hero-card">
-      <div class="row g-2 align-items-end" style="justify-content:center;">
-        <div class="col-12 col-md-3" >
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-3" style="justify-content:center;">
           <label class="form-label">Añadir Nuevo Objeto al Inventario</label>
           <select id="invTipo" class="form-select">
             <option value="">--Selecciona Tipo de Objeto--</option>
@@ -215,11 +215,11 @@ window.openInventarioEditor = async function (slot) {
 
       <!-- Listados -->
       <div id="invLists">
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Objetos</h6>
+        <h6 class="mt-3">Objetos</h6>
         <div id="listObjetos" class="table-responsive"></div>
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Armaduras</h6>
+        <h6 class="mt-3">Armaduras</h6>
         <div id="listArmaduras" class="table-responsive"></div>
-<h6 style="border-top:3px solid #cfa75f; padding-top:6px; margin-top:10px;">Armas</h6>
+        <h6 class="mt-3">Armas</h6>
         <div id="listArmas" class="table-responsive"></div>
       </div>
     </div>
@@ -623,7 +623,7 @@ window.renderInventarioLists = function (personaje) {
       <table class="table table-sm align-middle">
         <thead><tr>
           
-          <th>🏷️ Objetos</th>
+          <th>🏷️ Objeto</th>
           <th>💼 Lugar</th>
           <th style="width:100px;">🧮 Cant.</th>
           <th>📜 Uso</th>
@@ -662,7 +662,7 @@ window.renderInventarioLists = function (personaje) {
       <table class="table table-sm align-middle">
         <thead><tr>
           <th style="width:40px;">⚙️</th>
-          <th>👕 Armaduras</th>
+          <th>👕 Armadura</th>
           <th>🥾 Cob.</th>
           <th style="width:100px;">🛡️ Def.</th>
           <th>✨ Espec.</th>
@@ -695,7 +695,7 @@ window.renderInventarioLists = function (personaje) {
       <table class="table table-sm align-middle">
         <thead><tr>
           <th style="width:40px;">⚙️</th>
-          <th>⚔️ Armas</th>
+          <th>⚔️ Arma</th>
           <th>✋🤚 Mano</th>
           <th style="width:100px;">💥 DAÑ</th>
         

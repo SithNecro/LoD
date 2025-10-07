@@ -330,16 +330,9 @@
   border-radius: 18px;
   box-shadow: 0 12px 40px rgba(0,0,0,.45);
   padding: 18px 18px 20px;
-  /*width: min(960px, 92vw);           /* ancho cómodo y responsive */
-   width: 90% !important;
-  max-width: none !important;
- 
+  width: min(960px, 92vw);           /* ancho cómodo y responsive */
 }
-/* === Quitar scroll interno duplicado === */
-.sai-popup .hero-card {
-  max-height: none !important;
-  overflow: visible !important;
-}
+
 .sai-title.swal2-title {
   color: #ff6666;
   font-weight: 700;
@@ -347,7 +340,6 @@
   margin: 0 0 8px 0;
   letter-spacing: .2px;
 }
-
 
 .sai-html.swal2-html-container {
   margin: 0;
@@ -444,11 +436,6 @@
   background-color: #3b82f6;
   border-color: #3b82f6;
 }
-.sai-popup input[type="checkbox"] {
-  transform: scale(1.6);
-  accent-color: #cfa75f; /* color dorado del tema */
-}
-
 th ,td{
    background: rgba(40, 40, 40, 0.9) !important;
                         color: #d4af37!important;
@@ -528,40 +515,19 @@ th ,td{
   pointer-events: none;
 }
 
-/* === Flecha personalizada en todos los SELECT === */
-.sai-popup select.form-select {
-  background-image: url('img/interface/select_arrow.png') !important;
-  background-repeat: no-repeat !important;
-  background-position: right 10px center !important;
-  background-size: 20px !important;
-  padding-right: 35px !important; /* deja espacio para la flecha */
-  appearance: none !important;    /* oculta la flecha nativa */
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-}
-select.form-select {
-  background-image: url('img/interface/select_arrow.png');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 20px;
-  appearance: none;
-}
-/* (opcional) multi-select con estética oscura y flecha custom */
-#armCobSel.form-select[multiple] {
-  min-height: 140px;
-  background-image: url('img/interface/select_arrow.png');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 20px;
-  appearance: none;
-  color: #fff;
-  background-color: #1e1e1e;
-  border: 1px solid #444;
-  padding-right: 35px;
-}
-.sai-popup .btn-add-armadura .btn-add-arma .btn-add-objeto {
-  vertical-align: middle;
-  position: relative;
-  top: 50%;
-  transform: translateY(-20%);
+.form-select{
+   width: 100%;
+            padding: 12px;
+            border: 2px solid #9d5c48;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            background-image: url('img/interface/select_arrow.png');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 35px;
+            appearance: none;
 }
