@@ -30,7 +30,6 @@ window.savePersonaje = function (p) {
 };
 
 // Editor de Inventario
-// Editor de Inventario
 window.openInventarioEditor = async function (slot) {
   if (!window.Swal) { alert("Falta SweetAlert2 (Swal). Inclúyelo para usar el editor de inventario."); return; }
   if (!window.tippy) { console.warn("tippy.js no encontrado. Los tooltips no se activarán."); }
@@ -697,20 +696,9 @@ window.openInventarioEditor = async function (slot) {
       // Enfocar algo usable
       const first = document.querySelector('#invRoot input, #invRoot select, #invRoot textarea');
       if (first) first.focus();
-    },
-    // 🔁 Al cerrar el popup, recargo el slot de inventario
-    didClose: () => {
-      try {
-        if (typeof window.renderInventarioPreview === 'function') {
-          window.renderInventarioPreview(slot);
-        }
-      } catch (e) {
-        console.error('Error al refrescar slot inventario:', e);
-      }
     }
   });
 };
-
 
 // Render de listas
 // ---------- Render de listas dentro del POPUP de inventario ----------
