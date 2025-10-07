@@ -81,10 +81,6 @@ window.openInventarioEditor = async function (slot) {
                 <option value="Atajo 5">Atajo 5</option>
                 <option value="Atajo 6">Atajo 6</option>
                 <option value="Atajo 7">Atajo 7</option>
-                <option value="Collar">Collar</option>
-                <option value="Anillo 1">Anillo 1</option>
-                <option value="Anillo 2">Anillo 2</option>
-                <option value="Reliquia">Reliquia</option>
               </select>
             </div>
             <div class="col-6 col-md-1">
@@ -141,11 +137,8 @@ window.openInventarioEditor = async function (slot) {
 </div>
 <div class="col-12 col-md-2">
   <label class="form-label">🏷️ Clase</label>
- <select id="armClase" class="form-select">
-    <option value="">--Selecciona--</option>
-    ${Array.from({ length: 7 }, (_, i) => `<option value="C${i + 1}">C${i + 1}</option>`).join('')}
-  </select>
-  </div>
+  <input id="armClase" class="form-control" type="text" placeholder="p.ej. Ligera">
+</div>
             <div class="col-6 col-md-1">
               <label class="form-label">⚖️ Peso</label>
               <input id="armPeso" class="form-control" type="number" step="0.1" min="0">
@@ -212,10 +205,7 @@ window.openInventarioEditor = async function (slot) {
 </div>
 <div class="col-12 col-md-2">
   <label class="form-label">🏷️ Clase</label>
-   <select id="armaClase" class="form-select">
-    <option value="">--Selecciona--</option>
-    ${Array.from({ length: 7 }, (_, i) => `<option value="C${i + 1}">C${i + 1}</option>`).join('')}
-  </select>
+  <input id="armaClase" class="form-control" type="text" placeholder="p.ej. C6">
 </div>
                <div class="col-6 col-md-1">
               <label class="form-label">⚖️ Peso</label>
@@ -373,7 +363,6 @@ window.openInventarioEditor = async function (slot) {
       actualizarCobListDesdeSelect();
 
       // ===== Edición inline =====
-      // ===== Edición inline =====
       const onInput = async (ev) => {
         const t = ev.target;
         const row = t.closest('[data-itemid]'); if (!row) return;
@@ -395,18 +384,10 @@ window.openInventarioEditor = async function (slot) {
           const f = t.name; if (!fields.includes(f)) return false;
 
           let v;
-
           if (t.tagName === 'SELECT') {
-            // Selects numéricos
-            const numericSelects = new Set(['durabilidad', 'defensa', 'rotura']);
-            if (numericSelects.has(f)) {
-              // durabilidad refresca también el select de rotura
-              if (f === 'durabilidad') rebuildRotFromDur(row, t.value);
-              v = parseInt(t.value || '0', 10);
-            } else {
-              // Selects de texto (p.ej. mano, lugar)
-              v = t.value;
-            }
+            // durabilidad -> además refresca el select de rotura de la fila
+            if (f === 'durabilidad') rebuildRotFromDur(row, t.value);
+            v = parseInt(t.value || '0', 10);
           } else if (t.type === 'number') {
             v = t.step && t.step !== "1" ? parseFloat(t.value || '0') : parseInt(t.value || '0', 10);
           } else {
@@ -430,6 +411,7 @@ window.openInventarioEditor = async function (slot) {
           updateItem(personaje.inventario.armas, ['equipado', 'arma', 'mano', 'danio', 'durabilidad', 'rotura', 'clase', 'especial', 'peso', 'valor'])
         ) {
           await window.savePersonaje(personaje);
+          // no forzamos re-render completo; solo si quieres:
           window.renderInventarioLists(personaje);
         }
       };
@@ -606,11 +588,7 @@ window.openInventarioEditor = async function (slot) {
       // Listeners
       const root = document.getElementById('invRoot');
       root.addEventListener('input', onInput);
-      // En change: si es 'equipado' -> onChange; en cualquier otro caso -> onInput (para selects)
-      root.addEventListener('change', (ev) => {
-        if (ev.target?.name === 'equipado') return onChange(ev);
-        return onInput(ev);
-      });
+      root.addEventListener('change', onChange);
       root.addEventListener('click', onClick);
 
       // ===== Añadir =====
@@ -701,10 +679,8 @@ window.openInventarioEditor = async function (slot) {
 };
 
 // Render de listas
-// ---------- Render de listas dentro del POPUP de inventario ----------
 window.renderInventarioLists = function (personaje) {
-  const mkOpts = (n, sel) =>
-    Array.from({ length: n }, (_, i) => `<option value="${i}" ${i == sel ? 'selected' : ''}>${i}</option>`).join('');
+  const mkOpts = (n, sel) => Array.from({ length: n }, (_, i) => `<option value="${i}" ${i == sel ? 'selected' : ''}>${i}</option>`).join('');
 
   const byStr = (get) => (a, b) => {
     const A = (get(a) || '').toString().trim().toLowerCase();
@@ -715,139 +691,141 @@ window.renderInventarioLists = function (personaje) {
     return 0;
   };
 
-  const objetosOrden = Array.isArray(personaje.inventario?.objetos) ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
-  const armadurasOrden = Array.isArray(personaje.inventario?.armaduras) ? personaje.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-  const armasOrden = Array.isArray(personaje.inventario?.armas) ? personaje.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
+  const objetosOrden = Array.isArray(personaje.inventario?.objetos)
+    ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre))
+    : [];
 
-  // --- OBJETOS ---
+  const armadurasOrden = Array.isArray(personaje.inventario?.armaduras)
+    ? personaje.inventario.armaduras.slice().sort(byStr(a => a.armadura))
+    : [];
+
+  const armasOrden = Array.isArray(personaje.inventario?.armas)
+    ? personaje.inventario.armas.slice().sort(byStr(w => w.arma))
+    : [];
+
+  // Objetos
   const objHtml = `
-    <table class="table table-sm align-middle">
-      <thead>
-        <tr>
-          <th>🏷️ Nombre</th>
+      <table class="table table-sm align-middle">
+        <thead><tr>
+          
+          <th>🏷️ Objetos</th>
           <th>💼 Lugar</th>
           <th style="width:100px;">🧮 Cant.</th>
-          <th style="width:100px;">⚖️ Peso</th>
-          <th style="width:90px;">⚒️ Dur.</th>
           <th>📜 Uso</th>
-          <th style="width:100px;">💰 Valor</th>
+                    <th style="width:90px;">⚒️ Dur.</th>
+           <th style="width:90px;">⚖️ Peso</th>
+          <th style="width:90px;">💰 Valor</th>
           <th style="width:60px;"></th>
           <th style="width:60px;"></th>
-        </tr>
-      </thead>
-      <tbody>
+        </tr></thead>
+        <tbody>
         ${objetosOrden.map(o => `
           <tr data-itemid="${o.id}">
-            <td><input class="form-control form-control-sm" name="nombre" title="${o.uso || ''}" value="${o.nombre || ''}"></td>
+            <td><input class="form-control form-control-sm" name="nombre"  title="${o.uso || ''}" value="${o.nombre || ''}"></td>
             <td>
-              <select class="form-select form-select-sm" name="lugar">
-                ${['', 'Mochila', 'Atajo 1', 'Atajo 2', 'Atajo 3', 'Atajo 4', 'Atajo 5', 'Atajo 6', 'Atajo 7']
-      .map(l => `<option value="${l}" ${o.lugar === l ? 'selected' : ''}>${l || '--Lugar--'}</option>`).join('')}
-              </select>
-            </td>
+  <select class="form-select form-select-sm" name="lugar">
+    ${['', 'Mochila', 'Atajo 1', 'Atajo 2', 'Atajo 3', 'Atajo 4', 'Atajo 5', 'Atajo 6', 'Atajo 7']
+      .map(l => `<option value="${l}" ${o.lugar === l ? 'selected' : ''}>${l || '--Lugar--'}</option>`)
+      .join('')}
+  </select>
+</td>
             <td><input class="form-control form-control-sm" type="number" min="0" name="cantidad" value="${o.cantidad ?? 0}"></td>
-            <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${o.peso ?? 0}"></td>
-            <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, o.durabilidad ?? 0)}</select></td>
             <td><input class="form-control form-control-sm" name="uso" value="${o.uso || ''}"></td>
+                        <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, o.durabilidad ?? 0)}</select></td>
+
+                        <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${o.peso ?? 0}"></td>
+
             <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${o.valor ?? 0}"></td>
             <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
             <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
           </tr>`).join('')}
-      </tbody>
-    </table>`;
+        </tbody>
+      </table>`;
 
-  // --- ARMADURAS ---
+  // Armaduras
   const armHtml = `
-    <table class="table table-sm align-middle">
-      <thead>
-        <tr>
-          <th style="width:90px;">⚙️</th>
-          <th>🛡️ Armadura</th>
-          <th>⛇ Cob.</th>
-          <th style="width:90px;">🛡️ Def.</th>
+      <table class="table table-sm align-middle">
+        <thead><tr>
+          <th style="width:40px;">⚙️</th>
+          <th>👕 Armaduras</th>
+          <th>🥾 Cob.</th>
+          <th style="width:100px;">🛡️ Def.</th>
           <th>✨ Espec.</th>
-          <th style="width:100px;">⛓️ Rot.</th>
-          <th style="width:70px;">🏷️ Cl.</th>
-          <th style="width:100px;">⚖️ Peso</th>
-          <th style="width:100px;">💰 Valor</th>
-          <th style="width:60px;"></th>
-          <th style="width:60px;"></th>
-        </tr>
-      </thead>
-      <tbody>
-        ${armadurasOrden.map(a => {
-    const dur = parseInt(a.durabilidad ?? 0, 10);
-    const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
-    const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur) ? 0 : dur}/${r}</option>`).join('');
-    return `
-            <tr data-itemid="${a.id}">
-              <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
-              <td><input class="form-control form-control-sm" name="armadura" title="${a.especial || ''}" value="${a.armadura || ''}"></td>
-              <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : ''}</p></td>
-              <td><select class="form-select form-select-sm" name="defensa">${mkOpts(11, a.defensa ?? 0)}</select></td>
-              <td><input class="form-control form-control-sm" name="especial" value="${a.especial || ''}"></td>
-              <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
-              <td><input class="form-control form-control-sm" name="clase" value="${a.clase || ''}"></td>
-              <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${a.peso ?? 0}"></td>
-              <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${a.valor ?? 0}"></td>
-              <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
-              <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
-            </tr>`;
-  }).join('')}
-      </tbody>
-    </table>`;
+          <th style="width:90px;">⚒️ Dur.</th>
+          <th>⛓️ Rot.</th>
+          <th>🏷️ Clase</th>
+          <th style="width:90px;">⚖️ Peso</th>
+          <th style="width:90px;">💰 Valor</th>
+          <th style="width:60px;"></th><th style="width:60px;"></th>
+        </tr></thead>
+        <tbody>
+        ${armadurasOrden.map(a => `
+          <tr data-itemid="${a.id}">
+            <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
+            <td><input class="form-control form-control-sm" name="armadura" title="${a.especial || ''}" value="${a.armadura || ''}" ></td>
+            <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : ''}</p></td>
+            <td><select class="form-select form-select-sm" name="defensa">${mkOpts(11, a.defensa ?? 0)}</select></td>
+            <td><input class="form-control form-control-sm" name="especial" value="${a.especial || ''}"></td>
+            <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, a.durabilidad ?? 0)}</select></td>
+                      <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
+          <td><input class="form-control form-control-sm" name="clase" value="${a.clase || ''}"></td>
+            <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${a.peso ?? 0}"></td>
+            <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${a.valor ?? 0}"></td>
+            <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
+            <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
+          </tr>`).join('')}
+        </tbody>
+     </table>`;
 
-  // --- ARMAS ---
+
+
+  // Armas
   const armasHtml = `
-    <table class="table table-sm align-middle">
-      <thead>
-        <tr>
-          <th style="width:90px;">⚙️</th>
-          <th>⚔️ Arma</th>
-          <th>✋ Mano</th>
-          <th>💥 DAÑ</th>
-          <th>✨ Espec.</th>
-          <th style="width:100px;">⛓️ Rot.</th>
-           <th style="width:70px;">🏷️ Cl.</th>
-          <th style="width:100px;">⚖️ Peso</th>
-          <th style="width:100px;">💰 Valor</th>
-          <th style="width:60px;"></th>
-          <th style="width:60px;"></th>
-        </tr>
-      </thead>
-      <tbody>
-        ${armasOrden.map(w => {
-    const dur = parseInt(w.durabilidad ?? 0, 10);
-    const rot = Math.min(parseInt(w.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
-    const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur) ? 0 : dur}/${r}</option>`).join('');
-    return `
-            <tr data-itemid="${w.id}">
-              <td><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
-              <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
-              <td>
-                <select class="form-select form-select-sm" name="mano">
-                  ${['Izquierda', 'Derecha', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
-                </select>
-              </td>
-              <td><input class="form-control form-control-sm" name="danio" value="${w.danio || ''}"></td>
-              <td><input class="form-control form-control-sm" name="especial" value="${w.especial || ''}"></td>
-              <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
-              <td><input class="form-control form-control-sm" name="clase" value="${w.clase || ''}"></td>
-              <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${w.peso ?? 0}"></td>
-              <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${w.valor ?? 0}"></td>
-              <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
-              <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
-            </tr>`;
-  }).join('')}
-      </tbody>
-    </table>`;
+      <table class="table table-sm align-middle">
+        <thead><tr>
+          <th style="width:40px;">⚙️</th>
+          <th>⚔️ Armas</th>
+          <th>✋🤚 Mano</th>
+          <th style="width:100px;">💥 DAÑ</th>
+        
+          <th>Especial</th>
+            <th style="width:90px;">⚒️ Dur.</th>
+            <th>⛓️ Rot.</th>
+            <th>🏷️ Clase</th>
+          <th style="width:90px;">⚖️ Peso</th>
+          <th style="width:90px;">💰 Valor</th>
+         
+          <th style="width:60px;"></th><th style="width:60px;"></th>
+        </tr></thead>
+        <tbody>
+        ${armasOrden.map(w => `
+          <tr data-itemid="${w.id}">
+            <td><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
+            <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
+            <td>
+              <select class="form-select form-select-sm" name="mano">
+                ${['Izquierda', 'Derecha', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
+              </select>
+            </td>
+            <td><input class="form-control form-control-sm" name="danio" value="${w.danio || ''}"></td>
+            <td><input class="form-control form-control-sm" name="especial" value="${w.especial || ''}"></td>
+                        <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, w.durabilidad ?? 0)}</select></td>
+          <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
+          <td><input class="form-control form-control-sm" name="clase" value="${w.clase || ''}"></td>
+
+            <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${w.peso ?? 0}"></td>
+            <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${w.valor ?? 0}"></td>
+            <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
+            <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
 
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
   set('listObjetos', objHtml);
   set('listArmaduras', armHtml);
   set('listArmas', armasHtml);
 };
-
 /* ============================================================
  *  PREVIEW DE INVENTARIO EN LA SECCIÓN "MOCHILA" (APPEND-ONLY)
  *  - No modifica el popup ni sus funciones.
@@ -863,7 +841,6 @@ window.renderInventarioLists = function (personaje) {
   const esc = (s) => (s == null ? '' : String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
 
   // ---------- Render del PREVIEW debajo del botón ----------
-  // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   window.renderInventarioPreview = async function (slot) {
     try {
       const container = document.getElementById(`mochila-slot${slot}`);
@@ -875,115 +852,107 @@ window.renderInventarioLists = function (personaje) {
         return;
       }
 
-      const esc = (s) => (s == null ? '' : String(s)
-        .replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
+      const objetos = Array.isArray(pj.inventario.objetos) ? pj.inventario.objetos : [];
+      const armaduras = Array.isArray(pj.inventario.armaduras) ? pj.inventario.armaduras : [];
+      const armas = Array.isArray(pj.inventario.armas) ? pj.inventario.armas : [];
 
-      const byStr = (get) => (a, b) => {
-        const A = (get(a) || '').toString().trim().toLowerCase();
-        const B = (get(b) || '').toString().trim().toLowerCase();
-        if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
-        if (!A && B) return 1;
-        if (A && !B) return -1;
-        return 0;
-      };
-
-      const objetosOrden = Array.isArray(pj.inventario?.objetos) ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
-      const armadurasOrden = Array.isArray(pj.inventario?.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-      const armasOrden = Array.isArray(pj.inventario?.armas) ? pj.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
-
-      // OBJETOS (Nombre con tooltip Uso, Cantidad, Peso, Traspasar)
+      // OBJETOS: Nombre (tooltip Uso), Cantidad, Peso, Traspasar
       const tblObjs = `
-      <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
-      <table class="table table-sm table-dark table-striped">
-        <thead><tr>
-        <th style="text-align:center; vertical-align:middle;">Nombre</th>
-        <th  style="width:40px; text-align:center; vertical-align:middle;" title="Cantidad">🧮</th>
-        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
-        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a otro Héroe">⇄</th>
-        </tr></thead>
-        <tbody>
-          ${objetosOrden.map(o => `
-            <tr data-itemid="${o.id || ''}" data-cat="obj">
-              <td style=" vertical-align:middle;"><span title="${esc(o.uso || '')}">${esc(o.nombre || '')}</span></td>
-              <td   style="width:40px; text-align:center; vertical-align:middle;" title="Cantidad">${esc(o.cantidad ?? 0)}</td>
-              <td style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">${esc(o.peso ?? '')}</td>
-              <td class="text-center">
-                <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="obj" data-id="${o.id || ''}" data-slot="${slot}" "title="Traspasar a otro Héroe">⇄</button>
-              </td>
-            </tr>`).join('')}
-        </tbody>
-      </table>`;
+        <h6 class="mt-2 mb-1">🧰 Objetos</h6>
+        <table class="table table-sm table-dark table-striped">
+          <thead>
+            <tr><th>Nombre</th><th>Cant.</th><th>Peso</th><th></th></tr>
+          </thead>
+          <tbody>
+            ${objetos.map(o => `
+              <tr data-itemid="${o.id || ''}" data-cat="obj">
+                <td><span class="tip-obj" data-tippy-content="${esc(o.uso || '')}">${esc(o.nombre || '')}</span></td>
+                <td>${esc(o.cantidad ?? 0)}</td>
+                <td>${esc(o.peso ?? '')}</td>
+               <td class="text-center">
+                  <button class="btn btn-sm btn-outline-warning slot-traspasar"
+                          data-cat="obj" data-id="${o.id || ''}" data-slot="${slot}">
+                    ⇄
+                  </button>
+                </td>
+              </tr>`).join('')}
+          </tbody>
+        </table>`;
 
-      // ARMADURAS (Equip., Armadura con tooltip Especial, Cob., Def., Dur., Peso, Trasp.)
+      // ARMADURAS: Equipado, Armadura (tooltip Especial), Cobertura, Defensa, Durabilidad, Traspasar, Peso
       const tblArmad = `
-      <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
-      <table class="table table-sm table-dark table-striped">
-        <thead><tr>
-        <th  style="width:40px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
-        <th style="text-align:center; vertical-align:middle;">Armadura</th>
-        <th style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">⛇</th>
-        <th style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">🛡️</th>
-        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
-                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
-        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a otro Héroe">⇄</th>
-        </tr></thead>
-        <tbody>
+        <h6 class="mt-2 mb-1">🛡️ Armaduras</h6>
+        <table class="table table-sm table-dark table-striped">
+          <thead>
+            <tr><th>Equip.</th><th>Armadura</th><th>Cob.</th><th>Def.</th><th>Dur.</th><th>Peso</th><th>Trasp.</th></tr>
+          </thead>
+          <tbody>
           ${armadurasOrden.map(a => {
         const dur = parseInt(a.durabilidad ?? 0, 10);
         const rot = Math.min(parseInt(a.rotura ?? 0, 10), dur);
-        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
+        const rotOpts = Array.from({ length: dur + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${dur}/${r}</option>`).join('');
         return `
-              <tr data-itemid="${a.id || ''}" data-cat="arm">
-                <td><input    style="width:40px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"  ${a.equipado ? 'checked' : ''}></td>
-                <td style=" vertical-align:middle;"><span title="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">${Array.isArray(a.cobertura) ? esc(a.cobertura.join(', ')) : ''}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">${esc(a.defensa ?? 0)}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(a.peso ?? '')}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a Otro Héroe">
-                  <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="arm" data-id="${a.id || ''}" data-slot="${slot}">⇄</button>
-                </td>
-              </tr>`;
+    <tr data-itemid="${a.id}">
+      <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
+      <td><input class="form-control form-control-sm" name="armadura" title="${a.especial || ''}" value="${a.armadura || ''}"></td>
+      <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : ''}</p></td>
+      <td><select class="form-select form-select-sm" name="defensa">${mkOpts(11, a.defensa ?? 0)}</select></td>
+      <td><input class="form-control form-control-sm" name="especial" value="${a.especial || ''}"></td>
+      <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, a.durabilidad ?? 0)}</select></td>
+      <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
+      <td><input class="form-control form-control-sm" name="clase" value="${a.clase || ''}"></td>
+      <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${a.peso ?? 0}"></td>
+      <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${a.valor ?? 0}"></td>
+      <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
+      <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
+    </tr>`;
       }).join('')}
-        </tbody>
-      </table>`;
+          </tbody>
+        </table>`;
 
-      // ARMAS (Equip., Arma con tooltip Especial, Mano, Daño, Peso, Trasp.)
+      // ARMAS: Equipado, Arma (tooltip Especial), Mano, Daño, Trasp., Valor
+      // (Usamos "Ambas" si así está guardado en tus datos)
       const tblArmas = `
-      <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
-      <table class="table table-sm table-dark table-striped">
-        <thead><tr>
-                <th  style="width:40px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
-        <th style="text-align:center; vertical-align:middle;">Arma</th>
-         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">✋🤚</th>
-         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">💥</th>
-                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
-                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
-        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a otro Héroe">⇄</th>
-        </tr></thead>
-        <tbody>
-          ${armasOrden.map(w => {
-        const dur = parseInt(w.durabilidad ?? 0, 10);
-        const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
-        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
-        return `
-              <tr data-itemid="${w.id || ''}" data-cat="arma">
-               <td><input    style="width:40px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"   ${w.equipado ? 'checked' : ''}></td>
-                <td style=" vertical-align:middle;"><span title="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">${esc(w.mano || '')}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">${esc(w.danio || '')}</td>
-                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(w.peso ?? '')}</td>
-                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a Otro Héroe">
-                  <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="arma" data-id="${w.id || ''}" data-slot="${slot}">⇄</button>
-                </td>
-              </tr>`;
-      }).join('')}
-        </tbody>
-      </table>`;
+        <h6 class="mt-2 mb-1">⚔️ Armas</h6>
+        <table class="table table-sm table-dark table-striped">
+          <thead>
+            <tr><th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Peso</th><th>Trasp.</th></tr>
+          </thead>
+          <tbody>
+         ${armasOrden.map(w => {
+  const dur = parseInt(w.durabilidad ?? 0, 10);
+  const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
+  const rotOpts = Array.from({ length: dur + 1 }, (_, r) =>
+    `<option value="${r}" ${r === rot ? 'selected' : ''}>${dur}/${r}</option>`).join('');
+  return `
+    <tr data-itemid="${w.id}">
+      <td><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
+      <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
+      <td>
+        <select class="form-select form-select-sm" name="mano">
+          ${['Izquierda','Derecha','Ambas'].map(m=>`<option value="${m}" ${w.mano===m?'selected':''}>${m}</option>`).join('')}
+        </select>
+      </td>
+      <td><input class="form-control form-control-sm" name="danio" value="${w.danio || ''}"></td>
+      <td><input class="form-control form-control-sm" name="especial" value="${w.especial || ''}"></td>
+      <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, w.durabilidad ?? 0)}</select></td>
+      <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
+      <td><input class="form-control form-control-sm" name="clase" value="${w.clase || ''}"></td>
+      <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${w.peso ?? 0}"></td>
+      <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${w.valor ?? 0}"></td>
+      <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
+      <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
+    </tr>`;
+}).join('')}
+          </tbody>
+        </table>`;
 
       container.innerHTML = tblObjs + tblArmad + tblArmas;
 
+      // Activa tooltips si Tippy está cargado en la página
+      if (window.tippy) {
+        tippy($$('.tip-obj, .tip-arm, .tip-arma', container), { allowHTML: true, theme: 'light-border' });
+      }
     } catch (err) {
       console.error('renderInventarioPreview error', err);
     }
@@ -1001,65 +970,7 @@ window.renderInventarioLists = function (personaje) {
     // Pequeño defer para asegurar que el contenedor está visible
     setTimeout(() => window.renderInventarioPreview(slot), 0);
   });
-  document.addEventListener('change', async (ev) => {
-    const cb = ev.target.closest('input[type="checkbox"]');
-    if (!cb) return;
 
-    // fila e ids
-    const row = cb.closest('tr[data-itemid]');
-    if (!row) return;
-    const id = Number(row.dataset.itemid || 0);
-    if (!id) return;
-
-    // slot del container
-    const cont = cb.closest('[id^="mochila-slot"]');
-    if (!cont) return;
-    const slot = Number((cont.id || '').replace('mochila-slot', ''));
-    if (!Number.isInteger(slot)) return;
-
-    // categoría (arm | arma) desde la fila
-    const cat = row.dataset.cat;
-    if (cat !== 'arm' && cat !== 'arma') return; // en Objetos no hay "equipado"
-
-    // cargar personaje
-    const pj = await window.getPersonajeBySlot(slot);
-    if (!pj || !pj.inventario) return;
-
-    // puntero al array correspondiente
-    const arr = (cat === 'arm') ? (pj.inventario.armaduras || []) : (pj.inventario.armas || []);
-    const item = arr.find(x => x.id === id);
-    if (!item) return;
-
-    // Si se desmarca: simplemente guardar y salir
-    if (!cb.checked) {
-      item.equipado = false;
-      await window.savePersonaje(pj);
-      // refresco ligero del preview del mismo slot
-      if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
-      return;
-    }
-
-    // Si se marca:
-    //  - Armaduras: permitir múltiples (no hay exclusividad)
-    //  - Armas: exclusividad por mano (Izquierda/Derecha/Ambas)
-    if (cat === 'arma') {
-      const mano = (item.mano || '').trim();
-      if (mano === 'Izquierda') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izquierda' || a.mano === 'Ambas')) a.equipado = false; });
-      } else if (mano === 'Derecha') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Derecha' || a.mano === 'Ambas')) a.equipado = false; });
-      } else if (mano === 'Ambas') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado) a.equipado = false; });
-      }
-    }
-
-    // marcar el actual y guardar
-    item.equipado = true;
-    await window.savePersonaje(pj);
-
-    // refrescar el preview (re-pinta checks correctos tras la exclusión)
-    if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
-  });
   // ---------- Delegación: botón "Traspasar" del preview ----------
   document.addEventListener('click', async (ev) => {
     const btn = ev.target.closest('.slot-traspasar');

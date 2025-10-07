@@ -143,7 +143,7 @@ window.openInventarioEditor = async function (slot) {
   <label class="form-label">🏷️ Clase</label>
  <select id="armClase" class="form-select">
     <option value="">--Selecciona--</option>
-    ${Array.from({ length: 7 }, (_, i) => `<option value="C${i + 1}">C${i + 1}</option>`).join('')}
+    ${Array.from({ length: 7 }, (_, i) => `<option value="C${i+1}">C${i+1}</option>`).join('')}
   </select>
   </div>
             <div class="col-6 col-md-1">
@@ -214,7 +214,7 @@ window.openInventarioEditor = async function (slot) {
   <label class="form-label">🏷️ Clase</label>
    <select id="armaClase" class="form-select">
     <option value="">--Selecciona--</option>
-    ${Array.from({ length: 7 }, (_, i) => `<option value="C${i + 1}">C${i + 1}</option>`).join('')}
+    ${Array.from({ length: 7 }, (_, i) => `<option value="C${i+1}">C${i+1}</option>`).join('')}
   </select>
 </div>
                <div class="col-6 col-md-1">
@@ -373,7 +373,6 @@ window.openInventarioEditor = async function (slot) {
       actualizarCobListDesdeSelect();
 
       // ===== Edición inline =====
-      // ===== Edición inline =====
       const onInput = async (ev) => {
         const t = ev.target;
         const row = t.closest('[data-itemid]'); if (!row) return;
@@ -395,18 +394,10 @@ window.openInventarioEditor = async function (slot) {
           const f = t.name; if (!fields.includes(f)) return false;
 
           let v;
-
           if (t.tagName === 'SELECT') {
-            // Selects numéricos
-            const numericSelects = new Set(['durabilidad', 'defensa', 'rotura']);
-            if (numericSelects.has(f)) {
-              // durabilidad refresca también el select de rotura
-              if (f === 'durabilidad') rebuildRotFromDur(row, t.value);
-              v = parseInt(t.value || '0', 10);
-            } else {
-              // Selects de texto (p.ej. mano, lugar)
-              v = t.value;
-            }
+            // durabilidad -> además refresca el select de rotura de la fila
+            if (f === 'durabilidad') rebuildRotFromDur(row, t.value);
+            v = parseInt(t.value || '0', 10);
           } else if (t.type === 'number') {
             v = t.step && t.step !== "1" ? parseFloat(t.value || '0') : parseInt(t.value || '0', 10);
           } else {
@@ -430,6 +421,7 @@ window.openInventarioEditor = async function (slot) {
           updateItem(personaje.inventario.armas, ['equipado', 'arma', 'mano', 'danio', 'durabilidad', 'rotura', 'clase', 'especial', 'peso', 'valor'])
         ) {
           await window.savePersonaje(personaje);
+          // no forzamos re-render completo; solo si quieres:
           window.renderInventarioLists(personaje);
         }
       };
@@ -606,11 +598,7 @@ window.openInventarioEditor = async function (slot) {
       // Listeners
       const root = document.getElementById('invRoot');
       root.addEventListener('input', onInput);
-      // En change: si es 'equipado' -> onChange; en cualquier otro caso -> onInput (para selects)
-      root.addEventListener('change', (ev) => {
-        if (ev.target?.name === 'equipado') return onChange(ev);
-        return onInput(ev);
-      });
+      root.addEventListener('change', onChange);
       root.addEventListener('click', onClick);
 
       // ===== Añadir =====
@@ -715,9 +703,9 @@ window.renderInventarioLists = function (personaje) {
     return 0;
   };
 
-  const objetosOrden = Array.isArray(personaje.inventario?.objetos) ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
+  const objetosOrden   = Array.isArray(personaje.inventario?.objetos)   ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre))   : [];
   const armadurasOrden = Array.isArray(personaje.inventario?.armaduras) ? personaje.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-  const armasOrden = Array.isArray(personaje.inventario?.armas) ? personaje.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
+  const armasOrden     = Array.isArray(personaje.inventario?.armas)     ? personaje.inventario.armas.slice().sort(byStr(w => w.arma))       : [];
 
   // --- OBJETOS ---
   const objHtml = `
@@ -742,7 +730,7 @@ window.renderInventarioLists = function (personaje) {
             <td>
               <select class="form-select form-select-sm" name="lugar">
                 ${['', 'Mochila', 'Atajo 1', 'Atajo 2', 'Atajo 3', 'Atajo 4', 'Atajo 5', 'Atajo 6', 'Atajo 7']
-      .map(l => `<option value="${l}" ${o.lugar === l ? 'selected' : ''}>${l || '--Lugar--'}</option>`).join('')}
+                  .map(l => `<option value="${l}" ${o.lugar === l ? 'selected' : ''}>${l || '--Lugar--'}</option>`).join('')}
               </select>
             </td>
             <td><input class="form-control form-control-sm" type="number" min="0" name="cantidad" value="${o.cantidad ?? 0}"></td>
@@ -776,10 +764,10 @@ window.renderInventarioLists = function (personaje) {
       </thead>
       <tbody>
         ${armadurasOrden.map(a => {
-    const dur = parseInt(a.durabilidad ?? 0, 10);
-    const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
-    const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur) ? 0 : dur}/${r}</option>`).join('');
-    return `
+          const dur = parseInt(a.durabilidad ?? 0, 10);
+          const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+          const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur)?0:dur}/${r}</option>`).join('');
+          return `
             <tr data-itemid="${a.id}">
               <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
               <td><input class="form-control form-control-sm" name="armadura" title="${a.especial || ''}" value="${a.armadura || ''}"></td>
@@ -793,7 +781,7 @@ window.renderInventarioLists = function (personaje) {
               <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
               <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
             </tr>`;
-  }).join('')}
+        }).join('')}
       </tbody>
     </table>`;
 
@@ -817,10 +805,10 @@ window.renderInventarioLists = function (personaje) {
       </thead>
       <tbody>
         ${armasOrden.map(w => {
-    const dur = parseInt(w.durabilidad ?? 0, 10);
-    const rot = Math.min(parseInt(w.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
-    const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur) ? 0 : dur}/${r}</option>`).join('');
-    return `
+          const dur = parseInt(w.durabilidad ?? 0, 10);
+          const rot = Math.min(parseInt(w.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+          const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur)?0:dur}/${r}</option>`).join('');
+          return `
             <tr data-itemid="${w.id}">
               <td><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
               <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
@@ -838,7 +826,7 @@ window.renderInventarioLists = function (personaje) {
               <td><button class="btn btn-sm btn-danger" data-action="eliminar">🗑️</button></td>
               <td><button class="btn btn-sm btn-secondary" data-action="traspasar">⇄</button></td>
             </tr>`;
-  }).join('')}
+        }).join('')}
       </tbody>
     </table>`;
 
@@ -863,36 +851,36 @@ window.renderInventarioLists = function (personaje) {
   const esc = (s) => (s == null ? '' : String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
 
   // ---------- Render del PREVIEW debajo del botón ----------
-  // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
-  window.renderInventarioPreview = async function (slot) {
-    try {
-      const container = document.getElementById(`mochila-slot${slot}`);
-      if (!container) return;
+ // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
+window.renderInventarioPreview = async function (slot) {
+  try {
+    const container = document.getElementById(`mochila-slot${slot}`);
+    if (!container) return;
 
-      const pj = await window.getPersonajeBySlot(slot);
-      if (!pj || !pj.inventario) {
-        container.innerHTML = '<em>Sin inventario</em>';
-        return;
-      }
+    const pj = await window.getPersonajeBySlot(slot);
+    if (!pj || !pj.inventario) {
+      container.innerHTML = '<em>Sin inventario</em>';
+      return;
+    }
 
-      const esc = (s) => (s == null ? '' : String(s)
-        .replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
+    const esc = (s) => (s == null ? '' : String(s)
+      .replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])));
 
-      const byStr = (get) => (a, b) => {
-        const A = (get(a) || '').toString().trim().toLowerCase();
-        const B = (get(b) || '').toString().trim().toLowerCase();
-        if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
-        if (!A && B) return 1;
-        if (A && !B) return -1;
-        return 0;
-      };
+    const byStr = (get) => (a, b) => {
+      const A = (get(a) || '').toString().trim().toLowerCase();
+      const B = (get(b) || '').toString().trim().toLowerCase();
+      if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
+      if (!A && B) return 1;
+      if (A && !B) return -1;
+      return 0;
+    };
 
-      const objetosOrden = Array.isArray(pj.inventario?.objetos) ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
-      const armadurasOrden = Array.isArray(pj.inventario?.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-      const armasOrden = Array.isArray(pj.inventario?.armas) ? pj.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
+    const objetosOrden     = Array.isArray(pj.inventario?.objetos)   ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre))   : [];
+    const armadurasOrden   = Array.isArray(pj.inventario?.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
+    const armasOrden       = Array.isArray(pj.inventario?.armas)     ? pj.inventario.armas.slice().sort(byStr(w => w.arma))       : [];
 
-      // OBJETOS (Nombre con tooltip Uso, Cantidad, Peso, Traspasar)
-      const tblObjs = `
+    // OBJETOS (Nombre con tooltip Uso, Cantidad, Peso, Traspasar)
+    const tblObjs = `
       <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
@@ -914,8 +902,8 @@ window.renderInventarioLists = function (personaje) {
         </tbody>
       </table>`;
 
-      // ARMADURAS (Equip., Armadura con tooltip Especial, Cob., Def., Dur., Peso, Trasp.)
-      const tblArmad = `
+    // ARMADURAS (Equip., Armadura con tooltip Especial, Cob., Def., Dur., Peso, Trasp.)
+    const tblArmad = `
       <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
@@ -929,10 +917,10 @@ window.renderInventarioLists = function (personaje) {
         </tr></thead>
         <tbody>
           ${armadurasOrden.map(a => {
-        const dur = parseInt(a.durabilidad ?? 0, 10);
-        const rot = Math.min(parseInt(a.rotura ?? 0, 10), dur);
-        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
-        return `
+            const dur = parseInt(a.durabilidad ?? 0, 10);
+            const rot = Math.min(parseInt(a.rotura ?? 0, 10), dur);
+            const durRot = `${isNaN(dur)?0:dur}/${isNaN(rot)?0:rot}`;
+            return `
               <tr data-itemid="${a.id || ''}" data-cat="arm">
                 <td><input    style="width:40px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"  ${a.equipado ? 'checked' : ''}></td>
                 <td style=" vertical-align:middle;"><span title="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
@@ -944,12 +932,12 @@ window.renderInventarioLists = function (personaje) {
                   <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="arm" data-id="${a.id || ''}" data-slot="${slot}">⇄</button>
                 </td>
               </tr>`;
-      }).join('')}
+          }).join('')}
         </tbody>
       </table>`;
 
-      // ARMAS (Equip., Arma con tooltip Especial, Mano, Daño, Peso, Trasp.)
-      const tblArmas = `
+    // ARMAS (Equip., Arma con tooltip Especial, Mano, Daño, Peso, Trasp.)
+    const tblArmas = `
       <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
@@ -963,10 +951,10 @@ window.renderInventarioLists = function (personaje) {
         </tr></thead>
         <tbody>
           ${armasOrden.map(w => {
-        const dur = parseInt(w.durabilidad ?? 0, 10);
-        const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
-        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
-        return `
+             const dur = parseInt(w.durabilidad ?? 0, 10);
+            const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
+            const durRot = `${isNaN(dur)?0:dur}/${isNaN(rot)?0:rot}`;
+            return `
               <tr data-itemid="${w.id || ''}" data-cat="arma">
                <td><input    style="width:40px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"   ${w.equipado ? 'checked' : ''}></td>
                 <td style=" vertical-align:middle;"><span title="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
@@ -978,16 +966,16 @@ window.renderInventarioLists = function (personaje) {
                   <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="arma" data-id="${w.id || ''}" data-slot="${slot}">⇄</button>
                 </td>
               </tr>`;
-      }).join('')}
+          }).join('')}
         </tbody>
       </table>`;
 
-      container.innerHTML = tblObjs + tblArmad + tblArmas;
+    container.innerHTML = tblObjs + tblArmad + tblArmas;
 
-    } catch (err) {
-      console.error('renderInventarioPreview error', err);
-    }
-  };
+  } catch (err) {
+    console.error('renderInventarioPreview error', err);
+  }
+};
 
   // ---------- Hook: al entrar en la sección "mochila" pinto el preview ----------
   // (El HTML ya llama a showBackSection; aquí escuchamos el click del botón frontal)
@@ -1001,65 +989,7 @@ window.renderInventarioLists = function (personaje) {
     // Pequeño defer para asegurar que el contenedor está visible
     setTimeout(() => window.renderInventarioPreview(slot), 0);
   });
-  document.addEventListener('change', async (ev) => {
-    const cb = ev.target.closest('input[type="checkbox"]');
-    if (!cb) return;
 
-    // fila e ids
-    const row = cb.closest('tr[data-itemid]');
-    if (!row) return;
-    const id = Number(row.dataset.itemid || 0);
-    if (!id) return;
-
-    // slot del container
-    const cont = cb.closest('[id^="mochila-slot"]');
-    if (!cont) return;
-    const slot = Number((cont.id || '').replace('mochila-slot', ''));
-    if (!Number.isInteger(slot)) return;
-
-    // categoría (arm | arma) desde la fila
-    const cat = row.dataset.cat;
-    if (cat !== 'arm' && cat !== 'arma') return; // en Objetos no hay "equipado"
-
-    // cargar personaje
-    const pj = await window.getPersonajeBySlot(slot);
-    if (!pj || !pj.inventario) return;
-
-    // puntero al array correspondiente
-    const arr = (cat === 'arm') ? (pj.inventario.armaduras || []) : (pj.inventario.armas || []);
-    const item = arr.find(x => x.id === id);
-    if (!item) return;
-
-    // Si se desmarca: simplemente guardar y salir
-    if (!cb.checked) {
-      item.equipado = false;
-      await window.savePersonaje(pj);
-      // refresco ligero del preview del mismo slot
-      if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
-      return;
-    }
-
-    // Si se marca:
-    //  - Armaduras: permitir múltiples (no hay exclusividad)
-    //  - Armas: exclusividad por mano (Izquierda/Derecha/Ambas)
-    if (cat === 'arma') {
-      const mano = (item.mano || '').trim();
-      if (mano === 'Izquierda') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izquierda' || a.mano === 'Ambas')) a.equipado = false; });
-      } else if (mano === 'Derecha') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Derecha' || a.mano === 'Ambas')) a.equipado = false; });
-      } else if (mano === 'Ambas') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado) a.equipado = false; });
-      }
-    }
-
-    // marcar el actual y guardar
-    item.equipado = true;
-    await window.savePersonaje(pj);
-
-    // refrescar el preview (re-pinta checks correctos tras la exclusión)
-    if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
-  });
   // ---------- Delegación: botón "Traspasar" del preview ----------
   document.addEventListener('click', async (ev) => {
     const btn = ev.target.closest('.slot-traspasar');
