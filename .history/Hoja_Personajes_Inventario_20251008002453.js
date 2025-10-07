@@ -165,9 +165,13 @@ window.openInventarioEditor = async function (slot) {
   <label class="form-label">🥾 Cob.</label>
   <select id="armCobSel" class="form-select" multiple size="8">
     <option value="Cabeza">Cabeza</option>
-    <option value="Torso">Torso</option>
+    <option value="Pecho">Pecho</option>
+    <option value="Abdomen">Abdomen</option>
+    <option value="Hombros">Hombros</option>
     <option value="Brazos">Brazos</option>
+    <option value="Manos">Manos</option>
     <option value="Piernas">Piernas</option>
+    <option value="Pies">Pies</option>
   </select>
   <small id="armCobList" class="d-block mt-1"></small>
 </div>
@@ -188,8 +192,8 @@ window.openInventarioEditor = async function (slot) {
             <div class="col-12 col-md-2">
               <label class="form-label">✋🤚 Mano</label>
               <select id="armaMano" class="form-select">
-                <option value="Izq.">Izq.</option>
-                <option value="Der.">Der.</option>
+                <option value="Izquierda">Izquierda</option>
+                <option value="Derecha">Derecha</option>
                 <option value="Ambas">Ambas</option>
               </select>
             </div>
@@ -299,7 +303,7 @@ window.openInventarioEditor = async function (slot) {
         // limpiar ARMA
         if (n('armaEquipado')) n('armaEquipado').checked = false;
         if (n('armaNombre')) n('armaNombre').value = '';
-        if (n('armaMano')) n('armaMano').value = 'Izq.';
+        if (n('armaMano')) n('armaMano').value = 'Izquierda';
         if (n('armaDanio')) n('armaDanio').value = '';
         if (n('armaDurabilidad')) n('armaDurabilidad').value = '0';
         if (n('armaEspecial')) n('armaEspecial').value = '';
@@ -456,10 +460,10 @@ window.openInventarioEditor = async function (slot) {
         }
 
         const mano = (item.mano || '').trim();
-        if (mano === 'Izq.') {
-          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izq.' || a.mano === 'Ambas')) a.equipado = false; });
-        } else if (mano === 'Der.') {
-          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Der.' || a.mano === 'Ambas')) a.equipado = false; });
+        if (mano === 'Izquierda') {
+          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izquierda' || a.mano === 'Ambas')) a.equipado = false; });
+        } else if (mano === 'Derecha') {
+          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Derecha' || a.mano === 'Ambas')) a.equipado = false; });
         } else if (mano === 'Ambas') {
           personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado) a.equipado = false; });
         }
@@ -470,64 +474,64 @@ window.openInventarioEditor = async function (slot) {
       };
 
       // ===== Eliminar / Traspasar =====
-      // ===== Eliminar / Traspasar / Acciones =====
-      const onClick = async (ev) => {
-        const btn = ev.target.closest('[data-action]'); if (!btn) return;
+     // ===== Eliminar / Traspasar / Acciones =====
+const onClick = async (ev) => {
+  const btn = ev.target.closest('[data-action]'); if (!btn) return;
 
-        // --- menú de acciones ---
-        if (btn.dataset.action === 'acciones') {
-          const td = btn.closest('td'); if (!td) return;
-          const row = btn.closest('[data-itemid]'); if (!row) return;
-          // cierra menú anterior si existe
-          const prev = td.querySelector('.inv-actions-menu'); if (prev) prev.remove();
+  // --- menú de acciones ---
+  if (btn.dataset.action === 'acciones') {
+    const td = btn.closest('td'); if (!td) return;
+    const row = btn.closest('[data-itemid]'); if (!row) return;
+    // cierra menú anterior si existe
+    const prev = td.querySelector('.inv-actions-menu'); if (prev) prev.remove();
 
-          // crea menú
-          const menu = document.createElement('div');
-          menu.className = 'inv-actions-menu';
-          menu.style.cssText = `
+    // crea menú
+    const menu = document.createElement('div');
+    menu.className = 'inv-actions-menu';
+    menu.style.cssText = `
       position:absolute; right:4px; top:36px; z-index:10;
       background:#1e1e1e; color:#fff; border:1px solid rgba(255,255,255,.12);
       border-radius:8px; padding:6px; box-shadow:0 8px 24px rgba(0,0,0,.45);
       min-width:150px;
     `;
-          menu.innerHTML = `
+    menu.innerHTML = `
       <div class="d-grid gap-1">
         <button class="btn btn-sm btn-outline-warning" data-action="traspasar">⇄ Traspasar</button>
         <button class="btn btn-sm btn-outline-danger"  data-action="eliminar">🗑️ Eliminar</button>
       </div>
     `;
-          td.appendChild(menu);
+    td.appendChild(menu);
 
-          // cerrar si clic fuera
-          const close = (e) => {
-            if (!menu.contains(e.target) && e.target !== btn) {
-              menu.remove(); document.removeEventListener('mousedown', close, true);
-            }
-          };
-          document.addEventListener('mousedown', close, true);
-          return;
-        }
+    // cerrar si clic fuera
+    const close = (e) => {
+      if (!menu.contains(e.target) && e.target !== btn) {
+        menu.remove(); document.removeEventListener('mousedown', close, true);
+      }
+    };
+    document.addEventListener('mousedown', close, true);
+    return;
+  }
 
-        // desde aquí, igual que antes:
-        const row = btn.closest('[data-itemid]'); if (!row) return;
-        const id = Number(row.dataset.itemid);
-        const action = btn.dataset.action;
+  // desde aquí, igual que antes:
+  const row = btn.closest('[data-itemid]'); if (!row) return;
+  const id = Number(row.dataset.itemid);
+  const action = btn.dataset.action;
 
-        const delFrom = (arr) => {
-          const i = arr.findIndex(x => x.id === id);
-          if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
-          return null;
-        };
+  const delFrom = (arr) => {
+    const i = arr.findIndex(x => x.id === id);
+    if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
+    return null;
+  };
 
-        if (action === 'eliminar') {
-          // Confirmación inline: no cierra el popup de inventario
-          const prev = document.getElementById('invConfirmOverlay');
-          if (prev) prev.remove();
+  if (action === 'eliminar') {
+    // Confirmación inline: no cierra el popup de inventario
+    const prev = document.getElementById('invConfirmOverlay');
+    if (prev) prev.remove();
 
-          const overlay = document.createElement('div');
-          overlay.id = 'invConfirmOverlay';
-          overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:10000;';
-          overlay.innerHTML = `
+    const overlay = document.createElement('div');
+    overlay.id = 'invConfirmOverlay';
+    overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:10000;';
+    overlay.innerHTML = `
       <div class="hero-card"
            style="background:#1e1e1e; color:#fff; border:1px solid rgba(255,255,255,.1);
                   border-radius:10px; padding:16px; width:min(420px,92vw);
@@ -540,96 +544,94 @@ window.openInventarioEditor = async function (slot) {
         </div>
       </div>
     `;
-          document.body.appendChild(overlay);
+    document.body.appendChild(overlay);
 
-          const closeOverlay = () => { try { overlay.remove(); } catch (_) { } };
+    const closeOverlay = () => { try { overlay.remove(); } catch(_){} };
 
-          overlay.querySelector('#invConfirmCancel').addEventListener('click', closeOverlay);
-          overlay.querySelector('#invConfirmOk').addEventListener('click', async () => {
-            const delObj = delFrom(personaje.inventario.objetos);
-            const delArm = delFrom(personaje.inventario.armaduras);
-            const delArma = delFrom(personaje.inventario.armas);
-            if (delObj || delArm || delArma) {
-              await window.savePersonaje(personaje);
-              window.renderInventarioLists(personaje);
-            }
-            closeOverlay();
-          });
-          return;
-        }
+    overlay.querySelector('#invConfirmCancel').addEventListener('click', closeOverlay);
+    overlay.querySelector('#invConfirmOk').addEventListener('click', async () => {
+      const delObj = delFrom(personaje.inventario.objetos);
+      const delArm = delFrom(personaje.inventario.armaduras);
+      const delArma = delFrom(personaje.inventario.armas);
+      if (delObj || delArm || delArma) {
+        await window.savePersonaje(personaje);
+        window.renderInventarioLists(personaje);
+      }
+      closeOverlay();
+    });
+    return;
+  }
 
-        if (action === 'traspasar') {
-          // 1) Obtener destinos válidos
-          const asigs = await new Promise((resolve, reject) => {
-            const tx = db.transaction('slots', 'readonly');
-            const st = tx.objectStore('slots');
-            const req = st.getAll();
-            req.onsuccess = e => {
-              const all = e.target.result || [];
-              resolve(all.filter(a => a && a.personajeId && a.slot !== slot));
-            };
-            req.onerror = () => reject(req.error);
-          });
-
-          const destinos = [];
-          for (const a of asigs) {
-            try {
-              const p = await window.getPersonajeBySlot(a.slot);
-              if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
-            } catch (_) { }
-          }
-
-          if (!destinos.length) {
-            Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
-            return;
-          }
-
-          const inputOptions = {};
-          destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
-
-          const { isConfirmed, value: destSlot } = await Swal.fire({
-            title: 'Traspasar a...',
-            input: 'select',
-            inputOptions,
-            inputPlaceholder: 'Selecciona héroe destino',
-            showCancelButton: true,
-            confirmButtonText: 'Traspasar',
-          });
-          if (!isConfirmed) return;
-
-          // 2) Quitar del origen y detectar categoría
-          let categoria = 'objetos';
-          let moved = delFrom(personaje.inventario.objetos);
-          if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras); }
-          if (!moved) { categoria = 'armas'; moved = delFrom(personaje.inventario.armas); }
-          if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
-
-          // Armaduras/Armas: llegan como no equipadas
-          if (categoria !== 'objetos') moved.equipado = false;
-
-          // 3) Añadir en destino (id se conserva salvo colisión)
-          const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
-          if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
-          if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
-          const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
-
-          if (destArr.some(x => x.id === moved.id)) {
-            let newId = Date.now();
-            while (destArr.some(x => x.id === newId)) newId++;
-            moved.id = newId;
-          }
-
-          destArr.push(moved);
-
-          await window.savePersonaje(personaje);
-          await window.savePersonaje(destPersonaje);
-          window.renderInventarioLists(personaje);
-          Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
-          // 🔁 Refresca los 4 slots visibles
-          if (window.refreshAllSlots) window.refreshAllSlots();
-          return;
-        }
+  if (action === 'traspasar') {
+    // 1) Obtener destinos válidos
+    const asigs = await new Promise((resolve, reject) => {
+      const tx = db.transaction('slots', 'readonly');
+      const st = tx.objectStore('slots');
+      const req = st.getAll();
+      req.onsuccess = e => {
+        const all = e.target.result || [];
+        resolve(all.filter(a => a && a.personajeId && a.slot !== slot));
       };
+      req.onerror = () => reject(req.error);
+    });
+
+    const destinos = [];
+    for (const a of asigs) {
+      try {
+        const p = await window.getPersonajeBySlot(a.slot);
+        if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
+      } catch (_) { }
+    }
+
+    if (!destinos.length) {
+      Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
+      return;
+    }
+
+    const inputOptions = {};
+    destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
+
+    const { isConfirmed, value: destSlot } = await Swal.fire({
+      title: 'Traspasar a...',
+      input: 'select',
+      inputOptions,
+      inputPlaceholder: 'Selecciona héroe destino',
+      showCancelButton: true,
+      confirmButtonText: 'Traspasar',
+    });
+    if (!isConfirmed) return;
+
+    // 2) Quitar del origen y detectar categoría
+    let categoria = 'objetos';
+    let moved = delFrom(personaje.inventario.objetos);
+    if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras); }
+    if (!moved) { categoria = 'armas'; moved = delFrom(personaje.inventario.armas); }
+    if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
+
+    // Armaduras/Armas: llegan como no equipadas
+    if (categoria !== 'objetos') moved.equipado = false;
+
+    // 3) Añadir en destino (id se conserva salvo colisión)
+    const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
+    if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
+    if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
+    const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
+
+    if (destArr.some(x => x.id === moved.id)) {
+      let newId = Date.now();
+      while (destArr.some(x => x.id === newId)) newId++;
+      moved.id = newId;
+    }
+
+    destArr.push(moved);
+
+    await window.savePersonaje(personaje);
+    await window.savePersonaje(destPersonaje);
+    window.renderInventarioLists(personaje);
+    Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
+    return;
+  }
+};
 
 
       // Listeners
@@ -701,7 +703,7 @@ window.openInventarioEditor = async function (slot) {
         const item = {
           id: Date.now(),
           arma,
-          mano: document.getElementById('armaMano')?.value || 'Izq.',
+          mano: document.getElementById('armaMano')?.value || 'Izquierda',
           danio: document.getElementById('armaDanio')?.value || '',
           durabilidad: parseInt(document.getElementById('armaDurabilidad')?.value || '0', 10),
           especial: document.getElementById('armaEspecial')?.value || '',
@@ -756,23 +758,23 @@ window.renderInventarioLists = function (personaje) {
     return 0;
   };
 
-  const objetosOrden = Array.isArray(personaje.inventario?.objetos) ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
+  const objetosOrden   = Array.isArray(personaje.inventario?.objetos)   ? personaje.inventario.objetos.slice().sort(byStr(o => o.nombre))     : [];
   const armadurasOrden = Array.isArray(personaje.inventario?.armaduras) ? personaje.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-  const armasOrden = Array.isArray(personaje.inventario?.armas) ? personaje.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
+  const armasOrden     = Array.isArray(personaje.inventario?.armas)     ? personaje.inventario.armas.slice().sort(byStr(w => w.arma))         : [];
 
   // --- OBJETOS ---
   const objHtml = `
     <table class="table table-sm align-middle">
       <thead>
         <tr>
-          <th>🏷️ Objeto</th>
+          <th>🏷️ Nombre</th>
           <th>💼 Lugar</th>
-          <th style="width:100px;">🧮 Cant.</th>
+          <th style="width:90px;text-align:center;vertical-align:middle;">🧮</th>
           <th style="width:100px;">⚖️ Peso</th>
           <th style="width:90px;">⚒️ Dur.</th>
           <th>📜 Uso</th>
           <th style="width:100px;">💰 Valor</th>
-          <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          <th style="width:110px;text-align:center;vertical-align:middle;">⚙️ Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -782,7 +784,7 @@ window.renderInventarioLists = function (personaje) {
             <td>
               <select class="form-select form-select-sm" name="lugar">
                 ${['', 'Mochila', 'Atajo 1', 'Atajo 2', 'Atajo 3', 'Atajo 4', 'Atajo 5', 'Atajo 6', 'Atajo 7']
-      .map(l => `<option value="${l}" ${o.lugar === l ? 'selected' : ''}>${l || '--Lugar--'}</option>`).join('')}
+                  .map(l => `<option value="${l}" ${o.lugar === l ? 'selected' : ''}>${l || '--Lugar--'}</option>`).join('')}
               </select>
             </td>
             <td><input class="form-control form-control-sm" type="number" min="0" name="cantidad" value="${o.cantidad ?? 0}"></td>
@@ -790,8 +792,8 @@ window.renderInventarioLists = function (personaje) {
             <td><select class="form-select form-select-sm" name="durabilidad">${mkOpts(11, o.durabilidad ?? 0)}</select></td>
             <td><input class="form-control form-control-sm" name="uso" value="${o.uso || ''}"></td>
             <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${o.valor ?? 0}"></td>
-            <td style="text-align:center;vertical-align:middle;position:relative;">
-              <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+            <td style="position:relative; text-align:center;">
+              <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️ Acciones</button>
             </td>
           </tr>`).join('')}
       </tbody>
@@ -802,39 +804,41 @@ window.renderInventarioLists = function (personaje) {
     <table class="table table-sm align-middle">
       <thead>
         <tr>
-           <th style="width:90px;">⚙️</th>
+          <th style="width:90px;">✅</th>
           <th>🛡️ Armadura</th>
-          <th>⛇ Cob.</th>
+          <th>🗺️ Cobertura</th>
           <th style="width:90px;">🛡️ Def.</th>
-          <th>✨ Espec.</th>
-          <th style="width:100px;">⛓️ Rot.</th>
-          <th style="width:70px;">🏷️ Cl.</th>
+          <th>✨ Especial</th>
+          <th style="width:90px;">⚒️ Dur.</th>
+          <th style="width:110px;">⛓️ Rot.</th>
+          <th>🏷️ Clase</th>
           <th style="width:100px;">⚖️ Peso</th>
           <th style="width:100px;">💰 Valor</th>
-          <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          <th style="width:110px;text-align:center;vertical-align:middle;">⚙️ Acciones</th>
         </tr>
       </thead>
       <tbody>
         ${armadurasOrden.map(a => {
-    const dur = parseInt(a.durabilidad ?? 0, 10);
-    const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
-    const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur) ? 0 : dur}/${r}</option>`).join('');
-    return `
+          const dur = parseInt(a.durabilidad ?? 0, 10);
+          const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+          const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur)?0:dur}/${r}</option>`).join('');
+          return `
             <tr data-itemid="${a.id}">
-              <td style="text-align:center;vertical-align:middle;"><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
+              <td><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
               <td><input class="form-control form-control-sm" name="armadura" title="${a.especial || ''}" value="${a.armadura || ''}"></td>
               <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : ''}</p></td>
               <td><select class="form-select form-select-sm" name="defensa">${mkOpts(11, a.defensa ?? 0)}</select></td>
               <td><input class="form-control form-control-sm" name="especial" value="${a.especial || ''}"></td>
+              <td><select class="form-select form-select-sm" name="durabilidad" data-durlink="1">${mkOpts(11, a.durabilidad ?? 0)}</select></td>
               <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
               <td><input class="form-control form-control-sm" name="clase" value="${a.clase || ''}"></td>
               <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${a.peso ?? 0}"></td>
               <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${a.valor ?? 0}"></td>
-              <td style="text-align:center;vertical-align:middle;position:relative;">
-                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+              <td style="position:relative; text-align:center;">
+                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️ Acciones</button>
               </td>
             </tr>`;
-  }).join('')}
+        }).join('')}
       </tbody>
     </table>`;
 
@@ -843,43 +847,45 @@ window.renderInventarioLists = function (personaje) {
     <table class="table table-sm align-middle">
       <thead>
         <tr>
-          <th style="width:90px;">⚙️</th>
+          <th style="width:90px;">✅</th>
           <th>⚔️ Arma</th>
           <th>✋ Mano</th>
-          <th>💥 DAÑ</th>
-          <th>✨ Espec.</th>
-          <th style="width:100px;">⛓️ Rot.</th>
-           <th style="width:70px;">🏷️ Cl.</th>
+          <th>💥 Daño</th>
+          <th>✨ Especial</th>
+          <th style="width:90px;">⚒️ Dur.</th>
+          <th style="width:110px;">⛓️ Rot.</th>
+          <th>🏷️ Clase</th>
           <th style="width:100px;">⚖️ Peso</th>
           <th style="width:100px;">💰 Valor</th>
-          <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          <th style="width:110px;text-align:center;vertical-align:middle;">⚙️ Acciones</th>
         </tr>
       </thead>
       <tbody>
         ${armasOrden.map(w => {
-    const dur = parseInt(w.durabilidad ?? 0, 10);
-    const rot = Math.min(parseInt(w.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
-    const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur) ? 0 : dur}/${r}</option>`).join('');
-    return `
+          const dur = parseInt(w.durabilidad ?? 0, 10);
+          const rot = Math.min(parseInt(w.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+          const rotOpts = Array.from({ length: (isNaN(dur) ? 0 : dur) + 1 }, (_, r) => `<option value="${r}" ${r === rot ? 'selected' : ''}>${isNaN(dur)?0:dur}/${r}</option>`).join('');
+          return `
             <tr data-itemid="${w.id}">
-              <td style="text-align:center;vertical-align:middle;"><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
+              <td><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
               <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
               <td>
                 <select class="form-select form-select-sm" name="mano">
-                  ${['Izq.', 'Der.', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
+                  ${['Izquierda', 'Derecha', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
                 </select>
               </td>
               <td><input class="form-control form-control-sm" name="danio" value="${w.danio || ''}"></td>
               <td><input class="form-control form-control-sm" name="especial" value="${w.especial || ''}"></td>
+              <td><select class="form-select form-select-sm" name="durabilidad" data-durlink="1">${mkOpts(11, w.durabilidad ?? 0)}</select></td>
               <td><select class="form-select form-select-sm" name="rotura" data-durlink="1">${rotOpts}</select></td>
               <td><input class="form-control form-control-sm" name="clase" value="${w.clase || ''}"></td>
               <td><input class="form-control form-control-sm" type="number" step="0.1" min="0" name="peso" value="${w.peso ?? 0}"></td>
               <td><input class="form-control form-control-sm" type="number" min="0" name="valor" value="${w.valor ?? 0}"></td>
-              <td style="text-align:center;vertical-align:middle;position:relative;">
-                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+              <td style="position:relative; text-align:center;">
+                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️ Acciones</button>
               </td>
             </tr>`;
-  }).join('')}
+        }).join('')}
       </tbody>
     </table>`;
 
@@ -906,8 +912,6 @@ window.renderInventarioLists = function (personaje) {
   const esc = (s) => (s == null ? '' : String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
 
   // ---------- Render del PREVIEW debajo del botón ----------
-  // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
-  // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   window.renderInventarioPreview = async function (slot) {
     try {
@@ -936,105 +940,103 @@ window.renderInventarioLists = function (personaje) {
       const armadurasOrden = Array.isArray(pj.inventario?.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
       const armasOrden = Array.isArray(pj.inventario?.armas) ? pj.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
 
-      // OBJETOS
+      // OBJETOS (Nombre con tooltip Uso, Cantidad, Peso, Traspasar)
       const tblObjs = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
-       <table class="table table-sm table-dark table-striped">
-        <thead>
-          <tr>
-           <th style="text-align:center; vertical-align:middle;">Nombre</th>
+      <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
+      <table class="table table-sm table-dark table-striped">
+        <thead><tr>
+        <th style="text-align:center; vertical-align:middle;">Nombre</th>
         <th  style="width:40px; text-align:center; vertical-align:middle;" title="Cantidad">🧮</th>
         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
-            <th style="width:40px;text-align:center;vertical-align:middle;"title="Acciones">⚙️</th>
-          </tr>
-        </thead>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a otro Héroe">⇄</th>
+        </tr></thead>
         <tbody>
           ${objetosOrden.map(o => `
             <tr data-itemid="${o.id || ''}" data-cat="obj">
-               <td style=" vertical-align:middle;"><span title="${esc(o.uso || '')}">${esc(o.nombre || '')}</span></td>
+              <td style=" vertical-align:middle;"><span title="${esc(o.uso || '')}">${esc(o.nombre || '')}</span></td>
               <td   style="width:40px; text-align:center; vertical-align:middle;" title="Cantidad">${esc(o.cantidad ?? 0)}</td>
               <td style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">${esc(o.peso ?? '')}</td>
-              <td class="text-center" style="position:relative;">
-                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+              <td class="text-center">
+                <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="obj" data-id="${o.id || ''}" data-slot="${slot}" "title="Traspasar a otro Héroe">⇄</button>
               </td>
             </tr>`).join('')}
         </tbody>
       </table>`;
 
-      // ARMADURAS
+      // ARMADURAS (Equip., Armadura con tooltip Especial, Cob., Def., Dur., Peso, Trasp.)
       const tblArmad = `
       <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
-        <th  style="width:20px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
-        <th style="text-align:center; vertical-align:middle;">Arm.</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
+        <th style="text-align:center; vertical-align:middle;">Armadura</th>
         <th style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">⛇</th>
         <th style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">🛡️</th>
         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
-            <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
-          </tr>
-        </thead>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a otro Héroe">⇄</th>
+        </tr></thead>
         <tbody>
           ${armadurasOrden.map(a => {
         const dur = parseInt(a.durabilidad ?? 0, 10);
-        const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+        const rot = Math.min(parseInt(a.rotura ?? 0, 10), dur);
         const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
         return `
               <tr data-itemid="${a.id || ''}" data-cat="arm">
-                <td><input    style="width:20px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"  ${a.equipado ? 'checked' : ''}></td>
+                <td><input    style="width:40px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"  ${a.equipado ? 'checked' : ''}></td>
                 <td style=" vertical-align:middle;"><span title="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">${Array.isArray(a.cobertura) ? esc(a.cobertura.join(', ')) : ''}</td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">${esc(a.defensa ?? 0)}</td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(a.peso ?? '')}</td>
-                <td class="text-center" style="position:relative;">
-                  <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">${Array.isArray(a.cobertura) ? esc(a.cobertura.join(', ')) : ''}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">${esc(a.defensa ?? 0)}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(a.peso ?? '')}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a Otro Héroe">
+                  <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="arm" data-id="${a.id || ''}" data-slot="${slot}">⇄</button>
                 </td>
               </tr>`;
       }).join('')}
         </tbody>
       </table>`;
 
-      // ARMAS
+      // ARMAS (Equip., Arma con tooltip Especial, Mano, Daño, Peso, Trasp.)
       const tblArmas = `
-       <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
+      <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
-                <th  style="width:20px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
         <th style="text-align:center; vertical-align:middle;">Arma</th>
          <th  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">✋🤚</th>
          <th  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">💥</th>
                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
-            <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
-          </tr>
-        </thead>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a otro Héroe">⇄</th>
+        </tr></thead>
         <tbody>
-          ${armasOrden.map(w => { const dur = parseInt(w.durabilidad ?? 0, 10);
+          ${armasOrden.map(w => {
+        const dur = parseInt(w.durabilidad ?? 0, 10);
         const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
         const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
         return `
-             <tr data-itemid="${w.id || ''}" data-cat="arma">
-               <td><input    style="width:20px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"   ${w.equipado ? 'checked' : ''}></td>
+              <tr data-itemid="${w.id || ''}" data-cat="arma">
+               <td><input    style="width:40px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"   ${w.equipado ? 'checked' : ''}></td>
                 <td style=" vertical-align:middle;"><span title="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">${esc(w.mano || '')}</td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">${esc(w.danio || '')}</td>
-                <td  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
-                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(w.peso ?? '')}</td>
-             <td class="text-center" style="position:relative;">
-                  <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">${esc(w.mano || '')}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">${esc(w.danio || '')}</td>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(w.peso ?? '')}</td>
+                 <th  style="width:40px; text-align:center; vertical-align:middle;"title="Traspasar a Otro Héroe">
+                  <button class="btn btn-sm btn-outline-warning slot-traspasar" data-cat="arma" data-id="${w.id || ''}" data-slot="${slot}">⇄</button>
                 </td>
-            </tr>`}).join('')}
+              </tr>`;
+      }).join('')}
         </tbody>
       </table>`;
 
       container.innerHTML = tblObjs + tblArmad + tblArmas;
+
     } catch (err) {
       console.error('renderInventarioPreview error', err);
     }
   };
-
 
   // ---------- Hook: al entrar en la sección "mochila" pinto el preview ----------
   // (El HTML ya llama a showBackSection; aquí escuchamos el click del botón frontal)
@@ -1088,13 +1090,13 @@ window.renderInventarioLists = function (personaje) {
 
     // Si se marca:
     //  - Armaduras: permitir múltiples (no hay exclusividad)
-    //  - Armas: exclusividad por mano (Izq./Der./Ambas)
+    //  - Armas: exclusividad por mano (Izquierda/Derecha/Ambas)
     if (cat === 'arma') {
       const mano = (item.mano || '').trim();
-      if (mano === 'Izq.') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izq.' || a.mano === 'Ambas')) a.equipado = false; });
-      } else if (mano === 'Der.') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Der.' || a.mano === 'Ambas')) a.equipado = false; });
+      if (mano === 'Izquierda') {
+        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izquierda' || a.mano === 'Ambas')) a.equipado = false; });
+      } else if (mano === 'Derecha') {
+        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Derecha' || a.mano === 'Ambas')) a.equipado = false; });
       } else if (mano === 'Ambas') {
         arr.forEach(a => { if (a.id !== item.id && a.equipado) a.equipado = false; });
       }
@@ -1108,170 +1110,84 @@ window.renderInventarioLists = function (personaje) {
     if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
   });
   // ---------- Delegación: botón "Traspasar" del preview ----------
-  // ---------- Delegación: menú "⚙️ Acciones" en el PREVIEW (slot) ----------
-  // ---------- Delegación: menú "⚙️ Acciones" en el PREVIEW (slot) ----------
-  if (!window.__invSlotActionsBound) {
-    window.__invSlotActionsBound = true;
+  document.addEventListener('click', async (ev) => {
+    const btn = ev.target.closest('.slot-traspasar');
+    if (!btn) return;
+    ev.preventDefault();
 
-    document.addEventListener('click', async (ev) => {
-      const btn = ev.target.closest('[data-action="acciones"]');
-      if (!btn) return;
+    const cat = btn.dataset.cat;             // 'obj' | 'arm' | 'arma'
+    const id = Number(btn.dataset.id);      // id del elemento
+    const slot = Number(btn.dataset.slot);    // slot origen
 
-      // Sólo si estamos en el preview del slot
-      const slotContainer = btn.closest('[id^="mochila-slot"]');
-      if (!slotContainer) return;
-      const slot = Number((slotContainer.id || '').replace('mochila-slot', ''));
+    const src = await window.getPersonajeBySlot(slot);
+    if (!src || !src.inventario) return;
 
-      const td = btn.closest('td'); if (!td) return;
-      const row = btn.closest('tr[data-itemid]'); if (!row) return;
-      const id = Number(row.dataset.itemid || 0);
-      const cat = row.dataset.cat; // 'obj' | 'arm' | 'arma'
-      if (!id || !cat) return;
-
-      // cerrar menú previo
-      const prev = td.querySelector('.inv-actions-menu'); if (prev) prev.remove();
-
-      // crear menú
-      const menu = document.createElement('div');
-      menu.className = 'inv-actions-menu';
-      menu.style.cssText = `
-      position:absolute; right:4px; top:36px; z-index:10;
-      background:#1e1e1e; color:#fff; border:1px solid rgba(255,255,255,.12);
-      border-radius:8px; padding:6px; box-shadow:0 8px 24px rgba(0,0,0,.45);
-      min-width:150px;
-    `;
-      menu.innerHTML = `
-      <div class="d-grid gap-1">
-        <button class="btn btn-sm btn-outline-warning" data-action="slot-traspasar">⇄ Traspasar</button>
-        <button class="btn btn-sm btn-outline-danger"  data-action="slot-eliminar">🗑️ Eliminar</button>
-      </div>
-    `;
-      td.appendChild(menu);
-
-      const close = (e) => {
-        if (!menu.contains(e.target) && e.target !== btn) {
-          menu.remove(); document.removeEventListener('mousedown', close, true);
-        }
-      };
-      document.addEventListener('mousedown', close, true);
+    // Cargar posibles destinos (otros slots con personaje)
+    const asignaciones = await new Promise((resolve) => {
+      try {
+        const tx = db.transaction('slots', 'readonly');
+        const st = tx.objectStore('slots');
+        const req = st.getAll();
+        req.onsuccess = e => resolve(e.target.result || []);
+        req.onerror = () => resolve([]);
+      } catch (_) { resolve([]); }
     });
 
-    // Acciones del menú en slot (separadas para no interferir)
-    document.addEventListener('click', async (ev) => {
-      const a = ev.target.closest('[data-action="slot-eliminar"], [data-action="slot-traspasar"]');
-      if (!a) return;
+    const opciones = {};
+    for (const a of asignaciones) {
+      if (!a || a.slot === slot) continue;
+      try {
+        const p = await window.getPersonajeBySlot(a.slot);
+        if (p) opciones[a.slot] = `${a.slot}: ${p.nombre || 'Sin nombre'}`;
+      } catch (_) { }
+    }
+    if (Object.keys(opciones).length === 0) { alert('No hay otro slot con personaje para traspasar.'); return; }
 
-      const row = a.closest('tr[data-itemid]'); if (!row) return;
-      const slotContainer = a.closest('[id^="mochila-slot"]'); if (!slotContainer) return;
-      const slot = Number((slotContainer.id || '').replace('mochila-slot', ''));
-      const id = Number(row.dataset.itemid || 0);
-      const cat = row.dataset.cat;
+    let destino = null;
+    if (window.Swal?.fire) {
+      const { value } = await Swal.fire({
+        title: 'Traspasar a…',
+        input: 'select',
+        inputOptions: opciones,
+        inputPlaceholder: 'Selecciona slot destino',
+        showCancelButton: true,
+        confirmButtonText: 'Traspasar'
+      });
+      destino = value ? Number(value) : null;
+    } else {
+      const val = prompt('¿A qué slot traspasar? (' + Object.keys(opciones).join(', ') + ')');
+      destino = val ? Number(val) : null;
+    }
+    if (!destino || !opciones[destino]) return;
 
-      const pj = await window.getPersonajeBySlot(slot);
-      if (!pj || !pj.inventario) return;
+    const dst = await window.getPersonajeBySlot(destino);
+    if (!dst) { alert('Destino inválido'); return; }
+    if (!dst.inventario) dst.inventario = { objetos: [], armaduras: [], armas: [] };
 
-      const delFrom = (arr) => {
-        const i = arr.findIndex(x => x.id === id);
-        if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
-        return null;
-      };
+    const move = (arrSrc, arrDst) => {
+      const i = arrSrc.findIndex(x => x.id === id);
+      if (i < 0) return false;
+      arrDst.push(arrSrc[i]);
+      arrSrc.splice(i, 1);
+      return true;
+    };
 
-      if (a.dataset.action === 'slot-eliminar') {
-        const { isConfirmed } = await Swal.fire({
-          title: '¿Deseas eliminar este objeto?',
-          text: 'Esta acción es permanente.',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Eliminar',
-          cancelButtonText: 'Cancelar',
-          confirmButtonColor: '#d33',
-          reverseButtons: true
-        });
-        if (!isConfirmed) return;
+    let ok = false;
+    if (cat === 'obj') ok = move(src.inventario.objetos, dst.inventario.objetos);
+    else if (cat === 'arm') ok = move(src.inventario.armaduras, dst.inventario.armaduras);
+    else if (cat === 'arma') ok = move(src.inventario.armas, dst.inventario.armas);
 
-        let removed = null;
-        if (cat === 'obj') removed = delFrom(pj.inventario.objetos || []);
-        if (cat === 'arm') removed = delFrom(pj.inventario.armaduras || []);
-        if (cat === 'arma') removed = delFrom(pj.inventario.armas || []);
+    if (!ok) { alert('No se encontró el elemento.'); return; }
 
-        if (removed) {
-          await window.savePersonaje(pj);
-          if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
-        }
-        return;
-      }
+    await window.savePersonaje(src);
+    await window.savePersonaje(dst);
 
-      if (a.dataset.action === 'slot-traspasar') {
-        // destinos
-        const asigs = await new Promise((resolve, reject) => {
-          const tx = db.transaction('slots', 'readonly');
-          const st = tx.objectStore('slots');
-          const req = st.getAll();
-          req.onsuccess = e => {
-            const all = e.target.result || [];
-            resolve(all.filter(s => s && s.personajeId && s.slot !== slot));
-          };
-          req.onerror = () => reject(req.error);
-        });
-
-        const destinos = [];
-        for (const s of asigs) {
-          try {
-            const p = await window.getPersonajeBySlot(s.slot);
-            if (p) destinos.push({ slot: s.slot, nombre: p.nombre || ('Héroe ' + s.slot) });
-          } catch (_) { }
-        }
-        if (!destinos.length) {
-          Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
-          return;
-        }
-
-        const inputOptions = {};
-        destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
-
-        const { isConfirmed, value: destSlot } = await Swal.fire({
-          title: 'Traspasar a...',
-          input: 'select',
-          inputOptions,
-          inputPlaceholder: 'Selecciona héroe destino',
-          showCancelButton: true,
-          confirmButtonText: 'Traspasar',
-        });
-        if (!isConfirmed) return;
-
-        // mover
-        let moved = null;
-        let categoria = cat === 'obj' ? 'objetos' : (cat === 'arm' ? 'armaduras' : 'armas');
-
-        if (categoria === 'objetos') moved = delFrom(pj.inventario.objetos || []);
-        if (categoria === 'armaduras') moved = delFrom(pj.inventario.armaduras || []);
-        if (categoria === 'armas') moved = delFrom(pj.inventario.armas || []);
-        if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
-
-        if (categoria !== 'objetos') moved.equipado = false;
-
-        const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
-        if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
-        if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
-        const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
-
-        if (destArr.some(x => x.id === moved.id)) {
-          let newId = Date.now();
-          while (destArr.some(x => x.id === newId)) newId++;
-          moved.id = newId;
-        }
-        destArr.push(moved);
-
-        await window.savePersonaje(pj);
-        await window.savePersonaje(destPersonaje);
-       // 🔁 Refresca los 4 slots para ver el traspaso en origen y destino
-if (window.refreshAllSlots) window.refreshAllSlots();
-        if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
-        Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
-      }
-    });
-  }
-
+    // Refresca preview de ambos slots
+    if (typeof window.renderInventarioPreview === 'function') {
+      window.renderInventarioPreview(slot);
+      window.renderInventarioPreview(destino);
+    }
+  });
 
 })(); // ← IIFE aislado (no contamina el popup)
 
@@ -1282,15 +1198,6 @@ if (window.refreshAllSlots) window.refreshAllSlots();
   // Si ya hay un renderInventarioPreview, lo envolvemos para no tocar su lógica.
   if (typeof window.renderInventarioPreview !== 'function') return;
 
-  // Refrescar los 4 slots de inventario (1..4)
-  if (!window.refreshAllSlots) {
-    window.refreshAllSlots = function () {
-      if (typeof window.renderInventarioPreview !== 'function') return;
-      for (let i = 1; i <= 4; i++) {
-        try { window.renderInventarioPreview(i); } catch (_) { }
-      }
-    };
-  }
   // Calcula el peso total del inventario de un personaje
   async function calcularPesoInventario(slot) {
     try {

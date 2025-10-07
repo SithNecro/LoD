@@ -188,8 +188,8 @@ window.openInventarioEditor = async function (slot) {
             <div class="col-12 col-md-2">
               <label class="form-label">✋🤚 Mano</label>
               <select id="armaMano" class="form-select">
-                <option value="Izq.">Izq.</option>
-                <option value="Der.">Der.</option>
+                <option value="Izquierda">Izquierda</option>
+                <option value="Derecha">Derecha</option>
                 <option value="Ambas">Ambas</option>
               </select>
             </div>
@@ -299,7 +299,7 @@ window.openInventarioEditor = async function (slot) {
         // limpiar ARMA
         if (n('armaEquipado')) n('armaEquipado').checked = false;
         if (n('armaNombre')) n('armaNombre').value = '';
-        if (n('armaMano')) n('armaMano').value = 'Izq.';
+        if (n('armaMano')) n('armaMano').value = 'Izquierda';
         if (n('armaDanio')) n('armaDanio').value = '';
         if (n('armaDurabilidad')) n('armaDurabilidad').value = '0';
         if (n('armaEspecial')) n('armaEspecial').value = '';
@@ -456,10 +456,10 @@ window.openInventarioEditor = async function (slot) {
         }
 
         const mano = (item.mano || '').trim();
-        if (mano === 'Izq.') {
-          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izq.' || a.mano === 'Ambas')) a.equipado = false; });
-        } else if (mano === 'Der.') {
-          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Der.' || a.mano === 'Ambas')) a.equipado = false; });
+        if (mano === 'Izquierda') {
+          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izquierda' || a.mano === 'Ambas')) a.equipado = false; });
+        } else if (mano === 'Derecha') {
+          personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Derecha' || a.mano === 'Ambas')) a.equipado = false; });
         } else if (mano === 'Ambas') {
           personaje.inventario.armas.forEach(a => { if (a.id !== item.id && a.equipado) a.equipado = false; });
         }
@@ -701,7 +701,7 @@ window.openInventarioEditor = async function (slot) {
         const item = {
           id: Date.now(),
           arma,
-          mano: document.getElementById('armaMano')?.value || 'Izq.',
+          mano: document.getElementById('armaMano')?.value || 'Izquierda',
           danio: document.getElementById('armaDanio')?.value || '',
           durabilidad: parseInt(document.getElementById('armaDurabilidad')?.value || '0', 10),
           especial: document.getElementById('armaEspecial')?.value || '',
@@ -866,7 +866,7 @@ window.renderInventarioLists = function (personaje) {
               <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
               <td>
                 <select class="form-select form-select-sm" name="mano">
-                  ${['Izq.', 'Der.', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
+                  ${['Izquierda', 'Derecha', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
                 </select>
               </td>
               <td><input class="form-control form-control-sm" name="danio" value="${w.danio || ''}"></td>
@@ -967,7 +967,7 @@ window.renderInventarioLists = function (personaje) {
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
         <th  style="width:20px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
-        <th style="text-align:center; vertical-align:middle;">Arm.</th>
+        <th style="text-align:center; vertical-align:middle;">Armadura</th>
         <th style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">⛇</th>
         <th style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">🛡️</th>
         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
@@ -1088,13 +1088,13 @@ window.renderInventarioLists = function (personaje) {
 
     // Si se marca:
     //  - Armaduras: permitir múltiples (no hay exclusividad)
-    //  - Armas: exclusividad por mano (Izq./Der./Ambas)
+    //  - Armas: exclusividad por mano (Izquierda/Derecha/Ambas)
     if (cat === 'arma') {
       const mano = (item.mano || '').trim();
-      if (mano === 'Izq.') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izq.' || a.mano === 'Ambas')) a.equipado = false; });
-      } else if (mano === 'Der.') {
-        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Der.' || a.mano === 'Ambas')) a.equipado = false; });
+      if (mano === 'Izquierda') {
+        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Izquierda' || a.mano === 'Ambas')) a.equipado = false; });
+      } else if (mano === 'Derecha') {
+        arr.forEach(a => { if (a.id !== item.id && a.equipado && (a.mano === 'Derecha' || a.mano === 'Ambas')) a.equipado = false; });
       } else if (mano === 'Ambas') {
         arr.forEach(a => { if (a.id !== item.id && a.equipado) a.equipado = false; });
       }

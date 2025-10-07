@@ -803,7 +803,7 @@ window.renderInventarioLists = function (personaje) {
       <thead>
         <tr>
            <th style="width:90px;">⚙️</th>
-          <th>🛡️ Armadura</th>
+          <th>🛡️ Arm.</th>
           <th>⛇ Cob.</th>
           <th style="width:90px;">🛡️ Def.</th>
           <th>✨ Espec.</th>
@@ -967,7 +967,7 @@ window.renderInventarioLists = function (personaje) {
       <table class="table table-sm table-dark table-striped">
         <thead><tr>
         <th  style="width:20px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
-        <th style="text-align:center; vertical-align:middle;">Arm.</th>
+        <th style="text-align:center; vertical-align:middle;">Armadura</th>
         <th style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">⛇</th>
         <th style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">🛡️</th>
         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
