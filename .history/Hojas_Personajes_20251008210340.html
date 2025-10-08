@@ -380,16 +380,7 @@
               </div>
             </div>
           </div>`;
-                // === Fondo guardado del slot: restaurar y vincular color picker ===
-                const savedColor = getSlotBgColor(i);
-                if (savedColor) applySlotBgColor(i, savedColor);
 
-                // Miniaturas (frontal y trasera) -> abrir selector de color al hacer clic
-                bindSlotColorPicker(document.getElementById(`thumb${i}`), i);
-                bindSlotColorPicker(document.getElementById(`thumb${i}-back`), i);
-
-                // (opcional) permitir también en la imagen grande del frontal:
-                bindSlotColorPicker(document.getElementById(`preview${i}`), i);
                 // Auto-guardado y listeners
                 activarAutoGuardadoSlot(i);
             }
@@ -772,55 +763,6 @@
             };
         }
 
-        // === Fondo por slot (persistente en localStorage) ===
-        function getSlotBgColor(slot) {
-            try { return localStorage.getItem(`slotBgColor_${slot}`) || ""; } catch (_) { return ""; }
-        }
-        function setSlotBgColor(slot, color) {
-            try { localStorage.setItem(`slotBgColor_${slot}`, color); } catch (_) { }
-            applySlotBgColor(slot, color);
-        }
-        function applySlotBgColor(slot, color) {
-            const card = document.getElementById(`slot${slot}`);
-            if (!card) return;
-
-            // Caras del slot
-            const front = card.querySelector('.flip-card-front');
-            const back = card.querySelector('.flip-card-back');
-
-            // Valor por defecto si limpian el color
-            const defFront = 'rgba(40,40,40,0.9)';
-            const defBack = 'rgba(25,25,25,0.95)';
-
-            // 👇 Forzamos por encima del .hero-card { background: ... !important }
-            if (front) {
-                front.style.setProperty('background', color || defFront, 'important');
-                front.style.setProperty('background-color', color || defFront, 'important');
-            }
-            if (back) {
-                back.style.setProperty('background', color || defBack, 'important');
-                back.style.setProperty('background-color', color || defBack, 'important');
-            }
-        }
-        /** Vincula un selector de color "oculto" a una imagen (miniatura) */
-        function bindSlotColorPicker(imgEl, slot) {
-            if (!imgEl) return;
-            imgEl.style.cursor = 'pointer';
-            if (!imgEl.title) imgEl.title = 'Cambiar color de fondo del slot';
-            imgEl.addEventListener('click', () => {
-                const input = document.createElement('input');
-                input.type = 'color';
-                input.value = getSlotBgColor(slot) || '#2a2a2a';  // valor por defecto
-                input.style.position = 'fixed';
-                input.style.left = '-9999px';
-                document.body.appendChild(input);
-                input.addEventListener('change', () => {
-                    setSlotBgColor(slot, input.value);
-                    document.body.removeChild(input);
-                }, { once: true });
-                input.click();
-            });
-        }
 
 
         // Comprueba si ya existe un personaje con ese nombre (ignora el id pasado)

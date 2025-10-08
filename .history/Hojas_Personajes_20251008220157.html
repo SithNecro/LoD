@@ -783,24 +783,10 @@
         function applySlotBgColor(slot, color) {
             const card = document.getElementById(`slot${slot}`);
             if (!card) return;
-
-            // Caras del slot
             const front = card.querySelector('.flip-card-front');
             const back = card.querySelector('.flip-card-back');
-
-            // Valor por defecto si limpian el color
-            const defFront = 'rgba(40,40,40,0.9)';
-            const defBack = 'rgba(25,25,25,0.95)';
-
-            // 👇 Forzamos por encima del .hero-card { background: ... !important }
-            if (front) {
-                front.style.setProperty('background', color || defFront, 'important');
-                front.style.setProperty('background-color', color || defFront, 'important');
-            }
-            if (back) {
-                back.style.setProperty('background', color || defBack, 'important');
-                back.style.setProperty('background-color', color || defBack, 'important');
-            }
+            if (front) front.style.background = color || 'rgba(40,40,40,0.9)';
+            if (back) back.style.background = color || 'rgba(25,25,25,0.95)';
         }
         /** Vincula un selector de color "oculto" a una imagen (miniatura) */
         function bindSlotColorPicker(imgEl, slot) {
