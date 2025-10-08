@@ -39,10 +39,10 @@
         </button>
         <select id="heroCountSel" class="form-select form-select-sm"
             style="width:auto; display:inline-block; margin-left:8px;" title="Héroes visibles">
-            <option value="4" selected>4 Héroes Visibles</option>
-            <option value="3">3 Héroes Visibles</option>
-            <option value="2">2 Héroes Visibles</option>
-            <option value="1">1 Héroe Visible</option>
+            <option value="4" selected>4 Héroes</option>
+            <option value="3">3 Héroes</option>
+            <option value="2">2 Héroes</option>
+            <option value="1">1 Héroe</option>
         </select>
         <h2 class="mb-3 mt-4">Lista de héroes guardados</h2>
         <div id="lista" class="row gy-3"></div>
@@ -1510,79 +1510,6 @@
         }
 
 
-        // === Héroes visibles por grid (persistente) ===
-// === Héroes visibles por grid (persistente) ===
-(function setupHeroCountSelector() {
-  function getSavedCount() {
-    try { return parseInt(localStorage.getItem('visibleHeroCount') || '4', 10); }
-    catch(_) { return 4; }
-  }
-  function setSavedCount(n) {
-    try { localStorage.setItem('visibleHeroCount', String(n)); } catch(_) {}
-  }
-
-  // Encuentra el contenedor-col de un slot para ocultarlo y que el grid fluya
-  function findSlotColumn(slotIndex) {
-    const card = document.getElementById(`slot${slotIndex}`);
-    if (!card) return null;
-    let el = card;
-    while (el && el !== document.body) {
-      // Detecta columnas bootstrap: col, col-*, col-sm-*, etc.
-      if ([...el.classList].some(c => c === 'col' || c.startsWith('col-'))) return el;
-      el = el.parentElement;
-    }
-    // Fallback: si no hay col, devuelve la tarjeta
-    return card;
-  }
-
-  // Aplica visibilidad y ancho (oculta del final y reparte 100% entre visibles)
-  function applyHeroCount(n) {
-    const count = Math.min(4, Math.max(1, n));
-    const pct = (100 / count);
-
-    for (let i = 1; i <= 4; i++) {
-      const col = findSlotColumn(i);
-      if (!col) continue;
-
-      // Ocultar/mostrar
-      const visible = (i <= count);
-      col.style.display = visible ? '' : 'none';
-
-      // Reparto de ancho para los visibles (no tocamos clases Bootstrap)
-      if (visible) {
-        col.style.flex = `0 0 ${pct}%`;
-        col.style.maxWidth = `${pct}%`;
-      }
-    }
-  }
-
-  // Vincular el select si existe
-  function init() {
-    const sel = document.getElementById('heroCountSel');
-    if (!sel) return;
-
-    // Restaurar valor guardado
-    const saved = getSavedCount();
-    sel.value = (['1','2','3','4'].includes(String(saved)) ? String(saved) : '4');
-
-    // Aplicar a la vista actual
-    applyHeroCount(parseInt(sel.value, 10));
-
-    // Cambios -> aplicar + persistir
-    sel.addEventListener('change', () => {
-      const n = parseInt(sel.value, 10) || 4;
-      setSavedCount(n);
-      applyHeroCount(n);
-    });
-  }
-
-  // Inicializa cuando el DOM ya tiene los slots creados
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
 
     </script>
     <script src="Hoja_Personajes_Inventario.js"></script>
