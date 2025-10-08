@@ -814,60 +814,20 @@
             if (!imgEl) return;
             imgEl.style.cursor = 'pointer';
             if (!imgEl.title) imgEl.title = 'Cambiar color de fondo del slot';
-
-            const openPicker = () => {
-                // 1) Crear input color superpuesto (compatible móvil)
+            imgEl.addEventListener('click', () => {
                 const input = document.createElement('input');
                 input.type = 'color';
-                input.value = getSlotBgColor(slot) || '#2a2a2a';
+                input.value = getSlotBgColor(slot) || '#2a2a2a';  // valor por defecto
                 input.style.position = 'fixed';
-                input.style.zIndex = '10060';       // sobre todo
-                input.style.opacity = '0';          // invisible pero clicable
-                input.style.border = '0';
-                input.style.padding = '0';
-                input.style.margin = '0';
-                input.style.width = '40px';         // tamaño táctil mínimo
-                input.style.height = '40px';
-
-                // Posicionar sobre la miniatura (viewport coords)
-                const r = imgEl.getBoundingClientRect();
-                input.style.left = `${Math.round(r.left)}px`;
-                input.style.top = `${Math.round(r.top)}px`;
-
-                // 2) Insertar y enganchar eventos
-                const cleanup = () => { try { document.body.removeChild(input); } catch (_) { } };
-
-                input.addEventListener('change', () => {
-                    setSlotBgColor(slot, input.value); // guarda + aplica
-                    cleanup();
-                }, { once: true });
-
-                // En móviles algunos pickers no disparan 'change' si cancelas;
-                // limpiamos en blur para no dejar overlay colgado.
-                input.addEventListener('blur', cleanup, { once: true });
-
+                input.style.left = '-9999px';
                 document.body.appendChild(input);
-
-                // 3) Intento programático (desktop / algunos móviles)
-                //    Si no abre, el usuario puede tocar el overlay (está justo encima).
-                try {
-                    if (typeof input.showPicker === 'function') {
-                        input.showPicker();
-                    } else {
-                        // En Android Chrome suele funcionar el click si el input es visible
-                        setTimeout(() => { try { input.click(); } catch (_) { } }, 0);
-                    }
-                } catch (_) {
-                    // si falla, no pasa nada: el usuario tocará el overlay y abrirá el picker
-                }
-            };
-
-            // Gesto de usuario: click/tap en la miniatura
-            imgEl.addEventListener('click', openPicker);
-            // extra por si algún navegador solo dispara touchend
-            imgEl.addEventListener('touchend', (e) => { e.preventDefault(); openPicker(); }, { passive: false });
+                input.addEventListener('change', () => {
+                    setSlotBgColor(slot, input.value);
+                    document.body.removeChild(input);
+                }, { once: true });
+                input.click();
+            });
         }
-
 
 
         // Comprueba si ya existe un personaje con ese nombre (ignora el id pasado)
@@ -1579,7 +1539,7 @@
             function applyHeroCount(n) {
                 const count = Math.min(4, Math.max(1, n));
                 let pct = (100 / count);
-                if (n === 1) { pct = 40; }
+                if (n === 1) {pct = 40;}
                 for (let i = 1; i <= 4; i++) {
                     const col = findSlotColumn(i);
                     if (!col) continue;
