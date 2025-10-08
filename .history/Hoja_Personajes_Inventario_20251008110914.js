@@ -471,28 +471,28 @@ window.openInventarioEditor = async function (slot) {
 
       // ===== Eliminar / Traspasar =====
       // ===== Eliminar / Traspasar / Acciones =====
-      // ===== Eliminar / Traspasar / Acciones (POPUP) =====
-      // ===== Eliminar / Traspasar / Acciones (POPUP) =====
-      const onClick = async (ev) => {
-        const btn = ev.target.closest('[data-action]'); if (!btn) return;
-        const action = btn.dataset.action;
+// ===== Eliminar / Traspasar / Acciones (POPUP) =====
+// ===== Eliminar / Traspasar / Acciones (POPUP) =====
+const onClick = async (ev) => {
+  const btn = ev.target.closest('[data-action]'); if (!btn) return;
+  const action = btn.dataset.action;
 
-        // Helpers internos
-        const delFrom = (arr, id) => {
-          const i = Array.isArray(arr) ? arr.findIndex(x => x.id === id) : -1;
-          if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
-          return null;
-        };
+  // Helpers internos
+  const delFrom = (arr, id) => {
+    const i = Array.isArray(arr) ? arr.findIndex(x => x.id === id) : -1;
+    if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
+    return null;
+  };
 
-        const doEliminar = async (id) => {
-          // Confirmación inline (no cierra el popup)
-          const prev = document.getElementById('invConfirmOverlay');
-          if (prev) prev.remove();
+  const doEliminar = async (id) => {
+    // Confirmación inline (no cierra el popup)
+    const prev = document.getElementById('invConfirmOverlay');
+    if (prev) prev.remove();
 
-          const overlay = document.createElement('div');
-          overlay.id = 'invConfirmOverlay';
-          overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:10060;';
-          overlay.innerHTML = `
+    const overlay = document.createElement('div');
+    overlay.id = 'invConfirmOverlay';
+    overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:10060;';
+    overlay.innerHTML = `
       <div class="hero-card"
            style="background:#1e1e1e; color:#fff; border:1px solid rgba(255,255,255,.1);
                   border-radius:10px; padding:16px; width:min(420px,92vw);
@@ -505,108 +505,108 @@ window.openInventarioEditor = async function (slot) {
         </div>
       </div>
     `;
-          document.body.appendChild(overlay);
+    document.body.appendChild(overlay);
 
-          const closeOverlay = () => { try { overlay.remove(); } catch (_) { } };
+    const closeOverlay = () => { try { overlay.remove(); } catch(_){} };
 
-          overlay.querySelector('#invConfirmCancel')?.addEventListener('click', (e) => {
-            e.preventDefault(); e.stopPropagation(); closeOverlay();
-          });
-          overlay.querySelector('#invConfirmOk')?.addEventListener('click', async (e) => {
-            e.preventDefault(); e.stopPropagation();
+    overlay.querySelector('#invConfirmCancel')?.addEventListener('click', (e) => {
+      e.preventDefault(); e.stopPropagation(); closeOverlay();
+    });
+    overlay.querySelector('#invConfirmOk')?.addEventListener('click', async (e) => {
+      e.preventDefault(); e.stopPropagation();
 
-            const delObj = delFrom(personaje.inventario.objetos, id);
-            const delArm = delFrom(personaje.inventario.armaduras, id);
-            const delArma = delFrom(personaje.inventario.armas, id);
+      const delObj  = delFrom(personaje.inventario.objetos,   id);
+      const delArm  = delFrom(personaje.inventario.armaduras, id);
+      const delArma = delFrom(personaje.inventario.armas,     id);
 
-            if (delObj || delArm || delArma) {
-              await window.savePersonaje(personaje);
-              window.renderInventarioLists(personaje);
-              if (window.refreshAllSlots) window.refreshAllSlots();
-            }
-            closeOverlay();
-          });
-        };
+      if (delObj || delArm || delArma) {
+        await window.savePersonaje(personaje);
+        window.renderInventarioLists(personaje);
+        if (window.refreshAllSlots) window.refreshAllSlots();
+      }
+      closeOverlay();
+    });
+  };
 
-        const doTraspasar = async (id) => {
-          // 1) Obtener destinos válidos
-          const asigs = await new Promise((resolve, reject) => {
-            const tx = db.transaction('slots', 'readonly');
-            const st = tx.objectStore('slots');
-            const req = st.getAll();
-            req.onsuccess = e => {
-              const all = e.target.result || [];
-              resolve(all.filter(a => a && a.personajeId && a.slot !== slot));
-            };
-            req.onerror = () => reject(req.error);
-          });
+  const doTraspasar = async (id) => {
+    // 1) Obtener destinos válidos
+    const asigs = await new Promise((resolve, reject) => {
+      const tx = db.transaction('slots', 'readonly');
+      const st = tx.objectStore('slots');
+      const req = st.getAll();
+      req.onsuccess = e => {
+        const all = e.target.result || [];
+        resolve(all.filter(a => a && a.personajeId && a.slot !== slot));
+      };
+      req.onerror = () => reject(req.error);
+    });
 
-          const destinos = [];
-          for (const a of asigs) {
-            try {
-              const p = await window.getPersonajeBySlot(a.slot);
-              if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
-            } catch (_) { }
-          }
+    const destinos = [];
+    for (const a of asigs) {
+      try {
+        const p = await window.getPersonajeBySlot(a.slot);
+        if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
+      } catch (_) {}
+    }
 
-          if (!destinos.length) {
-            Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
-            return;
-          }
+    if (!destinos.length) {
+      Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
+      return;
+    }
 
-          const inputOptions = {};
-          destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
+    const inputOptions = {};
+    destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
 
-          const { isConfirmed, value: destSlot } = await Swal.fire({
-            title: 'Traspasar a...',
-            input: 'select',
-            inputOptions,
-            inputPlaceholder: 'Selecciona héroe destino',
-            showCancelButton: true,
-            confirmButtonText: 'Traspasar',
-          });
-          if (!isConfirmed) return;
+    const { isConfirmed, value: destSlot } = await Swal.fire({
+      title: 'Traspasar a...',
+      input: 'select',
+      inputOptions,
+      inputPlaceholder: 'Selecciona héroe destino',
+      showCancelButton: true,
+      confirmButtonText: 'Traspasar',
+    });
+    if (!isConfirmed) return;
 
-          // 2) Quitar del origen y detectar categoría
-          let categoria = 'objetos';
-          let moved = delFrom(personaje.inventario.objetos, id);
-          if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras, id); }
-          if (!moved) { categoria = 'armas'; moved = delFrom(personaje.inventario.armas, id); }
-          if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
+    // 2) Quitar del origen y detectar categoría
+    let categoria = 'objetos';
+    let moved = delFrom(personaje.inventario.objetos, id);
+    if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras, id); }
+    if (!moved) { categoria = 'armas';      moved = delFrom(personaje.inventario.armas, id); }
+    if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
 
-          if (categoria !== 'objetos') moved.equipado = false; // llega no equipado
+    if (categoria !== 'objetos') moved.equipado = false; // llega no equipado
 
-          // 3) Añadir en destino (evitar colisión de id)
-          const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
-          if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
-          if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
-          const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
-          if (destArr.some(x => x.id === moved.id)) {
-            let newId = Date.now();
-            while (destArr.some(x => x.id === newId)) newId++;
-            moved.id = newId;
-          }
-          destArr.push(moved);
+    // 3) Añadir en destino (evitar colisión de id)
+    const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
+    if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
+    if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
+    const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
+    if (destArr.some(x => x.id === moved.id)) {
+      let newId = Date.now();
+      while (destArr.some(x => x.id === newId)) newId++;
+      moved.id = newId;
+    }
+    destArr.push(moved);
 
-          await window.savePersonaje(personaje);
-          await window.savePersonaje(destPersonaje);
-          window.renderInventarioLists(personaje);
-          if (window.refreshAllSlots) window.refreshAllSlots();
-          Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
-        };
+    await window.savePersonaje(personaje);
+    await window.savePersonaje(destPersonaje);
+    window.renderInventarioLists(personaje);
+    if (window.refreshAllSlots) window.refreshAllSlots();
+    Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
+  };
 
-        // --- Menú de acciones flotante ---
-        if (action === 'acciones') {
-          const row = btn.closest('[data-itemid]'); if (!row) return;
-          const itemId = Number(row.dataset.itemid || 0);
+  // --- Menú de acciones flotante ---
+  if (action === 'acciones') {
+    const row = btn.closest('[data-itemid]'); if (!row) return;
+    const itemId = Number(row.dataset.itemid || 0);
 
-          // Cierra menús previos
-          document.querySelectorAll('.inv-actions-menu-fixed').forEach(el => el.remove());
+    // Cierra menús previos
+    document.querySelectorAll('.inv-actions-menu-fixed').forEach(el => el.remove());
 
-          // Crea menú fijo
-          const menu = document.createElement('div');
-          menu.className = 'inv-actions-menu-fixed';
-          menu.style.cssText = `
+    // Crea menú fijo
+    const menu = document.createElement('div');
+    menu.className = 'inv-actions-menu-fixed';
+    menu.style.cssText = `
       position:fixed;
       z-index:10050;
       background:#1e1e1e; color:#fff;
@@ -615,72 +615,75 @@ window.openInventarioEditor = async function (slot) {
       box-shadow:0 12px 32px rgba(0,0,0,.5);
       min-width:150px;
     `;
-          menu.innerHTML = `
+    menu.innerHTML = `
       <div class="d-grid gap-1">
         <button type="button" class="btn btn-sm btn-outline-warning" data-action="traspasar">⇄ Traspasar</button>
         <button type="button" class="btn btn-sm btn-outline-danger"  data-action="eliminar">🗑️ Eliminar</button>
       </div>
     `;
 
-          // Posición junto al botón
-          const r = btn.getBoundingClientRect();
-          let top = Math.round(r.bottom + 6);
-          let left = Math.round(r.left);
+    // Posición junto al botón
+    const r = btn.getBoundingClientRect();
+    let top  = Math.round(r.bottom + 6);
+    let left = Math.round(r.left);
 
-          document.body.appendChild(menu);
-          const maxLeft = window.innerWidth - (menu.offsetWidth + 8);
-          if (left > maxLeft) left = Math.max(8, maxLeft);
-          menu.style.top = `${top}px`;
-          menu.style.left = `${left}px`;
+    document.body.appendChild(menu);
+    const maxLeft = window.innerWidth - (menu.offsetWidth + 8);
+    if (left > maxLeft) left = Math.max(8, maxLeft);
+    menu.style.top  = `${top}px`;
+    menu.style.left = `${left}px`;
 
-          // Handlers directos (sin delegación)
-          const closeMenu = () => { try { menu.remove(); } catch (_) { } };
-          const trap = (e) => { e.preventDefault(); e.stopPropagation(); };
+    // Handlers directos (sin delegación)
+    const closeMenu = () => { try { menu.remove(); } catch(_){} };
+    const trap = (e) => { e.preventDefault(); e.stopPropagation(); };
 
-          menu.querySelector('[data-action="traspasar"]')?.addEventListener('click', async (e) => {
-            trap(e);
-            await doTraspasar(itemId);
-            closeMenu();
-          });
-          menu.querySelector('[data-action="eliminar"]')?.addEventListener('click', async (e) => {
-            trap(e);
-            await doEliminar(itemId);
-            closeMenu();
-          });
+    menu.querySelector('[data-action="traspasar"]')?.addEventListener('click', async (e) => {
+      trap(e);
+      await doTraspasar(itemId);
+      closeMenu();
+    });
+    menu.querySelector('[data-action="eliminar"]')?.addEventListener('click', async (e) => {
+      trap(e);
+      await doEliminar(itemId);
+      closeMenu();
+    });
 
-          // Cierre fuera / scroll / resize
-          const onDocClick = (e) => { if (!menu.contains(e.target)) { cleanup(); } };
-          const onResize = () => cleanup();
-          const invRoot = document.getElementById('invRoot');
-          const onScroll = () => cleanup();
-          function cleanup() {
-            closeMenu();
-            document.removeEventListener('mousedown', onDocClick, true);
-            window.removeEventListener('resize', onResize);
-            invRoot && invRoot.removeEventListener('scroll', onScroll, true);
-          }
-          document.addEventListener('mousedown', onDocClick, true);
-          window.addEventListener('resize', onResize);
-          invRoot && invRoot.addEventListener('scroll', onScroll, true);
+    // Cierre fuera / scroll / resize
+    const onDocClick = (e) => { if (!menu.contains(e.target)) { cleanup(); } };
+    const onResize   = () => cleanup();
+    const invRoot    = document.getElementById('invRoot');
+    const onScroll   = () => cleanup();
+    function cleanup() {
+      closeMenu();
+      document.removeEventListener('mousedown', onDocClick, true);
+      window.removeEventListener('resize', onResize);
+      invRoot && invRoot.removeEventListener('scroll', onScroll, true);
+    }
+    document.addEventListener('mousedown', onDocClick, true);
+    window.addEventListener('resize', onResize);
+    invRoot && invRoot.addEventListener('scroll', onScroll, true);
 
-          return;
-        }
+    return;
+  }
 
-        // --- Botones normales dentro de la tabla (por si sigues teniéndolos) ---
-        if (action === 'eliminar') {
-          const row = btn.closest('[data-itemid]'); if (!row) return;
-          const id = Number(row.dataset.itemid || 0);
-          await doEliminar(id);
-          return;
-        }
+  // --- Botones normales dentro de la tabla (por si sigues teniéndolos) ---
+  if (action === 'eliminar') {
+    const row = btn.closest('[data-itemid]'); if (!row) return;
+    const id  = Number(row.dataset.itemid || 0);
+    await doEliminar(id);
+    return;
+  }
 
-        if (action === 'traspasar') {
-          const row = btn.closest('[data-itemid]'); if (!row) return;
-          const id = Number(row.dataset.itemid || 0);
-          await doTraspasar(id);
-          return;
-        }
-      };
+  if (action === 'traspasar') {
+    const row = btn.closest('[data-itemid]'); if (!row) return;
+    const id  = Number(row.dataset.itemid || 0);
+    await doTraspasar(id);
+    return;
+  }
+};
+
+
+
       // Listeners
       const root = document.getElementById('invRoot');
       root.addEventListener('input', onInput);
@@ -1060,8 +1063,7 @@ window.renderInventarioLists = function (personaje) {
           </tr>
         </thead>
         <tbody>
-          ${armasOrden.map(w => {
-        const dur = parseInt(w.durabilidad ?? 0, 10);
+          ${armasOrden.map(w => { const dur = parseInt(w.durabilidad ?? 0, 10);
         const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
         const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
         return `
@@ -1314,8 +1316,8 @@ window.renderInventarioLists = function (personaje) {
 
         await window.savePersonaje(pj);
         await window.savePersonaje(destPersonaje);
-        // 🔁 Refresca los 4 slots para ver el traspaso en origen y destino
-        if (window.refreshAllSlots) window.refreshAllSlots();
+       // 🔁 Refresca los 4 slots para ver el traspaso en origen y destino
+if (window.refreshAllSlots) window.refreshAllSlots();
         if (typeof window.renderInventarioPreview === 'function') window.renderInventarioPreview(slot);
         Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
       }
