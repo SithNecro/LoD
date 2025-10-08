@@ -141,11 +141,11 @@
       "seleccion": "1d6",
       "tabla": [
         {"tirada": 1,"Tipo": "1 Botella vacía","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": 10,"Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
-        {"tirada": 2,"Tipo": "2 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
-        {"tirada": 3,"Tipo": "3 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
-        {"tirada": 4,"Tipo": "4 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
-        {"tirada": 5,"Tipo": "5 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
-        {"tirada": 6,"Tipo": "6 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null}
+        {"tirada": 2,"Tipo": "2 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 Botellas vacías","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "10/u","Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.","Leyenda":null}
        ]
     },
     {
@@ -205,8 +205,8 @@
       "seleccion": "1d3",
       "tabla": [
         {"tirada": 1,"Tipo": "1 Daga Arrojadiza","Daño": "1d6", "Peso / Clase":"2 / 1","Recarga":null,"Defensa": null,"Valor": 10,"Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
-        {"tirada": 2,"Tipo": "2 Dagas Arrojadizas","Daño": "1d6", "Peso / Clase":"2u / 1","Recarga":null,"Defensa": null,"Valor": "10","Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
-        {"tirada": 3,"Tipo": "3 Dagas Arrojadizas","Daño": "1d6", "Peso / Clase":"2u / 1","Recarga":null,"Defensa": null,"Valor": "10","Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
+        {"tirada": 2,"Tipo": "2 Dagas Arrojadizas","Daño": "1d6", "Peso / Clase":"2u / 1","Recarga":null,"Defensa": null,"Valor": "10/u","Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 3,"Tipo": "3 Dagas Arrojadizas","Daño": "1d6", "Peso / Clase":"2u / 1","Recarga":null,"Defensa": null,"Valor": "10/u","Efecto": "Pequeño, Arrojable","Leyenda":"<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
         ]
     },
      {
@@ -282,8 +282,8 @@
       "seleccion": "1d3",
       "tabla": [
         {"tirada": 1,"Tipo": "1 Hacha Arrojadiza","Daño":"1d8","Peso / Clase":"3 / 1","Recarga":null,"Defensa": null,"Valor": 25,"Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
-        {"tirada": 2,"Tipo": "2 Hachas Arrojadizas","Daño":"1d8","Peso / Clase":"3u / 1","Recarga":null,"Defensa": null,"Valor": "25","Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
-        {"tirada": 3,"Tipo": "3 Hachas Arrojadizas","Daño":"1d8","Peso / Clase":"3u / 1","Recarga":null,"Defensa": null,"Valor": "25","Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
+        {"tirada": 2,"Tipo": "2 Hachas Arrojadizas","Daño":"1d8","Peso / Clase":"3u / 1","Recarga":null,"Defensa": null,"Valor": "25/u","Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
+        {"tirada": 3,"Tipo": "3 Hachas Arrojadizas","Daño":"1d8","Peso / Clase":"3u / 1","Recarga":null,"Defensa": null,"Valor": "25/u","Efecto": "Complejo, Lado Romo, Arrojable","Leyenda":"<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
       ]
       },
      {
@@ -389,7 +389,7 @@
       "seleccion": "1d2",
       "tabla": [
         {"tirada": 1,"Tipo": "1 Jabalina","Daño":"1d10","Defensa": null,"Peso / Clase": "6 / 2","Recarga":null,"Valor": 50,"Efecto": "PArm (1), Arrojable.","Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"},
-        {"tirada": 2,"Tipo": "2 Jabalinas","Daño":"1d10","Defensa": null,"Peso / Clase": "12 / 2","Recarga":null,"Valor": "50","Efecto": "PArm (1), Arrojable.","Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
+        {"tirada": 2,"Tipo": "2 Jabalinas","Daño":"1d10","Defensa": null,"Peso / Clase": "12 / 2","Recarga":null,"Valor": "50/u","Efecto": "PArm (1), Arrojable.","Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"}
       ]
     },
     {
@@ -574,8 +574,8 @@
       "seleccion": "1d3",
       "tabla": [
         {"tirada": 1,"Tipo": "Piel de lobo","Daño":null,"Defensa": null,"Peso":2,"Recarga":null,"Valor": 40,"Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null},
-        {"tirada": 2,"Tipo": "Pieles de lobo","Daño":null,"Defensa": null,"Peso":"2","Recarga":null,"Valor": "40","Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null},
-        {"tirada": 3,"Tipo": "Pieles de lobo","Daño":null,"Defensa": null,"Peso":"2","Recarga":null,"Valor": "40","Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null}
+        {"tirada": 2,"Tipo": "Pieles de lobo","Daño":null,"Defensa": null,"Peso":"2/u","Recarga":null,"Valor": "40/u","Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null},
+        {"tirada": 3,"Tipo": "Pieles de lobo","Daño":null,"Defensa": null,"Peso":"2/u","Recarga":null,"Valor": "40/u","Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.","Leyenda":null}
       ]
     },
      {
@@ -694,7 +694,7 @@
       "seleccion": "1d2",
       "tabla": [
         {"tirada": 1,"Tipo": "1 venda de lino","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 25,"Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.","Leyenda":null},
-        {"tirada": 2,"Tipo": "2 vendas de lino","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "25","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.","Leyenda":null}
+        {"tirada": 2,"Tipo": "2 vendas de lino","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "25/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.","Leyenda":null}
       ]
     },
      {
@@ -703,8 +703,8 @@
       "seleccion": "1d3",
       "tabla": [
         {"tirada": 1,"Tipo": "1 venda de harapos","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 15,"Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 2,"Tipo": "2 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 3,"Tipo": "3 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null}
+        {"tirada": 2,"Tipo": "2 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null}
       ]
       },
      {
@@ -713,11 +713,11 @@
       "seleccion": "1d6",
       "tabla": [
         {"tirada": 1,"Tipo": "1 venda de harapos","Daño":null,"Defensa": null,"Peso":1,"Recarga":null,"Valor": 15,"Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 2,"Tipo": "2 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 3,"Tipo": "3 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 4,"Tipo": "4 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 5,"Tipo": "5 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
-        {"tirada": 6,"Tipo": "6 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1","Recarga":null,"Valor": "15","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null}
+        {"tirada": 2,"Tipo": "2 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 3,"Tipo": "3 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 4,"Tipo": "4 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 5,"Tipo": "5 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null},
+        {"tirada": 6,"Tipo": "6 vendas de harapos","Daño":null,"Defensa": null,"Peso":"1/u","Recarga":null,"Valor": "15/u","Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.","Leyenda":null}
       ]
       },
      {

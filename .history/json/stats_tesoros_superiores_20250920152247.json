@@ -203,9 +203,9 @@
       "rotura": "0",
       "seleccion": "1d3",
       "tabla": [
-        {"tirada": 1,"Tipo": "1 Cuña de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."},
-        {"tirada": 2,"Tipo": "2 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."},
-        {"tirada": 3,"Tipo": "3 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."}
+        {"tirada": 1,"Tipo": "1 Cuña de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."},
+        {"tirada": 2,"Tipo": "2 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."},
+        {"tirada": 3,"Tipo": "3 Cuñas de hierro","Daño": null,"Peso": "4 Cuñas 1 de Peso","Recarga": null,"Defensa": null,"Valor": "50/u","Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."}
 
       ]
     },
@@ -475,9 +475,9 @@
       "Peso": null,
       "seleccion": "1d3",
       "tabla": [
-        {"tirada": 1,"Tipo": " Pepita de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "15","Efecto": "Puede utilizarse para crear armas y armdaduras.","Leyenda":null},
-        {"tirada": 2,"Tipo": " Pepita de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "15","Efecto": "Puede utilizarse para crear armas y armdaduras.","Leyenda":null},
-        {"tirada": 3,"Tipo": " Pepita de Oro","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "35","Efecto": "","Leyenda":null}
+        {"tirada": 1,"Tipo": " Pepita de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "15/u","Efecto": "Puede utilizarse para crear armas y armdaduras.","Leyenda":null},
+        {"tirada": 2,"Tipo": " Pepita de Plata","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "15/u","Efecto": "Puede utilizarse para crear armas y armdaduras.","Leyenda":null},
+        {"tirada": 3,"Tipo": " Pepita de Oro","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "35/u","Efecto": "","Leyenda":null}
       ]
     },
     {
@@ -487,7 +487,7 @@
       "Peso": null,
       "seleccion": "1d1",
       "tabla": [
-        {"tirada": 1,"Tipo": " Pepita de Mithril","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "75","Efecto": "Puede utilizarse para crear armas y armdaduras.","Leyenda":null}
+        {"tirada": 1,"Tipo": " Pepita de Mithril","Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "75/u","Efecto": "Puede utilizarse para crear armas y armdaduras.","Leyenda":null}
       ]
     },
     {
@@ -655,7 +655,7 @@
       "Peso": null,
       "seleccion": "1d1",
       "tabla": [
-        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "100","Efecto": " Para vender.","Leyenda":null}
+        {"tirada": 1,"Tipo": null,"Daño":null,"Defensa": null,"Peso":null,"Recarga":null,"Valor": "100/u","Efecto": " Para vender.","Leyenda":null}
       ]
     },
       {
