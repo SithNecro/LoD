@@ -1538,7 +1538,7 @@
             // Aplica visibilidad y ancho (oculta del final y reparte 100% entre visibles)
             function applyHeroCount(n) {
                 const count = Math.min(4, Math.max(1, n));
-                let pct = (100 / count);
+                const pct = (100 / count);
                 if (n === 1) {pct = 40;}
                 for (let i = 1; i <= 4; i++) {
                     const col = findSlotColumn(i);
