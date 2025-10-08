@@ -471,28 +471,63 @@ window.openInventarioEditor = async function (slot) {
 
       // ===== Eliminar / Traspasar =====
       // ===== Eliminar / Traspasar / Acciones =====
-// ===== Eliminar / Traspasar / Acciones (POPUP) =====
-// ===== Eliminar / Traspasar / Acciones (POPUP) =====
-const onClick = async (ev) => {
-  const btn = ev.target.closest('[data-action]'); if (!btn) return;
-  const action = btn.dataset.action;
+      const onClick = async (ev) => {
+        const btn = ev.target.closest('[data-action]'); if (!btn) return;
 
-  // Helpers internos
-  const delFrom = (arr, id) => {
-    const i = Array.isArray(arr) ? arr.findIndex(x => x.id === id) : -1;
-    if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
-    return null;
-  };
+        // --- menú de acciones ---
+        if (btn.dataset.action === 'acciones') {
+          const td = btn.closest('td'); if (!td) return;
+          const row = btn.closest('[data-itemid]'); if (!row) return;
+          // cierra menú anterior si existe
+          const prev = td.querySelector('.inv-actions-menu'); if (prev) prev.remove();
 
-  const doEliminar = async (id) => {
-    // Confirmación inline (no cierra el popup)
-    const prev = document.getElementById('invConfirmOverlay');
-    if (prev) prev.remove();
+          // crea menú
+          const menu = document.createElement('div');
+          menu.className = 'inv-actions-menu';
+          menu.style.cssText = `
+      position:absolute; right:4px; top:36px; z-index:10;
+      background:#1e1e1e; color:#fff; border:1px solid rgba(255,255,255,.12);
+      border-radius:8px; padding:6px; box-shadow:0 8px 24px rgba(0,0,0,.45);
+      min-width:150px;
+    `;
+          menu.innerHTML = `
+      <div class="d-grid gap-1">
+        <button class="btn btn-sm btn-outline-warning" data-action="traspasar">⇄ Traspasar</button>
+        <button class="btn btn-sm btn-outline-danger"  data-action="eliminar">🗑️ Eliminar</button>
+      </div>
+    `;
+          td.appendChild(menu);
 
-    const overlay = document.createElement('div');
-    overlay.id = 'invConfirmOverlay';
-    overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:10060;';
-    overlay.innerHTML = `
+          // cerrar si clic fuera
+          const close = (e) => {
+            if (!menu.contains(e.target) && e.target !== btn) {
+              menu.remove(); document.removeEventListener('mousedown', close, true);
+            }
+          };
+          document.addEventListener('mousedown', close, true);
+          return;
+        }
+
+        // desde aquí, igual que antes:
+        const row = btn.closest('[data-itemid]'); if (!row) return;
+        const id = Number(row.dataset.itemid);
+        const action = btn.dataset.action;
+
+        const delFrom = (arr) => {
+          const i = arr.findIndex(x => x.id === id);
+          if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
+          return null;
+        };
+
+        if (action === 'eliminar') {
+          // Confirmación inline: no cierra el popup de inventario
+          const prev = document.getElementById('invConfirmOverlay');
+          if (prev) prev.remove();
+
+          const overlay = document.createElement('div');
+          overlay.id = 'invConfirmOverlay';
+          overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:10000;';
+          overlay.innerHTML = `
       <div class="hero-card"
            style="background:#1e1e1e; color:#fff; border:1px solid rgba(255,255,255,.1);
                   border-radius:10px; padding:16px; width:min(420px,92vw);
@@ -505,183 +540,96 @@ const onClick = async (ev) => {
         </div>
       </div>
     `;
-    document.body.appendChild(overlay);
+          document.body.appendChild(overlay);
 
-    const closeOverlay = () => { try { overlay.remove(); } catch(_){} };
+          const closeOverlay = () => { try { overlay.remove(); } catch (_) { } };
 
-    overlay.querySelector('#invConfirmCancel')?.addEventListener('click', (e) => {
-      e.preventDefault(); e.stopPropagation(); closeOverlay();
-    });
-    overlay.querySelector('#invConfirmOk')?.addEventListener('click', async (e) => {
-      e.preventDefault(); e.stopPropagation();
+          overlay.querySelector('#invConfirmCancel').addEventListener('click', closeOverlay);
+          overlay.querySelector('#invConfirmOk').addEventListener('click', async () => {
+            const delObj = delFrom(personaje.inventario.objetos);
+            const delArm = delFrom(personaje.inventario.armaduras);
+            const delArma = delFrom(personaje.inventario.armas);
+            if (delObj || delArm || delArma) {
+              await window.savePersonaje(personaje);
+              window.renderInventarioLists(personaje);
+            }
+            closeOverlay();
+          });
+          return;
+        }
 
-      const delObj  = delFrom(personaje.inventario.objetos,   id);
-      const delArm  = delFrom(personaje.inventario.armaduras, id);
-      const delArma = delFrom(personaje.inventario.armas,     id);
+        if (action === 'traspasar') {
+          // 1) Obtener destinos válidos
+          const asigs = await new Promise((resolve, reject) => {
+            const tx = db.transaction('slots', 'readonly');
+            const st = tx.objectStore('slots');
+            const req = st.getAll();
+            req.onsuccess = e => {
+              const all = e.target.result || [];
+              resolve(all.filter(a => a && a.personajeId && a.slot !== slot));
+            };
+            req.onerror = () => reject(req.error);
+          });
 
-      if (delObj || delArm || delArma) {
-        await window.savePersonaje(personaje);
-        window.renderInventarioLists(personaje);
-        if (window.refreshAllSlots) window.refreshAllSlots();
-      }
-      closeOverlay();
-    });
-  };
+          const destinos = [];
+          for (const a of asigs) {
+            try {
+              const p = await window.getPersonajeBySlot(a.slot);
+              if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
+            } catch (_) { }
+          }
 
-  const doTraspasar = async (id) => {
-    // 1) Obtener destinos válidos
-    const asigs = await new Promise((resolve, reject) => {
-      const tx = db.transaction('slots', 'readonly');
-      const st = tx.objectStore('slots');
-      const req = st.getAll();
-      req.onsuccess = e => {
-        const all = e.target.result || [];
-        resolve(all.filter(a => a && a.personajeId && a.slot !== slot));
+          if (!destinos.length) {
+            Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
+            return;
+          }
+
+          const inputOptions = {};
+          destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
+
+          const { isConfirmed, value: destSlot } = await Swal.fire({
+            title: 'Traspasar a...',
+            input: 'select',
+            inputOptions,
+            inputPlaceholder: 'Selecciona héroe destino',
+            showCancelButton: true,
+            confirmButtonText: 'Traspasar',
+          });
+          if (!isConfirmed) return;
+
+          // 2) Quitar del origen y detectar categoría
+          let categoria = 'objetos';
+          let moved = delFrom(personaje.inventario.objetos);
+          if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras); }
+          if (!moved) { categoria = 'armas'; moved = delFrom(personaje.inventario.armas); }
+          if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
+
+          // Armaduras/Armas: llegan como no equipadas
+          if (categoria !== 'objetos') moved.equipado = false;
+
+          // 3) Añadir en destino (id se conserva salvo colisión)
+          const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
+          if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
+          if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
+          const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
+
+          if (destArr.some(x => x.id === moved.id)) {
+            let newId = Date.now();
+            while (destArr.some(x => x.id === newId)) newId++;
+            moved.id = newId;
+          }
+
+          destArr.push(moved);
+
+          await window.savePersonaje(personaje);
+          await window.savePersonaje(destPersonaje);
+          window.renderInventarioLists(personaje);
+          Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
+          // 🔁 Refresca los 4 slots visibles
+          if (window.refreshAllSlots) window.refreshAllSlots();
+          return;
+        }
       };
-      req.onerror = () => reject(req.error);
-    });
-
-    const destinos = [];
-    for (const a of asigs) {
-      try {
-        const p = await window.getPersonajeBySlot(a.slot);
-        if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
-      } catch (_) {}
-    }
-
-    if (!destinos.length) {
-      Swal.fire('Sin destinos', 'No hay otros héroes disponibles para recibir el objeto.', 'info');
-      return;
-    }
-
-    const inputOptions = {};
-    destinos.forEach(d => { inputOptions[d.slot] = `Slot ${d.slot} — ${d.nombre}`; });
-
-    const { isConfirmed, value: destSlot } = await Swal.fire({
-      title: 'Traspasar a...',
-      input: 'select',
-      inputOptions,
-      inputPlaceholder: 'Selecciona héroe destino',
-      showCancelButton: true,
-      confirmButtonText: 'Traspasar',
-    });
-    if (!isConfirmed) return;
-
-    // 2) Quitar del origen y detectar categoría
-    let categoria = 'objetos';
-    let moved = delFrom(personaje.inventario.objetos, id);
-    if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras, id); }
-    if (!moved) { categoria = 'armas';      moved = delFrom(personaje.inventario.armas, id); }
-    if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
-
-    if (categoria !== 'objetos') moved.equipado = false; // llega no equipado
-
-    // 3) Añadir en destino (evitar colisión de id)
-    const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
-    if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
-    if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
-    const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
-    if (destArr.some(x => x.id === moved.id)) {
-      let newId = Date.now();
-      while (destArr.some(x => x.id === newId)) newId++;
-      moved.id = newId;
-    }
-    destArr.push(moved);
-
-    await window.savePersonaje(personaje);
-    await window.savePersonaje(destPersonaje);
-    window.renderInventarioLists(personaje);
-    if (window.refreshAllSlots) window.refreshAllSlots();
-    Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
-  };
-
-  // --- Menú de acciones flotante ---
-  if (action === 'acciones') {
-    const row = btn.closest('[data-itemid]'); if (!row) return;
-    const itemId = Number(row.dataset.itemid || 0);
-
-    // Cierra menús previos
-    document.querySelectorAll('.inv-actions-menu-fixed').forEach(el => el.remove());
-
-    // Crea menú fijo
-    const menu = document.createElement('div');
-    menu.className = 'inv-actions-menu-fixed';
-    menu.style.cssText = `
-      position:fixed;
-      z-index:10050;
-      background:#1e1e1e; color:#fff;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:8px; padding:6px;
-      box-shadow:0 12px 32px rgba(0,0,0,.5);
-      min-width:150px;
-    `;
-    menu.innerHTML = `
-      <div class="d-grid gap-1">
-        <button type="button" class="btn btn-sm btn-outline-warning" data-action="traspasar">⇄ Traspasar</button>
-        <button type="button" class="btn btn-sm btn-outline-danger"  data-action="eliminar">🗑️ Eliminar</button>
-      </div>
-    `;
-
-    // Posición junto al botón
-    const r = btn.getBoundingClientRect();
-    let top  = Math.round(r.bottom + 6);
-    let left = Math.round(r.left);
-
-    document.body.appendChild(menu);
-    const maxLeft = window.innerWidth - (menu.offsetWidth + 8);
-    if (left > maxLeft) left = Math.max(8, maxLeft);
-    menu.style.top  = `${top}px`;
-    menu.style.left = `${left}px`;
-
-    // Handlers directos (sin delegación)
-    const closeMenu = () => { try { menu.remove(); } catch(_){} };
-    const trap = (e) => { e.preventDefault(); e.stopPropagation(); };
-
-    menu.querySelector('[data-action="traspasar"]')?.addEventListener('click', async (e) => {
-      trap(e);
-      await doTraspasar(itemId);
-      closeMenu();
-    });
-    menu.querySelector('[data-action="eliminar"]')?.addEventListener('click', async (e) => {
-      trap(e);
-      await doEliminar(itemId);
-      closeMenu();
-    });
-
-    // Cierre fuera / scroll / resize
-    const onDocClick = (e) => { if (!menu.contains(e.target)) { cleanup(); } };
-    const onResize   = () => cleanup();
-    const invRoot    = document.getElementById('invRoot');
-    const onScroll   = () => cleanup();
-    function cleanup() {
-      closeMenu();
-      document.removeEventListener('mousedown', onDocClick, true);
-      window.removeEventListener('resize', onResize);
-      invRoot && invRoot.removeEventListener('scroll', onScroll, true);
-    }
-    document.addEventListener('mousedown', onDocClick, true);
-    window.addEventListener('resize', onResize);
-    invRoot && invRoot.addEventListener('scroll', onScroll, true);
-
-    return;
-  }
-
-  // --- Botones normales dentro de la tabla (por si sigues teniéndolos) ---
-  if (action === 'eliminar') {
-    const row = btn.closest('[data-itemid]'); if (!row) return;
-    const id  = Number(row.dataset.itemid || 0);
-    await doEliminar(id);
-    return;
-  }
-
-  if (action === 'traspasar') {
-    const row = btn.closest('[data-itemid]'); if (!row) return;
-    const id  = Number(row.dataset.itemid || 0);
-    await doTraspasar(id);
-    return;
-  }
-};
-
 
 
       // Listeners

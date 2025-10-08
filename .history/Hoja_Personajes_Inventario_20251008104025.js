@@ -472,20 +472,92 @@ window.openInventarioEditor = async function (slot) {
       // ===== Eliminar / Traspasar =====
       // ===== Eliminar / Traspasar / Acciones =====
 // ===== Eliminar / Traspasar / Acciones (POPUP) =====
-// ===== Eliminar / Traspasar / Acciones (POPUP) =====
 const onClick = async (ev) => {
   const btn = ev.target.closest('[data-action]'); if (!btn) return;
+
+  // --- menú de acciones (POPUP): flotante por encima de todo ---
+  if (btn.dataset.action === 'acciones') {
+    const row = btn.closest('[data-itemid]'); if (!row) return;
+    const itemId = row.dataset.itemid || '';
+
+    // Cierra cualquier menú abierto previamente (en todo el documento)
+    document.querySelectorAll('.inv-actions-menu-fixed').forEach(el => el.remove());
+
+    // Crea el menú
+    const menu = document.createElement('div');
+    menu.className = 'inv-actions-menu-fixed';
+    menu.style.cssText = `
+      position:fixed;
+      z-index:10050; /* por encima de bordes y contenido del modal */
+      background:#1e1e1e; color:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:8px; padding:6px;
+      box-shadow:0 12px 32px rgba(0,0,0,.5);
+      min-width:150px;
+    `;
+    // Pasamos data-itemid para que el handler pueda leerlo aunque el menú esté fuera de #invRoot
+    menu.innerHTML = `
+      <div class="d-grid gap-1">
+        <button class="btn btn-sm btn-outline-warning" data-action="traspasar" data-itemid="${itemId}">⇄ Traspasar</button>
+        <button class="btn btn-sm btn-outline-danger"  data-action="eliminar"   data-itemid="${itemId}">🗑️ Eliminar</button>
+      </div>
+    `;
+
+    // Posicionar respecto al botón
+    const r = btn.getBoundingClientRect();
+    let top  = Math.round(r.bottom + 6);
+    let left = Math.round(r.left);
+
+    // Inserta, mide y ajusta si se sale por la derecha
+    document.body.appendChild(menu);
+    const maxLeft = window.innerWidth - (menu.offsetWidth + 8);
+    if (left > maxLeft) left = Math.max(8, maxLeft);
+    menu.style.top  = `${top}px`;
+    menu.style.left = `${left}px`;
+
+    // Cierre si clic fuera / scroll del modal / resize
+    const close = (e) => { if (!menu.contains(e.target)) cleanup(); };
+    const onResize = () => cleanup();
+    const invRoot = document.getElementById('invRoot');
+    const onScroll = () => cleanup();
+
+    function cleanup() {
+      try { menu.remove(); } catch(_) {}
+      document.removeEventListener('mousedown', close, true);
+      window.removeEventListener('resize', onResize);
+      invRoot && invRoot.removeEventListener('scroll', onScroll, true);
+    }
+
+    document.addEventListener('mousedown', close, true);
+    window.addEventListener('resize', onResize);
+    invRoot && invRoot.addEventListener('scroll', onScroll, true);
+
+    return;
+  }
+
+  // --------------------------------------------------------------------
+  // Desde aquí, acciones reales: eliminar / traspasar
+  // Soportamos clicks desde menú fijo (fuera de #invRoot) y desde la tabla.
+  const inFixedMenu = !!btn.closest('.inv-actions-menu-fixed');
+  let row = null, id = 0;
+  if (inFixedMenu) {
+    id = Number(btn.dataset.itemid || 0);
+    // cierra el menú fijo al disparar acción
+    document.querySelectorAll('.inv-actions-menu-fixed').forEach(el => { try { el.remove(); } catch(_){} });
+  } else {
+    row = btn.closest('[data-itemid]'); if (!row) return;
+    id = Number(row.dataset.itemid || 0);
+  }
   const action = btn.dataset.action;
 
-  // Helpers internos
-  const delFrom = (arr, id) => {
-    const i = Array.isArray(arr) ? arr.findIndex(x => x.id === id) : -1;
+  const delFrom = (arr) => {
+    const i = arr.findIndex(x => x.id === id);
     if (i >= 0) { const [it] = arr.splice(i, 1); return it; }
     return null;
   };
 
-  const doEliminar = async (id) => {
-    // Confirmación inline (no cierra el popup)
+  if (action === 'eliminar') {
+    // Confirmación inline: no cierra el popup de inventario
     const prev = document.getElementById('invConfirmOverlay');
     if (prev) prev.remove();
 
@@ -509,26 +581,25 @@ const onClick = async (ev) => {
 
     const closeOverlay = () => { try { overlay.remove(); } catch(_){} };
 
-    overlay.querySelector('#invConfirmCancel')?.addEventListener('click', (e) => {
-      e.preventDefault(); e.stopPropagation(); closeOverlay();
-    });
-    overlay.querySelector('#invConfirmOk')?.addEventListener('click', async (e) => {
-      e.preventDefault(); e.stopPropagation();
-
-      const delObj  = delFrom(personaje.inventario.objetos,   id);
-      const delArm  = delFrom(personaje.inventario.armaduras, id);
-      const delArma = delFrom(personaje.inventario.armas,     id);
+    overlay.querySelector('#invConfirmCancel').addEventListener('click', closeOverlay);
+    overlay.querySelector('#invConfirmOk').addEventListener('click', async () => {
+      const delObj  = delFrom(personaje.inventario.objetos);
+      const delArm  = delFrom(personaje.inventario.armaduras);
+      const delArma = delFrom(personaje.inventario.armas);
 
       if (delObj || delArm || delArma) {
         await window.savePersonaje(personaje);
         window.renderInventarioLists(personaje);
+        // refresco slots si existe helper global
         if (window.refreshAllSlots) window.refreshAllSlots();
       }
       closeOverlay();
     });
-  };
 
-  const doTraspasar = async (id) => {
+    return;
+  }
+
+  if (action === 'traspasar') {
     // 1) Obtener destinos válidos
     const asigs = await new Promise((resolve, reject) => {
       const tx = db.transaction('slots', 'readonly');
@@ -546,7 +617,7 @@ const onClick = async (ev) => {
       try {
         const p = await window.getPersonajeBySlot(a.slot);
         if (p) destinos.push({ slot: a.slot, nombre: p.nombre || ('Héroe ' + a.slot) });
-      } catch (_) {}
+      } catch (_) { /* noop */ }
     }
 
     if (!destinos.length) {
@@ -569,119 +640,39 @@ const onClick = async (ev) => {
 
     // 2) Quitar del origen y detectar categoría
     let categoria = 'objetos';
-    let moved = delFrom(personaje.inventario.objetos, id);
-    if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras, id); }
-    if (!moved) { categoria = 'armas';      moved = delFrom(personaje.inventario.armas, id); }
+    let moved = delFrom(personaje.inventario.objetos);
+    if (!moved) { categoria = 'armaduras'; moved = delFrom(personaje.inventario.armaduras); }
+    if (!moved) { categoria = 'armas';      moved = delFrom(personaje.inventario.armas); }
     if (!moved) { Swal.fire('Error', 'No se encontró el ítem a traspasar.', 'error'); return; }
 
-    if (categoria !== 'objetos') moved.equipado = false; // llega no equipado
+    // Armaduras/Armas: llegan como no equipadas
+    if (categoria !== 'objetos') moved.equipado = false;
 
-    // 3) Añadir en destino (evitar colisión de id)
+    // 3) Añadir en destino (id se conserva salvo colisión)
     const destPersonaje = await window.getPersonajeBySlot(Number(destSlot));
     if (!destPersonaje) { Swal.fire('Error', 'No se pudo cargar el héroe destino.', 'error'); return; }
     if (!destPersonaje.inventario) destPersonaje.inventario = { objetos: [], armaduras: [], armas: [] };
     const destArr = destPersonaje.inventario[categoria] || (destPersonaje.inventario[categoria] = []);
+
     if (destArr.some(x => x.id === moved.id)) {
       let newId = Date.now();
       while (destArr.some(x => x.id === newId)) newId++;
       moved.id = newId;
     }
+
     destArr.push(moved);
 
     await window.savePersonaje(personaje);
     await window.savePersonaje(destPersonaje);
     window.renderInventarioLists(personaje);
-    if (window.refreshAllSlots) window.refreshAllSlots();
     Swal.fire('Hecho', 'Ítem traspasado correctamente.', 'success');
-  };
 
-  // --- Menú de acciones flotante ---
-  if (action === 'acciones') {
-    const row = btn.closest('[data-itemid]'); if (!row) return;
-    const itemId = Number(row.dataset.itemid || 0);
+    // 🔁 Refresca los 4 slots visibles si existe helper
+    if (window.refreshAllSlots) window.refreshAllSlots();
 
-    // Cierra menús previos
-    document.querySelectorAll('.inv-actions-menu-fixed').forEach(el => el.remove());
-
-    // Crea menú fijo
-    const menu = document.createElement('div');
-    menu.className = 'inv-actions-menu-fixed';
-    menu.style.cssText = `
-      position:fixed;
-      z-index:10050;
-      background:#1e1e1e; color:#fff;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:8px; padding:6px;
-      box-shadow:0 12px 32px rgba(0,0,0,.5);
-      min-width:150px;
-    `;
-    menu.innerHTML = `
-      <div class="d-grid gap-1">
-        <button type="button" class="btn btn-sm btn-outline-warning" data-action="traspasar">⇄ Traspasar</button>
-        <button type="button" class="btn btn-sm btn-outline-danger"  data-action="eliminar">🗑️ Eliminar</button>
-      </div>
-    `;
-
-    // Posición junto al botón
-    const r = btn.getBoundingClientRect();
-    let top  = Math.round(r.bottom + 6);
-    let left = Math.round(r.left);
-
-    document.body.appendChild(menu);
-    const maxLeft = window.innerWidth - (menu.offsetWidth + 8);
-    if (left > maxLeft) left = Math.max(8, maxLeft);
-    menu.style.top  = `${top}px`;
-    menu.style.left = `${left}px`;
-
-    // Handlers directos (sin delegación)
-    const closeMenu = () => { try { menu.remove(); } catch(_){} };
-    const trap = (e) => { e.preventDefault(); e.stopPropagation(); };
-
-    menu.querySelector('[data-action="traspasar"]')?.addEventListener('click', async (e) => {
-      trap(e);
-      await doTraspasar(itemId);
-      closeMenu();
-    });
-    menu.querySelector('[data-action="eliminar"]')?.addEventListener('click', async (e) => {
-      trap(e);
-      await doEliminar(itemId);
-      closeMenu();
-    });
-
-    // Cierre fuera / scroll / resize
-    const onDocClick = (e) => { if (!menu.contains(e.target)) { cleanup(); } };
-    const onResize   = () => cleanup();
-    const invRoot    = document.getElementById('invRoot');
-    const onScroll   = () => cleanup();
-    function cleanup() {
-      closeMenu();
-      document.removeEventListener('mousedown', onDocClick, true);
-      window.removeEventListener('resize', onResize);
-      invRoot && invRoot.removeEventListener('scroll', onScroll, true);
-    }
-    document.addEventListener('mousedown', onDocClick, true);
-    window.addEventListener('resize', onResize);
-    invRoot && invRoot.addEventListener('scroll', onScroll, true);
-
-    return;
-  }
-
-  // --- Botones normales dentro de la tabla (por si sigues teniéndolos) ---
-  if (action === 'eliminar') {
-    const row = btn.closest('[data-itemid]'); if (!row) return;
-    const id  = Number(row.dataset.itemid || 0);
-    await doEliminar(id);
-    return;
-  }
-
-  if (action === 'traspasar') {
-    const row = btn.closest('[data-itemid]'); if (!row) return;
-    const id  = Number(row.dataset.itemid || 0);
-    await doTraspasar(id);
     return;
   }
 };
-
 
 
       // Listeners
