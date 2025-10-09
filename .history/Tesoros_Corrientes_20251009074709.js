@@ -55,29 +55,19 @@ function cambiarImagenSeleccionada() {
 
 // Función para cargar una imagen aleatoria
 // Función auxiliar para tirar dados tipo "1d10", "2d6-1", etc.
-// Función auxiliar para tirar dados tipo "1d10", "2d6+1", "1d4-1" (ignora multiplicadores como "*3")
 function tirarDado(expresion) {
-  if (!expresion) return null;
-
-  // Ignoramos cualquier multiplicador al final (p.ej. "1d6*3" -> "1d6")
-  const core = String(expresion).split('*')[0].trim();
-
-  // Soporta +N o -N opcional, con espacios
-  const m = core.match(/^\s*(\d+)\s*d\s*(\d+)\s*([+-]\s*\d+)?\s*$/i);
-  if (!m) return null;
-
-  const veces = parseInt(m[1], 10);
-  const caras = parseInt(m[2], 10);
-  let mod = 0;
-  if (m[3]) mod = parseInt(m[3].replace(/\s+/g, ''), 10); // +1 o -1
-
-  let total = 0;
-  for (let i = 0; i < veces; i++) {
-    total += Math.floor(Math.random() * caras) + 1;
-  }
-  return total + mod;
+    // admite formato XdY-Z (Z opcional)
+    const match = expresion.match(/(\d+)d(\d+)(?:\s*-\s*(\d+))?/i);
+    if (!match) return null;
+    const veces = parseInt(match[1], 10);
+    const caras = parseInt(match[2], 10);
+    const restar = match[3] ? parseInt(match[3], 10) : 0;
+    let total = 0;
+    for (let i = 0; i < veces; i++) {
+        total += Math.floor(Math.random() * caras) + 1;
+    }
+    return total - restar;
 }
-
 
 // Función para cargar una imagen aleatoria y mostrar sus datos
 function cargarTesoroCorriente() {
@@ -263,44 +253,13 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                 const durabilidad =tesoro.durabilidad;
                 html += `<div><p><strong>Durabilidad:</strong> ${durabilidad}</p></div>`;
             }
-           
             if (tesoro.rotura) {
                 const roturaRand = tirarDado(tesoro.rotura);
                 //html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
                 html += `<div><p><strong>Rotura del objeto:</strong> ${roturaRand}</p></div>`;
 
             }
-   if(tesoro.Unidades)
-            {
-          
 
-                  let ValorUnidades = tesoro.Unidades;
-
-                // ¿es una tirada de dados tipo "3d100" o "3d100+40"?
-                const regex = /^(\d+)d(\d+)([+-]\d+)?$/i;
-                const match = regex.exec(tesoro.Unidades);
-
-                if (match) {
-                    const num = parseInt(match[1], 10);    // número de dados
-                    const caras = parseInt(match[2], 10);  // caras
-                    const mod = match[3] ? parseInt(match[3], 10) : 0; // modificador opcional
-
-                    let total = 0;
-                    let tiradas = [];
-                    for (let i = 0; i < num; i++) {
-                        const t = Math.floor(Math.random() * caras) + 1;
-                        total += t;
-                        tiradas.push(t);
-                    }
-
-                    const resultadoFinal = total + mod;
-                    cantidadobjetosenlatirada = resultadoFinal;
-
-                    ValorUnidades = `${resultadoFinal}`;
-                }
-
-                html += `<div><p><strong>Unidades:</strong> ${ValorUnidades}</p></div>`;
-            }
             // Valor
             if (tesoro.valor) {
                 let valorTexto = tesoro.valor;
@@ -364,15 +323,12 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
                     for (const [k, v] of Object.entries(itemTabla)) {
                         if (v !== null) {
-                          
                             if (k === "tirada" || k === "Leyenda") continue;
-                            
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-                               
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }
@@ -421,143 +377,132 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
 
 // --- Normaliza enemigo-item a {categoria,item} listo para inventario ---
-// --- Normaliza enemigo-item a {categoria,item} listo para inventario ---
-// --- Normaliza enemigo-item a {categoria,item} listo para inventario ---
 window.tc_parseEnemyItem = function (itemEl) {
-  const { getTextAfterStrong, getGreenValue, parseIntSafe, parseFloatSafe } = window.__tc_helpers;
+    const { getTextAfterStrong, getGreenValue, parseIntSafe, parseFloatSafe } = window.__tc_helpers;
 
-  // 1) Campos del enemigo-item
-  const botinRaw     = getTextAfterStrong(itemEl, 'Botín');             // p.ej. "Antorchas (3).png" (no usamos (3) como cantidad)
-  const roturaTxt    = getTextAfterStrong(itemEl, 'Rotura del objeto'); // p.ej. "1"
-  const categoriaTxt = getTextAfterStrong(itemEl, 'Categoria');         // "objeto" | "arma" | "armadura"
-  const durabTxt     = getTextAfterStrong(itemEl, 'Durabilidad');       // número (armas/armaduras)
-  const unidadesTxt  = getTextAfterStrong(itemEl, 'Unidades');          // NUEVO: número de unidades (solo objetos)
-  const cantidadTxt  = getTextAfterStrong(itemEl, 'Cantidad');          // fallback si aún no hay "Unidades"
+    // 1) Campos generales (tal como los muestra enemigo-item)
+    const botinRaw = getTextAfterStrong(itemEl, 'Botín'); // p.ej. "Armadura acolchada" o "Raciones (2)"
+    const roturaTxt = getTextAfterStrong(itemEl, 'Rotura del objeto'); // p.ej. "1"
+    // Estos dos (Categoria y Durabilidad) los vas a añadir "debajo de Rotura":
+    const categoriaTxt = getTextAfterStrong(itemEl, 'Categoria'); // "objeto" | "arma" | "armadura"
+    const durabTxt = getTextAfterStrong(itemEl, 'Durabilidad');   // número entre comillas en JSON, aquí como texto
 
-  // Zona “verde”
-  const tipoTxt     = getGreenValue(itemEl, 'Tipo');
-  const cobDefTxt   = getGreenValue(itemEl, 'Cobertura / Defensa');
-  const pesoClsTxt  = getGreenValue(itemEl, 'Peso / Rango') || getGreenValue(itemEl, 'Peso / Clase');
-  const valorTxt    = getGreenValue(itemEl, 'Valor');
-  const danioTxt    = getGreenValue(itemEl, 'Daño');
-
-  // Efecto/Leyenda (sin recortar)
-  let efectoTxt = '';
-  const efectoP = [...itemEl.querySelectorAll('p > strong[style]')].find(s => s.textContent.trim().startsWith('Efecto'));
-  if (efectoP && efectoP.parentElement) {
-    const cont = efectoP.parentElement;
-    const tip = cont.querySelector('.efecto[data-tippy-content]');
-    if (tip) {
-      const html = tip.getAttribute('data-tippy-content') || '';
-      const tmp = document.createElement('div'); tmp.innerHTML = html;
-      efectoTxt = tmp.textContent.trim();
-    } else {
-      efectoTxt = cont.textContent.replace(efectoP.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+    // En la zona verde:
+    const tipoTxt = getGreenValue(itemEl, 'Tipo');   // p.ej. "Chaleco acolchado" o nombre concreto
+    const cobDefTxt = getGreenValue(itemEl, 'Cobertura / Defensa'); // "Torso / 2"
+    const pesoClsTxt = getGreenValue(itemEl, 'Peso / Rango') || getGreenValue(itemEl, 'Peso / Clase'); // "3 / 1"
+    const valorTxt = getGreenValue(itemEl, 'Valor');  // "60"
+    const danioTxt = getGreenValue(itemEl, 'Daño');   // si existiese en armas
+    // Efecto puede venir con spans .efecto:
+    let efectoTxt = '';
+    const efectoP = [...itemEl.querySelectorAll('p > strong[style]')].find(s => s.textContent.trim().startsWith('Efecto'));
+    if (efectoP && efectoP.parentElement) {
+        const cont = efectoP.parentElement;
+        // preferimos data-tippy-content si hubiera
+        const tip = cont.querySelector('.efecto[data-tippy-content]');
+        if (tip) {
+            // Usa texto plano de tippy (limpio etiquetas básicas)
+            const html = tip.getAttribute('data-tippy-content') || '';
+            const tmp = document.createElement('div'); tmp.innerHTML = html;
+            efectoTxt = tmp.textContent.trim();
+        } else {
+            efectoTxt = cont.textContent.replace(efectoP.textContent, '').trim().replace(/^[:\s]+/, '').trim();
+        }
     }
-  }
 
-  // 2) Derivados
-  // Nombre limpio (NO usamos "(x)" como cantidad)
-  const nombreBase = botinRaw
-    .replace(/\.png$/i, '')
-    .replace(/\s*\(\d+\)\s*$/,'')
-    .trim();
+    // 2) Derivados
+    // Cantidad desde Botín: "Nombre (2)" → 2
+    let cantidad = 1;
+    const mCant = /\((\d+)\)\s*$/.exec(botinRaw);
+    if (mCant) cantidad = parseIntSafe(mCant[1], 1);
 
-  // Cantidad: PRIORIDAD Unidades -> luego "Cantidad:" (último número) -> 1
-  let cantidad = 1;
-  if (unidadesTxt) {
-    cantidad = parseIntSafe(unidadesTxt, 1);
-  } else if (cantidadTxt) {
-    const mLast = String(cantidadTxt).match(/(\d+)(?!.*\d)/);
-    if (mLast) cantidad = parseIntSafe(mLast[1], 1);
-  }
+    const nombreBase = botinRaw.replace(/\s*\(\d+\)\s*$/, '').trim();
+    const rotura = parseIntSafe(roturaTxt, 0);
+    const durabilidad = parseIntSafe(durabTxt, 0); // para objetos será 0 por diseño
 
-  const rotura      = parseIntSafe(roturaTxt, 0);
-  const durabilidad = parseIntSafe(durabTxt, 0); // objetos = 0 por diseño
-
-  // Peso / Clase (o Rango)
-  let peso = 0, clase = '';
-  if (pesoClsTxt) {
-    const [pL, pR] = pesoClsTxt.split('/').map(s => s.trim());
-    if (pL) peso = parseFloatSafe(pL, 0);
-    if (pR) clase = pR; // C1..C7 o rango numérico
-  }
-  const valor = parseIntSafe(valorTxt, 0);
-
-  // Cobertura / Defensa
-  let cobertura = [];
-  let defensa = 6; // defecto
-  if (cobDefTxt) {
-    const [cob, def] = cobDefTxt.split('/').map(s => s.trim());
-    if (cob) cobertura = cob.split(',').map(s => s.trim()).filter(Boolean);
-    if (def) defensa = parseIntSafe(def, defensa);
-  }
-
-  const nombreTipo = (tipoTxt || '').trim();
-
-  // 3) Categoría
-  let categoria = (categoriaTxt || '').toLowerCase();
-  if (!categoria) {
-    if (cobertura.length || defensa) categoria = 'armadura';
-    else if (danioTxt)               categoria = 'arma';
-    else                             categoria = 'objeto';
-  }
-
-  // 4) Construcción por categoría
-  if (categoria === 'objeto') {
-    return {
-      categoria,
-      item: {
-        id: Date.now(),
-        nombre: nombreBase,     // sin .png y sin "(x)"
-        cantidad: cantidad,     // ← viene de "Unidades" o "Cantidad:"
-        peso: peso || 0,
-        uso: efectoTxt || '',
-        valor: valor || 0,      // unitario
-        durabilidad: 0,
-        lugar: 'Mochila'
-      }
-    };
-  }
-
-  if (categoria === 'armadura') {
-    const dura = durabilidad || 6;
-    return {
-      categoria,
-      item: {
-        id: Date.now(),
-        equipado: false,
-        armadura: nombreTipo || nombreBase,
-        cobertura,
-        defensa,
-        especial: efectoTxt || '',
-        durabilidad: dura,
-        rotura: Math.min(rotura, dura),
-        clase,
-        peso: peso || 0,
-        valor: valor || 0
-      }
-    };
-  }
-
-  // arma
-  const duraA = durabilidad || 8;
-  return {
-    categoria: 'arma',
-    item: {
-      id: Date.now(),
-      equipado: false,
-      arma: nombreTipo || nombreBase,
-      mano: 'Derecha',
-      danio: (danioTxt || '').trim(),
-      especial: efectoTxt || '',
-      durabilidad: duraA,
-      rotura: Math.min(rotura, duraA),
-      clase,
-      peso: peso || 0,
-      valor: valor || 0
+    // Peso / Clase (o Rango)
+    let peso = 0, clase = '';
+    if (pesoClsTxt) {
+        const [pL, pR] = pesoClsTxt.split('/').map(s => s.trim());
+        if (pL) peso = parseFloatSafe(pL, 0);
+        if (pR) clase = pR; // C1..C7 o rango numérico
     }
-  };
+    const valor = parseIntSafe(valorTxt, 0);
+
+    // Cobertura / Defensa
+    let cobertura = [];
+    let defensa = 6; // por defecto que indicas
+    if (cobDefTxt) {
+        const [cob, def] = cobDefTxt.split('/').map(s => s.trim());
+        if (cob) cobertura = cob.split(',').map(s => s.trim()).filter(Boolean);
+        if (def) defensa = parseIntSafe(def, defensa);
+    }
+
+    // Elegimos nombre final según el tipo "verde"
+    const nombreTipo = (tipoTxt || '').trim();
+
+    // 3) Categoría
+    let categoria = (categoriaTxt || '').toLowerCase();
+    if (!categoria) {
+        // heurística de respaldo si faltase
+        if (cobertura.length || defensa) categoria = 'armadura';
+        else if (danioTxt) categoria = 'arma';
+        else categoria = 'objeto';
+    }
+
+    // 4) Construcción por categoría
+    if (categoria === 'objeto') {
+        return {
+            categoria,
+            item: {
+                id: Date.now(),
+                nombre: nombreBase,            // sin .png y limpio
+                cantidad: cantidad,
+                peso: peso || 0,
+                uso: efectoTxt || '',
+                valor: valor || 0,
+                durabilidad: 0,
+                lugar: 'Mochila'
+            }
+        };
+    }
+
+    if (categoria === 'armadura') {
+        return {
+            categoria,
+            item: {
+                id: Date.now(),
+                equipado: false,
+                armadura: nombreTipo || nombreBase,
+                cobertura,
+                defensa,
+                especial: efectoTxt || '',
+                durabilidad: durabilidad || 6,  // tendrás el dato; si no, fallback 6
+                rotura: Math.min(rotura, durabilidad || 6),
+                clase,
+                peso: peso || 0,
+                valor: valor || 0
+            }
+        };
+    }
+
+    // arma
+    return {
+        categoria: 'arma',
+        item: {
+            id: Date.now(),
+            equipado: false,
+            arma: nombreTipo || nombreBase,
+            mano: 'Derecha',
+            danio: (danioTxt || '').trim(),
+            especial: efectoTxt || '',
+            durabilidad: durabilidad || 8,
+            rotura: Math.min(rotura, durabilidad || 8),
+            clase,
+            peso: peso || 0,
+            valor: valor || 0
+        }
+    };
 };
 
 // === Acceso directo a IndexedDB: PersonajesDB ===

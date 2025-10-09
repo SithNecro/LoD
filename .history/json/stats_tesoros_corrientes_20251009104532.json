@@ -643,9 +643,9 @@
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Rodela",
+          "Tipo": null,
           "Daño": null,
-          "Cobertura / Defensa":"/4",
+          "Defensa": "4",
           "Peso / Clase": "4 / 1",
           "Recarga": null,
           "Valor": 20,

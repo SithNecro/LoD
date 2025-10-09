@@ -366,13 +366,16 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                         if (v !== null) {
                           
                             if (k === "tirada" || k === "Leyenda") continue;
-                            
+                              if (k === "Unidades"){
+                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
+                            <span class="efecto" data-tippy-content="<b>Unidades:</b><br>${k.Unidades}">${v}</span>
+                        </p></div>`;
+                            }
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-                               
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }

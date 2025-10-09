@@ -263,44 +263,13 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                 const durabilidad =tesoro.durabilidad;
                 html += `<div><p><strong>Durabilidad:</strong> ${durabilidad}</p></div>`;
             }
-           
             if (tesoro.rotura) {
                 const roturaRand = tirarDado(tesoro.rotura);
                 //html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
                 html += `<div><p><strong>Rotura del objeto:</strong> ${roturaRand}</p></div>`;
 
             }
-   if(tesoro.Unidades)
-            {
-          
 
-                  let ValorUnidades = tesoro.Unidades;
-
-                // ¿es una tirada de dados tipo "3d100" o "3d100+40"?
-                const regex = /^(\d+)d(\d+)([+-]\d+)?$/i;
-                const match = regex.exec(tesoro.Unidades);
-
-                if (match) {
-                    const num = parseInt(match[1], 10);    // número de dados
-                    const caras = parseInt(match[2], 10);  // caras
-                    const mod = match[3] ? parseInt(match[3], 10) : 0; // modificador opcional
-
-                    let total = 0;
-                    let tiradas = [];
-                    for (let i = 0; i < num; i++) {
-                        const t = Math.floor(Math.random() * caras) + 1;
-                        total += t;
-                        tiradas.push(t);
-                    }
-
-                    const resultadoFinal = total + mod;
-                    cantidadobjetosenlatirada = resultadoFinal;
-
-                    ValorUnidades = `${resultadoFinal}`;
-                }
-
-                html += `<div><p><strong>Unidades:</strong> ${ValorUnidades}</p></div>`;
-            }
             // Valor
             if (tesoro.valor) {
                 let valorTexto = tesoro.valor;
@@ -364,15 +333,12 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
                     for (const [k, v] of Object.entries(itemTabla)) {
                         if (v !== null) {
-                          
                             if (k === "tirada" || k === "Leyenda") continue;
-                            
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-                               
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }

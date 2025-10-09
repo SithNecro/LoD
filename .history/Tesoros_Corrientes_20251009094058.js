@@ -278,7 +278,7 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
                 // ¿es una tirada de dados tipo "3d100" o "3d100+40"?
                 const regex = /^(\d+)d(\d+)([+-]\d+)?$/i;
-                const match = regex.exec(tesoro.Unidades);
+                const match = regex.exec(tesoro.valor);
 
                 if (match) {
                     const num = parseInt(match[1], 10);    // número de dados
@@ -296,7 +296,7 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                     const resultadoFinal = total + mod;
                     cantidadobjetosenlatirada = resultadoFinal;
 
-                    ValorUnidades = `${resultadoFinal}`;
+                    ValorUnidades = `${tesoro.valor} → [${tiradas.join(", ")}] ${mod !== 0 ? (mod > 0 ? `+ ${mod}` : `- ${Math.abs(mod)}`) : ""} = <b style="color: yellow;"> ${resultadoFinal}</b>`;
                 }
 
                 html += `<div><p><strong>Unidades:</strong> ${ValorUnidades}</p></div>`;
@@ -364,15 +364,17 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
                     for (const [k, v] of Object.entries(itemTabla)) {
                         if (v !== null) {
-                          
+                            if (k === "Unidades"){
+                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
+                            <span class="efecto" data-tippy-content="<b>Unidades:</b><br>${k.Unidades}">${v}</span>
+                        </p></div>`;
+                            }
                             if (k === "tirada" || k === "Leyenda") continue;
-                            
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-                               
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }

@@ -523,10 +523,10 @@
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": null,
+          "Tipo": "Carne seca",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+           "Peso / Clase": "1",
           "Recarga": null,
           "Valor": 10,
           "Efecto": "Comer una pieza recupera 1 VIT.",
@@ -545,7 +545,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+           "Peso / Clase": 0,
           "Recarga": null,
           "Defensa": null,
           "Valor": 100,
@@ -568,7 +568,7 @@
           "Recarga": null,
           "Defensa": null,
           "Valor": 20,
-          "Efecto": "Subir cuesta 1PA, y no precisa de la tirada de DES. Te ayudará a salir de fosos y otras situaciones difíciles. Al usarla, tira 1d6. Con 5-6 se rompe y el usuario recibe 1d6 DAÑ por la caída.","Unidades":"1"
+          "Efecto": "Te ayudará a salir de fosos y otras situaciones difíciles. Al usarla, tira 1d6. Con 5-6 se rompe y el usuario recibe 1d6 DAÑ por la caída.","Unidades":"1"
         }
       ]
     },
@@ -587,7 +587,7 @@
           "Recarga": null,
           "Defensa": null,
           "Valor": 50,
-          "Efecto": "Subir cuesta 1PA, y no precisa de la tirada de DES. Te servirá para salir de fosos y otras situaciones complicadas.","Unidades":"1"
+          "Efecto": "Te servirá para salir de fosos y otras situaciones complicadas.","Unidades":"1"
         }
       ]
     },
@@ -616,22 +616,42 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-        "Unidades":"1d3",
-      "seleccion": "1d1",
+      "seleccion": "1d3",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Daga Arrojadiza",
+          "Tipo": "1 Daga Arrojadiza",
           "Daño": "1d6",
           "Peso / Clase": "2 / 1",
           "Recarga": null,
           "Defensa": null,
           "Valor": 10,
-          "Efecto": "Pequeño, Arrojable",
-          "Leyenda": "<b style='color: gold;'>DAÑ 1d6, Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-
-        }
-        
+          "Efecto": "Daño 1d6, Pequeño, Arrojable",
+          "Leyenda": "<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
+          ,"Unidades":"1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 Dagas Arrojadizas",
+          "Daño": "1d6",
+          "Peso / Clase": "2/ 1",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": "10",
+          "Efecto": "Daño 1d6, Pequeño, Arrojable",
+          "Leyenda": "<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
+        ,"Unidades":"2"},
+        {
+          "tirada": 3,
+          "Tipo": "3 Dagas Arrojadizas",
+          "Daño": "1d6",
+          "Peso / Clase": "2/ 1",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": "10",
+          "Efecto": "Daño 1d6, Pequeño, Arrojable",
+          "Leyenda": "<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
+        ,"Unidades":"3"}
       ]
     },
     {
@@ -643,9 +663,9 @@
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Rodela",
+          "Tipo": null,
           "Daño": null,
-          "Cobertura / Defensa":"/4",
+          "Defensa": "4",
           "Peso / Clase": "4 / 1",
           "Recarga": null,
           "Valor": 20,

@@ -15,8 +15,7 @@
           "Recarga": null,
           "Defensa": null,
           "Valor": 15,
-          "Efecto": "Rellenar y encender un farol cuesta 1PA desde un atajo o 2PA desde la mochila.",
-          "Unidades": "1"
+          "Efecto": "Rellenar y encender un farol cuesta 1PA desde un atajo o 2PA desde la mochila."
         }
       ]
     },
@@ -35,8 +34,7 @@
           "Recarga": null,
           "Defensa": null,
           "Valor": 150,
-          "Efecto": "Este amuleto puede ser vendido o encantado usando el hechizo Encantar objeto.",
-          "Unidades": "1"
+          "Efecto": "Este amuleto puede ser vendido o encantado usando el hechizo Encantar objeto."
         }
       ]
     },
@@ -55,7 +53,7 @@
           "Recarga": null,
           "Defensa": null,
           "Valor": 150,
-          "Efecto": "Este anillo puede ser vendido o encantado usando el hechizo encantar objeto.","Unidades":"1"
+          "Efecto": "Este anillo puede ser vendido o encantado usando el hechizo encantar objeto."
         }
       ]
     },
@@ -70,11 +68,11 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-          "Peso / Clase": "1/",
+          "Peso / Clase": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": 150,
-          "Efecto": "Este anillo puede ser vendido o encantado usando el hechizo encantar objeto.","Unidades":"1"
+          "Efecto": "Este anillo puede ser vendido o encantado usando el hechizo encantar objeto."
         }
       ]
     },
@@ -93,7 +91,7 @@
           "Recarga": null,
           "Defensa": null,
           "Valor": 15,
-          "Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume.","Unidades":"1"
+          "Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."
         }
       ]
     },
@@ -113,7 +111,6 @@
           "Defensa": null,
           "Valor": 15,
           "Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."
-          ,"Unidades":"1"
         }
       ]
     },
@@ -133,7 +130,7 @@
           "Defensa": null,
           "Valor": 15,
           "Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."
-        ,"Unidades":"1"}
+        }
       ]
     },
     {
@@ -152,7 +149,7 @@
           "Defensa": null,
           "Valor": 15,
           "Efecto": "Prender una antorcha requiere 1PA desde un atajo o 2PA desde la mochila. Una antorcha le dará al grupo +5DET y añade al portador +5PER. Si el resultado de la tirada de amenaza es más bajo que el NA la antorcha se consume."
-       ,"Unidades":"1" }
+        }
       ]
     },
     {
@@ -170,7 +167,7 @@
           "Recarga": 1,
           "Defensa": null,
           "Valor": 100,
-          "Efecto": "Recarga 1 PA"
+          "Efecto": null
         }
       ]
     },
@@ -456,7 +453,7 @@
       "nombre": "Bastón.png",
       "rotura": "1d2+1",
       "categoria": "arma",
-      "durabilidad": 4,
+      "durabilidad": 6,
       "seleccion": "1d1",
       "tabla": [
         {
@@ -477,17 +474,71 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades":"1d6",
-      "seleccion": "1d1",
+      "seleccion": "1d6",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": null,
+          "Tipo": "1 Botella vacía",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": 10,
+          "Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 Botellas vacías",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": "10",
+          "Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 Botellas vacías",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": "10",
+          "Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "4 Botellas vacías",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": "10",
+          "Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "5 Botellas vacías",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": "10",
+          "Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": "6 Botellas vacías",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": "10",
           "Efecto": "Estas botellas se pueden usar para preparar tus propias pociones.",
           "Leyenda": null
         }
@@ -518,17 +569,49 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades":"1d4",
-      "seleccion": "1d1",
+      "seleccion": "1d4",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": null,
+          "Tipo": "1 pieza de carne seca",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
-          "Valor": 10,
+          "Valor": null,
+          "Efecto": "Comer una pieza recupera 1 VIT.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 1,
+          "Tipo": "2 piezas de carne seca",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Comer una pieza recupera 1 VIT.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 1,
+          "Tipo": "3 piezas de carne seca",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Comer una pieza recupera 1 VIT.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 1,
+          "Tipo": "4 piezas de carne seca",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": null,
           "Efecto": "Comer una pieza recupera 1 VIT.",
           "Leyenda": null
         }
@@ -545,11 +628,11 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": 0,
           "Recarga": null,
           "Defensa": null,
           "Valor": 100,
-          "Efecto": "Permitirá al Héroe despellejar animales. Se puede llevar en la mochila todo el tiempo.","Unidades":"1"
+          "Efecto": "Permitirá al Héroe despellejar animales. Se puede llevar en la mochila todo el tiempo."
         }
       ]
     },
@@ -564,11 +647,11 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": 2,
+          "Peso": 2,
           "Recarga": null,
           "Defensa": null,
           "Valor": 20,
-          "Efecto": "Subir cuesta 1PA, y no precisa de la tirada de DES. Te ayudará a salir de fosos y otras situaciones difíciles. Al usarla, tira 1d6. Con 5-6 se rompe y el usuario recibe 1d6 DAÑ por la caída.","Unidades":"1"
+          "Efecto": "Te ayudará a salir de fosos y otras situaciones difíciles. Al usarla, tira 1d6. Con 5-6 se rompe y el usuario recibe 1d6 DAÑ por la caída."
         }
       ]
     },
@@ -583,11 +666,11 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": 2,
+          "Peso": 2,
           "Recarga": null,
           "Defensa": null,
           "Valor": 50,
-          "Efecto": "Subir cuesta 1PA, y no precisa de la tirada de DES. Te servirá para salir de fosos y otras situaciones complicadas.","Unidades":"1"
+          "Efecto": "Te servirá para salir de fosos y otras situaciones complicadas."
         }
       ]
     },
@@ -616,22 +699,41 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-        "Unidades":"1d3",
-      "seleccion": "1d1",
+      "seleccion": "1d3",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Daga Arrojadiza",
+          "Tipo": "1 Daga Arrojadiza",
           "Daño": "1d6",
           "Peso / Clase": "2 / 1",
           "Recarga": null,
           "Defensa": null,
           "Valor": 10,
-          "Efecto": "Pequeño, Arrojable",
-          "Leyenda": "<b style='color: gold;'>DAÑ 1d6, Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-
+          "Efecto": "Daño 1d6, Pequeño, Arrojable",
+          "Leyenda": "<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 Dagas Arrojadizas",
+          "Daño": "1d6",
+          "Peso / Clase": "2/ 1",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": "10",
+          "Efecto": "Daño 1d6, Pequeño, Arrojable",
+          "Leyenda": "<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 Dagas Arrojadizas",
+          "Daño": "1d6",
+          "Peso / Clase": "2/ 1",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": "10",
+          "Efecto": "Daño 1d6, Pequeño, Arrojable",
+          "Leyenda": "<b style='color: gold;'>Pequeño: </b> Tu Héroe puede llevar 3 Dagas Arrojadizas en un atajo.</br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
         }
-        
       ]
     },
     {
@@ -643,9 +745,9 @@
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Rodela",
+          "Tipo": null,
           "Daño": null,
-          "Cobertura / Defensa":"/4",
+          "Defensa": "4",
           "Peso / Clase": "4 / 1",
           "Recarga": null,
           "Valor": 20,
@@ -706,12 +808,12 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": 100,
           "Efecto": "Prender un farol toma 1PA desde un atajo y 2PA desde la mochila. Un farol dará al grupo +5DET y añade al portador +10PER. Pon la ficha de farol por su lado 2. Si el resultado de la tirada de amenza es más bajo que el NA, da la vuelta a la ficha y pon su lado 1. Si ya estaba en su lado 1, la llama se apaga por falta de aceite.",
           "Leyenda": null
-      ,"Unidades":"1"  }
+        }
       ]
     },
     {
@@ -726,12 +828,12 @@
           "Tipo": "5 Flechas.",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": null,
           "Leyenda": null
-     ,"Unidades":"5"   }
+        }
       ]
     },
     {
@@ -746,12 +848,12 @@
           "Tipo": "5 Flechas.",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": null,
           "Leyenda": null
-     ,"Unidades":"5"   }
+        }
       ]
     },
     {
@@ -766,12 +868,12 @@
           "Tipo": "10 Flechas.",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": null,
           "Leyenda": null
-     ,"Unidades":"10"   }
+        }
       ]
     },
     {
@@ -786,44 +888,44 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.",
-          "Leyenda": null,"Unidades":"3"
+          "Leyenda": null
         },
         {
           "tirada": 4,
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Necesarias para usar junto a la habilidad Forzar cerraduras. Si el intento falla, la ganzúa se rompe.",
-          "Leyenda": null,"Unidades":"4"
+          "Leyenda": null
         }
       ]
     },
@@ -844,7 +946,7 @@
           "Valor": 25,
           "Efecto": "Daño 1d8, Complejo, Lado Romo, Arrojable",
           "Leyenda": "<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-      ,"Unidades":"1"  },
+        },
         {
           "tirada": 2,
           "Tipo": "2 Hachas Arrojadizas",
@@ -855,7 +957,7 @@
           "Valor": "25",
           "Efecto": "Daño 1d8, Complejo, Lado Romo, Arrojable",
           "Leyenda": "<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-       ,"Unidades":"2" },
+        },
         {
           "tirada": 3,
           "Tipo": "3 Hachas Arrojadizas",
@@ -866,7 +968,7 @@
           "Valor": "25",
           "Efecto": "Daño 1d8, Complejo, Lado Romo, Arrojable",
           "Leyenda": "<b style='color: gold;'>Complejo: </b> Este arma es notablemente compleja de usar. -10 HD.  </br><b style='color: gold;'>Lado romo: </b> Con un resultado impar en HD, el hacha no hará daño al enemigo, pero lo aturdirá. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-       ,"Unidades":"3" }
+        }
       ]
     },
     {
@@ -893,8 +995,7 @@
       "nombre": "Ingredientes.png",
       "rotura": null,
       "valor": "1d3",
-      "Unidades":"1d3",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d30*3",
@@ -904,7 +1005,7 @@
           "Tipo": " Piel Anfidia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -915,29 +1016,29 @@
           "Tipo": " Alas de Murciélago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": " Corazón bestial",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 4,
           "Tipo": " Harina de huesos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -948,7 +1049,7 @@
           "Tipo": " Tejido cerebral",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -959,7 +1060,7 @@
           "Tipo": " Quitina",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -970,7 +1071,7 @@
           "Tipo": " Ojo de cíclope",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -981,7 +1082,7 @@
           "Tipo": " Sangre de dragón",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -992,7 +1093,7 @@
           "Tipo": " Ectoplasma",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1003,7 +1104,7 @@
           "Tipo": " Pelo de Elfo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1014,7 +1115,7 @@
           "Tipo": " Plumas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1025,7 +1126,7 @@
           "Tipo": " Piel",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1036,7 +1137,7 @@
           "Tipo": " Sangre de necrófago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1047,7 +1148,7 @@
           "Tipo": " Ojo de Google",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1058,7 +1159,7 @@
           "Tipo": " Sangre humana",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1069,7 +1170,7 @@
           "Tipo": " Ojo de Medusa",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1080,7 +1181,7 @@
           "Tipo": " Polvo de momia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1091,7 +1192,7 @@
           "Tipo": " Uñas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1102,7 +1203,7 @@
           "Tipo": " Diente de ogro",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1113,7 +1214,7 @@
           "Tipo": " Cola de rata",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1124,7 +1225,7 @@
           "Tipo": " Escamas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1135,7 +1236,7 @@
           "Tipo": " Sangre de cambiaformas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1146,7 +1247,7 @@
           "Tipo": " Viscosidad",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1157,7 +1258,7 @@
           "Tipo": " Colmillo de araña",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1168,7 +1269,7 @@
           "Tipo": " Madera del espíritu",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1179,7 +1280,7 @@
           "Tipo": " Esporas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1190,7 +1291,7 @@
           "Tipo": " Lengua",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1201,7 +1302,7 @@
           "Tipo": " Sangre de troll",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1212,7 +1313,7 @@
           "Tipo": " Sangre de vampiros",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1223,7 +1324,7 @@
           "Tipo": " Piel de zombie",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1235,8 +1336,7 @@
       "nombre": "Ingredientes (2).png",
       "rotura": null,
       "valor": "1d3",
-      "Unidades":"1d3",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d30*3",
@@ -1246,7 +1346,7 @@
           "Tipo": " Piel Anfidia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1257,7 +1357,7 @@
           "Tipo": " Alas de Murciélago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1268,7 +1368,7 @@
           "Tipo": " Corazón bestial",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1279,7 +1379,7 @@
           "Tipo": " Harina de huesos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1290,7 +1390,7 @@
           "Tipo": " Tejido cerebral",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1301,7 +1401,7 @@
           "Tipo": " Quitina",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1312,7 +1412,7 @@
           "Tipo": " Ojo de cíclope",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1323,7 +1423,7 @@
           "Tipo": " Sangre de dragón",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1334,7 +1434,7 @@
           "Tipo": " Ectoplasma",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1345,7 +1445,7 @@
           "Tipo": " Pelo de Elfo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1356,7 +1456,7 @@
           "Tipo": " Plumas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1367,7 +1467,7 @@
           "Tipo": " Piel",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1378,7 +1478,7 @@
           "Tipo": " Sangre de necrófago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1389,7 +1489,7 @@
           "Tipo": " Ojo de Google",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1400,7 +1500,7 @@
           "Tipo": " Sangre humana",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1411,7 +1511,7 @@
           "Tipo": " Ojo de Medusa",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1422,7 +1522,7 @@
           "Tipo": " Polvo de momia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1433,7 +1533,7 @@
           "Tipo": " Uñas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1444,7 +1544,7 @@
           "Tipo": " Diente de ogro",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1455,7 +1555,7 @@
           "Tipo": " Cola de rata",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1466,7 +1566,7 @@
           "Tipo": " Escamas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1477,7 +1577,7 @@
           "Tipo": " Sangre de cambiaformas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1488,7 +1588,7 @@
           "Tipo": " Viscosidad",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1499,7 +1599,7 @@
           "Tipo": " Colmillo de araña",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1510,7 +1610,7 @@
           "Tipo": " Madera del espíritu",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1521,7 +1621,7 @@
           "Tipo": " Esporas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1532,7 +1632,7 @@
           "Tipo": " Lengua",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1543,7 +1643,7 @@
           "Tipo": " Sangre de troll",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1554,7 +1654,7 @@
           "Tipo": " Sangre de vampiros",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1565,7 +1665,7 @@
           "Tipo": " Piel de zombie",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Normal.",
@@ -1596,7 +1696,7 @@
     {
       "nombre": "Jabalinas.png",
       "rotura": null,
-      "categoria": "objeto",
+      "categoria": "arma",
       "durabilidad": 6,
       "seleccion": "1d2",
       "tabla": [
@@ -1608,9 +1708,9 @@
           "Peso / Clase": "6 / 2",
           "Recarga": null,
           "Valor": 50,
-          "Efecto": "DAÑ 1d10 PArm (1), Arrojable.",
+          "Efecto": "PArm (1), Arrojable.",
           "Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-       ,"Unidades":"1" },
+        },
         {
           "tirada": 2,
           "Tipo": "2 Jabalinas",
@@ -1619,9 +1719,9 @@
           "Peso / Clase": "12 / 2",
           "Recarga": null,
           "Valor": "50",
-          "Efecto": "DAÑ 1d10, PArm (1), Arrojable.",
+          "Efecto": "PArm (1), Arrojable.",
           "Leyenda": "<b style='color: gold;'>PArm (x): </b> Penetración de armadura, ignora X puntos de armadura. </br><b style='color: gold;'>Arrojable: </b> Esta arma se puede llevar en un atajo. El tiempo de recarga es el tiempo que se tarda en agarrar el arma del atajo si tu Héroe tiene al menos una mano libre. Esto significaque puedes lanzar dos dagas por turno, pero sólo un hacha o una jabalina. Las armas arrojadizas no tienen valor de durabilidad y no se pueden usar en combate cuerpo a cuerpo. </br>"
-       ,"Unidades":"2"  }
+        }
       ]
     },
     {
@@ -1636,20 +1736,19 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": 350,
           "Efecto": "Esta mochila aumenta la capacidad de carga en 10 de Peso. Te reduce DES en -5.",
           "Leyenda": null
-        ,"Unidades":"1" }
+        }
       ]
     },
     {
       "nombre": "Monedas (7).png",
       "rotura": null,
       "valor": "3d20",
-       "Unidades":"3d20",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1658,7 +1757,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1670,8 +1769,7 @@
       "nombre": "Monedas (6).png",
       "rotura": null,
       "valor": "2d20",
-      "Unidades":"2d20",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1680,7 +1778,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1692,8 +1790,7 @@
       "nombre": "Monedas (5).png",
       "rotura": null,
       "valor": "1d100",
-      "Unidades":"1d100",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1702,7 +1799,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1714,8 +1811,7 @@
       "nombre": "Monedas (4).png",
       "rotura": null,
       "valor": "1d20",
-      "Unidades":"1d20",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1724,7 +1820,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1736,8 +1832,7 @@
       "nombre": "Monedas (3).png",
       "rotura": null,
       "valor": "4d20",
-      "Unidades":"4d20",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1746,7 +1841,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1758,8 +1853,7 @@
       "nombre": "Monedas (2).png",
       "rotura": null,
       "valor": "3d20",
-      "Unidades":"3d20",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1768,7 +1862,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1780,8 +1874,7 @@
       "nombre": "Monedas.png",
       "rotura": null,
       "valor": "1d20",
-      "Unidades":"1d20",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -1790,7 +1883,7 @@
           "tirada": 1,
           "Tipo": null,
           "Daño": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Defensa": null,
           "Valor": null,
@@ -1810,7 +1903,7 @@
           "Tipo": null,
           "Daño": "8+BD",
           "Defensa": null,
-           "Peso / Clase": 10,
+          "Peso": 10,
           "Recarga": null,
           "Valor": 55,
           "Efecto": "Hace 8+BD de daño cuando intentas derribar una puerta y sólo incrementa el NA en +1.",
@@ -1822,10 +1915,9 @@
       "nombre": "Parte para pociones.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades":"1",
       "seleccion": "1d30",
       "tabla": [
         {
@@ -1833,7 +1925,7 @@
           "Tipo": " Piel Anfidia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1844,7 +1936,7 @@
           "Tipo": " Alas de Murciélago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1855,7 +1947,7 @@
           "Tipo": " Corazón bestial",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1866,7 +1958,7 @@
           "Tipo": " Harina de huesos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1877,7 +1969,7 @@
           "Tipo": " Tejido cerebral",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1888,7 +1980,7 @@
           "Tipo": " Quitina",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1899,7 +1991,7 @@
           "Tipo": " Ojo de cíclope",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1910,7 +2002,7 @@
           "Tipo": " Sangre de dragón",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1921,7 +2013,7 @@
           "Tipo": " Ectoplasma",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1932,7 +2024,7 @@
           "Tipo": " Pelo de Elfo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1943,7 +2035,7 @@
           "Tipo": " Plumas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1954,7 +2046,7 @@
           "Tipo": " Piel",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1965,7 +2057,7 @@
           "Tipo": " Sangre de necrófago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1976,7 +2068,7 @@
           "Tipo": " Ojo de Google",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1987,7 +2079,7 @@
           "Tipo": " Sangre humana",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -1998,7 +2090,7 @@
           "Tipo": " Ojo de Medusa",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2009,7 +2101,7 @@
           "Tipo": " Polvo de momia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2020,7 +2112,7 @@
           "Tipo": " Uñas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2031,7 +2123,7 @@
           "Tipo": " Diente de ogro",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Enormal.",
@@ -2042,7 +2134,7 @@
           "Tipo": " Cola de rata",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2053,7 +2145,7 @@
           "Tipo": " Escamas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2064,7 +2156,7 @@
           "Tipo": " Sangre de cambiaformas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2075,7 +2167,7 @@
           "Tipo": " Viscosidad",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2086,7 +2178,7 @@
           "Tipo": " Colmillo de araña",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2097,7 +2189,7 @@
           "Tipo": " Madera del espíritu",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2108,7 +2200,7 @@
           "Tipo": " Esporas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2119,7 +2211,7 @@
           "Tipo": " Lengua",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2130,7 +2222,7 @@
           "Tipo": " Sangre de troll",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2141,7 +2233,7 @@
           "Tipo": " Sangre de vampiros",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2152,7 +2244,7 @@
           "Tipo": " Piel de zombie",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2164,10 +2256,9 @@
       "nombre": "Partes para pociones.png",
       "rotura": null,
       "valor": "1d3",
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades":"1",
       "seleccion": "1d30",
       "tabla": [
         {
@@ -2175,7 +2266,7 @@
           "Tipo": " Piel Anfidia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2186,7 +2277,7 @@
           "Tipo": " Alas de Murciélago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2197,7 +2288,7 @@
           "Tipo": " Corazón bestial",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2208,7 +2299,7 @@
           "Tipo": " Harina de huesos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2219,7 +2310,7 @@
           "Tipo": " Tejido cerebral",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2230,7 +2321,7 @@
           "Tipo": " Quitina",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2241,7 +2332,7 @@
           "Tipo": " Ojo de cíclope",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2252,7 +2343,7 @@
           "Tipo": " Sangre de dragón",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2263,7 +2354,7 @@
           "Tipo": " Ectoplasma",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2274,7 +2365,7 @@
           "Tipo": " Pelo de Elfo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2285,7 +2376,7 @@
           "Tipo": " Plumas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2296,7 +2387,7 @@
           "Tipo": " Piel",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2307,7 +2398,7 @@
           "Tipo": " Sangre de necrófago",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2318,7 +2409,7 @@
           "Tipo": " Ojo de Google",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2329,7 +2420,7 @@
           "Tipo": " Sangre humana",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2340,7 +2431,7 @@
           "Tipo": " Ojo de Medusa",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2351,7 +2442,7 @@
           "Tipo": " Polvo de momia",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2362,7 +2453,7 @@
           "Tipo": " Uñas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2373,7 +2464,7 @@
           "Tipo": " Diente de ogro",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad Enormal.",
@@ -2384,7 +2475,7 @@
           "Tipo": " Cola de rata",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2395,7 +2486,7 @@
           "Tipo": " Escamas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2406,7 +2497,7 @@
           "Tipo": " Sangre de cambiaformas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2417,7 +2508,7 @@
           "Tipo": " Viscosidad",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2428,7 +2519,7 @@
           "Tipo": " Colmillo de araña",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2439,7 +2530,7 @@
           "Tipo": " Madera del espíritu",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2450,7 +2541,7 @@
           "Tipo": " Esporas",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2461,7 +2552,7 @@
           "Tipo": " Lengua",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2472,7 +2563,7 @@
           "Tipo": " Sangre de troll",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2483,7 +2574,7 @@
           "Tipo": " Sangre de vampiros",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2494,7 +2585,7 @@
           "Tipo": " Piel de zombie",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Ingrediente de Calidad normal.",
@@ -2506,7 +2597,7 @@
       "nombre": "Piedra de afilar.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2516,11 +2607,11 @@
           "Tipo": "1 Piedra de afilar",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 1,
+          "Peso": 1,
           "Recarga": null,
           "Valor": 100,
           "Efecto": "La piedra de afilar te permite recuperar 1d3 durabilidad en armas de combate a melé. Se puede usar 3 veces durante un descanso.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2528,7 +2619,7 @@
       "nombre": "pieles de lobo.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d3",
@@ -2538,33 +2629,33 @@
           "Tipo": "Piel de lobo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 2,
+          "Peso": 2,
           "Recarga": null,
           "Valor": 40,
           "Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": "Pieles de lobo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "2",
+          "Peso": "2",
           "Recarga": null,
           "Valor": "40",
           "Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": "Pieles de lobo",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "2",
+          "Peso": "2",
           "Recarga": null,
           "Valor": "40",
           "Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.",
-          "Leyenda": null,"Unidades":"3"
+          "Leyenda": null
         }
       ]
     },
@@ -2572,7 +2663,7 @@
       "nombre": "Raciones (2).png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d4",
@@ -2582,44 +2673,44 @@
           "Tipo": "1 Ración",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": "2 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": "3 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"3"
+          "Leyenda": null
         },
         {
           "tirada": 4,
           "Tipo": "4 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"4"
+          "Leyenda": null
         }
       ]
     },
@@ -2627,7 +2718,7 @@
       "nombre": "Raciones.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d6",
@@ -2637,66 +2728,66 @@
           "Tipo": "1 Ración",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": "2 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": "3 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"3"
+          "Leyenda": null
         },
         {
           "tirada": 4,
           "Tipo": "4 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"4"
+          "Leyenda": null
         },
         {
           "tirada": 5,
           "Tipo": "5 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"5"
+          "Leyenda": null
         },
         {
           "tirada": 6,
           "Tipo": "6 Raciones",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null,"Unidades":"6"
+          "Leyenda": null
         }
       ]
     },
@@ -2704,7 +2795,7 @@
       "nombre": "Receta.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d12",
@@ -2714,132 +2805,143 @@
           "Tipo": " Receta Poción de Constitución débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": " Receta Poción de valentía débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": " Receta Poción de destreza débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 4,
           "Tipo": " Receta Poción de energía débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 5,
           "Tipo": " Receta Poción de vitalidad débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 6,
           "Tipo": " Receta Poción de maná débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 7,
           "Tipo": " Receta Poción de fuerza débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 8,
           "Tipo": " Receta Poción de sabiduría débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 9,
           "Tipo": " Receta Bomba de ácido débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 10,
           "Tipo": " Receta Bomba flamígera débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 12,
           "Tipo": " Receta Antídoto débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 11,
           "Tipo": " Receta Poción contra enfermedades débil",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": 200,
           "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta..",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": " Receta Antídoto débil",
+          "Daño": null,
+          "Defensa": null,
+          "Peso": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "El Héroe puede decidir los componentes necesarios para esta receta.",
+          "Leyenda": null
         }
       ]
     },
@@ -2847,7 +2949,7 @@
       "nombre": "Saco de dormir (2).png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2857,11 +2959,11 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 5,
+          "Peso": 5,
           "Recarga": null,
           "Valor": 200,
           "Efecto": "Usar esto mientras descansas hará que recuperes toda la energía automáticamente.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2869,7 +2971,7 @@
       "nombre": "Saco de dormir.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2879,11 +2981,11 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 5,
+          "Peso": 5,
           "Recarga": null,
           "Valor": 200,
           "Efecto": "Usar esto mientras descansas hará que recuperes toda la energía automáticamente.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2891,7 +2993,7 @@
       "nombre": "Tesoro maravilloso.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2901,11 +3003,11 @@
           "Tipo": "Roba un Tesoro maravilloso.",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 1,
+          "Peso": 1,
           "Recarga": null,
           "Valor": null,
           "Efecto": null,
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2913,7 +3015,7 @@
       "nombre": "Tesoro superior.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2923,11 +3025,11 @@
           "Tipo": "Roba un Tesoro superior.",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 1,
+          "Peso": 1,
           "Recarga": null,
           "Valor": null,
           "Efecto": null,
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2935,7 +3037,7 @@
       "nombre": "Trampa para osos.png",
       "rotura": "1d2-1",
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2945,11 +3047,11 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 5,
+          "Peso": 5,
           "Recarga": null,
           "Valor": 200,
           "Efecto": "Ver anotaciones en el capítulo de la Tríada Oscura (pag. 146)",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2957,7 +3059,7 @@
       "nombre": "Trampas de cacería.png",
       "rotura": null,
       "valor": null,
-       "Peso / Clase": "1/",
+      "Peso": null,
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2967,11 +3069,11 @@
           "Tipo": null,
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 3,
+          "Peso": 3,
           "Recarga": null,
           "Valor": 150,
           "Efecto": "Harán que atrapar animales sea más sencillo, otorgando un +10 a la tirada de Supervivencia cuando lo intentes. Puede ir en la mochila todo el tiempol.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         }
       ]
     },
@@ -2987,22 +3089,22 @@
           "Tipo": "1 venda de lino",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 1,
+          "Peso": 1,
           "Recarga": null,
           "Valor": 25,
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": "2 vendas de lino",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "25",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         }
       ]
     },
@@ -3018,33 +3120,33 @@
           "Tipo": "1 venda de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 1,
+          "Peso": 1,
           "Recarga": null,
           "Valor": 15,
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": "2 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": "3 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"3"
+          "Leyenda": null
         }
       ]
     },
@@ -3060,66 +3162,66 @@
           "Tipo": "1 venda de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": 1,
+          "Peso": 1,
           "Recarga": null,
           "Valor": 15,
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"1"
+          "Leyenda": null
         },
         {
           "tirada": 2,
           "Tipo": "2 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"2"
+          "Leyenda": null
         },
         {
           "tirada": 3,
           "Tipo": "3 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"3"
+          "Leyenda": null
         },
         {
           "tirada": 4,
           "Tipo": "4 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"4"
+          "Leyenda": null
         },
         {
           "tirada": 5,
           "Tipo": "5 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"5"
+          "Leyenda": null
         },
         {
           "tirada": 6,
           "Tipo": "6 vendas de harapos",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1",
+          "Peso": "1",
           "Recarga": null,
           "Valor": "15",
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
-          "Leyenda": null,"Unidades":"6"
+          "Leyenda": null
         }
       ]
     },
@@ -3135,11 +3237,11 @@
           "Tipo": "5 Virotes",
           "Daño": null,
           "Defensa": null,
-           "Peso / Clase": "1/",
+          "Peso": null,
           "Recarga": null,
           "Valor": null,
           "Efecto": null,
-          "Leyenda": null,"Unidades":"5"
+          "Leyenda": null
         }
       ]
     }

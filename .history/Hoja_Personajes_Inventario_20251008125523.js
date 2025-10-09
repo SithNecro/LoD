@@ -45,7 +45,7 @@ window.openInventarioEditor = async function (slot) {
   <div id="invRoot" style="max-height:${modalHeight - 90}px;">
     <div class="d-flex align-items-center justify-content-between mb-2" style="position:sticky;top:0;z-index:5;padding:6px 0;">
       <div><strong>Inventario de:</strong> ${personaje.nombre} (${personaje.profesion})</div>
-      <button id="invCloseX" class="btn btn-sm btn-outline-danger" data-tippy-content="Cerrar">✖</button>
+      <button id="invCloseX" class="btn btn-sm btn-outline-danger" title="Cerrar">✖</button>
     </div>
 
     <div class="border rounded p-2 mb-3 hero-card">
@@ -827,7 +827,7 @@ window.renderInventarioLists = function (personaje) {
       <tbody>
         ${objetosOrden.map(o => `
           <tr data-itemid="${o.id}">
-            <td><input class="form-control form-control-sm" name="nombre" data-tippy-content="${o.uso || ''}" value="${o.nombre || ''}"></td>
+            <td><input class="form-control form-control-sm" name="nombre" title="${o.uso || ''}" value="${o.nombre || ''}"></td>
             <td>
               <select class="form-select form-select-sm" name="lugar">
                 ${['', 'Mochila', 'Atajo 1', 'Atajo 2', 'Atajo 3', 'Atajo 4', 'Atajo 5', 'Atajo 6', 'Atajo 7']
@@ -871,7 +871,7 @@ window.renderInventarioLists = function (personaje) {
     return `
             <tr data-itemid="${a.id}">
               <td style="text-align:center;vertical-align:middle;"><input type="checkbox" name="equipado" ${a.equipado ? 'checked' : ''}></td>
-              <td><input class="form-control form-control-sm" name="armadura" data-tippy-content="${a.especial || ''}" value="${a.armadura || ''}"></td>
+              <td><input class="form-control form-control-sm" name="armadura" title="${a.especial || ''}" value="${a.armadura || ''}"></td>
               <td><p class="mb-0">${Array.isArray(a.cobertura) ? a.cobertura.join(', ') : ''}</p></td>
               <td><select class="form-select form-select-sm" name="defensa">${mkOpts(11, a.defensa ?? 0)}</select></td>
               <td><input class="form-control form-control-sm" name="especial" value="${a.especial || ''}"></td>
@@ -912,7 +912,7 @@ window.renderInventarioLists = function (personaje) {
     return `
             <tr data-itemid="${w.id}">
               <td style="text-align:center;vertical-align:middle;"><input type="checkbox" name="equipado" ${w.equipado ? 'checked' : ''}></td>
-              <td><input class="form-control form-control-sm" name="arma" data-tippy-content="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
+              <td><input class="form-control form-control-sm" name="arma" title="DAÑ:${w.danio || ''}  Especial:${w.especial || ''}" value="${w.arma || ''}"></td>
               <td>
                 <select class="form-select form-select-sm" name="mano">
                   ${['Izq.', 'Der.', 'Ambas'].map(m => `<option value="${m}" ${w.mano === m ? 'selected' : ''}>${m}</option>`).join('')}
@@ -958,133 +958,132 @@ window.renderInventarioLists = function (personaje) {
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
-// ---------- Render del PREVIEW debajo del botón ----------
-window.renderInventarioPreview = async function (slot) {
-  try {
-    const container = document.getElementById(`mochila-slot${slot}`);
-    if (!container) return;
+  window.renderInventarioPreview = async function (slot) {
+    try {
+      const container = document.getElementById(`mochila-slot${slot}`);
+      if (!container) return;
 
-    const pj = await window.getPersonajeBySlot(slot);
-    if (!pj || !pj.inventario) {
-      container.innerHTML = '<em>Sin inventario</em>';
-      return;
-    }
-
-    const esc = (s) => (s == null ? '' : String(s)
-      .replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
-
-    const byStr = (get) => (a, b) => {
-      const A = (get(a) || '').toString().trim().toLowerCase();
-      const B = (get(b) || '').toString().trim().toLowerCase();
-      if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
-      if (!A && B) return 1;
-      if (A && !B) return -1;
-      return 0;
-    };
-
-    const objetos   = Array.isArray(pj.inventario.objetos)   ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre))   : [];
-    const armaduras = Array.isArray(pj.inventario.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-    const armas     = Array.isArray(pj.inventario.armas)     ? pj.inventario.armas.slice().sort(byStr(w => w.arma))         : [];
-
-    // OBJETOS
-    const tblObjs = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
- <table class="table table-sm table-dark table-striped">
-   <thead>
-     <tr>
-       <th style="text-align:center; vertical-align:middle;">Nombre</th>
-       <th style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Cantidad">🧮</th>
-       <th style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Peso Unitario">⚖️</th>
-       <th style="width:40px;text-align:center;vertical-align:middle;" data-tippy-content="Acciones">⚙️</th>
-     </tr>
-   </thead>
-   <tbody>
-     ${objetos.map(o => `
-       <tr data-itemid="${o.id || ''}" data-cat="obj">
-         <td style="vertical-align:middle;">
-           <span data-tippy-content="${esc(o.uso || '')}">${esc(o.nombre || '')}</span>
-         </td>
-         <td style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Cantidad">${esc(o.cantidad ?? 0)}</td>
-         <td style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Peso Unitario">${esc(o.peso ?? '')}</td>
-         <td class="text-center" style="position:relative;">
-           <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
-         </td>
-       </tr>`).join('')}
-   </tbody>
- </table>`;
-
-    // ARMADURAS
-    const tblArmad = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
- <table class="table table-sm table-dark table-striped">
-   <thead>
-     <tr>
-       <th>Equip.</th><th>Armadura</th><th>Cob.</th><th>Def.</th><th>Dur.</th><th>Peso</th><th>Trasp.</th>
-     </tr>
-   </thead>
-   <tbody>
-     ${armaduras.map(a => `
-       <tr data-itemid="${a.id || ''}" data-cat="arm">
-         <td><input type="checkbox" disabled ${a.equipado ? 'checked' : ''}></td>
-         <td><span class="tip-arm" data-tippy-content="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
-         <td>${esc(Array.isArray(a.cobertura) ? a.cobertura.join(', ') : (a.cobertura || ''))}</td>
-         <td>${esc(a.defensa ?? '')}</td>
-         <td>${esc(a.durabilidad ?? '')}</td>
-         <td>${esc(a.peso ?? '')}</td>
-         <td class="text-center">
-           <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                   data-cat="arm" data-id="${a.id || ''}" data-slot="${slot}">⇄</button>
-         </td>
-       </tr>`).join('')}
-   </tbody>
- </table>`;
-
-    // ARMAS
-    const tblArmas = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
- <table class="table table-sm table-dark table-striped">
-   <thead>
-     <tr>
-       <th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Peso</th><th>Trasp.</th>
-     </tr>
-   </thead>
-   <tbody>
-     ${armas.map(w => `
-       <tr data-itemid="${w.id || ''}" data-cat="arma">
-         <td><input type="checkbox" disabled ${w.equipado ? 'checked' : ''}></td>
-         <td><span class="tip-arma" data-tippy-content="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
-         <td>${esc(w.mano || '')}</td>
-         <td>${esc(w.danio || '')}</td>
-         <td>${esc(w.peso ?? 0)}</td>
-         <td class="text-center">
-           <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                   data-cat="arma" data-id="${w.id || ''}" data-slot="${slot}">⇄</button>
-         </td>
-       </tr>`).join('')}
-   </tbody>
- </table>`;
-
-    container.innerHTML = tblObjs + tblArmad + tblArmas;
-
-    // ✅ Tooltips robustos con DELEGACIÓN (no hay que re-inicializar en cada render)
-    if (window.tippy) {
-      // Destruye delegados previos en este contenedor (si existieran)
-      if (container._tippyDelegated && Array.isArray(container._tippyDelegated)) {
-        container._tippyDelegated.forEach(inst => inst.destroy());
+      const pj = await window.getPersonajeBySlot(slot);
+      if (!pj || !pj.inventario) {
+        container.innerHTML = '<em>Sin inventario</em>';
+        return;
       }
-      container._tippyDelegated = [
-        tippy.delegate(container, {
-          target: '[data-tippy-content], .tip-obj, .tip-arm, .tip-arma',
-          allowHTML: true,
-          theme: 'light-border',
-          appendTo: document.body
-        })
-      ];
+
+      const esc = (s) => (s == null ? '' : String(s)
+        .replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
+
+      const byStr = (get) => (a, b) => {
+        const A = (get(a) || '').toString().trim().toLowerCase();
+        const B = (get(b) || '').toString().trim().toLowerCase();
+        if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
+        if (!A && B) return 1;
+        if (A && !B) return -1;
+        return 0;
+      };
+
+      const objetosOrden = Array.isArray(pj.inventario?.objetos) ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
+      const armadurasOrden = Array.isArray(pj.inventario?.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
+      const armasOrden = Array.isArray(pj.inventario?.armas) ? pj.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
+
+      // OBJETOS
+      const tblObjs = `
+ <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
+       <table class="table table-sm table-dark table-striped">
+        <thead>
+          <tr>
+           <th style="text-align:center; vertical-align:middle;">Nombre</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;" title="Cantidad">🧮</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
+            <th style="width:40px;text-align:center;vertical-align:middle;"title="Acciones">⚙️</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${objetosOrden.map(o => `
+            <tr data-itemid="${o.id || ''}" data-cat="obj">
+               <td style=" vertical-align:middle;"><span title="${esc(o.uso || '')}">${esc(o.nombre || '')}</span></td>
+              <td   style="width:40px; text-align:center; vertical-align:middle;" title="Cantidad">${esc(o.cantidad ?? 0)}</td>
+              <td style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">${esc(o.peso ?? '')}</td>
+              <td class="text-center" style="position:relative;">
+                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+              </td>
+            </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+      // ARMADURAS
+      const tblArmad = `
+      <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
+      <table class="table table-sm table-dark table-striped">
+        <thead><tr>
+        <th  style="width:20px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
+        <th style="text-align:center; vertical-align:middle;">Arm.</th>
+        <th style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">⛇</th>
+        <th style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">🛡️</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
+            <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${armadurasOrden.map(a => {
+        const dur = parseInt(a.durabilidad ?? 0, 10);
+        const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
+        return `
+              <tr data-itemid="${a.id || ''}" data-cat="arm">
+                <td><input    style="width:20px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"  ${a.equipado ? 'checked' : ''}></td>
+                <td style=" vertical-align:middle;"><span title="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Cobertura">${Array.isArray(a.cobertura) ? esc(a.cobertura.join(', ')) : ''}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Defensa">${esc(a.defensa ?? 0)}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(a.peso ?? '')}</td>
+                <td class="text-center" style="position:relative;">
+                  <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+                </td>
+              </tr>`;
+      }).join('')}
+        </tbody>
+      </table>`;
+
+      // ARMAS
+      const tblArmas = `
+       <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
+      <table class="table table-sm table-dark table-striped">
+        <thead><tr>
+                <th  style="width:20px; text-align:center; vertical-align:middle;" title="Equipado">⚙️</th>
+        <th style="text-align:center; vertical-align:middle;">Arma</th>
+         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">✋🤚</th>
+         <th  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">💥</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">⛓️</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"title="Peso Unitario">⚖️</th>
+            <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${armasOrden.map(w => {
+        const dur = parseInt(w.durabilidad ?? 0, 10);
+        const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
+        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
+        return `
+             <tr data-itemid="${w.id || ''}" data-cat="arma">
+               <td><input    style="width:20px; text-align:center; vertical-align:middle;" title="Equipado" type="checkbox"   ${w.equipado ? 'checked' : ''}></td>
+                <td style=" vertical-align:middle;"><span title="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Mano">${esc(w.mano || '')}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Daño">${esc(w.danio || '')}</td>
+                <td  style="width:40px; text-align:center; vertical-align:middle;"title="Durabilidad/Rotura">${durRot}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"title="Peso">${esc(w.peso ?? '')}</td>
+             <td class="text-center" style="position:relative;">
+                  <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+                </td>
+            </tr>`}).join('')}
+        </tbody>
+      </table>`;
+
+      container.innerHTML = tblObjs + tblArmad + tblArmas;
+    } catch (err) {
+      console.error('renderInventarioPreview error', err);
     }
-  } catch (err) {
-    console.error('renderInventarioPreview error', err);
-  }
-};
+  };
 
 
   // ---------- Hook: al entrar en la sección "mochila" pinto el preview ----------
@@ -1388,16 +1387,3 @@ window.renderInventarioPreview = async function (slot) {
   // por el código existente, por lo que el peso del origen y del destino se actualizarán
   // automáticamente si sus inputs están presentes en el DOM.
 })();
-tippy('[data-tippy-content]', {
-  allowHTML: true,
-  theme: 'light-border',
-  animation: 'scale',
-});
-document.addEventListener('DOMContentLoaded', () => {
-  tippy('[data-tippy-content]', {
-    allowHTML: true,       // ponlo en false si solo hay texto
-    animation: 'scale',
-    theme: 'light-border',
-    // touch: ['hold', 500], // opcional: táctiles, press&hold
-  });
-});

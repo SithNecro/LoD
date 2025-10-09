@@ -364,15 +364,17 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
                     for (const [k, v] of Object.entries(itemTabla)) {
                         if (v !== null) {
-                          
+                            if (k === "Unidades"){
+                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
+                            <span class="efecto" data-tippy-content="<b>Unidades:</b><br>${k.Unidades}">${v}</span>
+                        </p></div>`;
+                            }
                             if (k === "tirada" || k === "Leyenda") continue;
-                            
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-                               
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }

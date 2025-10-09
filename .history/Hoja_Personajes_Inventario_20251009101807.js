@@ -958,133 +958,132 @@ window.renderInventarioLists = function (personaje) {
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
   // ---------- Render del PREVIEW debajo del botón "Abrir Inventario" ----------
-// ---------- Render del PREVIEW debajo del botón ----------
-window.renderInventarioPreview = async function (slot) {
-  try {
-    const container = document.getElementById(`mochila-slot${slot}`);
-    if (!container) return;
+  window.renderInventarioPreview = async function (slot) {
+    try {
+      const container = document.getElementById(`mochila-slot${slot}`);
+      if (!container) return;
 
-    const pj = await window.getPersonajeBySlot(slot);
-    if (!pj || !pj.inventario) {
-      container.innerHTML = '<em>Sin inventario</em>';
-      return;
-    }
-
-    const esc = (s) => (s == null ? '' : String(s)
-      .replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
-
-    const byStr = (get) => (a, b) => {
-      const A = (get(a) || '').toString().trim().toLowerCase();
-      const B = (get(b) || '').toString().trim().toLowerCase();
-      if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
-      if (!A && B) return 1;
-      if (A && !B) return -1;
-      return 0;
-    };
-
-    const objetos   = Array.isArray(pj.inventario.objetos)   ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre))   : [];
-    const armaduras = Array.isArray(pj.inventario.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
-    const armas     = Array.isArray(pj.inventario.armas)     ? pj.inventario.armas.slice().sort(byStr(w => w.arma))         : [];
-
-    // OBJETOS
-    const tblObjs = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
- <table class="table table-sm table-dark table-striped">
-   <thead>
-     <tr>
-       <th style="text-align:center; vertical-align:middle;">Nombre</th>
-       <th style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Cantidad">🧮</th>
-       <th style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Peso Unitario">⚖️</th>
-       <th style="width:40px;text-align:center;vertical-align:middle;" data-tippy-content="Acciones">⚙️</th>
-     </tr>
-   </thead>
-   <tbody>
-     ${objetos.map(o => `
-       <tr data-itemid="${o.id || ''}" data-cat="obj">
-         <td style="vertical-align:middle;">
-           <span data-tippy-content="${esc(o.uso || '')}">${esc(o.nombre || '')}</span>
-         </td>
-         <td style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Cantidad">${esc(o.cantidad ?? 0)}</td>
-         <td style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Peso Unitario">${esc(o.peso ?? '')}</td>
-         <td class="text-center" style="position:relative;">
-           <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
-         </td>
-       </tr>`).join('')}
-   </tbody>
- </table>`;
-
-    // ARMADURAS
-    const tblArmad = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
- <table class="table table-sm table-dark table-striped">
-   <thead>
-     <tr>
-       <th>Equip.</th><th>Armadura</th><th>Cob.</th><th>Def.</th><th>Dur.</th><th>Peso</th><th>Trasp.</th>
-     </tr>
-   </thead>
-   <tbody>
-     ${armaduras.map(a => `
-       <tr data-itemid="${a.id || ''}" data-cat="arm">
-         <td><input type="checkbox" disabled ${a.equipado ? 'checked' : ''}></td>
-         <td><span class="tip-arm" data-tippy-content="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
-         <td>${esc(Array.isArray(a.cobertura) ? a.cobertura.join(', ') : (a.cobertura || ''))}</td>
-         <td>${esc(a.defensa ?? '')}</td>
-         <td>${esc(a.durabilidad ?? '')}</td>
-         <td>${esc(a.peso ?? '')}</td>
-         <td class="text-center">
-           <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                   data-cat="arm" data-id="${a.id || ''}" data-slot="${slot}">⇄</button>
-         </td>
-       </tr>`).join('')}
-   </tbody>
- </table>`;
-
-    // ARMAS
-    const tblArmas = `
- <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
- <table class="table table-sm table-dark table-striped">
-   <thead>
-     <tr>
-       <th>Equip.</th><th>Arma</th><th>Mano</th><th>Daño</th><th>Peso</th><th>Trasp.</th>
-     </tr>
-   </thead>
-   <tbody>
-     ${armas.map(w => `
-       <tr data-itemid="${w.id || ''}" data-cat="arma">
-         <td><input type="checkbox" disabled ${w.equipado ? 'checked' : ''}></td>
-         <td><span class="tip-arma" data-tippy-content="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
-         <td>${esc(w.mano || '')}</td>
-         <td>${esc(w.danio || '')}</td>
-         <td>${esc(w.peso ?? 0)}</td>
-         <td class="text-center">
-           <button class="btn btn-sm btn-outline-warning slot-traspasar"
-                   data-cat="arma" data-id="${w.id || ''}" data-slot="${slot}">⇄</button>
-         </td>
-       </tr>`).join('')}
-   </tbody>
- </table>`;
-
-    container.innerHTML = tblObjs + tblArmad + tblArmas;
-
-    // ✅ Tooltips robustos con DELEGACIÓN (no hay que re-inicializar en cada render)
-    if (window.tippy) {
-      // Destruye delegados previos en este contenedor (si existieran)
-      if (container._tippyDelegated && Array.isArray(container._tippyDelegated)) {
-        container._tippyDelegated.forEach(inst => inst.destroy());
+      const pj = await window.getPersonajeBySlot(slot);
+      if (!pj || !pj.inventario) {
+        container.innerHTML = '<em>Sin inventario</em>';
+        return;
       }
-      container._tippyDelegated = [
-        tippy.delegate(container, {
-          target: '[data-tippy-content], .tip-obj, .tip-arm, .tip-arma',
-          allowHTML: true,
-          theme: 'light-border',
-          appendTo: document.body
-        })
-      ];
+
+      const esc = (s) => (s == null ? '' : String(s)
+        .replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m])));
+
+      const byStr = (get) => (a, b) => {
+        const A = (get(a) || '').toString().trim().toLowerCase();
+        const B = (get(b) || '').toString().trim().toLowerCase();
+        if (A && B) return A.localeCompare(B, 'es', { sensitivity: 'base' });
+        if (!A && B) return 1;
+        if (A && !B) return -1;
+        return 0;
+      };
+
+      const objetosOrden = Array.isArray(pj.inventario?.objetos) ? pj.inventario.objetos.slice().sort(byStr(o => o.nombre)) : [];
+      const armadurasOrden = Array.isArray(pj.inventario?.armaduras) ? pj.inventario.armaduras.slice().sort(byStr(a => a.armadura)) : [];
+      const armasOrden = Array.isArray(pj.inventario?.armas) ? pj.inventario.armas.slice().sort(byStr(w => w.arma)) : [];
+
+      // OBJETOS
+      const tblObjs = `
+ <h6 class="mt-2 mb-1" style="text-align:center;color:white">💼 Objetos</h6>
+       <table class="table table-sm table-dark table-striped">
+        <thead>
+          <tr>
+           <th style="text-align:center; vertical-align:middle;">Nombre</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Cantidad">🧮</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Peso Unitario">⚖️</th>
+            <th style="width:40px;text-align:center;vertical-align:middle;"data-tippy-content="Acciones">⚙️</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${objetosOrden.map(o => `
+            <tr data-itemid="${o.id || ''}" data-cat="obj">
+               <td style=" vertical-align:middle;"><span data-tippy-content="${esc(o.uso || '')}">${esc(o.nombre || '')}</span></td>
+              <td   style="width:40px; text-align:center; vertical-align:middle;" data-tippy-content="Cantidad">${esc(o.cantidad ?? 0)}</td>
+              <td style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Peso Unitario">${esc(o.peso ?? '')}</td>
+              <td class="text-center" style="position:relative;">
+                <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+              </td>
+            </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+      // ARMADURAS
+      const tblArmad = `
+      <h6 class="mt-2 mb-1" style="text-align:center;color:white">🛡️ Armaduras</h6>
+      <table class="table table-sm table-dark table-striped">
+        <thead><tr>
+        <th  style="width:20px; text-align:center; vertical-align:middle;" data-tippy-content="Equipado">⚙️</th>
+        <th style="text-align:center; vertical-align:middle;">Arm.</th>
+        <th style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Cobertura">⛇</th>
+        <th style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Defensa">🛡️</th>
+        <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Durabilidad/Rotura">⛓️</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Peso Unitario">⚖️</th>
+            <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${armadurasOrden.map(a => {
+        const dur = parseInt(a.durabilidad ?? 0, 10);
+        const rot = Math.min(parseInt(a.rotura ?? 0, 10), isNaN(dur) ? 0 : dur);
+        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
+        return `
+              <tr data-itemid="${a.id || ''}" data-cat="arm">
+                <td><input    style="width:20px; text-align:center; vertical-align:middle;" data-tippy-content="Equipado" type="checkbox"  ${a.equipado ? 'checked' : ''}></td>
+                <td style=" vertical-align:middle;"><span data-tippy-content="${esc(a.especial || '')}">${esc(a.armadura || '')}</span></td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Cobertura">${Array.isArray(a.cobertura) ? esc(a.cobertura.join(', ')) : ''}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Defensa">${esc(a.defensa ?? 0)}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Durabilidad/Rotura">${durRot}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Peso">${esc(a.peso ?? '')}</td>
+                <td class="text-center" style="position:relative;">
+                  <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+                </td>
+              </tr>`;
+      }).join('')}
+        </tbody>
+      </table>`;
+
+      // ARMAS
+      const tblArmas = `
+       <h6 class="mt-2 mb-1" style="text-align:center;color:white">⚔️ Armas</h6>
+      <table class="table table-sm table-dark table-striped">
+        <thead><tr>
+                <th  style="width:20px; text-align:center; vertical-align:middle;" data-tippy-content="Equipado">⚙️</th>
+        <th style="text-align:center; vertical-align:middle;">Arma</th>
+         <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Mano">✋🤚</th>
+         <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Daño">💥</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Durabilidad/Rotura">⛓️</th>
+                <th  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Peso Unitario">⚖️</th>
+            <th style="width:40px;text-align:center;vertical-align:middle;">⚙️</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${armasOrden.map(w => {
+        const dur = parseInt(w.durabilidad ?? 0, 10);
+        const rot = Math.min(parseInt(w.rotura ?? 0, 10), dur);
+        const durRot = `${isNaN(dur) ? 0 : dur}/${isNaN(rot) ? 0 : rot}`;
+        return `
+             <tr data-itemid="${w.id || ''}" data-cat="arma">
+               <td><input    style="width:20px; text-align:center; vertical-align:middle;" data-tippy-content="Equipado" type="checkbox"   ${w.equipado ? 'checked' : ''}></td>
+                <td style=" vertical-align:middle;"><span data-tippy-content="${esc(w.especial || '')}">${esc(w.arma || '')}</span></td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Mano">${esc(w.mano || '')}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Daño">${esc(w.danio || '')}</td>
+                <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Durabilidad/Rotura">${durRot}</td>
+                 <td  style="width:40px; text-align:center; vertical-align:middle;"data-tippy-content="Peso">${esc(w.peso ?? '')}</td>
+             <td class="text-center" style="position:relative;">
+                  <button class="btn btn-sm btn-secondary" data-action="acciones">⚙️</button>
+                </td>
+            </tr>`}).join('')}
+        </tbody>
+      </table>`;
+
+      container.innerHTML = tblObjs + tblArmad + tblArmas;
+    } catch (err) {
+      console.error('renderInventarioPreview error', err);
     }
-  } catch (err) {
-    console.error('renderInventarioPreview error', err);
-  }
-};
+  };
 
 
   // ---------- Hook: al entrar en la sección "mochila" pinto el preview ----------
@@ -1392,12 +1391,4 @@ tippy('[data-tippy-content]', {
   allowHTML: true,
   theme: 'light-border',
   animation: 'scale',
-});
-document.addEventListener('DOMContentLoaded', () => {
-  tippy('[data-tippy-content]', {
-    allowHTML: true,       // ponlo en false si solo hay texto
-    animation: 'scale',
-    theme: 'light-border',
-    // touch: ['hold', 500], // opcional: táctiles, press&hold
-  });
 });

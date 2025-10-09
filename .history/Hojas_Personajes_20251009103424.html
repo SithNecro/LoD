@@ -1620,14 +1620,13 @@
                 document.addEventListener('DOMContentLoaded', init);
             } else {
                 init();
-                
+                tippy('[data-tippy-content]', {
+                    allowHTML: true,       // ponlo en false si solo hay texto
+                    animation: 'scale',
+                    theme: 'light-border',
+                    // touch: ['hold', 500], // opcional: táctiles, press&hold
+                });
             }
-             tippy('[data-tippy-content]', {
-    allowHTML: true,       // ponlo en false si solo hay texto
-    animation: 'scale',
-    theme: 'light-border',
-    // touch: ['hold', 500], // opcional: táctiles, press&hold
-  });
         })();
 
     </script>

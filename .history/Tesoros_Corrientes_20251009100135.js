@@ -372,7 +372,11 @@ function cargarStatsObjeto(tesoroSeleccionado) {
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-                               
+                                  if (k === "Unidades"){
+                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
+                            <span class="efecto" data-tippy-content="<b>Unidades:</b><br>${k.Unidades}">${v}</span>
+                        </p></div>`;
+                            }
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }
