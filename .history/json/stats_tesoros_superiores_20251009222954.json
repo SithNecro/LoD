@@ -1,0 +1,4544 @@
+{
+  "Tesoros_Superiores": [
+    {
+      "nombre": "Anillo.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 150,
+          "Efecto": "Puede ser encantado.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Arco élfico.png",
+      "rotura": "1d2",
+      "categoria": "arma",
+      "durabilidad": 8,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "",
+          "Daño": "1d10+2",
+          "Peso / Clase": "7 / 6",
+          "Recarga": 1,
+          "Defensa": null,
+          "Valor": 700,
+          "Efecto": "PArm (1), Recarga 1PA",
+          "Leyenda": "</br><b style='color: gold;'>Parm (1): </b>Penetración de Armadura, ignora X puntos de armadura.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Arma a distancia.png",
+      "rotura": "1d4-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d4",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Ballesta",
+          "Daño": "1d10+3",
+          "Peso / Clase": "15 / 6",
+          "Recarga": 2,
+          "Defensa": null,
+          "Valor": 250,
+          "Efecto": "PArm (1)",
+          "Leyenda": "<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura.",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Arco Largo",
+          "Daño": "1d10",
+          "Peso / Clase": "10 / 4",
+          "Recarga": 1,
+          "Defensa": null,
+          "Valor": 100,
+          "Efecto": "PArm (1)",
+          "Leyenda": "<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura.",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Pistola Ballesta",
+          "Daño": "1d8+1",
+          "Peso / Clase": "5 / 2",
+          "Recarga": 2,
+          "Defensa": null,
+          "Valor": 350,
+          "Efecto": "Arma secundaria",
+          "Leyenda": "<b style='color: gold;'>Arma secundaria: </b>Se puede usar en la mano secundaria mientras en la otra lleva una principal. Disparar esta arma se puede hacer en la misma acción que moverse (-10HD) o a un objetivo adyacente al que se dispara. No se puede recargar mientras se empuña como arma secundaria. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Arbalesta",
+          "Daño": "3d6",
+          "Peso / Clase": "20 / 6",
+          "Recarga": 3,
+          "Defensa": null,
+          "Valor": 400,
+          "Efecto": "Requiere FUE 55, PArm (2)",
+          "Leyenda": "<b style='color: gold;'>Parm (X): </b>Penetración de Armadura, ignora X puntos de armadura.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Arma contundente.png",
+      "rotura": "1d4-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d2",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Lucero del alba",
+          "Daño": "1d8+4",
+          "Peso / Clase": "10 / 4",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 150,
+          "Efecto": "Inmanejable, HPA, Aturdir",
+          "Leyenda": "<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Mayal",
+          "Daño": "1d10+4",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 150,
+          "Efecto": "Inmanejable, HPA, Aturdir",
+          "Leyenda": "<b style='color: gold;'>Inmanejable:</b> Empuñar este tipo de armas es agotador y el DAÑO +X sólo se aplica en el primer golpe de cada batalla.<br><b style='color: gold;'>Aturdir:</b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo. <br><b style='color: gold;'>HPA (Hecho para atacar):</b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Arma de mano de plata.png",
+      "rotura": "1d3-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d4",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Daga de Plata",
+          "Daño": "1d6",
+          "Peso / Clase": "5 / 1",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 75,
+          "Efecto": "Arma de Plata, Doble Empuñado+1",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Espada Corta de Plata",
+          "Daño": "1d6+2",
+          "Peso / Clase": "7 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 105,
+          "Efecto": "Arma de Plata, Doble Empuñado +2",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Espada Larga de Plata",
+          "Daño": "1d12",
+          "Peso / Clase": "10 / 3",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 150,
+          "Efecto": "Arma de Plata ",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Estoque de Plata",
+          "Daño": "1d6+1",
+          "Peso / Clase": "5 / 1",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 270,
+          "Efecto": "Arma de Plata, Rápido, Doble Empuñado +2",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br><b style='color: gold;'>Rápido: </b>Esta arma se puede usar para bloquear una vez por turno, aunque el Héroe no se haya puesto en Posición Defensiva, pero el arma sufrirá daño con una tirada de 90-00. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Armadura de cuero (2).png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d6",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Gorro de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Cabeza / 3",
+          "Peso / Rango": "1 / 2",
+          "Recarga": null,
+          "Valor": 50,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Chaleco de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Chaleco de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Casaca de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 3",
+          "Peso / Rango": "4 / 2",
+          "Recarga": null,
+          "Valor": 140,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Pantalones de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Piernas / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 120,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Brazales de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Brazos / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 120,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Armadura de cuero.png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d6",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Gorro de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Cabeza / 3",
+          "Peso / Rango": "1 / 2",
+          "Recarga": null,
+          "Valor": 50,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Chaleco de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Chaleco de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Casaca de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 3",
+          "Peso / Rango": "4 / 2",
+          "Recarga": null,
+          "Valor": 140,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Pantalones de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Piernas / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 120,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Brazales de Cuero",
+          "Daño": null,
+          "Cobertura / Defensa": "Brazos / 3",
+          "Peso / Rango": "3 / 2",
+          "Recarga": null,
+          "Valor": 120,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Armadura de cuero tachonado.png",
+      "rotura": "1d2+1",
+      "categoria": "armadura",
+      "durabilidad": 8,
+      "seleccion": "1d6",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Chaleco de Cuero Tachonado",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 3",
+          "Peso / Rango": "4 / 2",
+          "Recarga": null,
+          "Valor": 300,
+          "Efecto": "Tachonado: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Chaleco de Cuero Tachonado",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 3",
+          "Peso / Rango": "4 / 2",
+          "Recarga": null,
+          "Valor": 300,
+          "Efecto": "Tachonado: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Casaca de Cuero Tachonado",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 3",
+          "Peso / Rango": "5 / 2",
+          "Recarga": null,
+          "Valor": 500,
+          "Efecto": "Tachonado: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Casaca de Cuero Tachonado",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 3",
+          "Peso / Rango": "5 / 2",
+          "Recarga": null,
+          "Valor": 500,
+          "Efecto": "Tachonado: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Brazales de Cuero Tachonado",
+          "Daño": null,
+          "Cobertura / Defensa": "Brazos / 3",
+          "Peso / Rango": "4 / 2",
+          "Recarga": null,
+          "Valor": 150,
+          "Efecto": "Tachonado: DURABILIDAD 8, Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Cota de Cuero Tachonado",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Piernas / 3",
+          "Peso / Rango": "8 / 2",
+          "Recarga": null,
+          "Valor": 800,
+          "Efecto": "Tachonado: DURABILIDAD 8, Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Armadura de escamas.png",
+      "rotura": "1d2+1",
+      "categoria": "armadura",
+      "durabilidad": 8,
+      "seleccion": "1d4",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Chaleco de Escamas",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 4",
+          "Peso / Rango": "7 / 3",
+          "Recarga": null,
+          "Valor": 700,
+          "Efecto": "Escamas: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Chaleco de Escamas",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 4",
+          "Peso / Rango": "7 / 3",
+          "Recarga": null,
+          "Valor": 700,
+          "Efecto": "Escamas: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Casaca de Escamas",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 4",
+          "Peso / Rango": "8 / 3",
+          "Recarga": null,
+          "Valor": 1050,
+          "Efecto": "Escamas: DURABILIDAD 8",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Abrigo de Escamas",
+          "Daño": null,
+          "Cobertura / Defensa": "Brazos, Torso, Piernas / 4",
+          "Peso / Rango": "12 / 3",
+          "Recarga": null,
+          "Valor": 1700,
+          "Efecto": "Escamas: DURABILIDAD 8",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Armadura de Malla.png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d6",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Cofia de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Cabeza / 4",
+          "Peso / Rango": "4 / 3",
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Camisa de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 4",
+          "Peso / Rango": "6 / 3",
+          "Recarga": null,
+          "Valor": 600,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Camisa de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 4",
+          "Peso / Rango": "6 / 3",
+          "Recarga": null,
+          "Valor": 600,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Cota de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Piernas / 4",
+          "Peso / Rango": "8 / 3",
+          "Recarga": null,
+          "Valor": 750,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Camisa con Mangas de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 4",
+          "Peso / Rango": "7 / 3",
+          "Recarga": null,
+          "Valor": 950,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Pantalones de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Piernas / 4",
+          "Peso / Rango": "5 / 3",
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Armadura de Malla (2).png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d6",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Cofia de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Cabeza / 4",
+          "Peso / Rango": "4 / 3",
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Camisa de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso / 4",
+          "Peso / Rango": "6 / 3",
+          "Recarga": null,
+          "Valor": 600,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Camisa con Mangas de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Brazos / 4",
+          "Peso / Rango": "7 / 3",
+          "Recarga": null,
+          "Valor": 950,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Cota de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Torso, Piernas / 4",
+          "Peso / Rango": "8 / 3",
+          "Recarga": null,
+          "Valor": 750,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Cota con Mangas de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Brazos, Torso, Piernas / 4",
+          "Peso / Rango": "10 / 3",
+          "Recarga": null,
+          "Valor": 1300,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Pantalones de Malla",
+          "Daño": null,
+          "Cobertura / Defensa": "Piernas / 4",
+          "Peso / Rango": "5 / 3",
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Apilable",
+          "Leyenda": "<b style='color: gold;'>Apilable: </b>Esta armadura se puede combinar con otra de diferente tipo. Pero eso interfiere en tu Destreza (-10 DES). Este efecto no es acumulativo. Puedes llevar capa encima de 2 piezas apiladas. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Bastón de mago.png",
+      "rotura": "1d4-1",
+      "categoria": "arma",
+      "durabilidad": 4,
+      "seleccion": "1d10",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Elige bastón pag. 150",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": null,
+          "Efecto": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Bastón Arcano",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 400,
+          "Efecto": "Defensivo, Este bastón dará parte de su poder al Mago. Otorga +5 AA. Al salir de una mazmorra, tira 1d10. Con un resultado de 9-10, la magia se ha disipado y debe recargarse. Hasta que se recargue, se considera un bastón normal.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Bastón de Fuego",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 400,
+          "Efecto": "Defensivo, Este Bastón contiene el hechizo Llamarada.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Bastón de Iluminación",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 300,
+          "Efecto": "Defensivo, Este Bastón funciona como un farol. Si el mago comete una perturbación, la llama se apaga. No se apagará por ningún otro motivo. Para reavivar la llama, el mago simplemente debe gastar 1PA.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Bastón de Lentitud",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 400,
+          "Efecto": "Defensivo, Este Bastón contiene el hechizo Lentitud.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Bastón de Maná",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 500,
+          "Efecto": "Defensivo, Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 20 puntos de Maná.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 7,
+          "Tipo": "Bastón de Maná Menor",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 300,
+          "Efecto": "Defensivo, Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 10 puntos de Maná.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 8,
+          "Tipo": "Bastón del Rayo",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 500,
+          "Efecto": "Defensivo, Este Bastón contiene el hechizo Rayo mágico.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 9,
+          "Tipo": "Bastón de Vitalidad",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 350,
+          "Efecto": "Defensivo, Este bastón imbuye de vitalidad el cuerpo del mago portador, otorgando +3VIT mientras se lleve en la mano. Entre cada misión, tira 1d10. Con un resultado de 10, la magia se ha disipado y necesita recargarse. Hasta que se recarga se considera un bastón normal.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 10,
+          "Tipo": "Gran Bastón de Maná",
+          "Daño": "1d8",
+          "Peso / Clase": "5 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 800,
+          "Efecto": "Defensivo, Este Bastón se usa para almacenar maná entre misiones. No consume tiempo y se hace en un asentamiento mientras se descansa en la posada. Puede almacenar 30 puntos de Maná.",
+          "Leyenda": "<b style='color: gold;'>Defensivo:</b> Defensivo: Esta arma es fácil de usar a la defensiva y recibe +10 al bloqueo. Sin embargo, no puede soportar tantos golpes como una espada, y, por lo tanto, sólo puede recibir 4 puntos de daño antes de romperse. ",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Broche de plata.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 150,
+          "Efecto": "Un héroe equipado con capa puede ponerle el broche y obtener +10 Trueque. Acumulativo con otros extras similares.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Cerveza enana.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "1 Barril Pequeño de Cerveza Enana",
+          "Daño": null,
+          "Peso / Clase": 2,
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 100,
+          "Efecto": "Suficiente para una toma (1-4 héroes) . DET +20, pero todas las demás habilidad -10 hasta el final de la mazmorra/pelea exterior.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Cinturón de alquimista.png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": "0/1",
+          "Recarga": null,
+          "Cobertura / Defensa": "Cinturón / ",
+          "Valor": 300,
+          "Efecto": "Tiene 6 ranuras de atajo, que sólo se pueden usar para pociones. Pueden ser golpeadas con normalidad. No se puede usar junto a otro cinto o arnés de combate.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Cinturón de batalla extendido.png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": 0,
+          "Recarga": null,
+          "Cobertura / Defensa": "Cinturón / ",
+          "Valor": 300,
+          "Efecto": "Este cinturón aumenta tus atajos de 3 a 4.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Collar.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": 1,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": null,
+          "Efecto": "Al ir a venderlo Tásalo en 3d100 Monedas y Puede ser encantado.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Cuchillo desollador élfico.png",
+      "rotura": "0",
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 250,
+          "Efecto": "Otorga +10 a la supervivencia en una tirada de desollar. Puede llevarse en la mochila todo el tiempo.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Cuñas de hierro.png",
+      "rotura": "0",
+      "categoria": "objeto",
+      "durabilidad": null,
+      "Unidades": "1d3",
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Cuña de hierro",
+          "Daño": null,
+          "Peso / Clase": "0.25/",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": "50",
+          "Efecto": "Te toma 1PA ponerlas y 1PA cerrar la Puerta. Cualquier enemigo (errante o que ya esté en la mesa) necesitará 3 turnos para abrir la puerta."
+        }
+      ]
+    },
+    {
+      "nombre": "Equipo de pesca.png",
+      "rotura": "0",
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": "3",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 40,
+          "Efecto": "1 Set de pesca que te dará +5 SUP.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Escudo heraldo.png",
+      "rotura": "1d4",
+      "categoria": "armadura",
+      "durabilidad": 6,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": "6",
+          "Peso / Clase": "10 / 3",
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": null,
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Espada.png",
+      "rotura": "1d4-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d4",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Espada Corta",
+          "Daño": "1d6+2",
+          "Peso / Clase": "7 / 2",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 70,
+          "Efecto": "Doble Empuñado +2",
+          "Leyenda": "<b style='color: gold;'>Doble Empuñado + X: </b> Estas armas se pueden usar en la otra mano si tu Héroe tiene el talento Ambidiestro. La X indica el DAÑ adicional causado durante un ataque exitoso. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Espada Ancha",
+          "Daño": "1d8+2",
+          "Peso / Clase": "8 / 3",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 90,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Espada Larga",
+          "Daño": "1d12",
+          "Peso / Clase": "10 / 4",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 100,
+          "Efecto": null,
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Espadón",
+          "Daño": "2d6",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 200,
+          "Efecto": "Lento",
+          "Leyenda": "<b style='color: gold;'>Lento: </b>El arma es pesada y es difícil bloquear con ella. -5 al bloqueo.  </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Espejo espía.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0",
+          "Recarga": null,
+          "Valor": 300,
+          "Efecto": "Gastando un turno antes de abrir una puerta, puedes deslizar el espejo por debajo y ver la habitación al otro lado. Puedes mirar la carta de exploración y tirar en la tabla de encuentros antes de abrir. El Grupo puede añadir dos fichas de iniciativa si hay encuentro.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Espejo.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": 65,
+          "Efecto": " Un personaje equipado con un espejo en la mano es inmune al efecto aturdir de una cocatriz o a la regla especial Seducir con 1-5 en 1d6. Si el resultado es 6, el espejo se rompe y el héroe es aturdido/Seducido",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Flechas de plata.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "Unidades":"1d10",
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Flechas de Plata",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.2/",
+          "Recarga": null,
+          "Valor": 10,
+          "Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Flechas dentadas.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "Unidades":"5",
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Flechas Dentadas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.2/",
+          "Recarga": null,
+          "Valor": 5,
+          "Efecto": "Incrementan +1 el DAÑO.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Ganzúas enanas.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "Unidades":"1d6",
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Ganzúas enanas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 15,
+          "Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras. Necesarias para usar la habilidad forzar cerraduras y desarmar trampas. Si se dañan sólo se romperá 1 ganzúa.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Gran arma de plata.png",
+      "rotura": "1d3-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d4",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Espadón de Plata",
+          "Daño": "2d6",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 300,
+          "Efecto": "Arma de Plata, Lento",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Gran Hacha Corta de Plata",
+          "Daño": "1d12+2",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 300,
+          "Efecto": "Arma de Plata, Lento, HPA, PArm (2)",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Parm (X): </b> Penetración de armadura, ignora X puntos de armadura. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Mayal de Plata",
+          "Daño": "1d10+4",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 225,
+          "Efecto": "Arma de Plata, Inmanejable, HPA, Aturdir",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Inmanejable: </b> Empuñar este tipo de armas es agotador y el DAÑ +X sólo se aplica en el primer golpe de cada batalla. </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Alabarda de Plata",
+          "Daño": "1d12",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 225,
+          "Efecto": "Arma de Plata, Alcance, PArm (1)",
+          "Leyenda": "<b style='color: gold;'>Arma de Plata: </b>Daña a etéreos y +1 DAÑO a no muertos.</br><b style='color: gold;'>Alcance: </b> Puede atacar a una distancia de 2 casillas, incluso si hay un personaje amigo en la casilla entre medias.  </br><b style='color: gold;'>PArm (X): </b>Penetración de armadura, ignora X puntos de armadura. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Hacha.png",
+      "rotura": "1d4-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d3",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Hacha de Batalla",
+          "Daño": "1d10+1",
+          "Peso / Clase": "10 / 4",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 100,
+          "Efecto": "HPA, PArm (1)",
+          "Leyenda": "<b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Parm (X): </b> Penetración de armadura, ignora X puntos de armadura. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Gran Hacha",
+          "Daño": "1d12+2",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 200,
+          "Efecto": "Lento, HPA, PArm (2)",
+          "Leyenda": "<b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br><b style='color: gold;'>Parm (X): </b> Penetración de armadura, ignora X puntos de armadura. ",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Alabarda",
+          "Daño": "1d12",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 150,
+          "Efecto": "Alcance, PArm (1)",
+          "Leyenda": "<b style='color: gold;'>Alcance: </b> Puede atacar a una distancia de 2 casillas, incluso si hay un personaje amigo en la casilla entre medias.  </br><b style='color: gold;'>PArm (X): </b>Penetración de armadura, ignora X puntos de armadura. </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Ingrediente exquisito.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d20",
+      "Unidades":"1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Baya Lunar",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": "Tira en la tabla de Ingredientes para aádirlo a tu Bolsa de Alquimia en calidad Exquisita."
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Raíz Arqueada",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": "Tira en la tabla de Ingredientes para aádirlo a tu Bolsa de Alquimia en calidad Exquisita."
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Jengibre Ceniciento",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Agenjo Espinado",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Ambrosía",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Equinace Azul",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": "Callicarpa Brillante",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": "Polen del Amaru",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": "Corteza de Arce Rojo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": "Frambuesa Gigante",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": "Laurel del Monje",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": "Agracejo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 13,
+          "Tipo": "Belladona",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 14,
+          "Tipo": "Artemisa Salada",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 15,
+          "Tipo": "Dulcamara",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 16,
+          "Tipo": "Asclepia Picante",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 17,
+          "Tipo": "Hiedra Dulce",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 18,
+          "Tipo": "Perejil Tóxico",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 19,
+          "Tipo": "Trébol Llorón",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 20,
+          "Tipo": "Barbarea",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Kit de reparación de armaduras.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "5",
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Con este kit podrás reparar todas las piezas de armadura de un Héroe durante un descanso. Cada pieza recupera 1d3 de durabilidad. Sólo tiene un uso.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Kit desactivación de trampas.png",
+      "rotura": "1d4",
+      "categoria": "objeto",
+      "durabilidad": 6,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.2",
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Este kit da +10 a la desactivación de trampas cuando lo usas.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Laúd.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "5",
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un héroe puede tocar el laúd durante un descanso si supera un test de SAB. Todos recuperan 1 de cordura.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Mapa parcial.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 75,
+          "Efecto": "Este mapa le permite al jugador mirar 2 cartas de exploración sin usar aún. Luego se colocan tal como estaban. Si se encuentra en una mazmorra, sólo se puede usar en esa mazmorra. Si se compra, se puede usar en una de su elección. Una vez usado, se desecha.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Martillo.png",
+      "rotura": "1d4-1",
+      "categoria": "arma",
+      "durabilidad": 6,
+      "seleccion": "1d2",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Martillo de Batalla",
+          "Daño": "1d10",
+          "Peso / Clase": "10 / 3",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 100,
+          "Efecto": "Aturdir, HPA",
+          "Leyenda": "<b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Martillo de Guerra",
+          "Daño": "2d6",
+          "Peso / Clase": "20 / 5",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": 200,
+          "Efecto": "Lento, HPA, Aturdir",
+          "Leyenda": "<b style='color: gold;'>Lento: </b> El arma es pesada y es difícil bloquear con ella. -5 al bloqueo. </br><b style='color: gold;'>Aturdir: </b> Esta arma tiene la posibilidad de desequilibrar al enemigo. Si sacas un número par cuando tiras el daño, el contrario pierde 1PA en el siguiente turno. No es acumulativo.  </br><b style='color: gold;'>HPA (Hecho para atacar): </b> No son óptimos para bloquear y sufren un -5HC si lo intentas. Es acumulativo con la regla especial Lento.  </br>",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Mochila grande.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 600,
+          "Efecto": "Incrementa tu capacidad de carga en 25 de PESO pero reduce tu DES en -10.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Moneda de la suerte.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": " Esta moneda da +1 SUE una sola vez. Una vez ese punto de suerte haya sido utilizado la moneda se pierde.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Monedas (2).png",
+      "rotura": null,
+      "Unidades": "3d100",
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": null,
+          "Efecto": "Añade este oro al montón del grupo en caso de ser colectivo."
+        }
+      ]
+    },
+    {
+      "nombre": "Monedas (3).png",
+      "rotura": null,
+            "Unidades": "1d100+40",
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": null,
+          "Efecto": "Añade este oro al montón del grupo en caso de ser colectivo."
+        }
+      ]
+    },
+    {
+      "nombre": "Monedas.png",
+      "rotura": null,
+                  "Unidades": "2d100+20",
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Defensa": null,
+          "Valor": null,
+          "Efecto": "Añade este oro al montón del grupo en caso de ser colectivo."
+        }
+      ]
+    },
+    {
+      "nombre": "Parte.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d30",
+     "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Partes: Piel Anfidia",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Partes: Alas de Murciélago",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Partes: Corazón bestial",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Partes: Harina de huesos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Partes: Tejido cerebral",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Partes: Quitina",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": "Partes: Ojo de cíclope",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": "Partes: Sangre de dragón",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": "Partes: Ectoplasma",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": "Partes: Pelo de Elfo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": "Partes: Plumas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": "Partes: Piel",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 13,
+          "Tipo": "Partes: Sangre de necrófago",
+          "Daño": null,
+          "Defensa": null,
+                  "Peso / Clase": "0/",
+
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 14,
+          "Tipo": "Partes: Ojo de Google",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 15,
+          "Tipo": "Partes: Sangre humana",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 16,
+          "Tipo": "Partes: Ojo de Medusa",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 17,
+          "Tipo": "Partes: Polvo de momia",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 18,
+          "Tipo": "Partes: Uñas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 19,
+          "Tipo": "Partes: Diente de ogro",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 20,
+          "Tipo": "Partes: Cola de rata",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 21,
+          "Tipo": "Partes: Escamas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 22,
+          "Tipo": "Partes: Sangre de cambiaformas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 23,
+          "Tipo": "Partes: Viscosidad",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 24,
+          "Tipo": "Partes: Colmillo de araña",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 25,
+          "Tipo": "Partes: Madera del espíritu",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 26,
+          "Tipo": "Partes: Esporas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 27,
+          "Tipo": "Partes: Lengua",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 28,
+          "Tipo": "Partes: Sangre de troll",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 29,
+          "Tipo": "Partes: Sangre de vampiros",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 30,
+          "Tipo": "Partes: Piel de zombie",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Partes de Calidad Exquisita. Haz tirada en la tabla de Partes por cada unidad para ver que son.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Pepita de mineral.png",
+      "rotura": null,
+      "valor": "1d6",
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d3",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": " Pepita de Plata",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.5",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Puede utilizarse para crear armas y armdaduras.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": " Pepita de Plata",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.5",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Puede utilizarse para crear armas y armdaduras.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": " Pepita de Oro",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.5",
+          "Recarga": null,
+          "Valor": "35",
+          "Efecto": "",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Pepita de Mithril.png",
+      "rotura": null,
+      "valor": "1d3",
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": " Pepita de Mithril",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.5",
+          "Recarga": null,
+          "Valor": "75",
+          "Efecto": "Puede utilizarse para crear armas y armdaduras.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Pergamino.png",
+      "rotura": null,
+      "valor": "1d3",
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d54",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Cura leve",
+          "VH": 5,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cura a un Héroe hasta a 4 casillas y en LDV (las figuras entre medias no importan). Cura 1d6 VIT.",
+          "Leyenda": "Escuela: Restauración | Maná: 10 | Mant: 0 | Especial: R",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Escudo protector",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca una esfera translúcida que orbita a su alrededor o al de su objetivo en LDV protegiéndolo del daño físico. El escudo absorbe 1 DAÑ por NM hasta un máximo de 3. Puede lanzarse hasta 2 veces en el mismo objetivo. Dura toda la batalla, pero cuesta 1 maná por turno mantenerlo.",
+          "Leyenda": "Escuela: Misticismo | Maná: 10 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Llamarada",
+          "VH": 8,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "De tu mano sale una llamarada brillante golpeando a su objetivo con una explosión. 1d8+2 DAÑ.",
+          "Leyenda": "Escuela: Destrucción | Maná: 10 | Mant: 0 | Especial: R, MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Mano de la muerte",
+          "VH": 7,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Hechizo a melé. El lanzador toca a su enemigo y le causa daño de energía mágica. 1d10 DAÑ ignorando armadura.",
+          "Leyenda": "Escuela: Nigromancia | Maná: 8 | Mant: 0 | Especial: R, T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Manos sanadoras",
+          "VH": 6,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador pone sus manos sobre un compañero y cura 1d8+2 VIT.",
+          "Leyenda": "Escuela: Restauración | Maná: 12 | Mant: 0 | Especial: R, T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Muerte fingida",
+          "VH": 7,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cae al suelo, pareciendo estar muerto a los ojos de quien le rodea. Los enemigos no lo escogerán como objetivo durante el resto de la batalla y él no puede hacer nada hasta el final de la pelea. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 8 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 7,
+          "Tipo": "Ráfaga de viento",
+          "VH": 12,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "De repente un viento sopla a través de la mazmorra, haciendo que las flechas vayan por mal camino. Todas las armas de proyectil tienen un modificador de -15 para impactar si pasan por la habitación del Mago. El viento durará NM turnos. ",
+          "Leyenda": "Escuela: Alteración | Maná: 8 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 8,
+          "Tipo": "Resbalón",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El objetivo resbala y cae. Permanecerá boca abajo hasta su siguiente activación, donde gastará su primera acción en levantarse.",
+          "Leyenda": "Escuela: Maleficio | Maná: 10 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 9,
+          "Tipo": "Abrir cerraduras",
+          "VH": 0,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo se usa para abrir mágicamente puertas o cofres cerrados. El lanzador debe estar tan cerca como para tocar la cerradura y la VIT de ésta, se usará como si fuese el VH del hechizo. ",
+          "Leyenda": "Escuela: Alteración | Maná: 8 | Mant: 0 | Especial: T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 10,
+          "Tipo": "Cerrar puerta",
+          "VH": 13,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede sellar mágicamente una puerta. Un monstruo en el exterior que intente pasar tardará 1d3 turnos en hacerlo. Las puertas que estén rotas no se pueden sellar. Se puede lanzar en cualquier puerta incluso si hay enemigos presentes. Sólo una vez por puerta.",
+          "Leyenda": "Escuela: Alteración | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 11,
+          "Tipo": "Difuminar",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Puede lanzarse sobre sí mismo u otro Héroe en LDV. El objetivo se vuelve borroso y cualquier ataque contra él será con -15. El efecto dura 1d4 turnos. ",
+          "Leyenda": "Escuela: Ilusión | Maná: 10 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 12,
+          "Tipo": "Fortalecer cuerpo",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede fortalecer a un Héroe en LDV con +10 FUE o CON. Este hechizo dura 1d6 turnos. ",
+          "Leyenda": "Escuela: Misticismo | Maná: 8 | Mant: 2 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 13,
+          "Tipo": "Garabatos mágicos",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo se usa para crear pergaminos. El mago debe conocer el hechizo que quiere usar como base y tener un pergamino de buena calidad. Es algo sencillo, pero requiere tiempo. Invocar Diablillo de la plaga 15 10 4 Conjuración ",
+          "Leyenda": "Escuela: Encantamiento | Maná: - | Mant: 0 | Especial: E",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 14,
+          "Tipo": "Invocar Diablillo de la plaga",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador llama desde el Vacío a un Diablillo de la Plaga. Colócalo en una casilla libre al azar de la habitación. Este puede actuar como parte del siguiente turno del Héroe. Luchará por el lanzador, pero a la vez intentará liberarse. Al comienzo de cada turno el lanzador debe gastar 4 de maná en mantenimiento y pasar un test de DET. Si falla, el Diablillo se libera y escapa a su dimensión. Añade una ficha de iniciativa de Héroe a la bolsa cuando lo invoques. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 10 | Mant: 4 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 15,
+          "Tipo": "Puños de hierro",
+          "VH": 8,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El objetivo es golpeado desde arriba por un terrible impacto que le causa 2d6+NM DAÑ. La armadura y AN protegen con normalidad. El objetivo debe estar en LDV",
+          "Leyenda": "Escuela: Destrucción | Maná: 14 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 16,
+          "Tipo": "Silencio",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo puede ser lanzado sobre un Mago enemigo. Si se hace con éxito, el objetivo debe hacer un test de DET. Un fallo hará que no pueda usar la magia este turno, pero podrá actuar con normalidad con las acciones que tenga. Ese test no cuesta PA. Si tiene éxito podrá usar la magia ya que Silencio no tiene otro efecto. ",
+          "Leyenda": "Escuela: Maleficio | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 17,
+          "Tipo": "Armadura mágica",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede reforzar la armadura de cualquier objetivo en LDV con +2 en cada parte del cuerpo. El hechizo dura NM +2 Turnos. ",
+          "Leyenda": "Escuela: Misticismo | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 18,
+          "Tipo": "Confundir",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Si se lanza con éxito a un objetivo en LDV, este debe pasar un test de DET o no podrá usar su acción. Si falla, puede volver a intentarlo con su segundo PA. Una vez tiene éxito, el efecto del hechizo desaparece. ",
+          "Leyenda": "Escuela: Ilusión | Maná: 18 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 19,
+          "Tipo": "Controlar a los muertos",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador intenta tomar el control de un No muerto Menor en LDV. Si tiene éxito con la prueba DET+NM, podrá controlar al No muerto hasta el siguiente turno. Mantén la ficha de iniciativa de monstruo. Haz la prueba de DET cada vez que se active la criatura. Mientras tenga éxito el lanzador puede controlarla. No hay mantenimiento ya que el No muerto ha sido traído de vuelta por otra magia que no es la del lanzador y ya estaba reanimado. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 20,
+          "Tipo": "Corrupción",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Una maraña de moscas emerge de la boca del lanzador rodeando al objetivo. La nube de insectos dificultará la lucha del enemigo al reducir su HC en 10. El hechizo dura 1d3 turnos. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 16 | Mant: 1 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 21,
+          "Tipo": "Curación",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cura a un Héroe hasta a 4 casillas de distancia y en LDV. Éste recupera 1d10VIT",
+          "Leyenda": "Escuela: Restauración | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 22,
+          "Tipo": "Encantar objeto",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo sólo se puede lanzar entre misiones y requiere una piedra de poder. El poder de la piedra se fusionará con un objeto como arma, armadura o joya. Consulta el capítulo sobre fabricación.",
+          "Leyenda": "Escuela: Encantamiento | Maná: 25 | Mant: 0 | Especial: E",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 23,
+          "Tipo": "Invocar Elemental de Agua",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 24,
+          "Tipo": "Invocar Elemental de Viento",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 20 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 25,
+          "Tipo": "Lentitud",
+          "VH": 14,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un objetivo en LDV debe pasar un test de DET o perderá un PA. Este test se repetirá cada turno hasta que el enemigo consiga un éxito. ",
+          "Leyenda": "Escuela: Maleficio | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 26,
+          "Tipo": "Puntas heladas",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Unas saetas de hielo afiladas como navajas salen desde el suelo, golpeando a su objetivo por abajo. Hacen 2d6+2 DAÑ de Hielo. El objetivo debe estar en LDV. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 27,
+          "Tipo": "Rayo mágico",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un rayo de pura energía brota del lanzador y azota a un objetivo en LDV. Este pierde 1d10+1 VIT ignorando cualquier tipo de armadura.",
+          "Leyenda": "Escuela: Destrucción | Maná: 14 | Mant: 0 | Especial: R, MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 28,
+          "Tipo": "Relámpago",
+          "VH": 16,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un rayo chispeante salta desde la mano del lanzador hasta un objetivo en LDV causando 1d10+1 DAÑ, ignorando armadura. El rayo saltará a la figura más cercana (al azar si hay varias) y hará 1d8+1 DAÑ ignorando armadura. Después hará un último salto, haciendo 1d6+1 DAÑ ignorando armadura. Siempre saltará a la figura más cercana y nunca golpeará al mismo objetivo 2 veces. No puede saltar más de 3 casillas. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 18 | Mant: 0 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 29,
+          "Tipo": "Toque vampírico",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador causa 1d6+2 DAÑ sin armadura ni AN, y recupera esa misma cantidad de VIT sin exceder su máxima capacidad. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 14 | Mant: 0 | Especial: R, T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 30,
+          "Tipo": "Debilidad",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede reducir la FUE o CON de un objetivo. Si éste falla un test de DET, perderá su bonificación de DAÑ o AN durante 1d4 turnos, la característica afectada queda a elección del Mago.",
+          "Leyenda": "Escuela: Maleficio | Maná: 18 | Mant: 0 | Especial: T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 31,
+          "Tipo": "Desterrar muertos",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo sólo daña a los No muertos con la regla Etéreos. Si tiene éxito, hará a la criatura 2d6 DAÑ. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 20 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 32,
+          "Tipo": "Haz de escarcha",
+          "VH": 16,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un rayo de escarcha sale disparado de las manos del lanzador hacia su objetivo en LDV. El enemigo recibe 2d8+2 DAÑ de Hielo. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 15 | Mant: 0 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 33,
+          "Tipo": "Intercambiar",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cambia la posición de 2 Héroes que estén en LDV. Si falla, ambos Héroes pierden 2 puntos de cordura. El lanzador no puede ser objetivo de este hechizo.",
+          "Leyenda": "Escuela: Alteración | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 34,
+          "Tipo": "Invocar almas",
+          "VH": 12,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo conjura una multitud de espíritus inquietos que atormentarán a tus enemigos. Cada rival en la loseta recibirá 1d4 DAÑ sin armadura ni AN. Los No muertos son inmunes a este daño",
+          "Leyenda": "Escuela: Nigromancia | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 35,
+          "Tipo": "Invocar demonio",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador trae a un demonio de otra dimensión. Al azar escoge entre demonio de sangre o de la plaga. Colócalo en un lugar aleatorio en la misma loseta que el mago y luchará por él. Una vez invocado añade una ficha de iniciativa de Héroe y trata al demonio como a uno. Al comienzo de la activación del mago posterior a la invocación, debe pasar un test de DET. Si falla, el demonio se libera y escapa a su mundo. Cuando esto suceda, hará un test de DET por su cuenta y si tiene éxito se llevará parte de la mente del lanzador consigo. Resta 1d3 puntos de cordura del lanzador. Una vez que el demonio se suba al barco de los Héroes, disfrutará de la pelea junto al grupo y no será necesario un mantenimiento. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 36,
+          "Tipo": "Invocar elemental de fuego",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 37,
+          "Tipo": "Invocar elemental de tierra",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 38,
+          "Tipo": "Mirada espía",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede decir qué hay al otro lado de una puerta. Coloca la loseta y haz la tirada de encuentro antes de abrirla. Los Héroes obtienen 2 fichas de activación si hay una pelea al otro lado. ",
+          "Leyenda": "Escuela: Adivinación | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 39,
+          "Tipo": "Refuerzo mental",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador infunde valor mágico a todos los miembros del grupo. Cada Héroe obtiene +10DET y puede repetir una tirada fallida de miedo. Dura hasta el final del turno.",
+          "Leyenda": "Escuela: Misticismo | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 40,
+          "Tipo": "Retención",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El mago retiene a un enemigo en LDV en su sitio, impidiéndole moverse o luchar. La criatura hará un test de DET al comienzo de su turno y si tiene éxito se liberará y actuará con normalidad. La ficha de activación se agrega a la bolsa como de costumbre y el enemigo intentará actuar en el orden normal. ",
+          "Leyenda": "Escuela: Maleficio | Maná: 20 | Mant: 6 | Especial: R",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 41,
+          "Tipo": "Tumba helada",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede atrapar en hielo a un objetivo en LDV, obligándolo a liberarse si quiere hacer otra cosa. El mago tira NMd10 para determinar como de fuerte ha creado esa tumba y el objetivo hace su daño máximo (arma incluida) una vez por turno hasta que se rompa. Cuando esto suceda podrá actuar con sus dos acciones ese turno. El objetivo sufre 1d4 DAÑ de Hielo  ",
+          "Leyenda": "Escuela: Destrucción | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 42,
+          "Tipo": "Antipatía",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Debe lanzarse a un enemigo en LDV. El objetivo debe pasar un test DET o atacará al enemigo más cercano en su siguiente activación. Una vez termina esa activación el efecto desaparece. ",
+          "Leyenda": "Escuela: Ilusión | Maná: 18 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 43,
+          "Tipo": "Clonarse",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador hace una copia de sí mismo que puede colocarse hasta a 4 casillas de distancia. Los enemigos tratarán a esa imagen como un objetivo más, nunca podrá recibir DAÑ. El clon no puede moverse ni atacar, dura 1d4 turnos.",
+          "Leyenda": "Escuela: Ilusión | Maná: 15 | Mant: 2 | Especial: R",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 44,
+          "Tipo": "Levitar",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": " El lanzador puede escoger a un Héroe en LDV o a sí mismo. El objetivo podrá levitar durante todo el turno, se moverá por encima del suelo, sin tocar ninguna trampa o similar. Puede usarse para salir de un foso o para atravesarlo. No se puede levitar sobre otra figura o lava.",
+          "Leyenda": "Escuela: Alteración | Maná: 20 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 45,
+          "Tipo": "Lluvia de fuego",
+          "VH": 23,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Una lluvia de chispas cae sobre el objetivo y las casillas adyacentes a ésta. El objetivo recibe 1d8+NM DAÑ de Fuego, y las adyacentes 1d4+NM DAÑ de Fuego",
+          "Leyenda": "Escuela: Destrucción | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 46,
+          "Tipo": "Muro de fuego",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Crea un muro de fuego de hasta 3 casillas de largo. Debe colocarse en línea recta y nunca donde haya enemigos. Todos, excepto los No muertos menores y Elementales de Fuego, evitarán entrar en él. El hechizo dura 1d4+1 turnos, Un No muerto menor que lo cruce recibe 1d6 DAÑ de fuego. Los elementales de fuego son inmunes.",
+          "Leyenda": "Escuela: Destrucción | Maná: 20 | Mant: 4 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 47,
+          "Tipo": "Parar el tiempo",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Los Héroes que hayan actuado devuelven las fichas de activación a la bolsa. Pueden actuar otra vez como si fuese un turno nuevo. Este hechizo sólo puede lanzarse una vez por batalla.",
+          "Leyenda": "Escuela: Adivinación | Maná: 30 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 48,
+          "Tipo": "Velocidad",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede escoger a un aliado en LDV o a sí mismo como objetivo. El personaje gana +1M. El hechizo dura hasta una tirada de escenario de 9-10.",
+          "Leyenda": "Escuela: Misticismo | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 49,
+          "Tipo": "Bola de fuego",
+          "VH": 32,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador dispara una bola de fuego a una casilla o enemigo. La casilla objetivo sufre 3d6+2 DAÑ de fuego. Las adyacentes 2d6 DAÑ de fuego. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 30 | Mant: 0 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 50,
+          "Tipo": "En el Vacío",
+          "VH": 30,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador conjura una grieta en el suelo que se traga todo lo que haya allí. El mago debe tener en LDV al menos 1 de las casillas. El agujero ocupa 4 casillas y cualquier figura con toda su base dentro de ella debe hacer un test de DES o morir. Esto significa que una criatura ExtraEnorme no se verá afectada. El grupo obtiene la EXP del enemigo que muera así. Cualquier mueble o trampa en la grieta también desaparecerá. El agujero se cierra inmediatamente. ",
+          "Leyenda": "Escuela: Misticismo | Maná: 40 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 51,
+          "Tipo": "Fuerza vital",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": " Este hechizo recupera toda la VIT de un Héroe.",
+          "Leyenda": "Escuela: Restauración | Maná: 30 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 52,
+          "Tipo": "Invocar Gran Demonio",
+          "VH": 30,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador trae un Demonio de su dimensión para que obedezca. Ponlo en un lugar aleatorio de la misma loseta que el Mago, luchará por él durante 1d3+NM turnos. Una vez el demonio se suba al barco de los Héroes, disfrutará de la pelea y no será necesario un mantenimiento. Pero los pactos con Demonios tienen un precio por muy hábil que sea el Mago. Resta 1d6 puntos de cordura del lanzador al invocarlo. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 53,
+          "Tipo": "Levantar a los muertos",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador trata de levantar a un No muerto menor derrotado o a un humano muerto en LDV. Añade 1 ficha de activación de Héroe a la bolsa inmediatamente. Un zombi o esqueleto levantado conservará sus estadísticas y equipo. Cualquier humano resucitado tendrá las características de un zombi. Tendrá su arma, pero la armadura será 0. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 54,
+          "Tipo": "Teletransporte",
+          "VH": 14,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El mago puede teletransportarse él, o a uno de sus compañeros en LDV, hasta a 4 casillas. Sin embargo, tiene sus riesgos. Si el hechizo falla le costará al objetivo 1 punto de cordura por haber dejado un trocito de él en el Vacío. ",
+          "Leyenda": "Escuela: Alteración | Maná: 20 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Pergaminos.png",
+      "rotura": null,
+      "valor": "1d3",
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d54*3",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Cura leve",
+          "VH": 5,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cura a un Héroe hasta a 4 casillas y en LDV (las figuras entre medias no importan). Cura 1d6 VIT.",
+          "Leyenda": "Escuela: Restauración | Maná: 10 | Mant: 0 | Especial: R",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Escudo protector",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca una esfera translúcida que orbita a su alrededor o al de su objetivo en LDV protegiéndolo del daño físico. El escudo absorbe 1 DAÑ por NM hasta un máximo de 3. Puede lanzarse hasta 2 veces en el mismo objetivo. Dura toda la batalla, pero cuesta 1 maná por turno mantenerlo.",
+          "Leyenda": "Escuela: Misticismo | Maná: 10 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Llamarada",
+          "VH": 8,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "De tu mano sale una llamarada brillante golpeando a su objetivo con una explosión. 1d8+2 DAÑ.",
+          "Leyenda": "Escuela: Destrucción | Maná: 10 | Mant: 0 | Especial: R, MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Mano de la muerte",
+          "VH": 7,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Hechizo a melé. El lanzador toca a su enemigo y le causa daño de energía mágica. 1d10 DAÑ ignorando armadura.",
+          "Leyenda": "Escuela: Nigromancia | Maná: 8 | Mant: 0 | Especial: R, T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Manos sanadoras",
+          "VH": 6,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador pone sus manos sobre un compañero y cura 1d8+2 VIT.",
+          "Leyenda": "Escuela: Restauración | Maná: 12 | Mant: 0 | Especial: R, T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Muerte fingida",
+          "VH": 7,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cae al suelo, pareciendo estar muerto a los ojos de quien le rodea. Los enemigos no lo escogerán como objetivo durante el resto de la batalla y él no puede hacer nada hasta el final de la pelea. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 8 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 7,
+          "Tipo": "Ráfaga de viento",
+          "VH": 12,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "De repente un viento sopla a través de la mazmorra, haciendo que las flechas vayan por mal camino. Todas las armas de proyectil tienen un modificador de -15 para impactar si pasan por la habitación del Mago. El viento durará NM turnos. ",
+          "Leyenda": "Escuela: Alteración | Maná: 8 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 8,
+          "Tipo": "Resbalón",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El objetivo resbala y cae. Permanecerá boca abajo hasta su siguiente activación, donde gastará su primera acción en levantarse.",
+          "Leyenda": "Escuela: Maleficio | Maná: 10 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 9,
+          "Tipo": "Abrir cerraduras",
+          "VH": 0,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo se usa para abrir mágicamente puertas o cofres cerrados. El lanzador debe estar tan cerca como para tocar la cerradura y la VIT de ésta, se usará como si fuese el VH del hechizo. ",
+          "Leyenda": "Escuela: Alteración | Maná: 8 | Mant: 0 | Especial: T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 10,
+          "Tipo": "Cerrar puerta",
+          "VH": 13,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede sellar mágicamente una puerta. Un monstruo en el exterior que intente pasar tardará 1d3 turnos en hacerlo. Las puertas que estén rotas no se pueden sellar. Se puede lanzar en cualquier puerta incluso si hay enemigos presentes. Sólo una vez por puerta.",
+          "Leyenda": "Escuela: Alteración | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 11,
+          "Tipo": "Difuminar",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Puede lanzarse sobre sí mismo u otro Héroe en LDV. El objetivo se vuelve borroso y cualquier ataque contra él será con -15. El efecto dura 1d4 turnos. ",
+          "Leyenda": "Escuela: Ilusión | Maná: 10 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 12,
+          "Tipo": "Fortalecer cuerpo",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede fortalecer a un Héroe en LDV con +10 FUE o CON. Este hechizo dura 1d6 turnos. ",
+          "Leyenda": "Escuela: Misticismo | Maná: 8 | Mant: 2 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 13,
+          "Tipo": "Garabatos mágicos",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo se usa para crear pergaminos. El mago debe conocer el hechizo que quiere usar como base y tener un pergamino de buena calidad. Es algo sencillo, pero requiere tiempo. Invocar Diablillo de la plaga 15 10 4 Conjuración ",
+          "Leyenda": "Escuela: Encantamiento | Maná: - | Mant: 0 | Especial: E",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 14,
+          "Tipo": "Invocar Diablillo de la plaga",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador llama desde el Vacío a un Diablillo de la Plaga. Colócalo en una casilla libre al azar de la habitación. Este puede actuar como parte del siguiente turno del Héroe. Luchará por el lanzador, pero a la vez intentará liberarse. Al comienzo de cada turno el lanzador debe gastar 4 de maná en mantenimiento y pasar un test de DET. Si falla, el Diablillo se libera y escapa a su dimensión. Añade una ficha de iniciativa de Héroe a la bolsa cuando lo invoques. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 10 | Mant: 4 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 15,
+          "Tipo": "Puños de hierro",
+          "VH": 8,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El objetivo es golpeado desde arriba por un terrible impacto que le causa 2d6+NM DAÑ. La armadura y AN protegen con normalidad. El objetivo debe estar en LDV",
+          "Leyenda": "Escuela: Destrucción | Maná: 14 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 16,
+          "Tipo": "Silencio",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo puede ser lanzado sobre un Mago enemigo. Si se hace con éxito, el objetivo debe hacer un test de DET. Un fallo hará que no pueda usar la magia este turno, pero podrá actuar con normalidad con las acciones que tenga. Ese test no cuesta PA. Si tiene éxito podrá usar la magia ya que Silencio no tiene otro efecto. ",
+          "Leyenda": "Escuela: Maleficio | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 17,
+          "Tipo": "Armadura mágica",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede reforzar la armadura de cualquier objetivo en LDV con +2 en cada parte del cuerpo. El hechizo dura NM +2 Turnos. ",
+          "Leyenda": "Escuela: Misticismo | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 18,
+          "Tipo": "Confundir",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Si se lanza con éxito a un objetivo en LDV, este debe pasar un test de DET o no podrá usar su acción. Si falla, puede volver a intentarlo con su segundo PA. Una vez tiene éxito, el efecto del hechizo desaparece. ",
+          "Leyenda": "Escuela: Ilusión | Maná: 18 | Mant: 1 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 19,
+          "Tipo": "Controlar a los muertos",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador intenta tomar el control de un No muerto Menor en LDV. Si tiene éxito con la prueba DET+NM, podrá controlar al No muerto hasta el siguiente turno. Mantén la ficha de iniciativa de monstruo. Haz la prueba de DET cada vez que se active la criatura. Mientras tenga éxito el lanzador puede controlarla. No hay mantenimiento ya que el No muerto ha sido traído de vuelta por otra magia que no es la del lanzador y ya estaba reanimado. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 20,
+          "Tipo": "Corrupción",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Una maraña de moscas emerge de la boca del lanzador rodeando al objetivo. La nube de insectos dificultará la lucha del enemigo al reducir su HC en 10. El hechizo dura 1d3 turnos. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 16 | Mant: 1 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 21,
+          "Tipo": "Curación",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cura a un Héroe hasta a 4 casillas de distancia y en LDV. Éste recupera 1d10VIT",
+          "Leyenda": "Escuela: Restauración | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 22,
+          "Tipo": "Encantar objeto",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo sólo se puede lanzar entre misiones y requiere una piedra de poder. El poder de la piedra se fusionará con un objeto como arma, armadura o joya. Consulta el capítulo sobre fabricación.",
+          "Leyenda": "Escuela: Encantamiento | Maná: 25 | Mant: 0 | Especial: E",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 23,
+          "Tipo": "Invocar Elemental de Agua",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 24,
+          "Tipo": "Invocar Elemental de Viento",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 20 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 25,
+          "Tipo": "Lentitud",
+          "VH": 14,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un objetivo en LDV debe pasar un test de DET o perderá un PA. Este test se repetirá cada turno hasta que el enemigo consiga un éxito. ",
+          "Leyenda": "Escuela: Maleficio | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 26,
+          "Tipo": "Puntas heladas",
+          "VH": 10,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Unas saetas de hielo afiladas como navajas salen desde el suelo, golpeando a su objetivo por abajo. Hacen 2d6+2 DAÑ de Hielo. El objetivo debe estar en LDV. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 12 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 27,
+          "Tipo": "Rayo mágico",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un rayo de pura energía brota del lanzador y azota a un objetivo en LDV. Este pierde 1d10+1 VIT ignorando cualquier tipo de armadura.",
+          "Leyenda": "Escuela: Destrucción | Maná: 14 | Mant: 0 | Especial: R, MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 28,
+          "Tipo": "Relámpago",
+          "VH": 16,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un rayo chispeante salta desde la mano del lanzador hasta un objetivo en LDV causando 1d10+1 DAÑ, ignorando armadura. El rayo saltará a la figura más cercana (al azar si hay varias) y hará 1d8+1 DAÑ ignorando armadura. Después hará un último salto, haciendo 1d6+1 DAÑ ignorando armadura. Siempre saltará a la figura más cercana y nunca golpeará al mismo objetivo 2 veces. No puede saltar más de 3 casillas. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 18 | Mant: 0 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 29,
+          "Tipo": "Toque vampírico",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador causa 1d6+2 DAÑ sin armadura ni AN, y recupera esa misma cantidad de VIT sin exceder su máxima capacidad. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 14 | Mant: 0 | Especial: R, T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 30,
+          "Tipo": "Debilidad",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede reducir la FUE o CON de un objetivo. Si éste falla un test de DET, perderá su bonificación de DAÑ o AN durante 1d4 turnos, la característica afectada queda a elección del Mago.",
+          "Leyenda": "Escuela: Maleficio | Maná: 18 | Mant: 0 | Especial: T",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 31,
+          "Tipo": "Desterrar muertos",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo sólo daña a los No muertos con la regla Etéreos. Si tiene éxito, hará a la criatura 2d6 DAÑ. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 20 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 32,
+          "Tipo": "Haz de escarcha",
+          "VH": 16,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Un rayo de escarcha sale disparado de las manos del lanzador hacia su objetivo en LDV. El enemigo recibe 2d8+2 DAÑ de Hielo. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 15 | Mant: 0 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 33,
+          "Tipo": "Intercambiar",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador cambia la posición de 2 Héroes que estén en LDV. Si falla, ambos Héroes pierden 2 puntos de cordura. El lanzador no puede ser objetivo de este hechizo.",
+          "Leyenda": "Escuela: Alteración | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 34,
+          "Tipo": "Invocar almas",
+          "VH": 12,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Este hechizo conjura una multitud de espíritus inquietos que atormentarán a tus enemigos. Cada rival en la loseta recibirá 1d4 DAÑ sin armadura ni AN. Los No muertos son inmunes a este daño",
+          "Leyenda": "Escuela: Nigromancia | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 35,
+          "Tipo": "Invocar demonio",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador trae a un demonio de otra dimensión. Al azar escoge entre demonio de sangre o de la plaga. Colócalo en un lugar aleatorio en la misma loseta que el mago y luchará por él. Una vez invocado añade una ficha de iniciativa de Héroe y trata al demonio como a uno. Al comienzo de la activación del mago posterior a la invocación, debe pasar un test de DET. Si falla, el demonio se libera y escapa a su mundo. Cuando esto suceda, hará un test de DET por su cuenta y si tiene éxito se llevará parte de la mente del lanzador consigo. Resta 1d3 puntos de cordura del lanzador. Una vez que el demonio se suba al barco de los Héroes, disfrutará de la pelea junto al grupo y no será necesario un mantenimiento. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 36,
+          "Tipo": "Invocar elemental de fuego",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 37,
+          "Tipo": "Invocar elemental de tierra",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador invoca a uno de los cuatro Elementales para que lo ayude en la batalla. El Elemental luchará NM turnos. Añade de inmediato una ficha de iniciativa de Héroe a la bolsa. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 38,
+          "Tipo": "Mirada espía",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede decir qué hay al otro lado de una puerta. Coloca la loseta y haz la tirada de encuentro antes de abrirla. Los Héroes obtienen 2 fichas de activación si hay una pelea al otro lado. ",
+          "Leyenda": "Escuela: Adivinación | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 39,
+          "Tipo": "Refuerzo mental",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador infunde valor mágico a todos los miembros del grupo. Cada Héroe obtiene +10DET y puede repetir una tirada fallida de miedo. Dura hasta el final del turno.",
+          "Leyenda": "Escuela: Misticismo | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 40,
+          "Tipo": "Retención",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El mago retiene a un enemigo en LDV en su sitio, impidiéndole moverse o luchar. La criatura hará un test de DET al comienzo de su turno y si tiene éxito se liberará y actuará con normalidad. La ficha de activación se agrega a la bolsa como de costumbre y el enemigo intentará actuar en el orden normal. ",
+          "Leyenda": "Escuela: Maleficio | Maná: 20 | Mant: 6 | Especial: R",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 41,
+          "Tipo": "Tumba helada",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede atrapar en hielo a un objetivo en LDV, obligándolo a liberarse si quiere hacer otra cosa. El mago tira NMd10 para determinar como de fuerte ha creado esa tumba y el objetivo hace su daño máximo (arma incluida) una vez por turno hasta que se rompa. Cuando esto suceda podrá actuar con sus dos acciones ese turno. El objetivo sufre 1d4 DAÑ de Hielo  ",
+          "Leyenda": "Escuela: Destrucción | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 42,
+          "Tipo": "Antipatía",
+          "VH": 18,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Debe lanzarse a un enemigo en LDV. El objetivo debe pasar un test DET o atacará al enemigo más cercano en su siguiente activación. Una vez termina esa activación el efecto desaparece. ",
+          "Leyenda": "Escuela: Ilusión | Maná: 18 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 43,
+          "Tipo": "Clonarse",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador hace una copia de sí mismo que puede colocarse hasta a 4 casillas de distancia. Los enemigos tratarán a esa imagen como un objetivo más, nunca podrá recibir DAÑ. El clon no puede moverse ni atacar, dura 1d4 turnos.",
+          "Leyenda": "Escuela: Ilusión | Maná: 15 | Mant: 2 | Especial: R",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 44,
+          "Tipo": "Levitar",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": " El lanzador puede escoger a un Héroe en LDV o a sí mismo. El objetivo podrá levitar durante todo el turno, se moverá por encima del suelo, sin tocar ninguna trampa o similar. Puede usarse para salir de un foso o para atravesarlo. No se puede levitar sobre otra figura o lava.",
+          "Leyenda": "Escuela: Alteración | Maná: 20 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 45,
+          "Tipo": "Lluvia de fuego",
+          "VH": 23,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Una lluvia de chispas cae sobre el objetivo y las casillas adyacentes a ésta. El objetivo recibe 1d8+NM DAÑ de Fuego, y las adyacentes 1d4+NM DAÑ de Fuego",
+          "Leyenda": "Escuela: Destrucción | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 46,
+          "Tipo": "Muro de fuego",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Crea un muro de fuego de hasta 3 casillas de largo. Debe colocarse en línea recta y nunca donde haya enemigos. Todos, excepto los No muertos menores y Elementales de Fuego, evitarán entrar en él. El hechizo dura 1d4+1 turnos, Un No muerto menor que lo cruce recibe 1d6 DAÑ de fuego. Los elementales de fuego son inmunes.",
+          "Leyenda": "Escuela: Destrucción | Maná: 20 | Mant: 4 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 47,
+          "Tipo": "Parar el tiempo",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Los Héroes que hayan actuado devuelven las fichas de activación a la bolsa. Pueden actuar otra vez como si fuese un turno nuevo. Este hechizo sólo puede lanzarse una vez por batalla.",
+          "Leyenda": "Escuela: Adivinación | Maná: 30 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 48,
+          "Tipo": "Velocidad",
+          "VH": 15,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador puede escoger a un aliado en LDV o a sí mismo como objetivo. El personaje gana +1M. El hechizo dura hasta una tirada de escenario de 9-10.",
+          "Leyenda": "Escuela: Misticismo | Maná: 15 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 49,
+          "Tipo": "Bola de fuego",
+          "VH": 32,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador dispara una bola de fuego a una casilla o enemigo. La casilla objetivo sufre 3d6+2 DAÑ de fuego. Las adyacentes 2d6 DAÑ de fuego. ",
+          "Leyenda": "Escuela: Destrucción | Maná: 30 | Mant: 0 | Especial: MM",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 50,
+          "Tipo": "En el Vacío",
+          "VH": 30,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador conjura una grieta en el suelo que se traga todo lo que haya allí. El mago debe tener en LDV al menos 1 de las casillas. El agujero ocupa 4 casillas y cualquier figura con toda su base dentro de ella debe hacer un test de DES o morir. Esto significa que una criatura ExtraEnorme no se verá afectada. El grupo obtiene la EXP del enemigo que muera así. Cualquier mueble o trampa en la grieta también desaparecerá. El agujero se cierra inmediatamente. ",
+          "Leyenda": "Escuela: Misticismo | Maná: 40 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 51,
+          "Tipo": "Fuerza vital",
+          "VH": 20,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": " Este hechizo recupera toda la VIT de un Héroe.",
+          "Leyenda": "Escuela: Restauración | Maná: 30 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 52,
+          "Tipo": "Invocar Gran Demonio",
+          "VH": 30,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador trae un Demonio de su dimensión para que obedezca. Ponlo en un lugar aleatorio de la misma loseta que el Mago, luchará por él durante 1d3+NM turnos. Una vez el demonio se suba al barco de los Héroes, disfrutará de la pelea y no será necesario un mantenimiento. Pero los pactos con Demonios tienen un precio por muy hábil que sea el Mago. Resta 1d6 puntos de cordura del lanzador al invocarlo. ",
+          "Leyenda": "Escuela: Conjuración | Maná: 25 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 53,
+          "Tipo": "Levantar a los muertos",
+          "VH": 25,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El lanzador trata de levantar a un No muerto menor derrotado o a un humano muerto en LDV. Añade 1 ficha de activación de Héroe a la bolsa inmediatamente. Un zombi o esqueleto levantado conservará sus estadísticas y equipo. Cualquier humano resucitado tendrá las características de un zombi. Tendrá su arma, pero la armadura será 0. ",
+          "Leyenda": "Escuela: Nigromancia | Maná: 15 | Mant: 5 | Especial: -",
+          "Unidades": "1"
+        },
+        {
+          "tirada": 54,
+          "Tipo": "Teletransporte",
+          "VH": 14,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "El mago puede teletransportarse él, o a uno de sus compañeros en LDV, hasta a 4 casillas. Sin embargo, tiene sus riesgos. Si el hechizo falla le costará al objetivo 1 punto de cordura por haber dejado un trocito de él en el Vacío. ",
+          "Leyenda": "Escuela: Alteración | Maná: 20 | Mant: 0 | Especial: -",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Piedra del destino.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Piedra del Destino",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": " Esta piedra puede usarse para repetir la tirada del dado de escenario.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Piedra preciosa.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "3d100",
+          "Efecto": "Para vender. 3d100 monedas por unidad",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Piedras de honda superiores.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "Unidades":"10",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Balas de metal Superiores",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 2,
+          "Efecto": " +5 HD con Hondas y +1 DAÑO",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Piedras preciosas.png",
+      "rotura": null,
+      "valor": "1d6",
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "100",
+          "Efecto": " Para vender. 100 monedas la unidad.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Poción básica (2).png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d29",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": " Frasco de experiencia Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 350,
+          "Efecto": "Básica. Otorga 300 de EXP a quien la beba el héroe solo puede beber una entre mazmorras",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": " Poción de Constitución Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Incrementa temporalmente la CON del héroe débil +10, básica +15, Suprema +20. Puede afectar al bono de AN. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esta batalla.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": " Poción de valentía Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción incrementará temporalmente la DET del héroe. Débil: +10; Básica: +15; Suprema: +20. Durará hasta el final de la siguiente batalla. Si la tomas fuera de combate, también durará hasta el final de la siguiente batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": " Poción de destreza Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Incrementa temporalmente la DES del héroe. Débil: +5; Básica: +10; Suprema: +15; Destreza respectivamente. El mismo bono se añade a las habilidades basadas en DES. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": " Poción de energía Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Incrementa la energía del héroe hasta el final de la mazmorra o el final de una escaramuza. Débil: +1; Básica: +2; Suprema: +3. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": " Poción de vitalidad Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. La clásica poción para curar a los héroes. Débil: 1d4 VIT; Básica: 1d6 VIT; Suprema: 1d10 VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": " Poción de maná Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Restablece los puntos de Maná del mago. Débil: 1d20 Maná; Básica: 2d20 Maná; Suprema: 3d20 Maná.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": " Poción de fuerza Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Una poción que incrementará la fuerza del héroe temporalmente. Débil: +10; Básica: +15; Suprema: +20. Puede afectar al BD si lo alcanzas. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": " Poción de sabiduría Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción incrementará temporalmente la SAB del Héroe. Débil: +10; Básica: +15; Suprema: +20. El mismo bono se añade a las habilidades basadas en SAB. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": " Bomba de ácido Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 90,
+          "Efecto": "Básica. Lanzamiento. Este volátil fluido se puede lanzar a un enemigo o a una casilla. Cuando impacta, explota causando daño de ácido en esa casilla y también la mitad de daño a todas las casillas adyacentes a una escala de: Débil: 1d6 DAÑ; Básica: 1d10 DAÑ; Suprema: 1d12 DAÑ.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": " Poción nauseabunda Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 90,
+          "Efecto": "Básica. Los humos que desprende esta poción nublan la mente de cualquiera que los respira. Cualquier miniatura en esa casilla realizará una tirada de DET o perderá su siguiente turno. Cualquier miniatura en una casilla adyacente realizará una tirada de DET +20. No tiene efecto en No muertos.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": " Bomba flamígera Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 90,
+          "Efecto": "Básica. Lanzamiento. Fluido altamente volátil que se puede lanzar a un enemigo o a una casilla. Cuando impacta, explota causando daño de fuego en esa casilla y también la mitad de daño a todas las casillas adyacentes a una escala de: Débil:1d6 DAÑ; Básica:1d10 DAÑ; Suprema:1d12 DAÑ. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 13,
+          "Tipo": " Vial de invisibilidad Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción convertirá al usuario en invisible durante una batalla. Desafortunadamente, el héroe también se ve invisible, así que es muy complicado luchar. Quita al héroe del tablero hasta que la batalla termine. Cuando finalice, el héroe vuelve a cualquier casilla de la loseta.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 14,
+          "Tipo": " Vial de corrosión Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 60,
+          "Efecto": "Básica. Potente fluido corrosivo usado por alquimistas que disuelve el metal. Usado principalmente para abrir cerraduras. Este fluido solo viene en una modalidad y contiene suficiente como para abrir una puerta. El héroe debe gastar 1 PA adyacente a una puerta para usar esta poción y abrirla automáticamente. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 15,
+          "Tipo": " Poción contra enfermedades Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Una vez consumido, el héroe sanará de todos los efectos negativos causados por una enfermedad y ésta se curará. Una poción débil tiene un 75% de éxito, la básica y la suprema tendrán un 100%. Además, la suprema curará un 1d3 VIT.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 16,
+          "Tipo": " Poción Antídoto Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Una vez consumido, el efecto del veneno desaparece. Una poción débil tiene un 75% de éxito, la básica y la suprema tendrán un 100%. Además, la suprema curará un 1d3 VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 17,
+          "Tipo": " Poción de Veneno Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Puede aplicarse a un arma en cualquier momento. Dura hasta el final de la próxima batalla. Aunque no se use el arma, el veneno se evaporará tras la batalla. También se puede usar para envenenar 5 proyectiles (flecha, virote, munición de honda) sin gastar PA adicionales ya que se considera parte del proceso de recarga. Los enemigos dañados con un arma envenenada perderán 1 VIT cada turno durante el resto de la batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 18,
+          "Tipo": " Poción de Fuego líquido Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Esta poción puede aplicarse en un arma a melé, prendiéndola. El arma causará daño de fuego hasta el final de la batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 19,
+          "Tipo": " Frasco del vacío Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Esta poción no es para consumo. De hecho, ni siquiera es un líquido, sino la manifestación del Vacío. Cuando se abre este frasco, absorbe toda la magia. Cualquier hechizo lanzado en la batalla sufre una penalización de -20 además de su modificación de VH. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 20,
+          "Tipo": " Aceite para armas Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Este ungüento hace maravillas con el metal. Cada arma de filo puede ser cubierta con esta pócima durante los viajes o en la mazmorra. Otorgará +1 DAÑ hasta que abandonéis la mazmorra. Una poción sirve para un arma. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 21,
+          "Tipo": " Elixir de velocidad Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Beber esto otorgará al héroe un extra de movimiento de +1 durante el resto de la mazmorra o hasta el final de una escaramuza. No tiene efecto en el Mapamundi. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 22,
+          "Tipo": " Polvo químico Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 60,
+          "Efecto": "Básica. No es una poción, más bien arena fina. Se usa para mostrar huellas y detectar objetos. Un puñado es más que suficiente para cubrir una habitación. Soplando este compuesto en el aire, detectará lugares de interés y brillará. Si se usa antes de buscar en una habitación o pasillo, se puede volver a tirar y elegir el mejor resultado. 1 uso. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 23,
+          "Tipo": " Elixir del Arquero Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Este ungüento tiene propiedades fantásticas. Diseñado para ser utilizado en armas a distancia, añadirá +1 DAÑ hasta abandonar la mazmorra. Puede usarse mientras se viaja o en la mazmorra. Suficiente para un arma. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 24,
+          "Tipo": " Poción de furia Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción otorga la ventaja “Frenesí” sin pagar coste de energía. Dura una batalla completa. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 25,
+          "Tipo": " Poción de resistencia al fuego Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": 80,
+          "Valor": null,
+          "Efecto": "Básica. El héroe que la beba se vuelve ignífugo. Todo el daño de fuego es reducido en 1d10. Haz una tirada cada vez que el Héroe es dañado. Dura hasta el final de la siguiente batalla. Si la tomas fuera de combate, también durará hasta el final de la siguiente batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 26,
+          "Tipo": " Poción piel de dragón Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 150,
+          "Efecto": "Básica. Beber esta poción hará que tu piel sea tan dura como la de un Dragón. Ningún arma puede atravesarte. El héroe ignora todo el daño durante 3 turnos, exceptuando el daño mágico o de veneno. La armadura puede seguir siendo dañada, pero el Héroe no perderá VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 27,
+          "Tipo": " Poción de restauración Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Básica. Una versión mejorada de la poción de Vitalidad. Restaura toda la vitalidad de un héroe y elimina enfermedades y venenos. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 28,
+          "Tipo": " Poción escupefuego Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Cualquiera que beba de este frasco ganará la habilidad de exhalar fuego una vez. Cierto es que no con tanto poder como el de un dragón, pero igual de impresionante y terrorífico. La llamarada tiene un alcance de 2 casillas y puede causar 1d8 Daño de Fuego en la casilla adyacente al héroe o 1d4 Daño de Fuego en la casilla adyacente y la siguiente a esa también. Esto significa que el proyectil puede golpear en un único sitio, una línea recta alejándose del héroe, o dos casillas adyacentes conectadas. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 29,
+          "Tipo": " Bomba de humo Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Lanzamiento. Cuando se lanza Obstruye la LDV en la casilla donde explota y las 8 adyacentes. Toda pelea dentro del rango del humo sufre -20 HC ydisparar a través del humo no es posible. Dura 4 turnos",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Poción básica.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d29",
+     "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": " Frasco de experiencia Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 350,
+          "Efecto": "Básica. Otorga 300 de EXP a quien la beba el héroe solo puede beber una entre mazmorras",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": " Poción de Constitución Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Incrementa temporalmente la CON del héroe débil +10, básica +15, Suprema +20. Puede afectar al bono de AN. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esta batalla.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": " Poción de valentía Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción incrementará temporalmente la DET del héroe. Débil: +10; Básica: +15; Suprema: +20. Durará hasta el final de la siguiente batalla. Si la tomas fuera de combate, también durará hasta el final de la siguiente batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": " Poción de destreza Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Incrementa temporalmente la DES del héroe. Débil: +5; Básica: +10; Suprema: +15; Destreza respectivamente. El mismo bono se añade a las habilidades basadas en DES. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": " Poción de energía Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Incrementa la energía del héroe hasta el final de la mazmorra o el final de una escaramuza. Débil: +1; Básica: +2; Suprema: +3. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": " Poción de vitalidad Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. La clásica poción para curar a los héroes. Débil: 1d4 VIT; Básica: 1d6 VIT; Suprema: 1d10 VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": " Poción de maná Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Restablece los puntos de Maná del mago. Débil: 1d20 Maná; Básica: 2d20 Maná; Suprema: 3d20 Maná.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": " Poción de fuerza Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Una poción que incrementará la fuerza del héroe temporalmente. Débil: +10; Básica: +15; Suprema: +20. Puede afectar al BD si lo alcanzas. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": " Poción de sabiduría Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción incrementará temporalmente la SAB del Héroe. Débil: +10; Básica: +15; Suprema: +20. El mismo bono se añade a las habilidades basadas en SAB. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": " Bomba de ácido Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 90,
+          "Efecto": "Básica. Lanzamiento. Este volátil fluido se puede lanzar a un enemigo o a una casilla. Cuando impacta, explota causando daño de ácido en esa casilla y también la mitad de daño a todas las casillas adyacentes a una escala de: Débil: 1d6 DAÑ; Básica: 1d10 DAÑ; Suprema: 1d12 DAÑ.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": " Poción nauseabunda Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 90,
+          "Efecto": "Básica. Los humos que desprende esta poción nublan la mente de cualquiera que los respira. Cualquier miniatura en esa casilla realizará una tirada de DET o perderá su siguiente turno. Cualquier miniatura en una casilla adyacente realizará una tirada de DET +20. No tiene efecto en No muertos.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": " Bomba flamígera Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 90,
+          "Efecto": "Básica. Lanzamiento. Fluido altamente volátil que se puede lanzar a un enemigo o a una casilla. Cuando impacta, explota causando daño de fuego en esa casilla y también la mitad de daño a todas las casillas adyacentes a una escala de: Débil:1d6 DAÑ; Básica:1d10 DAÑ; Suprema:1d12 DAÑ. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 13,
+          "Tipo": " Vial de invisibilidad Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción convertirá al usuario en invisible durante una batalla. Desafortunadamente, el héroe también se ve invisible, así que es muy complicado luchar. Quita al héroe del tablero hasta que la batalla termine. Cuando finalice, el héroe vuelve a cualquier casilla de la loseta.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 14,
+          "Tipo": " Vial de corrosión Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 60,
+          "Efecto": "Básica. Potente fluido corrosivo usado por alquimistas que disuelve el metal. Usado principalmente para abrir cerraduras. Este fluido solo viene en una modalidad y contiene suficiente como para abrir una puerta. El héroe debe gastar 1 PA adyacente a una puerta para usar esta poción y abrirla automáticamente. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 15,
+          "Tipo": " Poción contra enfermedades Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Una vez consumido, el héroe sanará de todos los efectos negativos causados por una enfermedad y ésta se curará. Una poción débil tiene un 75% de éxito, la básica y la suprema tendrán un 100%. Además, la suprema curará un 1d3 VIT.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 16,
+          "Tipo": " Poción Antídoto Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Una vez consumido, el efecto del veneno desaparece. Una poción débil tiene un 75% de éxito, la básica y la suprema tendrán un 100%. Además, la suprema curará un 1d3 VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 17,
+          "Tipo": " Poción de Veneno Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Puede aplicarse a un arma en cualquier momento. Dura hasta el final de la próxima batalla. Aunque no se use el arma, el veneno se evaporará tras la batalla. También se puede usar para envenenar 5 proyectiles (flecha, virote, munición de honda) sin gastar PA adicionales ya que se considera parte del proceso de recarga. Los enemigos dañados con un arma envenenada perderán 1 VIT cada turno durante el resto de la batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 18,
+          "Tipo": " Poción de Fuego líquido Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Esta poción puede aplicarse en un arma a melé, prendiéndola. El arma causará daño de fuego hasta el final de la batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 19,
+          "Tipo": " Frasco del vacío Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Esta poción no es para consumo. De hecho, ni siquiera es un líquido, sino la manifestación del Vacío. Cuando se abre este frasco, absorbe toda la magia. Cualquier hechizo lanzado en la batalla sufre una penalización de -20 además de su modificación de VH. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 20,
+          "Tipo": " Aceite para armas Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Este ungüento hace maravillas con el metal. Cada arma de filo puede ser cubierta con esta pócima durante los viajes o en la mazmorra. Otorgará +1 DAÑ hasta que abandonéis la mazmorra. Una poción sirve para un arma. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 21,
+          "Tipo": " Elixir de velocidad Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Beber esto otorgará al héroe un extra de movimiento de +1 durante el resto de la mazmorra o hasta el final de una escaramuza. No tiene efecto en el Mapamundi. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 22,
+          "Tipo": " Polvo químico Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 60,
+          "Efecto": "Básica. No es una poción, más bien arena fina. Se usa para mostrar huellas y detectar objetos. Un puñado es más que suficiente para cubrir una habitación. Soplando este compuesto en el aire, detectará lugares de interés y brillará. Si se usa antes de buscar en una habitación o pasillo, se puede volver a tirar y elegir el mejor resultado. 1 uso. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 23,
+          "Tipo": " Elixir del Arquero Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Este ungüento tiene propiedades fantásticas. Diseñado para ser utilizado en armas a distancia, añadirá +1 DAÑ hasta abandonar la mazmorra. Puede usarse mientras se viaja o en la mazmorra. Suficiente para un arma. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 24,
+          "Tipo": " Poción de furia Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Esta poción otorga la ventaja “Frenesí” sin pagar coste de energía. Dura una batalla completa. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 25,
+          "Tipo": " Poción de resistencia al fuego Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": 80,
+          "Valor": null,
+          "Efecto": "Básica. El héroe que la beba se vuelve ignífugo. Todo el daño de fuego es reducido en 1d10. Haz una tirada cada vez que el Héroe es dañado. Dura hasta el final de la siguiente batalla. Si la tomas fuera de combate, también durará hasta el final de la siguiente batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 26,
+          "Tipo": " Poción piel de dragón Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 150,
+          "Efecto": "Básica. Beber esta poción hará que tu piel sea tan dura como la de un Dragón. Ningún arma puede atravesarte. El héroe ignora todo el daño durante 3 turnos, exceptuando el daño mágico o de veneno. La armadura puede seguir siendo dañada, pero el Héroe no perderá VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 27,
+          "Tipo": " Poción de restauración Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Básica. Una versión mejorada de la poción de Vitalidad. Restaura toda la vitalidad de un héroe y elimina enfermedades y venenos. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 28,
+          "Tipo": " Poción escupefuego Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "Básica. Cualquiera que beba de este frasco ganará la habilidad de exhalar fuego una vez. Cierto es que no con tanto poder como el de un dragón, pero igual de impresionante y terrorífico. La llamarada tiene un alcance de 2 casillas y puede causar 1d8 Daño de Fuego en la casilla adyacente al héroe o 1d4 Daño de Fuego en la casilla adyacente y la siguiente a esa también. Esto significa que el proyectil puede golpear en un único sitio, una línea recta alejándose del héroe, o dos casillas adyacentes conectadas. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 29,
+          "Tipo": " Bomba de humo Básica",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 80,
+          "Efecto": "Básica. Lanzamiento. Cuando se lanza Obstruye la LDV en la casilla donde explota y las 8 adyacentes. Toda pelea dentro del rango del humo sufre -20 HC ydisparar a través del humo no es posible. Dura 4 turnos",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Poción de curación.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Poción de Curación",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 100,
+          "Efecto": "La poción cura 1d6VIT sin necesidad de identificarla.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Poción Suprema.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d12",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": " Poción de Constitución Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Incrementa temporalmente la CON del héroe débil +10, básica +15, Suprema +20. Puede afectar al bono de AN. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esta batalla.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": " Poción de valentía Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Esta poción incrementará temporalmente la DET del héroe. Débil: +10; Básica: +15; Suprema: +20. Durará hasta el final de la siguiente batalla. Si la tomas fuera de combate, también durará hasta el final de la siguiente batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": " Poción de destreza Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Incrementa temporalmente la DES del héroe. Débil: +5; Básica: +10; Suprema: +15; Destreza respectivamente. El mismo bono se añade a las habilidades basadas en DES. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": " Poción de energía Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Incrementa la energía del héroe hasta el final de la mazmorra o el final de una escaramuza. Débil: +1; Básica: +2; Suprema: +3. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": " Poción de vitalidad Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, La clásica poción para curar a los héroes. Débil: 1d4 VIT; Básica: 1d6 VIT; Suprema: 1d10 VIT. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": " Poción de maná Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Restablece los puntos de Maná del mago. Débil: 1d20 Maná; Básica: 2d20 Maná; Suprema: 3d20 Maná.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": " Poción de fuerza Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Una poción que incrementará la fuerza del héroe temporalmente. Débil: +10; Básica: +15; Suprema: +20. Puede afectar al BD si lo alcanzas. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": " Poción de sabiduría Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Esta poción incrementará temporalmente la SAB del Héroe. Débil: +10; Básica: +15; Suprema: +20. El mismo bono se añade a las habilidades basadas en SAB. Dura hasta el final de la siguiente batalla. Si la tomas en combate durará hasta que termine esa batalla. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": " Bomba de ácido Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 180,
+          "Efecto": "Suprema, Lanzamiento. Este volátil fluido se puede lanzar a un enemigo o a una casilla. Cuando impacta, explota causando daño de ácido en esa casilla y también la mitad de daño a todas las casillas adyacentes a una escala de: Débil: 1d6 DAÑ; Básica: 1d10 DAÑ; Suprema: 1d12 DAÑ.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": " Bomba flamígera Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 180,
+          "Efecto": "Suprema, Lanzamiento. Fluido altamente volátil que se puede lanzar a un enemigo o a una casilla. Cuando impacta, explota causando daño de fuego en esa casilla y también la mitad de daño a todas las casillas adyacentes a una escala de: Débil:1d6 DAÑ; Básica:1d10 DAÑ; Suprema:1d12 DAÑ. ",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": " Poción contra enfermedades Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Una vez consumido, el héroe sanará de todos los efectos negativos causados por una enfermedad y ésta se curará. Una poción débil tiene un 75% de éxito, la básica y la suprema tendrán un 100%. Además, la suprema curará un 1d3 VIT.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": " Poción Antídoto Suprema",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 1,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": "Suprema, Una vez consumido, el efecto del veneno desaparece. Una poción débil tiene un 75% de éxito, la básica y la suprema tendrán un 100%. Además, la suprema curará un 1d3 VIT. ",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Reliquia religiosa.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d12",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": " Reliquia Collar del Dios Charus",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+1 Energía para Plegarias.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 2,
+          "Tipo": " Reliquia Collar del Dios Metheia",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+1d3 a cualquier curación.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 3,
+          "Tipo": " Reliquia Collar del Dios Iphy",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+5 DET.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": " Reliquia Collar del Dios Rhidnir",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+1 Suerte en cada misión.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": " Reliquia Collar del Dios Ohlnir",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+5 FUE.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": " Reliquia Collar del Dios Ramos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+5 HC.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": " Reliquia Anillo del Dios Charus",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+1 Energía para Plegarias.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": " Reliquia Anillo del Dios Metheia",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+1d3 a cualquier curación.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": " Reliquia Anillo del Dios Iphy",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+5 DET.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": " Reliquia Anillo del Dios Rhidnir",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+1 Suerte en cada misión.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": " Reliquia Anillo del Dios Ohlnir",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+5 FUE.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": " Reliquia Anillo del Dios Ramos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": "350",
+          "Efecto": "+5 HC.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Saco de dormir.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 5,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": " Usar esto mientras descansas hará que recuperes toda la energía",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Tabaco.png",
+      "rotura": null,
+      "valor": null,
+      "Peso / Clase": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": null,
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": 50,
+          "Efecto": " Esta bolsa es suficiente para abastecerte durante una mazmorra. Puedes usarlo en esta, pero con modificador de +15 o guardarla para otra. Se puede vender",
+          "Leyenda": "Se sabe que el tabaco calma los nervios de los aventureros estresados. Un Héroe sólo puede comprar hojas de tabaco entre misiones y esa compra será suficiente para la próxima misión. Siempre que lleve tabaco equipado, el Héroe ganará +10 DET. Después de la misión, el Héroe debe hacer un test de DET (sin la bonificación por el tabaco). Si falla, el Héroe se ha vuelto adicto. Si es adicto el Héroe debe traer un kit de tabaco en cada misión o sufrir un modificador de -10 a DET. Se necesitarán dos misiones completas sin tabaco para rehabilitarse de la adicción.",
+          "Unidades": "1"
+        }
+      ]
+    },
+    {
+      "nombre": "Virotes de plata.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Virotes de Plata",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "0.2/",
+          "Recarga": null,
+          "Valor": "10",
+          "Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.",
+          "Leyenda": null,"Unidades":"1d10"
+        }
+      ]
+    },
+    {
+      "nombre": "Virotes dentados.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "5 Virotes Dentadas",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Incrementan +1 el DAÑO.",
+          "Leyenda": null
+        }
+      ]
+    },
+    {
+      "nombre": "Útiles de alquimia.png",
+      "rotura": "1d4",
+      "categoria": "objeto",
+      "durabilidad": null,
+      "seleccion": "1d1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "1 Set de úitles de alquimista",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": 5,
+          "Recarga": null,
+          "Valor": 200,
+          "Efecto": " Estas herramientas son necesarias para recolectar con éxito partes o recoger ingredientes.",
+          "Leyenda": null
+        }
+      ]
+    }
+  ]
+}
