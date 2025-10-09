@@ -2661,7 +2661,7 @@
           "Peso / Clase": "0.33/",
           "Recarga": null,
           "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
           "Leyenda": null
           
         }
@@ -2683,7 +2683,7 @@
           "Peso / Clase": "0.33/",
           "Recarga": null,
           "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
           "Leyenda": null
           
         }

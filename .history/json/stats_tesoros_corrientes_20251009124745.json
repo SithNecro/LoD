@@ -2240,46 +2240,69 @@
       "nombre": "Piedra de afilar.png",
       "rotura": null,
       "valor": null,
-      "Peso / Clase": "0.3/",
+      "Peso / Clase": "1/",
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Piedra de afilar",
+          "Tipo": "1 Piedra de afilar",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": 0.3,
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 33,
-          "Efecto": "La piedra de afilar te permite recuperar 1d3 durabilidad en armas de combate a melé.",
+          "Valor": 100,
+          "Efecto": "La piedra de afilar te permite recuperar 1d3 durabilidad en armas de combate a melé. Se puede usar 3 veces durante un descanso.",
           "Leyenda": null,
-          "Unidades": "3"
+          "Unidades": "1"
         }
       ]
     },
     {
-      "nombre": "Pieles de lobo.png",
+      "nombre": "pieles de lobo.png",
       "rotura": null,
       "valor": null,
-      "Peso / Clase": "2/",
+      "Peso / Clase": "1/",
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "1d3",
-      "seleccion": "1d1",
+      "seleccion": "1d3",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": null,
+          "Tipo": "Piel de lobo",
           "Daño": null,
           "Defensa": null,
           "Peso / Clase": 2,
           "Recarga": null,
           "Valor": 40,
           "Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.",
-          "Leyenda": null
-          
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Pieles de lobo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "2",
+          "Recarga": null,
+          "Valor": "40",
+          "Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Pieles de lobo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "2",
+          "Recarga": null,
+          "Valor": "40",
+          "Efecto": "Cada piel tiene un valor de 40mo y Peso 2. No se necesita utilizar tabla de venta para esto.",
+          "Leyenda": null,
+          "Unidades": "3"
         }
       ]
     },
@@ -2289,21 +2312,56 @@
       "valor": null,
       "Peso / Clase": "1/",
       "categoria": "objeto",
-      "Unidades": "1d4",
       "durabilidad": null,
-      "seleccion": "1d1",
+      "seleccion": "1d4",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": null,
+          "Tipo": "1 Ración",
           "Daño": null,
           "Defensa": null,
           "Peso / Clase": "1/",
           "Recarga": null,
-          "Valor": 5,
+          "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null
-          
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "3"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "4 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "4"
         }
       ]
     },
@@ -2312,21 +2370,81 @@
       "rotura": null,
       "valor": null,
       "Peso / Clase": "1/",
-      "categoria": "objeto","Unidades": "1d6",
+      "categoria": "objeto",
       "durabilidad": null,
-      "seleccion": "1d1",
+      "seleccion": "1d6",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": null,
+          "Tipo": "1 Ración",
           "Daño": null,
           "Defensa": null,
           "Peso / Clase": "1/",
           "Recarga": null,
-          "Valor": 5,
+          "Valor": null,
           "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
-          "Leyenda": null
-          
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "3"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "4 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "4"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "5 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "5"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "6 Raciones",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1/",
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Si se comen mientras descansas, recuperas 1d6 VIT y 50% de recuperar 1d6 Energía. Si se comen mientras viajas evitaras el hambre (CON a la mitad, RAB).",
+          "Leyenda": null,
+          "Unidades": "6"
         }
       ]
     },
@@ -2535,7 +2653,7 @@
       "nombre": "Tesoro maravilloso.png",
       "rotura": null,
       "valor": null,
-      "Peso / Clase": "0/",
+      "Peso / Clase": "1/",
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2548,8 +2666,8 @@
           "Peso / Clase": 1,
           "Recarga": null,
           "Valor": null,
-          "Efecto": "Roba un Tesoro maravilloso.",
-          "Leyenda": "Roba un Tesoro maravilloso.",
+          "Efecto": null,
+          "Leyenda": null,
           "Unidades": "1"
         }
       ]
@@ -2558,7 +2676,7 @@
       "nombre": "Tesoro superior.png",
       "rotura": null,
       "valor": null,
-      "Peso / Clase": "0/",
+      "Peso / Clase": "1/",
       "categoria": "objeto",
       "durabilidad": null,
       "seleccion": "1d1",
@@ -2571,8 +2689,8 @@
           "Peso / Clase": 1,
           "Recarga": null,
           "Valor": null,
-          "Efecto": "Roba un Tesoro superior.",
-          "Leyenda": "Roba un Tesoro superior.",
+          "Efecto": null,
+          "Leyenda": null,
           "Unidades": "1"
         }
       ]
@@ -2594,7 +2712,7 @@
           "Peso / Clase": 5,
           "Recarga": null,
           "Valor": 200,
-          "Efecto": "Esta trampa tiene como objetivo principal detener monstruos errantes. La trampa para osos sólo ocupa una casilla. No puede ser colocada si hay una batalla en curso. Cuesta 1 PA colocarla. Causa 1d12 de daño e ignora armadura, pero solo afectará a un único enemigo dentro del grupo que representa al monstruo errante. Decide aleatoriamente quien la ha pisado.",
+          "Efecto": "Ver anotaciones en el capítulo de la Tríada Oscura (pag. 146)",
           "Leyenda": null,
           "Unidades": "1"
         }
@@ -2604,10 +2722,9 @@
       "nombre": "Trampas de cacería.png",
       "rotura": null,
       "valor": null,
-      "Peso / Clase": "3/",
+      "Peso / Clase": "1/",
       "categoria": "objeto",
       "durabilidad": null,
-          "Unidades": "1",
       "seleccion": "1d1",
       "tabla": [
         {
@@ -2618,74 +2735,168 @@
           "Peso / Clase": 3,
           "Recarga": null,
           "Valor": 150,
-          "Efecto": "Harán que atrapar animales sea más sencillo, otorgando un +10 SUP cuando lo intentes. Puede ir en la mochila todo el tiempo.",
-          "Leyenda": null
+          "Efecto": "Harán que atrapar animales sea más sencillo, otorgando un +10 a la tirada de Supervivencia cuando lo intentes. Puede ir en la mochila todo el tiempol.",
+          "Leyenda": null,
+          "Unidades": "1"
         }
       ]
     },
     {
-      "nombre": "Vendas de lino(2).png",
+      "nombre": "Vendas (2).png",
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d2",
-      "seleccion": "1d1",
+      "seleccion": "1d2",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Vendas de lino",
+          "Tipo": "1 venda de lino",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": 0.33,
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 8,
+          "Valor": 25,
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.",
-          "Leyenda": null
-          
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 vendas de lino",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "25",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.",
+          "Leyenda": null,
+          "Unidades": "2"
         }
       ]
     },
     {
-      "nombre": "Vendas de harapos(3).png",
+      "nombre": "Vendas (3).png",
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d3",
-      "seleccion": "1d1",
+      "seleccion": "1d3",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "vendas de harapos",
+          "Tipo": "1 venda de harapos",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": "0.33/",
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
-          "Leyenda": null
-          
+          "Valor": 15,
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "3"
         }
       ]
     },
     {
-      "nombre": "Vendas de harapos.png",
+      "nombre": "Vendas.png",
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d6",
-      "seleccion": "1d1",
+      "seleccion": "1d6",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Vendas de harapos",
+          "Tipo": "1 venda de harapos",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": "0.33/",
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
-          "Leyenda": null
-          
+          "Valor": 15,
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "3"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "4 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "4"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "5 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "5"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "6 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "6"
         }
       ]
     },

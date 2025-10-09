@@ -2624,21 +2624,21 @@
       ]
     },
     {
-      "nombre": "Vendas de lino(2).png",
+      "nombre": "Vendas (2).png",
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d2",
+      "Unidades": "1d2",
       "seleccion": "1d1",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Vendas de lino",
+          "Tipo": "1 venda de lino",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": 0.33,
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 8,
+          "Valor": 25,
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.",
           "Leyenda": null
           
@@ -2646,46 +2646,128 @@
       ]
     },
     {
-      "nombre": "Vendas de harapos(3).png",
+      "nombre": "Vendas (3).png",
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d3",
-      "seleccion": "1d1",
+      "seleccion": "1d3",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "vendas de harapos",
+          "Tipo": "1 venda de harapos",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": "0.33/",
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
-          "Leyenda": null
-          
+          "Valor": 15,
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "3"
         }
       ]
     },
     {
-      "nombre": "Vendas de harapos.png",
+      "nombre": "Vendas.png",
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d6",
-      "seleccion": "1d1",
+      "seleccion": "1d6",
       "tabla": [
         {
           "tirada": 1,
-          "Tipo": "Vendas de harapos",
+          "Tipo": "1 venda de harapos",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": "0.33/",
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
-          "Leyenda": null
-          
+          "Valor": 15,
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "1"
+        },
+        {
+          "tirada": 2,
+          "Tipo": "2 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "2"
+        },
+        {
+          "tirada": 3,
+          "Tipo": "3 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "3"
+        },
+        {
+          "tirada": 4,
+          "Tipo": "4 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "4"
+        },
+        {
+          "tirada": 5,
+          "Tipo": "5 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "5"
+        },
+        {
+          "tirada": 6,
+          "Tipo": "6 vendas de harapos",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": "1",
+          "Recarga": null,
+          "Valor": "15",
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
+          "Leyenda": null,
+          "Unidades": "6"
         }
       ]
     },

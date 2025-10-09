@@ -2628,7 +2628,7 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d2",
+      "Unidades": "1d2",
       "seleccion": "1d1",
       "tabla": [
         {
@@ -2636,9 +2636,9 @@
           "Tipo": "Vendas de lino",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": 0.33,
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 8,
+          "Valor": 25,
           "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d8 VIT.",
           "Leyenda": null
           
@@ -2650,7 +2650,7 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d3",
+      "Unidades": "1d3",
       "seleccion": "1d1",
       "tabla": [
         {
@@ -2658,10 +2658,10 @@
           "Tipo": "vendas de harapos",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": "0.33/",
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
+          "Valor": 15,
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
           "Leyenda": null
           
         }
@@ -2672,18 +2672,18 @@
       "rotura": null,
       "categoria": "objeto",
       "durabilidad": null,
-      "Unidades": "3d6",
-      "seleccion": "1d1",
+      "Unidades": "1d6",
+      "seleccion": "1d6",
       "tabla": [
         {
           "tirada": 1,
           "Tipo": "Vendas de harapos",
           "Daño": null,
           "Defensa": null,
-          "Peso / Clase": "0.33/",
+          "Peso / Clase": 1,
           "Recarga": null,
-          "Valor": 5,
-          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT.",
+          "Valor": 15,
+          "Efecto": "Necesarias cuando se usa la habilidad de curar. +1d4 VIT. Es un paquete con suficientes trapos para vendar 3 veces.",
           "Leyenda": null
           
         }
