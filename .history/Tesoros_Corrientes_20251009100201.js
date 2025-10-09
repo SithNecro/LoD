@@ -57,25 +57,25 @@ function cambiarImagenSeleccionada() {
 // Función auxiliar para tirar dados tipo "1d10", "2d6-1", etc.
 // Función auxiliar para tirar dados tipo "1d10", "2d6+1", "1d4-1" (ignora multiplicadores como "*3")
 function tirarDado(expresion) {
-    if (!expresion) return null;
+  if (!expresion) return null;
 
-    // Ignoramos cualquier multiplicador al final (p.ej. "1d6*3" -> "1d6")
-    const core = String(expresion).split('*')[0].trim();
+  // Ignoramos cualquier multiplicador al final (p.ej. "1d6*3" -> "1d6")
+  const core = String(expresion).split('*')[0].trim();
 
-    // Soporta +N o -N opcional, con espacios
-    const m = core.match(/^\s*(\d+)\s*d\s*(\d+)\s*([+-]\s*\d+)?\s*$/i);
-    if (!m) return null;
+  // Soporta +N o -N opcional, con espacios
+  const m = core.match(/^\s*(\d+)\s*d\s*(\d+)\s*([+-]\s*\d+)?\s*$/i);
+  if (!m) return null;
 
-    const veces = parseInt(m[1], 10);
-    const caras = parseInt(m[2], 10);
-    let mod = 0;
-    if (m[3]) mod = parseInt(m[3].replace(/\s+/g, ''), 10); // +1 o -1
+  const veces = parseInt(m[1], 10);
+  const caras = parseInt(m[2], 10);
+  let mod = 0;
+  if (m[3]) mod = parseInt(m[3].replace(/\s+/g, ''), 10); // +1 o -1
 
-    let total = 0;
-    for (let i = 0; i < veces; i++) {
-        total += Math.floor(Math.random() * caras) + 1;
-    }
-    return total + mod;
+  let total = 0;
+  for (let i = 0; i < veces; i++) {
+    total += Math.floor(Math.random() * caras) + 1;
+  }
+  return total + mod;
 }
 
 
@@ -253,25 +253,28 @@ function cargarStatsObjeto(tesoroSeleccionado) {
             // Nombre (sin .png)
             let html = `<div><p><strong>Botín:</strong> ${tesoro.nombre.replace(/\.png$/i, '')}</p></div>`;
             // Rotura
-            if (tesoro.categoria) {
-                const categoria = tesoro.categoria;
+            if(tesoro.categoria)
+            {
+                const categoria =tesoro.categoria;
                 html += `<div><p><strong>Categoria:</strong> ${categoria}</p></div>`;
             }
-            if (tesoro.durabilidad) {
-                const durabilidad = tesoro.durabilidad;
+              if(tesoro.durabilidad)
+            {
+                const durabilidad =tesoro.durabilidad;
                 html += `<div><p><strong>Durabilidad:</strong> ${durabilidad}</p></div>`;
             }
-
+           
             if (tesoro.rotura) {
                 const roturaRand = tirarDado(tesoro.rotura);
                 //html += `<div><p><strong>Rotura del objeto:</strong> ${tesoro.rotura} (Resultado: ${roturaRand})</p></div>`;
                 html += `<div><p><strong>Rotura del objeto:</strong> ${roturaRand}</p></div>`;
 
             }
-            if (tesoro.Unidades) {
+   if(tesoro.Unidades)
+            {
+          
 
-
-                let ValorUnidades = tesoro.Unidades;
+                  let ValorUnidades = tesoro.Unidades;
 
                 // ¿es una tirada de dados tipo "3d100" o "3d100+40"?
                 const regex = /^(\d+)d(\d+)([+-]\d+)?$/i;
@@ -361,15 +364,15 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 
                     for (const [k, v] of Object.entries(itemTabla)) {
                         if (v !== null) {
-
+                          
                             if (k === "tirada" || k === "Leyenda") continue;
-
+                            
                             if (k === "Efecto" && leyendaTexto) {
                                 html += `<div><p><strong style="color: green;">${k}:</strong> 
                             <span class="efecto" data-tippy-content="<b>Leyenda de efectos:</b><br>${leyendaTexto}">${v}</span>
                         </p></div>`;
                             } else {
-
+                               
                                 html += `<div><p><strong style="color: green;">${k}:</strong> ${v}</p></div>`;
                             }
                         }
@@ -421,308 +424,307 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 // --- Normaliza enemigo-item a {categoria,item} listo para inventario ---
 // --- Normaliza enemigo-item a {categoria,item} listo para inventario ---
 window.tc_parseEnemyItem = function (itemEl) {
-    const { getTextAfterStrong, getGreenValue, parseIntSafe, parseFloatSafe } = window.__tc_helpers;
+  const { getTextAfterStrong, getGreenValue, parseIntSafe, parseFloatSafe } = window.__tc_helpers;
 
-    // 1) Campos del enemigo-item
-    const botinRaw = getTextAfterStrong(itemEl, 'Botín');             // p.ej. "Antorchas (3).png" (no usamos (3) como cantidad)
-    const roturaTxt = getTextAfterStrong(itemEl, 'Rotura del objeto'); // p.ej. "1"
-    const categoriaTxt = getTextAfterStrong(itemEl, 'Categoria');         // "objeto" | "arma" | "armadura"
-    const durabTxt = getTextAfterStrong(itemEl, 'Durabilidad');       // número (armas/armaduras)
-    const unidadesTxt = getTextAfterStrong(itemEl, 'Unidades');          // NUEVO: número de unidades (solo objetos)
-    const cantidadTxt = getTextAfterStrong(itemEl, 'Cantidad');          // fallback si aún no hay "Unidades"
+  // 1) Campos del enemigo-item
+  const botinRaw     = getTextAfterStrong(itemEl, 'Botín');             // p.ej. "Antorchas (3).png" (no usamos (3) como cantidad)
+  const roturaTxt    = getTextAfterStrong(itemEl, 'Rotura del objeto'); // p.ej. "1"
+  const categoriaTxt = getTextAfterStrong(itemEl, 'Categoria');         // "objeto" | "arma" | "armadura"
+  const durabTxt     = getTextAfterStrong(itemEl, 'Durabilidad');       // número (armas/armaduras)
+  const unidadesTxt  = getTextAfterStrong(itemEl, 'Unidades');          // NUEVO: número de unidades (solo objetos)
+  const cantidadTxt  = getTextAfterStrong(itemEl, 'Cantidad');          // fallback si aún no hay "Unidades"
 
-    // Zona “verde”
-    const tipoTxt = getGreenValue(itemEl, 'Tipo');
-    const cobDefTxt = getGreenValue(itemEl, 'Cobertura / Defensa');
-    const pesoClsTxt = getGreenValue(itemEl, 'Peso / Rango') || getGreenValue(itemEl, 'Peso / Clase');
-    const valorTxt = getGreenValue(itemEl, 'Valor');
-    const danioTxt = getGreenValue(itemEl, 'Daño');
+  // Zona “verde”
+  const tipoTxt     = getGreenValue(itemEl, 'Tipo');
+  const cobDefTxt   = getGreenValue(itemEl, 'Cobertura / Defensa');
+  const pesoClsTxt  = getGreenValue(itemEl, 'Peso / Rango') || getGreenValue(itemEl, 'Peso / Clase');
+  const valorTxt    = getGreenValue(itemEl, 'Valor');
+  const danioTxt    = getGreenValue(itemEl, 'Daño');
 
-    // Efecto/Leyenda (sin recortar)
-    let efectoTxt = '';
-    const efectoP = [...itemEl.querySelectorAll('p > strong[style]')].find(s => s.textContent.trim().startsWith('Efecto'));
-    if (efectoP && efectoP.parentElement) {
-        const cont = efectoP.parentElement;
-        const tip = cont.querySelector('.efecto[data-tippy-content]');
-        if (tip) {
-            const html = tip.getAttribute('data-tippy-content') || '';
-            const tmp = document.createElement('div'); tmp.innerHTML = html;
-            efectoTxt = tmp.textContent.trim();
-        } else {
-            efectoTxt = cont.textContent.replace(efectoP.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-        }
+  // Efecto/Leyenda (sin recortar)
+  let efectoTxt = '';
+  const efectoP = [...itemEl.querySelectorAll('p > strong[style]')].find(s => s.textContent.trim().startsWith('Efecto'));
+  if (efectoP && efectoP.parentElement) {
+    const cont = efectoP.parentElement;
+    const tip = cont.querySelector('.efecto[data-tippy-content]');
+    if (tip) {
+      const html = tip.getAttribute('data-tippy-content') || '';
+      const tmp = document.createElement('div'); tmp.innerHTML = html;
+      efectoTxt = tmp.textContent.trim();
+    } else {
+      efectoTxt = cont.textContent.replace(efectoP.textContent,'').trim().replace(/^[:\s]+/,'').trim();
     }
+  }
 
-    // 2) Derivados
-    // Nombre limpio (NO usamos "(x)" como cantidad)
-    const nombreBase = botinRaw
-        .replace(/\.png$/i, '')
-        .replace(/\s*\(\d+\)\s*$/, '')
-        .trim();
+  // 2) Derivados
+  // Nombre limpio (NO usamos "(x)" como cantidad)
+  const nombreBase = botinRaw
+    .replace(/\.png$/i, '')
+    .replace(/\s*\(\d+\)\s*$/,'')
+    .trim();
 
-    // Cantidad: PRIORIDAD Unidades -> luego "Cantidad:" (último número) -> 1
-    let cantidad = 1;
-    if (unidadesTxt) {
-        cantidad = parseIntSafe(unidadesTxt, 1);
-    } else if (cantidadTxt) {
-        const mLast = String(cantidadTxt).match(/(\d+)(?!.*\d)/);
-        if (mLast) cantidad = parseIntSafe(mLast[1], 1);
-    }
+  // Cantidad: PRIORIDAD Unidades -> luego "Cantidad:" (último número) -> 1
+  let cantidad = 1;
+  if (unidadesTxt) {
+    cantidad = parseIntSafe(unidadesTxt, 1);
+  } else if (cantidadTxt) {
+    const mLast = String(cantidadTxt).match(/(\d+)(?!.*\d)/);
+    if (mLast) cantidad = parseIntSafe(mLast[1], 1);
+  }
 
-    const rotura = parseIntSafe(roturaTxt, 0);
-    const durabilidad = parseIntSafe(durabTxt, 0); // objetos = 0 por diseño
+  const rotura      = parseIntSafe(roturaTxt, 0);
+  const durabilidad = parseIntSafe(durabTxt, 0); // objetos = 0 por diseño
 
-    // Peso / Clase (o Rango)
-    let peso = 0, clase = '';
-    if (pesoClsTxt) {
-        const [pL, pR] = pesoClsTxt.split('/').map(s => s.trim());
-        if (pL) peso = parseFloatSafe(pL, 0);
-        if (pR) clase = pR; // C1..C7 o rango numérico
-    }
-    const valor = parseIntSafe(valorTxt, 0);
+  // Peso / Clase (o Rango)
+  let peso = 0, clase = '';
+  if (pesoClsTxt) {
+    const [pL, pR] = pesoClsTxt.split('/').map(s => s.trim());
+    if (pL) peso = parseFloatSafe(pL, 0);
+    if (pR) clase = pR; // C1..C7 o rango numérico
+  }
+  const valor = parseIntSafe(valorTxt, 0);
 
-    // Cobertura / Defensa
-    let cobertura = [];
-    let defensa = 6; // defecto
-    if (cobDefTxt) {
-        const [cob, def] = cobDefTxt.split('/').map(s => s.trim());
-        if (cob) cobertura = cob.split(',').map(s => s.trim()).filter(Boolean);
-        if (def) defensa = parseIntSafe(def, defensa);
-    }
+  // Cobertura / Defensa
+  let cobertura = [];
+  let defensa = 6; // defecto
+  if (cobDefTxt) {
+    const [cob, def] = cobDefTxt.split('/').map(s => s.trim());
+    if (cob) cobertura = cob.split(',').map(s => s.trim()).filter(Boolean);
+    if (def) defensa = parseIntSafe(def, defensa);
+  }
 
-    const nombreTipo = (tipoTxt || '').trim();
+  const nombreTipo = (tipoTxt || '').trim();
 
-    // 3) Categoría
-    let categoria = (categoriaTxt || '').toLowerCase();
-    if (!categoria) {
-        if (cobertura.length || defensa) categoria = 'armadura';
-        else if (danioTxt) categoria = 'arma';
-        else categoria = 'objeto';
-    }
+  // 3) Categoría
+  let categoria = (categoriaTxt || '').toLowerCase();
+  if (!categoria) {
+    if (cobertura.length || defensa) categoria = 'armadura';
+    else if (danioTxt)               categoria = 'arma';
+    else                             categoria = 'objeto';
+  }
 
-    // 4) Construcción por categoría
-    if (categoria === 'objeto') {
-        return {
-            categoria,
-            item: {
-                id: Date.now(),
-                nombre: nombreBase,     // sin .png y sin "(x)"
-                cantidad: cantidad,     // ← viene de "Unidades" o "Cantidad:"
-                peso: peso || 0,
-                uso: efectoTxt || '',
-                valor: valor || 0,      // unitario
-                durabilidad: 0,
-                lugar: 'Mochila'
-            }
-        };
-    }
-
-    if (categoria === 'armadura') {
-        const dura = durabilidad || 6;
-        return {
-            categoria,
-            item: {
-                id: Date.now(),
-                equipado: false,
-                armadura: nombreTipo || nombreBase,
-                cobertura,
-                defensa,
-                especial: efectoTxt || '',
-                durabilidad: dura,
-                rotura: Math.min(rotura, dura),
-                clase,
-                peso: peso || 0,
-                valor: valor || 0
-            }
-        };
-    }
-
-    // arma
-    const duraA = durabilidad || 8;
+  // 4) Construcción por categoría
+  if (categoria === 'objeto') {
     return {
-        categoria: 'arma',
-        item: {
-            id: Date.now(),
-            equipado: false,
-            arma: nombreTipo || nombreBase,
-            mano: 'Derecha',
-            danio: (danioTxt || '').trim(),
-            especial: efectoTxt || '',
-            durabilidad: duraA,
-            rotura: Math.min(rotura, duraA),
-            clase,
-            peso: peso || 0,
-            valor: valor || 0
-        }
+      categoria,
+      item: {
+        id: Date.now(),
+        nombre: nombreBase,     // sin .png y sin "(x)"
+        cantidad: cantidad,     // ← viene de "Unidades" o "Cantidad:"
+        peso: peso || 0,
+        uso: efectoTxt || '',
+        valor: valor || 0,      // unitario
+        durabilidad: 0,
+        lugar: 'Mochila'
+      }
     };
+  }
+
+  if (categoria === 'armadura') {
+    const dura = durabilidad || 6;
+    return {
+      categoria,
+      item: {
+        id: Date.now(),
+        equipado: false,
+        armadura: nombreTipo || nombreBase,
+        cobertura,
+        defensa,
+        especial: efectoTxt || '',
+        durabilidad: dura,
+        rotura: Math.min(rotura, dura),
+        clase,
+        peso: peso || 0,
+        valor: valor || 0
+      }
+    };
+  }
+
+  // arma
+  const duraA = durabilidad || 8;
+  return {
+    categoria: 'arma',
+    item: {
+      id: Date.now(),
+      equipado: false,
+      arma: nombreTipo || nombreBase,
+      mano: 'Derecha',
+      danio: (danioTxt || '').trim(),
+      especial: efectoTxt || '',
+      durabilidad: duraA,
+      rotura: Math.min(rotura, duraA),
+      clase,
+      peso: peso || 0,
+      valor: valor || 0
+    }
+  };
 };
 
 // === Acceso directo a IndexedDB: PersonajesDB ===
-(function setupTcIDB() {
-    function openDB() {
-        return new Promise((resolve, reject) => {
-            const req = indexedDB.open('PersonajesDB');
-            req.onsuccess = () => resolve(req.result);
-            req.onerror = () => reject(req.error || new Error('No se pudo abrir PersonajesDB'));
-        });
-    }
+(function setupTcIDB(){
+  function openDB() {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open('PersonajesDB');
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error || new Error('No se pudo abrir PersonajesDB'));
+    });
+  }
 
-    function hasStore(db, name) {
-        try { return db.objectStoreNames && db.objectStoreNames.contains(name); } catch (_) { return false; }
-    }
+  function hasStore(db, name) {
+    try { return db.objectStoreNames && db.objectStoreNames.contains(name); } catch(_) { return false; }
+  }
 
-    async function getAllSlots() {
-        const db = await openDB();
-        if (!hasStore(db, 'slots')) { db.close(); return []; }
-        return new Promise((resolve, reject) => {
-            const tx = db.transaction('slots', 'readonly');
-            const st = tx.objectStore('slots');
-            const req = st.getAll();
-            req.onsuccess = e => { resolve(e.target.result || []); db.close(); };
-            req.onerror = () => { reject(req.error); db.close(); };
-        });
-    }
+  async function getAllSlots() {
+    const db = await openDB();
+    if (!hasStore(db, 'slots')) { db.close(); return []; }
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction('slots', 'readonly');
+      const st = tx.objectStore('slots');
+      const req = st.getAll();
+      req.onsuccess = e => { resolve(e.target.result || []); db.close(); };
+      req.onerror = () => { reject(req.error); db.close(); };
+    });
+  }
 
-    async function getSlotRecordBySlot(slot) {
-        const slots = await getAllSlots();
-        return slots.find(s => (s && (s.slot === slot || s.slot === Number(slot))));
-    }
+  async function getSlotRecordBySlot(slot) {
+    const slots = await getAllSlots();
+    return slots.find(s => (s && (s.slot === slot || s.slot === Number(slot))));
+  }
 
-    async function getPersonajeById(personajeId) {
-        const db = await openDB();
-        const storeName = hasStore(db, 'personajes') ? 'personajes' : (hasStore(db, 'heroes') ? 'heroes' : null);
-        if (!storeName) { db.close(); return null; }
-        return new Promise((resolve, reject) => {
-            const tx = db.transaction(storeName, 'readonly');
-            const st = tx.objectStore(storeName);
-            let req;
-            try { req = st.get(personajeId); } catch (e) { db.close(); resolve(null); return; }
-            req.onsuccess = e => { resolve(e.target.result || null); db.close(); };
-            req.onerror = () => { reject(req.error); db.close(); };
-        });
-    }
+  async function getPersonajeById(personajeId) {
+    const db = await openDB();
+    const storeName = hasStore(db,'personajes') ? 'personajes' : (hasStore(db,'heroes') ? 'heroes' : null);
+    if (!storeName) { db.close(); return null; }
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeName, 'readonly');
+      const st = tx.objectStore(storeName);
+      let req;
+      try { req = st.get(personajeId); } catch(e) { db.close(); resolve(null); return; }
+      req.onsuccess = e => { resolve(e.target.result || null); db.close(); };
+      req.onerror = () => { reject(req.error); db.close(); };
+    });
+  }
 
-    async function getPersonajeBySlotDirect(slot) {
-        const rec = await getSlotRecordBySlot(Number(slot));
-        if (!rec || !rec.personajeId) return null;
-        const pj = await getPersonajeById(rec.personajeId);
-        return pj;
-    }
+  async function getPersonajeBySlotDirect(slot) {
+    const rec = await getSlotRecordBySlot(Number(slot));
+    if (!rec || !rec.personajeId) return null;
+    const pj = await getPersonajeById(rec.personajeId);
+    return pj;
+  }
 
-    async function savePersonajeDirect(pj) {
-        const db = await openDB();
-        const storeName = hasStore(db, 'personajes') ? 'personajes' : (hasStore(db, 'heroes') ? 'heroes' : null);
-        if (!storeName) { db.close(); throw new Error('No existe store "personajes" en la base de datos'); }
-        return new Promise((resolve, reject) => {
-            const tx = db.transaction(storeName, 'readwrite');
-            const st = tx.objectStore(storeName);
-            let req;
-            try {
-                req = st.put(pj);
-            } catch (e) {
-                try { req = st.put(pj, pj && (pj.id || pj.personajeId)); }
-                catch (e2) { db.close(); reject(e2); return; }
-            }
-            req.onsuccess = () => { resolve(true); db.close(); };
-            req.onerror = () => { reject(req.error); db.close(); };
-        });
-    }
+  async function savePersonajeDirect(pj) {
+    const db = await openDB();
+    const storeName = hasStore(db,'personajes') ? 'personajes' : (hasStore(db,'heroes') ? 'heroes' : null);
+    if (!storeName) { db.close(); throw new Error('No existe store "personajes" en la base de datos'); }
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(storeName, 'readwrite');
+      const st = tx.objectStore(storeName);
+      let req;
+      try {
+        req = st.put(pj);
+      } catch(e) {
+        try { req = st.put(pj, pj && (pj.id || pj.personajeId)); }
+        catch(e2) { db.close(); reject(e2); return; }
+      }
+      req.onsuccess = () => { resolve(true); db.close(); };
+      req.onerror = () => { reject(req.error); db.close(); };
+    });
+  }
 
-    // Exponer helpers
-    window.__tc_idb = {
-        openDB, getAllSlots, getSlotRecordBySlot, getPersonajeById, getPersonajeBySlotDirect, savePersonajeDirect, hasStore
-    };
+  // Exponer helpers
+  window.__tc_idb = {
+    openDB, getAllSlots, getSlotRecordBySlot, getPersonajeById, getPersonajeBySlotDirect, savePersonajeDirect, hasStore
+  };
 })();
 
 // --- Añadir ítem al inventario del héroe seleccionado (acceso directo a IndexedDB) ---
 window.tc_addItemToHero = async function (slot, categoria, item) {
-    const pj = await window.__tc_idb.getPersonajeBySlotDirect(Number(slot));
-    if (!pj) throw new Error('No se pudo cargar el héroe destino');
-    if (!pj.inventario) pj.inventario = { objetos: [], armaduras: [], armas: [] };
+  const pj = await window.__tc_idb.getPersonajeBySlotDirect(Number(slot));
+  if (!pj) throw new Error('No se pudo cargar el héroe destino');
+  if (!pj.inventario) pj.inventario = { objetos: [], armaduras: [], armas: [] };
 
-    const key = categoria === 'objeto' ? 'objetos' : (categoria === 'armadura' ? 'armaduras' : 'armas');
-    const arr = pj.inventario[key] || (pj.inventario[key] = []);
+  const key = categoria === 'objeto' ? 'objetos' : (categoria === 'armadura' ? 'armaduras' : 'armas');
+  const arr = pj.inventario[key] || (pj.inventario[key] = []);
 
-    // evitar colisión de id
-    if (arr.some(x => x.id === item.id)) {
-        let newId = Date.now();
-        while (arr.some(x => x.id === newId)) newId++;
-        item.id = newId;
+  // evitar colisión de id
+  if (arr.some(x => x.id === item.id)) {
+    let newId = Date.now();
+    while (arr.some(x => x.id === newId)) newId++;
+    item.id = newId;
+  }
+
+  // Unificar cantidades en OBJETOS si ya existe mismo nombre y peso/valor/uso iguales
+  if (key === 'objetos') {
+    const same = arr.find(x =>
+      (x.nombre || '') === item.nombre &&
+      (x.peso ?? 0) === (item.peso ?? 0) &&
+      (x.valor ?? 0) === (item.valor ?? 0) &&
+      (x.uso || '') === (item.uso || '')
+    );
+    if (same) {
+      same.cantidad = (parseInt(same.cantidad || 0, 10) + parseInt(item.cantidad || 0, 10));
+      await window.__tc_idb.savePersonajeDirect(pj);
+      return pj;
     }
+  }
 
-    // Unificar cantidades en OBJETOS si ya existe mismo nombre y peso/valor/uso iguales
-    if (key === 'objetos') {
-        const same = arr.find(x =>
-            (x.nombre || '') === item.nombre &&
-            (x.peso ?? 0) === (item.peso ?? 0) &&
-            (x.valor ?? 0) === (item.valor ?? 0) &&
-            (x.uso || '') === (item.uso || '')
-        );
-        if (same) {
-            same.cantidad = (parseInt(same.cantidad || 0, 10) + parseInt(item.cantidad || 0, 10));
-            await window.__tc_idb.savePersonajeDirect(pj);
-            return pj;
-        }
-    }
-
-    arr.push(item);
-    await window.__tc_idb.savePersonajeDirect(pj);
-    return pj;
+  arr.push(item);
+  await window.__tc_idb.savePersonajeDirect(pj);
+  return pj;
 };
 
 
 // --- Mejora cada enemigo-item con Select de Héroe + Botón "Coger" ---
 // --- Inserta Select de héroe + botón "Coger para Héroe" en cada .enemigo-item ---
-// --- Inserta Select de héroe + botón "Coger para Héroe" en cada .enemigo-item ---
 window.enhanceEnemyItems = function (root=document) {
   const items = root.querySelectorAll('.enemigo-item');
   if (!items.length) return;
 
+  // Cargamos héroes una sola vez por pasada
   (async () => {
     const heroes = await window.tc_loadHeroesDestino();
-    const hayHeroes = Array.isArray(heroes) && heroes.length > 0;
-
-    // 🔹 Si hay héroes → ocultamos el botón global (solo los locales visibles)
-    // 🔹 Si no hay héroes → mostramos el botón global y no insertamos botones individuales
-    const btnGlobal = document.getElementById('btn_coger_tesoro');
-    if (btnGlobal) btnGlobal.style.visibility = hayHeroes ? 'hidden' : 'visible';
-    if (!hayHeroes) return; // no creamos botones en los ítems si no hay héroes
 
     items.forEach(itemEl => {
-      if (itemEl.dataset.tcEnhanced) return;
+      if (itemEl.dataset.tcEnhanced) return; // ya está mejorado
       itemEl.dataset.tcEnhanced = '1';
 
       const ctrls = document.createElement('div');
       ctrls.className = 'tc-controls';
       ctrls.style.cssText = 'margin-top:8px; display:flex; align-items:center; gap:6px;';
 
+      if (!heroes.length) {
+        // Sin héroes disponibles: mostramos aviso en lugar de controles
+        ctrls.innerHTML = `<div class="text-warning" style="font-size:.9rem;">No hay héroes disponibles en slots.</div>`;
+        itemEl.appendChild(ctrls);
+        return;
+      }
+
       const selHtml = `
         <select class="form-select form-select-sm tc-hero-sel" title="Héroe destino" style="width:auto;display:inline-block;margin-right:6px;">
           ${heroes.map(h => `<option value="${h.slot}">Slot ${h.slot} — ${h.nombre}</option>`).join('')}
         </select>
       `;
-      ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario"></button>`;
+      ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success tc-btn-coger">Coger para Héroe</button>`;
       itemEl.appendChild(ctrls);
 
-      const btn = ctrls.querySelector('.btn-coger-inventario');
+      const btn = ctrls.querySelector('.tc-btn-coger');
       btn.addEventListener('click', async (ev) => {
         const sel = ctrls.querySelector('.tc-hero-sel');
         const slot = Number(sel && sel.value || 0);
-        if (!slot) {
-          Swal.fire('Selecciona un héroe','Debes elegir un destino','info');
-          return;
-        }
+        if (!slot) { Swal.fire('Selecciona un héroe','Debes elegir un destino','info'); return; }
 
         try {
           const parsed = window.tc_parseEnemyItem(itemEl);
           const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
 
+          // Feedback + reemplazo de controles
           const msg = document.createElement('div');
           msg.className = 'text-success';
           msg.style.marginTop = '4px';
           msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
           ctrls.replaceWith(msg);
 
+          // refrescar slots si está abierto en otra pestaña
           if (window.refreshAllSlots) window.refreshAllSlots();
           if (typeof window.BajarMoral === 'function') window.BajarMoral(1);
 
@@ -738,71 +740,47 @@ window.enhanceEnemyItems = function (root=document) {
 // --- Héroes disponibles (slots con personaje) ---
 // Acceso directo a IndexedDB (PersonajesDB), sin depender de otros scripts
 window.tc_loadHeroesDestino = async function () {
-    try {
-        const slots = await window.__tc_idb.getAllSlots();
-        const withHero = (slots || []).filter(a => a && a.personajeId);
-        const opciones = [];
-        for (const a of withHero) {
-            let nombre = '';
-            try {
-                const pj = await window.__tc_idb.getPersonajeById(a.personajeId);
-                nombre = pj && (pj.nombre || pj.name) || '';
-            } catch (_) { }
-            opciones.push({ slot: a.slot, nombre: nombre || ('Héroe ' + a.slot) });
-        }
-        opciones.sort((A, B) => A.slot - B.slot);
-        return opciones;
-    } catch (e) {
-        console.error('tc_loadHeroesDestino error:', e);
-        return [];
+  try {
+    const slots = await window.__tc_idb.getAllSlots();
+    const withHero = (slots || []).filter(a => a && a.personajeId);
+    const opciones = [];
+    for (const a of withHero) {
+      let nombre = '';
+      try {
+        const pj = await window.__tc_idb.getPersonajeById(a.personajeId);
+        nombre = pj && (pj.nombre || pj.name) || '';
+      } catch(_) {}
+      opciones.push({ slot: a.slot, nombre: nombre || ('Héroe ' + a.slot) });
     }
+    opciones.sort((A,B)=>A.slot-B.slot);
+    return opciones;
+  } catch (e) {
+    console.error('tc_loadHeroesDestino error:', e);
+    return [];
+  }
 };
 
 // --- Observa el DOM y mejora nuevos .enemigo-item al vuelo ---
 (function bootEnhancerObserver() {
-    const runEnhance = () => { try { window.enhanceEnemyItems(document); } catch (_) { } };
+  const runEnhance = () => { try { window.enhanceEnemyItems(document); } catch(_) {} };
 
-    // Primera pasada por si ya hay items en DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', runEnhance, { once: true });
-    } else {
-        runEnhance();
+  // Primera pasada por si ya hay items en DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runEnhance, { once: true });
+  } else {
+    runEnhance();
+  }
+
+  // Observa el body por nuevos .enemigo-item (tesoros aleatorios, select, buscatesoros, etc.)
+  const obs = new MutationObserver((muts) => {
+    for (const m of muts) {
+      if (!m.addedNodes) continue;
+      for (const n of m.addedNodes) {
+        if (!(n instanceof HTMLElement)) continue;
+        if (n.matches && n.matches('.enemigo-item')) { runEnhance(); return; }
+        if (n.querySelector && n.querySelector('.enemigo-item')) { runEnhance(); return; }
+      }
     }
-
-    // Observa el body por nuevos .enemigo-item (tesoros aleatorios, select, buscatesoros, etc.)
-    const obs = new MutationObserver((muts) => {
-        for (const m of muts) {
-            if (!m.addedNodes) continue;
-            for (const n of m.addedNodes) {
-                if (!(n instanceof HTMLElement)) continue;
-                if (n.matches && n.matches('.enemigo-item')) { runEnhance(); return; }
-                if (n.querySelector && n.querySelector('.enemigo-item')) { runEnhance(); return; }
-            }
-        }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
-})();
-
-
-// --- Mostrar/ocultar el botón general "Coger Tesoro" según haya héroes o no ---
-(async () => {
-    try {
-        const btnGlobal = document.getElementById('btn_coger_tesoro');
-        if (!btnGlobal) return;
-
-        const heroes = await window.tc_loadHeroesDestino();
-        if (heroes.length > 0) {
-            // Hay héroes en slots → ocultamos el botón global
-            btnGlobal.style.visibility = "hidden";
-            // Y permitimos que los botones individuales class="btn_coger_tesoro" se vean
-            document.querySelectorAll('.btn_coger_tesoro').forEach(b => b.style.visibility = 'visible');
-        } else {
-            // No hay héroes → mostramos el botón global
-            btnGlobal.style.visibility = "visible";
-            // Y ocultamos los individuales (si hubiera)
-            document.querySelectorAll('.btn_coger_tesoro').forEach(b => b.style.visibility = 'hidden');
-        }
-    } catch (e) {
-        console.error('Error comprobando héroes disponibles:', e);
-    }
+  });
+  obs.observe(document.body, { childList: true, subtree: true });
 })();

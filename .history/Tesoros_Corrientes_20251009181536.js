@@ -673,66 +673,69 @@ window.tc_addItemToHero = async function (slot, categoria, item) {
 
 // --- Mejora cada enemigo-item con Select de Héroe + Botón "Coger" ---
 // --- Inserta Select de héroe + botón "Coger para Héroe" en cada .enemigo-item ---
-// --- Inserta Select de héroe + botón "Coger para Héroe" en cada .enemigo-item ---
-window.enhanceEnemyItems = function (root=document) {
-  const items = root.querySelectorAll('.enemigo-item');
-  if (!items.length) return;
+window.enhanceEnemyItems = function (root = document) {
+    const items = root.querySelectorAll('.enemigo-item');
+    if (!items.length) return;
 
-  (async () => {
-    const heroes = await window.tc_loadHeroesDestino();
-    const hayHeroes = Array.isArray(heroes) && heroes.length > 0;
+    // Cargamos héroes una sola vez por pasada
+    (async () => {
+        const heroes = await window.tc_loadHeroesDestino();
 
-    // 🔹 Si hay héroes → ocultamos el botón global (solo los locales visibles)
-    // 🔹 Si no hay héroes → mostramos el botón global y no insertamos botones individuales
-    const btnGlobal = document.getElementById('btn_coger_tesoro');
-    if (btnGlobal) btnGlobal.style.visibility = hayHeroes ? 'hidden' : 'visible';
-    if (!hayHeroes) return; // no creamos botones en los ítems si no hay héroes
+        items.forEach(itemEl => {
+            if (itemEl.dataset.tcEnhanced) return; // ya está mejorado
+            itemEl.dataset.tcEnhanced = '1';
 
-    items.forEach(itemEl => {
-      if (itemEl.dataset.tcEnhanced) return;
-      itemEl.dataset.tcEnhanced = '1';
+            const ctrls = document.createElement('div');
+            ctrls.className = 'tc-controls';
+            ctrls.style.cssText = 'margin-top:8px; display:flex; align-items:center; gap:6px;';
+            // 🔹 Si hay héroes → ocultamos el botón global (solo los locales visibles)
+            // 🔹 Si no hay héroes → mostramos el botón global y no insertamos botones individuales
+            const btnGlobal = document.getElementById('btn_coger_tesoro');
+            if (btnGlobal) btnGlobal.style.visibility = heroes ? 'hidden' : 'visible';
+            if (!heroes) return; // no creamos botones en los ítems si no hay héroes
+            if (!heroes.length) {
+                // Sin héroes disponibles: mostramos aviso en lugar de controles
+                ctrls.innerHTML = `<div class="text-warning" style="font-size:.9rem;">No hay héroes disponibles en slots.</div>`;
+                itemEl.appendChild(ctrls);
+                return;
+            }
 
-      const ctrls = document.createElement('div');
-      ctrls.className = 'tc-controls';
-      ctrls.style.cssText = 'margin-top:8px; display:flex; align-items:center; gap:6px;';
-
-      const selHtml = `
+            const selHtml = `
         <select class="form-select form-select-sm tc-hero-sel" title="Héroe destino" style="width:auto;display:inline-block;margin-right:6px;">
           ${heroes.map(h => `<option value="${h.slot}">Slot ${h.slot} — ${h.nombre}</option>`).join('')}
         </select>
       `;
-      ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario"></button>`;
-      itemEl.appendChild(ctrls);
+            ctrls.innerHTML = `${selHtml}<button type="button" class="btn-coger-inventario" ></button>`;
+            itemEl.appendChild(ctrls);
 
-      const btn = ctrls.querySelector('.btn-coger-inventario');
-      btn.addEventListener('click', async (ev) => {
-        const sel = ctrls.querySelector('.tc-hero-sel');
-        const slot = Number(sel && sel.value || 0);
-        if (!slot) {
-          Swal.fire('Selecciona un héroe','Debes elegir un destino','info');
-          return;
-        }
+            const btn = ctrls.querySelector('.tc-btn-coger');
+            btn.addEventListener('click', async (ev) => {
+                const sel = ctrls.querySelector('.tc-hero-sel');
+                const slot = Number(sel && sel.value || 0);
+                if (!slot) { Swal.fire('Selecciona un héroe', 'Debes elegir un destino', 'info'); return; }
 
-        try {
-          const parsed = window.tc_parseEnemyItem(itemEl);
-          const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
+                try {
+                    const parsed = window.tc_parseEnemyItem(itemEl);
+                    const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
 
-          const msg = document.createElement('div');
-          msg.className = 'text-success';
-          msg.style.marginTop = '4px';
-          msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
-          ctrls.replaceWith(msg);
+                    // Feedback + reemplazo de controles
+                    const msg = document.createElement('div');
+                    msg.className = 'text-success';
+                    msg.style.marginTop = '4px';
+                    msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
+                    ctrls.replaceWith(msg);
 
-          if (window.refreshAllSlots) window.refreshAllSlots();
-          if (typeof window.BajarMoral === 'function') window.BajarMoral(1);
+                    // refrescar slots si está abierto en otra pestaña
+                    if (window.refreshAllSlots) window.refreshAllSlots();
+                    if (typeof window.BajarMoral === 'function') window.BajarMoral(1);
 
-        } catch (err) {
-          console.error(err);
-          Swal.fire('Error', String(err && err.message || err), 'error');
-        }
-      });
-    });
-  })();
+                } catch (err) {
+                    console.error(err);
+                    Swal.fire('Error', String(err && err.message || err), 'error');
+                }
+            });
+        });
+    })();
 };
 
 // --- Héroes disponibles (slots con personaje) ---

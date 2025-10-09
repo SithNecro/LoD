@@ -701,7 +701,7 @@ window.enhanceEnemyItems = function (root=document) {
           ${heroes.map(h => `<option value="${h.slot}">Slot ${h.slot} — ${h.nombre}</option>`).join('')}
         </select>
       `;
-      ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario"></button>`;
+      ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario">Coger para Héroe</button>`;
       itemEl.appendChild(ctrls);
 
       const btn = ctrls.querySelector('.btn-coger-inventario');

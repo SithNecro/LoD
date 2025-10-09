@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesoros Superior</title>
+    <title>Tesoros Corrientes</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="menu-acordeon.css">
 
@@ -24,17 +24,6 @@
             display: flex;
 
             gap: 10px;
-        }
-
-        .btn-coger-inventario {
-            width: 100px;
-            height: 100px;
-            background: url('img/interface/coger_tesoro.png') no-repeat center center;
-            background-size: contain;
-            border: 2px solid #9d5c48;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
         }
 
         .content-right {
@@ -150,6 +139,17 @@
 
         }
 
+        .btn-coger-inventario {
+            width: 80px;
+            height: 80px;
+            background: url('img/interface/coger_tesoro.png') no-repeat center center;
+            background-size: contain;
+            border: 2px solid #9d5c48;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
         .info-panel {
             flex: 1;
             min-width: 300px;
@@ -238,10 +238,10 @@
 
     <!-- Zona de contenido principal -->
     <div class="main-content">
-        <h1>Tesoros Superiores</h1>
+        <h1>Tesoros Corrientes</h1>
         <!-- Botones en la parte superior izquierda -->
         <div class="top-buttons">
-            <button class="btn_abrir_tesoro" onclick="cargarTesoroSuperior()" id="tesoro-btn"></button>
+            <button class="btn_abrir_tesoro" onclick="cargarTesoroCorriente()" id="tesoro-btn"></button>
             <button class="btn_barajar_tesoro" onclick="barajarTesoros()"></button>
             <button class="btn_habilidad_buscatesoros" onclick="habilidadBuscatesoros()"></button>
 
@@ -262,7 +262,7 @@
                 <!-- Contenedor que agrupa la imagen+selector y la info -->
                 <div class="single-treasure-wrapper">
                     <div class="treasure-container" id="single-treasure-container">
-                        <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro" alt="Tesoro Superior"
+                        <img src="img/traseras/Trasera tesoro corriente.png" id="imagen-tesoro" alt="Tesoro Corriente"
                             class="treasure-image">
                         <select class="Desplegable" id="selector-tesoro-0" onchange="cambiarImagenSeleccionada()">
                             <!-- opciones -->
@@ -277,7 +277,7 @@
             <div class="two-treasures-container" id="two-treasures-container">
                 <!-- Primer tesoro -->
                 <div class="treasure-container">
-                    <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro-1" alt="Tesoro Superior"
+                    <img src="img/traseras/Trasera tesoro corriente.png" id="imagen-tesoro-1" alt="Tesoro Corriente"
                         class="treasure-image">
                     <select class="Desplegable" id="selector-tesoro-1" onchange="cambiarImagenSeleccionadaTesoro1()">
                         <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
@@ -286,7 +286,7 @@
 
                 <!-- Segundo tesoro -->
                 <div class="treasure-container">
-                    <img src="img/traseras/Trasera_tesoro_superior.png" id="imagen-tesoro-2" alt="Tesoro Superior"
+                    <img src="img/traseras/Trasera tesoro corriente.png" id="imagen-tesoro-2" alt="Tesoro Corriente"
                         class="treasure-image">
                     <select class="Desplegable" id="selector-tesoro-2" onchange="cambiarImagenSeleccionadaTesoro2()">
                         <!-- Aquí se añadirán los nombres de los archivos mediante JavaScript -->
@@ -297,8 +297,7 @@
     </div>
 
     </div>
-
-    <script src="Tesoros_Superiores.js"></script>
+    <script src="Tesoros_Corrientes.js"></script>
 
     <script src="menu-acordeon.js"></script>
 
