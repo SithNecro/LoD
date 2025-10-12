@@ -4416,3 +4416,115 @@
     ]
 }
 
+{
+    "Mágicos": [
+        {
+            "Tipomagico": "Piedras de poder",
+            "seleccion": "1d20",
+            "tabla": [
+                {
+                    
+                            "Tirada": 1,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+2 DAÑ. Esta piedra se puede utilizar para mejorar cualquier arma."
+                        },
+                        {
+                            "Tirada": 2,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+3 DAÑ. Esta piedra se puede utilizar para mejorar cualquier arma."
+                        },
+                        {
+                            "Tirada": 3,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "Venenoso. Esta piedra le da al arma la habilidad Venenoso permanentemente. Si un monstruo es herido por esta arma, perderá 1 VIT cada turno hasta el final de la batalla."
+                        },
+                        {
+                            "Tirada": 4,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "DAÑ de fuego. Esta piedra hace que el arma cause daño de fuego. Consulta la sección Daño de Fuego en el capítulo Combate para tener más información."
+                        },
+                        {
+                            "Tirada": 5,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+10 al impacto. Esta piedra dará +10HC/HD al hacer que el arma esté perfectamente balanceada, aumentando las posibilidades de acertar."
+                        },
+                        {
+                            "Tirada": 6,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+5 FUE. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador."
+                        },
+                        {
+                            "Tirada": 7,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+5 CON. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador."
+                        },
+                        {
+                            "Tirada": 8,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+5 SAB. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador."
+                        },
+                        {
+                            "Tirada": 9,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+5 DET. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador."
+                        },
+                        {
+                            "Tirada": 10,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+5 DES. Se puede usar en anillos o amuletos, mejorando la estadística del portador."
+                        },
+                        {
+                            "Tirada": 11,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "Recarga rápida. Reduce el tiempo de recarga a 1PA. Si el Héroe tiene recarga rápida, puede disparar dos veces en la primera acción (pero sólo una vez en la segunda)."
+                        },
+                        {
+                            "Tirada": 12,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+2 DEF. Puede usarse para mejorar una pieza de armadura o escudo."
+                        },
+                        {
+                            "Tirada": 13,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+1 punto de energía por misión. Se puede imbuir en un anillo o amuleto. El Héroe comienza con 1 punto de energía más de lo permitido normalmente."
+                        },
+                        {
+                            "Tirada": 14,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+1 suerte. Esto se puede imbuir en un anillo o amuleto. El Héroe que lo porte tendrá 1 punto más de suerte de lo habitual."
+                        },
+                        {
+                            "Tirada": 15,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+10 Detectar trampas. Esto se puede imbuir en un anillo o amuleto. Cuando se solicite al Héroe una prueba de detección de trampa, esta bonificación ayudará."
+                        },
+                        {
+                            "Tirada": 16,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+1 Ficha de iniciativa en el primer turno del combate. Esto se puede imbuir en un anillo o amuleto."
+                        },
+                        {
+                            "Tirada": 17,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "Posibilidad de repetir tirada en test de miedo/terror. Puede imbuirse en anillos y amuletos."
+                        },
+                        {
+                            "Tirada": 18,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+2 VIT. Esta piedra aumentará el número de heridas que puedes soportar al inicio de la misión. Esto puede imbuirse en un anillo o amuleto."
+                        },
+                        {
+                            "Tirada": 19,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+2 Moral de Grupo. Si un Héroe lleva un objeto con este poder, la moral del grupo comienza 2 puntos más alta. Esto puede imbuirse en un anillo o amuleto."
+                        },
+                        {
+                            "Tirada": 20,
+                            "Tipo": "Piedra de Poder",
+                            "Efecto": "+2 puntos de Cordura. Esto puede imbuirse en un anillo o amuleto. El Héroe tendrá 2 puntos más de cordura de los que normalmente tendría."
+                        }
+                    ]
+                }
+            ]
+        }
+ 
