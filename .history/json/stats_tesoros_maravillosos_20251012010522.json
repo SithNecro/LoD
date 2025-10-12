@@ -1,0 +1,2115 @@
+﻿{
+    "Tesoro_Maravilloso":  [
+{
+  "nombre": "Amuleto del Minero.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Colgante",
+      "Daño": null,
+      "Defensa": null,
+      "Peso / Clase": "1/",
+      "Recarga": null,
+      "Valor": 250,
+      "Efecto": "Una vez por mina, un héroe que lleve este amuleto puede repetir la tirada de identificación de un mineral o repetir la tirada de cantidad. Este amuleto puede proteger también de los caprichos de la Dama de la Mina.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},     
+{
+  "nombre": "Amuleto del Montaraz.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "objeto",
+      "Daño": null,
+      "Defensa": null,
+      "Peso / Clase": "1/",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Cualquier héroe que lleve este amuleto ganará +5 Supervivencia.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Amuleto mágico.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "seleccion": "1d20",
+  "tabla": [
+    { "tirada": 1, "Tipo": "Collar mágico +2 DAÑ", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 DAÑ. Esta piedra se puede utilizar para mejorar cualquier arma.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 2, "Tipo": "Collar mágico +3 DAÑ", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+3 DAÑ. Esta piedra se puede utilizar para mejorar cualquier arma.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 3, "Tipo": "Collar mágico Venenoso", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "Venenoso. Esta piedra le da al arma la habilidad Venenoso permanentemente. Si un monstruo es herido por esta arma, perderá 1 VIT cada turno hasta el final de la batalla.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 4, "Tipo": "Collar mágico Fuego", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "DAÑ de fuego. Esta piedra hace que el arma cause daño de fuego. Consulta la sección Daño de Fuego en el capítulo Combate para tener más información.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 5, "Tipo": "Collar mágico +10 HC/HD", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+10 al impacto. Esta piedra dará +10HC/HD al hacer que el arma esté perfectamente balanceada, aumentando las posibilidades de acertar.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 6, "Tipo": "Collar mágico +5 FUEal azar", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 FUE. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 7, "Tipo": "Collar mágico +5 CON", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 CON. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 8, "Tipo": "Collar mágico +5 SAB", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 SAB. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 9, "Tipo": "Collar mágico +5 DET", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 DET. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 10, "Tipo": "Collar mágico +5 DES", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 DES. Se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 11, "Tipo": "Collar mágico Recarga Rápida", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "Recarga rápida. Reduce el tiempo de recarga a 1PA. Si el Héroe tiene recarga rápida, puede disparar dos veces en la primera acción (pero sólo una vez en la segunda).", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 12, "Tipo": "Collar mágico +2 DEF", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 DEF. Puede usarse para mejorar una pieza de armadura o escudo.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 13, "Tipo": "Collar mágico +1 ENERGÍA", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+1 punto de energía por misión. Se puede imbuir en un anillo o amuleto. El Héroe comienza con 1 punto de energía más de lo permitido normalmente.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 14, "Tipo": "Collar mágico +1 SUERTE", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+1 suerte. Esto se puede imbuir en un anillo o amuleto. El Héroe que lo porte tendrá 1 punto más de suerte de lo habitual.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 15, "Tipo": "Collar mágico +10 Detectar Trampas", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+10 Detectar trampas. Esto se puede imbuir en un anillo o amuleto. Cuando se solicite al Héroe una prueba de detección de trampa, esta bonificación ayudará.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 16, "Tipo": "Collar mágico +1 Iniciativa", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+1 Ficha de iniciativa en el primer turno del combate. Esto se puede imbuir en un anillo o amuleto.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 17, "Tipo": "Collar mágico Repetir Miedo/Terror", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "Posibilidad de repetir tirada en test de miedo/terror. Puede imbuirse en anillos y amuletos.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 18, "Tipo": "Collar mágico +2 VIT", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 VIT. Esta piedra aumentará el número de heridas que puedes soportar al inicio de la misión. Esto puede imbuirse en un anillo o amuleto.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 19, "Tipo": "Collar mágico +2 Moral", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 Moral de Grupo. Si un Héroe lleva un objeto con este poder, la moral del grupo comienza 2 puntos más alta. Esto puede imbuirse en un anillo o amuleto.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 20, "Tipo": "Collar mágico +2 CORDURA", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 puntos de Cordura. Esto puede imbuirse en un anillo o amuleto. El Héroe tendrá 2 puntos más de cordura de los que normalmente tendría.", "Leyenda": "", "Unidades": "1" }
+  ]
+},
+{
+  "nombre": "Anillo mágico.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "seleccion": "1d20",
+  "tabla": [
+    { "tirada": 1, "Tipo": "Anillo mágico +2 DAÑ", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 DAÑ. Esta piedra se puede utilizar para mejorar cualquier arma.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 2, "Tipo": "Anillo mágico +3 DAÑ", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+3 DAÑ. Esta piedra se puede utilizar para mejorar cualquier arma.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 3, "Tipo": "Anillo mágico Venenoso", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "Venenoso. Esta piedra le da al arma la habilidad Venenoso permanentemente. Si un monstruo es herido por esta arma, perderá 1 VIT cada turno hasta el final de la batalla.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 4, "Tipo": "Anillo mágico Fuego", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "DAÑ de fuego. Esta piedra hace que el arma cause daño de fuego. Consulta la sección Daño de Fuego en el capítulo Combate para tener más información.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 5, "Tipo": "Anillo mágico +10 HC/HD", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+10 al impacto. Esta piedra dará +10HC/HD al hacer que el arma esté perfectamente balanceada, aumentando las posibilidades de acertar.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 6, "Tipo": "Anillo mágico +5 FUEal azar", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 FUE. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 7, "Tipo": "Anillo mágico +5 CON", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 CON. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 8, "Tipo": "Anillo mágico +5 SAB", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 SAB. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 9, "Tipo": "Anillo mágico +5 DET", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 DET. Esta piedra se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 10, "Tipo": "Anillo mágico +5 DES", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+5 DES. Se puede usar en anillos o amuletos, mejorando la estadística del portador.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 11, "Tipo": "Anillo mágico Recarga Rápida", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "Recarga rápida. Reduce el tiempo de recarga a 1PA. Si el Héroe tiene recarga rápida, puede disparar dos veces en la primera acción (pero sólo una vez en la segunda).", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 12, "Tipo": "Anillo mágico +2 DEF", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 DEF. Puede usarse para mejorar una pieza de armadura o escudo.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 13, "Tipo": "Anillo mágico +1 ENERGÍA", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+1 punto de energía por misión. Se puede imbuir en un anillo o amuleto. El Héroe comienza con 1 punto de energía más de lo permitido normalmente.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 14, "Tipo": "Anillo mágico +1 SUERTE", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+1 suerte. Esto se puede imbuir en un anillo o amuleto. El Héroe que lo porte tendrá 1 punto más de suerte de lo habitual.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 15, "Tipo": "Anillo mágico +10 Detectar Trampas", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+10 Detectar trampas. Esto se puede imbuir en un anillo o amuleto. Cuando se solicite al Héroe una prueba de detección de trampa, esta bonificación ayudará.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 16, "Tipo": "Anillo mágico +1 Iniciativa", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+1 Ficha de iniciativa en el primer turno del combate. Esto se puede imbuir en un anillo o amuleto.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 17, "Tipo": "Anillo mágico Repetir Miedo/Terror", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "Posibilidad de repetir tirada en test de miedo/terror. Puede imbuirse en anillos y amuletos.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 18, "Tipo": "Anillo mágico +2 VIT", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 VIT. Esta piedra aumentará el número de heridas que puedes soportar al inicio de la misión. Esto puede imbuirse en un anillo o amuleto.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 19, "Tipo": "Anillo mágico +2 Moral", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 Moral de Grupo. Si un Héroe lleva un objeto con este poder, la moral del grupo comienza 2 puntos más alta. Esto puede imbuirse en un anillo o amuleto.", "Leyenda": "", "Unidades": "1" },
+    { "tirada": 20, "Tipo": "Anillo mágico +2 CORDURA", "Daño": null, "Defensa": null, "Peso / Clase": "1/", "Recarga": null, "Valor": 700, "Efecto": "+2 puntos de Cordura. Esto puede imbuirse en un anillo o amuleto. El Héroe tendrá 2 puntos más de cordura de los que normalmente tendría.", "Leyenda": "", "Unidades": "1" }
+  ]
+},
+{
+  "nombre": "Arco élfico.png",
+  "rotura": "0",
+  "categoria": "arma",
+  "durabilidad": 8,
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Arco Élfico",
+      "Daño": "1d10+2",
+      "Peso / Clase": "7 / 6",
+      "Recarga": 1,
+      "Valor": 700,
+      "Efecto": null,
+      "Leyenda": "Recarga 1 PA"
+    }
+  ]
+},
+{
+  "nombre": "Arma de Mithril (2).png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 8,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Hacha de Batalla de Mithril",
+      "Daño": "1d10+2",
+      "Peso / Clase": "9 / 4",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": null,
+      "Leyenda": "Este arma de filo está hecha de Mithril, un buen hallazgo.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Daga de Mithril",
+      "Daño": "1d6+1",
+      "Peso / Clase": "4 / 1",
+      "Recarga": null,
+      "Valor": 50,
+      "Efecto": null,
+      "Leyenda": "Este arma de filo está hecha de Mithril, un buen hallazgo.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Espada Corta de Mithril",
+      "Daño": "1d6+3",
+      "Peso / Clase": "6 / 2",
+      "Recarga": null,
+      "Valor": 140,
+      "Efecto": null,
+      "Leyenda": "Este arma de filo está hecha de Mithril, un buen hallazgo.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 4,
+      "Tipo": "Estoque de Mithril",
+      "Daño": "1d6+2",
+      "Peso / Clase": "4 / 1",
+      "Recarga": null,
+      "Valor": 260,
+      "Efecto": null,
+      "Leyenda": "Este arma de filo está hecha de Mithril, un buen hallazgo.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Arma de Mithril (3).png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 8,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Espada Larga de Mithril",
+      "Daño": "1d12+1",
+      "Peso / Clase": "9 / 4",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": null,
+      "Leyenda": "Las armas de mithril son difíciles de encontrar ya que sólo los herreros enanos saben cómo trabajarlo.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Mar de Guerra de Mithril",
+      "Daño": "2d6+1",
+      "Peso / Clase": "19 / 5",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": null,
+      "Leyenda": "Las armas de mithril son difíciles de encontrar ya que sólo los herreros enanos saben cómo trabajarlo.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Mar de Batalla de Mithril",
+      "Daño": "1d10+1",
+      "Peso / Clase": "9 / 4",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": null,
+      "Leyenda": "Las armas de mithril son difíciles de encontrar ya que sólo los herreros enanos saben cómo trabajarlo.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 4,
+      "Tipo": "Lucero del Alba de Mithril",
+      "Daño": "1d8+45",
+      "Peso / Clase": "9 / 4",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": null,
+      "Leyenda": "Las armas de mithril son difíciles de encontrar ya que sólo los herreros enanos saben cómo trabajarlo.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Arma de Mithril.png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 8,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Espadón de Mithril",
+      "Daño": "2d6+1",
+      "Peso / Clase": "19 / 5",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": null,
+      "Leyenda": "Esta excelente arma está claramente hecha por un herrero enano, a juzgar por la artesanía y el hecho de que es totalmente de Mithril.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Gran Hacha de Mithril",
+      "Daño": "1d12+3",
+      "Peso / Clase": "19 / 5",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": null,
+      "Leyenda": "Esta excelente arma está claramente hecha por un herrero enano, a juzgar por la artesanía y el hecho de que es totalmente de Mithril.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Mayal de Mithril",
+      "Daño": "1d10+5",
+      "Peso / Clase": "19 / 5",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": null,
+      "Leyenda": "Esta excelente arma está claramente hecha por un herrero enano, a juzgar por la artesanía y el hecho de que es totalmente de Mithril.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 4,
+      "Tipo": "Alabarda de Mithril",
+      "Daño": "1d12+1",
+      "Peso / Clase": "19 / 5",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": null,
+      "Leyenda": "Esta excelente arma está claramente hecha por un herrero enano, a juzgar por la artesanía y el hecho de que es totalmente de Mithril.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Arma mágica (2).png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 6,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Ballesta mágica",
+      "Daño": "1d10+3",
+      "Peso / Clase": "15 / 6",
+      "Recarga": null,
+      "Valor": 750,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma a distancia de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Pistola Ballesta mágica",
+      "Daño": "1d8+1",
+      "Peso / Clase": "5 / 2",
+      "Recarga": null,
+      "Valor": 1050,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma a distancia de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Arco Élfico mágico",
+      "Daño": "1d10+2",
+      "Peso / Clase": "7 / 6",
+      "Recarga": null,
+      "Valor": 1500,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma a distancia de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 4,
+      "Tipo": "Arco Largo mágico",
+      "Daño": "1d10",
+      "Peso / Clase": "10 / 6",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma a distancia de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Arma mágica (3).png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 6,
+  "seleccion": "1d3",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Bastón mágico",
+      "Daño": "1d8",
+      "Peso / Clase": "5 / 2",
+      "Recarga": null,
+      "Valor": 150,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Jabalina mágica",
+      "Daño": "1d10",
+      "Peso / Clase": "10 / 2",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Arco Corto mágico",
+      "Daño": "1d8",
+      "Peso / Clase": "5 / 6",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Arma mágica (4).png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 6,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Hacha de Batalla mágica",
+      "Daño": "1d10+1",
+      "Peso / Clase": "10 / 4",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de filo de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Daga mágica",
+      "Daño": "1d6",
+      "Peso / Clase": "5 / 1",
+      "Recarga": null,
+      "Valor": 100,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de filo de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Espada Corta mágica",
+      "Daño": "1d10+4",
+      "Peso / Clase": "7 / 2",
+      "Recarga": null,
+      "Valor": 210,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de filo de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 4,
+      "Tipo": "Estoque mágico",
+      "Daño": "1d12",
+      "Peso / Clase": "5 / 1",
+      "Recarga": null,
+      "Valor": 390,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de filo de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+                      {
+  "nombre": "Arma mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": 6,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": 1,
+      "Tipo": "Espadón mágico",
+      "Daño": "2d6",
+      "Peso / Clase": "20 / 5",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 2,
+      "Tipo": "Gran Hacha mágica",
+      "Daño": "1d12+2",
+      "Peso / Clase": "20 / 5",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 3,
+      "Tipo": "Mayal mágico",
+      "Daño": "1d10+4",
+      "Peso / Clase": "20 / 5",
+      "Recarga": null,
+      "Valor": 450,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": 4,
+      "Tipo": "Alabarda mágica",
+      "Daño": "1d12",
+      "Peso / Clase": "20 / 5",
+      "Recarga": null,
+      "Valor": 450,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Has encontrado un arma de calidad exquisita y por cómo se te eriza el cabello al tocarla, debe tener propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura acolchada mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Gorro acolchado mágico",
+      "Defensa": "2",
+      "Peso / Clase": "1",
+      "Recarga": null,
+      "Valor": 90,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza de armadura acolchada, sucia, pero que emana magia.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2-3",
+      "Tipo": "Chaleco acolchado mágico",
+      "Defensa": "2",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 180,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza de armadura acolchada, sucia, pero que emana magia.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Casaca acolchada mágica",
+      "Defensa": "2",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 360,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza de armadura acolchada, sucia, pero que emana magia.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Pantalones acolchados mágicos",
+      "Defensa": "2",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza de armadura acolchada, sucia, pero que emana magia.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Abrigo acolchado mágico",
+      "Defensa": "2",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza de armadura acolchada, sucia, pero que emana magia.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Armadura de cuero mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Gorro de cuero mágico",
+      "Defensa": "3",
+      "Peso / Clase": "1",
+      "Recarga": null,
+      "Valor": 150,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Esta pieza de armadura claramente tiene propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2-3",
+      "Tipo": "Chaleco de cuero mágico",
+      "Defensa": "3",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 240,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Esta pieza de armadura claramente tiene propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Casaca de cuero mágica",
+      "Defensa": "3",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 420,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Esta pieza de armadura claramente tiene propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Pantalones de cuero mágicos",
+      "Defensa": "3",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 360,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Esta pieza de armadura claramente tiene propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Brazales de cuero mágicos",
+      "Defensa": "3",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 360,
+      "Efecto": "Tira en la tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Esta pieza de armadura claramente tiene propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de cuero tachonado mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1-2",
+      "Tipo": "Chaleco de cuero tachonado mágico",
+      "Defensa": "3",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 900,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar su encantamiento.",
+      "Leyenda": "Armadura de cuero tachonado con propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3-4",
+      "Tipo": "Casaca de cuero tachonado mágica",
+      "Defensa": "3",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1500,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar su encantamiento.",
+      "Leyenda": "Armadura de cuero tachonado con propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Brazales de cuero tachonado mágicos",
+      "Defensa": "3",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 450,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar su encantamiento.",
+      "Leyenda": "Armadura de cuero tachonado con propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Cota de cuero tachonado mágica",
+      "Defensa": "3",
+      "Peso / Clase": "8",
+      "Recarga": null,
+      "Valor": 2400,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar su encantamiento.",
+      "Leyenda": "Armadura de cuero tachonado con propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Armadura de escama de dragón.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Casco de escamas de dragón",
+      "Defensa": "7",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 1000,
+      "Efecto": "Trata el DAÑ de Fuego como si fuese normal. La durabilidad máx es 10.",
+      "Leyenda": "Una pieza de armadura de escama de Dragón. Hay muy pocas en el mundo, como era de esperar.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Casco de escamas de dragón",
+      "Defensa": "7",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 1000,
+      "Efecto": "Trata el DAÑ de Fuego como si fuese normal. La durabilidad máx es 10.",
+      "Leyenda": "Una pieza de armadura de escama de Dragón. Hay muy pocas en el mundo, como era de esperar.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Coraza de escamas de dragón",
+      "Defensa": "7",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 2300,
+      "Efecto": "Trata el DAÑ de Fuego como si fuese normal. La durabilidad máx es 10.",
+      "Leyenda": "Una pieza de armadura de escama de Dragón. Hay muy pocas en el mundo, como era de esperar.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Pantalones de escamas de dragón",
+      "Defensa": "7",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1900,
+      "Efecto": "Trata el DAÑ de Fuego como si fuese normal. La durabilidad máx es 10.",
+      "Leyenda": "Una pieza de armadura de escama de Dragón. Hay muy pocas en el mundo, como era de esperar.",
+      "Unidades": "1"
+    },
+     {
+      "tirada": "5",
+      "Tipo": "Pantalones de escamas de dragón",
+      "Defensa": "7",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1900,
+      "Efecto": "Trata el DAÑ de Fuego como si fuese normal. La durabilidad máx es 10.",
+      "Leyenda": "Una pieza de armadura de escama de Dragón. Hay muy pocas en el mundo, como era de esperar.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Brazales de escamas de dragón",
+      "Defensa": "7",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 2000,
+      "Efecto": "Trata el DAÑ de Fuego como si fuese normal. La durabilidad máx es 10.",
+      "Leyenda": "Una pieza de armadura de escama de Dragón. Hay muy pocas en el mundo, como era de esperar.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de escamas mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 10,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": "1-2",
+      "Tipo": "Chaleco de escamas mágico",
+      "Defensa": "4",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 2100,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar el encantamiento.",
+      "Leyenda": "Esta armadura tiene claras propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Casaca de escamas mágica",
+      "Defensa": "4",
+      "Peso / Clase": "8",
+      "Recarga": null,
+      "Valor": 3150,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar el encantamiento.",
+      "Leyenda": "Esta armadura tiene claras propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Abrigo de escamas mágico",
+      "Defensa": "4",
+      "Peso / Clase": "12",
+      "Recarga": null,
+      "Valor": 5100,
+      "Efecto": "Consultar tabla de propiedades mágicas para determinar el encantamiento.",
+      "Leyenda": "Esta armadura tiene claras propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre":  "Armadura de Malla (2).png",
+  "rotura": "1d2-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cofia de malla",
+      "Defensa": "4",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún puede servir.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Camisa de malla",
+      "Defensa": "4",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún puede servir.",
+      "Unidades": "1"
+    },
+     {
+      "tirada": "3",
+      "Tipo": "Camisa de malla",
+      "Defensa": "4",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún puede servir.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Cota de malla",
+      "Defensa": "4",
+      "Peso / Clase": "8",
+      "Recarga": null,
+      "Valor": 750,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún puede servir.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Camisa con mangas de malla",
+      "Defensa": "4",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 950,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún puede servir.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Pantalones de malla",
+      "Defensa": "4",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún puede servir.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de malla de Mithril (2).png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cofia de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Camisa de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+      {
+      "tirada": "3",
+      "Tipo": "Camisa de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Cota de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 1500,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Camisa con mangas de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 1900,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Pantalones de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Armadura de malla de Mithril.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cofia de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla hecha de Mithril brillante.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Camisa de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla hecha de Mithril brillante.",
+      "Unidades": "1"
+    },
+     {
+      "tirada": "3",
+      "Tipo": "Camisa de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla hecha de Mithril brillante.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Cota de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 1500,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla hecha de Mithril brillante.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Camisa con mangas de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 1900,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla hecha de Mithril brillante.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Pantalones de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla hecha de Mithril brillante.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Armadura de malla mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cofia de malla mágica",
+      "Defensa": "3",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla como nunca viste otra.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Camisa de malla mágica",
+      "Defensa": "3",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 1800,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla como nunca viste otra.",
+      "Unidades": "1"
+    },
+     {
+      "tirada": "3",
+      "Tipo": "Camisa de malla mágica",
+      "Defensa": "3",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 1800,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla como nunca viste otra.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Cota de malla mágica",
+      "Defensa": "3",
+      "Peso / Clase": "8",
+      "Recarga": null,
+      "Valor": 2250,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla como nunca viste otra.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Camisa con mangas de malla mágica",
+      "Defensa": "3",
+      "Peso / Clase": "10",
+      "Recarga": null,
+      "Valor": 2850,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla como nunca viste otra.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Pantalones de malla mágica",
+      "Defensa": "3",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla como nunca viste otra.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de malla.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cofia de malla",
+      "Defensa": "4",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún en forma.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Camisa de malla",
+      "Defensa": "4",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún en forma.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Camisa de malla",
+      "Defensa": "4",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún en forma.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Cota de malla",
+      "Defensa": "4",
+      "Peso / Clase": "8",
+      "Recarga": null,
+      "Valor": 750,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún en forma.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Camisa con mangas de malla",
+      "Defensa": "4",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 950,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún en forma.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Pantalones de malla",
+      "Defensa": "4",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de malla, usada pero aún en forma.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de Mithril.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cofia de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Camisa de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Camisa de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Cota de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 1500,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Camisa con mangas de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "9",
+      "Recarga": null,
+      "Valor": 2600,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Pantalones de malla de Mithril",
+      "Defensa": "5",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 400,
+      "Efecto": "",
+      "Leyenda": "Una maravillosa pieza de armadura de malla, que brilla como plata pulida.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de placas de Mithril.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Casco de placas de Mithril",
+      "Defensa": "6",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Coraza de placas de Mithril",
+      "Defensa": "6",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 1400,
+      "Efecto": "",
+      "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Pantalones de placas de de Mithril",
+      "Defensa": "6",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 1400,
+      "Efecto": "",
+      "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Brazales de placas de Mithril",
+      "Defensa": "6",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "",
+      "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de placas mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Casco de placas mágica",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 900,
+      "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Coraza de placas mágica",
+      "Defensa": "5",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 2100,
+      "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Pantalones de placas mágica",
+      "Defensa": "5",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 2100,
+      "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Brazales de placas mágica",
+      "Defensa": "5",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 1800,
+      "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+      "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura de placas.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Casco de placas",
+      "Defensa": "5",
+      "Peso / Clase": "5",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Coraza de placas",
+      "Defensa": "5",
+      "Peso / Clase": "7",
+      "Recarga": null,
+      "Valor": 700,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Pantalones de placas",
+      "Defensa": "5",
+      "Peso / Clase": "6",
+      "Recarga": null,
+      "Valor": 700,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Brazales de placas",
+      "Defensa": "5",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 600,
+      "Efecto": "",
+      "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Armadura del acechador nocturno.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1d6",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Casco del acechador nocturno",
+      "Defensa": "4",
+      "Peso / Clase": "1",
+      "Recarga": null,
+      "Valor": 230,
+      "Efecto": "Mira El Gremio Oscuro para detalles.",
+      "Leyenda": "Esta armadura negra está hecha de cuero de alta calidad reforzado con metal en lugares estratégicos.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Chaleco del acechador nocturno",
+      "Defensa": "4",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 650,
+      "Efecto": "Mira El Gremio Oscuro para detalles.",
+      "Leyenda": "Esta armadura negra está hecha de cuero de alta calidad reforzado con metal en lugares estratégicos.",
+      "Unidades": "1"
+    },
+     {
+      "tirada": "3",
+      "Tipo": "Chaleco del acechador nocturno",
+      "Defensa": "4",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 650,
+      "Efecto": "Mira El Gremio Oscuro para detalles.",
+      "Leyenda": "Esta armadura negra está hecha de cuero de alta calidad reforzado con metal en lugares estratégicos.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Casaca del acechador nocturno",
+      "Defensa": "4",
+      "Peso / Clase": "4",
+      "Recarga": null,
+      "Valor": 1000,
+      "Efecto": "Mira El Gremio Oscuro para detalles.",
+      "Leyenda": "Esta armadura negra está hecha de cuero de alta calidad reforzado con metal en lugares estratégicos.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "5",
+      "Tipo": "Pantalones del acechador nocturno",
+      "Defensa": "4",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 900,
+      "Efecto": "Mira El Gremio Oscuro para detalles.",
+      "Leyenda": "Esta armadura negra está hecha de cuero de alta calidad reforzado con metal en lugares estratégicos.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "6",
+      "Tipo": "Brazales del acechador nocturno",
+      "Defensa": "4",
+      "Peso / Clase": "3",
+      "Recarga": null,
+      "Valor": 150,
+      "Efecto": "Mira El Gremio Oscuro para detalles.",
+      "Leyenda": "Esta armadura negra está hecha de cuero de alta calidad reforzado con metal en lugares estratégicos.",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Arnés de combate.png",
+  "rotura": "1d3-1",
+  "categoria": "objeto",
+  "durabilidad": 6,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Arnés de combate",
+      "Defensa": "0",
+      "Peso / Clase": "0",
+      "Recarga": null,
+      "Valor": 500,
+      "Efecto": "Aumenta tus atajos de 3 a 5. No se puede combinar con cinturones de batalla o alquimista. Cualquier daño a un artículo en el arnés también lo dañará a él.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Arpa.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": 6,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Arpa",
+      "Defensa": "0",
+      "Peso / Clase": "2",
+      "Recarga": null,
+      "Valor": 100,
+      "Efecto": "Un Héroe puede usar el arpa durante un breve descanso si pasa una prueba de SAB. El NA se reduce en 1d3.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Capa de Wyvern.png",
+  "rotura": "1d2-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Capa de Wyvern",
+      "Defensa": "+3 (solo por ataques por detrás)",
+      "Peso / Clase": "2",
+      "Recarga": null,
+      "Valor": 1200,
+      "Efecto": "+3 DEF contra ataques por detrás.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Capa mágica.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 6,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Capa mágica",
+      "Defensa": "Variable según el encantamiento",
+      "Peso / Clase": "1",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Tira en la tabla de encantamientos para determinar su propiedad mágica.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+   {
+  "nombre": "Cinturón de batalla extendido.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": 6,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cinturón de batalla extendido",
+      "Defensa": "0",
+      "Peso / Clase": "0",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Aumenta tus atajos de 3 a 4.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+}
+,            
+{
+  "nombre": "Cuerda de arco élfica.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": 6,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Cuerda de arco élfica",
+      "Defensa": "0",
+      "Peso / Clase": "0",
+      "Recarga": null,
+      "Valor": 0,
+      "Efecto": "Se puede agregar a cualquier arco durante un descanso, viaje por tierra o estancia en asentamiento. Añade +5HD al arma.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+
+{
+  "nombre": "Escudo de Mithril.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Escudo Heraldo de Mithril",
+      "Defensa": "7",
+      "Peso / Clase": "9 / 3",
+      "Recarga": null,
+      "Valor": 300,
+      "Efecto": "Proporciona DEF 7 al portador. Hecho completamente de Mithril, combina ligereza y dureza excepcionales.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Escudo de Torre.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Escudo de Torre",
+      "Defensa": "8",
+      "Peso / Clase": "15 / 5",
+      "Recarga": null,
+      "Valor": 200,
+      "Efecto": "Proporciona DEF 8 al portador. Su enorme tamaño permite cubrir parcialmente a aliados cercanos.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Escudo mágico.png",
+  "rotura": "1d3-1",
+  "categoria": "armadura",
+  "durabilidad": 8,
+  "seleccion": "1d3",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Rodela mágica",
+      "Defensa": "4",
+      "Peso / Clase": "4 / 1",
+      "Valor": 120,
+      "Efecto": "Proporciona DEF 4. Ligero y ágil, permite movimientos rápidos.",
+      "Leyenda": "Este escudo tiene una fuerza que no cualquier ojo puede ver. Su superficie parece vibrar con energía sutil.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Escudo heraldo mágico",
+      "Defensa": "6",
+      "Peso / Clase": "10 / 3",
+      "Valor": 300,
+      "Efecto": "Proporciona DEF 6. Ofrece un equilibrio perfecto entre protección y peso.",
+      "Leyenda": "Un escudo con propiedades mágicas que irradia autoridad y poder.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Escudo de torre mágico",
+      "Defensa": "8",
+      "Peso / Clase": "15 / 5",
+      "Valor": 600,
+      "Efecto": "Proporciona DEF 8. Ideal para resistir ataques poderosos, especialmente cuando se canalizan sus encantamientos.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+},
+{
+  "nombre": "Flauta.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "seleccion": "1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Flauta",
+      "Defensa": null,
+      "Peso / Clase": "1 / 0",
+      "Valor": 100,
+      "Efecto": "Durante un breve descanso, un héroe puede usar la flauta y, si supera una prueba de SAB, reducir el NA en 1d3.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Flechas de punta plateada.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "Unidades":"1d10",
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": "1d1",
+      "Tipo": "Flechas de punta plateada",
+      "Defensa": null,
+      "Peso / Clase": "0 / 0",
+      "Valor": 0,
+      "Efecto": "Pueden dañar a criaturas etéreas y hacen +1 DAÑ a los no muertos.",
+      "Leyenda": ""
+    }
+  ]
+},
+{
+  "nombre": "Ganzuas enanas.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+        "Unidades": "1d6",
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": "1d1",
+      "Tipo": "Ganzúas enanas",
+      "Defensa": null,
+      "Peso / Clase": "0 / 0",
+      "Valor": 0,
+      "Efecto": "Otorgan +10 a las pruebas para forzar cerraduras.",
+      "Leyenda": ""
+    }
+  ]
+}
+,
+{
+  "nombre": "Gran arma de plata.png",
+  "rotura": "1d3-1",
+  "categoria": "arma",
+  "durabilidad": null,
+  "seleccion": "1d4",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Espadón de Plata",
+      "Daño": "2d6",
+      "Peso / Clase": "20 / 5",
+      "Valor": 300,
+      "Efecto": "Puede dañar criaturas etéreas y causa +1 DAÑ a los no muertos.",
+      "Leyenda": "Un espadón bañado en plata, pesado pero imponente, capaz de cortar incluso a los espíritus.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "2",
+      "Tipo": "Gran Hacha de Plata",
+      "Daño": "1d12+4",
+      "Peso / Clase": "20 / 5",
+      "Valor": 300,
+      "Efecto": "Puede dañar criaturas etéreas y causa +1 DAÑ a los no muertos.",
+      "Leyenda": "Un hacha de filo plateado, resplandeciente incluso bajo la oscuridad.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "3",
+      "Tipo": "Mayal de Plata",
+      "Daño": "1d10+4",
+      "Peso / Clase": "20 / 5",
+      "Valor": 225,
+      "Efecto": "Puede dañar criaturas etéreas y causa +1 DAÑ a los no muertos.",
+      "Leyenda": "El mayal vibra con energía sagrada cuando golpea a los no muertos.",
+      "Unidades": "1"
+    },
+    {
+      "tirada": "4",
+      "Tipo": "Alabarda de Plata",
+      "Daño": "1d12",
+      "Peso / Clase": "20 / 5",
+      "Valor": 225,
+      "Efecto": "Puede dañar criaturas etéreas y causa +1 DAÑ a los no muertos.",
+      "Leyenda": "Una alabarda forjada con un filo plateado, temida por los espectros y los condenados.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Grimorio.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "durabilidad": null,
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Grimorio",
+      "Defensa": null,
+      "Peso / Clase": "1 / 0",
+      "Valor": 0,
+      "Efecto": "Permite aprender un hechizo aleatorio en el gremio de Magos, si el héroe tiene el nivel adecuado.",
+      "Leyenda": "Un antiguo libro cubierto de símbolos arcanos. Se dice que cada grimorio contiene un conocimiento mágico distinto, esperando ser revelado.",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+  {
+      "nombre": "Ingredientes.png",
+      "rotura": null,
+      "categoria": "objeto",
+      "durabilidad": null,
+      "cantidad":"1d3",
+      "seleccion": "1d20*3",
+      "Unidades":"1",
+      "tabla": [
+        {
+          "tirada": 1,
+          "Tipo": "Baya Lunar",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": "Tira en la tabla de Ingredientes para aádirlo a tu Bolsa de Alquimia en calidad Exquisita."
+        },
+        {
+          "tirada": 2,
+          "Tipo": "Raíz Arqueada",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": "Tira en la tabla de Ingredientes para aádirlo a tu Bolsa de Alquimia en calidad Exquisita."
+        },
+        {
+          "tirada": 3,
+          "Tipo": "Jengibre Ceniciento",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 4,
+          "Tipo": "Agenjo Espinado",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 5,
+          "Tipo": "Ambrosía",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 6,
+          "Tipo": "Equinace Azul",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 7,
+          "Tipo": "Callicarpa Brillante",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 8,
+          "Tipo": "Polen del Amaru",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 9,
+          "Tipo": "Corteza de Arce Rojo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 10,
+          "Tipo": "Frambuesa Gigante",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 11,
+          "Tipo": "Laurel del Monje",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 12,
+          "Tipo": "Agracejo",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 13,
+          "Tipo": "Belladona",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 14,
+          "Tipo": "Artemisa Salada",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 15,
+          "Tipo": "Dulcamara",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 16,
+          "Tipo": "Asclepia Picante",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 17,
+          "Tipo": "Hiedra Dulce",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 18,
+          "Tipo": "Perejil Tóxico",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 19,
+          "Tipo": "Trébol Llorón",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        },
+        {
+          "tirada": 20,
+          "Tipo": "Barbarea",
+          "Daño": null,
+          "Defensa": null,
+          "Peso / Clase": null,
+          "Recarga": null,
+          "Valor": null,
+          "Efecto": "Ingrediente de Calidad Exquisito.",
+          "Leyenda": null
+        }
+      ]
+    },
+{
+  "nombre": "Kit de desactivación de trampa superior.png",
+  "rotura": "1d3",
+  "categoria": "objeto",
+  "subcategoria": "herramienta",
+  "durabilidad": null,
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Kit de desactivación de trampas superior",
+      "Defensa": null,
+      "Peso / Clase": "4 / 0",
+      "Valor": 250,
+      "Efecto": "Da un +15 a cualquier intento de desactivación de trampas.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+}
+,
+{
+  "nombre": "Libro de recetas.png",
+  "rotura": "0",
+  "categoria": "objeto",
+  "subcategoria": "conocimiento",
+  "durabilidad": null,
+  "Unidades": "1d4+1",
+  "seleccion": "1d1",
+  "tabla": [
+    {
+      "tirada": "1",
+      "Tipo": "Libro de Recetas",
+      "Defensa": null,
+      "Peso / Clase": "0 / 0",
+      "Valor": 0,
+      "Efecto": "Permite al alquimista definir 1d4+1 recetas de pociones con sus componentes, calidad y resultado final. Las recetas se concretan cuando el alquimista decide mezclarlas.",
+      "Leyenda": "",
+      "Unidades": "1"
+    }
+  ]
+}
+
+
+
+
+
+                           
+                               "Libro de recetas.png",
+                               "Libro.png",
+                               "Mano protésica.png",
+                               "Mirilla.png",
+                               "Mochila gigante.png",
+                               "Objeto legendario (2).png",
+                               "Objeto legendario (3).png",
+                               "Objeto legendario (4).png",
+                               "Objeto legendario (5).png",
+                               "Objeto legendario (6).png",
+                               "Objeto legendario (7).png",
+                               "Objeto legendario (8).png",
+                               "Objeto legendario.png",
+                               "Ojo protésico.png",
+                               "Parte.png",
+                               "Pico enano.png",
+                               "Piedra de poder (2).png",
+                               "Piedra de poder (3).png",
+                               "Piedra de poder.png",
+                               "Piedras preciosas (2).png",
+                               "Piedras preciosas.png",
+                               "Pierna protésica.png",
+                               "Poción básica (2).png",
+                               "Poción básica.png",
+                               "Poción épica.png",
+                               "Reliquia religiosa épica.png",
+                               "Ropas elegantes.png"
+                           ]
+}

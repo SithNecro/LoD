@@ -2735,7 +2735,7 @@
                     "Unidades": "1"
                 }
             ]
-        },
+        }
 {
             "nombre": "Mochila gigante.png",
             "rotura": "0",
@@ -3309,6 +3309,7 @@
         {
             "nombre": "Parte.png",
             "rotura": null,
+            "valor": null,
             "Peso / Clase": null,
             "categoria": "objeto",
             "durabilidad": null,
