@@ -1134,18 +1134,18 @@ async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoF
     const tipoMagico = (entry.Tipo || '').trim();
     if (hadCurse && curseText) {
       if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
+        saveItem.nombre = `${saveItem.nombre} Maldito: ${curseText}.${tipoMagico ? ' *' + tipoMagico + '*' : ''}`;
       else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
+        saveItem.arma = `${saveItem.arma} Maldito: ${curseText}.${tipoMagico ? ' *' + tipoMagico + '*' : ''}`;
       else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
+        saveItem.armadura = `${saveItem.armadura} Maldito: ${curseText}.${tipoMagico ? ' *' + tipoMagico + '*' : ''}`;
     } else if (tipoMagico) {
       if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ⚡${tipoMagico}⚡`;
+        saveItem.nombre = `${saveItem.nombre} *${tipoMagico}*`;
       else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ⚡${tipoMagico}⚡`;
+        saveItem.arma = `${saveItem.arma} *${tipoMagico}*`;
       else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ⚡${tipoMagico}⚡`;
+        saveItem.armadura = `${saveItem.armadura} *${tipoMagico}*`;
     }
 
     // Info para UI

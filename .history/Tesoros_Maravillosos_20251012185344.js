@@ -1069,7 +1069,6 @@ window.tc_loadHeroesDestino = async function () {
  * @param {Function} tirarDadoFn Tu función tirarDado(expr)
  * @returns {Promise<Object>} saveItem mutado con magia (nombre/uso/especial)
  */
-
 async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoFn) {
   try {
     if (!tesoroRec || String(tesoroRec.magico).toUpperCase() !== 'SI') return saveItem;
@@ -1117,7 +1116,7 @@ async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoF
     }
 
     // 4) Volcar magia en el ítem
-    const addText = window.__tm_magic.fmt(entry.Tipo, entry.Efecto);
+    const addText = window.__tm_magic.fmt(entry.Tipo, '');
 
     // Concatenar texto mágico al campo visible (uso/especial)
     if ('uso' in saveItem) {
@@ -1130,22 +1129,17 @@ async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoF
       saveItem.uso = addText;
     }
 
-    // 🔸 NOMBRE: añadir solo el Tipo mágico (sin Efecto)
-    const tipoMagico = (entry.Tipo || '').trim();
+    // 🔸 NOMBRE: añadir maldición y también el efecto POSITIVO en cursiva (asteriscos)
+    const positiveEffect = (entry.Efecto || '').trim();
+    const positiveSuffix = positiveEffect ? ` *${positiveEffect}*` : '';
     if (hadCurse && curseText) {
-      if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-      else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-      else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-    } else if (tipoMagico) {
-      if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ⚡${tipoMagico}⚡`;
-      else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ⚡${tipoMagico}⚡`;
-      else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ⚡${tipoMagico}⚡`;
+      if ('nombre' in saveItem)       saveItem.nombre   = `${saveItem.nombre} Maldito: ${curseText}.${positiveSuffix}`;
+      else if ('arma' in saveItem)    saveItem.arma     = `${saveItem.arma} Maldito: ${curseText}.${positiveSuffix}`;
+      else if ('armadura' in saveItem)saveItem.armadura = `${saveItem.armadura} Maldito: ${curseText}.${positiveSuffix}`;
+    } else if (positiveSuffix) {
+      if ('nombre' in saveItem)       saveItem.nombre   = `${saveItem.nombre}${positiveSuffix}`;
+      else if ('arma' in saveItem)    saveItem.arma     = `${saveItem.arma}${positiveSuffix}`;
+      else if ('armadura' in saveItem)saveItem.armadura = `${saveItem.armadura}${positiveSuffix}`;
     }
 
     // Info para UI
@@ -1155,7 +1149,7 @@ async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoF
       positiveRoll,
       hadCurse,
       curseText,
-      entry
+      entry   // resultado positivo final (o el único si no hubo maldición)
     };
     return saveItem;
 
@@ -1164,8 +1158,6 @@ async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoF
     return saveItem;
   }
 }
-
-
 function tm_renderMagicInfoInItem(itemEl, magia) {
   try {
     if (!itemEl || !magia) return;

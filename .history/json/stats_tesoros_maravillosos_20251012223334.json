@@ -1787,7 +1787,6 @@
             "nombre": "Armadura de placas mágica.png",
             "rotura": "1d3-1",
             "categoria": "armadura",
-                      "magico": "SI",
             "durabilidad": 8,
             "seleccion": "1d4",
             "tabla": [
@@ -1844,41 +1843,41 @@
                 {
                     "tirada": 1,
                     "Tipo": "Casco de placas",
-                    "Cobertura / Defensa": "Cabeza/5",
-                    "Peso / Clase": "5/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 300,
-                    "Efecto": "Tosca",
+                    "Efecto": "",
                     "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
                     "Unidades": "1"
                 },
                 {
                     "tirada": 2,
                     "Tipo": "Coraza de placas",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "7/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 700,
-                    "Efecto": "Tosca",
+                    "Efecto": "",
                     "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
                     "Unidades": "1"
                 },
                 {
                     "tirada": 3,
                     "Tipo": "Pantalones de placas",
-                    "Cobertura / Defensa": "Piernas/5",
-                    "Peso / Clase": "6/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 700,
-                    "Efecto": "Tosca",
+                    "Efecto": "",
                     "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
                     "Unidades": "1"
                 },
                 {
                     "tirada": 4,
                     "Tipo": "Brazales de placas",
-                    "Cobertura / Defensa": "Brazos/5",
-                    "Peso / Clase": "4/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 600,
                     "Efecto": "",
@@ -2027,7 +2026,6 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 6,
-                                  "magico": "SI",
             "seleccion": "1",
             "tabla": [
                 {
@@ -2128,7 +2126,6 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
-                                  "magico": "SI",
             "seleccion": "1d3",
             "tabla": [
                 {

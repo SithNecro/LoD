@@ -114,52 +114,52 @@
                     "Armas_Magicas": [
                         {
                             "Tirada": 1,
-                            "Tipo": "Fuego",
+                            "Tipo": "Arma mágica Fuego",
                             "Efecto": "Esta arma tiene un ligero brillo, como si irradiara calor. DAÑ del arma es de Fuego."
                         },
                         {
                             "Tirada": 2,
-                            "Tipo": "+2 DAÑO",
+                            "Tipo": "Arma mágica +2 DAÑO",
                             "Efecto": "Al empuñar esta arma, es como si tu Héroe pudiera sentir su sed de sangre. +2 DAÑ."
                         },
                         {
                             "Tirada": 3,
-                            "Tipo": "+1 DAÑO",
+                            "Tipo": "Arma mágica +1 DAÑO",
                             "Efecto": "Se puede escuchar un ligero zumbido cuando empuñas esta arma, como si estuviera encendida y lista para matar. +1 DAÑ."
                         },
                         {
                             "Tirada": 4,
-                            "Tipo": "+10 HC/HD",
+                            "Tipo": "Arma mágica +10 HC/HD",
                             "Efecto": "Esta arma parece como si fuera una con tu cuerpo, haciendo que cada movimiento sea lo más simple y perfecto posible. +10 HC/HD."
                         },
                         {
                             "Tirada": 5,
-                            "Tipo": "+5 HC/HD",
+                            "Tipo": "Arma mágica +5 HC/HD",
                             "Efecto": "La magia imbuida en esta arma hace que cada golpe o disparo sea casi perfecto. +5 HC/HD."
                         },
                         {
                             "Tirada": 6,
-                            "Tipo": "-5 PES y -1 Clase",
+                            "Tipo": "Arma mágica -5 PES y -1 Clase",
                             "Efecto": "El bajo peso de esta arma va más allá de la comprensión de tus Héroes. Un arma de la mitad de tamaño es posible que pese más que esta. -5 PES y -1 Clase (mínimo 1)."
                         },
                         {
                             "Tirada": 7,
-                            "Tipo": "+2 DUR máxima",
+                            "Tipo": "Arma mágica +2 DUR máxima",
                             "Efecto": "Es como si la magia de esta arma fuera inusualmente fuerte, uniéndola de una manera que tu Héroe no había visto jamás. El objeto gana +2 DUR máxima (máx. 10)."
                         },
                         {
                             "Tirada": 8,
-                            "Tipo": "+10 en test de terror/miedo",
+                            "Tipo": "Arma mágica +10 en test de terror/miedo",
                             "Efecto": "Una mirada a esta arma le hace saber a tu Héroe que nada puede interponerse entre ellos y la victoria. +10 en test de terror/miedo."
                         },
                         {
                             "Tirada": 9,
-                            "Tipo": "+5 bloqueo con armas melé y +5 esquiva para armas de proyectil",
+                            "Tipo": "Arma mágica +5 bloqueo con armas melé y +5 esquiva para armas de proyectil",
                             "Efecto": "Imbuida de hechizos poderosos, esta arma está diseñada para proteger a su dueño. +5 bloqueo con armas melé y +5 esquiva para armas de proyectil."
                         },
                         {
                             "Tirada": 10,
-                            "Tipo": "Maldita",
+                            "Tipo": "Arma mágica",
                             "Efecto": "¡Maldito! Esta arma puede prestar su fuerza, pero tiene un precio. Tira de nuevo para ver qué efecto positivo tiene, pero ten en cuenta que mientras empuña esta arma, tu Héroe también sufre los efectos de la maldición. Maldita, mira la tabla de maldiciones.",
                             "Maldiciones": [
                                 {
@@ -219,57 +219,57 @@
             ]
         },
         {
-            "Tipomagico": "armadura",
+            "Tipomagico": "Armadura",
             "seleccion": "1d10",
             "tabla": [
                 {
                     "Tirada": 1,
-                    "Tipo": "+2 DEF",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Esta pieza de armadura irradia fuerza. +2 Defensa."
                 },
                 {
                     "Tirada": 2,
-                    "Tipo": "+1 DEF",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Es como si esta pieza de armadura pudiera desviarlo todo. +1 Defensa."
                 },
                 {
                     "Tirada": 3,
-                    "Tipo": "-50% PESO",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Esta armadura parece más ligera que el Mithril. -50% Peso (RAR)."
                 },
                 {
                     "Tirada": 4,
-                    "Tipo": "+1 DUR",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Encantada por un maestro, se necesitará un gran esfuerzo para romper esta armadura. +1 punto máximo de durabilidad (Total 9)."
                 },
                 {
                     "Tirada": 5,
-                    "Tipo": "Ignora DAÑ Fuego",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "De vez en cuando se ven como unas llamas saliendo de la armadura pese a que está fría al tacto. Quizás esta sea la razón por la que no es afectado por el fuego. Ignora el efecto del DAÑ de fuego, no importa donde caiga el golpe."
                 },
                 {
                     "Tirada": 6,
-                    "Tipo": "+10 CON a Veneno",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Cuando se forjó esta armadura, se imbuyeron en ella poderosos encantamientos para frustrar a quien intentase envenenar a su portador. Resistencia a veneno mejorada (+10 CON en esas tiradas)."
                 },
                 {
                     "Tirada": 7,
-                    "Tipo": "+5 CON",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "El encantamiento de esta armadura alcanza a su dueño y le mejora su resistencia. +5 Constitución."
                 },
                 {
                     "Tirada": 8,
-                    "Tipo": "+5 FUE",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Es como si la armadura prestara su fuerza, el que la lleva se vuelve fuerte como un toro. +5 Fuerza."
                 },
                 {
                     "Tirada": 9,
-                    "Tipo": "+5 ESQ",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "Imbuida de poderosos hechizos, la armadura provoca una sensación de hormigueo a su dueño cuando el peligro está cerca, dándole una fracción de segundo extra para esquivar. +5 Esquivar."
                 },
                 {
                     "Tirada": 10,
-                    "Tipo": "Maldito",
+                    "Tipo": "Armadura o Escudo mágico",
                     "Efecto": "¡Maldito! Esta armadura puede prestar su fuerza, pero tiene un precio. Tira de nuevo para ver qué efecto positivo tiene, pero ten en cuenta que mientras lleves esta armadura, tu Héroe también sufre los efectos de la maldición. Maldita, mira la tabla de maldiciones.",
                     "Maldiciones": [
                         {
@@ -332,52 +332,52 @@
             "tabla": [
                 {
                     "Tirada": 1,
-                    "Tipo": "+1 VIT",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 VIT."
                 },
                 {
                     "Tirada": 2,
-                    "Tipo": "+5 CON",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 CON"
                 },
                 {
                     "Tirada": 3,
-                    "Tipo": "+ FUE",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+ FUE"
                 },
                 {
                     "Tirada": 4,
-                    "Tipo": "+5 DET",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 DET"
                 },
                 {
                     "Tirada": 5,
-                    "Tipo": "+5 DES",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 DES"
                 },
                 {
                     "Tirada": 6,
-                    "Tipo": "+1 ENERGÍA",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 ENERGÍA"
                 },
                 {
                     "Tirada": 7,
-                    "Tipo": "+1 SUERTE",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 SUERTE"
                 },
                 {
                     "Tirada": 8,
-                    "Tipo": "+5 En una habilidad al azar.",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 En una habilidad al azar."
                 },
                 {
                     "Tirada": 9,
-                    "Tipo": "+1 Ficha de iniciativa de Héroe. Al iniciar combates",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 Ficha de iniciativa de Héroe. Al iniciar combates"
                 },
                 {
                     "Tirada": 10,
-                    "Tipo": "Maldito",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "Maldito",
                     "TiradaMaldicion": "1d10",
                     "Maldiciones": [

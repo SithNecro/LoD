@@ -219,7 +219,7 @@
             ]
         },
         {
-            "Tipomagico": "armadura",
+            "Tipomagico": "Armadura",
             "seleccion": "1d10",
             "tabla": [
                 {
@@ -332,52 +332,52 @@
             "tabla": [
                 {
                     "Tirada": 1,
-                    "Tipo": "+1 VIT",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 VIT."
                 },
                 {
                     "Tirada": 2,
-                    "Tipo": "+5 CON",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 CON"
                 },
                 {
                     "Tirada": 3,
-                    "Tipo": "+ FUE",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+ FUE"
                 },
                 {
                     "Tirada": 4,
-                    "Tipo": "+5 DET",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 DET"
                 },
                 {
                     "Tirada": 5,
-                    "Tipo": "+5 DES",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 DES"
                 },
                 {
                     "Tirada": 6,
-                    "Tipo": "+1 ENERGÍA",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 ENERGÍA"
                 },
                 {
                     "Tirada": 7,
-                    "Tipo": "+1 SUERTE",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 SUERTE"
                 },
                 {
                     "Tirada": 8,
-                    "Tipo": "+5 En una habilidad al azar.",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+5 En una habilidad al azar."
                 },
                 {
                     "Tirada": 9,
-                    "Tipo": "+1 Ficha de iniciativa de Héroe. Al iniciar combates",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "+1 Ficha de iniciativa de Héroe. Al iniciar combates"
                 },
                 {
                     "Tirada": 10,
-                    "Tipo": "Maldito",
+                    "Tipo": "Objeto mágico",
                     "Efecto": "Maldito",
                     "TiradaMaldicion": "1d10",
                     "Maldiciones": [

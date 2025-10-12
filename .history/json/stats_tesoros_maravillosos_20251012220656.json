@@ -1182,7 +1182,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Coraza de escamas de dragón",
                     "Cobertura / Defensa": "Torso/7",
                     "Peso / Clase": "6/4",
@@ -1193,7 +1193,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Pantalones de escamas de dragón",
                     "Cobertura / Defensa": "Piernas/7",
                     "Peso / Clase": "5/4",
@@ -1204,7 +1204,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Pantalones de escamas de dragón",
                     "Cobertura / Defensa": "Piernas/7",
                     "Peso / Clase": "5/4",
@@ -1215,7 +1215,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Brazales de escamas de dragón",
                     "Cobertura / Defensa": "Brazos/7",
                     "Peso / Clase": "3/4",
@@ -1257,7 +1257,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Casaca de escamas mágica",
                     "Cobertura / Defensa": "Brazos, Torso/4",
                     "Peso / Clase": "8/4",
@@ -1268,7 +1268,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Abrigo de escamas mágico",
                     "Cobertura / Defensa": "Brazos, Torso, Piernas/4",
                     "Peso / Clase": "12/4",
@@ -1363,10 +1363,10 @@
             "seleccion": "1d6",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cofia de malla de Mithril",
-                    "Cobertura / Defensa": "Cabeza/5",
-                    "Peso / Clase": "3/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "3",
                     "Recarga": null,
                     "Valor": 400,
                     "Efecto": "",
@@ -1374,10 +1374,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Camisa de malla de Mithril",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "5/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1385,10 +1385,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Camisa de malla de Mithril",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "5/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1396,10 +1396,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Cota de malla de Mithril",
-                    "Cobertura / Defensa": "Torso, Piernas/5",
-                    "Peso / Clase": "7/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 1500,
                     "Efecto": "",
@@ -1407,10 +1407,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Camisa con mangas de malla de Mithril",
-                    "Cobertura / Defensa": "Brazos, Torso/5",
-                    "Peso / Clase": "6/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 1900,
                     "Efecto": "",
@@ -1418,10 +1418,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Pantalones de malla de Mithril",
-                    "Cobertura / Defensa": "Piernas/5",
-                    "Peso / Clase": "4/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 400,
                     "Efecto": "",
@@ -1438,10 +1438,10 @@
             "seleccion": "1d6",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cofia de malla de Mithril",
-                    "Cobertura / Defensa": "Cabeza/5",
-                    "Peso / Clase": "3/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "3",
                     "Recarga": null,
                     "Valor": 400,
                     "Efecto": "",
@@ -1449,10 +1449,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Camisa de malla de Mithril",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "5/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1460,10 +1460,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Camisa de malla de Mithril",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "5/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1471,10 +1471,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Cota de malla de Mithril",
-                    "Cobertura / Defensa": "Torso, Piernas/5",
-                    "Peso / Clase": "7/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 1500,
                     "Efecto": "",
@@ -1482,10 +1482,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Camisa con mangas de malla de Mithril",
-                    "Cobertura / Defensa": "Brazos, Torso/5",
-                    "Peso / Clase": "6/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 1900,
                     "Efecto": "",
@@ -1493,10 +1493,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Pantalones de malla de Mithril",
-                    "Cobertura / Defensa": "Piernas/5",
-                    "Peso / Clase": "4/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 400,
                     "Efecto": "",
@@ -1513,10 +1513,10 @@
             "seleccion": "1d6",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cofia de malla mágica",
-                    "Cobertura / Defensa": "Cabeza/3",
-                    "Peso / Clase": "4/3",
+                    "Cobertura / Defensa": "3",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 600,
                     "Efecto": "",
@@ -1524,10 +1524,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Camisa de malla mágica",
-                    "Cobertura / Defensa": "Torso/3",
-                    "Peso / Clase": "6/3",
+                    "Cobertura / Defensa": "3",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 1800,
                     "Efecto": "",
@@ -1535,10 +1535,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Camisa de malla mágica",
-                    "Cobertura / Defensa": "Torso/3",
-                    "Peso / Clase": "6/3",
+                    "Cobertura / Defensa": "3",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 1800,
                     "Efecto": "",
@@ -1546,10 +1546,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Cota de malla mágica",
-                    "Cobertura / Defensa": "Torso, Piernas/3",
-                    "Peso / Clase": "8/3",
+                    "Cobertura / Defensa": "3",
+                    "Peso / Clase": "8",
                     "Recarga": null,
                     "Valor": 2250,
                     "Efecto": "",
@@ -1557,10 +1557,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Camisa con mangas de malla mágica",
-                    "Cobertura / Defensa": "Brazos, Torso/3",
-                    "Peso / Clase": "10/3",
+                    "Cobertura / Defensa": "3",
+                    "Peso / Clase": "10",
                     "Recarga": null,
                     "Valor": 2850,
                     "Efecto": "",
@@ -1568,10 +1568,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Pantalones de malla mágica",
-                    "Cobertura / Defensa": "Piernas/3",
-                    "Peso / Clase": "5/3",
+                    "Cobertura / Defensa": "3",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 600,
                     "Efecto": "",
@@ -1588,10 +1588,10 @@
             "seleccion": "1d6",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cofia de malla",
-                    "Cobertura / Defensa": "Cabeza/4",
-                    "Peso / Clase": "4/3",
+                    "Cobertura / Defensa": "4",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 200,
                     "Efecto": "",
@@ -1599,10 +1599,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Camisa de malla",
-                    "Cobertura / Defensa": "Torso/4",
-                    "Peso / Clase": "6/3",
+                    "Cobertura / Defensa": "4",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 600,
                     "Efecto": "",
@@ -1610,10 +1610,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Camisa de malla",
-                    "Cobertura / Defensa": "Torso/4",
-                    "Peso / Clase": "6/3",
+                    "Cobertura / Defensa": "4",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 600,
                     "Efecto": "",
@@ -1621,10 +1621,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Cota de malla",
-                    "Cobertura / Defensa": "Torso, Piernas/4",
-                    "Peso / Clase": "8/3",
+                    "Cobertura / Defensa": "4",
+                    "Peso / Clase": "8",
                     "Recarga": null,
                     "Valor": 750,
                     "Efecto": "",
@@ -1632,10 +1632,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Camisa con mangas de malla",
-                    "Cobertura / Defensa": "Brazos, Torso/4",
-                    "Peso / Clase": "7/3",
+                    "Cobertura / Defensa": "4",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 950,
                     "Efecto": "",
@@ -1643,10 +1643,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Pantalones de malla",
-                    "Cobertura / Defensa": "Piernas/4",
-                    "Peso / Clase": "5/3",
+                    "Cobertura / Defensa": "4",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 200,
                     "Efecto": "",
@@ -1663,10 +1663,10 @@
             "seleccion": "1d6",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cofia de malla de Mithril",
-                    "Cobertura / Defensa": "Cabeza/5",
-                    "Peso / Clase": "3/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "3",
                     "Recarga": null,
                     "Valor": 400,
                     "Efecto": "",
@@ -1674,10 +1674,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Camisa de malla de Mithril",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "5/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1685,10 +1685,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Camisa de malla de Mithril",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "5/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1696,10 +1696,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Cota de malla de Mithril",
-                    "Cobertura / Defensa": "Torso, Piernas/5",
-                    "Peso / Clase": "7/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 1500,
                     "Efecto": "",
@@ -1707,10 +1707,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Camisa con mangas de malla de Mithril",
-                    "Cobertura / Defensa": "Brazos, Torso/5",
-                    "Peso / Clase": "9/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "9",
                     "Recarga": null,
                     "Valor": 2600,
                     "Efecto": "",
@@ -1718,10 +1718,10 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Pantalones de malla de Mithril",
-                    "Cobertura / Defensa": "Piernas/5",
-                    "Peso / Clase": "4/3",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 400,
                     "Efecto": "",
@@ -1738,43 +1738,43 @@
             "seleccion": "1d4",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Casco de placas de Mithril",
-                    "Cobertura / Defensa": "Cabeza/6",
-                    "Peso / Clase": "4/4",
+                    "Cobertura / Defensa": "6",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 600,
-                    "Efecto": "Tosca: -10 DES",
+                    "Efecto": "",
                     "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Coraza de placas de Mithril",
-                    "Cobertura / Defensa": "Torso/6",
-                    "Peso / Clase": "6/4",
+                    "Cobertura / Defensa": "6",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 1400,
-                    "Efecto": "Tosca: -10 DES",
+                    "Efecto": "",
                     "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Pantalones de placas de de Mithril",
-                    "Cobertura / Defensa": "Piernas/6",
-                    "Peso / Clase": "5/4",
+                    "Cobertura / Defensa": "6",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 1400,
-                    "Efecto": "Tosca: -10 DES",
+                    "Efecto": "",
                     "Leyenda": "Una pieza extraordinaria de placas brillante, hecha de Mithril.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Brazales de placas de Mithril",
-                    "Cobertura / Defensa": "Brazos/6",
-                    "Peso / Clase": "3/4",
+                    "Cobertura / Defensa": "6",
+                    "Peso / Clase": "3",
                     "Recarga": null,
                     "Valor": 1200,
                     "Efecto": "",
@@ -1787,50 +1787,52 @@
             "nombre": "Armadura de placas mágica.png",
             "rotura": "1d3-1",
             "categoria": "armadura",
-                      "magico": "SI",
             "durabilidad": 8,
             "seleccion": "1d4",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Casco de placas mágica",
-                    "Cobertura / Defensa": "Cabeza/5",
-                    "Peso / Clase": "5/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 900,
-                    "Efecto": "Tosca",
-                    "Leyenda": "",
+                    "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+                    "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Coraza de placas mágica",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "7/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 2100,
-                   "Efecto": "Tosca",
-                    "Leyenda": "",  "Unidades": "1"
+                    "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+                    "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+                    "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Pantalones de placas mágica",
-                    "Cobertura / Defensa": "Piernas/5",
-                    "Peso / Clase": "6/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 2100,
-                   "Efecto": "Tosca",
-                    "Leyenda": "",  "Unidades": "1"
+                    "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+                    "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+                    "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Brazales de placas mágica",
-                    "Cobertura / Defensa": "Brazos/5",
-                    "Peso / Clase": "4/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 1800,
-                    "Efecto": "",
-                    "Leyenda": "", "Unidades": "1"
+                    "Efecto": "Consultar tabla de propiedades mágicas para ver su encantamiento.",
+                    "Leyenda": "Una pieza extraordinaria de placas con propiedades mágicas.",
+                    "Unidades": "1"
                 }
             ]
         },
@@ -1842,43 +1844,43 @@
             "seleccion": "1d4",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Casco de placas",
-                    "Cobertura / Defensa": "Cabeza/5",
-                    "Peso / Clase": "5/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "5",
                     "Recarga": null,
                     "Valor": 300,
-                    "Efecto": "Tosca",
+                    "Efecto": "",
                     "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Coraza de placas",
-                    "Cobertura / Defensa": "Torso/5",
-                    "Peso / Clase": "7/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "7",
                     "Recarga": null,
                     "Valor": 700,
-                    "Efecto": "Tosca",
+                    "Efecto": "",
                     "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Pantalones de placas",
-                    "Cobertura / Defensa": "Piernas/5",
-                    "Peso / Clase": "6/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "6",
                     "Recarga": null,
                     "Valor": 700,
-                    "Efecto": "Tosca",
+                    "Efecto": "",
                     "Leyenda": "Una pieza de armadura de placas, usada pero útil todavía.",
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Brazales de placas",
-                    "Cobertura / Defensa": "Brazos/5",
-                    "Peso / Clase": "4/4",
+                    "Cobertura / Defensa": "5",
+                    "Peso / Clase": "4",
                     "Recarga": null,
                     "Valor": 600,
                     "Efecto": "",
@@ -1895,7 +1897,7 @@
             "seleccion": "1d6",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Casco del acechador nocturno",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "1",
@@ -1906,7 +1908,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Chaleco del acechador nocturno",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "3",
@@ -1917,7 +1919,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Chaleco del acechador nocturno",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "3",
@@ -1928,7 +1930,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Casaca del acechador nocturno",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "4",
@@ -1939,7 +1941,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 5,
+                    "tirada": "5",
                     "Tipo": "Pantalones del acechador nocturno",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "3",
@@ -1950,7 +1952,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 6,
+                    "tirada": "6",
                     "Tipo": "Brazales del acechador nocturno",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "3",
@@ -1970,7 +1972,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Arnés de combate",
                     "Cobertura / Defensa": "0",
                     "Peso / Clase": "0",
@@ -1990,7 +1992,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Arpa",
                     "Cobertura / Defensa": "0",
                     "Peso / Clase": "2",
@@ -2010,7 +2012,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Capa de Wyvern",
                     "Cobertura / Defensa": "+3 (solo por ataques por detrás)",
                     "Peso / Clase": "2",
@@ -2027,11 +2029,10 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 6,
-                                  "magico": "SI",
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Capa mágica",
                     "Cobertura / Defensa": "Variable según el encantamiento",
                     "Peso / Clase": "1",
@@ -2051,7 +2052,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cinturón de batalla extendido",
                     "Cobertura / Defensa": "0",
                     "Peso / Clase": "0",
@@ -2071,7 +2072,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Cuerda de arco élfica",
                     "Cobertura / Defensa": "0",
                     "Peso / Clase": "0",
@@ -2091,7 +2092,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Escudo Heraldo de Mithril",
                     "Cobertura / Defensa": "7",
                     "Peso / Clase": "9 / 3",
@@ -2111,7 +2112,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Escudo de Torre",
                     "Cobertura / Defensa": "8",
                     "Peso / Clase": "15 / 5",
@@ -2128,11 +2129,10 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
-                                  "magico": "SI",
             "seleccion": "1d3",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Rodela mágica",
                     "Cobertura / Defensa": "4",
                     "Peso / Clase": "4 / 1",
@@ -2142,7 +2142,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Escudo heraldo mágico",
                     "Cobertura / Defensa": "6",
                     "Peso / Clase": "10 / 3",
@@ -2152,7 +2152,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Escudo de torre mágico",
                     "Cobertura / Defensa": "8",
                     "Peso / Clase": "15 / 5",
@@ -2171,7 +2171,7 @@
             "seleccion": "1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Flauta",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "1 / 0",
@@ -2228,7 +2228,7 @@
             "seleccion": "1d4",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Espadón de Plata",
                     "Daño": "2d6",
                     "Peso / Clase": "20 / 5",
@@ -2238,7 +2238,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 2,
+                    "tirada": "2",
                     "Tipo": "Gran Hacha de Plata",
                     "Daño": "1d12+4",
                     "Peso / Clase": "20 / 5",
@@ -2248,7 +2248,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 3,
+                    "tirada": "3",
                     "Tipo": "Mayal de Plata",
                     "Daño": "1d10+4",
                     "Peso / Clase": "20 / 5",
@@ -2258,7 +2258,7 @@
                     "Unidades": "1"
                 },
                 {
-                    "tirada": 4,
+                    "tirada": "4",
                     "Tipo": "Alabarda de Plata",
                     "Daño": "1d12",
                     "Peso / Clase": "20 / 5",
@@ -2277,7 +2277,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Grimorio",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "1 / 0",
@@ -2527,7 +2527,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Kit de desactivación de trampas superior",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "4 / 0",
@@ -2547,7 +2547,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Libro de Recetas",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "0 / 0",
@@ -2566,7 +2566,7 @@
             "seleccion": "1 Manual de entrenamiento",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "objeto",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "1 / 0",
@@ -2585,7 +2585,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Mano Protésica",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "3 / 0",
@@ -2788,7 +2788,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Mirilla",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "0 / 0",
@@ -2807,7 +2807,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Mochila gigante",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "1 / 0",
@@ -2826,7 +2826,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Ojo Protésico",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "0 / 0",
@@ -2845,7 +2845,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Pico enano",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "8 / 0",
@@ -2910,7 +2910,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Pierna Protésica",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "7 / 0",
@@ -2929,7 +2929,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Ropas elegantes",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "0 / 0",
@@ -3718,7 +3718,7 @@
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
+                    "tirada": "1",
                     "Tipo": "Poción de Resurrección",
                     "Cobertura / Defensa": null,
                     "Peso / Clase": "1 / 0",

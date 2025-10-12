@@ -1141,11 +1141,11 @@ async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoF
         saveItem.armadura = `${saveItem.armadura} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
     } else if (tipoMagico) {
       if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ⚡${tipoMagico}⚡`;
+        saveItem.nombre = `${saveItem.nombre} <strong>⚡${tipoMagico}⚡</strong>`;
       else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ⚡${tipoMagico}⚡`;
+        saveItem.arma = `${saveItem.arma} <strong>⚡${tipoMagico}⚡</strong>`;
       else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ⚡${tipoMagico}⚡`;
+        saveItem.armadura = `${saveItem.armadura} <strong>⚡${tipoMagico}⚡</strong>`;
     }
 
     // Info para UI

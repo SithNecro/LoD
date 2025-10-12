@@ -219,7 +219,7 @@
             ]
         },
         {
-            "Tipomagico": "armadura",
+            "Tipomagico": "Armadura",
             "seleccion": "1d10",
             "tabla": [
                 {

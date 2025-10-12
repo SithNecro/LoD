@@ -469,15 +469,7 @@ window.tc_parseEnemyItem = function (itemEl) {
         return s.parentElement.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
     })();
     const valorGlobal = parseIntSafe(valorTxtGlobal, 0);
-  let nombreElegido = nombreBase;
-        const tipoStrongNodes = [...itemEl.querySelectorAll('p > strong[style]')].filter(s => s.textContent.trim().replace(':', '') === 'Tipo');
 
-        if (tipoStrongNodes.length === 1 && seleccionTxt) {
-            const tipoP = tipoStrongNodes[0].parentElement;
-            const tipoDiv = tipoP ? tipoP.parentElement : null;
-            const tipoTexto = tipoDiv ? tipoP.textContent.replace(tipoStrongNodes[0].textContent, '').trim().replace(/^[:\s]+/, '').trim() : '';
-            if (tipoTexto) nombreElegido = tipoTexto;
-        }
     // 3) Categoría
     let categoria = (categoriaTxt || '').toLowerCase();
     if (!categoria) {
@@ -508,7 +500,15 @@ window.tc_parseEnemyItem = function (itemEl) {
                 efectoTxt = cont.textContent.replace(efectoP.textContent, '').trim().replace(/^[:\s]+/, '').trim();
             }
         }
-      
+        let nombreElegido = nombreBase;
+        const tipoStrongNodes = [...itemEl.querySelectorAll('p > strong[style]')].filter(s => s.textContent.trim().replace(':', '') === 'Tipo');
+
+        if (tipoStrongNodes.length === 1 && seleccionTxt) {
+            const tipoP = tipoStrongNodes[0].parentElement;
+            const tipoDiv = tipoP ? tipoP.parentElement : null;
+            const tipoTexto = tipoDiv ? tipoP.textContent.replace(tipoStrongNodes[0].textContent, '').trim().replace(/^[:\s]+/, '').trim() : '';
+            if (tipoTexto) nombreElegido = tipoTexto;
+        }
         if (categoria === 'armadura') {
             // Cobertura / Defensa
             const cobDefTxt = (() => {
@@ -839,69 +839,61 @@ window.enhanceEnemyItems = function (root = document) {
             ctrls.style.cssText = 'margin-top:8px; display:flex; align-items:center; gap:6px;';
 
             const selHtml = `
-        <select class="form-select form-select-sm tc-hero-sel" title="Destino" style="width:auto;display:inline-block;margin-right:6px; background-image:url('img/interface/select_arrow.png'); background-repeat:no-repeat; background-position:right 10px center; background-size:20px; padding-right:35px; appearance:none;">
+        <select class="form-select form-select-sm tc-hero-sel" title="Héroe destino" style="width:auto;display:inline-block;margin-right:6px;">
           ${heroes.map(h => `<option value="${h.slot}">Slot ${h.slot} — ${h.nombre}</option>`).join('')}
         </select>
       `;
-            ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario">Coger para Héroe</button>`;
+            ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario"></button>`;
             itemEl.appendChild(ctrls);
 
             const btn = ctrls.querySelector('.btn-coger-inventario');
-          btn.addEventListener('click', async (ev) => {
-  const sel = ctrls.querySelector('.tc-hero-sel');
-  const slot = Number(sel && sel.value || 0);
-  if (!slot) {
-    Swal.fire('Selecciona un héroe','Debes elegir un destino','info');
-    return;
-  }
+            btn.addEventListener('click', async (ev) => {
+                const sel = ctrls.querySelector('.tc-hero-sel');
+                const slot = Number(sel && sel.value || 0);
+                if (!slot) {
+                    Swal.fire('Selecciona un héroe', 'Debes elegir un destino', 'info');
+                    return;
+                }
 
-  try {
-    const parsed = window.tc_parseEnemyItem(itemEl);
-    const tesoroRec = await window.tm_getTesoroRecordByItemEl(itemEl);
+                try {
+                    const parsed = window.tc_parseEnemyItem(itemEl);
 
-    if (parsed.categoria === 'objeto' && Array.isArray(parsed.items) && parsed.items.length > 0) {
-      let count = 0;
-      for (const it of parsed.items) {
-        await applyMagicalAffixIfAny(it, 'objeto',  tesoroRec, tirarDado);
-        // 🔹 NUEVO UI: mostrar tirada/resultado de magia (si la hubo) en el item
-        if (it._magia) tm_renderMagicInfoInItem(itemEl, it._magia);
+                    // Soportar 1 o varios objetos
+                    if (parsed.categoria === 'objeto' && Array.isArray(parsed.items) && parsed.items.length > 0) {
+                        // múltiple
+                        let count = 0;
+                        for (const it of parsed.items) {
+                            await window.tc_addItemToHero(slot, 'objeto', it);
+                            count++;
+                        }
+                        const msg = document.createElement('div');
+                        msg.className = 'text-success';
+                        msg.style.marginTop = '4px';
+                        msg.textContent = `${count} objeto(s) añadidos al inventario de ${(await window.__tc_idb.getPersonajeBySlotDirect(slot))?.nombre || ('Héroe ' + slot)}`;
+                        ctrls.replaceWith(msg);
+                    } else {
+                        // simple (objeto, arma o armadura)
+                        const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
 
-        await window.tc_addItemToHero(slot, 'objeto', it);
-        count++;
-      }
-      const msg = document.createElement('div');
-      msg.className = 'text-success';
-      msg.style.marginTop = '4px';
-      msg.textContent = `${count} objeto(s) añadidos al inventario de ${(await window.__tc_idb.getPersonajeBySlotDirect(slot))?.nombre || ('Héroe ' + slot)}`;
-      ctrls.replaceWith(msg);
+                        const msg = document.createElement('div');
+                        msg.className = 'text-success';
+                        msg.style.marginTop = '4px';
+                        msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
+                        ctrls.replaceWith(msg);
+                    }
 
-    } else {
-      if (parsed && parsed.item) {
-        await applyMagicalAffixIfAny(parsed.item, parsed.categoria, tesoroRec, tirarDado);
-        // 🔹 NUEVO UI: mostrar tirada/resultado de magia en el item
-        if (parsed.item._magia) tm_renderMagicInfoInItem(itemEl, parsed.item._magia);
-      }
-      const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
+                    if (window.refreshAllSlots) window.refreshAllSlots();
+                    if (typeof window.BajarMoral === 'function') window.BajarMoral(3);
 
-      const msg = document.createElement('div');
-      msg.className = 'text-success';
-      msg.style.marginTop = '4px';
-      msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
-      ctrls.replaceWith(msg);
-    }
-
-    if (window.refreshAllSlots) window.refreshAllSlots();
-    if (typeof window.BajarMoral === 'function') window.BajarMoral(3);
-
-  } catch (err) {
-    console.error(err);
-    Swal.fire('Error', String(err && err.message || err), 'error');
-  }
-});
+                } catch (err) {
+                    console.error(err);
+                    Swal.fire('Error', String(err && err.message || err), 'error');
+                }
+            });
 
         });
     })();
-}
+};
 
 // --- Héroes disponibles (slots con personaje) ---
 // Acceso directo a IndexedDB (PersonajesDB), sin depender de otros scripts
@@ -974,229 +966,3 @@ window.tc_loadHeroesDestino = async function () {
         console.error('Error comprobando héroes disponibles:', e);
     }
 })();
-
-
-/* ==================== MAGIA: carga y utilidades ==================== */
-(function(){
-  let __tm_magicCache = null;
-
-  async function tm_loadMagicTables() {
-    if (__tm_magicCache) return __tm_magicCache;
-    const res = await fetch('json/stats_magicos.json');
-    const json = await res.json();
-    __tm_magicCache = (json && json.Mágicos) || [];
-    return __tm_magicCache;
-  }
-
-  function tm_findBlock(byType, blocks) {
-    return (blocks || []).find(b => (b && String(b.Tipomagico).toLowerCase()) === String(byType).toLowerCase()) || null;
-  }
-
-  function tm_pickFromTable(block, roll) {
-    if (!block || !Array.isArray(block.tabla)) return null;
-
-    // Caso especial ARMA: tabla anidada "Armas_Magicas"
-    if (block.Tipomagico && String(block.Tipomagico).toLowerCase() === 'arma') {
-      const first = block.tabla.find(x => x && Array.isArray(x.Armas_Magicas));
-      if (first) {
-        return (first.Armas_Magicas || []).find(e => Number(e.Tirada) === Number(roll)) || null;
-      }
-    }
-    // Tabla plana con "Tirada"
-    return block.tabla.find(e => Number(e.Tirada) === Number(roll)) || null;
-  }
-
-  function tm_rerollAvoiding(expr, avoid, tirarDadoFn) {
-    let r = tirarDadoFn(expr);
-    let guard = 50;
-    while (r === avoid && guard-- > 0) r = tirarDadoFn(expr);
-    return r;
-  }
-
-  function tm_fmt(tipo, efecto) {
-    const t = (tipo || '').trim();
-    const e = (efecto || '').trim();
-    if (t && e) return `${t} — ${e}`;
-    return t || e || '';
-  }
-
-  window.__tm_magic = {
-    load: tm_loadMagicTables,
-    findBlock: tm_findBlock,
-    pick: tm_pickFromTable,
-    rerollAvoiding: tm_rerollAvoiding,
-    fmt: tm_fmt,
-  };
-})();
-
-/* =============== Lookup del tesoro maravilloso actual ================= */
-(function(){
-  let __tm_cache_marav = null;
-
-  async function tm_loadMaravillosos() {
-    if (__tm_cache_marav) return __tm_cache_marav;
-    const resp = await fetch('json/stats_tesoros_maravillosos.json');
-    const data = await resp.json();
-    __tm_cache_marav = (data && data.Tesoro_Maravilloso) || [];
-    return __tm_cache_marav;
-  }
-
-  // Devuelve el registro { nombre, categoria, magico, seleccion, ... } del JSON
-  window.tm_getTesoroRecordByItemEl = async function(itemEl){
-    try {
-      const getTextAfterStrong = (root, label) => {
-        const el = [...root.querySelectorAll('p > strong')].find(s => s.textContent.trim().replace(':','') === label);
-        if (!el || !el.parentElement) return '';
-        return el.parentElement.textContent.replace(el.textContent, '').trim().replace(/^[:\s]+/,'').trim();
-      };
-      const botin = getTextAfterStrong(itemEl, 'Botín'); // sin .png
-      if (!botin) return null;
-      const nombrePng = `${botin}.png`;
-      const all = await tm_loadMaravillosos();
-      return all.find(r => r && r.nombre === nombrePng) || null;
-    } catch(e){
-      console.error('tm_getTesoroRecordByItemEl error:', e);
-      return null;
-    }
-  };
-})();
-
-/**
- * Enriquecer un ítem con atributo mágico si el registro del tesoro tiene "magico":"SI".
- * @param {Object} saveItem  Ítem ya listo para guardar (objeto/arma/armadura)
- * @param {String} categoria "objeto" | "arma" | "armadura"
- * @param {Object} tesoroRec Registro original de stats_tesoros_maravillosos.json (con magico, seleccion, categoria)
- * @param {Function} tirarDadoFn Tu función tirarDado(expr)
- * @returns {Promise<Object>} saveItem mutado con magia (nombre/uso/especial)
- */
-
-async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoFn) {
-  try {
-    if (!tesoroRec || String(tesoroRec.magico).toUpperCase() !== 'SI') return saveItem;
-
-    // Mapear tipo de magia
-    let tipomagico = 'Objeto';
-    const cat = String(categoria || '').toLowerCase();
-    if (cat === 'arma') tipomagico = 'Arma';
-    else if (cat === 'armadura') tipomagico = 'Armadura';
-
-    // 1) Cargar tabla mágica
-    const blocks = await window.__tm_magic.load();
-    const block = window.__tm_magic.findBlock(tipomagico, blocks);
-    if (!block) return saveItem;
-
-    // 2) Tirada principal
-    const roll = tirarDadoFn(block.seleccion);
-    let entry = window.__tm_magic.pick(block, roll);
-    if (!entry) return saveItem;
-
-    let curseText = '';
-    let hadCurse = false;
-    let positiveRoll = null;
-
-    // 3) ¿Maldición?
-    const isCurse = (entry.Tipo || '').toLowerCase().includes('maldito') ||
-                    (entry.Efecto || '').toLowerCase().includes('maldito') ||
-                    Number(roll) === 10;
-    if (isCurse) {
-      hadCurse = true;
-
-      // Tirada de maldición (si hay tabla)
-      const curseTable = entry.Maldiciones || [];
-      const curseExpr  = entry.TiradaMaldicion || '1d10';
-      if (Array.isArray(curseTable) && curseTable.length) {
-        const cRoll  = tirarDadoFn(curseExpr);
-        const cEntry = curseTable.find(m => Number(m.Tirada) === Number(cRoll));
-        if (cEntry) curseText = (cEntry.Efecto || '').trim();
-      }
-
-      // Re-roll positivo evitando 10
-      positiveRoll = window.__tm_magic.rerollAvoiding(block.seleccion, 10, tirarDadoFn);
-      const positive = window.__tm_magic.pick(block, positiveRoll);
-      if (positive) entry = positive;
-    }
-
-    // 4) Volcar magia en el ítem
-    const addText = window.__tm_magic.fmt(entry.Tipo, entry.Efecto);
-
-    // Concatenar texto mágico al campo visible (uso/especial)
-    if ('uso' in saveItem) {
-      saveItem.uso = [saveItem.uso, addText].filter(Boolean).join(' | ');
-    } else if ('especial' in saveItem) {
-      saveItem.especial = [saveItem.especial, addText].filter(Boolean).join(' | ');
-    } else if ('Efecto' in saveItem) {
-      saveItem.Efecto = [saveItem.Efecto, addText].filter(Boolean).join(' | ');
-    } else {
-      saveItem.uso = addText;
-    }
-
-    // 🔸 NOMBRE: añadir solo el Tipo mágico (sin Efecto)
-    const tipoMagico = (entry.Tipo || '').trim();
-    if (hadCurse && curseText) {
-      if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-      else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-      else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-    } else if (tipoMagico) {
-      if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ⚡${tipoMagico}⚡`;
-      else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ⚡${tipoMagico}⚡`;
-      else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ⚡${tipoMagico}⚡`;
-    }
-
-    // Info para UI
-    saveItem._magia = {
-      tipomagico,
-      roll,
-      positiveRoll,
-      hadCurse,
-      curseText,
-      entry
-    };
-    return saveItem;
-
-  } catch (e) {
-    console.error('applyMagicalAffixIfAny error:', e);
-    return saveItem;
-  }
-}
-
-
-function tm_renderMagicInfoInItem(itemEl, magia) {
-  try {
-    if (!itemEl || !magia) return;
-    const info = document.createElement('div');
-    info.style.cssText = 'margin-top:6px; padding:6px; border-left:3px solid #8B4513; background:rgba(0,0,0,.2); border-radius:4px;';
-
-    const parts = [];
-    parts.push(`<b style="color:#d4af37;">Magia:</b> ${magia.tipomagico || ''}`);
-    if (magia.hadCurse) {
-      parts.push(`<span style="color:#e57373; margin-left:.5em;">Maldición: ${magia.curseText || ''}</span>`);
-      if (magia.positiveRoll != null) {
-        parts.push(`<span style="color:#81c784; margin-left:.5em;">Re-Tirada: ${magia.positiveRoll}</span>`);
-      }
-    } else if (magia.roll != null) {
-      parts.push(`<span style="color:#81c784; margin-left:.5em;">Tirada: ${magia.roll}</span>`);
-    }
-    if (magia.entry) {
-      const tipo = (magia.entry.Tipo || '').trim();
-      const ef   = (magia.entry.Efecto || '').trim();
-      const res  = [tipo, ef].filter(Boolean).join(' — ');
-      if (res) parts.push(`<div style="margin-top:4px;"><i>${res}</i></div>`);
-    }
-
-    info.innerHTML = `<div>${parts.join(' ')}</div>`;
-    // Evitar duplicados si el usuario hace varias pruebas sobre el mismo bloque
-    const prev = itemEl.querySelector('[data-magic-info="1"]');
-    if (prev) prev.remove();
-
-    info.setAttribute('data-magic-info','1');
-    itemEl.appendChild(info);
-  } catch (e) {
-    console.error('tm_renderMagicInfoInItem error:', e);
-  }
-}

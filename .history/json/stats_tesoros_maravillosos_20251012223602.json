@@ -2027,7 +2027,6 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 6,
-                                  "magico": "SI",
             "seleccion": "1",
             "tabla": [
                 {
@@ -2128,7 +2127,6 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
-                                  "magico": "SI",
             "seleccion": "1d3",
             "tabla": [
                 {

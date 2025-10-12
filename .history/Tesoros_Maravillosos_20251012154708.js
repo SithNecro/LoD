@@ -422,281 +422,275 @@ function cargarStatsObjeto(tesoroSeleccionado) {
 // --- Normaliza enemigo-item a {categoria,item} listo para inventario ---
 // --- Normaliza enemigo-item a {categoria,item} o {categoria,items:[]} listo para inventario ---
 window.tc_parseEnemyItem = function (itemEl) {
-    const { getTextAfterStrong, parseIntSafe, parseFloatSafe } = window.__tc_helpers;
+  const { getTextAfterStrong, parseIntSafe, parseFloatSafe } = window.__tc_helpers;
 
-    // 1) Campos genéricos
-    const botinRaw = getTextAfterStrong(itemEl, 'Botín');             // "Pergaminos"...
-    const roturaTxt = getTextAfterStrong(itemEl, 'Rotura del objeto'); // p.ej. "1"
-    const categoriaTxt = getTextAfterStrong(itemEl, 'Categoria');         // "objeto" | "arma" | "armadura"
-    const durabTxt = getTextAfterStrong(itemEl, 'Durabilidad');       // armas/armaduras
-    const cantidadTxt = getTextAfterStrong(itemEl, 'Cantidad');          // fallback objetos (si no hay "Unidades")
-    const UnidadesTxt = getTextAfterStrong(itemEl, 'Unidades');
-    const seleccionTxt = (() => {
-        // busca el bloque "Selección:" en verde y toma su texto completo de esa línea
-        const el = [...itemEl.querySelectorAll('p > strong[style]')].find(s => s.textContent.trim().replace(':', '') === 'Selección');
-        if (!el || !el.parentElement) return '';
-        return el.parentElement.textContent.replace(el.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-    })();
+  // 1) Campos genéricos
+  const botinRaw      = getTextAfterStrong(itemEl, 'Botín');             // "Pergaminos"...
+  const roturaTxt     = getTextAfterStrong(itemEl, 'Rotura del objeto'); // p.ej. "1"
+  const categoriaTxt  = getTextAfterStrong(itemEl, 'Categoria');         // "objeto" | "arma" | "armadura"
+  const durabTxt      = getTextAfterStrong(itemEl, 'Durabilidad');       // armas/armaduras
+  const cantidadTxt   = getTextAfterStrong(itemEl, 'Cantidad');          // fallback objetos (si no hay "Unidades")
+  const UnidadesTxt   = getTextAfterStrong(itemEl, 'Unidades');  
+  const seleccionTxt  = (() => {
+    // busca el bloque "Selección:" en verde y toma su texto completo de esa línea
+    const el = [...itemEl.querySelectorAll('p > strong[style]')].find(s => s.textContent.trim().replace(':','') === 'Selección');
+    if (!el || !el.parentElement) return '';
+    return el.parentElement.textContent.replace(el.textContent,'').trim().replace(/^[:\s]+/, '').trim();
+  })();
 
-    const nombreBase = botinRaw
-        .replace(/\.png$/i, '')
-        .replace(/\s*\(\d+\)\s*$/, '')
-        .trim();
+  const nombreBase = botinRaw
+    .replace(/\.png$/i, '')
+    .replace(/\s*\(\d+\)\s*$/,'')
+    .trim();
 
-    const rotura = parseIntSafe(roturaTxt, 0);
-    const durabilidad = parseIntSafe(durabTxt, 0); // objetos = 0
+  const rotura      = parseIntSafe(roturaTxt, 0);
+  const durabilidad = parseIntSafe(durabTxt, 0); // objetos = 0
 
-    // Peso/Clase global (si existiese en el item; en muchos objetos no aparece)
-    const pesoClsTxtGlobal = (() => {
-        const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => {
-            const t = x.textContent.trim().replace(':', '');
-            return t === 'Peso / Rango' || t === 'Peso / Clase';
-        });
+  // Peso/Clase global (si existiese en el item; en muchos objetos no aparece)
+  const pesoClsTxtGlobal = (() => {
+    const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => {
+      const t = x.textContent.trim().replace(':','');
+      return t === 'Peso / Rango' || t === 'Peso / Clase';
+    });
+    if (!s || !s.parentElement) return '';
+    return s.parentElement.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+  })();
+  let pesoGlobal = 0, claseGlobal = '';
+  if (pesoClsTxtGlobal) {
+    const [pL, pR] = pesoClsTxtGlobal.split('/').map(s => s.trim());
+    if (pL) pesoGlobal = parseFloatSafe(pL, 0);
+    if (pR) claseGlobal = pR;
+  }
+
+  // Valor global (si existiese)
+  const valorTxtGlobal = (() => {
+    const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':','') === 'Valor');
+    if (!s || !s.parentElement) return '';
+    return s.parentElement.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+  })();
+  const valorGlobal = parseIntSafe(valorTxtGlobal, 0);
+
+  // 3) Categoría
+  let categoria = (categoriaTxt || '').toLowerCase();
+  if (!categoria) {
+    // heurística de respaldo
+    const hasCobDef = !![...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().startsWith('Cobertura'));
+    const hasDanio  = !![...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':','') === 'Daño');
+    if (hasCobDef) categoria = 'armadura';
+    else if (hasDanio) categoria = 'arma';
+    else categoria = 'objeto';
+  }
+
+  // ===== Caso ARMADURA / ARMA (igual que antes) =====
+  if (categoria === 'armadura' || categoria === 'arma') {
+    // Efecto/Leyenda (de un solo bloque)
+    let efectoTxt = '';
+    const efectoP = [...itemEl.querySelectorAll('p > strong[style]')]
+      .find(s => s.textContent.trim().startsWith('Efecto'));
+    if (efectoP && efectoP.parentElement) {
+      const cont = efectoP.parentElement;
+      const tip = cont.querySelector('.efecto[data-tippy-content]');
+      if (tip) {
+        const visible = tip.textContent.trim();
+        const html = tip.getAttribute('data-tippy-content') || '';
+        const tmp = document.createElement('div'); tmp.innerHTML = html;
+        const tooltip = tmp.textContent.trim();
+        efectoTxt = `${visible}<br>${tooltip}`;
+      } else {
+        efectoTxt = cont.textContent.replace(efectoP.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+      }
+    }
+
+    if (categoria === 'armadura') {
+      // Cobertura / Defensa
+      const cobDefTxt = (() => {
+        const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':','') === 'Cobertura / Defensa');
         if (!s || !s.parentElement) return '';
-        return s.parentElement.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-    })();
-    let pesoGlobal = 0, claseGlobal = '';
-    if (pesoClsTxtGlobal) {
-        const [pL, pR] = pesoClsTxtGlobal.split('/').map(s => s.trim());
-        if (pL) pesoGlobal = parseFloatSafe(pL, 0);
-        if (pR) claseGlobal = pR;
-    }
+        return s.parentElement.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+      })();
+      let cobertura = [], defensa = 6;
+      if (cobDefTxt) {
+        const [cob, def] = cobDefTxt.split('/').map(s => s.trim());
+        if (cob) cobertura = cob.split(',').map(s => s.trim()).filter(Boolean);
+        if (def) defensa = parseIntSafe(def, defensa);
+      }
 
-    // Valor global (si existiese)
-    const valorTxtGlobal = (() => {
-        const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':', '') === 'Valor');
+      const dura = durabilidad || 6;
+      return {
+        categoria,
+        item: {
+          id: Date.now(),
+          equipado: false,
+          armadura: nombreBase,           // o 'Tipo' si existiera, pero en armaduras ya suele venir único
+          cobertura,
+          defensa,
+          especial: efectoTxt || '',
+          durabilidad: dura,
+          rotura: Math.min(rotura, dura),
+          clase: claseGlobal,
+          peso: pesoGlobal || 0,
+          valor: valorGlobal || 0
+        }
+      };
+    } else {
+      // arma
+      const danioTxt = (() => {
+        const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':','') === 'Daño');
         if (!s || !s.parentElement) return '';
-        return s.parentElement.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-    })();
-    const valorGlobal = parseIntSafe(valorTxtGlobal, 0);
-  let nombreElegido = nombreBase;
-        const tipoStrongNodes = [...itemEl.querySelectorAll('p > strong[style]')].filter(s => s.textContent.trim().replace(':', '') === 'Tipo');
-
-        if (tipoStrongNodes.length === 1 && seleccionTxt) {
-            const tipoP = tipoStrongNodes[0].parentElement;
-            const tipoDiv = tipoP ? tipoP.parentElement : null;
-            const tipoTexto = tipoDiv ? tipoP.textContent.replace(tipoStrongNodes[0].textContent, '').trim().replace(/^[:\s]+/, '').trim() : '';
-            if (tipoTexto) nombreElegido = tipoTexto;
+        return s.parentElement.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+      })();
+      const duraA = durabilidad || 8;
+      return {
+        categoria: 'arma',
+        item: {
+          id: Date.now(),
+          equipado: false,
+          arma: nombreBase, // si hay 'Tipo' único podrías usarlo, pero normalmente es un arma específica
+          mano: 'Derecha',
+          danio: (danioTxt || '').trim(),
+          especial: efectoTxt || '',
+          durabilidad: duraA,
+          rotura: Math.min(rotura, duraA),
+          clase: claseGlobal,
+          peso: pesoGlobal || 0,
+          valor: valorGlobal || 0
         }
-    // 3) Categoría
-    let categoria = (categoriaTxt || '').toLowerCase();
-    if (!categoria) {
-        // heurística de respaldo
-        const hasCobDef = !![...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().startsWith('Cobertura'));
-        const hasDanio = !![...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':', '') === 'Daño');
-        if (hasCobDef) categoria = 'armadura';
-        else if (hasDanio) categoria = 'arma';
-        else categoria = 'objeto';
+      };
+    }
+  }
+
+  // ===== Caso OBJETO =====
+  // Puede haber 1 bloque (sin selección o selección 1d1) o MÚLTIPLES bloques "Tipo/VH/Valor/Efecto/Unidades"
+  // Detectamos todos los "Tipo:" en verde y para cada uno recogemos sus datos siguientes hasta el siguiente "Tipo:".
+  const tipoStrongNodes = [...itemEl.querySelectorAll('p > strong[style]')].filter(s => s.textContent.trim().replace(':','') === 'Tipo');
+
+  // Helper para leer texto visible + tooltip (si lo hay) de un DIV que contiene Efecto
+  function readEfectoFromDiv(divNode) {
+    if (!divNode) return '';
+    const s = divNode.querySelector('p > strong[style]');
+    if (!s || !s.textContent.trim().startsWith('Efecto')) return '';
+    const cont = s.parentElement;
+    const tip = cont.querySelector('.efecto[data-tippy-content]');
+    if (tip) {
+      const visible = tip.textContent.trim();
+      const html = tip.getAttribute('data-tippy-content') || '';
+      const tmp = document.createElement('div'); tmp.innerHTML = html;
+      const tooltip = tmp.textContent.trim();
+      return `${visible}<br>${tooltip}`;
+    } else {
+      return cont.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+    }
+  }
+
+  // Si no hay múltiples "Tipo:" (0 o 1), devolvemos un solo objeto como antes
+  if (tipoStrongNodes.length <= 1) {
+    // nombre: si existe bloque Selección (≠1d1), usar Tipo; si no, nombreBase
+    let nombreElegido = nombreBase;
+    if (tipoStrongNodes.length === 1 && seleccionTxt) {
+      const tipoP = tipoStrongNodes[0].parentElement;
+      const tipoDiv = tipoP ? tipoP.parentElement : null;
+      const tipoTexto = tipoDiv ? tipoP.textContent.replace(tipoStrongNodes[0].textContent,'').trim().replace(/^[:\s]+/,'').trim() : '';
+      if (tipoTexto) nombreElegido = tipoTexto;
     }
 
-    // ===== Caso ARMADURA / ARMA (igual que antes) =====
-    if (categoria === 'armadura' || categoria === 'arma') {
-        // Efecto/Leyenda (de un solo bloque)
-        let efectoTxt = '';
-        const efectoP = [...itemEl.querySelectorAll('p > strong[style]')]
-            .find(s => s.textContent.trim().startsWith('Efecto'));
-        if (efectoP && efectoP.parentElement) {
-            const cont = efectoP.parentElement;
-            const tip = cont.querySelector('.efecto[data-tippy-content]');
-            if (tip) {
-                const visible = tip.textContent.trim();
-                const html = tip.getAttribute('data-tippy-content') || '';
-                const tmp = document.createElement('div'); tmp.innerHTML = html;
-                const tooltip = tmp.textContent.trim();
-                efectoTxt = `${visible}<br>${tooltip}`;
-            } else {
-                efectoTxt = cont.textContent.replace(efectoP.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-            }
+    // cantidad: Unidades si está en el bloque, si no, "Cantidad:" (último número), si no, 1
+    let unidades = 0, efectoTxt = '';
+    if (tipoStrongNodes.length === 1) {
+      // buscamos desde ese div hacia delante hasta el siguiente Tipo (que no existe), cogemos Unidades/Efecto locales
+      const startDiv = tipoStrongNodes[0].parentElement?.parentElement;
+      let n = startDiv?.nextElementSibling;
+      while (n) {
+        const s = n.querySelector('p > strong[style]');
+        if (!s) { n = n.nextElementSibling; continue; }
+        const label = s.textContent.trim().replace(':','');
+        if (label === 'Tipo') break;
+        if (label === 'Unidades') {
+          const txt = n.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+          unidades = parseIntSafe(txt, 0);
         }
-      
-        if (categoria === 'armadura') {
-            // Cobertura / Defensa
-            const cobDefTxt = (() => {
-                const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':', '') === 'Cobertura / Defensa');
-                if (!s || !s.parentElement) return '';
-                return s.parentElement.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-            })();
-            let cobertura = [], defensa = 6;
-            if (cobDefTxt) {
-                const [cob, def] = cobDefTxt.split('/').map(s => s.trim());
-                if (cob) cobertura = cob.split(',').map(s => s.trim()).filter(Boolean);
-                if (def) defensa = parseIntSafe(def, defensa);
-            }
-
-            const dura = durabilidad || 6;
-            return {
-                categoria,
-                item: {
-                    id: Date.now(),
-                    equipado: false,
-                    armadura: nombreElegido,           // o 'Tipo' si existiera, pero en armaduras ya suele venir único
-                    cobertura,
-                    defensa,
-                    especial: efectoTxt || '',
-                    durabilidad: dura,
-                    rotura: Math.min(rotura, dura),
-                    clase: claseGlobal,
-                    peso: pesoGlobal || 0,
-                    valor: valorGlobal || 0
-                }
-            };
-        } else {
-            // arma
-            const danioTxt = (() => {
-                const s = [...itemEl.querySelectorAll('p > strong[style]')].find(x => x.textContent.trim().replace(':', '') === 'Daño');
-                if (!s || !s.parentElement) return '';
-                return s.parentElement.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-            })();
-            const duraA = durabilidad || 8;
-            return {
-                categoria: 'arma',
-                item: {
-                    id: Date.now(),
-                    equipado: false,
-                    arma: nombreElegido, // si hay 'Tipo' único podrías usarlo, pero normalmente es un arma específica
-                    mano: 'Derecha',
-                    danio: (danioTxt || '').trim(),
-                    especial: efectoTxt || '',
-                    durabilidad: duraA,
-                    rotura: Math.min(rotura, duraA),
-                    clase: claseGlobal,
-                    peso: pesoGlobal || 0,
-                    valor: valorGlobal || 0
-                }
-            };
+        if (label.startsWith('Efecto')) {
+          efectoTxt = readEfectoFromDiv(n);
         }
+        n = n.nextElementSibling;
+      }
+    }
+    if (!unidades) {
+      if (cantidadTxt) {
+        const mLast = String(cantidadTxt).match(/(\d+)(?!.*\d)/);
+        if (mLast) unidades = parseIntSafe(mLast[1], 1);
+      }
+      if (!unidades) 
+        {
+            if(UnidadesTxt){
+            const mLast = String(UnidadesTxt).match(/(\d+)(?!.*\d)/);
+        if (mLast) unidades = parseIntSafe(mLast[1], 1);  
+            }
+        } else {unidades = 1;}
     }
 
-    // ===== Caso OBJETO =====
-    // Puede haber 1 bloque (sin selección o selección 1d1) o MÚLTIPLES bloques "Tipo/VH/Valor/Efecto/Unidades"
-    // Detectamos todos los "Tipo:" en verde y para cada uno recogemos sus datos siguientes hasta el siguiente "Tipo:".
+    return {
+      categoria: 'objeto',
+      item: {
+        id: Date.now(),
+        nombre: nombreElegido,
+        cantidad: unidades,
+        peso: pesoGlobal || 0,
+        uso: efectoTxt || '',
+        valor: valorGlobal || 0,
+        durabilidad: 0,
+        lugar: 'Mochila'
+      }
+    };
+  }
 
-    // Helper para leer texto visible + tooltip (si lo hay) de un DIV que contiene Efecto
-    function readEfectoFromDiv(divNode) {
-        if (!divNode) return '';
-        const s = divNode.querySelector('p > strong[style]');
-        if (!s || !s.textContent.trim().startsWith('Efecto')) return '';
-        const cont = s.parentElement;
-        const tip = cont.querySelector('.efecto[data-tippy-content]');
-        if (tip) {
-            const visible = tip.textContent.trim();
-            const html = tip.getAttribute('data-tippy-content') || '';
-            const tmp = document.createElement('div'); tmp.innerHTML = html;
-            const tooltip = tmp.textContent.trim();
-            return `${visible}<br>${tooltip}`;
-        } else {
-            return cont.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-        }
+  // === MÚLTIPLES TIPOS (p.ej. Pergaminos con "Selección: 1d54*3")
+  const items = [];
+  for (let i = 0; i < tipoStrongNodes.length; i++) {
+    const sTipo = tipoStrongNodes[i];
+    const tipoP  = sTipo.parentElement;
+    const tipoDiv= tipoP ? tipoP.parentElement : null;
+    const nombreTipo = tipoDiv ? tipoP.textContent.replace(sTipo.textContent,'').trim().replace(/^[:\s]+/,'').trim() : nombreBase;
+
+    // Recorremos hermanos siguientes hasta el siguiente "Tipo"
+    let unidades = 1, efectoTxtLocal = '', valorLocal = valorGlobal, pesoLocal = pesoGlobal, claseLocal = '';
+
+    let n = tipoDiv?.nextElementSibling;
+    while (n) {
+      const s = n.querySelector('p > strong[style]');
+      if (!s) { n = n.nextElementSibling; continue; }
+      const label = s.textContent.trim().replace(':','');
+      if (label === 'Tipo') break; // siguiente bloque
+
+      if (label === 'Unidades') {
+        const txt = n.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+        unidades = parseIntSafe(txt, 1);
+      } else if (label === 'Valor') {
+        const txt = n.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+        valorLocal = parseIntSafe(txt, valorLocal);
+      } else if (label.startsWith('Efecto')) {
+        efectoTxtLocal = readEfectoFromDiv(n);
+      } else if (label === 'Peso / Rango' || label === 'Peso / Clase') {
+        const txt = n.textContent.replace(s.textContent,'').trim().replace(/^[:\s]+/,'').trim();
+        const [pL, pR] = txt.split('/').map(ss => ss.trim());
+        if (pL) pesoLocal = parseFloatSafe(pL, pesoLocal);
+        if (pR) claseLocal = pR;
+      }
+      n = n.nextElementSibling;
     }
 
-    // Si no hay múltiples "Tipo:" (0 o 1), devolvemos un solo objeto como antes
-    if (tipoStrongNodes.length <= 1) {
-        // nombre: si existe bloque Selección (≠1d1), usar Tipo; si no, nombreBase
-        let nombreElegido = nombreBase;
-        if (tipoStrongNodes.length === 1 && seleccionTxt) {
-            const tipoP = tipoStrongNodes[0].parentElement;
-            const tipoDiv = tipoP ? tipoP.parentElement : null;
-            const tipoTexto = tipoDiv ? tipoP.textContent.replace(tipoStrongNodes[0].textContent, '').trim().replace(/^[:\s]+/, '').trim() : '';
-            if (tipoTexto) nombreElegido = tipoTexto;
-        }
+    items.push({
+      id: Date.now() + i,           // evitar colisión
+      nombre: nombreTipo,
+      cantidad: unidades,
+      peso: pesoLocal || 0,
+      uso: efectoTxtLocal || '',
+      valor: valorLocal || 0,
+      durabilidad: 0,
+      lugar: 'Mochila'
+    });
+  }
 
-        // cantidad: Unidades si está en el bloque, si no, "Cantidad:" (último número), si no, 1
-        let unidades = 0, efectoTxt = '';
-        if (tipoStrongNodes.length === 1) {
-            // buscamos desde ese div hacia delante hasta el siguiente Tipo (que no existe), cogemos Unidades/Efecto locales
-            const startDiv = tipoStrongNodes[0].parentElement?.parentElement;
-            let n = startDiv?.nextElementSibling;
-            while (n) {
-                const s = n.querySelector('p > strong[style]');
-                if (!s) { n = n.nextElementSibling; continue; }
-                const label = s.textContent.trim().replace(':', '');
-                if (label === 'Tipo') break;
-                if (label === 'Unidades') {
-                    const txt = n.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-                    unidades = parseIntSafe(txt, 0);
-                }
-                if (label.startsWith('Efecto')) {
-                    efectoTxt = readEfectoFromDiv(n);
-                }
-                n = n.nextElementSibling;
-            }
-        }
-        if (!unidades) {
-            if (cantidadTxt) {
-                const mLast = String(cantidadTxt).match(/(\d+)(?!.*\d)/);
-                if (mLast) unidades = parseIntSafe(mLast[1], 1);
-            }
-            if (!unidades) {
-                if (UnidadesTxt) {
-                    const mLast = String(UnidadesTxt).match(/(\d+)(?!.*\d)/);
-                    if (mLast) unidades = parseIntSafe(mLast[1], 1);
-                }
-            } else { unidades = 1; }
-        }
-
-        return {
-            categoria: 'objeto',
-            item: {
-                id: Date.now(),
-                nombre: nombreElegido,
-                cantidad: unidades,
-                peso: pesoGlobal || 0,
-                uso: efectoTxt || '',
-                valor: valorGlobal || 0,
-                durabilidad: 0,
-                lugar: 'Mochila'
-            }
-        };
-    }
-
-    // === MÚLTIPLES TIPOS (p.ej. Pergaminos con "Selección: 1d54*3")
-    const items = [];
-    for (let i = 0; i < tipoStrongNodes.length; i++) {
-        const sTipo = tipoStrongNodes[i];
-        const tipoP = sTipo.parentElement;
-        const tipoDiv = tipoP ? tipoP.parentElement : null;
-        const nombreTipo = tipoDiv ? tipoP.textContent.replace(sTipo.textContent, '').trim().replace(/^[:\s]+/, '').trim() : nombreBase;
-
-        // Recorremos hermanos siguientes hasta el siguiente "Tipo"
-        let unidades = 1, efectoTxtLocal = '', valorLocal = valorGlobal, pesoLocal = pesoGlobal, claseLocal = '';
-
-        let n = tipoDiv?.nextElementSibling;
-        while (n) {
-            const s = n.querySelector('p > strong[style]');
-            if (!s) { n = n.nextElementSibling; continue; }
-            const label = s.textContent.trim().replace(':', '');
-            if (label === 'Tipo') break; // siguiente bloque
-
-            if (label === 'Unidades') {
-                const txt = n.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-                unidades = parseIntSafe(txt, 1);
-            } else if (label === 'Valor') {
-                const txt = n.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-                valorLocal = parseIntSafe(txt, valorLocal);
-            } else if (label.startsWith('Efecto')) {
-                efectoTxtLocal = readEfectoFromDiv(n);
-            } else if (label === 'Peso / Rango' || label === 'Peso / Clase') {
-                const txt = n.textContent.replace(s.textContent, '').trim().replace(/^[:\s]+/, '').trim();
-                const [pL, pR] = txt.split('/').map(ss => ss.trim());
-                if (pL) pesoLocal = parseFloatSafe(pL, pesoLocal);
-                if (pR) claseLocal = pR;
-            }
-            n = n.nextElementSibling;
-        }
-
-        items.push({
-            id: Date.now() + i,           // evitar colisión
-            nombre: nombreTipo,
-            cantidad: unidades,
-            peso: pesoLocal || 0,
-            uso: efectoTxtLocal || '',
-            valor: valorLocal || 0,
-            durabilidad: 0,
-            lugar: 'Mochila'
-        });
-    }
-
-    return { categoria: 'objeto', items };
+  return { categoria: 'objeto', items };
 };
 
 // === Acceso directo a IndexedDB: PersonajesDB ===
@@ -839,69 +833,61 @@ window.enhanceEnemyItems = function (root = document) {
             ctrls.style.cssText = 'margin-top:8px; display:flex; align-items:center; gap:6px;';
 
             const selHtml = `
-        <select class="form-select form-select-sm tc-hero-sel" title="Destino" style="width:auto;display:inline-block;margin-right:6px; background-image:url('img/interface/select_arrow.png'); background-repeat:no-repeat; background-position:right 10px center; background-size:20px; padding-right:35px; appearance:none;">
+        <select class="form-select form-select-sm tc-hero-sel" title="Héroe destino" style="width:auto;display:inline-block;margin-right:6px;">
           ${heroes.map(h => `<option value="${h.slot}">Slot ${h.slot} — ${h.nombre}</option>`).join('')}
         </select>
       `;
-            ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario">Coger para Héroe</button>`;
+            ctrls.innerHTML = `${selHtml}<button type="button" class="btn btn-sm btn-success btn-coger-inventario"></button>`;
             itemEl.appendChild(ctrls);
 
             const btn = ctrls.querySelector('.btn-coger-inventario');
-          btn.addEventListener('click', async (ev) => {
-  const sel = ctrls.querySelector('.tc-hero-sel');
-  const slot = Number(sel && sel.value || 0);
-  if (!slot) {
-    Swal.fire('Selecciona un héroe','Debes elegir un destino','info');
-    return;
-  }
+            btn.addEventListener('click', async (ev) => {
+                const sel = ctrls.querySelector('.tc-hero-sel');
+                const slot = Number(sel && sel.value || 0);
+                if (!slot) {
+                    Swal.fire('Selecciona un héroe', 'Debes elegir un destino', 'info');
+                    return;
+                }
 
-  try {
-    const parsed = window.tc_parseEnemyItem(itemEl);
-    const tesoroRec = await window.tm_getTesoroRecordByItemEl(itemEl);
+                try {
+                    const parsed = window.tc_parseEnemyItem(itemEl);
 
-    if (parsed.categoria === 'objeto' && Array.isArray(parsed.items) && parsed.items.length > 0) {
-      let count = 0;
-      for (const it of parsed.items) {
-        await applyMagicalAffixIfAny(it, 'objeto',  tesoroRec, tirarDado);
-        // 🔹 NUEVO UI: mostrar tirada/resultado de magia (si la hubo) en el item
-        if (it._magia) tm_renderMagicInfoInItem(itemEl, it._magia);
+                    // Soportar 1 o varios objetos
+                    if (parsed.categoria === 'objeto' && Array.isArray(parsed.items) && parsed.items.length > 0) {
+                        // múltiple
+                        let count = 0;
+                        for (const it of parsed.items) {
+                            await window.tc_addItemToHero(slot, 'objeto', it);
+                            count++;
+                        }
+                        const msg = document.createElement('div');
+                        msg.className = 'text-success';
+                        msg.style.marginTop = '4px';
+                        msg.textContent = `${count} objeto(s) añadidos al inventario de ${(await window.__tc_idb.getPersonajeBySlotDirect(slot))?.nombre || ('Héroe ' + slot)}`;
+                        ctrls.replaceWith(msg);
+                    } else {
+                        // simple (objeto, arma o armadura)
+                        const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
 
-        await window.tc_addItemToHero(slot, 'objeto', it);
-        count++;
-      }
-      const msg = document.createElement('div');
-      msg.className = 'text-success';
-      msg.style.marginTop = '4px';
-      msg.textContent = `${count} objeto(s) añadidos al inventario de ${(await window.__tc_idb.getPersonajeBySlotDirect(slot))?.nombre || ('Héroe ' + slot)}`;
-      ctrls.replaceWith(msg);
+                        const msg = document.createElement('div');
+                        msg.className = 'text-success';
+                        msg.style.marginTop = '4px';
+                        msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
+                        ctrls.replaceWith(msg);
+                    }
 
-    } else {
-      if (parsed && parsed.item) {
-        await applyMagicalAffixIfAny(parsed.item, parsed.categoria, tesoroRec, tirarDado);
-        // 🔹 NUEVO UI: mostrar tirada/resultado de magia en el item
-        if (parsed.item._magia) tm_renderMagicInfoInItem(itemEl, parsed.item._magia);
-      }
-      const pj = await window.tc_addItemToHero(slot, parsed.categoria, parsed.item);
+                    if (window.refreshAllSlots) window.refreshAllSlots();
+                    if (typeof window.BajarMoral === 'function') window.BajarMoral(3);
 
-      const msg = document.createElement('div');
-      msg.className = 'text-success';
-      msg.style.marginTop = '4px';
-      msg.textContent = `Objeto añadido al inventario de ${pj?.nombre || ('Héroe ' + slot)}`;
-      ctrls.replaceWith(msg);
-    }
-
-    if (window.refreshAllSlots) window.refreshAllSlots();
-    if (typeof window.BajarMoral === 'function') window.BajarMoral(3);
-
-  } catch (err) {
-    console.error(err);
-    Swal.fire('Error', String(err && err.message || err), 'error');
-  }
-});
+                } catch (err) {
+                    console.error(err);
+                    Swal.fire('Error', String(err && err.message || err), 'error');
+                }
+            });
 
         });
     })();
-}
+};
 
 // --- Héroes disponibles (slots con personaje) ---
 // Acceso directo a IndexedDB (PersonajesDB), sin depender de otros scripts
@@ -974,229 +960,3 @@ window.tc_loadHeroesDestino = async function () {
         console.error('Error comprobando héroes disponibles:', e);
     }
 })();
-
-
-/* ==================== MAGIA: carga y utilidades ==================== */
-(function(){
-  let __tm_magicCache = null;
-
-  async function tm_loadMagicTables() {
-    if (__tm_magicCache) return __tm_magicCache;
-    const res = await fetch('json/stats_magicos.json');
-    const json = await res.json();
-    __tm_magicCache = (json && json.Mágicos) || [];
-    return __tm_magicCache;
-  }
-
-  function tm_findBlock(byType, blocks) {
-    return (blocks || []).find(b => (b && String(b.Tipomagico).toLowerCase()) === String(byType).toLowerCase()) || null;
-  }
-
-  function tm_pickFromTable(block, roll) {
-    if (!block || !Array.isArray(block.tabla)) return null;
-
-    // Caso especial ARMA: tabla anidada "Armas_Magicas"
-    if (block.Tipomagico && String(block.Tipomagico).toLowerCase() === 'arma') {
-      const first = block.tabla.find(x => x && Array.isArray(x.Armas_Magicas));
-      if (first) {
-        return (first.Armas_Magicas || []).find(e => Number(e.Tirada) === Number(roll)) || null;
-      }
-    }
-    // Tabla plana con "Tirada"
-    return block.tabla.find(e => Number(e.Tirada) === Number(roll)) || null;
-  }
-
-  function tm_rerollAvoiding(expr, avoid, tirarDadoFn) {
-    let r = tirarDadoFn(expr);
-    let guard = 50;
-    while (r === avoid && guard-- > 0) r = tirarDadoFn(expr);
-    return r;
-  }
-
-  function tm_fmt(tipo, efecto) {
-    const t = (tipo || '').trim();
-    const e = (efecto || '').trim();
-    if (t && e) return `${t} — ${e}`;
-    return t || e || '';
-  }
-
-  window.__tm_magic = {
-    load: tm_loadMagicTables,
-    findBlock: tm_findBlock,
-    pick: tm_pickFromTable,
-    rerollAvoiding: tm_rerollAvoiding,
-    fmt: tm_fmt,
-  };
-})();
-
-/* =============== Lookup del tesoro maravilloso actual ================= */
-(function(){
-  let __tm_cache_marav = null;
-
-  async function tm_loadMaravillosos() {
-    if (__tm_cache_marav) return __tm_cache_marav;
-    const resp = await fetch('json/stats_tesoros_maravillosos.json');
-    const data = await resp.json();
-    __tm_cache_marav = (data && data.Tesoro_Maravilloso) || [];
-    return __tm_cache_marav;
-  }
-
-  // Devuelve el registro { nombre, categoria, magico, seleccion, ... } del JSON
-  window.tm_getTesoroRecordByItemEl = async function(itemEl){
-    try {
-      const getTextAfterStrong = (root, label) => {
-        const el = [...root.querySelectorAll('p > strong')].find(s => s.textContent.trim().replace(':','') === label);
-        if (!el || !el.parentElement) return '';
-        return el.parentElement.textContent.replace(el.textContent, '').trim().replace(/^[:\s]+/,'').trim();
-      };
-      const botin = getTextAfterStrong(itemEl, 'Botín'); // sin .png
-      if (!botin) return null;
-      const nombrePng = `${botin}.png`;
-      const all = await tm_loadMaravillosos();
-      return all.find(r => r && r.nombre === nombrePng) || null;
-    } catch(e){
-      console.error('tm_getTesoroRecordByItemEl error:', e);
-      return null;
-    }
-  };
-})();
-
-/**
- * Enriquecer un ítem con atributo mágico si el registro del tesoro tiene "magico":"SI".
- * @param {Object} saveItem  Ítem ya listo para guardar (objeto/arma/armadura)
- * @param {String} categoria "objeto" | "arma" | "armadura"
- * @param {Object} tesoroRec Registro original de stats_tesoros_maravillosos.json (con magico, seleccion, categoria)
- * @param {Function} tirarDadoFn Tu función tirarDado(expr)
- * @returns {Promise<Object>} saveItem mutado con magia (nombre/uso/especial)
- */
-
-async function applyMagicalAffixIfAny(saveItem, categoria, tesoroRec, tirarDadoFn) {
-  try {
-    if (!tesoroRec || String(tesoroRec.magico).toUpperCase() !== 'SI') return saveItem;
-
-    // Mapear tipo de magia
-    let tipomagico = 'Objeto';
-    const cat = String(categoria || '').toLowerCase();
-    if (cat === 'arma') tipomagico = 'Arma';
-    else if (cat === 'armadura') tipomagico = 'Armadura';
-
-    // 1) Cargar tabla mágica
-    const blocks = await window.__tm_magic.load();
-    const block = window.__tm_magic.findBlock(tipomagico, blocks);
-    if (!block) return saveItem;
-
-    // 2) Tirada principal
-    const roll = tirarDadoFn(block.seleccion);
-    let entry = window.__tm_magic.pick(block, roll);
-    if (!entry) return saveItem;
-
-    let curseText = '';
-    let hadCurse = false;
-    let positiveRoll = null;
-
-    // 3) ¿Maldición?
-    const isCurse = (entry.Tipo || '').toLowerCase().includes('maldito') ||
-                    (entry.Efecto || '').toLowerCase().includes('maldito') ||
-                    Number(roll) === 10;
-    if (isCurse) {
-      hadCurse = true;
-
-      // Tirada de maldición (si hay tabla)
-      const curseTable = entry.Maldiciones || [];
-      const curseExpr  = entry.TiradaMaldicion || '1d10';
-      if (Array.isArray(curseTable) && curseTable.length) {
-        const cRoll  = tirarDadoFn(curseExpr);
-        const cEntry = curseTable.find(m => Number(m.Tirada) === Number(cRoll));
-        if (cEntry) curseText = (cEntry.Efecto || '').trim();
-      }
-
-      // Re-roll positivo evitando 10
-      positiveRoll = window.__tm_magic.rerollAvoiding(block.seleccion, 10, tirarDadoFn);
-      const positive = window.__tm_magic.pick(block, positiveRoll);
-      if (positive) entry = positive;
-    }
-
-    // 4) Volcar magia en el ítem
-    const addText = window.__tm_magic.fmt(entry.Tipo, entry.Efecto);
-
-    // Concatenar texto mágico al campo visible (uso/especial)
-    if ('uso' in saveItem) {
-      saveItem.uso = [saveItem.uso, addText].filter(Boolean).join(' | ');
-    } else if ('especial' in saveItem) {
-      saveItem.especial = [saveItem.especial, addText].filter(Boolean).join(' | ');
-    } else if ('Efecto' in saveItem) {
-      saveItem.Efecto = [saveItem.Efecto, addText].filter(Boolean).join(' | ');
-    } else {
-      saveItem.uso = addText;
-    }
-
-    // 🔸 NOMBRE: añadir solo el Tipo mágico (sin Efecto)
-    const tipoMagico = (entry.Tipo || '').trim();
-    if (hadCurse && curseText) {
-      if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-      else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-      else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ☠️Maldito: ${curseText}.${tipoMagico ? '☠️-⚡' + tipoMagico + '⚡' : ''}`;
-    } else if (tipoMagico) {
-      if ('nombre' in saveItem)
-        saveItem.nombre = `${saveItem.nombre} ⚡${tipoMagico}⚡`;
-      else if ('arma' in saveItem)
-        saveItem.arma = `${saveItem.arma} ⚡${tipoMagico}⚡`;
-      else if ('armadura' in saveItem)
-        saveItem.armadura = `${saveItem.armadura} ⚡${tipoMagico}⚡`;
-    }
-
-    // Info para UI
-    saveItem._magia = {
-      tipomagico,
-      roll,
-      positiveRoll,
-      hadCurse,
-      curseText,
-      entry
-    };
-    return saveItem;
-
-  } catch (e) {
-    console.error('applyMagicalAffixIfAny error:', e);
-    return saveItem;
-  }
-}
-
-
-function tm_renderMagicInfoInItem(itemEl, magia) {
-  try {
-    if (!itemEl || !magia) return;
-    const info = document.createElement('div');
-    info.style.cssText = 'margin-top:6px; padding:6px; border-left:3px solid #8B4513; background:rgba(0,0,0,.2); border-radius:4px;';
-
-    const parts = [];
-    parts.push(`<b style="color:#d4af37;">Magia:</b> ${magia.tipomagico || ''}`);
-    if (magia.hadCurse) {
-      parts.push(`<span style="color:#e57373; margin-left:.5em;">Maldición: ${magia.curseText || ''}</span>`);
-      if (magia.positiveRoll != null) {
-        parts.push(`<span style="color:#81c784; margin-left:.5em;">Re-Tirada: ${magia.positiveRoll}</span>`);
-      }
-    } else if (magia.roll != null) {
-      parts.push(`<span style="color:#81c784; margin-left:.5em;">Tirada: ${magia.roll}</span>`);
-    }
-    if (magia.entry) {
-      const tipo = (magia.entry.Tipo || '').trim();
-      const ef   = (magia.entry.Efecto || '').trim();
-      const res  = [tipo, ef].filter(Boolean).join(' — ');
-      if (res) parts.push(`<div style="margin-top:4px;"><i>${res}</i></div>`);
-    }
-
-    info.innerHTML = `<div>${parts.join(' ')}</div>`;
-    // Evitar duplicados si el usuario hace varias pruebas sobre el mismo bloque
-    const prev = itemEl.querySelector('[data-magic-info="1"]');
-    if (prev) prev.remove();
-
-    info.setAttribute('data-magic-info','1');
-    itemEl.appendChild(info);
-  } catch (e) {
-    console.error('tm_renderMagicInfoInItem error:', e);
-  }
-}
