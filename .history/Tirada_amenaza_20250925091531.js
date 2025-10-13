@@ -573,7 +573,7 @@ async function RealizarDescanso() {
               <li>Se consume una Ración de Comida.</li>
               <li>Gestionar el equipo y mezclar pociones.</li>
               <li>Moral del grupo +2</li>
-              
+              <li>Nive de Amenaza Actual -5.</li>
 
             </ul>
         `,
@@ -587,10 +587,10 @@ async function RealizarDescanso() {
 
     if (!isConfirmed) return;
 let valor =0;
-  valor = 0;
+  valor = -5;
       const iframe = document.getElementById('iframeMenu');
 
-   
+    iframe.contentWindow.postMessage({ tipo: 'cambiarAmenaza', valor }, '*');
  const { isConfirmed:isConfirmed2 } = await Swal.fire({
         title: "<h1>¿Los errantes han alcanzado al grupo?</h1>",
         html: `Si habéis sido alcanzados por errantes, comenzar el combate sin realizar las acciones de descanso.<br>En caso contrario:
