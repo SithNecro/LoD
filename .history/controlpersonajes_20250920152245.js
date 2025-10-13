@@ -179,7 +179,7 @@ function modifyAttribute(index, attr, value) {
 
     // Reglas para "Herido"
     if (attr === 'vidaActual') {
-        const isWounded = character.vidaActual <= character.vidaMaxima / 2;
+        const isWounded = character.vidaActual < character.vidaMaxima / 2;
         const stateId = `${index}-Herido`;
 
         if (isWounded) {
