@@ -2868,6 +2868,8 @@
             "nombre": "Piedras preciosas (2).png",
             "rotura": null,
             "Unidades": "1d10",
+            "valor": null,
+            "Peso / Clase": null,
             "categoria": "objeto",
             "durabilidad": null,
             "seleccion": "1d1",
@@ -2889,6 +2891,8 @@
             "nombre": "Piedras preciosas.png",
             "rotura": null,
             "Unidades": "1d10",
+            "valor": null,
+            "Peso / Clase": null,
             "categoria": "objeto",
             "durabilidad": null,
             "seleccion": "1d1",
@@ -3088,7 +3092,7 @@
             ]
         },
         {
-            "nombre": "Poción suprema.png",
+            "nombre": "Poción Suprema.png",
             "rotura": null,
             "valor": null,
             "Peso / Clase": null,
@@ -3231,7 +3235,7 @@
             ]
         },
         {
-            "nombre": "Poción suprema (2).png",
+            "nombre": "Poción Suprema (2).png",
             "rotura": null,
             "valor": null,
             "Peso / Clase": null,

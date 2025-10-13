@@ -1245,8 +1245,7 @@
                     "Efecto": "",
                     "Leyenda": "",
                     "Unidades": "1"
-                },
-                {
+                }, {
                     "tirada": 2,
                     "Tipo": "Chaleco de escamas mágico",
                     "Cobertura / Defensa": "Torso/4",
@@ -1432,7 +1431,7 @@
             ]
         },
         {
-            "nombre": "Armadura de Malla de Mithril.png",
+            "nombre": "Armadura de malla de Mithril.png",
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
@@ -1582,7 +1581,7 @@
             ]
         },
         {
-            "nombre": "Armadura de Malla.png",
+            "nombre": "Armadura de malla.png",
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 6,
@@ -1788,7 +1787,7 @@
             "nombre": "Armadura de placas mágica.png",
             "rotura": "1d3-1",
             "categoria": "armadura",
-            "magico": "SI",
+                      "magico": "SI",
             "durabilidad": 8,
             "seleccion": "1d4",
             "tabla": [
@@ -1810,9 +1809,8 @@
                     "Peso / Clase": "7/4",
                     "Recarga": null,
                     "Valor": 2100,
-                    "Efecto": "Tosca",
-                    "Leyenda": "",
-                    "Unidades": "1"
+                   "Efecto": "Tosca",
+                    "Leyenda": "",  "Unidades": "1"
                 },
                 {
                     "tirada": 3,
@@ -1821,9 +1819,8 @@
                     "Peso / Clase": "6/4",
                     "Recarga": null,
                     "Valor": 2100,
-                    "Efecto": "Tosca",
-                    "Leyenda": "",
-                    "Unidades": "1"
+                   "Efecto": "Tosca",
+                    "Leyenda": "",  "Unidades": "1"
                 },
                 {
                     "tirada": 4,
@@ -1833,8 +1830,7 @@
                     "Recarga": null,
                     "Valor": 1800,
                     "Efecto": "",
-                    "Leyenda": "",
-                    "Unidades": "1"
+                    "Leyenda": "", "Unidades": "1"
                 }
             ]
         },
@@ -1971,12 +1967,12 @@
             "rotura": "1d3-1",
             "categoria": "objeto",
             "durabilidad": 6,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
                     "Tipo": "Arnés de combate",
-                    "Cobertura / Defensa": "0/0",
+                    "Cobertura / Defensa": "0",
                     "Peso / Clase": "0",
                     "Recarga": null,
                     "Valor": 500,
@@ -1991,7 +1987,7 @@
             "rotura": "0",
             "categoria": "objeto",
             "durabilidad": 6,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2011,12 +2007,12 @@
             "rotura": "1d2-1",
             "categoria": "armadura",
             "durabilidad": 6,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
                     "Tipo": "Capa de Wyvern",
-                    "Cobertura / Defensa": "Espalda/3",
+                    "Cobertura / Defensa": "+3 (solo por ataques por detrás)",
                     "Peso / Clase": "2",
                     "Recarga": null,
                     "Valor": 1200,
@@ -2031,13 +2027,13 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 6,
-            "magico": "SI",
-            "seleccion": "1d1",
+                                  "magico": "SI",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
                     "Tipo": "Capa mágica",
-                    "Cobertura / Defensa": "Espalda/0",
+                    "Cobertura / Defensa": "Variable según el encantamiento",
                     "Peso / Clase": "1",
                     "Recarga": null,
                     "Valor": 300,
@@ -2052,7 +2048,7 @@
             "rotura": "0",
             "categoria": "objeto",
             "durabilidad": 6,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2068,11 +2064,11 @@
             ]
         },
         {
-            "nombre": "Cuerda de arco Élfica.png",
+            "nombre": "Cuerda de arco élfica.png",
             "rotura": "0",
             "categoria": "objeto",
             "durabilidad": 6,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2092,7 +2088,7 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2112,7 +2108,7 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2132,7 +2128,7 @@
             "rotura": "1d3-1",
             "categoria": "armadura",
             "durabilidad": 8,
-            "magico": "SI",
+                                  "magico": "SI",
             "seleccion": "1d3",
             "tabla": [
                 {
@@ -2172,7 +2168,7 @@
             "rotura": "0",
             "categoria": "objeto",
             "durabilidad": null,
-            "seleccion": "1d1",
+            "seleccion": "1",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2188,46 +2184,42 @@
         },
         {
             "nombre": "Flechas de punta plateada.png",
-            "rotura": null,
+            "rotura": "0",
             "categoria": "objeto",
             "durabilidad": null,
             "Unidades": "1d10",
             "seleccion": "1d1",
             "tabla": [
                 {
-                    "tirada": 1,
-                    "Tipo": "Flechas de Plata",
-                    "Daño": null,
-                    "Defensa": null,
-                    "Peso / Clase": "0.2/",
-                    "Recarga": null,
-                    "Valor": 10,
-                    "Efecto": "Pueden dañar a criaturas etéreas. Además hacen +1 DAÑO a todos los no muertos.",
-                    "Leyenda": null
+                    "tirada": "1d1",
+                    "Tipo": "Flechas de punta plateada",
+                    "Cobertura / Defensa": null,
+                    "Peso / Clase": "0 / 0",
+                    "Valor": 0,
+                    "Efecto": "Pueden dañar a criaturas etéreas y hacen +1 DAÑ a los no muertos.",
+                    "Leyenda": ""
                 }
             ]
         },
         {
             "nombre": "Ganzuas enanas.png",
-            "rotura": null,
-      "categoria": "objeto",
-      "durabilidad": null,
-      "Unidades":"1d6",
-      "seleccion": "1d1",
-      "tabla": [
-        {
-          "tirada": 1,
-          "Tipo": "Ganzúas enanas",
-          "Daño": null,
-          "Defensa": null,
-          "Peso / Clase": null,
-          "Recarga": null,
-          "Valor": 15,
-          "Efecto": "Estas ganzúas dan +10 al intento de forzar cerraduras. Necesarias para usar la habilidad forzar cerraduras y desarmar trampas. Si se dañan sólo se romperá 1 ganzúa.",
-          "Leyenda": null
-        }
-      ]
-    },
+            "rotura": "0",
+            "categoria": "objeto",
+            "durabilidad": null,
+            "Unidades": "1d6",
+            "seleccion": "1d1",
+            "tabla": [
+                {
+                    "tirada": "1d1",
+                    "Tipo": "Ganzúas enanas",
+                    "Cobertura / Defensa": null,
+                    "Peso / Clase": "0 / 0",
+                    "Valor": 0,
+                    "Efecto": "Otorgan +10 a las pruebas para forzar cerraduras.",
+                    "Leyenda": ""
+                }
+            ]
+        },
         {
             "nombre": "Gran arma de plata.png",
             "rotura": "1d3-1",
@@ -2571,7 +2563,7 @@
             "rotura": "0",
             "categoria": "objeto",
             "durabilidad": null,
-            "seleccion": "1d1",
+            "seleccion": "1 Manual de entrenamiento",
             "tabla": [
                 {
                     "tirada": 1,
@@ -2868,6 +2860,8 @@
             "nombre": "Piedras preciosas (2).png",
             "rotura": null,
             "Unidades": "1d10",
+            "valor": null,
+            "Peso / Clase": null,
             "categoria": "objeto",
             "durabilidad": null,
             "seleccion": "1d1",
@@ -2889,6 +2883,8 @@
             "nombre": "Piedras preciosas.png",
             "rotura": null,
             "Unidades": "1d10",
+            "valor": null,
+            "Peso / Clase": null,
             "categoria": "objeto",
             "durabilidad": null,
             "seleccion": "1d1",
@@ -3088,7 +3084,7 @@
             ]
         },
         {
-            "nombre": "Poción suprema.png",
+            "nombre": "Poción Suprema.png",
             "rotura": null,
             "valor": null,
             "Peso / Clase": null,
@@ -3231,7 +3227,7 @@
             ]
         },
         {
-            "nombre": "Poción suprema (2).png",
+            "nombre": "Poción Suprema (2).png",
             "rotura": null,
             "valor": null,
             "Peso / Clase": null,
