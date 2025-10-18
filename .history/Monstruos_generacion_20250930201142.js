@@ -218,9 +218,9 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
             </div>`;
     });
     vidasGrid += "</div>";
-    const habilidadesHTML = (monster.habilidades || [])
-        .map(h => `<p>${renderHabilidad(h)}</p>`)
-        .join("");
+   const habilidadesHTML = (monster.habilidades || [])
+    .map(h => `<p>${renderHabilidad(h)}</p>`)
+    .join("");
     // --- HTML principal ---
     wrapper.innerHTML = `
         <button class="remove-btn">X</button>
@@ -274,37 +274,37 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
 
         ${vidasGrid}
     `;
-    function renderHabilidad(rawHtml) {
-        // 1. Extraer el contenido del <strong>...</strong>
-        const match = rawHtml.match(/<strong[^>]*>([^<:]+):?<\/strong>/i);
-        if (!match) {
-            return rawHtml; // no hay strong, lo dejamos como está
-        }
+  function renderHabilidad(rawHtml) {
+    // 1. Extraer el contenido del <strong>...</strong>
+    const match = rawHtml.match(/<strong[^>]*>([^<:]+):?<\/strong>/i);
+    if (!match) {
+        return rawHtml; // no hay strong, lo dejamos como está
+    }
 
-        let habilidadName = match[1].trim(); // ej. "Imbecil"
+    let habilidadName = match[1].trim(); // ej. "Imbecil"
 
-        // 2. Normalizar (minúsculas, quitar acentos, tratar X como comodín)
-        const norm = normalizarHabilidad(habilidadName);
+    // 2. Normalizar (minúsculas, quitar acentos, tratar X como comodín)
+    const norm = normalizarHabilidad(habilidadName);
 
-        // 3. Buscar en el diccionario
-        let descripcion = habilidadesDict[norm];
+    // 3. Buscar en el diccionario
+    let descripcion = habilidadesDict[norm];
 
-        // 4. Manejar habilidades con X (ej. "miedo 3" → "miedo x")
-        if (!descripcion) {
-            const conX = norm.replace(/\d+/g, "x");
-            descripcion = habilidadesDict[conX];
-        }
+    // 4. Manejar habilidades con X (ej. "miedo 3" → "miedo x")
+    if (!descripcion) {
+        const conX = norm.replace(/\d+/g, "x");
+        descripcion = habilidadesDict[conX];
+    }
 
-        // 5. Si existe descripción, añadimos tooltip
-        if (descripcion) {
-            return `<span class="tooltip-habilidad" data-tippy-content="${descripcion}">
+    // 5. Si existe descripción, añadimos tooltip
+    if (descripcion) {
+        return `<span class="tooltip-habilidad" data-tippy-content="${descripcion}">
                     ${rawHtml}
                 </span>`;
-        }
-
-        // Si no hay descripción, devolvemos el HTML tal cual
-        return rawHtml;
     }
+
+    // Si no hay descripción, devolvemos el HTML tal cual
+    return rawHtml;
+}
     // --- Botón eliminar ---
     wrapper.querySelector(".remove-btn").addEventListener("click", () => {
         wrapper.remove();
@@ -413,75 +413,33 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
             const tipoSaqueo = monster.recompensa.trim();
             const imgSrc = `img/Monstruos/saquear/${tipoSaqueo}.png`;
 
-            // Helper: sacar la línea de PARTES desde las habilidades del monstruo
-            const getPartesTexto = () => {
-                if (!Array.isArray(monster.habilidades)) return "";
-                for (const h of monster.habilidades) {
-                    // quitamos etiquetas HTML y nos quedamos con el texto
-                    const plano = String(h).replace(/<[^>]*>/g, "").trim();
-                    // busca "Parte:" o "Partes:" al inicio o tras espacios
-                    const m = plano.match(/(?:^|\s)(?:Parte|Partes)\s*:\s*(.+)/i);
-                    if (m) return m[1].trim();
-                }
-                return "";
-            };
+            // Tirada aleatoria 1d10
+            const tirada = Math.floor(Math.random() * 10) + 1;
 
+            // Cargar el JSON de saqueo si no está ya cargado
+            if (!window.saqueoData) {
+                window.saqueoData = await fetch("json/Monstruos_saquear_cadaveres.json").then(r => r.json());
+            }
+
+            // Buscar objeto correspondiente en el JSON
             let objetoGanado = "Nada encontrado";
-            let tirada;
-            let htmlPopup = "";
-
-            if (tipoSaqueo === "Parte") {
-                // No hay tirada d10: se informa de la tirada de alquimia
-                tirada = 0;
-                const partesTxt = getPartesTexto(); // ej.: "Hojas de Enredador (1d3)"
-                const partesLinea = partesTxt
-                    ? `PARTES: ${partesTxt} extraíbles`
-                    : `PARTES extraíbles`;
-
-                objetoGanado = `${partesLinea} (Realiza la tirada de alquimia con tu héroe para ver si las extraes con éxito).`;
-
-                htmlPopup = `
-      <img src="${imgSrc}" style="width:300px;height:300px;object-fit:contain;"><br>
-      <p><strong>Recompensa: PARTES</strong></p>
-      <p>Este monstruo tiene ${objetoGanado}</p>
-    `;
-            } else {
-                // Tirada aleatoria 1d10 normal
-                tirada = Math.floor(Math.random() * 10) + 1;
-
-                // Cargar el JSON de saqueo si no está ya cargado
-                if (!window.saqueoData) {
-                    window.saqueoData = await fetch("json/Monstruos_saquear_cadaveres.json").then(r => r.json());
-                }
-
-                // Buscar objeto correspondiente en el JSON
-                const tabla = window.saqueoData[tipoSaqueo];
-                if (tabla) {
-                    const entrada = tabla.find(e => e["1d10"] === String(tirada));
-                    if (entrada) objetoGanado = entrada.Objeto;
-                }
-
-                htmlPopup = `
-      <img src="${imgSrc}" style="width:300px;height:300px;object-fit:contain;"><br>
-      <p>Has tirado un <strong>d10</strong> y salió: <strong>${tirada}</strong></p>
-      <p><strong>Has encontrado:</strong> ${objetoGanado}</p>
-    `;
+            const tabla = window.saqueoData[tipoSaqueo];
+            if (tabla) {
+                const entrada = tabla.find(e => e["1d10"] === String(tirada));
+                if (entrada) objetoGanado = entrada.Objeto;
             }
 
             Swal.fire({
                 title: `¡Saqueo de ${monster.nombre}!`,
-                html: htmlPopup,
+                html: `
+            <img src="${imgSrc}" style="width:300px;height:300px;object-fit:contain;"><br>
+            <p>Has tirado un <strong>d10</strong> y salió: <strong>${tirada}</strong></p>
+            <p><strong>Has encontrado:</strong> ${objetoGanado}</p>
+        `,
                 confirmButtonText: "Aceptar"
             }).then(() => {
                 btnSaqueo.style.display = "none";
-
-                // Texto del resumen bajo la vida
-                const partesTxt = tipoSaqueo === "Parte" ? getPartesTexto() : "";
-                const resumen = (tipoSaqueo === "Parte")
-                    ? `PARTES: ${partesTxt || "—"} (requiere tirada de alquimia)`
-                    : `Saqueado (d10=${tirada}): ${objetoGanado}`;
-
-                resultado.innerHTML = `<span style="color:gold;">${resumen}</span>`;
+                resultado.innerHTML = `<span style="color:gold;">Saqueado (d10=${tirada}): ${objetoGanado}</span>`;
 
                 // Guardar resultado en la data de la carta
                 const data = JSON.parse(wrapper.dataset.info || "{}");
@@ -491,7 +449,6 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
                 saveToLocalStorage();
             });
         });
-
     });
 
     deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";

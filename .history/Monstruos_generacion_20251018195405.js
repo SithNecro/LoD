@@ -412,76 +412,40 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
         btnSaqueo.addEventListener("click", async () => {
             const tipoSaqueo = monster.recompensa.trim();
             const imgSrc = `img/Monstruos/saquear/${tipoSaqueo}.png`;
-
-            // Helper: sacar la línea de PARTES desde las habilidades del monstruo
-            const getPartesTexto = () => {
-                if (!Array.isArray(monster.habilidades)) return "";
-                for (const h of monster.habilidades) {
-                    // quitamos etiquetas HTML y nos quedamos con el texto
-                    const plano = String(h).replace(/<[^>]*>/g, "").trim();
-                    // busca "Parte:" o "Partes:" al inicio o tras espacios
-                    const m = plano.match(/(?:^|\s)(?:Parte|Partes)\s*:\s*(.+)/i);
-                    if (m) return m[1].trim();
-                }
-                return "";
-            };
-
-            let objetoGanado = "Nada encontrado";
+            let  objetoGanado = "Nada encontrado";
             let tirada;
-            let htmlPopup = "";
+            if (tipoSaqueo == "Parte") {
+                     objetoGanado = "Mira en el monstruo si suelta partes y haz la tirada pertinente."
+                     tirada = 0;
+            }
+             else {
+                // Tirada aleatoria 1d10
+                 tirada = Math.floor(Math.random() * 10) + 1;
+            }
+            // Cargar el JSON de saqueo si no está ya cargado
+            if (!window.saqueoData) {
+                window.saqueoData = await fetch("json/Monstruos_saquear_cadaveres.json").then(r => r.json());
+            }
 
-            if (tipoSaqueo === "Parte") {
-                // No hay tirada d10: se informa de la tirada de alquimia
-                tirada = 0;
-                const partesTxt = getPartesTexto(); // ej.: "Hojas de Enredador (1d3)"
-                const partesLinea = partesTxt
-                    ? `PARTES: ${partesTxt} extraíbles`
-                    : `PARTES extraíbles`;
-
-                objetoGanado = `${partesLinea} (Realiza la tirada de alquimia con tu héroe para ver si las extraes con éxito).`;
-
-                htmlPopup = `
-      <img src="${imgSrc}" style="width:300px;height:300px;object-fit:contain;"><br>
-      <p><strong>Recompensa: PARTES</strong></p>
-      <p>Este monstruo tiene ${objetoGanado}</p>
-    `;
-            } else {
-                // Tirada aleatoria 1d10 normal
-                tirada = Math.floor(Math.random() * 10) + 1;
-
-                // Cargar el JSON de saqueo si no está ya cargado
-                if (!window.saqueoData) {
-                    window.saqueoData = await fetch("json/Monstruos_saquear_cadaveres.json").then(r => r.json());
-                }
-
-                // Buscar objeto correspondiente en el JSON
-                const tabla = window.saqueoData[tipoSaqueo];
-                if (tabla) {
-                    const entrada = tabla.find(e => e["1d10"] === String(tirada));
-                    if (entrada) objetoGanado = entrada.Objeto;
-                }
-
-                htmlPopup = `
-      <img src="${imgSrc}" style="width:300px;height:300px;object-fit:contain;"><br>
-      <p>Has tirado un <strong>d10</strong> y salió: <strong>${tirada}</strong></p>
-      <p><strong>Has encontrado:</strong> ${objetoGanado}</p>
-    `;
+            // Buscar objeto correspondiente en el JSON
+            
+            const tabla = window.saqueoData[tipoSaqueo];
+            if (tabla) {
+                const entrada = tabla.find(e => e["1d10"] === String(tirada));
+                if (entrada) objetoGanado = entrada.Objeto;
             }
 
             Swal.fire({
                 title: `¡Saqueo de ${monster.nombre}!`,
-                html: htmlPopup,
+                html: `
+            <img src="${imgSrc}" style="width:300px;height:300px;object-fit:contain;"><br>
+            <p>Has tirado un <strong>d10</strong> y salió: <strong>${tirada}</strong></p>
+            <p><strong>Has encontrado:</strong> ${objetoGanado}</p>
+            `,
                 confirmButtonText: "Aceptar"
             }).then(() => {
                 btnSaqueo.style.display = "none";
-
-                // Texto del resumen bajo la vida
-                const partesTxt = tipoSaqueo === "Parte" ? getPartesTexto() : "";
-                const resumen = (tipoSaqueo === "Parte")
-                    ? `PARTES: ${partesTxt || "—"} (requiere tirada de alquimia)`
-                    : `Saqueado (d10=${tirada}): ${objetoGanado}`;
-
-                resultado.innerHTML = `<span style="color:gold;">${resumen}</span>`;
+                resultado.innerHTML = `<span style="color:gold;">Saqueado (d10=${tirada}): ${objetoGanado}</span>`;
 
                 // Guardar resultado en la data de la carta
                 const data = JSON.parse(wrapper.dataset.info || "{}");
@@ -491,7 +455,6 @@ function renderCard(monster, category, armas, armaduras, hechizos, color = "#fff
                 saveToLocalStorage();
             });
         });
-
     });
 
     deathOverlay.style.display = wrapper._vidas.every(v => v === 0) ? "block" : "none";
