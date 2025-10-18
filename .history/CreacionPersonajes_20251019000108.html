@@ -1054,7 +1054,7 @@
             const cordura = getNum(['preview-COR', 'CORfinal', 'COR']);
 
             // peso (lleva/actual)
-            const peso = getNum(['final-strength', 'FUE-final', 'FUE']);
+            const peso = getNum(['preview-PESO', 'peso-actual', 'pesoTotal', 'peso']);
 
             // Vida: pediste base=actual con el mismo valor; usamos VIT (o si tu UI tiene "vidaActual"/"vidaMax")
             const vidaBase = getNum(['vidaBase', 'vida-max', 'vidaMax']) || VIT;
@@ -1094,7 +1094,7 @@
                 "trueque": { base: trueque, actual: trueque },
                 "alquimia": { base: alquimia, actual: alquimia },
 
-                "peso": { base: peso, actual: 0 }
+                "peso": { base: peso, actual: peso }
             };
 
             // Registro final
