@@ -924,7 +924,7 @@
 
 
         /* ====== IndexedDB: PersonajesDB / store: 'personajes' ====== */
-
+       
 
         const DB_NAME = 'PersonajesDB';
         const STORE_NAME = 'personajes';
@@ -984,130 +984,130 @@
         }
 
         /* Recolecta todos los datos visibles y fija base=actual en atributos */
+     
+function gatherCharacterDataForSave() {
+  // ---- helpers robustos ----
+  const pick = (ids) => ids.map(id => document.getElementById(id)).find(Boolean);
+  const num = (el) => {
+    if (!el) return 0;
+    const raw = ('value' in el ? el.value : el.textContent) ?? '';
+    const m = String(raw).match(/-?\d+/);
+    return m ? parseInt(m[0], 10) : 0;
+  };
+  const getNum = (ids) => num(pick(ids));
+  const getStr = (ids) => {
+    const el = pick(ids);
+    if (!el) return '';
+    return ('value' in el ? String(el.value) : String(el.textContent)).trim();
+  };
 
-        function gatherCharacterDataForSave() {
-            // ---- helpers robustos ----
-            const pick = (ids) => ids.map(id => document.getElementById(id)).find(Boolean);
-            const num = (el) => {
-                if (!el) return 0;
-                const raw = ('value' in el ? el.value : el.textContent) ?? '';
-                const m = String(raw).match(/-?\d+/);
-                return m ? parseInt(m[0], 10) : 0;
-            };
-            const getNum = (ids) => num(pick(ids));
-            const getStr = (ids) => {
-                const el = pick(ids);
-                if (!el) return '';
-                return ('value' in el ? String(el.value) : String(el.textContent)).trim();
-            };
+  // ---- básicos ----
+  const nombre    = getStr(['Name','nombrePersonaje']);
+  const raza      = getStr(['race','razaSelect']);
+  // En tu BBDD se llama "profesion", no "clase"
+  const profesion = getStr(['classSelect','profesionSelect']) || 'Sin profesión';
 
-            // ---- básicos ----
-            const nombre = getStr(['Name', 'nombrePersonaje']);
-            const raza = getStr(['race', 'razaSelect']);
-            // En tu BBDD se llama "profesion", no "clase"
-            const profesion = getStr(['classSelect', 'profesionSelect']) || 'Sin profesión';
+  // Imagen (opcional): intenta tomar <img id="avatar"> o un canvas
+  let imagen = '';
+  const imgEl = pick(['avatar','portraitImg']);
+  if (imgEl && imgEl.src) imagen = imgEl.src;
+  else {
+    const canvas = pick(['portraitCanvas','avatarCanvas']);
+    if (canvas && canvas.toDataURL) imagen = canvas.toDataURL('image/png');
+  }
 
-            // Imagen (opcional): intenta tomar <img id="avatar"> o un canvas
-            let imagen = '';
-            const imgEl = pick(['avatar', 'portraitImg']);
-            if (imgEl && imgEl.src) imagen = imgEl.src;
-            else {
-                const canvas = pick(['portraitCanvas', 'avatarCanvas']);
-                if (canvas && canvas.toDataURL) imagen = canvas.toDataURL('image/png');
-            }
+  // ---- atributos principales (usamos final-* si existen) ----
+  const FUE = getNum(['final-strength','FUE-final','FUE']);
+  const DES = getNum(['final-dexterity','DES-final','DES']);
+  const CON = getNum(['final-constitution','CON-final','CON']);
+  const SAB = getNum(['final-wisdom','SAB-final','SAB']);
+  const DET = getNum(['final-determination','DET-final','DET']);
+  const VIT = getNum(['final-vitality','VIT-final','VIT']);
 
-            // ---- atributos principales (usamos final-* si existen) ----
-            const FUE = getNum(['final-strength', 'FUE-final', 'FUE']);
-            const DES = getNum(['final-dexterity', 'DES-final', 'DES']);
-            const CON = getNum(['final-constitution', 'CON-final', 'CON']);
-            const SAB = getNum(['final-wisdom', 'SAB-final', 'SAB']);
-            const DET = getNum(['final-determination', 'DET-final', 'DET']);
-            const VIT = getNum(['final-vitality', 'VIT-final', 'VIT']);
+  // ---- otros numéricos "globales" que existen en tu esquema ----
+  const Nivel   = getNum(['nivel','nivelVal','preview-NIVEL']);
+  const Suerte  = getNum(['suerte','preview-SUERTE','SUERTE']);
+  const Energia = getNum(['energia','preview-ENERGIA','ENERGIA']);
 
-            // ---- otros numéricos "globales" que existen en tu esquema ----
-            const Nivel = getNum('1');
-            const Suerte = getNum(['suerte', 'preview-SUERTE', 'SUERTE']);
-            const Energia = getNum('1');
+  // secundarios: en tu BBDD son minúsculas: bd, an, m
+  const bd = getNum(['preview-BD','BDfinal','BD','bd-total']);        // bonif daño / base daño
+  const an = getNum(['preview-AN','ANfinal','AN','an-total']);        // arm natural / armadura natural
+  const m  = getNum(['preview-MOV','MOVfinal','MOV','mov-total']);    // movimiento
 
-            // secundarios: en tu BBDD son minúsculas: bd, an, m
-            const bd = getNum(['preview-BD', 'BDfinal', 'BD', 'bd-total']);        // bonif daño / base daño
-            const an = getNum(['preview-AN', 'ANfinal', 'AN', 'an-total']);        // arm natural / armadura natural
-            const m = getNum(['preview-MOV', 'MOVfinal', 'MOV', 'mov-total']);    // movimiento
+  // combate
+  const hc      = getNum(['preview-HC','HCfinal','HC','hc-total']);   // Habilidad de combate (ataque)
+  const hd      = getNum(['preview-HD','HDfinal','HD','hd-total']);   // Habilidad de defensa
+  const esquiva = getNum(['preview-ESQ','ESQfinal','ESQ','esq-total']);
+  const fcerrad = getNum(['preview-FC','FCfinal','FC','fc-total']);   // fuerza combate / cuerpo a cuerpo
 
-            // combate
-            const hc = getNum(['preview-HC', 'HCfinal', 'HC', 'hc-total']);   // Habilidad de combate (ataque)
-            const hd = getNum(['preview-HD', 'HDfinal', 'HD', 'hd-total']);   // Habilidad de defensa
-            const esquiva = getNum(['preview-ESQ', 'ESQfinal', 'ESQ', 'esq-total']);
-            const fcerrad = getNum(['preview-FC', 'FCfinal', 'FC', 'fc-total']);   // fuerza combate / cuerpo a cuerpo
+  // habilidades varias
+  const aArcanas = getNum(['preview-AA','AAfinal','AA']);             // artes arcanas
+  const curar    = getNum(['preview-CU','CUfinal','CU']);
+  const plegaria = getNum(['preview-PLE','PLEfinal','PLE','plegaria']); // si no tienes, quedará 0
+  const trueque  = getNum(['preview-TRU','TRUfinal','TRU']);
+  const alquimia = getNum(['preview-ALQ','ALQfinal','ALQ']);
+  const percep   = getNum(['preview-PER','PERfinal','PER']);
+  const superviv = getNum(['preview-SUP','SUPfinal','SUP']);
+  const mana     = getNum(['preview-MANA','MANAfinal','MANA']);
 
-            // habilidades varias
-            const aArcanas = getNum(['preview-AA', 'AAfinal', 'AA']);             // artes arcanas
-            const curar = getNum(['preview-CU', 'CUfinal', 'CU']);
-            const plegaria = getNum(['preview-PLE', 'PLEfinal', 'PLE', 'plegaria']); // si no tienes, quedará 0
-            const trueque = getNum(['preview-TRU', 'TRUfinal', 'TRU']);
-            const alquimia = getNum(['preview-ALQ', 'ALQfinal', 'ALQ']);
-            const percep = getNum(['preview-PER', 'PERfinal', 'PER']);
-            const superviv = getNum(['preview-SUP', 'SUPfinal', 'SUP']);
-            const mana = getNum(['preview-MANA', 'MANAfinal', 'MANA']);
+  // recursos mentales
+  const cordura  = getNum(['preview-COR','CORfinal','COR']);
 
-            // recursos mentales
-            const cordura = getNum(['preview-COR', 'CORfinal', 'COR']);
+  // peso (lleva/actual)
+  const peso = getNum(['preview-PESO','peso-actual','pesoTotal','peso']);
 
-            // peso (lleva/actual)
-            const peso = getNum(['preview-PESO', 'peso-actual', 'pesoTotal', 'peso']);
+  // Vida: pediste base=actual con el mismo valor; usamos VIT (o si tu UI tiene "vidaActual"/"vidaMax")
+  const vidaBase   = getNum(['vidaBase','vida-max','vidaMax']) || VIT;
+  const vidaActual = getNum(['vidaActual','vida-actual']) || VIT;
 
-            // Vida: pediste base=actual con el mismo valor; usamos VIT (o si tu UI tiene "vidaActual"/"vidaMax")
-            const vidaBase = getNum(['vidaBase', 'vida-max', 'vidaMax']) || VIT;
-            const vidaActual = getNum(['vidaActual', 'vida-actual']) || VIT;
+  // Construcción EXACTA de la estructura que mostraste
+  const atributos = {
+    "Nivel":      { base: Nivel },
+    "Suerte":     { base: Suerte },
+    "Energía":    { base: Energia },
 
-            // Construcción EXACTA de la estructura que mostraste
-            const atributos = {
-                "Nivel": { base: Nivel },
-                "Suerte": { base: Suerte },
-                "Energía": { base: Energia },
+    "bd":         { base: bd },
+    "an":         { base: an },
+    "m":          { base: m },
 
-                "bd": { base: bd },
-                "an": { base: an },
-                "m": { base: m },
+    "FUE":        { base: FUE },
+    "DES":        { base: DES },
+    "CON":        { base: CON },
+    "SAB":        { base: SAB },
+    "DET":        { base: DET },
 
-                "FUE": { base: FUE },
-                "DES": { base: DES },
-                "CON": { base: CON },
-                "SAB": { base: SAB },
-                "DET": { base: DET },
+    "Vida":       { base: vidaBase, actual: vidaActual },
 
-                "Vida": { base: vidaBase, actual: vidaActual },
+    "mana":       { base: mana,    actual: mana    },
+    "cordura":    { base: cordura, actual: cordura },
 
-                "mana": { base: mana, actual: mana },
-                "cordura": { base: cordura, actual: cordura },
+    "hc":         { base: hc,      actual: hc      },
+    "hd":         { base: hd,      actual: hd      },
+    "esquiva":    { base: esquiva, actual: esquiva },
+    "percep":     { base: percep,  actual: percep  },
+    "superviv":   { base: superviv,actual: superviv},
+    "fcerrad":    { base: fcerrad, actual: fcerrad },
 
-                "hc": { base: hc, actual: hc },
-                "hd": { base: hd, actual: hd },
-                "esquiva": { base: esquiva, actual: esquiva },
-                "percep": { base: percep, actual: percep },
-                "superviv": { base: superviv, actual: superviv },
-                "fcerrad": { base: fcerrad, actual: fcerrad },
+    "aArcanas":   { base: aArcanas,actual: aArcanas},
+    "curar":      { base: curar,   actual: curar   },
+    "plegaria":   { base: plegaria,actual: plegaria},
+    "trueque":    { base: trueque, actual: trueque },
+    "alquimia":   { base: alquimia,actual: alquimia},
 
-                "aArcanas": { base: aArcanas, actual: aArcanas },
-                "curar": { base: curar, actual: curar },
-                "plegaria": { base: plegaria, actual: plegaria },
-                "trueque": { base: trueque, actual: trueque },
-                "alquimia": { base: alquimia, actual: alquimia },
+    "peso":       { base: peso,    actual: peso    }
+  };
 
-                "peso": { base: peso, actual: peso }
-            };
-
-            // Registro final
-            return {
-                // id se autoincrementa en IndexedDB
-                nombre: nombre || 'Sin nombre',
-                raza,
-                profesion,
-                imagen,       // dataURL si existe
-                atributos,
-                creadoEn: new Date().toISOString()
-            };
-        }
+  // Registro final
+  return {
+    // id se autoincrementa en IndexedDB
+    nombre: nombre || 'Sin nombre',
+    raza,
+    profesion,
+    imagen,       // dataURL si existe
+    atributos,
+    creadoEn: new Date().toISOString()
+  };
+}
 
 
         /* Click del botón "Grabar Personaje" */
