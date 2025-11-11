@@ -2304,7 +2304,7 @@
     {
       "nombre": "Espectro",
       "tipo": "No muerto mayor/Wraiths",
-      "vida": 20,
+      "vida": 25,
       "exp": 500,
       "recompensa": "Parte",
       "HC": 50,
