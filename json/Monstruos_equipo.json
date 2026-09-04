@@ -12,6 +12,7 @@
 {"Tipo":"Daga","Daño":"1d6","Efecto":"Sigiloso: +2 Daño por detrás."},
 {"Tipo":"Espada Ancha","Daño":"1d8+2","Efecto":null},
 {"Tipo":"Espada Corta","Daño":"1d6+2","Efecto":null},
+{"Tipo":"Guadaña del Alma","Daño":"1d6+2","Efecto":"<br>Daño de Frío:<br> El héroe golpeado debe tirar 1d10 y sacar menos que su cordura actual, o perder 1 punto de ésta."},
 {"Tipo":"Espada Larga","Daño":"1d12","Efecto":null},
 {"Tipo":"Espadón","Daño":"2d6","Efecto":"Lento: +5RG a melé."},
 {"Tipo":"Estoque","Daño":"1d6+1","Efecto":"Rápido: Da -5RG en combate a melé."},
